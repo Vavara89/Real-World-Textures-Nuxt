@@ -30,7 +30,7 @@ h4,
   @include font-filter;
 
   &.is-active {
-    font-weight: 700;
+    @include font-filter-active;
   }
 }
 

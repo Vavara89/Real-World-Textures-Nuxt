@@ -33,5 +33,16 @@
             <a href="#" class="button-tertiary button-tertiary--green">Tertiary Button</a>
             <a href="#" class="button-tertiary button-tertiary--blue">Tertiary Button</a>
         </div>
+        <ToggleSwitch />
     </div>
 </template>
+
+<script>
+import ToggleSwitch from "@/components/ToggleSwitch";
+
+export default {
+    components: {
+        ToggleSwitch
+    }
+};
+</script>
