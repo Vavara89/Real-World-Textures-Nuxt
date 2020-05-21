@@ -1,0 +1,44 @@
+h1,
+.h1 {
+  @include h1;
+}
+
+h2,
+.h2 {
+  @include h2;
+}
+
+h3,
+.h3 {
+  @include h3;
+}
+
+h4,
+.h4 {
+  @include h4;
+}
+
+.name {
+  @include name;
+}
+
+::placeholder {
+  @include placeholder;
+}
+
+.filter {
+  @include filter;
+}
+
+.filter--active {
+  @include filter;
+}
+
+p,
+.text {
+  @include text;
+}
+
+.detail {
+  @include detail;
+}
