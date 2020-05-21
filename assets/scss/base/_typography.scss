@@ -1,44 +1,44 @@
 h1,
 .h1 {
-  @include h1;
+  @include font-h1;
 }
 
 h2,
 .h2 {
-  @include h2;
+  @include font-h2;
 }
 
 h3,
 .h3 {
-  @include h3;
+  @include font-h3;
 }
 
 h4,
 .h4 {
-  @include h4;
+  @include font-h4;
 }
 
 .name {
-  @include name;
+  @include font-name;
 }
 
 ::placeholder {
-  @include placeholder;
+  @include font-placeholder;
 }
 
 .filter {
-  @include filter;
-}
+  @include font-filter;
 
-.filter--active {
-  @include filter;
+  &.is-active {
+    font-weight: 700;
+  }
 }
 
 p,
 .text {
-  @include text;
+  @include font-text;
 }
 
 .detail {
-  @include detail;
+  @include font-detail;
 }

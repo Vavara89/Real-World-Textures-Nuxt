@@ -1,4 +1,4 @@
-@mixin h1 {
+@mixin font-h1 {
   font-family: $font-primary;
   font-size: 3.6rem;
   font-weight: 700;
@@ -6,7 +6,7 @@
   color: $color-primary-900;
 }
 
-@mixin h2 {
+@mixin font-h2 {
   font-family: $font-primary;
   font-size: 2.4rem;
   font-weight: 700;
@@ -14,7 +14,7 @@
   color: $color-primary-900;
 }
 
-@mixin h3 {
+@mixin font-h3 {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 700;
@@ -22,7 +22,7 @@
   color: $color-primary-600;
 }
 
-@mixin h4 {
+@mixin font-h4 {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 500;
@@ -31,7 +31,7 @@
   color: $color-primary-600;
 }
 
-@mixin name {
+@mixin font-name {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 700;
@@ -39,7 +39,7 @@
   color: $color-primary-700;
 }
 
-@mixin placeholder {
+@mixin font-placeholder {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 300;
@@ -47,7 +47,7 @@
   color: $color-primary-600;
 }
 
-@mixin filter {
+@mixin font-filter {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 500;
@@ -55,15 +55,7 @@
   color: $color-primary-700;
 }
 
-@mixin filter-active {
-  font-family: $font-primary;
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1.7143;
-  color: $color-primary-700;
-}
-
-@mixin text {
+@mixin font-text {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 300;
@@ -71,10 +63,35 @@
   color: $color-primary-600;
 }
 
-@mixin detail {
+@mixin font-detail {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 300;
   line-height: 1.7143;
   color: $color-primary-500;
+}
+
+@mixin font-button-primary {
+  font-family: $font-primary;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+}
+
+@mixin font-button-secondary {
+  font-family: $font-primary;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.7143;
+}
+
+@mixin font-button-tertiary {
+  font-family: $font-primary;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.7143;
+  letter-spacing: .075rem;
+  text-transform: uppercase;;
 }
