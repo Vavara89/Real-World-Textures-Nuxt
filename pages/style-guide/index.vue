@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div>
+    <div>
+        <div class="container">
             <h1 class="h1">Lorem ipsum dolor sit amet.</h1>
             <h2 class="h2">Lorem ipsum dolor sit amet.</h2>
             <h3 class="h3">Lorem ipsum dolor sit amet.</h3>
@@ -11,14 +11,14 @@
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque ipsum aut reiciendis, vitae eos tenetur obcaecati suscipit soluta quae exercitationem?</p>
             <div class="detail">Lorem ipsum dolor sit amet.</div>
         </div>
-        <div>
+        <div class="container">
             <a href="#" class="button-primary">Primary Button</a>
             <a href="#" class="button-primary button-primary--blue">Primary Button</a>
             <a href="#" class="button-primary button-primary--light">Primary Button</a>
             <a href="#" class="button-primary button-primary--red">Primary Button</a>
             <a href="#" class="button-primary button-primary--inverted">Primary Button</a>
         </div>
-        <div>
+        <div class="container">
             <a href="#" class="button-secondary">Secondary Button</a>
             <a href="#" class="button-secondary button-secondary--inverted">Secondary Button</a>
             <a href="#" class="button-secondary button-secondary--play">Secondary Button</a>
@@ -27,22 +27,27 @@
                 class="button-secondary button-secondary--inverted button-secondary--play"
             >Secondary Button</a>
         </div>
-        <div>
+        <div class="container">
             <a href="#" class="button-tertiary">Tertiary Button</a>
             <a href="#" class="button-tertiary button-tertiary--red">Tertiary Button</a>
             <a href="#" class="button-tertiary button-tertiary--green">Tertiary Button</a>
             <a href="#" class="button-tertiary button-tertiary--blue">Tertiary Button</a>
         </div>
-        <ToggleSwitch />
+        <div class="container">
+            <ToggleSwitch />
+        </div>
+        <Footer />
     </div>
 </template>
 
 <script>
 import ToggleSwitch from "@/components/ToggleSwitch";
+import Footer from "@/components/Footer/Footer";
 
 export default {
     components: {
-        ToggleSwitch
+        ToggleSwitch,
+        Footer
     }
 };
 </script>

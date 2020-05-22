@@ -1,0 +1,24 @@
+.footer-links {
+  display: flex;
+  margin-left: -6.4rem;
+
+  @include mq(980px, max) {
+    flex-direction: column;
+  }
+
+  &__item {
+    margin-left: 6.4rem;
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    text-decoration: none;
+    color: $color-primary-500;
+
+    @include mq(980px, max) {
+      margin-bottom: 1.6rem;
+    }
+  }
+}

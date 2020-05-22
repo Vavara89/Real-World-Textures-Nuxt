@@ -1,0 +1,3 @@
+@mixin transition-base($change: all) {
+  transition: .3s $change ease-in-out;
+}

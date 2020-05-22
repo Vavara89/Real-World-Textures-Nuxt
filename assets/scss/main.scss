@@ -7,8 +7,10 @@
 @import "vars/border-radius";
 
 // Mixins
+@import "mixins/media-queries";
 @import "mixins/typography";
 @import "mixins/buttons";
+@import "mixins/transitions";
 
 // Base
 @import "base/reset";
@@ -19,3 +21,8 @@
 @import "components/container";
 @import "components/buttons";
 @import "components/toggle";
+@import "components/footer";
+@import "components/footer-social";
+@import "components/footer-nav";
+@import "components/footer-mail-form";
+@import "components/footer-links";

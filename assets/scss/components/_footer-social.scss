@@ -1,0 +1,15 @@
+.footer-social {
+  display: flex;
+  margin-top: 3.2rem;
+  margin-left: -2.4rem;
+
+  &__item {
+    margin-left: 2.4rem;
+
+    @include transition-base;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}

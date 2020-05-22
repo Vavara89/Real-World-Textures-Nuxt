@@ -2,9 +2,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: .3s background-color ease-in-out;
   text-decoration: none;
   border-radius: $br-base;
+
+  @include transition-base(background-color);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 // Primary buttons

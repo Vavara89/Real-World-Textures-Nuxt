@@ -9,3 +9,8 @@ html {
 body {
   @include font-text;
 }
+
+input {
+  font-family: inherit;
+  border: none;
+}
