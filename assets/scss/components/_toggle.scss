@@ -1,13 +1,13 @@
 .toggle {
   display: flex;
   justify-content: stretch;
-  max-width: 185px;
+  max-width: 18.4rem;
   color: $color-white;
-  border-radius: 50px;
+  border-radius: 10rem;
   background-color: $color-primary-800;
 
   input {
-    position: absolute !important;
+    position: absolute;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     width: 1px;
@@ -22,13 +22,11 @@
   }
 
   label {
-    width: 50%;
-    height: 100%;
-    padding: 6px 0;
-    transition: .3s background-color ease-in, .3s color ease-in;
-    text-align: center;
-    border-radius: 50px;
+    flex: 1;
+    height: 3.2rem;
+    padding: 0 .8rem;
 
+    @include button-base;
     @include font-h4-lowercase;
 
     &:hover {
