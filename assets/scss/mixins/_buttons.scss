@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border-radius: $br-base;
+  border-radius: $br-round;
 
   @include transition-base(background-color);
 
@@ -25,6 +25,12 @@
 
   @include button-base;
   @include font-button-primary;
+  @include mq(sm, max) {
+    padding: 0 3.2rem;
+  }
+  @include mq(xs, max) {
+    padding: 0 2.4rem;
+  }
 }
 
 @mixin button-primary-green {

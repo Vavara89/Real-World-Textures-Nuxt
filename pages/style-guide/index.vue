@@ -36,17 +36,20 @@
         <div class="container">
             <ToggleSwitch />
         </div>
+        <Offer />
         <Footer />
     </div>
 </template>
 
 <script>
 import ToggleSwitch from "@/components/ToggleSwitch";
+import Offer from "@/components/Offer";
 import Footer from "@/components/Footer/Footer";
 
 export default {
     components: {
         ToggleSwitch,
+        Offer,
         Footer
     }
 };

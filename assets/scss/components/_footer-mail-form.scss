@@ -16,7 +16,7 @@
     margin-left: -2.4rem;
     padding: 0 2.4rem;
     color: $color-white;
-    border-radius: $br-base;
+    border-radius: $br-round;
     background-color: $color-primary-700;
 
     @include mq(lg, max) {
