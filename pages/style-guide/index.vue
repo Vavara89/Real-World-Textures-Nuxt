@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div>
             <h1 class="h1">Lorem ipsum dolor sit amet.</h1>
             <h2 class="h2">Lorem ipsum dolor sit amet.</h2>
