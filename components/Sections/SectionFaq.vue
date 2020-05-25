@@ -1,6 +1,6 @@
 <template>
     <section class="faq">
-        <div class="container">
+        <div class="container container--content">
             <SectionTitle :subtitle="subtitle" :title="title" :isInverted="true" />
             <FaqGrid :faqs="faqs" />
 
