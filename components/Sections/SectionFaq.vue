@@ -24,7 +24,7 @@
 <script>
 import SectionTitle from "@/components/SectionParts/SectionTitle";
 import Button from "@/components/Button";
-import FaqGrid from "@/components/FaqGrid";
+import FaqGrid from "@/components/Faqs/FaqGrid";
 
 export default {
     name: "SectionFAQ",

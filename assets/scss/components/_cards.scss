@@ -1,0 +1,45 @@
+.cards {
+  display: grid;
+  margin-top: 20rem;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 5.6rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4.8rem;
+  cursor: pointer;
+  border-radius: $br-box-small;
+  background-color: $color-white;
+
+  @include transition-base;
+
+  &:hover {
+    box-shadow: 0 1rem 2.4rem rgba($color-primary-900, .3);
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    min-height: 36.8rem;
+  }
+
+  &__img {
+    margin-top: -55%;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    margin-bottom: .8rem;
+  }
+
+  &__subtitle {
+    margin-bottom: 1.6rem;
+  }
+}

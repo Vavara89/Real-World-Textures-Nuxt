@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Faq from "@/components/Faq";
+import Faq from "@/components/Faqs/Faq";
 
 export default {
     name: "FaqGrid",

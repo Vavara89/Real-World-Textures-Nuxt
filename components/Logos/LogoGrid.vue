@@ -1,16 +1,16 @@
 <template>
     <ul class="logos">
-        <li class="logo" v-for="(logo, index) in logos" :key="'id-' + index">
+        <li class="logo" v-for="(logo, index) in logos" :key="'logo-' + index">
             <Logo :logo="logo" />
         </li>
     </ul>
 </template>
 
 <script>
-import Logo from "@/components/Logo";
+import Logo from "@/components/Logos/Logo";
 
 export default {
-    name: "Logos",
+    name: "LogoGrid",
     components: {
         Logo
     },

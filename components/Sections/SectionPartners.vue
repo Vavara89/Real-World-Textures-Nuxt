@@ -2,20 +2,20 @@
     <section class="partners">
         <div class="container container--content">
             <SectionTitle :subtitle="subtitle" :title="title" />
-            <Logos :logos="logos" />
+            <LogoGrid :logos="logos" />
         </div>
     </section>
 </template>
 
 <script>
 import SectionTitle from "@/components/SectionParts/SectionTitle";
-import Logos from "@/components/Logos";
+import LogoGrid from "@/components/Logos/LogoGrid";
 
 export default {
     name: "SectionPartners",
     components: {
         SectionTitle,
-        Logos
+        LogoGrid
     },
     data() {
         return {
