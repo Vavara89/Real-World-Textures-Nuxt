@@ -3,7 +3,7 @@
         class="section__heading"
         :class="{'section__heading--centered': isCentered, 'section__heading--inverted': isInverted}"
     >
-        <h3 class="h3 section__subtitle">{{ subtitle }}</h3>
+        <h3 v-if="subtitle" class="h3 section__subtitle">{{ subtitle }}</h3>
         <h2 class="h1 section__title">{{ title }}</h2>
     </div>
 </template>

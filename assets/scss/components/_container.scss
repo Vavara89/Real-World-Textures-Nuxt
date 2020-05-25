@@ -1,14 +1,18 @@
 .container {
   width: 100%;
-  max-width: 148rem;
+  max-width: 158rem;
   margin: 0 auto;
-  padding: 0 1.8rem;
+  padding: 0 4.8rem;
+
+  @include mq(sm, max) {
+    padding: 0 2.4rem;
+  }
 
   &--content {
-    max-width: 125.6rem;
+    max-width: 135.6rem;
   }
 
   &--box {
-    max-width: 144rem;
+    max-width: 154rem;
   }
 }

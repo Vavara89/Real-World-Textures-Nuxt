@@ -79,6 +79,15 @@
   }
 }
 
+@mixin button-primary-medium {
+  background-color: $color-primary-600;
+
+  &:hover,
+  &:active {
+    background-color: lighten($color-primary-600, 5%);
+  }
+}
+
 // Secondary buttons
 @mixin button-secondary-base {
   height: 3.2rem;
@@ -98,7 +107,7 @@
 
   &:hover,
   &:active {
-    background-color: $color-primary-300;
+    background-color: $color-bck-medium;
   }
 }
 
@@ -141,6 +150,6 @@
 
   &:hover,
   &:active {
-    background-color: $color-primary-300;
+    background-color: $color-bck-medium;
   }
 }

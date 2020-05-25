@@ -18,6 +18,20 @@
   &--inverted {
     @include button-primary-inverted;
   }
+
+  &--medium {
+    @include button-primary-medium;
+  }
+
+  &--wide {
+    width: 28rem;
+    max-width: 100%;
+  }
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
 }
 
 

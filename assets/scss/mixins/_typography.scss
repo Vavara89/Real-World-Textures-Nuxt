@@ -135,3 +135,11 @@
   line-height: 2.4rem;
   color: $color-primary-500;
 }
+
+@mixin font-faq {
+  font-family: $font-primary;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2rem;
+  color: $color-white;
+}
