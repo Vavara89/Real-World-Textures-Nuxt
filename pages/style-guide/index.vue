@@ -36,20 +36,26 @@
         <div class="container">
             <ToggleSwitch />
         </div>
-        <Offer />
+        <SectionCompatibility />
+        <SectionPartners />
+        <SectionOffer subtitle="Try Real world textures and" title="Get 10 materials for free" />
         <Footer />
     </div>
 </template>
 
 <script>
 import ToggleSwitch from "@/components/ToggleSwitch";
-import Offer from "@/components/Offer";
+import SectionCompatibility from "@/components/Sections/SectionCompatibility";
+import SectionPartners from "@/components/Sections/SectionPartners";
+import SectionOffer from "@/components/Sections/SectionOffer";
 import Footer from "@/components/Footer/Footer";
 
 export default {
     components: {
         ToggleSwitch,
-        Offer,
+        SectionCompatibility,
+        SectionPartners,
+        SectionOffer,
         Footer
     }
 };

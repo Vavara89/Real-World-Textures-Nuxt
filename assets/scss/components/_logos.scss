@@ -1,0 +1,15 @@
+.logos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -8rem;
+
+  &__logo {
+    width: calc(20% - 8rem);
+    max-width: 30rem;
+    max-height: 9.6rem;
+    margin-bottom: 6.4rem;
+    margin-left: 8rem;
+  }
+}

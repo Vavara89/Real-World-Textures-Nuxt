@@ -30,10 +30,7 @@
     color: $color-primary-500;
   }
 
-  &__title {
-    margin-bottom: 7.2rem;
-    color: $color-white;
-
-    @include font-h1-inverted;
+  &__button {
+    margin-top: 7.2rem;
   }
 }
