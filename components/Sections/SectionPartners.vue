@@ -94,6 +94,17 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        // TODO: Delete when connected to API
+        getImage(fileName) {
+            const flags = require.context(
+                "../../assets/img/partners",
+                false,
+                /\.png$/
+            );
+            return flags(`./${fileName}.png`);
+        }
     }
 };
 </script>

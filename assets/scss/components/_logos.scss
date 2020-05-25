@@ -2,9 +2,12 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   margin-left: -8rem;
 
+  @include mq(md, max) {
+    justify-content: center;
+  }
   @include mq(xs, max) {
     margin-left: 0;
   }

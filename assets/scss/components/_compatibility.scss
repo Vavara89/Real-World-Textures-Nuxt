@@ -1,4 +1,12 @@
 .compatibility {
   padding: 20rem 0 19.2rem 0;
   background-color: $color-bck-medium;
+
+  .logos {
+    margin-top: 12rem;
+
+    @include mq(md, max) {
+      margin-top: 6.4rem;
+    }
+  }
 }
