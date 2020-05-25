@@ -1,8 +1,8 @@
 <template>
-    <a class="logos__link" :href="logo.link" v-if="logo.image.url">
-        <img class="logos__image" :src="logo.image.url" :alt="logo.image.alt" />
+    <a class="logo__link" :href="logo.link" v-if="logo.link">
+        <img class="logo__img" :src="logo.image.url" :alt="logo.image.alt" />
     </a>
-    <img v-else class="logos__image" :src="logo.image.url" :alt="logo.image.alt" />
+    <img v-else class="logo__img" :src="logo.image.url" :alt="logo.image.alt" />
 </template>
 
 <script>

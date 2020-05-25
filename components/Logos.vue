@@ -1,6 +1,6 @@
 <template>
     <ul class="logos">
-        <li class="logos__logo" v-for="(logo, index) in logos" :key="'id-' + index">
+        <li class="logo" v-for="(logo, index) in logos" :key="'id-' + index">
             <Logo :logo="logo" />
         </li>
     </ul>

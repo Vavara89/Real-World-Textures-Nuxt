@@ -2,7 +2,15 @@
   padding: 18.4rem 0 12rem 0;
   background-color: $color-bck-light;
 
+  @include mq(md, max) {
+    padding: 9.2rem 0 6.4rem 0;
+  }
+
   .logos {
     margin-top: 12rem;
+
+    @include mq(md, max) {
+      margin-top: 6.4rem;
+    }
   }
 }

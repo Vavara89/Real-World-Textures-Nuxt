@@ -1,6 +1,6 @@
 <template>
     <section class="partners">
-        <div class="container">
+        <div class="container container--content">
             <SectionTitle :subtitle="subtitle" :title="title" />
             <Logos :logos="logos" />
         </div>
@@ -25,86 +25,75 @@ export default {
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-mafi.png",
+                        alt: "mafi logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-princparket.png",
+                        alt: "Princ Parket logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-dreambeds.png",
+                        alt: "Dreambeds logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-polstrin.png",
+                        alt: "polstrin logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-shipwood.png",
+                        alt: "ShipWood logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-shipwood.png",
+                        alt: "ShipWood logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-polstrin.png",
+                        alt: "polstrin logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-mafi.png",
+                        alt: "mafi logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-princparket.png",
+                        alt: "Princ Parket logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "",
-                        alt: "Some image"
+                        url: "_nuxt/assets/img/partners/logo-dreambeds.png",
+                        alt: "dreambeds logo"
                     }
                 }
             ]
         };
-    },
-    methods: {
-        getImage() {
-            const flags = require.context(
-                "../../assets/img/partners",
-                false,
-                /\.png$/
-            );
-            // const flag = this.logos.logo.image.url.toLowerCase();
-            return flags(`./${flag}.png`);
-        }
     }
 };
 </script>
