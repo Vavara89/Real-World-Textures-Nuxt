@@ -19,10 +19,6 @@
     @include button-primary-inverted;
   }
 
-  &--medium {
-    @include button-primary-medium;
-  }
-
   &--wide {
     width: 28rem;
     max-width: 100%;

@@ -12,7 +12,7 @@
                         link="#contact"
                         text="Get help"
                         type="primary"
-                        color="medium"
+                        color="blue"
                         width="wide"
                     />
                 </div>
