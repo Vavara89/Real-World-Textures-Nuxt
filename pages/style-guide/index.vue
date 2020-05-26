@@ -36,6 +36,7 @@
         <div class="container">
             <ToggleSwitch />
         </div>
+        <SectionPhilosophy />
         <SectionServices />
         <SectionFaq />
         <SectionCompatibility />
@@ -47,6 +48,7 @@
 
 <script>
 import ToggleSwitch from "@/components/ToggleSwitch";
+import SectionPhilosophy from "@/components/Sections/SectionPhilosophy";
 import SectionServices from "@/components/Sections/SectionServices";
 import SectionFaq from "@/components/Sections/SectionFaq";
 import SectionCompatibility from "@/components/Sections/SectionCompatibility";
@@ -57,6 +59,7 @@ import Footer from "@/components/Footer/Footer";
 export default {
     components: {
         ToggleSwitch,
+        SectionPhilosophy,
         SectionServices,
         SectionFaq,
         SectionCompatibility,
