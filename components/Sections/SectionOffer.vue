@@ -8,7 +8,7 @@
                     :isCentered="true"
                     :isInverted="true"
                 />
-                <a href class="offer__button button-primary">Login to get 10 free textures</a>
+                <a :href="button.link" class="offer__button button-primary">{{ button.text }}</a>
             </div>
         </div>
     </section>
@@ -29,6 +29,10 @@ export default {
         },
         title: {
             type: String,
+            required: true
+        },
+        button: {
+            type: Object,
             required: true
         }
     }

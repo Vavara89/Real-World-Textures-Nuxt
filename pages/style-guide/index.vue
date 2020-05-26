@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <main class="main">
         <div class="container">
             <h1 class="h1">Lorem ipsum dolor sit amet.</h1>
             <h2 class="h2">Lorem ipsum dolor sit amet.</h2>
@@ -36,39 +36,15 @@
         <div class="container">
             <ToggleSwitch />
         </div>
-        <SectionExample />
-        <SectionPhilosophy />
-        <SectionServices />
-        <SectionFaq />
-        <SectionCompatibility />
-        <SectionPartners />
-        <SectionOffer subtitle="Try Real world textures and" title="Get 10 materials for free" />
-        <Footer />
-    </div>
+    </main>
 </template>
 
 <script>
 import ToggleSwitch from "@/components/ToggleSwitch";
-import SectionExample from "@/components/Sections/SectionExample";
-import SectionPhilosophy from "@/components/Sections/SectionPhilosophy";
-import SectionServices from "@/components/Sections/SectionServices";
-import SectionFaq from "@/components/Sections/SectionFaq";
-import SectionCompatibility from "@/components/Sections/SectionCompatibility";
-import SectionPartners from "@/components/Sections/SectionPartners";
-import SectionOffer from "@/components/Sections/SectionOffer";
-import Footer from "@/components/Footer/Footer";
 
 export default {
     components: {
-        ToggleSwitch,
-        SectionExample,
-        SectionPhilosophy,
-        SectionServices,
-        SectionFaq,
-        SectionCompatibility,
-        SectionPartners,
-        SectionOffer,
-        Footer
+        ToggleSwitch
     }
 };
 </script>

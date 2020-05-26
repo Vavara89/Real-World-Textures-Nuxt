@@ -1,16 +1,45 @@
 <template>
-    <div class="container">
-        <div>
-            <h1 class="title">real-world-textures</h1>
-            <h2 class="subtitle">Real World Textures</h2>
-            <div class="links">
-                <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-                <a
-                    href="https://github.com/nuxt/nuxt.js"
-                    target="_blank"
-                    class="button--grey"
-                >GitHub</a>
-            </div>
-        </div>
+    <div>
+        <SectionExample />
+        <SectionPhilosophy />
+        <SectionServices />
+        <SectionFaq />
+        <SectionCompatibility />
+        <SectionPartners />
+        <SectionOffer :subtitle="offer.subtitle" :title="offer.title" :button="offer.button" />
     </div>
 </template>
+
+<script>
+import SectionExample from "@/components/Sections/SectionExample";
+import SectionPhilosophy from "@/components/Sections/SectionPhilosophy";
+import SectionServices from "@/components/Sections/SectionServices";
+import SectionFaq from "@/components/Sections/SectionFaq";
+import SectionCompatibility from "@/components/Sections/SectionCompatibility";
+import SectionPartners from "@/components/Sections/SectionPartners";
+import SectionOffer from "@/components/Sections/SectionOffer";
+
+export default {
+    components: {
+        SectionExample,
+        SectionPhilosophy,
+        SectionServices,
+        SectionFaq,
+        SectionCompatibility,
+        SectionPartners,
+        SectionOffer
+    },
+    data() {
+        return {
+            offer: {
+                subtitle: "Try Real world textures and",
+                title: "Get 10 materials for free",
+                button: {
+                    text: "Login to get 10 free textures",
+                    link: "#"
+                }
+            }
+        };
+    }
+};
+</script>
