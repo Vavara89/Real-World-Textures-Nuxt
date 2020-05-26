@@ -1,0 +1,21 @@
+.example {
+  padding: 18rem 0 14.4rem 0;
+  background-color: $color-bck-light;
+
+  @include mq(sm, max) {
+    padding: 9.2rem 0 7.2rem 0;
+  }
+
+  &__image {
+    margin-bottom: .8rem;
+  }
+
+  .section__heading {
+    max-width: 81.6rem;
+    margin-bottom: 14.4rem;
+
+    @include mq(sm, max) {
+      margin-bottom: 7.2rem;
+    }
+  }
+}

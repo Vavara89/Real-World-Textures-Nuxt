@@ -1,0 +1,115 @@
+.textures {
+  display: grid;
+  overflow: visible;
+  width: 100%;
+  max-width: 154rem;
+  margin: 0 auto;
+  padding: 0 .56rem;
+
+  grid-gap: 3.2rem 6.4rem;
+  grid-template-columns: repeat(5, 1fr);
+  @include mq(lg, max) {
+    display: flex;
+    overflow-x: scroll;
+    width: calc(100% + (2 * 5.6rem));
+    margin: 0 -5.6rem;
+    padding: 0 5.6rem;
+  }
+  @include mq(sm, max) {
+    width: calc(100% + (2 * 2.4rem));
+    margin: 0 -2.4rem;
+    padding: 0 2.4rem;
+  }
+
+  &:after {
+    @include mq(md, max) {
+      display: block;
+      flex: 0 0 5.6rem;
+      width: 5.6rem;
+      height: 5.6rem;
+      content: "";
+    }
+    @include mq(sm, max) {
+      flex: 0 0 2.4rem;
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+}
+
+.texture {
+  @include mq(md, max) {
+    flex: 0 0 22rem;
+  }
+  @include mq(sm, max) {
+    flex: 0 0 18rem;
+  }
+
+  & + .texture {
+    @include mq(md, max) {
+      margin-left: 4rem;
+    }
+  }
+
+  &__image {
+    position: relative;
+    padding-bottom: 2.4rem;
+
+    img {
+      @include transition-base;
+    }
+  }
+
+  &__content {
+    margin-top: 4rem;
+    margin-left: 6.4rem;
+
+    @include mq(lg, max) {
+      margin-left: 3.2rem;
+    }
+  }
+
+  &__name {
+    margin-bottom: .4rem;
+    text-transform: uppercase;
+  }
+
+  &__structure {
+    margin-bottom: 2.4rem;
+  }
+
+  &--shadow {
+    .texture__image {
+      &:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        //   TODO: convert to %
+        width: 16rem;
+        height: .32rem;
+        margin: 0 auto;
+        content: "";
+        border-radius: 50%;
+        background-color: rgba($color-primary-900, .2);
+
+        filter: blur(.4rem);
+        @include transition-base;
+      }
+
+      &:hover {
+        img {
+          transform: translateY(-1.6rem);
+        }
+
+        &:after {
+          transform: scale(1.2);
+          background-color: rgba($color-primary-900, .15);
+
+          filter: blur(.6rem);
+        }
+      }
+    }
+  }
+}
