@@ -1,36 +1,58 @@
+$toggle-width: 18.4rem;
+$toggle-height: 3.2rem;
+
 .toggle {
-  display: flex;
-  justify-content: stretch;
-  max-width: 18.4rem;
-  color: $color-white;
-  border-radius: 10rem;
-  background-color: $color-bck-dark;
+  display: inline-block;
+  text-align: center;
 
-  input {
+  &__fieldset {
+    position: relative;
+    display: inline-block;
+    border-radius: $br-round;
+    background-color: $color-primary-900;
+  }
+
+  input[type="radio"] {
     position: absolute;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    width: 1px;
-    height: 1px;
-    border: 0;
-
-    &:checked + label {
-      background-color: $color-white;
-
-      @include font-filter-active;
-    }
+    opacity: 0;
   }
 
   label {
-    flex: 1;
-    height: 3.2rem;
-    padding: 0 .8rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: $toggle-height;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    float: left;
+    width: $toggle-width/2;
+    height: $toggle-height;
+    cursor: pointer;
+    transition-delay: .1s;
+    color: $color-primary-500;
 
-    @include button-base;
-    @include font-h4-lowercase;
+    @include transition-base(color font-weight);
+  }
 
-    &:hover {
-      cursor: pointer;
-    }
+  input[type="radio"]:checked + label {
+    font-weight: 700;
+    color: $color-primary-900;
+  }
+
+  &__switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $toggle-width/2;
+    height: $toggle-height;
+    border-radius: $br-round;
+    background-color: $color-primary-100;
+
+    @include transition-base(transform);
+  }
+
+  input[type="radio"]:checked + label + .toggle__switch,
+  input[type="radio"]:checked + label:nth-of-type(n) + .toggle__switch {
+    transform: translateX($toggle-width/2);
   }
 }
