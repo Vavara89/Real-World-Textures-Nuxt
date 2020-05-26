@@ -2,6 +2,10 @@
   padding: 22.4rem 0;
   background-color: $color-bck-dark;
 
+  @include mq(md, max) {
+    padding: 11.2rem 0;
+  }
+
   &__grid {
     display: grid;
     margin: 16rem -4rem 0 -4rem;

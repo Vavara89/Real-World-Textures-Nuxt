@@ -3,7 +3,8 @@ $breakpoints: (
     sm: 76.8 * .65rem,
     md: 90 * .65rem,
     lg: 120 * .65rem,
-    xl: 180 * .65rem,
+    xl: 144 * .65rem,
+    xxl: 180 * .65rem,
 );
 
 @mixin mq($breakpoint, $direction) {

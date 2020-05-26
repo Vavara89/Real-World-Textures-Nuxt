@@ -1,6 +1,6 @@
 <template>
     <section class="philosophy">
-        <div class="container">
+        <div class="container container--box">
             <SectionTitle :title="title" :subtitle="subtitle" />
             <Halves :items="items" :image="image" />
         </div>
