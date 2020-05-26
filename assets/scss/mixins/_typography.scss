@@ -2,96 +2,140 @@
   font-family: $font-primary;
   font-size: 3.6rem;
   font-weight: 700;
-  line-height: 4.8rem;
+  line-height: 133.33333%;
   color: $color-primary-900;
+
+  @include mq(sm, max) {
+    font-size: 2.4rem;
+  }
 }
 
 @mixin font-h2 {
   font-family: $font-primary;
   font-size: 2.4rem;
   font-weight: 700;
-  line-height: 3.2rem;
+  line-height: 133.33333%;
   color: $color-primary-900;
+
+  @include mq(sm, max) {
+    font-size: 1.8rem;
+  }
 }
 
 @mixin font-h3 {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 2.4rem;
+  line-height: 150%;
   color: $color-primary-600;
+
+  @include mq(sm, max) {
+    font-size: 1.4rem;
+  }
 }
 
 @mixin font-h4 {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 500;
-  line-height: 2.4rem;
+  line-height: 175%;
   text-transform: uppercase;
   color: $color-primary-600;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-h4-lowercase {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 500;
-  line-height: 2.4rem;
+  line-height: 175%;
   color: $color-primary-600;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-name {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 2.4rem;
+  line-height: 150%;
   color: $color-primary-700;
+
+  @include mq(sm, max) {
+    font-size: 1.4rem;
+  }
 }
 
 @mixin font-placeholder {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 300;
-  line-height: 2.4rem;
+  line-height: 150%;
   color: $color-primary-600;
+
+  @include mq(sm, max) {
+    font-size: 1.4rem;
+  }
 }
 
 @mixin font-filter {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 500;
-  line-height: 2.4rem;
+  line-height: 175%;
   color: $color-primary-700;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-filter-active {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 700;
-  line-height: 2.4rem;
+  line-height: 175%;
   color: $color-primary-700;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-text {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 300;
-  line-height: 2rem;
+  line-height: 150%;
   color: $color-primary-600;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-detail {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 300;
-  line-height: 2.4rem;
+  line-height: 175%;
   color: $color-primary-500;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-button-primary {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 2.8rem;
+  line-height: 175%;
   letter-spacing: .125rem;
   text-transform: uppercase;
 
@@ -108,38 +152,58 @@
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 700;
-  line-height: 2.4rem;
+  line-height: 175%;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-button-tertiary {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 500;
-  line-height: 2.4rem;
+  line-height: 175%;
   letter-spacing: .075rem;
-  text-transform: uppercase;;
+  text-transform: uppercase;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-title-footer {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 700;
-  line-height: 2.4rem;
+  line-height: 175%;
   color: $color-white;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-text-footer {
   font-family: $font-primary;
   font-size: 1.4rem;
   font-weight: 300;
-  line-height: 2.4rem;
+  line-height: 175%;
   color: $color-primary-500;
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
 }
 
 @mixin font-faq {
   font-family: $font-primary;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 2rem;
+  line-height: 125%;
   color: $color-white;
+
+  @include mq(sm, max) {
+    font-size: 1.4rem;
+  }
 }
