@@ -5,6 +5,7 @@
         <SectionExample />
         <SectionPhilosophy />
         <SectionServices />
+        <SectionSubscribe />
         <SectionFaq />
         <SectionCompatibility />
         <SectionPartners />
@@ -18,6 +19,7 @@ import SectionRealworld from "@/components/Sections/SectionRealworld";
 import SectionExample from "@/components/Sections/SectionExample";
 import SectionPhilosophy from "@/components/Sections/SectionPhilosophy";
 import SectionServices from "@/components/Sections/SectionServices";
+import SectionSubscribe from "@/components/Sections/SectionSubscribe";
 import SectionFaq from "@/components/Sections/SectionFaq";
 import SectionCompatibility from "@/components/Sections/SectionCompatibility";
 import SectionPartners from "@/components/Sections/SectionPartners";
@@ -30,6 +32,7 @@ export default {
         SectionExample,
         SectionPhilosophy,
         SectionServices,
+        SectionSubscribe,
         SectionFaq,
         SectionCompatibility,
         SectionPartners,
