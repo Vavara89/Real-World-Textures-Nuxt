@@ -1,0 +1,83 @@
+.explore {
+  display: flex;
+  align-items: center;
+  padding-bottom: 80px;
+
+  &-content {
+    width: 40%;
+    padding-right: 40px;
+  }
+
+  &-button-wrap {
+    margin-top: 80px;
+
+    a {
+      margin-right: 20px;
+    }
+  }
+
+  &-texture {
+    position: relative;
+    width: 40%;
+    height: 720px;
+    background-image: url(~@/assets/img/spheres/sphere-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+      position: absolute;
+      left: 50%;
+    }
+
+    &-current {
+      top: calc(50% + 90px);
+      transform: translate(-50%, -50%);
+    }
+
+    &-prev {
+      top: -40px;
+      transform: translateX(-50%);
+    }
+
+    &-next {
+      top: 540px;
+      transform: translateX(-50%);
+    }
+
+    &-number {
+      margin-bottom: 40px;
+      color: #0a0d27;
+      font-size: 64px;
+      font-weight: 700;
+    }
+
+    &-title {
+      margin-bottom: 20px;
+      color: #0a0d27;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+
+  &-control {
+    width: 20%;
+    text-align: center;
+
+    a {
+      display: inline-block;
+      border-radius: 50%;
+    }
+
+    &-prev {
+      margin-bottom: 40px;
+    }
+
+    &-next {
+      margin-top: 40px;
+    }
+
+    &-next img {
+      transform: rotateX(180deg);
+    }
+  }
+}
