@@ -2,6 +2,10 @@
   padding: 20.8rem 0 70.8rem;
   background-color: $color-bck-light;
 
+  @include mq(xl, max) {
+    padding-bottom: 20.8rem;
+  }
+
   @include mq(md, max) {
     padding: 10.4rem 0;
   }

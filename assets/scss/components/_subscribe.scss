@@ -7,6 +7,14 @@
   background-repeat: no-repeat;
   background-position: center top;
 
+  @include mq(xl, max) {
+    position: static;
+    margin-top: 0;
+    margin-bottom: 20rem;
+    height: auto;
+    background-image: none;
+  }
+
   &-outer {
     border-radius: 10px;
     background-color: #1f2444;
@@ -16,7 +24,7 @@
     position: relative;
     margin: 0 auto;
     max-width: 740px;
-    padding: 100px 0 80px;
+    padding: 100px 20px 80px;
   }
 
   .toggle-button-wrap {

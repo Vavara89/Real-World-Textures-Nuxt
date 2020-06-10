@@ -3,6 +3,10 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 3rem;
 
+  @include mq(sm, max) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   .pricecard {
 
     &__block {
@@ -10,6 +14,10 @@
       border-radius: 10px;
       background-color: #272b4a;
       text-align: center;
+
+      @include mq(md, max) {
+        padding: 3rem 1rem 2rem;
+      }
     }
 
     &__content p {
@@ -30,12 +38,28 @@
       margin-top: 60px;
       color: #fff;
       font-size: 72px;
+
+      @include mq(md, max) {
+        margin-top: 20px;
+        font-size: 48px;
+      }
     }
 
     &__desc {
       margin-bottom: 80px;
       color: #fff;
       font-size: 16px;
+
+      @include mq(md, max) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__content .button-primary--wide {
+
+      @include mq(md, max) {
+        width: auto;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 .example {
-  padding: 18rem 0 14.4rem 0;
+  padding: 18rem .8rem 14.4rem .8rem;
   background-color: $color-bck-light;
 
   @include mq(sm, max) {

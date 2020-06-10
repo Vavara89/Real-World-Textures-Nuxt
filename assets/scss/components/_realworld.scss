@@ -1,15 +1,24 @@
 .explore {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding-bottom: 80px;
 
   &-content {
     width: 40%;
     padding-right: 40px;
+
+    @include mq(lg, max) {
+      width: 100%;
+    }
   }
 
   &-button-wrap {
     margin-top: 80px;
+
+    @include mq(lg, max) {
+      margin-top: 40px;
+    }
 
     a {
       margin-right: 20px;
@@ -23,6 +32,13 @@
     background-image: url(~@/assets/img/spheres/sphere-bg.png);
     background-repeat: no-repeat;
     background-position: center;
+
+    @include mq(lg, max) {
+      margin-top: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 540px;
+    }
 
     img {
       position: absolute;
@@ -63,6 +79,14 @@
     width: 20%;
     text-align: center;
 
+    @include mq(lg, max) {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+      padding: 0 90px;
+    }
+
     a {
       display: inline-block;
       border-radius: 50%;
@@ -70,14 +94,39 @@
 
     &-prev {
       margin-bottom: 40px;
+
+      @include mq(lg, max) {
+        margin-bottom: 0;
+      }
+
+      img {
+
+        @include mq(lg, max) {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: rotateZ(-90deg);
+        }
+      }
     }
 
     &-next {
       margin-top: 40px;
-    }
 
-    &-next img {
-      transform: rotateX(180deg);
+      @include mq(lg, max) {
+        margin-top: 0;
+      }
+
+      img {
+        transform: rotateX(180deg);
+      
+        @include mq(lg, max) {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: rotateX(180deg) rotateZ(90deg);
+        }
+      }
     }
   }
 }
