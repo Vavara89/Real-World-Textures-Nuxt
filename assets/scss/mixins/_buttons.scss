@@ -33,6 +33,10 @@
   }
 }
 
+@mixin button-primary-large {
+  height: 6.5rem;
+}
+
 @mixin button-primary-green {
   background-color: $color-secondary-green;
 

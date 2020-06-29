@@ -1,7 +1,9 @@
 <template>
 	<header class="header">
 		<div class="header-inner">
-			<div class="header-logo"><Logo :logo="logo" /></div>
+			<div class="header-logo">
+        <Logo :logo="logo" />
+      </div>
 			<div class="header-search">
 				<input type="text" name="s" placeholder="Search" autocomplete="off">
 				<select>
@@ -25,7 +27,7 @@
 						<li><a href>About</a></li>
 						<li><a href>Services</a></li>
 						<li><a href>Pricing</a></li>
-						<li><a href>Log In</a></li>
+						<li><nuxt-link to="/login">Log In</nuxt-link></li>
 						<li class="header-button"><a href>Sign Up</a></li>
 					</ul>
 				</div>
@@ -35,7 +37,7 @@
 </template>
 
 <script>
-import Logo from "@/components/Logos/Logo";
+import Logo from "~/components/Logos/Logo";
 
 export default {
 	name: "Header",
@@ -47,7 +49,7 @@ export default {
 			logo: {
 				link: "/",
 				image: {
-					url: "_nuxt/assets/img/logo.png",
+					url: require('@/assets/img/logo.png'),
 					alt: "Logo"
 				}
 			}

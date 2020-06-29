@@ -28,6 +28,11 @@
     display: block;
     width: 100%;
   }
+
+  &--large {
+    @include button-primary-large;
+    border: none;
+  }
 }
 
 

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <SectionHeader />
         <SectionRealworld />
         <SectionExample />
         <SectionPhilosophy />
@@ -14,7 +13,6 @@
 </template>
 
 <script>
-import SectionHeader from "@/components/Header/Header";
 import SectionRealworld from "@/components/Sections/SectionRealworld";
 import SectionExample from "@/components/Sections/SectionExample";
 import SectionPhilosophy from "@/components/Sections/SectionPhilosophy";
@@ -27,7 +25,6 @@ import SectionOffer from "@/components/Sections/SectionOffer";
 
 export default {
     components: {
-        SectionHeader,
         SectionRealworld,
         SectionExample,
         SectionPhilosophy,
