@@ -1,0 +1,45 @@
+.login {
+  min-height: 100vh;
+
+  &__title {
+
+  }
+
+  &__btn-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__divider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 4.4rem 0;
+    width: 100%;
+
+    span {
+      display: block;
+      text-align: center;
+      width: 6.4rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      background: white;
+      z-index: 2;
+    }
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto 0;
+      background-color: $color-primary-500;
+      width: 100%;
+      height: 0.1rem;
+      z-index: 0;
+    }
+  }
+}

@@ -172,6 +172,24 @@
   }
 }
 
+@mixin font-button-quaternary {
+  font-family: $font-primary;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 175%;
+  letter-spacing: .075rem;
+  text-transform: uppercase;
+
+  b {
+    font-weight: 700;
+    margin-left: 0.4rem;
+  }
+
+  @include mq(sm, max) {
+    font-size: 1.2rem;
+  }
+}
+
 @mixin font-title-footer {
   font-family: $font-primary;
   font-size: 1.4rem;

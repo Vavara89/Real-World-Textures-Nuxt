@@ -64,3 +64,16 @@
     color: $color-primary-700;
   }
 }
+
+// Quaternary buttons
+.button-quaternary {
+  @include button-quaternary-base;
+
+  &--salmon {
+    @include button-quaternary-salmon;
+  }
+
+  &--blue {
+    @include button-quaternary-blue;
+  }
+}

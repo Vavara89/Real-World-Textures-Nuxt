@@ -40,6 +40,11 @@ export default {
     */
     modules: [
     ],
+    styleResources: {
+      scss: [
+        '@/assets/scss/_definitions.scss'
+      ]
+    },
     /*
     ** Build configuration
     */

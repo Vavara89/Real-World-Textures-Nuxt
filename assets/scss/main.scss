@@ -1,16 +1,8 @@
 // Imports
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
 
-// Variables
-@import "vars/colors";
-@import "vars/typography";
-@import "vars/border-radius";
-
-// Mixins
-@import "mixins/media-queries";
-@import "mixins/typography";
-@import "mixins/buttons";
-@import "mixins/transitions";
+// Variables + mixins
+@import "_definitions";
 
 // Base
 @import "base/reset";
