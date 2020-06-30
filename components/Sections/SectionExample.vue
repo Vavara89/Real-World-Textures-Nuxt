@@ -53,7 +53,6 @@ export default {
     },
     mounted() {
       this.navCarousel.asNavFor = this.$refs.sliderMain;
-      this.mainCarousel.asNavFor = this.$refs.sliderNav;
     },
     data() {
         return {
