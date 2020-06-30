@@ -2,7 +2,7 @@
   display: grid !important;
   overflow: visible;
   width: 100%;
-  max-width: 154rem;
+  // max-width: 154rem;
   margin: 0 auto;
   padding: 0 5rem;
 
@@ -100,18 +100,18 @@
         @include transition-base;
       }
 
-      &:hover {
-        img {
-          transform: translateY(-1.6rem);
-        }
+      // &:hover {
+      //   img {
+      //     transform: translateY(-1.6rem);
+      //   }
 
-        &:after {
-          transform: scale(1.2);
-          background-color: rgba($color-primary-900, .15);
+      //   &:after {
+      //     transform: scale(1.2);
+      //     background-color: rgba($color-primary-900, .15);
 
-          filter: blur(.6rem);
-        }
-      }
+      //     filter: blur(.6rem);
+      //   }
+      // }
     }
   }
 }

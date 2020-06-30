@@ -51,21 +51,23 @@ export default {
         TextureGrid,
         VueSlickCarousel
     },
+    mounted() {
+      this.navCarousel.asNavFor = this.$refs.sliderMain;
+      this.mainCarousel.asNavFor = this.$refs.sliderNav;
+    },
     data() {
         return {
             subtitle: "Example of usage",
             navCarousel: {
-              focusOnSelect: false,
               dots: true,
               infinite: false,
               centerMode: true,
               centerPadding: '1px',
               variableWidth: true,
-              asNavFor: this.$refs.sliderMain
+              asNavFor: {}
             },
             mainCarousel: {
               arrows: false,
-              focusOnSelect: false,
               slidesToScroll: 1,
               slidesToShow: 1,
               centerMode: true,
@@ -74,7 +76,6 @@ export default {
               infinite: false,
               draggable: false,
               swipe: false,
-              asNavFor: this.$refs.sliderNav
             },
             title:
                 "With real surfaces make your renderings even more realistic",
