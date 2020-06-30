@@ -7,6 +7,16 @@
         <div class="container container--4k">
           <div class="preview">
             <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
+              <template #prevArrow="arrowOption">
+                <div class="prev-slick">
+                  {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+                </div>
+              </template>
+              <template #nextArrow="arrowOption">
+                <div class="next-slick">
+                  {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+                </div>
+              </template>
               <div><img :src="image.url" :alt="image.alt" class="" /></div>
               <div><img :src="image.url" :alt="image.alt" class="" /></div>
               <div><img :src="image.url" :alt="image.alt" class="" /></div>
@@ -69,7 +79,7 @@ export default {
             title:
                 "With real surfaces make your renderings even more realistic",
             image: {
-                url: "_nuxt/assets/img/textures/example.png",
+                url: require('~/assets/img/textures/preview-img.jpg'),
                 alt: "example of use"
             },
             textures: [
