@@ -2,8 +2,27 @@
     <section class="example">
         <div class="container">
             <SectionTitle :subtitle="subtitle" :title="title" :isCentered="true" />
-            <img :src="image.url" :alt="image.alt" class="example__image" />
-            <TextureGrid :textures="textures" :shadow="true" />
+            <!-- <img :src="image.url" :alt="image.alt" class="example__image" /> -->
+        </div>
+        <div class="container container--4k">
+          <div class="preview">
+            <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
+              <div><img :src="image.url" :alt="image.alt" class="" /></div>
+              <div><img :src="image.url" :alt="image.alt" class="" /></div>
+              <div><img :src="image.url" :alt="image.alt" class="" /></div>
+            </VueSlickCarousel>
+            <VueSlickCarousel ref="sliderMain" v-bind="mainCarousel">
+              <div>
+                <TextureGrid :textures="textures" :shadow="true" />
+              </div>
+              <div>
+                <TextureGrid :textures="textures" :shadow="true" />
+              </div>
+              <div>
+                <TextureGrid :textures="textures" :shadow="true" />
+              </div>
+            </VueSlickCarousel>
+          </div>
         </div>
     </section>
 </template>
@@ -11,16 +30,42 @@
 <script>
 import SectionTitle from "@/components/SectionParts/SectionTitle";
 import TextureGrid from "@/components/Textures/TextureGrid";
+import VueSlickCarousel from 'vue-slick-carousel';
+import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
 export default {
     name: "SectionExample",
     components: {
         SectionTitle,
-        TextureGrid
+        TextureGrid,
+        VueSlickCarousel
     },
     data() {
         return {
             subtitle: "Example of usage",
+            navCarousel: {
+              focusOnSelect: false,
+              dots: true,
+              infinite: false,
+              centerMode: true,
+              centerPadding: '1px',
+              variableWidth: true,
+              asNavFor: this.$refs.sliderMain
+            },
+            mainCarousel: {
+              arrows: false,
+              focusOnSelect: false,
+              slidesToScroll: 1,
+              slidesToShow: 1,
+              centerMode: true,
+              centerPadding: '1px',
+              variableWidth: true,
+              infinite: false,
+              draggable: false,
+              swipe: false,
+              asNavFor: this.$refs.sliderNav
+            },
             title:
                 "With real surfaces make your renderings even more realistic",
             image: {
@@ -91,3 +136,7 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/scss/components/_slick.scss";
+</style>
