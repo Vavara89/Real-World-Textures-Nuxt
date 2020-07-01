@@ -36,6 +36,25 @@
         <div class="container">
             <ToggleSwitch />
         </div>
+        <div class="container">
+            <div class="squere-primary">fddf</div>
+            <div class="squere-primary squere-primary--100"></div>
+            <div class="squere-primary squere-primary--200"></div>
+            <div class="squere-primary squere-primary--300"></div>
+            <div class="squere-primary squere-primary--400"></div>
+            <div class="squere-primary squere-primary--500"></div>
+            <div class="squere-primary squere-primary--600"></div>
+            <div class="squere-primary squere-primary--700"></div>
+            <div class="squere-primary squere-primary--800"></div>
+            <div class="squere-primary squere-primary--900"></div>
+
+            <div class="squere-secondary"></div>
+            <div class="squere-secondary squere-secondary--green"></div>
+            <div class="squere-secondary squere-secondary--red"></div>
+            <div class="squere-secondary squere-secondary--purple"></div>
+            <div class="squere-secondary squere-secondary--salmon"></div>
+            <div class="squere-secondary squere-secondary--dark"></div>
+        </div>
     </main>
 </template>
 
