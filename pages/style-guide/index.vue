@@ -47,7 +47,8 @@
             <div class="squere-primary squere-primary--700"></div>
             <div class="squere-primary squere-primary--800"></div>
             <div class="squere-primary squere-primary--900"></div>
-
+        </div>
+        <div class="container">
             <div class="squere-secondary"></div>
             <div class="squere-secondary squere-secondary--green"></div>
             <div class="squere-secondary squere-secondary--red"></div>
