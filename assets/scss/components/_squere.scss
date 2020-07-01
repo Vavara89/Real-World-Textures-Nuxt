@@ -1,7 +1,7 @@
 // Primary Squere
 .squere-primary {
     @include squere-primary-base;
-    @include button-primary-white;
+    @include squere-primary-white;
 
     &--100 {
         @include squere-primary--100;
@@ -37,6 +37,32 @@
 
     &--900 {
         @include squere-primary--900;
+      }
+    
+  }
+
+.squere-secondary {
+    @include squere-primary-base;
+    @include squere-primary-white;
+
+    &--green {
+        @include squere-secondary--green;
+      }
+
+    &--red {
+        @include squere-secondary--red;
+      }
+
+    &--purple {
+        @include squere-secondary--purple;
+      }
+
+    &--salmon {
+        @include squere-secondary--salmon;
+      }
+
+    &--dark {
+        @include squere-secondary--dark;
       }
     
   }

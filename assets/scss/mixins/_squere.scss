@@ -10,7 +10,7 @@
     }
   }
   
-  // Primary buttons
+  // Primary squeres
   @mixin squere-primary-base {
     width: 12.8rem;
     height: 12.8rem;
@@ -26,7 +26,7 @@
     }
   }
 
-  @mixin button-primary-white {
+  @mixin squere-primary-white {
     background-color: $color-white;
   }
 
@@ -64,4 +64,46 @@
 
   @mixin squere-primary--900 {
     background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+// Secondary squeres
+
+  @mixin squere-secondary--green {
+    background-color: $color-secondary-green;
+  }
+
+  @mixin squere-secondary--red {
+    background-color: $color-secondary-red;
+  }
+
+  @mixin squere-secondary--purple {
+    background-color: $color-secondary-purple;
+  }
+
+  @mixin squere-secondary--salmon {
+    background-color: $color-secondary-dark;
+  }
+
+  @mixin squere-secondary--dark {
+    background-color: $color-secondary-dark;
   }
