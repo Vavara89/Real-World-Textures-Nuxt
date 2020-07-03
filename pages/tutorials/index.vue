@@ -1,8 +1,10 @@
 <template>
     <section class="services">
         <div class="container container--content">
-            <SectionTitle :title="title" :perex="perex" :isCentered="true" />
+            <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" />
             <CardGrid :cards="cards" />
+            <a href="#" class="button-primary centered">Load more tutorials</a>
+            <SectionFaq />
         </div>
     </section>
 </template>
@@ -10,18 +12,21 @@
 <script>
 import SectionTitle from "@/components/SectionParts/SectionTitle";
 import CardGrid from "@/components/Cards/CardGrid";
+import SectionFaq from "@/components/Sections/SectionFaq";
 
 export default {
     name: "Tutorials",
     components: {
         SectionTitle,
-        CardGrid
+        CardGrid,
+        SectionFaq,
     },
     data() {
         return {
             subtitle: "Services",
             title: "Tutorials",
             perex: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            button: "Join our community on FB",
             cards: [
                 {
                     image: {
