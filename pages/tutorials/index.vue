@@ -4,7 +4,7 @@
       <div class="container container--content">
         <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" />
         <CardGrid :cards="cards" />
-        <a href="#" class="button-primary centered">Load more tutorials</a>
+        <p class="centered top160" v-if="button"><a href="#" class="button-primary">Load more tutorials</a></p>
       </div>
     </section>
     <SectionFaq />
