@@ -73,5 +73,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/pages/login.scss";
+@import "@/assets/scss/pages/tutorials.scss";
 </style>
