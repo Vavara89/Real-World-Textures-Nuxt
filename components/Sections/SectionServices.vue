@@ -1,7 +1,6 @@
 <template>
     <section class="services">
         <div class="container container--content">
-            dfdf
             <SectionTitle :title="title" :subtitle="subtitle" />
             <CardGrid :cards="cards" />
         </div>

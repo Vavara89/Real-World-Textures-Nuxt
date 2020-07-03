@@ -51,6 +51,10 @@
   &--play {
     @include button-secondary-play;
   }
+
+  &--bottom40 {
+    margin-bottom: 20rem;
+  }
 }
 
 // Tertiary buttons
