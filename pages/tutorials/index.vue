@@ -1,8 +1,7 @@
 <template>
     <section class="services">
         <div class="container container--content">
-            dfdf
-            <SectionTitle :title="title" :subtitle="subtitle" />
+            <SectionTitle :title="title" :perex="perex" :isCentered="true" />
             <CardGrid :cards="cards" />
         </div>
     </section>
@@ -13,7 +12,7 @@ import SectionTitle from "@/components/SectionParts/SectionTitle";
 import CardGrid from "@/components/Cards/CardGrid";
 
 export default {
-    name: "SectionServices",
+    name: "Tutorials",
     components: {
         SectionTitle,
         CardGrid
@@ -21,7 +20,8 @@ export default {
     data() {
         return {
             subtitle: "Services",
-            title: "What are we providing?",
+            title: "Tutorials",
+            perex: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             cards: [
                 {
                     image: {
@@ -62,16 +62,9 @@ export default {
             ]
         };
     },
-    methods: {
-        // TODO: Delete when connected to API
-        getImage(fileName) {
-            const flags = require.context(
-                "../../assets/img/spheres",
-                false,
-                /\.png$/
-            );
-            return flags(`./${fileName}.png`);
-        }
-    }
 };
 </script>
+
+<style lang="scss" scoped>
+@import "@/assets/scss/pages/login.scss";
+</style>
