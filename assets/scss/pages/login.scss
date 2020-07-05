@@ -1,0 +1,173 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 16rem);
+
+  &__wrap {
+    padding: 6rem 0;
+  }
+
+  &__title {
+    @include font-h1-xl;
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+
+  &__btn-wrap {
+    display: flex;
+    justify-content: center;
+
+    .button-quaternary {
+      min-width: 24.2rem;
+      &:last-child {
+        margin-left: 2.4rem;
+      }
+    }
+  }
+
+  &__divider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 4.4rem 0;
+    width: 100%;
+
+    span {
+      display: block;
+      text-align: center;
+      width: 6.4rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      background: white;
+      color: $color-primary-500;
+      z-index: 2;
+    }
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto 0;
+      background-color: $color-primary-500;
+      width: 100%;
+      height: 0.1rem;
+      z-index: 0;
+    }
+  }
+
+  &__input {
+    position: relative;
+    height: 6.4rem;
+
+    & + & {
+      margin-top: 1.6rem;
+    }
+
+    label {
+      @include transition-base;
+      position: absolute;
+      font-size: 1.6rem;
+      top: 2.2rem;
+      left: 3.2rem;
+    }
+
+    // @media screen and (-webkit-min-device-pixel-ratio:0) {
+    //   input[type="password"] {
+    //      -webkit-text-stroke-width: 0.8rem;
+    //      letter-spacing: 1rem;
+    //   }
+    // }
+
+    input {
+      @include transition-base;
+      height: 100%;
+      width: 100%;
+      font-size: 1.6rem;
+      border-radius: 0.8rem;
+      border: 1px solid $color-primary-500;
+      color: $color-primary-700;
+      outline: none;
+      padding: 0 3.2rem;
+
+      &:focus {
+        padding-top: 3rem;
+
+        &~label {
+          top: 0.6rem;
+          color: $color-secondary-green;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &--filled {
+      input {
+        padding-top: 3rem;
+      }
+
+      label {
+        top: 0.6rem;
+        color: $color-secondary-green;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &__link {
+    margin-top: 2.5rem;
+    a {
+      color: $color-secondary-green;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      margin-left: 3.2rem;
+
+    }
+  }
+
+  &__checkbox {
+    display: block;
+    position: relative;
+    margin-top: 6.5rem;
+    text-transform: uppercase;
+    padding-left: 3.2rem;
+    margin-left: 3.2rem;
+
+    input {
+     display: none;
+    }
+
+    &:before, &:after {
+      @include transition-base;
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      border: 1px solid $color-primary-600;
+      border-radius: 0.5rem;
+    }
+
+    &--checked {
+      &:after {
+        background: url(~@/assets/img/icon-check.svg) no-repeat center/contain;
+        background-color: $color-primary-600;
+      }
+    }
+  }
+
+  &__submit {
+    margin-top: 2.4rem;
+
+    .button-primary {
+      width: 100%;
+    }
+  }
+}

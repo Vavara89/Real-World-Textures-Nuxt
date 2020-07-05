@@ -8,7 +8,7 @@
                 >We are lorem ipsum nteger euismod a tellus sit amet sagittis. Etiam at felis tellus. Integer vel nisl quis neque porta sodales. Aliquam nec laoreet libero.</p>
                 <FooterSocial />
             </div>
-            <FooterNav />
+            <FooterNav :footernavs="footernavs" />
             <div class="footer__community">
                 <h3 class="footer__title">Join our community</h3>
                 <FooterMailForm />
@@ -34,6 +34,28 @@ export default {
         FooterNav,
         FooterMailForm,
         FooterLinks
+    },
+    data() {
+        return {
+            footernavs: [
+                {
+                    title: "Company",
+                    sub_menus: [ "About", "Partners", "Jobs", "Press" ]
+                },
+                {
+                    title: "Learning",
+                    sub_menus: [ "Tutorials", "Get Help", "FAQ" ]
+                },
+                {
+                    title: "Community",
+                    sub_menus: [ "Community Gallery", "Forum" ]
+                },
+                {
+                    title: "Get in Touch",
+                    sub_menus: [ "E-mail Us", "Facebook", "Instagram", "Youtube" ]
+                }
+            ]
+        }
     }
 };
 </script>

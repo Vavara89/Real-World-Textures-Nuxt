@@ -1,0 +1,68 @@
+// Primary Squere
+.squere-primary {
+    @include squere-primary-base;
+    @include squere-primary-white;
+
+    &--100 {
+        @include squere-primary--100;
+      }
+
+    &--200 {
+        @include squere-primary--200;
+      }
+
+    &--300 {
+        @include squere-primary--300;
+      }
+
+    &--400 {
+        @include squere-primary--400;
+      }
+
+    &--500 {
+        @include squere-primary--500;
+      }
+
+    &--600 {
+        @include squere-primary--600;
+      }
+
+    &--700 {
+        @include squere-primary--700;
+      }
+
+    &--800 {
+        @include squere-primary--800;
+      }
+
+    &--900 {
+        @include squere-primary--900;
+      }
+    
+  }
+
+.squere-secondary {
+    @include squere-primary-base;
+    @include squere-primary-white;
+
+    &--green {
+        @include squere-secondary--green;
+      }
+
+    &--red {
+        @include squere-secondary--red;
+      }
+
+    &--purple {
+        @include squere-secondary--purple;
+      }
+
+    &--salmon {
+        @include squere-secondary--salmon;
+      }
+
+    &--dark {
+        @include squere-secondary--dark;
+      }
+    
+  }

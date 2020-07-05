@@ -8,11 +8,28 @@
     padding: 0 2.4rem;
   }
 
+  &--small {
+    max-width: 65.6rem;
+  }
+
   &--content {
     max-width: 135.6rem;
   }
 
   &--box {
     max-width: 154rem;
+  }
+
+  &--4k {
+    max-width: 384rem;
+  }
+
+  .centered {
+    width: 100%;
+    text-align: center;
+  }
+
+  .top160 {
+    margin-top: 160px;
   }
 }

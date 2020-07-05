@@ -33,6 +33,10 @@
   }
 }
 
+@mixin button-primary-large {
+  height: 6.5rem;
+}
+
 @mixin button-primary-green {
   background-color: $color-secondary-green;
 
@@ -142,5 +146,39 @@
   &:hover,
   &:active {
     background-color: $color-bck-medium;
+  }
+}
+
+// Quaternary buttons
+@mixin button-quaternary-base {
+  height: 5.6rem;
+  padding: 0 3.2rem;
+  color: $color-white;
+  background-color: transparent;
+
+  @include button-base;
+  @include font-button-quaternary;
+
+  &:hover,
+  &:active {
+    background-color: $color-bck-medium;
+  }
+}
+
+@mixin button-quaternary-salmon {
+  background-color: $color-secondary-salmon;
+
+  &:hover,
+  &:active {
+    background-color: $color-secondary-red;
+  }
+}
+
+@mixin button-quaternary-blue {
+  background-color: $color-primary-700;
+
+  &:hover,
+  &:active {
+    background-color: desaturate($color-primary-700, 10%);
   }
 }

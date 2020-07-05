@@ -1,13 +1,14 @@
 .textures {
-  display: grid;
+  display: grid !important;
   overflow: visible;
   width: 100%;
-  max-width: 154rem;
+  // max-width: 154rem;
   margin: 0 auto;
-  padding: 0 .56rem;
+  padding: 0 5rem;
 
   grid-gap: 3.2rem 6.4rem;
   grid-template-columns: repeat(5, 1fr);
+
   @include mq(lg, max) {
     display: flex;
     overflow-x: scroll;
@@ -15,6 +16,7 @@
     margin: 0 -5.6rem;
     padding: 0 5.6rem;
   }
+
   @include mq(sm, max) {
     width: calc(100% + (2 * 2.4rem));
     margin: 0 -2.4rem;
@@ -62,10 +64,10 @@
 
   &__content {
     margin-top: 4rem;
-    margin-left: 6.4rem;
+    margin-left: 3.2rem;
 
-    @include mq(lg, max) {
-      margin-left: 3.2rem;
+    @include mq(xxl, min) {
+      margin-left: 6.4rem;
     }
   }
 
@@ -98,18 +100,18 @@
         @include transition-base;
       }
 
-      &:hover {
-        img {
-          transform: translateY(-1.6rem);
-        }
+      // &:hover {
+      //   img {
+      //     transform: translateY(-1.6rem);
+      //   }
 
-        &:after {
-          transform: scale(1.2);
-          background-color: rgba($color-primary-900, .15);
+      //   &:after {
+      //     transform: scale(1.2);
+      //     background-color: rgba($color-primary-900, .15);
 
-          filter: blur(.6rem);
-        }
-      }
+      //     filter: blur(.6rem);
+      //   }
+      // }
     }
   }
 }

@@ -1,0 +1,109 @@
+@mixin squere-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: $br-box;
+  
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  // Primary squeres
+  @mixin squere-primary-base {
+    width: 12.8rem;
+    height: 12.8rem;
+    color: $color-white;
+  
+    @include squere-base;
+    @include font-button-primary;
+    @include mq(sm, max) {
+      padding: 0 3.2rem;
+    }
+    @include mq(xs, max) {
+      padding: 0 2.4rem;
+    }
+  }
+
+  @mixin squere-primary-white {
+    background-color: $color-white;
+  }
+
+  @mixin squere-primary--100 {
+    background-color: $color-primary-100;
+  }
+
+  @mixin squere-primary--200 {
+    background-color: $color-primary-200;
+  }
+
+  @mixin squere-primary--300 {
+    background-color: $color-primary-300;
+  }
+
+  @mixin squere-primary--400 {
+    background-color: $color-primary-400;
+  }
+
+  @mixin squere-primary--500 {
+    background-color: $color-primary-500;
+  }
+
+  @mixin squere-primary--600 {
+    background-color: $color-primary-600;
+  }
+
+  @mixin squere-primary--700 {
+    background-color: $color-primary-700;
+  }
+
+  @mixin squere-primary--800 {
+    background-color: $color-primary-800;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+  @mixin squere-primary--900 {
+    background-color: $color-primary-900;
+  }
+
+// Secondary squeres
+
+  @mixin squere-secondary--green {
+    background-color: $color-secondary-green;
+  }
+
+  @mixin squere-secondary--red {
+    background-color: $color-secondary-red;
+  }
+
+  @mixin squere-secondary--purple {
+    background-color: $color-secondary-purple;
+  }
+
+  @mixin squere-secondary--salmon {
+    background-color: $color-secondary-salmon;
+  }
+
+  @mixin squere-secondary--dark {
+    background-color: $color-secondary-dark;
+  }

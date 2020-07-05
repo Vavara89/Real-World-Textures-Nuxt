@@ -28,8 +28,12 @@
     display: block;
     width: 100%;
   }
-}
 
+  &--large {
+    @include button-primary-large;
+    border: none;
+  }
+}
 
 // Secondary buttons
 .button-secondary {
@@ -45,6 +49,10 @@
 
   &--play {
     @include button-secondary-play;
+  }
+
+  &--bottom40 {
+    margin-bottom: 20rem;
   }
 }
 
@@ -62,5 +70,18 @@
 
   &--blue {
     color: $color-primary-700;
+  }
+}
+
+// Quaternary buttons
+.button-quaternary {
+  @include button-quaternary-base;
+
+  &--salmon {
+    @include button-quaternary-salmon;
+  }
+
+  &--blue {
+    @include button-quaternary-blue;
   }
 }
