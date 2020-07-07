@@ -1,0 +1,46 @@
+
+.signup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 16rem);
+  background-color: $color-bck-dark;
+
+  @include mq(lg, max) {
+    flex-direction: column;
+  }
+
+  &__left {
+    width: 40%;
+    padding: 6rem 0;
+
+    @include mq(lg, max) {
+      width: 100%;
+    }
+
+    h1 {
+      @include font-h1;
+      color:$color-white;
+      max-width: 410px;
+      text-align: center;
+      margin:auto;
+      padding-bottom:3rem;
+    }
+    h3 {
+      @include font-h3;
+      color:$color-white;
+      max-width: 365px;
+      margin:auto;
+      text-align: center;
+    }
+  }
+
+  &__right {
+    width: 60%;
+    background-color: $color-white;
+
+    @include mq(lg, max) {
+      width: 100%;
+    }
+  }
+}

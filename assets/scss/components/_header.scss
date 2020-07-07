@@ -162,3 +162,15 @@
     }
   }
 }
+
+.header-signup{
+  background: linear-gradient(left, $color-bck-dark 40%, #fbfbff 40%);
+  background: -o-linear-gradient(left, $color-bck-dark 40%, #fbfbff 40%);
+  background: -ms-linear-gradient(left, $color-bck-dark 40%, #fbfbff 40%);
+  background: -moz-linear-gradient(left, $color-bck-dark 40%, #fbfbff 40%);
+  background: -webkit-linear-gradient(left, $color-bck-dark 40%, #fbfbff 40%);
+
+  @include mq(lg, max) {
+    background: #fbfbff;
+  }
+}

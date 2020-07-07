@@ -1,5 +1,5 @@
 <template>
-	<header class="header">
+	<header class="header" :class="$route.name=='signup'? 'header-signup' : ''">
 		<div class="header-inner">
 			<div class="header-logo">
         <Logo :logo="logo" />
@@ -49,7 +49,8 @@ export default {
 			logo: {
 				link: "/",
 				image: {
-					url: require('@/assets/img/logo.png'),
+          url: require('@/assets/img/logo.png'),
+          signupUrl : require('@/assets/img/logo-signup.png'),
 					alt: "Logo"
 				}
 			}
