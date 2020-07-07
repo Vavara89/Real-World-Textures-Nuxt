@@ -28,7 +28,7 @@
 						<li><a href>Services</a></li>
 						<li><a href>Pricing</a></li>
 						<li><nuxt-link to="/login">Log In</nuxt-link></li>
-						<li class="header-button"><a href>Sign Up</a></li>
+						<li class="header-button"><nuxt-link to="/signup">Sign Up</nuxt-link></li>
 					</ul>
 				</div>
 			</div>
