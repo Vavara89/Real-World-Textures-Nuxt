@@ -45,6 +45,11 @@
         background-image: url(~@/assets/img/icon-search.png) !important;
         color: #fff !important;
       }
+
+      @include mq(lg, max) {
+        width: 150px;
+      }
+
     }
     select {
       width: 130px;
@@ -171,6 +176,6 @@
   background: -webkit-linear-gradient(left, $color-bck-dark 40%, #fbfbff 40%);
 
   @include mq(lg, max) {
-    background: #fbfbff;
+    background: $color-bck-dark;
   }
 }
