@@ -1,0 +1,20 @@
+.table {
+  display: table;
+  width: 100%;
+  .row {
+    display: table-row;
+    align-items: center;
+    .col {
+      display: table-cell;
+      padding: 2.5rem;
+      max-width: 30rem;
+      vertical-align: middle;
+    }
+
+    .rect {
+      width: 14.8rem;
+      height: 4.14rem;
+      border-radius: 1rem;
+    }
+  }
+}

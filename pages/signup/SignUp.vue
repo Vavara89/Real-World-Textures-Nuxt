@@ -17,15 +17,15 @@
           <span>or</span>
         </div>
         <form class="signup__form">
-          <div class="signup__input" :class="{'signup__input--filled': checkInputFirstName}">
+          <div :class="['signup__input', isFilled(input.firstName)]">
             <input type="text" v-model="input.firstName" />
             <label for>{{label.txtFirstName}}</label>
           </div>
-          <div class="signup__input" :class="{'signup__input--filled': checkInputMail}">
+          <div :class="['signup__input', isFilled(input.mail), isEmailValid(input.mail)]">
             <input type="text" v-model="input.mail" />
             <label for>{{label.txtEmail}}</label>
           </div>
-          <div class="signup__input" :class="{'signup__input--filled': checkInputPassword}">
+          <div :class="['signup__input', isFilled(input.password), isEmailValid(input.password)]">
             <input type="password" v-model="input.password" />
             <label for>{{label.txtPassword}}</label>
           </div>
@@ -76,33 +76,26 @@ export default {
         mail: "",
         password: ""
       },
-      agree: false
+      agree: false,
+      emailReg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
     };
   },
   computed: {
-    checkInputMail() {
-      if (this.input.mail.length > 0) {
-        return true;
-      }
-      return false;
-    },
-    checkInputPassword() {
-      if (this.input.password.length > 0) {
-        return true;
-      }
-      return false;
-    },
-    checkInputFirstName() {
-      if (this.input.password.length > 0) {
-        return true;
-      }
-      return false;
-    }
+
   },
   methods: {
     submit: function(e) {
       e.preventDefault();
-    }
+    },
+    isFilled(value){
+      return (value == '') ? "" : "signup__input--filled";
+    },
+    isEmailValid(value){
+       return (this.emailReg.test(value)) ? '' : 'input-invalid';
+    },
+    isPasswordValid(value){
+      return (value.length > 8) ? '' : 'input-invalid';
+    },
   }
 };
 </script>

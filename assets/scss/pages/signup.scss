@@ -186,3 +186,10 @@
     }
   }
 }
+
+.input-valid label{
+  color:$color-secondary-green;
+}
+.input-invalid label{
+  color:$color-secondary-red;
+}
