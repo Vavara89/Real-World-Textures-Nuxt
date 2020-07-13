@@ -47,7 +47,11 @@
   }
 
   &.view-margin {
-    margin-top: 30rem;
+    margin-top: 60%;
+
+    @include mq(md, max) {
+      margin-top: 0;
+    }
   }
 
   &__block {
