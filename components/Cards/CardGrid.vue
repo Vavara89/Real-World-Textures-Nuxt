@@ -1,6 +1,8 @@
 <template>
     <ul class="cards">
-        <li class="card" v-for="(card, index) in cards" :key="'logo-' + index">
+        <li class="card"
+            :class="{'view-margin': isMore}"
+            v-for="(card, index) in cards" :key="'logo-' + index">
             <Card :card="card" />
         </li>
     </ul>
@@ -18,6 +20,10 @@ export default {
         cards: {
             type: Array,
             required: true
+        },
+        isMore: {
+            type: Boolean,
+            required: false
         }
     }
 };

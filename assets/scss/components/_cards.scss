@@ -46,6 +46,10 @@
     box-shadow: 0 1rem 2.4rem rgba($color-primary-900, .3);
   }
 
+  &.view-margin {
+    margin-top: 30rem;
+  }
+
   &__block {
     display: flex;
     flex-direction: column;
