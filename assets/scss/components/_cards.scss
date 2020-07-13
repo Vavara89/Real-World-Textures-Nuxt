@@ -12,6 +12,11 @@
     padding: 8rem 2.4rem 0;
   }
 
+  &.view-four {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2.5rem;
+  }
+
   &:after {
     display: block;
     flex: 0 0 2.4rem;
