@@ -1,13 +1,13 @@
 <template>
   <div>
-    <section class="services">
+    <section class="services view-bottom">
       <div class="container container--content">
         <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" />
         <CardGrid :cards="cards" />
         <p class="centered top160" v-if="button"><a href="#" class="button-primary">Load more tutorials</a></p>
       </div>
     </section>
-    <SectionFaq />
+    <SectionFaq :noPadding="true"/>
   </div>
 </template>
 

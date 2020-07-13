@@ -1,5 +1,5 @@
 <template>
-    <section class="faq">
+    <section class="faq" :class="{'view-padding': noPadding}">
         <div class="container container--content">
             <SectionTitle :subtitle="subtitle" :title="title" :isInverted="true" />
             <FaqGrid :faqs="faqs" />
@@ -28,6 +28,12 @@ import FaqGrid from "@/components/Faqs/FaqGrid";
 
 export default {
     name: "SectionFAQ",
+    props: {
+        noPadding: {
+            type: Boolean,
+            required: false
+        }
+    },
     components: {
         SectionTitle,
         FaqGrid,
