@@ -1,5 +1,5 @@
 <template>
-    <ul class="cards">
+    <ul class="cards" :class="{'view-four': isMore}">
         <li class="card"
             :class="{'view-margin': isMore}"
             v-for="(card, index) in cards" :key="'logo-' + index">
