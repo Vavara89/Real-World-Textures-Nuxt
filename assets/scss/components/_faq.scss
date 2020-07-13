@@ -34,7 +34,6 @@
     min-height: 11.6rem;
     border-radius: $br-box-small;
     background-color: $color-secondary-dark;
-    height: 100%;
 
     @include transition-base;
     @include mq(md, max) {
