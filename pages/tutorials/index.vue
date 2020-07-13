@@ -3,7 +3,7 @@
     <section class="services view-bottom">
       <div class="container container--content">
         <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" />
-        <CardGrid :cards="cards" />
+        <CardGrid :cards="cards" :isMore="true" />
         <p class="centered top160" v-if="button"><a href="#" class="button-primary">Load more tutorials</a></p>
       </div>
     </section>
@@ -33,7 +33,7 @@ export default {
       cards: [
         {
           image: {
-            url: "_nuxt/assets/img/spheres/sphere-1.png",
+            url: require("@/assets/img/tutorials/0.png"),
             alt: ""
           },
           title: "For Architects",
@@ -45,7 +45,7 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/spheres/sphere-2.png",
+            url: require("@/assets/img/tutorials/1.png"),
             alt: ""
           },
           title: "For 3D Artists",
@@ -57,7 +57,40 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/spheres/sphere-3.png",
+            url: require("@/assets/img/tutorials/2.png"),
+            alt: ""
+          },
+          title: "For Manufacturers",
+          subtitle: "There is no material or model we can't handle with!",
+          text:
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#"
+        },
+        {
+          image: {
+            url: require("@/assets/img/tutorials/0.png"),
+            alt: ""
+          },
+          title: "For Manufacturers",
+          subtitle: "There is no material or model we can't handle with!",
+          text:
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#"
+        },
+        {
+          image: {
+            url: require("@/assets/img/tutorials/1.png"),
+            alt: ""
+          },
+          title: "For Manufacturers",
+          subtitle: "There is no material or model we can't handle with!",
+          text:
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#"
+        },
+        {
+          image: {
+            url: require("@/assets/img/tutorials/2.png"),
             alt: ""
           },
           title: "For Manufacturers",
