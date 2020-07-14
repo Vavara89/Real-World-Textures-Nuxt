@@ -9,16 +9,12 @@
       padding: 2.5rem;
       max-width: 30rem;
       vertical-align: middle;
-    }
-
-    .rect {
-      width: 14.8rem;
-      height: 4.14rem;
-      border-radius: 1rem;
+      &:nth-child(3){
+        background-color: $color-primary-900;
+      }
+      &:last-child{
+        background-color: $color-primary-800;
+      }
     }
   }
-}
-
-.placeholder{
-  @include font-placeholder;
 }
