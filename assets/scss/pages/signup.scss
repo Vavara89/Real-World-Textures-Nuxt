@@ -17,7 +17,7 @@
 
   &__btn-wrap {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
     @include mq(lg, max) {
       flex-direction: column;
@@ -143,7 +143,6 @@
     display: block;
     position: relative;
     margin-top: 6.5rem;
-    text-transform: uppercase;
     padding-left: 3.2rem;
     margin-left: 3.2rem;
 
@@ -185,4 +184,11 @@
       width: 100%;
     }
   }
+}
+
+.input-valid label{
+  color:$color-secondary-green;
+}
+.input-invalid label{
+  color:$color-secondary-red;
 }

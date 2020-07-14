@@ -17,15 +17,15 @@
           <span>or</span>
         </div>
         <form class="signup__form">
-          <div class="signup__input" :class="{'signup__input--filled': checkInputFirstName}">
+          <div :class="['signup__input', isFilled(input.firstName)]">
             <input type="text" v-model="input.firstName" />
             <label for>{{label.txtFirstName}}</label>
           </div>
-          <div class="signup__input" :class="{'signup__input--filled': checkInputMail}">
+          <div :class="['signup__input', isFilled(input.mail), isEmailValid(input.mail)]">
             <input type="text" v-model="input.mail" />
             <label for>{{label.txtEmail}}</label>
           </div>
-          <div class="signup__input" :class="{'signup__input--filled': checkInputPassword}">
+          <div :class="['signup__input', isFilled(input.password), isPasswordValid(input.password)]">
             <input type="password" v-model="input.password" />
             <label for>{{label.txtPassword}}</label>
           </div>
@@ -35,9 +35,9 @@
               sitekey="6LfzhK4ZAAAAADYraaQUsspKmiLcIstMvTfTclYK"
             ></vue-recaptcha>
           </div>
-          <label class="signup__checkbox" :class="{'signup__checkbox--checked': agree}">
+          <label class="signup__checkbox h4-lowercase" :class="{'signup__checkbox--checked': agree}">
             <input type="checkbox" v-model="agree" />Creating an account means you’re okay with our
-            <nuxt-link to="/">Terms of Service</nuxt-link>and our
+            <nuxt-link to="/">Terms of Service</nuxt-link> and our
             <nuxt-link to="/">Privacy Policy.</nuxt-link>
           </label>
           <div class="signup__submit">
@@ -76,33 +76,26 @@ export default {
         mail: "",
         password: ""
       },
-      agree: false
+      agree: false,
+      emailReg: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
     };
   },
   computed: {
-    checkInputMail() {
-      if (this.input.mail.length > 0) {
-        return true;
-      }
-      return false;
-    },
-    checkInputPassword() {
-      if (this.input.password.length > 0) {
-        return true;
-      }
-      return false;
-    },
-    checkInputFirstName() {
-      if (this.input.password.length > 0) {
-        return true;
-      }
-      return false;
-    }
+
   },
   methods: {
     submit: function(e) {
       e.preventDefault();
-    }
+    },
+    isFilled(value){
+      return (value == '') ? "" : "signup__input--filled";
+    },
+    isEmailValid(value){
+       return (value.length > 0 && !this.emailReg.test(value)) ? 'input-invalid' : '';
+    },
+    isPasswordValid(value){
+      return (value.length > 0 && value.length < 8) ?  'input-invalid' : '';
+    },
   }
 };
 </script>

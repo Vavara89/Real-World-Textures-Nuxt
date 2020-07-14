@@ -1,8 +1,8 @@
 .cards {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 5.6rem;
+
   @include mq(md, max) {
     display: flex;
     overflow-x: scroll;
@@ -12,12 +12,21 @@
     padding: 8rem 2.4rem 0;
   }
 
+  &.view-four {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2.5rem;
+  }
+
   &:after {
-    display: block;
+    display: none;
     flex: 0 0 2.4rem;
     width: 2.4rem;
     height: 2.4rem;
     content: "";
+
+    @include mq(md, max) {
+      display: block;
+    }
   }
 }
 
@@ -46,14 +55,53 @@
     box-shadow: 0 1rem 2.4rem rgba($color-primary-900, .3);
   }
 
+  &.view-margin {
+    margin-top: 60%;
+
+    @include mq(md, max) {
+      margin-top: 0;
+    }
+  }
+
   &__block {
     display: flex;
     flex-direction: column;
-    min-height: 36.8rem;
+    // min-height: 36.8rem;
   }
 
   &__img {
-    margin-top: -55%;
+    position: relative;
+    margin-top: -50%;
+    margin-bottom: 6rem;
+
+    img {
+      display: block;
+      position: relative;
+      object-fit: contain;
+      vertical-align: middle;
+      width: calc((16.8 / 26) * 100%);
+      // height: calc((16.8 / 26) * 100%);
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: calc((16.8 / 26) * 99%);
+      height: 99%;
+      margin: auto;
+      box-shadow: 0 3rem 4.5rem rgba($color-primary-900, .3);
+      border-radius: 50%;
+      z-index: 0;
+    }
   }
 
   &__content {
@@ -62,9 +110,10 @@
 
   &__title {
     margin-bottom: .8rem;
+    color: $color-primary-900;
   }
 
   &__subtitle {
-    margin-bottom: 1.6rem;
+    margin-bottom: 3rem;
   }
 }
