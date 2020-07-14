@@ -10,9 +10,6 @@
             </header>
             <div class="card__text text" v-html="card.text"></div>
         </div>
-        <footer class="card__footer">
-            <Button :link="card.link" text="read more" type="secondary" />
-        </footer>
     </div>
 </template>
 

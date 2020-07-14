@@ -41,9 +41,9 @@ export default {
                     },
                     title: "For 3D Artists",
                     subtitle:
-                        "Take it all! Diffuse, reflection, glosiness, bump, displacement ambient occlusion and even subsurface scattering...",
+                        "Textures sets for both Specular/Glossiness andMetal/Roughness workflow",
                     text:
-                        "PBR materials  and 3D models  from real worldwide manufacturers.",
+                        "PBR materials and 3D models from real worldwide manufacturers.",
                     link: "#"
                 },
                 {
@@ -55,7 +55,7 @@ export default {
                     subtitle:
                         "There is no material or model we can't handle with!",
                     text:
-                        "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+                        "Scan and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
                     link: "#"
                 }
             ]
