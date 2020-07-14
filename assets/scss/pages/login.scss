@@ -120,13 +120,14 @@
 
   &__link {
     margin-top: 2.5rem;
+
     a {
       color: $color-secondary-green;
       text-decoration: none;
       text-transform: uppercase;
       font-size: 1.4rem;
+      font-weight: 500;
       margin-left: 3.2rem;
-
     }
   }
 

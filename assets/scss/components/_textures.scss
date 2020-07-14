@@ -6,7 +6,7 @@
   margin: 0 auto;
   padding: 0 5rem;
 
-  grid-gap: 3.2rem 6.4rem;
+  grid-gap: 3rem 4rem;
   grid-template-columns: repeat(5, 1fr);
 
   @include mq(lg, max) {
@@ -88,8 +88,7 @@
         bottom: 0;
         left: 0;
         display: block;
-        //   TODO: convert to %
-        width: 16rem;
+        width: 75%;
         height: .32rem;
         margin: 0 auto;
         content: "";
