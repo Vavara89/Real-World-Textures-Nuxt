@@ -1,8 +1,8 @@
 .cards {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 5.6rem;
+
   @include mq(md, max) {
     display: flex;
     overflow-x: scroll;
@@ -110,6 +110,7 @@
 
   &__title {
     margin-bottom: .8rem;
+    color: $color-primary-900;
   }
 
   &__subtitle {

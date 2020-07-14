@@ -3,6 +3,7 @@
         <div class="container container--content">
             <SectionTitle :title="title" :subtitle="subtitle" />
             <CardGrid :cards="cards" />
+            <CardSidebar />
         </div>
     </section>
 </template>
@@ -10,12 +11,14 @@
 <script>
 import SectionTitle from "@/components/SectionParts/SectionTitle";
 import CardGrid from "@/components/Cards/CardGrid";
+import CardSidebar from "@/components/Cards/CardSidebar";
 
 export default {
     name: "SectionServices",
     components: {
         SectionTitle,
-        CardGrid
+        CardGrid,
+        CardSidebar
     },
     data() {
         return {

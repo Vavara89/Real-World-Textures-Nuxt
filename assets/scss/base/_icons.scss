@@ -1,0 +1,14 @@
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+	mask-size: contain;
+	mask-position: 50% 50%;
+	mask-repeat: no-repeat;
+	background: currentColor;
+	width: 1em;
+	height: 1em;
+
+	&--cross {
+		mask-image: url(~assets/img/icon-cross.svg);
+	}
+}
