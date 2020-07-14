@@ -25,7 +25,7 @@
             <input type="text" v-model="input.mail" />
             <label for>{{label.txtEmail}}</label>
           </div>
-          <div :class="['signup__input', isFilled(input.password), isEmailValid(input.password)]">
+          <div :class="['signup__input', isFilled(input.password), isPasswordValid(input.password)]">
             <input type="password" v-model="input.password" />
             <label for>{{label.txtPassword}}</label>
           </div>
@@ -35,9 +35,9 @@
               sitekey="6LfzhK4ZAAAAADYraaQUsspKmiLcIstMvTfTclYK"
             ></vue-recaptcha>
           </div>
-          <label class="signup__checkbox" :class="{'signup__checkbox--checked': agree}">
+          <label class="signup__checkbox h4-lowercase" :class="{'signup__checkbox--checked': agree}">
             <input type="checkbox" v-model="agree" />Creating an account means you’re okay with our
-            <nuxt-link to="/">Terms of Service</nuxt-link>and our
+            <nuxt-link to="/">Terms of Service</nuxt-link> and our
             <nuxt-link to="/">Privacy Policy.</nuxt-link>
           </label>
           <div class="signup__submit">
@@ -91,10 +91,10 @@ export default {
       return (value == '') ? "" : "signup__input--filled";
     },
     isEmailValid(value){
-       return (this.emailReg.test(value)) ? '' : 'input-invalid';
+       return (value.length > 0 && !this.emailReg.test(value)) ? 'input-invalid' : '';
     },
     isPasswordValid(value){
-      return (value.length > 8) ? '' : 'input-invalid';
+      return (value.length > 0 && value.length < 8) ?  'input-invalid' : '';
     },
   }
 };
