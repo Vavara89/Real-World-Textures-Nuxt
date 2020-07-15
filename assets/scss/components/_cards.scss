@@ -14,7 +14,7 @@
 
   &.view-four {
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 2.5rem;
+    grid-column-gap: 1rem;
   }
 
   &:after {
@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4.8rem;
+  padding: 4.0rem;
   cursor: pointer;
   border-radius: $br-box-small;
   background-color: $color-white;

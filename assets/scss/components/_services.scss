@@ -3,9 +3,14 @@
   background-color: $color-bck-light;
 
   &.view-bottom {
-    padding: 20.8rem 0 20.8rem;
+    padding: 10.8rem 0 20.8rem;
+
+    @include mq(md, max) {
+      padding: 5.8rem 0 20.8rem;
+    }
   }
 
+  
   @include mq(xl, max) {
     padding-bottom: 20.8rem;
   }
