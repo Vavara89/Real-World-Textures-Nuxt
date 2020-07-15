@@ -12,7 +12,7 @@
     padding: 8rem 2.4rem 0;
   }
 
-  &.view-four {
+  &--tutorials {
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 2.5rem;
   }
@@ -66,7 +66,7 @@
   &__block {
     display: flex;
     flex-direction: column;
-    // min-height: 36.8rem;
+    flex: 1;
   }
 
   &__img {
@@ -80,7 +80,6 @@
       object-fit: contain;
       vertical-align: middle;
       width: calc((16.8 / 26) * 100%);
-      // height: calc((16.8 / 26) * 100%);
       margin-left: auto;
       margin-right: auto;
       border-radius: 50%;
@@ -98,13 +97,15 @@
       width: calc((16.8 / 26) * 99%);
       height: 99%;
       margin: auto;
-      box-shadow: 0 3rem 4.5rem rgba($color-primary-900, .3);
+      box-shadow: 0 3rem 4.5rem rgba($color-primary-900, .4);
       border-radius: 50%;
       z-index: 0;
     }
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
   }
 
@@ -115,5 +116,43 @@
 
   &__subtitle {
     margin-bottom: 3rem;
+  }
+
+  &__text {
+    flex-grow: 1;
+  }
+
+  &__footer {
+    display: block;
+    margin-top: 2rem;
+    justify-self: end;
+  }
+}
+
+.card__block {
+  &--tutorial {
+    .card__img {
+      width: auto;
+      height: 18rem;
+      margin-right: -2.5rem;
+      margin-left: -2.5rem;
+      margin-top: calc(-50% - 4.8rem);
+
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: $br-box;
+        object-fit: cover;
+      }
+
+      &:before {
+        border-radius: $br-box;
+        width: 90%;
+      }
+    }
+
+    .card__title {
+      margin-bottom: 2rem;
+    }
   }
 }
