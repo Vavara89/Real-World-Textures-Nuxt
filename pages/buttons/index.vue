@@ -1,77 +1,228 @@
 <template>
   <div class="container-fluid">
     <div class="table">
-      <div class="row">
-        <div class="col">
-          <h3 class="name">
-            Primary
-            <br />buttons
-          </h3>
+      <div class="table-row">
+        <div class="table-cell text-center">
+          <h3 class="name">Primary buttons</h3>
         </div>
-        <div class="col">
-          <div class>
+        <div class="table-cell">
+          <div class="cell-content">
             <div class="row">
-              <a href="#" class="button-primary">explore textures</a>
-              <a href="#" class="button-primary button-primary--blue">Sign Up</a>
+              <div class="col">
+                <a href="#" class="button-primary">explore textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-primary button-primary--blue">Sign Up</a>
+              </div>
             </div>
             <div class="row">
-              <a href="#" class="button-primary">explore textures</a>
-              <a href="#" class="button-primary button-primary--blue">Sign Up</a>
+              <div class="col">
+                <a href="#" class="button-primary">explore textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-primary button-primary--blue">Sign Up</a>
+              </div>
             </div>
             <div class="row">
-              <a href="#" class="button-primary button-primary--light">explore textures</a>
-              <a href="#" class="button-primary button-primary--light">Sign Up</a>
+              <div class="col">
+                <a href="#" class="button-primary button-primary--light">explore textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-primary button-primary--light">Sign Up</a>
+              </div>
             </div>
             <div class="row">
-              <a href="#" class="button-primary button-primary--red">explore textures</a>
-              <a href="#" class="button-primary button-primary--red">Sign Up</a>
+              <div class="col">
+                <a href="#" class="button-primary button-primary--red">explore textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-primary button-primary--red">Sign Up</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="row">
-            <a href="#" class="button-primary button-primary--red">Get Help</a>
-          </div>
-          <div class="row">
-            <a href="#" class="button-primary button-primary--red">Get Help</a>
+        <div class="table-cell text-top color-bck-primary--900 text-center">
+          <div class="cell-content">
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-primary button-primary--blue">Get Help</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-primary button-primary--blue">Get Help</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col">
-          <div class="row">
-            <a href="#" class="button-primary button-primary--red">Join Now</a>
-          </div>
-          <div class="row">
-            <a href="#" class="button-primary button-primary--red">Join Now</a>
+        <div class="table-cell text-top color-bck-primary--800 text-center">
+          <div class="cell-content">
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-primary button-primary--inverted">Join Now</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-primary button-primary--inverted">Join Now</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="col"><h3 class="name">Secondary<br> buttons</h3>
+      <div class="table-row">
+        <div class="table-cell text-center">
+          <h3 class="name">Secondary buttons</h3>
         </div>
-        <div class="col">
+        <div class="table-cell">
+          <div class="cell-content">
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-secondary">See in gallery</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-secondary button-secondary--play">Play Tutorial</a>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <a href="#" class="button">
+                      <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button">
+                      <img src="@/assets/img/icon-cross.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button">
+                      <img src="@/assets/img/Path 10.svg" style="margin:32px;" width="24" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-secondary active">See in gallery</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-secondary button-secondary--play active">Play Tutorial</a>
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <a href="#" class="button active">
+                      <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button active">
+                      <img src="@/assets/img/icon-cross.svg" style="margin:12px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button active">
+                      <img src="@/assets/img/Path 10.svg" style="margin:32px;" width="24" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col">
+        <div class="table-cell color-bck-primary--900 text-center">
+          <div class="cell-content">
+            <div class="row">
+              <div class="col">
+                <a
+                  href="#"
+                  class="button-secondary button-secondary--inverted active"
+                >See in gallery</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a
+                  href="#"
+                  class="button-secondary button-secondary--inverted active"
+                >See in gallery</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col">
+        <div class="table-cell color-bck-primary--800 text-center">
+          <div class="cell-content">
+            <div class="row">
+              <div class="col">
+                <ToggleSwitch />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <ToggleSwitch />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <h3 class="name">Terciary<br> buttons</h3>
+      <div class="table-row">
+        <div class="table-cell text-center">
+          <h3 class="name">Terciary buttons</h3>
         </div>
-        <div class="col">
-          <h3 class="h3">16/24 bold</h3>
+        <div class="table-cell">
+          <div class="cell-content">
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-tertiary">Textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-tertiary active">Edit</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-tertiary button-tertiary--red">Textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-tertiary button-tertiary--red active">Edit</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-tertiary button-tertiary--green">Textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-tertiary button-tertiary--green active">Edit</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="#" class="button-tertiary button-tertiary--blue">Textures</a>
+              </div>
+              <div class="col">
+                <a href="#" class="button-tertiary button-tertiary--blue active">Edit</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <h3 class="h3">Lorem ipsum dolor sit amet</h3>
-        </div>
-        <div class="col">
-          <div class="squere-primary squere-primary--600 rect"></div>
-        </div>
-      </div>-->
+        <div class="table-cell color-bck-primary--900 text-center"></div>
+        <div class="table-cell color-bck-primary--800 text-center"></div>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import ToggleSwitch from "@/components/ToggleSwitch";
+
+export default {
+  components: {
+    ToggleSwitch
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/pages/buttons.scss";
