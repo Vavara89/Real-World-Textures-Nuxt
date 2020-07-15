@@ -8,10 +8,12 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "deploy:stage": "npm run build && gcloud app deploy app-stage.yaml --project pfld-real-world-textures --quiet"
   },
   "dependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/svg": "^0.1.11",
     "nuxt": "^2.0.0",
     "vue-recaptcha": "^1.3.0",
     "vue-slick-carousel": "^1.0.5"

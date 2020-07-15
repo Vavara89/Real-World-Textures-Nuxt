@@ -26,7 +26,7 @@
             <label for="">Password</label>
           </div>
           <div class="login__link">
-            <nuxt-link to="/">forgot password</nuxt-link>
+            <nuxt-link to="/">forgotten password?</nuxt-link>
           </div>
           <label class="login__checkbox" :class="{'login__checkbox--checked': rememberPassword}">
             <input type="checkbox" v-model="rememberPassword">Remember me

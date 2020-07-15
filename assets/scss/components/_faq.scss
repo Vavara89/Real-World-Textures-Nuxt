@@ -30,9 +30,10 @@
   }
 
   &__block {
+    position: relative;
+    min-height: 11.6rem;
     border-radius: $br-box-small;
     background-color: $color-secondary-dark;
-    height: 100%;
 
     @include transition-base;
     @include mq(md, max) {
@@ -41,32 +42,25 @@
 
     &:hover {
       cursor: pointer;
-    }
-
-    &.is-active {
-      z-index: 10;
-      box-shadow: 0 5.7rem 6.1rem $color-primary-900;;
-
-      .faq__text {
-        visibility: visible;
-        height: auto;
-      }
 
       .faq__title {
+        &:before, &:after {
+          transform: rotate(-180deg);
+        }
+
         &:before {
-          background-color: $color-bck-light;
+          opacity: 0;
         }
 
         &:after {
-          top: 3.2rem;
-          left: calc(3.2rem + 1.4rem / 2);
-          content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14.142' height='14.142' viewBox='0 0 14.142 14.142'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: none; stroke: %23394174; stroke-linecap: round; stroke-linejoin: bevel; stroke-width: 2px; %7D %3C/style%3E%3C/defs%3E%3Cpath id='Path_10' data-name='Path 10' class='cls-1' d='M0,0V8H8' transform='translate(7.071 1.414) rotate(45)'/%3E%3C/svg%3E%0A");
-          transform: translate(-50%) rotate(90deg);
-
-          @include mq(sm, max) {
-            left: 2.6rem;
-          }
+          opacity: 1;
         }
+      }
+
+      .faq__text {
+        display: block;
+        z-index: 10;
+        opacity: 1;
       }
     }
   }
@@ -75,60 +69,71 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 3.2rem 3.2rem 3.2rem 7.2rem;
+    padding: 3.5rem 7rem;
+    min-height: 11.6rem;
 
     @include font-faq;
     @include mq(sm, max) {
       padding: 3.2rem 1.6rem 3.2rem 5.6rem;
     }
 
-    &:before {
-      position: absolute;
-      top: 2.4rem;
-      left: 2.4rem;
-      width: 3.2rem;
-      height: 3.2rem;
+    &:before, &:after {
+      display: block;
       content: "";
+      position: absolute;
+      top: 0rem;
+      bottom: 0;
+      left: 2.8rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: auto 0;
       border-radius: $br-round;
-      background-color: transparent;
 
       @include transition-base;
-      @include mq(sm, max) {
-        top: 2.8rem;
-        left: 1.6rem;
-        width: 2.4rem;
-        height: 2.4rem;
-      }
+    }
+
+    &:before {
+      background: transparent url(~assets/img/icon-arrow_down.svg) no-repeat center/contain;
+      background-size: 1.5rem 1.5rem;
+      opacity: 1;
     }
 
     &:after {
-      position: absolute;
-      top: 2.8rem;
-      left: 3.2rem;
-      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14.142' height='14.142' viewBox='0 0 14.142 14.142'%3E%3Cdefs%3E%3Cstyle%3E .cls-1 %7B fill: none; stroke: %23fff; stroke-linecap: round; stroke-linejoin: bevel; stroke-width: 2px; %7D %3C/style%3E%3C/defs%3E%3Cpath id='Path_10' data-name='Path 10' class='cls-1' d='M0,0V8H8' transform='translate(7.071 1.414) rotate(45)'/%3E%3C/svg%3E%0A");
-      transform: rotate(-90deg);
-
-      @include transition-base(transform);
-      @include mq(sm, max) {
-        left: 2.3rem;
-      }
+      background: white url(~assets/img/icon-arrow_down__black.svg) no-repeat center/contain;
+      background-size: 1.5rem 1.5rem;
+      opacity: 0;
     }
   }
 
   &__text {
-    overflow: hidden;
-    max-height: 0;
-    padding: 0 7.2rem 0 3.2rem;
-
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 11rem;
+    background-color: $color-secondary-dark;
+    padding: 0 7rem 3.5rem;
+    border-radius: 0 0 0.8rem 0.8rem;
+    z-index: -1;
+    opacity: 0;
     @include transition-base;
-    @include mq(sm, max) {
-      padding: 0 1.6rem 0 5.6rem;
+
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: -11rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: calc(100% + 11rem);
+      border-radius: $br-box-small;
+      box-shadow: 0 1rem 6.1rem $color-primary-900;
     }
   }
 
   &__wysiwyg {
-    padding-bottom: 3.2rem;
-
     @include font-text;
   }
 
