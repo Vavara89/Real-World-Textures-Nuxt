@@ -1,20 +1,64 @@
 .table {
   display: table;
   width: 100%;
-  .row {
+  @include mq(md, max) {
+    display: block;
+  }
+  &-row {
     display: table-row;
     align-items: center;
-    .col {
-      display: table-cell;
-      padding: 2.5rem;
-      max-width: 30rem;
-      vertical-align: middle;
-      &:nth-child(3){
-        background-color: $color-primary-900;
-      }
-      &:last-child{
-        background-color: $color-primary-800;
+    justify-content: center;
+    @include mq(md, max) {
+      display: block;
+    }
+  }
+  &-cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 2.4rem 0;
+    @include mq(md, max) {
+      display: block;
+      text-align: center;
+    }
+    // .cell-content {
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 2.4rem 0;
+      .col {
+        margin: auto;
+        .row{
+          .col{
+            margin: auto 2rem;
+          }
+        }
       }
     }
+    // }
+  }
+}
+.button {
+  display: inline-block;
+  border-radius: 100%;
+  img {
+    vertical-align: middle;
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $color-bck-medium;
+  }
+}
+
+.button-secondary--inverted.active {
+  background-color: $color-secondary-dark;
+}
+.text {
+  &-top {
+    vertical-align: top !important;
+  }
+  &-center {
+    text-align: center !important;
   }
 }

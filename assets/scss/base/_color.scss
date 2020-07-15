@@ -45,3 +45,19 @@
  color:$color-secondary-dark;
 }
 
+.color{
+  &-bck{
+    &-primary{
+      &--900{
+        background-color: $color-primary-900;
+      }
+      &--800{
+        background-color: $color-primary-800;
+      }
+      &--700{
+        background-color: $color-primary-700;
+      }
+    }
+  }
+}
+
