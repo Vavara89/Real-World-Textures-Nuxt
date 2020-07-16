@@ -1,10 +1,10 @@
 $breakpoints: (
-    xs: 42 * .65rem,
-    sm: 76.8 * .65rem,
+    xs: 382px,
+    sm: 698px,
     md: 950px,
     lg: 1232px,
-    xl: 144 * .65rem,
-    xxl: 180 * .65rem,
+    xl: 1310px,
+    xxl: 1638px,
 );
 
 @mixin mq($breakpoint, $direction) {
