@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4.0rem;
+  padding: 4.8rem;
   cursor: pointer;
   border-radius: $br-box-small;
   background-color: $color-white;
@@ -61,6 +61,10 @@
     @include mq(md, max) {
       margin-top: 0;
     }
+  }
+
+  .cards--tutorials & {
+    padding: 4rem;
   }
 
   &__block {
@@ -134,9 +138,9 @@
     .card__img {
       width: auto;
       height: 18rem;
-      margin-right: -2.5rem;
-      margin-left: -2.5rem;
-      margin-top: calc(-50% - 4.8rem);
+      margin-right: -1.5rem;
+      margin-left: -1.5rem;
+      margin-top: calc(-50% - 2rem);
 
       img {
         height: 100%;
