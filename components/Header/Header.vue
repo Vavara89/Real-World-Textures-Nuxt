@@ -1,9 +1,9 @@
 <template>
   <header class="header" :class="$route.name=='signup'? 'header-signup' : ''">
     <div class="header-inner">
-      <nuct-link to="/" class="header-logo" :class="{'header-logo--light': $route.name === 'signup'}">
+      <nuxt-link to="/" class="header-logo" :class="{'header-logo--light': $route.name === 'signup'}">
         <SvgIconLogo />
-      </nuct-link>
+      </nuxt-link>
       <div class="header-search">
         <input type="text" name="s" placeholder="Search" autocomplete="off" />
         <select>
