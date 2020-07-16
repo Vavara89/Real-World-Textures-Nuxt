@@ -14,10 +14,12 @@
   &-logo {
     width: 100px;
 
-    .logo__img {
-      position: absolute;
-      width: 89px;
-      height: 96px;
+    &--light {
+      svg {
+        path {
+          fill: $color-white;
+        }
+      }
     }
   }
 

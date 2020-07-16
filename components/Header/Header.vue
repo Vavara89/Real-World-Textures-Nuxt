@@ -1,9 +1,9 @@
 <template>
   <header class="header" :class="$route.name=='signup'? 'header-signup' : ''">
     <div class="header-inner">
-      <div class="header-logo">
-        <Logo :logo="logo" />
-      </div>
+      <nuct-link to="/" class="header-logo" :class="{'header-logo--light': $route.name === 'signup'}">
+        <SvgIconLogo />
+      </nuct-link>
       <div class="header-search">
         <input type="text" name="s" placeholder="Search" autocomplete="off" />
         <select>
@@ -53,24 +53,12 @@
 </template>
 
 <script>
-import Logo from "~/components/Logos/Logo";
+import SvgIconLogo from '~/assets/img/logo.svg?inline';
 
 export default {
   name: "Header",
   components: {
-    Logo
+    SvgIconLogo
   },
-  data() {
-    return {
-      logo: {
-        link: "/",
-        image: {
-          url: require("@/assets/img/logo.png"),
-          signupUrl: require("@/assets/img/logo-signup.png"),
-          alt: "Logo"
-        }
-      }
-    };
-  }
 };
 </script>
