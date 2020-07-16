@@ -1,12 +1,12 @@
 <template>
-  <ul class="cards" :class="{'view-four': isMore}">
+  <ul class="cards" :class="{'cards--tutorials': isMore}">
     <li
       class="card" :class="{'view-margin': isMore}"
       v-for="(card, index) in cards"
       @click="toggleSidebar(index)"
       :key="'logo-' + index"
     >
-      <Card :card="card" />
+      <Card :card="card" :isTutorial="isTutorial"/>
     </li>
   </ul>
 </template>
@@ -25,6 +25,10 @@ export default {
       required: true
     },
     isMore: {
+      type: Boolean,
+      required: false
+    },
+    isTutorial: {
       type: Boolean,
       required: false
     }

@@ -1,9 +1,9 @@
 <template>
   <div>
     <section class="services view-bottom">
-      <div class="container container--content">
+      <div class="container container--box">
         <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" />
-        <CardGrid :cards="cards" :isMore="true" />
+        <CardGrid :cards="cards" :isMore="true" :isTutorial="true" />
         <p class="centered top160" v-if="button"><a href="#" class="button-primary">Load more tutorials</a></p>
       </div>
     </section>
