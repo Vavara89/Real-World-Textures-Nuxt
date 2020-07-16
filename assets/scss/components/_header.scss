@@ -12,10 +12,9 @@
   }
 
   &-logo {
-    width: 100px;
-
     &--light {
       svg {
+        max-width: 8.8rem;
         path {
           fill: $color-white;
         }
