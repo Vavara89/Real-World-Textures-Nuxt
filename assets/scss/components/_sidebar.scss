@@ -14,6 +14,18 @@
   transform: translateX(120%);
   @include transition-base;
 
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 7rem;
+    right:12rem;
+    bottom: 12rem;
+    // width: calc();
+    height: 2.4rem;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 33%, transparent 97%);
+  }
+
   &__close {
     @include transition-base;
     display: flex;
@@ -66,9 +78,10 @@
   }
 
   &__cnt {
+    position: relative;
     overflow-y: auto;
     padding-right: 5rem;
-    // height: 50rem;
+
   }
 
   &__text {
