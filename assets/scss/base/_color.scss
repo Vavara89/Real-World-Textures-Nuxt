@@ -1,5 +1,5 @@
-.color-white{
-  color:$color-white;
+.color-white {
+  color: $color-white;
 }
 .color-primary-100 {
   color: $color-primary-100;
@@ -29,35 +29,43 @@
   color: $color-primary-900;
 }
 
-.color-secondary-green{
- color:$color-secondary-green;
+.color-secondary-green {
+  color: $color-secondary-green;
 }
-.color-secondary-red{
- color:$color-secondary-red;
+.color-secondary-red {
+  color: $color-secondary-red;
 }
-.color-secondary-purple{
- color:$color-secondary-purple;
+.color-secondary-purple {
+  color: $color-secondary-purple;
 }
-.color-secondary-salmon{
- color:$color-secondary-salmon;
+.color-secondary-salmon {
+  color: $color-secondary-salmon;
 }
-.color-secondary-dark{
- color:$color-secondary-dark;
+.color-secondary-dark {
+  color: $color-secondary-dark;
 }
 
-.color{
-  &-bck{
-    &-primary{
-      &--900{
+.color {
+  &-bck {
+    &-primary {
+      &--900 {
         background-color: $color-primary-900;
       }
-      &--800{
+      &--800 {
         background-color: $color-primary-800;
       }
-      &--700{
+      &--700 {
         background-color: $color-primary-700;
       }
+      &--600 {
+        background-color: $color-primary-600;
+      }
+    }
+    &-secondary--green {
+      background-color: $color-secondary-green;
+    }
+    &-secondary--purple {
+      background-color: $color-secondary-purple;
     }
   }
 }
-

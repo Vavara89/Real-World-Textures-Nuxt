@@ -1,0 +1,7 @@
+@import "@/assets/scss/components/_badges";
+
+.badges > .row {
+  @include mq(sm, max) {
+    flex-direction: column;
+  }
+}
