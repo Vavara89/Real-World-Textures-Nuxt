@@ -1,0 +1,38 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  @include mq(md, max) {
+    display: block;
+  }
+  &-row {
+    display: table-row;
+    align-items: center;
+    justify-content: center;
+    @include mq(md, max) {
+      display: block;
+    }
+  }
+  &-cell {
+    display: table-cell;
+    padding: 2.4rem 0;
+    @include mq(md, max) {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+.text {
+  &-top {
+    vertical-align: top !important;
+  }
+  &-center {
+    text-align: center !important;
+  }
+}
