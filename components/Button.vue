@@ -2,7 +2,7 @@
   <a
     :href="link"
     :class="'button-' + type + ' ' + 'button-' + type + '--' + color + (width ? ' button-' + type + '--' + width : '')"
-  >{{ text }}</a>
+  ><span>{{ text }}</span></a>
 </template>
 
 <script>

@@ -9,34 +9,35 @@
           <div class="cell-content">
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary">explore textures</a>
+                <Button link="" text="Explore Textures" type="primary" color="green"/>
               </div>
               <div class="col">
-                <a href="#" class="button-primary button-primary--blue">Sign Up</a>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <a href="#" class="button-primary">explore textures</a>
-              </div>
-              <div class="col">
-                <a href="#" class="button-primary button-primary--blue">Sign Up</a>
+                <Button link="" text="Sign Up" type="primary" color="blue"/>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary button-primary--light">explore textures</a>
+                <Button link="" text="Explore Textures" type="primary" color="green"/>
               </div>
               <div class="col">
-                <a href="#" class="button-primary button-primary--light">Sign Up</a>
+                <Button link="" text="Sign Up" type="primary" color="blue"/>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary button-primary--red">explore textures</a>
+                <Button link="" text="explore textures" type="primary" color="light"/>
               </div>
               <div class="col">
-                <a href="#" class="button-primary button-primary--red">Sign Up</a>
+                <Button link="" text="Sign Up" type="primary" color="light"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <Button link="" text="explore textures" type="primary" color="red"/>
+                <!-- <a href="#" class="button-primary button-primary--red">explore textures</a> -->
+              </div>
+              <div class="col">
+                <Button link="" text="Sign Up" type="primary" color="red"/>
               </div>
             </div>
           </div>
@@ -45,12 +46,12 @@
           <div class="cell-content">
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary button-primary--blue">Get Help</a>
+                <Button link="" text="Get Help" type="primary" color="blue" width="wide"/>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary button-primary--blue">Get Help</a>
+                <Button link="" text="Get Help" type="primary" color="blue" width="wide"/>
               </div>
             </div>
           </div>
@@ -59,12 +60,12 @@
           <div class="cell-content">
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary button-primary--inverted">Join Now</a>
+                <Button link="" text="Join Now!" type="primary" color="inverted"/>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <a href="#" class="button-primary button-primary--inverted">Join Now</a>
+                <Button link="" text="Join Now!" type="primary" color="inverted"/>
               </div>
             </div>
           </div>
@@ -78,7 +79,8 @@
           <div class="cell-content">
             <div class="row">
               <div class="col">
-                <a href="#" class="button-secondary">See in gallery</a>
+                <Button link="" text="See in gallery" type="secondary" />
+                <!-- <a href="#" class="button-secondary">See in gallery</a> -->
               </div>
               <div class="col">
                 <a href="#" class="button-secondary button-secondary--play">Play Tutorial</a>
@@ -216,10 +218,12 @@
 
 <script>
 import ToggleSwitch from "@/components/ToggleSwitch";
+import Button from "@/components/Button";
 
 export default {
   components: {
-    ToggleSwitch
+    ToggleSwitch,
+    Button
   }
 };
 </script>

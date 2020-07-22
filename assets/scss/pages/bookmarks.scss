@@ -1,0 +1,44 @@
+.bookmarks {
+  padding: 5rem 0 25rem;
+
+  &__list {
+    margin-bottom: 15rem;
+  }
+
+  &__credits {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.4rem;
+    line-height: 125%;
+    font-weight: bold;
+    margin-left: 16rem;
+
+    &__part {
+      &:last-child {
+        min-width: 51.5rem;
+        padding: 0 0 0 2.5rem;
+
+        .button-primary {
+          width: calc(100% + 2.5rem);
+          margin: 6rem -2.5rem 0;
+        }
+      }
+    }
+
+    &__title {
+      color: $color-primary-900;
+
+      span {
+        color: $color-primary-600;
+      }
+    }
+
+    &__subscription {
+      margin-bottom: 2rem;
+    }
+
+    .button-secondary {
+      margin-left: -1rem;
+    }
+  }
+}

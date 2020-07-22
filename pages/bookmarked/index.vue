@@ -1,36 +1,33 @@
 <template>
   <div>
-    <section class="bookemarks">
-      <div class="container container--content">
-        <SectionBookmarked :item="item" :status="closed" />
-        <SectionBookmarked :item="item" :status="closed" />
-        <SectionBookmarked :item="item" :status="checked" />
-        <SectionBookmarked :item="item" :status="checked" />
-        <div class="bookmarks-bottom">
-          <div class="row credits">
-            <div class="credits-remain">
-              <label class="h2">Your Credits Left:</label>
-              <br />
-              <span class="h2 color-primary-600">565 Subscription</span>
-              <br />
-              <span class="h4 color-primary-600">&gt; Upgrade Subscription</span>
+    <section class="bookmarks">
+      <div class="container container--box">
+        <div class="bookmarks__list" v-if="bookmarks.length > 0">
+          <Bookmark v-for="(item,index) in bookmarks"
+            @deleteBookmark="deleteBookmark"
+            :item="item"
+            :index="index"
+            :key="index"
+          />
+        </div>
+        <div class="bookmarks__credits">
+          <div class="bookmarks__credits__part">
+            <div class="bookmarks__credits__title">
+              Your Credits Left:
             </div>
-            <div class="credits-used">
-              <label class="h2">Total Credit:</label>
-              <span class="h2 color-primary-600">32 Credits</span>
-              <br />
-              <label class="h2">Total Items:</label>
-              <span class="h2 color-primary-600">2</span>
+            <div class="bookmarks__credits__subscription">
+              {{ subscriptionCredits }} Subscription
             </div>
+            <Button :link="subscriptionLink" text="Upgrade Subscription" type="secondary"/>
           </div>
-          <div class="row">
-            <div class="download-btn">
-              <button
-                class="button-primary button-primary--large h3"
-                type="submit"
-                @click="submit"
-              >download selected</button>
+          <div class="bookmarks__credits__part">
+            <div class="bookmarks__credits__title">
+              Total Credits: <span>{{ totalCredits }} {{ appendText }}</span>
             </div>
+            <div class="bookmarks__credits__title">
+              Total Items: <span>{{ selectedBookmarks }}</span>
+            </div>
+            <Button :link="subscriptionLink" text="Download Selected" type="primary" color="large"/>
           </div>
         </div>
       </div>
@@ -39,28 +36,88 @@
 </template>
 
 <script>
-import SectionBookmarked from "@/components/Sections/SectionBookmarked";
+import Bookmark from "@/components/Bookmark";
+import Button from "@/components/Button";
 
 export default {
-  name: "Tutorials",
+  name: "Bookmarks",
   components: {
-    SectionBookmarked
+    Bookmark,
+    Button
   },
   data() {
     return {
-      item: {
-        image: {
-          url: require("@/assets/img/textures/texture-technistone.png"),
-          alt: "Logo"
-        }
-      },
-      closed: require("@/assets/img/icon-close.png"),
-      checked: require("@/assets/img/icon-check.png")
+      subscriptionCredits: 565,
+      subscriptionLink: "",
+      bookmarks: [
+        {
+          image: {
+            url: require("@/assets/img/textures/texture-technistone.png"),
+            alt: "Logo"
+          },
+          desc: "Cliff Grey Chunky 008",
+          cost: 8,
+          selected: false,
+        },
+        {
+          image: {
+            url: require("@/assets/img/textures/texture-technistone.png"),
+            alt: "Logo"
+          },
+          desc: "Cliff Grey Chunky 008",
+          cost: 1,
+          selected: false,
+        },
+        {
+          image: {
+            url: require("@/assets/img/textures/texture-technistone.png"),
+            alt: "Logo"
+          },
+          desc: "Cliff Grey Chunky 008",
+          cost: 0,
+          selected: false,
+        },
+        {
+          image: {
+            url: require("@/assets/img/textures/texture-technistone.png"),
+            alt: "Logo"
+          },
+          desc: "Cliff Grey Chunky 008",
+          cost: 23,
+          selected: false,
+        },
+      ],
     };
+  },
+  methods: {
+    deleteBookmark($event) {
+      this.bookmarks.splice($event, 1);
+      console.log('ahoj');
+    },
+  },
+  computed: {
+    selectedBookmarks() {
+      const result = this.bookmarks.filter(bookmark => bookmark.selected === true);
+      return result.length;
+    },
+    totalCredits() {
+      let sum = 0;
+      this.bookmarks.forEach(bookmark => {
+        sum += bookmark.cost;
+      });
+      return sum;
+    },
+    appendText() {
+      if (this.totalCredits < 1 || this.totalCredits > 1) {
+        return "Credits";
+      } else {
+        return "Credit";
+      }
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/pages/bookmarked.scss";
+@import "@/assets/scss/pages/bookmarks.scss";
 </style>
