@@ -1,9 +1,11 @@
 <template>
-    <ul class="textures">
-        <li class="texture" v-for="(texture, index) in textures" :key="'texture-' + index">
-            <Texture :texture="texture" :shadow="shadow" />
-        </li>
-    </ul>
+    <div>
+        <ul class="textures">
+            <li class="texture" v-for="(texture, index) in textures" :key="'texture-' + index">
+                <Texture :texture="texture" :shadow="shadow" />
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -12,7 +14,7 @@ import Texture from "@/components/Textures/Texture";
 export default {
     name: "TextureGrid",
     components: {
-        Texture
+        Texture,
     },
     props: {
         textures: {
@@ -25,4 +27,5 @@ export default {
         }
     }
 };
+
 </script>

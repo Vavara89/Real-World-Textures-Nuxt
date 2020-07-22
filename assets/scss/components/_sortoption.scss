@@ -1,0 +1,11 @@
+@import "@/assets/scss/components/_dropdown.scss";
+
+.sortoption {
+    display: flex;
+    justify-content: space-between;
+
+    .text {
+        margin-right: 1rem;
+        margin-top: 1rem;
+    }
+}

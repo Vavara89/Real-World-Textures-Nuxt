@@ -20,7 +20,7 @@
         </label>
         <ul class="menu">
           <li>
-            <a href>Textures</a>
+            <a href = '/textures'>Textures</a>
           </li>
           <li>
             <a href>Models</a>
