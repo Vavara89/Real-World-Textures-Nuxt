@@ -17,7 +17,7 @@
       <ColorFilter :options="colorList" />
     </div>
     <div>
-      <button class="clearFilter">Clear all Filters</button>
+      <button class="clearFilter h4">Clear all Filters</button>
     </div>
   </div>
 </template>

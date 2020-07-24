@@ -2,7 +2,7 @@
     <div>
         <h3 class="h3">{{options.title}}</h3>
         <ul class="colorOptions">
-            <li v-for="(item, index) in options.items" :key="'item-' + index" class="h4 item">
+            <li v-for="(item, index) in options.items" :key="'item-' + index" class="text item">
                 <a v-bind:class="{'active':(item.active)}" >
                     <div class="colorItem" v-bind="{'style':{'background-color': item.value}}"></div>
                 </a>

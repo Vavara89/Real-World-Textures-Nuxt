@@ -1,14 +1,11 @@
 <template>
   <div class="page-container">
     <LeftSidebar />
-    <div>
+    <div class="page-content">
       <ContentHeader />
       <section class="services view-bottom">
-        <div class="container container--box">
-          <TextureGallery :textures="textures" />
-        </div>
+        <TextureGallery :textures="textures" />
       </section>
-      <SectionFaq :noPadding="true"/>
     </div>
   </div>
 </template>

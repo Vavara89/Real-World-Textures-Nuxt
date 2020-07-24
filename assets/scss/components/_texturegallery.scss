@@ -1,5 +1,9 @@
 .textgallery {
     .textures {
+        padding: 0 1.8rem;
+        grid-gap: 0.8rem 0.8rem;
+        grid-template-columns: repeat(6, 1fr);
+
         .texture {
             position: relative;
             width: 25.5rem;

@@ -61,13 +61,13 @@
 
 .texture {
     .tooltip {
-        visibility: hidden;
+        display: none;
         z-index: 1;
     }
 
     &:hover {
         .tooltip {
-            visibility: visible;
+            display: block
         }
     }
 }

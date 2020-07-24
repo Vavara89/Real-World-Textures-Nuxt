@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="(item, index) in list" :key="'item-' + index" class="h4 item">
+        <li v-for="(item, index) in list" :key="'item-' + index" class="text item">
             <a v-if="!item.subitems" v-bind:class="{'active':(item.active)}">{{ item.title }}</a>
             <a v-if="item.subitems" href="javascript:;" v-bind:class="{'active':(item.active)}">
                 {{item.title}}

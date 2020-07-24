@@ -2,7 +2,7 @@
     <div>
         <h3 class="h3">{{ options.title }}</h3>
         <ul>
-            <li v-for="(item, index) in options.items" :key="'item-' + index" class="h4 item">
+            <li v-for="(item, index) in options.items" :key="'item-' + index" class="text item">
                 <a v-bind:class="{'active':(item.active)}">{{ item.title }}</a>
             </li>
         </ul>
