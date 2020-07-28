@@ -16,6 +16,7 @@
         .item {
             line-height: 32px;
             .active {
+                font-weight: 700;
                 color: $color-primary-700;
             }
         }
@@ -48,6 +49,7 @@
                 .subItems {
                     padding: 0 2.4rem;
                     .item {
+                        font-weight: 300;
                         color: $color-primary-600;
                     }
                 }
