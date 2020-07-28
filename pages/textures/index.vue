@@ -6,6 +6,41 @@
       <section class="services view-bottom">
         <TextureGallery :textures="textures" />
       </section>
+         <div class="table-cell middle">
+          <div class="cell-content">
+                <div class="row">
+                  <div class="col">
+                    <a href="#" class="button active">
+                      <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button active">
+                      <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <ul class="list">
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button active rotate">
+                      <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="#" class="button active rotate">
+                      <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
+                    </a>
+                  </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </template>
