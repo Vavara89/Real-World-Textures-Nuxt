@@ -10,11 +10,11 @@
   grid-template-columns: repeat(5, 1fr);
 
   @include mq(lg, max) {
-    display: flex;
-    overflow-x: scroll;
-    width: calc(100% + (2 * 5.6rem));
-    margin: 0 -5.6rem;
-    padding: 0 5.6rem;
+    // display: flex;
+    // overflow-x: scroll;
+    // width: calc(100% + (2 * 5.6rem));
+    // margin: 0 -5.6rem;
+    // padding: 0 5.6rem;
   }
 
   @include mq(sm, max) {

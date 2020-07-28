@@ -2,7 +2,7 @@
     .textures {
         padding: 0 1.8rem;
         grid-gap: 0.8rem 0.8rem;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(auto-fill, 230px);
 
         .texture {
             position: relative;
