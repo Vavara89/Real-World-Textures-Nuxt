@@ -74,6 +74,10 @@
   &.rotate{
     transform: scaleX(-1);
   }
+
+  &.nobg {
+    background: none;
+  }
 }
 
 .button-secondary--inverted.active {
