@@ -58,15 +58,13 @@
 
 }
 
-.texture {
-    .tooltip {
-        display: none;
-        z-index: 1;
-    }
-
-    &:hover {
-        .tooltip {
-            display: block
-        }
-    }
+.texture .tooltip {
+    transition: 0s;
+    opacity: 0;
+    z-index: 1;
 }
+
+.texture:hover>.tooltip {
+    opacity: 1;
+    transition-delay: 0.1s;
+  }
