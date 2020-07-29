@@ -60,11 +60,15 @@
 
 .texture .tooltip {
     transition: 0s;
+    overflow: hidden;
+    height: 0;
     opacity: 0;
+    overflow: hidden;
     z-index: 1;
 }
 
 .texture:hover>.tooltip {
+    height: auto;
     opacity: 1;
-    transition-delay: 0.1s;
+    transition-delay: .1s;
   }
