@@ -12,12 +12,13 @@
     z-index: 100;
     text-align: center;
 
-    &::before {
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        height: 100%;
-    }
+    // &::before {
+    //     content: '';
+    //     display: inline-block;
+    //     vertical-align: middle;
+    //     height: 100%;
+    // }
+
     .container {
         width: 125.5rem;
         height: 85rem;
