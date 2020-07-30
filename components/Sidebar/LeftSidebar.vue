@@ -67,19 +67,19 @@ export default {
       options: [
         {
           value: "Textures",
-          count: "555"
+          count: "46"
         },
         {
           value: "Models",
-          count: "111"
+          count: "5"
         },
         {
           value: "HDRis",
-          count: "11"
+          count: "88"
         },
         {
           value: "Brands",
-          count: "11"
+          count: "13"
         },
       ],
       materials: [
@@ -226,7 +226,7 @@ export default {
       },
       confidents:[
         {
-          value: "Select a Confident"
+          value: "Select a Continent"
         }
       ],
       colorList: {

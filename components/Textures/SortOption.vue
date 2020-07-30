@@ -18,16 +18,10 @@ export default {
                     value: "Latest"
                 },
                 {
-                    value: "Option 2"
+                    value: "Name A-Z"
                 },
                 {
-                    value: "Option 3"
-                },
-                {
-                    value: "Option 4"
-                },
-                {
-                    value: "Option 5"
+                    value: "Name Z-A"
                 },
             ]
         }

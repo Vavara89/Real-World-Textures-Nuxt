@@ -9,6 +9,11 @@
     z-index: 99;
     padding: 4rem 3rem;
     @include transition-base;
+
+    h3 {
+      margin-top: 5rem;
+      padding-left: 2.4rem;
+    }
     
     ul {
         padding: 2.4rem;
@@ -61,7 +66,7 @@
 
     .refine-filter {
         ul {
-            padding: 2.4rem 0;
+            padding: 2.4rem;
         }
 
         .item {
@@ -322,3 +327,6 @@
     }
   }
   
+  .leftMenu {
+    border: 1px solid red;
+  }
