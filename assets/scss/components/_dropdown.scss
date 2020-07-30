@@ -58,14 +58,15 @@
       .item{
         color: #9093b9;
         font-weight: 500;
-        padding-left: 25px;
+        padding-left: 20px;
         cursor: pointer;
         user-select: none;
+        margin: 0 5px;
+        border-radius: 3rem;
       }
       
       .item:hover{
-          color: #fff;
-        background-color: #394174;
+          background-color: #e6e7ed;
       }
       
       .selectHide {
