@@ -23,6 +23,10 @@
             .active {
                 font-weight: 700;
                 color: $color-primary-700;
+
+                &:hover {
+                  background: transparent;
+                }
             }
         }
     }
@@ -46,11 +50,20 @@
     }
     
     .materials-menu {
-        margin-top: 1rem; 
-        
+        margin-top: 1rem;        
 
         ul {
             li {
+              a {
+                cursor: pointer;
+                padding: 0.3rem 1.5rem;
+                border-radius: 3rem;
+                margin-left: -1.5rem;
+
+                &:hover {
+                  background-color: #f2f3f9;
+                }
+              }
                 .subItems {
                     padding: 0 2.4rem;
                     .item {
