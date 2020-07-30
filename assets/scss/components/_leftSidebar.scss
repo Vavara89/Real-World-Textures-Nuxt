@@ -169,6 +169,8 @@
         color: $color-white;
 
         &:hover {
+          cursor: pointer;
+          font-weight: 800;
           background-color: $color-primary-700;
         }
     }
