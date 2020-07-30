@@ -1,8 +1,31 @@
 <template>
     <div class="dropdown">
-        <select class="filter is-active">
-            <option v-for="(item, index) in options" :key="'item-' + index"> {{ item.value }}</option>
-        </select>
+        <div
+            class="custom-select"
+            :tabindex="tabindex"
+            @blur="open = false"
+        >
+            <div
+                class="selected"
+                :class="{open: open}"
+                @click="open = !open"
+            >
+            {{ selected.value }}
+            </div>
+            <div
+            class="items"
+            :class="{selectHide: !open}"
+            >
+                <div
+                    class="item"
+                    v-for="(item, index) in options"
+                    :key="'item-' + index"
+                    @click="selected=item; open=false; $emit('input', item)"
+                >
+                {{ item.value }}
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -12,10 +35,24 @@ export default {
         options: {
             type: Array,
             required: true
-        }
+        },
+        tabindex:{
+      type: Number,
+      required: false,
+      default: 0
     }
+    },
+    data() {
+    return {
+      selected: this.options.length > 0 ? this.options[0] : null,
+      open: false
+    };
+  },
+  mounted(){
+    this.$emit('input', this.selected);
+  }
 }
 </script>
 <style lang="scss" scoped>
-    @import "@/assets/scss/components/_dropdown.scss"
+    @import "@/assets/scss/components/_dropdown.scss";
 </style>

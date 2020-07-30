@@ -46,7 +46,7 @@
               font-weight: 500;
               padding: 2px 15px;
               border-radius: 24px;
-              &:hover {
+              &:hover, &.active {
                 color: #394173;
                 background-color: #f2f3f9;
               }
