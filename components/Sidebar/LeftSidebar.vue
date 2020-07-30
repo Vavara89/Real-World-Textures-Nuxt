@@ -66,16 +66,20 @@ export default {
       ],
       options: [
         {
-          value: "Textures (3542)"
+          value: "Textures",
+          count: "555"
         },
         {
-          value: "Models (440)"
+          value: "Models",
+          count: "111"
         },
         {
-          value: "HDRis (1727)"
+          value: "HDRis",
+          count: "11"
         },
         {
-          value: "Brands (164)"
+          value: "Brands",
+          count: "11"
         },
       ],
       materials: [

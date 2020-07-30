@@ -10,7 +10,7 @@
                 :class="{open: open}"
                 @click="open = !open"
             >
-            {{ selected.value }}
+            {{ selected.value }} <span class="count" v-if="selected.count">({{ selected.count }})</span>
             </div>
             <div
             class="items"
@@ -22,7 +22,7 @@
                     :key="'item-' + index"
                     @click="selected=item; open=false; $emit('input', item)"
                 >
-                {{ item.value }}
+                {{ item.value }} <span class="count" v-if="item.count">({{ item.count }})</span>
                 </div>
             </div>
         </div>
