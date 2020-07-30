@@ -80,6 +80,18 @@
     .refine-filter {
         ul {
             padding: 2.4rem;
+
+            li {
+              a {
+                cursor: pointer;
+                padding: 0.3rem 1.5rem;
+                border-radius: 3rem;
+                margin-left: -1.5rem;
+    
+                &:hover {
+                  background-color: #f2f3f9;
+                }
+              }}
         }
 
         .item {
@@ -89,6 +101,10 @@
                 border-radius: 2rem;
                 color: $color-primary-600;
                 background-color: $color-primary-300;
+
+                &:hover {
+                  background-color: #f2f3f9;
+                }
             }
         }
     }
