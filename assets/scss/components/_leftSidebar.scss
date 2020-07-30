@@ -126,6 +126,7 @@
                 width: 4rem;
                 height: 4rem;
                 float: left;
+                margin: 0 2px;
                 a {
                     width: 4rem;
                     height: 4rem;
@@ -133,13 +134,18 @@
                     padding: 8px;
                     display: block;
 
-                    &.active {
-                        background-color: #F2F3F9;
-                        
-                        .colorItem {
-                            box-shadow: none;
-                        }
+                    &:hover {
+                      background-color: #F2F3F9;
+                      cursor: pointer;
                     }
+
+                    &.active {
+                      background-color: #F2F3F9;
+                      
+                      .colorItem {
+                          box-shadow: none;
+                      }
+                  }
 
                     .colorItem {
                         width: 2.4rem;
