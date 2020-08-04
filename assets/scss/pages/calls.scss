@@ -1,0 +1,13 @@
+.calls {
+    text-align: center;
+    margin: 20px 0;
+
+    li {
+        display: inline;
+        margin: 0 10px;
+
+        &:hover {
+            color: #1f2444;
+        }
+    }
+}
