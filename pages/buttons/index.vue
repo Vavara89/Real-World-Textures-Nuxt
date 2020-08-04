@@ -140,7 +140,7 @@
               <div class="col">
                 <a
                   href="#"
-                  class="button-secondary button-secondary--inverted active"
+                  class="button-secondary button-secondary--inverted"
                 >See in gallery</a>
               </div>
             </div>
