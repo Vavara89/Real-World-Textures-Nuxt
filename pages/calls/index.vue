@@ -1,13 +1,10 @@
 <template>
-  <div >
-      <ul class="calls">
-        <li><a href="#">First</a></li>
-        <li><a href="#">Captcha failed</a></li>
-        <li><a href="#">Bookmarked</a></li>
-        <li><a href="#">Something wrong</a></li>
-        <li><a href="#">Reset password</a></li>
-    </ul>
-    <LoginModals />
+  <div class="calls">
+    <LoginModals text="Taken" modal="taken" />
+    <LoginModals text="Captcha" modal="captcha" />
+    <LoginModals text="Bookmarked" modal="bookmarked" />
+    <LoginModals text="Wrong" modal="wrong" />
+    <LoginModals text="Reset" modal="reset" />
   </div>
 </template>
 
@@ -23,7 +20,9 @@ export default {
     return {
     }
   },
-  computed: {
+  props: {
+  },
+  methods: {
   }
 };
 </script>

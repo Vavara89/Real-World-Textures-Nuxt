@@ -1,0 +1,114 @@
+.silkscreen {
+    width: 100%;
+    height: 100%;
+    background: rgba(57, 65, 115, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.modal {
+    text-align: center;
+    width: 800px;
+    max-width: 100%;
+    height: 500px;
+    max-height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 101;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: auto;
+
+    @media only screen and (max-height: 500px) {
+        align-items: stretch; 
+    }
+
+    .inner {
+        max-width: 480px;
+        line-height: 48px;
+        margin: 0 auto;
+        padding: 40px 0;
+
+        h2 {
+            font-size: 36px;
+            color: #000000;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        img {
+            margin-bottom: 30px;
+        }
+
+        .style {
+            font-size: 14px;
+            line-height: 24px;
+            text-transform: uppercase;
+        }
+
+        .green {
+            color: #4CBC81;
+            font-weight: 500;
+        }
+
+        .close {
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            right:40px;
+            top: 40px;
+            cursor: pointer;
+            background-image: url(~@/assets/img/icon-cross.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 12px 12px;
+        }
+
+        form.email {
+            margin-top: 60px;
+        }
+
+        label.email {
+            font-size: 14px;
+            color: #394174;
+        }
+
+        input.email {
+            color: #394174;
+            font-weight: 300;
+            line-height: 40px;
+            min-width: 330px;
+            height: 40px;
+            margin-left: 20px;
+            padding: 0 10px;
+            border-radius: 8px;
+            border: 1px solid #dde0ed;
+        }
+
+        button.email {
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            min-width: 220px;
+            margin-top: 50px;
+            padding: 13px 40px;
+            cursor: pointer;
+            background-color: #4CBC81;
+            border-radius: 50px;
+            border: 0;
+        }
+    }
+}
