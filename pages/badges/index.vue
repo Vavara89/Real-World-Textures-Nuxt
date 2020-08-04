@@ -19,7 +19,9 @@
             </div>
             <div class="col">
               <div class="row">
-                <label class="badge-play h4">Tutorial</label>
+                <label class="badge-play h4">
+                  <span>Tutorial</span>
+                </label>
               </div>
               <div class="row">
                 <label class="badge-play h4 active">Tutorial</label>
@@ -27,13 +29,19 @@
             </div>
             <div class="col">
               <div class="row">
-                <img src="@/assets/img/icon-bookmark-1.svg" />
+                <a href class="social__link_book">
+                  <img src="@/assets/img/icon-bookmark-1.svg" />
+                </a>
               </div>
               <div class="row">
-                <img src="@/assets/img/icon-bookmark-2.svg" />
+                <a href class="social__link_book">
+                  <img src="@/assets/img/icon-bookmark-2.svg" />
+                </a>
               </div>
               <div class="row">
-                <img src="@/assets/img/icon-bookmark-3.svg" />
+                <a href class="social__link_book">
+                  <img src="@/assets/img/icon-bookmark-3.svg" />
+                </a>
               </div>
             </div>
             <div class="col">
