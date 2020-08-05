@@ -128,11 +128,19 @@
             height: 40px;
             margin-left: 20px;
             padding: 0 10px;
+            outline: 0;
             border-radius: 8px;
             border: 1px solid #dde0ed;
 
             &.email--error {
                 border-color: #EA8181;
+            }
+
+            &::placeholder {
+                font-size: 13px;
+                color: #b2b3b8;
+                font-weight: 300;
+                line-height: 40px;
             }
 
             @media only screen and (max-width: 468px) {
@@ -151,6 +159,7 @@
             padding: 13px 40px;
             cursor: pointer;
             background-color: #4CBC81;
+            outline: 0;
             border-radius: 50px;
             border: 0;
         }

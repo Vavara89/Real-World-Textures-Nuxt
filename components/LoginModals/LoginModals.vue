@@ -47,6 +47,7 @@
             class="email"
             :class="{'email--error': errors.length && !added}"
             type="text"
+            placeholder="Your email address"
             id="email"
             v-model="email"
             name="email"
@@ -135,8 +136,12 @@ export default {
       } else if (!this.validEmail(this.email)) {
         this.errors.push("* Please, enter valid email address.");
         this.added = false;
+      } else if (!this.accountEmail(this.email)) {
+        this.errors.push("* This account does not exist.");
+        this.added = false;
       } else if (this.validEmail(this.email)) {
-        this.errors.push("Your email was successfully added");
+        this.errors.push("Your new password has been sent.");
+        this.email = '';
         this.added = true;
         return true;
       }
@@ -145,7 +150,11 @@ export default {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-    resetForm(state) {
+    accountEmail(email) {
+      // TODO: Ověřit ze seznamu již registrovaných účtů
+      return true;
+    },
+    resetForm() {
       this.email = '';
       this.errors = [];
     },
