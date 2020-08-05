@@ -44,6 +44,7 @@
         <form class="email">
           <label class="email">Your email adress</label>
           <input class="email" type="text" />
+          <div class="errors"><span v-if="isEmailError">* Please, enter valid email address</span></div>
           <button class="email">confirm</button>
         </form>
       </div>
@@ -68,13 +69,19 @@ export default {
     modal: {
       type: String,
       required: true
-    },
-    taken: false,
-    captcha: false,
-    bookmarked: false,
-    wrong: false,
-    reset: false
+    }
   },
+    data: () => ({
+        // Errors
+        isEmailError: true,
+
+        // Modals
+        taken: false,
+        captcha: false,
+        bookmarked: false,
+        wrong: false,
+        reset: false
+    }),
   methods: {
     scrollSwitcher(state){
         if(state){
