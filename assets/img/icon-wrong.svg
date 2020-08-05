@@ -1,7 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="136" height="136" viewBox="0 0 136 136">
   <g id="Group_118" data-name="Group 118" transform="translate(-1305 -208)">
     <circle id="Ellipse_37" data-name="Ellipse 37" cx="68" cy="68" r="68" transform="translate(1305 208)" fill="#ea8181"/>
-    <text id="O" transform="matrix(0.407, 0.914, -0.914, 0.407, 1379.527, 288.552)" fill="#fff" font-size="29" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="-0.382" y="30">O</tspan></text>
-    <text id=":" transform="matrix(0.208, 0.978, -0.978, 0.208, 1392.336, 260.814)" fill="#fff" font-size="46" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="3.468" y="48">:</tspan></text>
+    <g id="Ellipse_51" data-name="Ellipse 51" transform="translate(1350.81 305.792) rotate(-41)" fill="none" stroke="#fff" stroke-width="4">
+      <ellipse cx="11" cy="10.5" rx="11" ry="10.5" stroke="none"/>
+      <ellipse cx="11" cy="10.5" rx="9" ry="8.5" fill="none"/>
+    </g>
+    <circle id="Ellipse_52" data-name="Ellipse 52" cx="5" cy="5" r="5" transform="translate(1346 275)" fill="#fff"/>
+    <circle id="Ellipse_53" data-name="Ellipse 53" cx="5" cy="5" r="5" transform="translate(1365 271)" fill="#fff"/>
   </g>
 </svg>

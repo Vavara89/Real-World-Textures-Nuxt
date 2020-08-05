@@ -1,7 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="136" height="138" viewBox="0 0 136 138">
-  <g id="Group_45" data-name="Group 45" transform="translate(-1305 -207.814)">
-    <ellipse id="Ellipse_37" data-name="Ellipse 37" cx="68" cy="69" rx="68" ry="69" transform="translate(1305 207.814)" fill="#ea8181"/>
-    <text id="X" transform="matrix(0.407, 0.914, -0.914, 0.407, 1379.527, 290.367)" fill="#fff" font-size="29" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="1.053" y="30">X</tspan></text>
-    <text id=":" transform="matrix(0.208, 0.978, -0.978, 0.208, 1392.336, 261.75)" fill="#fff" font-size="46" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="3.468" y="48">:</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="136" height="136" viewBox="0 0 136 136">
+  <g id="Group_45" data-name="Group 45" transform="translate(-1305 -208)">
+    <circle id="Ellipse_37" data-name="Ellipse 37" cx="68" cy="68" r="68" transform="translate(1305 208)" fill="#ea8181"/>
+    <g id="Group_144" data-name="Group 144">
+      <path id="Path_105" data-name="Path 105" d="M1354.92,304.854l22.127,3.619" fill="none" stroke="#fff" stroke-width="4"/>
+      <path id="Path_106" data-name="Path 106" d="M1354.92,304.854l22.127,3.619" transform="translate(2121.346 -872.057) rotate(110)" fill="none" stroke="#fff" stroke-width="4"/>
+    </g>
+    <circle id="Ellipse_54" data-name="Ellipse 54" cx="5" cy="5" r="5" transform="translate(1345 275)" fill="#fff"/>
+    <circle id="Ellipse_55" data-name="Ellipse 55" cx="5" cy="5" r="5" transform="translate(1364 271)" fill="#fff"/>
   </g>
 </svg>
