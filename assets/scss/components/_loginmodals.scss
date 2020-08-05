@@ -162,6 +162,16 @@
             outline: 0;
             border-radius: 50px;
             border: 0;
+            -webkit-transition: opacity 0.2s linear;
+            -moz-transition: opacity 0.2s linear;
+            -ms-transition: opacity 0.2s linear;
+            -o-transition: opacity 0.2s linear;
+            transition: opacity 0.2s linear;
+            opacity: 1;
+
+            &:hover {
+                opacity: 0.8;
+            }
         }
     }
 }
