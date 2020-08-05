@@ -9,10 +9,10 @@
     <div class="sidebar__cnt">
       <div class="sidebar__text" v-html="card.sidebar.text"></div>
       <div class="sidebar__video">
-        <div class="sidebar__video__cover">
+        <div v-if="paused && !isSafari" class="sidebar__video__cover" @click="togglePlay">
           <!-- <img src="/assets/img/sidebar-cover.jpg"/> -->
         </div>
-        <video controls preload="auto" crossorigin>
+        <video id="videoElement" controls preload="auto" crossorigin @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused">
           <source
             src="https://rwt_public_videos.storage.googleapis.com/videos/staalboek-reawote.mp4"
             type="video/mp4"
@@ -46,11 +46,33 @@ export default {
   data() {
     return {
       isOpened: false,
+      videoElement: null,
+      paused: null,
+      isSafari: false,
     }
   },
   methods: {
     toggleSidebar() {
       this.card.sidebar.isOpened = !this.card.sidebar.isOpened;
+    },
+    updatePaused(event) {
+      this.videoElement = event.target;
+      this.paused = event.target.paused;
+    },
+    togglePlay() {
+      if (this.paused) {
+        this.videoElement.play();
+      } else {
+        this.videoElement.pause();
+      }
+    },
+  },
+  computed: {
+    playing() { return !this.paused; }
+  },
+  created(){
+    if (process.browser){
+      this.isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     }
   }
 };
