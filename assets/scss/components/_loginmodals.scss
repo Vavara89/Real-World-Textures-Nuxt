@@ -93,6 +93,10 @@
             margin: 0 5px 0 0;
             float: right;
 
+            &.success {
+                color: #4CBC81;
+            }
+
             @media only screen and (max-width: 468px) {
                 width: calc(100% - 60px); 
                 min-width: auto;
@@ -126,6 +130,10 @@
             padding: 0 10px;
             border-radius: 8px;
             border: 1px solid #dde0ed;
+
+            &.email--error {
+                border-color: #EA8181;
+            }
 
             @media only screen and (max-width: 468px) {
                 width: calc(100% - 60px); 

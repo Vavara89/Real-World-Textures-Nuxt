@@ -13,7 +13,7 @@
     <div v-if="captcha" class="modal">
       <div class="inner">
         <span @click="toggleMessage(modal)" class="close"></span>
-       <img src="@/assets/img/icon-captcha.svg" alt />
+        <img src="@/assets/img/icon-captcha.svg" alt />
         <h2>The captcha field is required.</h2>
         <p class="style">no materials for robots. sorry.</p>
         <a href="#" class="style green">try it again</a>
@@ -41,11 +41,20 @@
       <div class="inner">
         <span @click="toggleMessage(modal)" class="close"></span>
         <h2>Reset your password</h2>
-        <form class="email">
+        <form @submit="checkEmail" method="post" class="email">
           <label class="email">Your email adress</label>
-          <input class="email" type="text" />
-          <div class="errors"><span v-if="isEmailError">* Please, enter valid email address</span></div>
-          <button class="email">confirm</button>
+          <input
+            class="email"
+            :class="{'email--error': errors.length && !added}"
+            type="text"
+            id="email"
+            v-model="email"
+            name="email"
+          />
+          <div class="errors" :class="{'success': added}">
+            <span v-if="errors.length">{{ errors[0] }}</span>
+          </div>
+          <button type="submit" class="email">confirm</button>
         </form>
       </div>
     </div>
@@ -71,48 +80,75 @@ export default {
       required: true
     }
   },
-    data: () => ({
-        // Errors
-        isEmailError: true,
+  data: () => ({
+    // Reset password
+    errors: [],
+    email: null,
+    added: false,
 
-        // Modals
-        taken: false,
-        captcha: false,
-        bookmarked: false,
-        wrong: false,
-        reset: false
-    }),
+    // Modals
+    taken: false,
+    captcha: false,
+    bookmarked: false,
+    wrong: false,
+    reset: false
+  }),
   methods: {
-    scrollSwitcher(state){
-        if(state){
-            window.scrollTo(0, 0)
-            document.body.style.overflowY = "hidden";
-        } else {
-            document.body.style.overflowY = "auto";
-        }
+    scrollSwitcher(state) {
+      if (state) {
+        window.scrollTo(0, 0);
+        document.body.style.overflowY = "hidden";
+      } else {
+        document.body.style.overflowY = "auto";
+      }
     },
     toggleMessage(message) {
-        if (message === "taken") {
-            this.taken = !this.taken;
-            this.scrollSwitcher(this.taken);
-        }
-        if (message === "captcha") {
-            this.captcha = !this.captcha;
-            this.scrollSwitcher(this.captcha);
-        }
-        if (message === "bookmarked") {
-            this.bookmarked = !this.bookmarked;
-            this.scrollSwitcher(this.bookmarked);
-        }
-        if (message === "wrong") {
-            this.wrong = !this.wrong;
-            this.scrollSwitcher(this.wrong);
-        }
-        if (message === "reset") {
-            this.reset = !this.reset;
-            this.scrollSwitcher(this.reset);
-        }
-    }
+      if (message === "taken") {
+        this.taken = !this.taken;
+        this.scrollSwitcher(this.taken);
+      }
+      if (message === "captcha") {
+        this.captcha = !this.captcha;
+        this.scrollSwitcher(this.captcha);
+      }
+      if (message === "bookmarked") {
+        this.bookmarked = !this.bookmarked;
+        this.scrollSwitcher(this.bookmarked);
+      }
+      if (message === "wrong") {
+        this.wrong = !this.wrong;
+        this.scrollSwitcher(this.wrong);
+      }
+      if (message === "reset") {
+        this.reset = !this.reset;
+        this.scrollSwitcher(this.reset);
+        this.resetForm();
+      }
+    },
+    checkEmail(e) {
+      e.preventDefault();
+      this.errors = [];
+
+      if (!this.email) {
+        this.errors.push("* Please, enter your email address.");
+        this.added = false;
+      } else if (!this.validEmail(this.email)) {
+        this.errors.push("* Please, enter valid email address.");
+        this.added = false;
+      } else if (this.validEmail(this.email)) {
+        this.errors.push("Your email was successfully added");
+        this.added = true;
+        return true;
+      }
+    },
+    validEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
+    resetForm(state) {
+      this.email = '';
+      this.errors = [];
+    },
   }
 };
 </script>
