@@ -13,20 +13,45 @@
     font-weight: bold;
     margin-left: 16rem;
 
+    @media only screen and (max-width: 1000px) {
+      width: 100%;
+      margin-left: 0rem;
+    }
+
     &__part {
       &:last-child {
         min-width: 51.5rem;
         padding: 0 0 0 2.5rem;
 
+        @media only screen and (max-width: 1000px) {
+          min-width: auto;
+        }
+
         .button-primary {
           width: calc(100% + 2.5rem);
           margin: 6rem -2.5rem 0;
+
+          @media only screen and (max-width: 1000px) {
+            width: 270px;
+            margin: 6rem -0.5rem 0;
+          }
+
+          @media only screen and (max-width: 580px) {
+            width: 190px;
+            margin-left: 0rem;
+          }
         }
       }
+
+      border: 1px solid rblueed;
     }
 
     &__title {
       color: $color-primary-900;
+
+      @media only screen and (max-width: 700px) {
+        font-size: 1.5rem;
+      }
 
       span {
         color: $color-primary-600;
@@ -35,6 +60,10 @@
 
     &__subscription {
       margin-bottom: 2rem;
+
+      @media only screen and (max-width: 700px) {
+        font-size: 1.5rem;
+      }
     }
 
     .button-secondary {
