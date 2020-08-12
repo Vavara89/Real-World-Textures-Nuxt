@@ -6,12 +6,9 @@
       </nuxt-link>
       <div class="header-search">
         <input type="text" name="s" placeholder="Search" autocomplete="off" />
-        <select>
-          <option>Textures</option>
-          <option>Models</option>
-          <option>Hdris</option>
-          <option>Brands</option>
-        </select>
+
+        <Dropdown :options="options" :search="true"/>
+
       </div>
       <div class="header-nav">
         <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -53,12 +50,32 @@
 </template>
 
 <script>
+import Dropdown from "@/components/Sidebar/Dropdown";
 import SvgIconLogo from '~/assets/img/logo.svg?inline';
 
 export default {
   name: "Header",
   components: {
-    SvgIconLogo
+    SvgIconLogo,
+    Dropdown
   },
+  data() {
+    return {
+      options: [
+        {
+          value: "Textures",
+        },
+        {
+          value: "Models",
+        },
+        {
+          value: "HDRis",
+        },
+        {
+          value: "Brands",
+        },
+      ],
+    }
+  }
 };
 </script>

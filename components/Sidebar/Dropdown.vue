@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown">
+    <div class="dropdown" :class="{search: search}">
         <div
             class="custom-select"
             :tabindex="tabindex"
@@ -36,10 +36,14 @@ export default {
             type: Array,
             required: true
         },
+        search: {
+            type: Boolean,
+            required: false
+        },
         tabindex:{
       type: Number,
       required: false,
-      default: 0
+      default: 0,
     }
     },
     data() {
