@@ -4,6 +4,7 @@
             <li class="texture" v-for="(texture, index) in textures" :key="'texture-' + index">
                 <Texture :texture="texture" :shadow="shadow" />
             </li>
+            <div class="clear"></div>
         </ul>
     </div>
 </template>
