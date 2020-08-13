@@ -87,11 +87,7 @@ export default {
       textures: [
         {
           image: {
-<<<<<<< HEAD
-            url: "_nuxt/assets/img/textures/texture-technistone.png",
-=======
-            url: require("~/assets/img/textures/texture-backhausen.png"),
->>>>>>> 41b29f807bae272d632bc5cd90bea3d0093dfe43
+            url: require("~/assets/img/textures/texture-technistone.png"),
             alt: "Backhausen"
           },
           name: "Backhausen",
@@ -109,11 +105,7 @@ export default {
         },
         {
           image: {
-<<<<<<< HEAD
-            url: "_nuxt/assets/img/textures/texture-technistone.png",
-=======
-            url: require("~/assets/img/textures/texture-jafholz.png"),
->>>>>>> 41b29f807bae272d632bc5cd90bea3d0093dfe43
+            url: require("~/assets/img/textures/texture-technistone.png"),
             alt: "Jafholz"
           },
           name: "Jafholz",
