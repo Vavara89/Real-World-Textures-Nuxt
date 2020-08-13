@@ -43,8 +43,44 @@
           <li>
             <nuxt-link to="/login">Log In</nuxt-link>
           </li>
-          <li class="header-button">
+          <li class="header-button" v-if="!logged">
             <nuxt-link to="/signup">Sign Up</nuxt-link>
+          </li>
+          <li class="header-account" v-if="logged">
+             <a class="icon" @click="showAccount">Account</a>
+              <div class="logmenu" v-if="account">
+               <div class="logmenu-top">
+                  <p>{{ subscribe }} Subscription Credits</p>
+                  <p>{{ profile }}</p>
+                  <ul>
+                    <li>
+                      <a href>what's new</a>
+                    </li>
+                    <li>
+                      <a href>profile</a>
+                    </li>
+                    <li>
+                      <a href>my assests</a>
+                    </li>
+                    <li>
+                      <a href>my invoices</a>
+                    </li>
+                    <li>
+                      <a href>discount code</a>
+                    </li>
+                    <li>
+                      <a href>Pricing</a>
+                    </li>
+                    <li>
+                      <a href>Log out</a>
+                    </li>
+                  </ul>
+               </div>
+             </div>
+          </li>
+          <li class="header-fav view-mobile" v-if="logged">
+              <span>{{ counts }}</span>
+             <a href>nevim</a>
           </li>
         </ul>
       </div>
@@ -64,6 +100,9 @@ export default {
   },
   data() {
     return {
+      account: false,
+      subscribe: 332,
+      profile: 'Freelancer',
       options: [
         {
           value: "Textures",
@@ -78,7 +117,15 @@ export default {
           value: "Brands",
         },
       ],
+      // TODO: API logged / not logged
+      logged: true,
+      counts: 33,
     };
+  },
+  methods: {
+    showAccount() {
+      this.account = !this.account;
+    },
   },
 };
 </script>
