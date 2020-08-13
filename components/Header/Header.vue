@@ -43,8 +43,15 @@
           <li>
             <nuxt-link to="/login">Log In</nuxt-link>
           </li>
-          <li class="header-button">
+          <li class="header-button" v-if="!logged">
             <nuxt-link to="/signup">Sign Up</nuxt-link>
+          </li>
+          <li class="header-account" v-if="logged">
+             <a href>Account</a>
+          </li>
+          <li class="header-fav view-mobile" v-if="logged">
+              <span>{{ counts }}</span>
+             <a href>nevim</a>
           </li>
         </ul>
       </div>
@@ -78,6 +85,9 @@ export default {
           value: "Brands",
         },
       ],
+      // TODO: API logged / not logged
+      logged: true,
+      counts: 33,
     };
   },
 };
