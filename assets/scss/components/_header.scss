@@ -232,7 +232,27 @@
         color: #fff;
       }
 
-      &.header-account a {
+      &.header-account {
+        position: relative;
+
+        .logmenu {
+          position: absolute;
+          top: 50px;
+          right: 10px;
+          background: #fff;
+          width: 300px;
+          z-index: 999;
+          -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.48);
+          -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.48);
+          box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.48);
+
+          ul li {
+            display: block;
+          }
+        }
+      }
+
+      &.header-account a.icon {
         font-size: 0;
         color: transparent;
         width: 37px;
@@ -244,6 +264,7 @@
         background-image: url(~@/assets/img/icon-account.svg);
         background-repeat: no-repeat;
         background-position: center center;
+        cursor: pointer;
 
         &:hover {
           background-color: transparent !important;
@@ -386,5 +407,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow: hidden;
+
+  @media only screen and (max-width: 950px) {
+    overflow: hidden;
+  }
+
+
 }
