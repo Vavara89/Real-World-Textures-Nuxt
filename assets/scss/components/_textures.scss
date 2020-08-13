@@ -1,13 +1,18 @@
 .textures {
-  display: grid !important;
+  // display: grid !important;
   overflow: visible;
   width: 100%;
   // max-width: 154rem;
   margin: 0 auto;
-  padding: 0 5rem;
+  // padding: 0 5rem;
 
-  grid-gap: 3rem 4rem;
-  grid-template-columns: repeat(5, 1fr);
+  @media (max-width: 697px) {
+    overflow-x: auto;
+    white-space: nowrap;
+    }
+
+  // grid-gap: 3rem 4rem;
+  // grid-template-columns: repeat(5, 1fr);
 
   @include mq(lg, max) {
     // display: flex;
@@ -18,9 +23,9 @@
   }
 
   @include mq(sm, max) {
-    width: calc(100% + (2 * 2.4rem));
-    margin: 0 -2.4rem;
-    padding: 0 2.4rem;
+    width: calc(100%);
+    // margin: 0 0 0 -4.6rem;
+    // padding: 0 2.4rem;
   }
 
   &:after {
@@ -37,15 +42,27 @@
       height: 2.4rem;
     }
   }
+
+  .clear {
+    clear: both;
+  }
 }
 
 .texture {
   @include mq(md, max) {
-    flex: 0 0 22rem;
+    // flex: 0 0 22rem;
   }
   @include mq(sm, max) {
-    flex: 0 0 18rem;
+    // flex: 0 0 18rem;
   }
+  width: 20%;
+  float: left;
+
+  @media (max-width: 697px) {
+    width: 25%;
+    display: inline-block;
+    float: none;
+    }
 
   & + .texture {
     @include mq(md, max) {
@@ -56,6 +73,10 @@
   &__image {
     position: relative;
     padding-bottom: 2.4rem;
+
+    @media (max-width: 697px) {
+      padding-bottom: 1.2rem;
+      }
 
     img {
       @include transition-base;
@@ -74,10 +95,28 @@
   &__name {
     margin-bottom: .4rem;
     text-transform: uppercase;
+    font-size: 1.1vw;
+
+    @media (max-width: 697px) {
+      font-size: 1.5vw;
+      }
   }
 
   &__structure {
     margin-bottom: 2.4rem;
+    font-size: 1.1vw;
+
+    @media (max-width: 697px) {
+      font-size: 1.5vw;
+      }
+  }
+
+  &__usage {
+    font-size: 1.1vw;
+
+    @media (max-width: 697px) {
+      font-size: 1.5vw;
+      }
   }
 
   &--shadow {

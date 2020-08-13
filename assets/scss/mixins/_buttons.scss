@@ -37,6 +37,10 @@
     height:1.4rem;
     margin-top: -1rem;
     margin-right: 1rem;
+
+    @include mq(sm, max) {
+      margin-top: -0.3rem;
+    }
   }
 
   @include button-base;
