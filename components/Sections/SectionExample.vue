@@ -87,7 +87,7 @@ export default {
       textures: [
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-backhausen.png",
+            url: "_nuxt/assets/img/textures/texture-technistone.png",
             alt: "Backhausen"
           },
           name: "Backhausen",
@@ -105,7 +105,7 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-jafholz.png",
+            url: "_nuxt/assets/img/textures/texture-technistone.png",
             alt: "Jafholz"
           },
           name: "Jafholz",

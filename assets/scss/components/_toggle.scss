@@ -10,6 +10,12 @@ $toggle-height: 3.2rem;
     display: inline-block;
     border-radius: $br-round;
     background-color: $color-primary-900;
+
+    @media only screen and (max-width: 900px) {
+      &.superb {
+        right: 20px;
+      }
+    }
   }
 
   input[type="radio"] {
