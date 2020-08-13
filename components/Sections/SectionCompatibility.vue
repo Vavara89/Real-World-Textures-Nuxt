@@ -24,23 +24,23 @@ export default {
             logos: [
                 {
                     image: {
-                        url: "_nuxt/assets/img/programs/logo-cinema4d.png",
+                        url: require("~/assets/img/programs/logo-cinema4d.png"),
                         alt: "Cinema 4D"
                     }
                 },
                 {
                     image: {
-                        url: "_nuxt/assets/img/programs/logo-maya.png"
+                        url: require("~/assets/img/programs/logo-maya.png")
                     }
                 },
                 {
                     image: {
-                        url: "_nuxt/assets/img/programs/logo-autodesk.png"
+                        url: require("~/assets/img/programs/logo-autodesk.png")
                     }
                 },
                 {
                     image: {
-                        url: "_nuxt/assets/img/programs/logo-blender.png"
+                        url: require("~/assets/img/programs/logo-blender.png")
                     }
                 }
             ]

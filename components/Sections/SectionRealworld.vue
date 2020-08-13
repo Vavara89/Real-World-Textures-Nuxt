@@ -25,7 +25,7 @@
                     <img :src="texture_next" class="explore-texture-next" alt="">
                 </div>
                 <div class="explore-control">
-                    <div><a href class="explore-control-prev"><img src="@/assets/img/icon-arrow.png" alt=""></a></div>
+                    <div><a class="explore-control-prev" @click="move('prev')"><img src="@/assets/img/icon-arrow.png" alt=""></a></div>
                     <p class="explore-texture-number">{{ texture_number }}</p>
                     <p class="explore-texture-title">{{ texture_title }}</p>
                     <div><Button
@@ -34,7 +34,7 @@
                         type="secondary"
                         color=""
                     /></div>
-                    <div><a href class="explore-control-next"><img src="@/assets/img/icon-arrow.png" alt=""></a></div>
+                    <div><a class="explore-control-next" @click="move('next')"><img src="@/assets/img/icon-arrow.png" alt=""></a></div>
                 </div>
             </div>
         </div>
@@ -57,9 +57,14 @@ export default {
             title: "PBR materials and models from the real worldwide manufacturers",
             texture_number: "0059",
             texture_title: "WOODVEENER OAK COPPER2",
-            texture_current: "_nuxt/assets/img/spheres/sphere-4-1.png",
-            texture_prev: "_nuxt/assets/img/spheres/sphere-5.png",
-            texture_next: "_nuxt/assets/img/spheres/sphere-6.png"
+            texture_current: require("~/assets/img/spheres/sphere-4-1.png"),
+            texture_prev: require("~/assets/img/spheres/sphere-5.png"),
+            texture_next: require("~/assets/img/spheres/sphere-6.png")
+        }
+    },
+        methods: {
+        move(data) {
+            console.log(data);
         }
     }
 }

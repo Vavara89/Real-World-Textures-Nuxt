@@ -87,7 +87,7 @@ export default {
       textures: [
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-backhausen.png",
+            url: require("~/assets/img/textures/texture-technistone.png"),
             alt: "Backhausen"
           },
           name: "Backhausen",
@@ -96,7 +96,7 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-shipwood.png",
+            url: require("~/assets/img/textures/texture-shipwood.png"),
             alt: "Shipwood"
           },
           name: "Shipwood",
@@ -105,7 +105,7 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-jafholz.png",
+            url: require("~/assets/img/textures/texture-technistone.png"),
             alt: "Jafholz"
           },
           name: "Jafholz",
@@ -114,7 +114,7 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-princparket.png",
+            url: require("~/assets/img/textures/texture-princparket.png"),
             alt: "Princ Parket"
           },
           name: "Princ Parket",
@@ -123,7 +123,7 @@ export default {
         },
         {
           image: {
-            url: "_nuxt/assets/img/textures/texture-technistone.png",
+            url: require("~/assets/img/textures/texture-technistone.png"),
             alt: "Technistone"
           },
           name: "Technistone",

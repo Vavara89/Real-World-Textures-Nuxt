@@ -1,17 +1,17 @@
 <template>
   <header class="header" :class="$route.name=='signup'? 'header-signup' : ''">
     <div class="header-inner">
-      <nuxt-link to="/" class="header-logo" :class="{'header-logo--light': $route.name === 'signup'}">
+      <nuxt-link
+        to="/"
+        class="header-logo"
+        :class="{'header-logo--light': $route.name === 'signup'}"
+      >
         <SvgIconLogo />
       </nuxt-link>
       <div class="header-search">
         <input type="text" name="s" placeholder="Search" autocomplete="off" />
-        <select>
-          <option>Textures</option>
-          <option>Models</option>
-          <option>Hdris</option>
-          <option>Brands</option>
-        </select>
+
+        <Dropdown :options="options" :search="true" />
       </div>
       <div class="header-nav">
         <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -20,18 +20,18 @@
         </label>
         <ul class="menu">
           <li>
-            <a href = '/textures'>Textures</a>
+            <nuxt-link :to="'/textures'">Textures</nuxt-link>
           </li>
           <li>
-            <a href>Models</a>
+            <nuxt-link :to="'/textures'">Models</nuxt-link>
           </li>
           <li>
-            <a href>Hdris</a>
+            <nuxt-link :to="'/textures'">Hdris</nuxt-link>
           </li>
           <li>
-            <a href>Brands</a>
+            <nuxt-link :to="'/textures'">Brands</nuxt-link>
           </li>
-          <li>
+          <li class="line">
             <a href>About</a>
           </li>
           <li>
@@ -53,12 +53,48 @@
 </template>
 
 <script>
-import SvgIconLogo from '~/assets/img/logo.svg?inline';
+import Dropdown from "@/components/Sidebar/Dropdown";
+import SvgIconLogo from "~/assets/img/logo.svg?inline";
 
 export default {
   name: "Header",
   components: {
-    SvgIconLogo
+    SvgIconLogo,
+    Dropdown,
+  },
+  data() {
+    return {
+      options: [
+        {
+          value: "Textures",
+        },
+        {
+          value: "Models",
+        },
+        {
+          value: "HDRis",
+        },
+        {
+          value: "Brands",
+        },
+      ],
+    };
   },
 };
 </script>
+
+<style scoped>
+.line {
+  margin-left: 2.8rem;
+  padding-left: 2.8rem;
+  border-left: 1px solid #bec0c9;
+}
+
+@media only screen and (max-width: 950px) {
+  .line {
+    margin-left: 0;
+    padding-left: 0;
+    border: 0;
+  }
+}
+</style>

@@ -9,7 +9,9 @@
   }
 
   &--small {
-    max-width: 65.6rem;
+    @media only screen and (max-width: 40em) {
+      max-width: 40rem;
+    }
   }
 
   &--content {

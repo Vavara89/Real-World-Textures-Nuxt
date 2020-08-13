@@ -24,8 +24,14 @@
 
   &-search {
     margin-top: 15px;
-    margin-left: auto;
+    margin-left: 5rem;
     font-size: 0;
+    position: relative;
+
+    @media only screen and (max-width: 1310px) {
+      margin-left: auto;
+      right: 130px;
+    }
 
     input {
       width: 270px;
@@ -48,6 +54,18 @@
       }
 
       @include mq(lg, max) {
+        width: 150px;
+      }
+
+      @media only screen and (max-width: 1500px) {
+        width: 140px;
+      }
+
+      @media only screen and (max-width: 1310px) {
+        width: 270px;
+      }
+
+      @media only screen and (max-width: 580px) {
         width: 150px;
       }
     }
@@ -180,7 +198,7 @@
 
       a {
         display: block;
-        padding: 10px 20px;
+        padding: 10px 15px;
         border-radius: 30px;
         font-size: 14px;
         font-weight: 500;
@@ -196,6 +214,10 @@
         @include mq(md, max) {
           padding-left: 10px;
           padding-right: 10px;
+        }
+        
+        @media only screen and (max-width: 1500px) {
+          padding: 10px 13px;
         }
 
         &:hover {

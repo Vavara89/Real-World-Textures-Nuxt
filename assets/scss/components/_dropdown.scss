@@ -8,6 +8,30 @@
         line-height: 47px;
         z-index: 10;
       }
+
+      &.search {
+        .custom-select {
+          width: 13rem;
+        }
+
+        .selected {
+          width: 13rem;
+          border-radius:0 1.7rem 1.7rem 0;
+          color: #9093b9;
+          font-family: Poppins;
+          font-size: 14px;
+          outline: none;
+          font-weight: 500;
+          height: 42px;
+          line-height: 160%;
+          background-size: 10px 10px;
+          background-position: right 20px top 14px;
+        }
+
+        .selected.open{
+          border-radius: 0 1.7rem 0px 0px;
+        }
+      }
       
       .selected {
         background-color: #f2f3f9;
@@ -70,6 +94,20 @@
       
       .selectHide {
         display: none;
+      }
+
+      &.search {
+        position: absolute;
+        top: 0;
+        right: -130px;
+        border: none;
+        border-radius: 0 30px 30px 0;
+        color: #9093b9;
+        font-family: Poppins;
+        font-size: 14px;
+        text-transform: uppercase;
+        outline: none;
+        -webkit-appearance: none;
       }
     
 }
