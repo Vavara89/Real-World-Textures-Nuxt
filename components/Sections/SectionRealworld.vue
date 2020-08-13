@@ -57,9 +57,9 @@ export default {
             title: "PBR materials and models from the real worldwide manufacturers",
             texture_number: "0059",
             texture_title: "WOODVEENER OAK COPPER2",
-            texture_current: "_nuxt/assets/img/spheres/sphere-4-1.png",
-            texture_prev: "_nuxt/assets/img/spheres/sphere-5.png",
-            texture_next: "_nuxt/assets/img/spheres/sphere-6.png"
+            texture_current: require("~/assets/img/spheres/sphere-4-1.png"),
+            texture_prev: require("~/assets/img/spheres/sphere-5.png"),
+            texture_next: require("~/assets/img/spheres/sphere-6.png")
         }
     },
         methods: {

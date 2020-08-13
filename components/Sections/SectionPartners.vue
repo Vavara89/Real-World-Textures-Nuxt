@@ -25,70 +25,70 @@ export default {
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-mafi.png",
+                        url: require("~/assets/img/partners/logo-mafi.png"),
                         alt: "mafi logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-princparket.png",
+                        url: require("~/assets/img/partners/logo-princparket.png"),
                         alt: "Princ Parket logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-dreambeds.png",
+                        url: require("~/assets/img/partners/logo-dreambeds.png"),
                         alt: "Dreambeds logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-polstrin.png",
+                        url: require("~/assets/img/partners/logo-polstrin.png"),
                         alt: "polstrin logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-shipwood.png",
+                        url: require("~/assets/img/partners/logo-shipwood.png"),
                         alt: "ShipWood logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-shipwood.png",
+                        url: require("~/assets/img/partners/logo-shipwood.png"),
                         alt: "ShipWood logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-polstrin.png",
+                        url: require("~/assets/img/partners/logo-polstrin.png"),
                         alt: "polstrin logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-mafi.png",
+                        url: require("~/assets/img/partners/logo-mafi.png"),
                         alt: "mafi logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-princparket.png",
+                        url: require("~/assets/img/partners/logo-princparket.png"),
                         alt: "Princ Parket logo"
                     }
                 },
                 {
                     link: "#",
                     image: {
-                        url: "_nuxt/assets/img/partners/logo-dreambeds.png",
+                        url: require("~/assets/img/partners/logo-dreambeds.png"),
                         alt: "dreambeds logo"
                     }
                 }
