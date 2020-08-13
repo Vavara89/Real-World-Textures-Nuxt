@@ -17,16 +17,16 @@
         </label>
         <ul class="menu">
           <li>
-            <a href = '/textures'>Textures</a>
+            <nuxt-link :to="'/textures'">Textures</nuxt-link>
           </li>
           <li>
-            <a href>Models</a>
+            <nuxt-link :to="'/textures'">Models</nuxt-link>
           </li>
           <li>
-            <a href>Hdris</a>
+            <nuxt-link :to="'/textures'">Hdris</nuxt-link>
           </li>
           <li>
-            <a href>Brands</a>
+            <nuxt-link :to="'/textures'">Brands</nuxt-link>
           </li>
           <li>
             <a href>About</a>

@@ -80,7 +80,7 @@ export default {
             title:
                 "We are connecting architects and surface manufacturers through architectural visualisation",
             image: {
-                url: "_nuxt/assets/img/philosophy/philosophy.png",
+                url: require("~/assets/img/philosophy/philosophy.png"),
                 alt: "philosophy"
             },
             items: [
