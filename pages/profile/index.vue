@@ -1,5 +1,25 @@
 <template>
   <div>
+    <section>
+        <div class="row">
+
+            <div class="col">
+                <div class="inner">
+                <p>Let's welcome our</p>
+                <p>New partners</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna.</p>
+                    <Button
+                        link="#"
+                        text="See in gallery"
+                        type="secondary"
+                        color=""
+                    />
+            </div>
+</div>
+            <div class="col">right</div>
+
+        </div>
+    </section>
     <section class="services view-bottom">
       <div class="container container--box">
         <!-- <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" /> -->
@@ -7,6 +27,7 @@
         <p class="centered top160" v-if="button"><a href="#" class="button-primary">Load more tutorials</a></p>
       </div>
     </section>
+      <SectionSubscribe />
     <SectionFaq :noPadding="true"/>
   </div>
 </template>
@@ -14,14 +35,18 @@
 <script>
 import SectionTitle from "@/components/SectionParts/SectionTitle";
 import CardGrid from "@/components/Cards/CardGrid";
+import SectionSubscribe from "@/components/Sections/SectionSubscribe";
 import SectionFaq from "@/components/Sections/SectionFaq";
+import Button from "@/components/Button";
 
 export default {
   name: "Tutorials",
   components: {
     SectionTitle,
     CardGrid,
-    SectionFaq
+    SectionSubscribe,
+    SectionFaq,
+    Button
   },
   data() {
     return {
@@ -107,4 +132,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/pages/tutorials.scss";
+@import "@/assets/scss/pages/profile.scss";
 </style>
