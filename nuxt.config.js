@@ -1,60 +1,100 @@
-
 export default {
-    mode: 'universal',
-    /*
-    ** Headers of the page
-    */
-    head: {
-        title: process.env.npm_package_name || '',
-        meta: [
-            { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1 width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=0' },
-            { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-        ],
-        link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-        ]
-    },
-    /*
-    ** Customize the progress-bar color
-    */
-    loading: { color: '#fff' },
-    /*
-    ** Global CSS
-    */
-    css: [
-        '@/assets/scss/main.scss'
+  mode: 'universal',
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: process.env.npm_package_name || '',
+    meta: [
+      {charset: 'utf-8'},
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1 width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=0'
+      },
+      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
     ],
-    /*
-    ** Plugins to load before mounting the App
-    */
+    link: [
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+    ]
+  },
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: {color: '#fff'},
+  /*
+  ** Global CSS
+  */
+  css: [
+    '@/assets/scss/main.scss'
+  ],
+  /*
+  ** Plugins to load before mounting the App
+  */
+  /*
+  ** Nuxt.js dev-modules
+  */
+  buildModules: [],
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    '@nuxtjs/style-resources',
+    '@nuxtjs/svg',
+    '@nuxt/typescript-build'
+  ],
+  /*
+ ** Auth module
+ ** See https://auth.nuxtjs.org/
+ */
+  auth: {
     plugins: [
+      '~/plugins/auth.js'
     ],
-    /*
-    ** Nuxt.js dev-modules
-    */
-    buildModules: [
-    ],
-    /*
-    ** Nuxt.js modules
-    */
-    modules: [
-      '@nuxtjs/style-resources',
-      '@nuxtjs/svg'
-    ],
-    styleResources: {
-      scss: [
-        '@/assets/scss/_definitions.scss'
-      ]
+    redirect: {
+      login: '/login',
+      callback: '/callback',
+      logout: false
     },
-    /*
-    ** Build configuration
-    */
-    build: {
-        /*
-        ** You can extend webpack config here
-        */
-        extend(config, ctx) {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {url: '/users/auth', method: 'post', propertyName: 'access'},
+          user: {url: '/users/profile', method: 'get', propertyName: false},
+          logout: false
         }
+      },
+      facebook: {
+        client_id: '221960029050181',
+        userinfo_endpoint: 'https://graph.facebook.com/v6.0/me?fields=name,email',
+        scope: ['public_profile', 'email']
+      },
+      google: {
+        client_id: '373123692545-gm0g4sohn7fa0i9c39cln90i0b41kpe3.apps.googleusercontent.com',
+        secret: '9AU0QeNQxx_--TW0FXOe_Mim'
+      }
     }
+  },
+  styleResources: {
+    scss: [
+      '@/assets/scss/_definitions.scss'
+    ]
+  },
+  axios: {
+    baseURL: 'http://127.0.0.1:8000/api'
+  },
+  /*
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    }
+  },
+  env: {
+    baseUrl: 'http://127.0.0.1:8000/'
+  },
 }
