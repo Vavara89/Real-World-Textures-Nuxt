@@ -9,7 +9,9 @@
         <a href="#" class="style green">or get help</a>
       </div>
     </div>
+    <div class="silkscreen"></div>
   </div>
+
 
 </template>
 

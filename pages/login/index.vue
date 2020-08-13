@@ -4,11 +4,11 @@
       <div class="container container--small">
         <h1 class="login__title">{{ title }}</h1>
         <div class="login__btn-wrap">
-          <div class="button-quaternary button-quaternary--blue">
+          <div @click="facebook" class="button-quaternary button-quaternary--blue">
             sign up by
             <b>facebook</b>
           </div>
-          <div class="button-quaternary button-quaternary--salmon">
+          <div @click="google" class="button-quaternary button-quaternary--salmon">
             sing up by
             <b>google</b>
           </div>
@@ -16,23 +16,27 @@
         <div class="login__divider">
           <span>or</span>
         </div>
-        <form class="login__form">
+        <form @submit="login" class="login__form">
           <div class="login__input" :class="{'login__input--filled': checkInputMail}">
-            <input type="text" v-model="input.mail">
-            <label for="">Email address</label>
+            <input type="text" v-model="input.email">
+            <label for>Email address</label>
+            <form-input-errors v-if="hasErrors('email')" :errors="getErrors('email')"/>
+
           </div>
           <div class="login__input" :class="{'login__input--filled': checkInputPassword}">
             <input type="password" v-model="input.password">
-            <label for="">Password</label>
+            <label for>Password</label>
+            <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')"/>
+
           </div>
           <div class="login__link">
-            <nuxt-link to="/">forgotten password?</nuxt-link>
+            <nuxt-link to="/recovery">forgotten password?</nuxt-link>
           </div>
           <label class="login__checkbox" :class="{'login__checkbox--checked': rememberPassword}">
             <input type="checkbox" v-model="rememberPassword">Remember me
           </label>
           <div class="login__submit">
-            <button class="button-primary button-primary--large" type="submit">
+            <button :class="[isSubmitted ? 'loading' : '']" class="button-primary button-primary--large" type="submit">
               Log In
             </button>
           </div>
@@ -44,24 +48,74 @@
 
 <script>
 import Button from "@/components/Button";
+import FormInputErrors from '@/components/Forms/FormInputErrors'
+import keysToCamel from "@/classes/keysToCamel.ts";
 
 export default {
   components: {
     Button,
+    FormInputErrors
   },
   data() {
     return {
       title: "Account Login",
       input: {
-        mail: "",
+        email: "",
         password: "",
       },
+      invalid: false,
       rememberPassword: false,
+      isSubmitted: false,
+      formErrors: {
+        email:[],
+        password: [],
+      },
     };
+  },
+  methods: {
+    async login(e) {
+      this.cleanErrors();
+      e.preventDefault();
+      await this.$auth.loginWith('local', {
+        data: {
+          email: this.input.email,
+          password: this.input.password
+        }
+      }).catch(errors => {
+        if(errors.response.status === 400){
+          const dataErrors = keysToCamel(errors.response.data);
+          Object.keys(dataErrors).map((key)=>{this.formErrors[key] = dataErrors[key]});
+        }
+        if(errors.response.status === 401){
+            this.formErrors['email'] = ['Login or password is incorrect'];
+        }
+      }).finally(()=>{
+        this.isSubmitted = false;
+      });
+    },
+    facebook () {
+      this.$auth.loginWith('facebook');
+    },
+    google () {
+      this.$auth.loginWith('google');
+    },
+    hasErrors(input) {
+      return this.getErrors(input).length > 0;
+    },
+
+    getErrors(input) {
+      return this.formErrors[input].length ? this.formErrors[input] : [];
+    },
+    cleanErrors() {
+      Object.keys(this.formErrors).map((key) => this.cleanError(key));
+    },
+    cleanError(input) {
+      this.formErrors[input] = [];
+    },
   },
   computed: {
     checkInputMail() {
-      if (this.input.mail.length > 0) {
+      if (this.input.email.length > 0) {
         return true;
       }
       return false;

@@ -1,51 +1,24 @@
-export default {
 
+export default {
   mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Real World Textures',
     meta: [
-      {charset: 'utf-8'},
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1 width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=0'
-      },
-      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
-r    mode: 'universal',
-    /*
-    ** Headers of the page
-    */
-    head: {
-        title: 'Real World Textures',
-        meta: [
-            { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1 width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=0' },
-            { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-        ],
-        link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-        ]
-    },
-    /*
-    ** Customize the progress-bar color
-    */
-    loading: { color: '#fff' },
-    /*
-    ** Global CSS
-    */
-    css: [
-        '@/assets/scss/main.scss'
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1 width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=0' },
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: {color: '#fff'},
+  loading: { color: '#fff' },
   /*
   ** Global CSS
   */
@@ -55,10 +28,13 @@ r    mode: 'universal',
   /*
   ** Plugins to load before mounting the App
   */
+  plugins: [
+  ],
   /*
   ** Nuxt.js dev-modules
   */
-  buildModules: [],
+  buildModules: [
+  ],
   /*
   ** Nuxt.js modules
   */
@@ -69,10 +45,27 @@ r    mode: 'universal',
     '@nuxtjs/svg',
     '@nuxt/typescript-build'
   ],
+  styleResources: {
+    scss: [
+      '@/assets/scss/_definitions.scss'
+    ]
+  },
   /*
- ** Auth module
- ** See https://auth.nuxtjs.org/
- */
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    }
+  },
+  env: {
+    baseUrl: 'http://127.0.0.1:8000/'
+  },
+  axios: {
+    baseURL: 'http://127.0.0.1:8000/api'
+  },
   auth: {
     plugins: [
       '~/plugins/auth.js'
@@ -80,6 +73,7 @@ r    mode: 'universal',
     redirect: {
       login: '/login',
       callback: '/callback',
+      home: '/profile',
       logout: false
     },
     strategies: {
@@ -100,26 +94,5 @@ r    mode: 'universal',
         secret: '9AU0QeNQxx_--TW0FXOe_Mim'
       }
     }
-  },
-  styleResources: {
-    scss: [
-      '@/assets/scss/_definitions.scss'
-    ]
-  },
-  axios: {
-    baseURL: 'http://127.0.0.1:8000/api'
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-    }
-  },
-  env: {
-    baseUrl: 'http://127.0.0.1:8000/'
   },
 }

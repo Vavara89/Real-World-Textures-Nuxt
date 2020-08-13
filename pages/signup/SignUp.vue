@@ -217,7 +217,9 @@ export default {
           const dataErrors = keysToCamel(errors.response.data);
           Object.keys(dataErrors).map((key)=>{this.formErrors[key] = dataErrors[key]});
         }
-      }));
+      })).finally(()=>{
+        this.isSubmitted = false;
+      });
       await this.login();
 
     },
