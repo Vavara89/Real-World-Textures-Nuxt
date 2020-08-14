@@ -2,6 +2,10 @@
   padding: 20.8rem 0 70.8rem;
   background-color: $color-bck-light;
 
+  &.news {
+    padding-left: 0;
+  }
+
   &.view-bottom {
     padding: 10.8rem 0 20.8rem;
 

@@ -248,6 +248,46 @@
 
           ul li {
             display: block;
+
+            &.logout {
+              margin-top: 20px;
+            }
+
+            &.logout a {
+              text-transform: initial;
+              text-indent: 20px;
+              font-weight: 700;
+              background-image: url(~@/assets/img/icon-logout.svg);
+              background-repeat: no-repeat;
+              background-position: 10px  center;
+            }
+          }
+
+          ul {
+            padding: 30px;
+          }
+
+          ul li a{
+            font-weight: normal;
+          color: #9093B9;
+          }
+
+          .logmenu-top {
+            padding: 20px;
+            background-color: #F8F9FE;
+            
+            p:first-of-type {
+              font-size: 14px;
+              font-weight: bold;
+              color: #394174;
+            }
+
+            p:nth-child(2){
+              font-size: 14px;
+              color: #4CBC81;
+              text-transform: uppercase;
+              margin-top: 2px;
+            }
           }
         }
       }

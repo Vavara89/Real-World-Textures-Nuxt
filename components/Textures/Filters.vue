@@ -23,7 +23,7 @@
         to="/"
         class="filter is-active"
       >
-        >Mossy
+        Mossy
       </nuxt-link>
     </h4>
   </div>

@@ -52,6 +52,7 @@
                <div class="logmenu-top">
                   <p>{{ subscribe }} Subscription Credits</p>
                   <p>{{ profile }}</p>
+                                 </div>
                   <ul>
                     <li>
                       <a href>what's new</a>
@@ -71,11 +72,10 @@
                     <li>
                       <a href>Pricing</a>
                     </li>
-                    <li>
+                    <li class="logout">
                       <a href>Log out</a>
                     </li>
                   </ul>
-               </div>
              </div>
           </li>
           <li class="header-fav view-mobile" v-if="logged">

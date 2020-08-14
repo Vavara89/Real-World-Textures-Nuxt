@@ -4,12 +4,12 @@
       <div class="rows">
         <div class="cols">
           <div class="inner">
-            <p>Let's welcome our</p>
-            <p>New partners</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna.</p>
+            <p class="sub_heading">Let's welcome our</p>
+            <p class="heading">New partners</p>
+            <p class="perx">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna.</p>
             <Button
               link="#"
-              text="See in gallery"
+              text="Exploare all brands"
               type="secondary"
               color=""
             />
@@ -17,26 +17,60 @@
         </div>
         <div class="cols">
           <div class="wrappers">
-            <div><img src="@/assets/img/partners/1.svg" /></div>
-            <div><img src="@/assets/img/partners/2.svg" /></div>
-            <div><img src="@/assets/img/partners/3.svg" /></div>
-            <div><img src="@/assets/img/partners/1.svg" /></div>
-            <div><img src="@/assets/img/partners/2.svg" /></div>
-            <div><img src="@/assets/img/partners/3.svg" /></div>
-            <div><img src="@/assets/img/partners/1.svg" /></div>
-            <div><img src="@/assets/img/partners/2.svg" /></div>
-            <div><img src="@/assets/img/partners/3.svg" /></div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/1.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/2.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/3.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/1.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/2.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/3.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/1.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/2.svg">
+            </div>
+            <div class="boxes">
+              <img src="@/assets/img/partners/3.svg">
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="services view-bottom">
-      <div class="container container--box">
-        <!-- <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" /> -->
-        <CardGrid :cards="cards" :is-more="true" :is-tutorial="true" />
-        <p v-if="button" class="centered top160">
-          <a href="#" class="button-primary">Load more tutorials</a>
-        </p>
+    <section>
+      <div class="rows">
+        <div class="cols">
+          <div class="inner">
+            <p class="sub_heading">Have you seen</p>
+            <p class="heading">Hot news?</p>
+            <p class="perx">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna.</p>
+            <Button
+              link="#"
+              text="Join our community on FB"
+              type="secondary"
+              color=""
+            />
+          </div>
+        </div>
+        <div class="cols news">
+            <section class="services view-bottom">
+              <div class="container container--box">
+                <!-- <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" /> -->
+                <CardGrid :cards="cards" :is-more="true" :is-tutorial="true" />
+              </div>
+            </section>
+        </div>
       </div>
     </section>
     <SectionSubscribe />
@@ -106,28 +140,6 @@ export default {
         {
           image: {
             url: require('@/assets/img/tutorials/0.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/1.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/2.png'),
             alt: ''
           },
           title: 'For Manufacturers',
