@@ -4,6 +4,9 @@
             <li class="texture" v-for="(texture, index) in textures" :key="'texture-' + index">
                 <TextureItem :texture="texture" :shadow="shadow" />
                 <TooltipItem :texture="texture" :showDetail="showDetail"/>
+                <div v-if="texture.book" class="book"><img src="@/assets/img/icon-bookmark-3.svg" alt /></div>
+                <div v-if="texture.paid" class="free"><img src="@/assets/img/icon-free.svg" alt /></div>
+                <div v-if="texture.download" class="download"><img src="@/assets/img/icon-download-badge.svg" alt /></div>
             </li>
         </ul>
         <DetailModal :texture="selectedTexture" v-model="modalOpen"/>

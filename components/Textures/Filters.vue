@@ -1,19 +1,35 @@
 <template>
-    <div>
-        <h4 class="h4">
-            <span>Filter</span>
-            <span> > </span>
-            <span>All</span>
-            <span> > </span>
-            <span>Concrete</span>
-            <span> > </span>
-            <span class="filter is-active">Mossy</span>
-
-        </h4>
-    </div>
+  <div>
+    <h4 class="h4">
+      <nuxt-link
+        to="/"
+      >
+        Filter
+      </nuxt-link>
+      <span> > </span>
+      <nuxt-link
+        to="/"
+      >
+        All
+      </nuxt-link>
+      <span> > </span>
+      <nuxt-link
+        to="/"
+      >
+        Concrete
+      </nuxt-link>
+      <span> > </span>
+      <nuxt-link
+        to="/"
+        class="filter is-active"
+      >
+        >Mossy
+      </nuxt-link>
+    </h4>
+  </div>
 </template>
 <script>
 export default {
-    name: "Fitlers"
-}
+  name: 'Fitlers'
+};
 </script>

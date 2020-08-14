@@ -12,6 +12,24 @@
             position: relative;
             width: 25.5rem;
             height: 25.5rem;
+
+            .book {
+                position: absolute;
+                left: 10px;
+                top: 10px;
+            }
+
+            .free {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+
+            .download {
+                left: 10px;
+                bottom: 10px;
+                position: absolute;
+            }
         }
     }
 }
