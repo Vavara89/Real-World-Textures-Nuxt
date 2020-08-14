@@ -38,6 +38,20 @@
             margin: auto 2rem;
           }
         }
+      }
+    }
+    // }
+  }
+
+  &-cell {
+    // .cell-content {
+    .rowes {
+      display: flex;
+      justify-content: center;
+      padding: 2.4rem 0;
+      .coles {
+        margin: auto 0;
+
         .list {
           margin: 0 20px;
           li {

@@ -8,19 +8,19 @@
       </section>
          <div class="table-cell middle">
           <div class="cell-content">
-                <div class="row">
-                  <div class="col">
+                <div class="rowes">
+                  <div class="coles">
                     <a href="#" class="button active nobg">
                       <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12" />
                       <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12" />
                     </a>
                   </div>
-                  <div class="col">
+                  <div class="coles">
                     <a href="#" class="button active nobg">
                       <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
                     </a>
                   </div>
-                  <div class="col">
+                  <div class="coles">
                     <ul class="list">
                       <li><a href="#" class="active">1</a></li>
                       <li><a href="#">2</a></li>
@@ -29,12 +29,12 @@
                       <li><a href="#">5</a></li>
                     </ul>
                   </div>
-                  <div class="col">
+                  <div class="coles">
                     <a href="#" class="button active rotate nobg">
                       <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" />
                     </a>
                   </div>
-                  <div class="col">
+                  <div class="coles">
                     <a href="#" class="button active rotate nobg">
                       <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12" />
                       <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12" />

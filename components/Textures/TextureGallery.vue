@@ -7,6 +7,7 @@
             </li>
         </ul>
         <DetailModal :texture="selectedTexture" v-model="modalOpen"/>
+        <div class="clear"></div>
     </div>
 </template>
 

@@ -3,5 +3,9 @@
 
     .services {
         padding: 0;
+
+        .clear {
+            clear: both;
+        }
     }
 }
