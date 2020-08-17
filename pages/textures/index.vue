@@ -65,7 +65,11 @@ export default {
     LeftSidebar,
     ContentHeader
   },
-  data () {
+  asyncData(){
+    
+  },
+  data() {
+
     return {
       subtitle: 'Services',
       title: 'Textures',
