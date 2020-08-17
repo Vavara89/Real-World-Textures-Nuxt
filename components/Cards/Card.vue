@@ -1,15 +1,27 @@
 <template>
   <div class="card__block" :class="{'card__block--tutorial': isTutorial}">
     <div class="card__img">
-      <img :src="card.image.url" :alt="card.image.alt" />
+      <img :src="card.image.url" :alt="card.image.alt">
     </div>
     <div class="card__content">
       <header class="card__header">
-        <h3 class="card__title name">{{ card.title }}</h3>
-        <h4 class="card__subtitle h3" v-if="!isTutorial">{{ card.subtitle }}</h4>
+        <h3 class="card__title name" :class="{'profile': isProfile}">
+          {{ card.title }}
+        </h3>
+        <h4 v-if="!isTutorial" class="card__subtitle h3">
+          {{ card.subtitle }}
+        </h4>
       </header>
-      <div class="card__text text" v-html="card.text"></div>
-      <footer class="card__footer" v-if="isTutorial">
+      <span class="buttonprofile" v-if="isProfile">
+        <Button
+          link="#"
+          text="Go to gallery"
+          type="secondary"
+          color=""
+        />
+      </span>
+      <div class="card__text text" v-html="card.text" />
+      <footer v-if="isTutorial" class="card__footer">
         <Button :link="card.link" text="play tutorial" type="secondary" color="play" />
       </footer>
     </div>
@@ -17,10 +29,10 @@
 </template>
 
 <script>
-import Button from "@/components/Button";
+import Button from '@/components/Button';
 
 export default {
-  name: "Card",
+  name: 'Card',
   components: {
     Button
   },
@@ -30,6 +42,10 @@ export default {
       required: true
     },
     isTutorial: {
+      type: Boolean,
+      required: false
+    },
+    isProfile: {
       type: Boolean,
       required: false
     }

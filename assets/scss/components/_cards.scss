@@ -113,9 +113,17 @@
     flex: 1;
   }
 
+  .buttonprofile {
+    text-align: center;
+  }
+
   &__title {
     margin-bottom: .8rem;
     color: $color-primary-900;
+
+    &.profile {
+      text-align: center;
+    }
   }
 
   &__subtitle {

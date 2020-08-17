@@ -6,7 +6,7 @@
       @click="toggleSidebar(index)"
       :key="'logo-' + index"
     >
-      <Card :card="card" :isTutorial="isTutorial"/>
+      <Card :card="card" :isProfile="isProfile" :isTutorial="isTutorial"/>
     </li>
   </ul>
 </template>
@@ -29,6 +29,10 @@ export default {
       required: false
     },
     isTutorial: {
+      type: Boolean,
+      required: false
+    },
+    isProfile: {
       type: Boolean,
       required: false
     }

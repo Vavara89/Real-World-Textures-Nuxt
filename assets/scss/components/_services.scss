@@ -2,6 +2,10 @@
   padding: 20.8rem 0 70.8rem;
   background-color: $color-bck-light;
 
+  &.inprofile {
+    padding: 20.8rem 0 20.8rem;
+  }
+
   &.news {
     padding-left: 0;
   }

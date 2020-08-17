@@ -1,5 +1,15 @@
 <template>
   <div>
+    <section class="services inprofile">
+      <div class="container container--content">
+        <CardGrid :cards="boxes" :isProfile="true" />
+        <CardSidebar
+          v-for="(card, index) in boxes"
+          :key="index"
+          :card="card"
+        />
+      </div>
+    </section>
     <section>
       <div class="rows">
         <div class="cols">
@@ -86,7 +96,7 @@
       </div>
     </section>
     <section v-if="countWindow == 3">
-                  <div class="imageDetails-footer">
+      <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
@@ -124,7 +134,7 @@
         </VueSlickCarousel>
       </div>
 
-            <div class="imageDetails-footer">
+      <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
@@ -239,7 +249,7 @@
         </VueSlickCarousel>
       </div>
 
-            <div class="imageDetails-footer">
+      <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -277,7 +287,7 @@
         </VueSlickCarousel>
       </div>
 
-                  <div class="imageDetails-footer last">
+      <div class="imageDetails-footer last">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -328,6 +338,8 @@ import SectionSubscribe from '@/components/Sections/SectionSubscribe';
 import SectionFaq from '@/components/Sections/SectionFaq';
 import Button from '@/components/Button';
 
+import CardSidebar from '@/components/Cards/CardSidebar';
+
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
@@ -339,7 +351,8 @@ export default {
     SectionSubscribe,
     SectionFaq,
     Button,
-    VueSlickCarousel
+    VueSlickCarousel,
+    CardSidebar
   },
   data () {
     return {
@@ -400,6 +413,59 @@ export default {
           text:
             'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
           link: '#'
+        }
+      ],
+      boxes: [
+        {
+          image: {
+            url: require('@/assets/img/spheres/textures.png'),
+            alt: ''
+          },
+          title: 'Textures',
+          subtitle:
+            '',
+          text:
+            '',
+          link: '#',
+          sidebar: {
+            isOpened: false,
+            videoCover: '',
+            text: '<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>'
+          }
+        },
+        {
+          image: {
+            url: require('@/assets/img/spheres/models.png'),
+            alt: ''
+          },
+          title: 'Models',
+          subtitle:
+            '',
+          text:
+            '',
+          link: '#',
+          sidebar: {
+            isOpened: false,
+            videoCover: '',
+            text: '<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>'
+          }
+        },
+        {
+          image: {
+            url: require('@/assets/img/spheres/hdri.png'),
+            alt: ''
+          },
+          title: 'HDRi',
+          subtitle:
+            '',
+          text:
+            '',
+          link: '#',
+          sidebar: {
+            isOpened: false,
+            videoCover: '',
+            text: '<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>'
+          }
         }
       ],
       navCarousel: {
