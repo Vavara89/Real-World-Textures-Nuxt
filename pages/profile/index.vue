@@ -85,10 +85,201 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="imageDetails-footer last">
+    <section v-if="countWindow == 3">
+                  <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/coral.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/red.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/sand.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/brown.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+        </VueSlickCarousel>
+      </div>
+
+            <div class="imageDetails-footer">
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/coral.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/red.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/sand.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/brown.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+        </VueSlickCarousel>
+      </div>
+
+      <div class="imageDetails-footer last">
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/coral.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/red.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/sand.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/brown.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+        </VueSlickCarousel>
+      </div>
+    </section>
+    <section v-if="countWindow == 5">
+      <div class="imageDetails-footer">
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel2">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/coral.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/red.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/sand.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/brown.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+        </VueSlickCarousel>
+      </div>
+
+            <div class="imageDetails-footer">
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel2">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/coral.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/red.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/sand.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/brown.svg">
+          </div>
+          <div class="imageItem">
+            <img src="@/assets/img/textures/blue.svg">
+          </div>
+        </VueSlickCarousel>
+      </div>
+
+                  <div class="imageDetails-footer last">
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -156,6 +347,10 @@ export default {
       title: 'Tutorials',
       subtitle_textures: 'Latest releases of',
       title_textures: 'Tutorials',
+      subtitle_textures2: 'Latest releases of',
+      title_textures2: 'Models',
+      subtitle_textures3: 'Latest releases of',
+      title_textures3: 'HDRi',
       perex:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       button: 'Join our community on FB',
@@ -214,7 +409,19 @@ export default {
         centerPadding: '1px',
         variableWidth: false,
         slidesToScroll: 1,
-        slidesToShow: this.showWindow ? this.showCount() : 0,
+        slidesToShow: 3,
+        asNavFor: {},
+        initialSlide: 0,
+        useTranform: false
+      },
+      navCarousel2: {
+        dots: false,
+        infinite: false,
+        centerMode: false,
+        centerPadding: '1px',
+        variableWidth: false,
+        slidesToScroll: 1,
+        slidesToShow: 5,
         asNavFor: {},
         initialSlide: 0,
         useTranform: false
@@ -240,11 +447,13 @@ export default {
         }
       ],
       processing: false,
-      showWindow: false
+      showWindow: false,
+      countWindow: 1
     };
   },
   mounted () {
     this.navCarousel.asNavFor = this.$refs.sliderMain;
+    this.navCarousel2.asNavFor = this.$refs.sliderMain;
     this.$nextTick(function () {
       this.onResize();
     });
@@ -258,13 +467,10 @@ export default {
       this.showCount();
     },
     showCount () {
-      this.showWindow = true;
-
       if (window.innerWidth < 950) {
-        console.log(2);
-        return 3;
+        this.countWindow = 3;
       } else {
-        return 5;
+        this.countWindow = 5;
       }
     }
   }
