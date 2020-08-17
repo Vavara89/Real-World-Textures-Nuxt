@@ -66,6 +66,9 @@ export default {
     LeftSidebar,
     ContentHeader
   },
+  asyncData(){
+
+  },
   data() {
     return {
       subtitle: "Services",

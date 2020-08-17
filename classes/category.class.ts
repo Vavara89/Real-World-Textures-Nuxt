@@ -1,9 +1,9 @@
 import keysToCamel from './keysToCamel';
 
-export default class ProfileClass {
+export default class CategoryClass {
+  id: number | null = null;
   name: string | null = null;
-  description: string | null = null;
-  image: string | null = null;
+  child: [CategoryClass] | null = null;
 
   constructor (data = null) {
     if (data) {
