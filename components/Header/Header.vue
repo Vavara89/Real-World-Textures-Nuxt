@@ -40,7 +40,7 @@
           <li>
             <a href>Pricing</a>
           </li>
-          <li>
+          <li v-if="!logged">
             <nuxt-link to="/login">Log In</nuxt-link>
           </li>
           <li class="header-button" v-if="!logged">

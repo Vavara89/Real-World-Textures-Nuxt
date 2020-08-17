@@ -148,243 +148,56 @@ export default {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: true,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: true,
-          paid: false,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: false,
-          download: true
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: true,
-          paid: true,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: false,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: false,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: false,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
             url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: false,
-          download: false
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2',
-          consist: [
-            'Diffuse map',
-            'Ambient occlusion map',
-            'Displacement map',
-            'Normal map',
-            'Reflection map',
-            'Gloss map'
-          ],
-          description: 'Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Integer pellentesque quam vel velit. Maecenas libero porro quisquam.',
-          free: true,
-          tutorial: true,
-          credits: 10,
-          brand: {
-            name: 'Your Brand',
-            link: 'www.your-brand.com'
-          },
-          ribbon: require('@/assets/img/icon-bookmark-3.svg'),
-          book: false,
-          paid: false,
-          download: false
+          title: '0059 WOODVEENER OAK COPPER2'
         }
       ]
     };
