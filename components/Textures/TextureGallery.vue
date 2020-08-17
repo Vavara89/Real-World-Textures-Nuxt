@@ -1,9 +1,9 @@
 <template>
   <div class="textgallery">
     <ul class="textures">
-      <li v-for="(texture, index) in textures" :key="'texture-' + index" class="texture">
+      <li v-for="(texture, index) in textures" :key="'texture-' + index" class="texture brands">
         <TextureItem :texture="texture" :shadow="shadow" />
-        <TooltipItem :texture="texture" :show-detail="showDetail" />
+        <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" />
         <div v-if="texture.book" class="book">
           <img src="@/assets/img/icon-bookmark-3.svg" alt>
         </div>
@@ -40,6 +40,10 @@ export default {
     shadow: {
       type: Boolean,
       default: false
+    },
+    detail: {
+      type: Boolean,
+      default: true
     }
   },
   data () {

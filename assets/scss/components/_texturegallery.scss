@@ -13,6 +13,18 @@
             width: 25.5rem;
             height: 25.5rem;
 
+            &.brands {
+                margin: 10px;
+                width: 21.1rem;
+                height: 10.8rem;
+                border-radius: 8px;
+                background-color: #fff;
+                text-align: center;
+                display: flex;
+  justify-content: center;
+  align-items: center;
+            }
+
             .book {
                 position: absolute;
                 left: 10px;
