@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ul class="textures">
+        <ul class="textures" :class="{'mainpage': mainpage}">
             <li class="texture" v-for="(texture, index) in textures" :key="'texture-' + index">
                 <Texture :texture="texture" :shadow="shadow" />
             </li>
@@ -23,6 +23,10 @@ export default {
             required: true
         },
         shadow: {
+            type: Boolean,
+            default: false
+        },
+        mainpage: {
             type: Boolean,
             default: false
         }

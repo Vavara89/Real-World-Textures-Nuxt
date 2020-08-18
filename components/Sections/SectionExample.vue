@@ -25,13 +25,13 @@
         </VueSlickCarousel>
         <VueSlickCarousel ref="sliderMain" v-bind="mainCarousel">
           <div>
-            <TextureGrid :textures="textures" :shadow="true" />
+            <TextureGrid :textures="textures" :shadow="true" :mainpage="true" />
           </div>
           <div>
-            <TextureGrid :textures="textures" :shadow="true" />
+            <TextureGrid :textures="textures" :shadow="true" :mainpage="true" />
           </div>
           <div>
-            <TextureGrid :textures="textures" :shadow="true" />
+            <TextureGrid :textures="textures" :shadow="true" :mainpage="true" />
           </div>
         </VueSlickCarousel>
       </div>

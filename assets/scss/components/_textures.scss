@@ -7,10 +7,13 @@
   // padding: 0 5rem;
 
   // TODO
-  // @media (max-width: 697px) {
-  //   overflow-x: auto;
-  //   white-space: nowrap;
-  //   }
+
+  &.mainpage {
+    @media (max-width: 697px) {
+      overflow-x: auto;
+      white-space: nowrap;
+      }
+  }
 
   // grid-gap: 3rem 4rem;
   // grid-template-columns: repeat(5, 1fr);
