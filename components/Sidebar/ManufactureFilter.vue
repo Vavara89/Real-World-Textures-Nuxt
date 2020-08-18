@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <button class="toggleOption" @click="toggleOption">
+  <div class="area">
+    <button v-if="!brands" class="toggleOption" @click="toggleOption">
       Select a manufacturer
     </button>
     <div>
       <h3 class="h3">
-        Manufactured in
+        Select by area
       </h3>
       <Dropdown :options="confidents" />
       <div class="header-search">
@@ -30,6 +30,10 @@ export default {
     confidents: {
       type: Array,
       required: true
+    },
+    brands: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -202,4 +206,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     @import "@/assets/scss/components/_leftSidebar.scss";
+
+    .area {
+        text-align: center;
+    }
 </style>

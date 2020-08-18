@@ -43,6 +43,7 @@
                     margin: 0 -1.7rem;
                     padding: 1rem 3.3rem;
                     border: none;
+                    font-weight: bold;
                     border-radius: 5rem;
                     background-color: $color-primary-700;
                     color: $color-white;
@@ -62,11 +63,15 @@
                 
                 .flex-row-item {
                 text-align: center;
-                padding-bottom: 10px;
+                margin-bottom: 10px;
 
-                  &.links{
+                &.links{
                     text-align: left;
-                }
+                    }
+
+                    &.where{
+                        padding: 0 10px;
+                        }
                 }
             }
 

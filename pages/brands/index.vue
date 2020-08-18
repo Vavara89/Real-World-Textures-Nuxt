@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <LeftSidebar />
+    <LeftSidebar :brands="true" />
     <div class="page-content">
       <ContentHeader />
       <section class="services view-bottom">

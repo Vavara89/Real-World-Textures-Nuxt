@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <LeftSidebar />
+    <LeftSidebar :brandsdetail="true" />
     <div class="page-content">
       <ContentHeader />
       <section class="branddetail">
@@ -39,7 +39,7 @@
                     </nuxt-link>
                     </h4>
                   </div>
-                  <div class="flex-row-item">
+                  <div class="flex-row-item where">
                     <Button
                       link="#"
                       :text="manufactorList[0].site"
