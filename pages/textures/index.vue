@@ -66,7 +66,7 @@ export default {
     ContentHeader
   },
   asyncData(){
-    
+
   },
   data() {
 
