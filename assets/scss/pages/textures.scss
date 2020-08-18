@@ -8,4 +8,89 @@
             clear: both;
         }
     }
+
+    .branddetail {
+        padding: 0 5rem;
+        margin-top: 10rem;
+        margin-bottom: 15rem;
+
+        .all {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 30px;
+          }
+          
+          .column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+          }
+          
+          .blue-column {
+            min-width: 354px;
+            margin-right: 10px;
+
+            @media only screen and (max-width: 1090px) {
+                margin-right: 0;
+                margin-bottom: 30px;
+              }
+
+            .top {
+                .toggleOption {
+                    margin: 0 -1.7rem;
+                    padding: 1rem 3.3rem;
+                    border: none;
+                    border-radius: 5rem;
+                    background-color: $color-primary-700;
+                    color: $color-white;
+                    text-transform: uppercase;
+                }
+
+                .flex-row-container {
+                    margin-bottom: 40px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .flex-row-container > .flex-row-item {
+                    flex: 1 1 30%; /*grow | shrink | basis */
+                }
+                
+                .flex-row-item {
+                text-align: center;
+                padding-bottom: 10px;
+
+                  &.links{
+                    text-align: left;
+                }
+                }
+            }
+
+            .text {
+                font-size: 14px;
+                color: #9093B9;
+                font-weight: 500;
+            }
+          }
+          
+          .green-column {
+              width: 354px;
+              height: 177px;
+              line-height: 17.7rem;
+              margin: auto;
+              background-color: #fff;
+              text-align: center;
+
+              img {
+                max-width: 13.1rem;
+                max-height: 8rem;
+                display: inline-block;
+                vertical-align: middle;
+              }
+          }
+    }
 }
