@@ -15,6 +15,16 @@
     background-image: none;
   }
 
+  &.profile {
+    @include mq(xl, min) {
+      position: static;
+      margin-top: 0;
+      margin-bottom: 20rem;
+      height: auto;
+      background-image: none;
+    }
+  }
+
   &-outer {
     border-radius: 10px;
     background-color: #1f2444;

@@ -58,6 +58,21 @@
   width: 20%;
   float: left;
 
+
+  &:hover {
+
+      .texture__image img {
+        transform: scale(1.15);
+        transition-duration: 0.3s;
+        transition-property: all;
+        transition-timing-function: ease-in-out;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-in-out;
+      }
+    
+  }
+
   @media (max-width: 697px) {
     width: 25%;
     display: inline-block;
@@ -126,6 +141,16 @@
 
   &--shadow {
     .texture__image {
+      img {
+        transform: scale(1);
+        transition-duration: 0.3s;
+        transition-property: all;
+        transition-timing-function: ease-in-out;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-in-out;
+      }
+
       &:after {
         position: absolute;
         right: 0;

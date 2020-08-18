@@ -287,7 +287,7 @@
         </VueSlickCarousel>
       </div>
 
-      <div class="imageDetails-footer last">
+      <div class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -325,8 +325,7 @@
         </VueSlickCarousel>
       </div>
     </section>
-    <SectionSubscribe />
-    <SectionFaq :no-padding="true" />
+    <SectionSubscribe :isProfile="true" />
   </div>
 </template>
 
@@ -335,7 +334,6 @@ import VueSlickCarousel from 'vue-slick-carousel';
 import SectionTitle from '@/components/SectionParts/SectionTitle';
 import CardGrid from '@/components/Cards/CardGrid';
 import SectionSubscribe from '@/components/Sections/SectionSubscribe';
-import SectionFaq from '@/components/Sections/SectionFaq';
 import Button from '@/components/Button';
 
 import CardSidebar from '@/components/Cards/CardSidebar';
@@ -349,7 +347,6 @@ export default {
     SectionTitle,
     CardGrid,
     SectionSubscribe,
-    SectionFaq,
     Button,
     VueSlickCarousel,
     CardSidebar
@@ -359,7 +356,7 @@ export default {
       subtitle: 'Services',
       title: 'Tutorials',
       subtitle_textures: 'Latest releases of',
-      title_textures: 'Tutorials',
+      title_textures: 'Textures',
       subtitle_textures2: 'Latest releases of',
       title_textures2: 'Models',
       subtitle_textures3: 'Latest releases of',
