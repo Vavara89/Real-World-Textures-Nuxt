@@ -1,6 +1,6 @@
 <template>
   <div class="texture__block" :class="shadow ? 'texture--shadow' : ''">
-    <div class="texture__image brands">
+    <div class="texture__image" :class="{'brands': isBrand}">
       <img :src="texture.image.url" :alt="texture.image.alt">
     </div>
     <div v-if="texture.name || texture.structure || texture.usage" class="texture__content">
@@ -26,6 +26,10 @@ export default {
       required: true
     },
     shadow: {
+      type: Boolean,
+      default: false
+    },
+    isBrand: {
       type: Boolean,
       default: false
     }
