@@ -30,12 +30,12 @@
               </ul>
             </div>
             <div class="coles">
-              <a href="#" class="button active rotate nobg">
+              <a href="#" class="button active rotate nobg hover">
                 <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
               </a>
             </div>
             <div class="coles">
-              <a href="#" class="button active rotate nobg">
+              <a href="#" class="button active rotate nobg hover">
                 <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
                 <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
               </a>
@@ -58,18 +58,14 @@ import ContentHeader from '@/components/Textures/ContentHeader';
 export default {
   name: 'Textures',
   components: {
-    SectionTitle,
-    CardGrid,
-    SectionFaq,
     TextureGallery,
     LeftSidebar,
     ContentHeader
   },
-  asyncData(){
-    
-  },
-  data() {
+  asyncData () {
 
+  },
+  data () {
     return {
       subtitle: 'Services',
       title: 'Textures',

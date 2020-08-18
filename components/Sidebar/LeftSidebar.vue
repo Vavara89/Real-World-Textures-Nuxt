@@ -243,7 +243,22 @@ export default {
       },
       confidents: [
         {
-          value: 'Select a Continent'
+          value: 'Asia'
+        },
+        {
+          value: 'Africa'
+        },
+        {
+          value: 'Australia'
+        },
+        {
+          value: 'Europe'
+        },
+        {
+          value: 'North America'
+        },
+        {
+          value: 'South America'
         }
       ],
       colorList: {

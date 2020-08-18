@@ -7,8 +7,8 @@
       <h3 class="h3">
         Select by area
       </h3>
-      <Dropdown :options="confidents" />
-      <div class="header-search">
+      <Dropdown :options="confidents" :full="true" />
+      <div class="header-search noright">
         <input type="text" name="s" placeholder="Search a Country" autocomplete="off">
       </div>
     </div>

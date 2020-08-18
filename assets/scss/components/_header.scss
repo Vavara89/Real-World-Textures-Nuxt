@@ -31,6 +31,10 @@
     @media only screen and (max-width: 1310px) {
       margin-left: auto;
       right: 130px;
+
+      &.noright {
+        right: 0;
+      }
     }
 
     input {
