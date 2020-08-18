@@ -1,10 +1,10 @@
 <template>
   <div class="page-container">
-    <LeftSidebar />
+    <LeftSidebar/>
     <div class="page-content">
-      <ContentHeader />
+      <ContentHeader/>
       <section class="services view-bottom">
-        <TextureGallery :textures="textures" />
+        <TextureGallery :textures="textures"/>
       </section>
       <div class="table-cell middle">
         <div class="cell-content">
@@ -62,10 +62,11 @@ export default {
     LeftSidebar,
     ContentHeader
   },
-  asyncData () {
+  asyncData() {
 
   },
-  data () {
+
+  data() {
     return {
       subtitle: 'Services',
       title: 'Textures',
@@ -206,5 +207,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "@/assets/scss/pages/textures.scss";
+@import "@/assets/scss/pages/textures.scss";
 </style>
