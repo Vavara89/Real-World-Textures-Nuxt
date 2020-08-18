@@ -12,15 +12,15 @@
             position: relative;
             width: 25.5rem;
             height: 25.5rem;
-
+            
             &.brands {
-                margin: 10px;
+                margin: 15px;
                 width: 21.1rem;
                 height: 10.8rem;
                 border-radius: 8px;
                 background-color: #fff;
                 text-align: center;
-                box-shadow: 0 1rem 2.4rem rgba($color-primary-900, .3);
+                transform-style: preserve-3d;
 
                 transform: scale(1);
                 transition-duration: 0.3s;
@@ -30,7 +30,27 @@
                 -webkit-transition-duration: 0.3s;
                 -webkit-transition-timing-function: ease-in-out;
 
+                &::after {
+                    transform: translateZ(-1px);
+                    position: absolute;
+                    z-index: -1; 
+                    right: 0;
+                    bottom: -4px;
+                    left: 0;
+                    display: block;
+                    width: 75%;
+                    height: .32rem;
+                    margin: 0 auto;
+                    content: "";
+                    border-radius: 50%;
+                    background-color: rgba($color-primary-900, .0);
+            
+                    filter: blur(.4rem);
+                    @include transition-base;
+                  }
+
                 &:hover {
+
                     transform: scale(1.08);
                     transition-duration: 0.3s;
                     transition-property: all;
@@ -38,6 +58,9 @@
                     -webkit-transition-property: all;
                     -webkit-transition-duration: 0.3s;
                     -webkit-transition-timing-function: ease-in-out;
+                    &::after {
+                        background-color: rgba($color-primary-900, .4);
+                      }
                 }
             }
 
