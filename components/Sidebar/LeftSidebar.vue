@@ -353,8 +353,6 @@ export default {
 }
 
 .profile {
-  padding: 0 !important;
-  margin: 0;
 
   li {
     text-align: center;
