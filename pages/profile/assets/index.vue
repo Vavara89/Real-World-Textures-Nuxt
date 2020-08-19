@@ -1,52 +1,48 @@
 <template>
   <div class="page-container">
-    <LeftSidebar :profile="true" />
+    <LeftSidebar/>
     <div class="page-content">
+      <ContentHeader :assets="true" />
       <section class="services view-bottom">
-        <div class="wrapper-profile">
-          <div class="wrapper-inner">
-            <div class="containers">
-              <div class="iconic" />
-              <div class="left">
-                <h2>Jiří Slovák</h2><h3>jirislovak@email.com<h3 /></h3>
-                <div class="tabs">
-                  <ul>
-                    <li
-                      :class="{'selected': cardProfile}"
-                      @click="toggleSelected('profile')"
-                    >
-                      Profile</li>
-                    <li
-                      :class="{'selected': cardBilling}"
-                      @click="toggleSelected('billing')"
-                    >
-                      Billing info</li>
-                    <li
-                      :class="{'selected': cardPassword}"
-                      @click="toggleSelected('password')"
-                    >
-                      Change password</li>
-                  </ul>
-                </div>
-                <div class="tabs-content">
-                <div v-if="cardProfile">
-                  Profile
-                </div>
-                <div v-if="cardBilling">
-                  Billing info
-                </div>
-                <div v-if="cardPassword">
-                  Change password
-                </div>
-              </div>
-              </div>
-              <div class="right">
-                card
-              </div>
+        <TextureGallery :textures="textures"/>
+      </section>
+      <div class="table-cell middle">
+        <div class="cell-content">
+          <div class="rowes">
+            <div class="coles">
+              <a href="#" class="button active nobg">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
+              </a>
+            </div>
+            <div class="coles">
+              <a href="#" class="button active nobg">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+              </a>
+            </div>
+            <div class="coles">
+              <ul class="list">
+                <li><a href="#" class="active">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+              </ul>
+            </div>
+            <div class="coles">
+              <a href="#" class="button active rotate nobg hover">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+              </a>
+            </div>
+            <div class="coles">
+              <a href="#" class="button active rotate nobg hover">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
+              </a>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 </template>
@@ -62,19 +58,16 @@ import ContentHeader from '@/components/Textures/ContentHeader';
 export default {
   name: 'Textures',
   components: {
-    SectionTitle,
-    CardGrid,
-    SectionFaq,
     TextureGallery,
     LeftSidebar,
     ContentHeader
   },
-  data () {
-    return {
-      cardProfile: true,
-      cardBilling: false,
-      cardPassword: false,
+  asyncData() {
 
+  },
+
+  data() {
+    return {
       subtitle: 'Services',
       title: 'Textures',
       perex:
@@ -153,91 +146,66 @@ export default {
       textures: [
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/brands/logo.png'),
+            url: require('@/assets/img/textures/texture-jafholz.png'),
             alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
+          },
+          title: '0059 WOODVEENER OAK COPPER2'
         }
       ]
     };
-  },
-  methods: {
-    toggleSelected (data) {
-      if (data === 'profile') {
-        this.cardProfile = true;
-        this.cardBilling = false;
-        this.cardPassword = false;
-      }
-
-      if (data === 'billing') {
-        this.cardProfile = false;
-        this.cardBilling = true;
-        this.cardPassword = false;
-      }
-
-      if (data === 'password') {
-        this.cardProfile = false;
-        this.cardBilling = false;
-        this.cardPassword = true;
-      }
-    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/pages/profile.scss";
+@import "@/assets/scss/pages/textures.scss";
 </style>
