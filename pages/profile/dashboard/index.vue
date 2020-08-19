@@ -15,30 +15,110 @@
                       :class="{'selected': cardProfile}"
                       @click="toggleSelected('profile')"
                     >
-                      Profile</li>
+                      Profile
+                    </li>
                     <li
                       :class="{'selected': cardBilling}"
                       @click="toggleSelected('billing')"
                     >
-                      Billing info</li>
+                      Billing info
+                    </li>
                     <li
                       :class="{'selected': cardPassword}"
                       @click="toggleSelected('password')"
                     >
-                      Change password</li>
+                      Change password
+                    </li>
                   </ul>
                 </div>
                 <div class="tabs-content">
-                <div v-if="cardProfile">
-                  Profile
+                  <div v-if="cardProfile" class="is-profile">
+                    <table style="width: 521px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            First Name
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="name" placeholder="Enter name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Last Name
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="surname" placeholder="Enter last name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Email Address
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="email" placeholder="Enter email">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Business Name
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="company" placeholder="Enter company">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center;" colspan="2">
+                            <button class="toggleOption">
+                              Update info
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div v-if="cardBilling">
+                    Billing info
+                  </div>
+                  <div v-if="cardPassword" class="is-profile">
+                    <table style="width: 521px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Old Password
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="oldpwd" placeholder="Old password">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            New Password
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="newpwd" placeholder="New password">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Confirm Password
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="newpwdconf" placeholder="New password confirmation">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="text-align: center;" colspan="2">
+                            <button class="toggleOption">
+                              Update password
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                <div v-if="cardBilling">
-                  Billing info
-                </div>
-                <div v-if="cardPassword">
-                  Change password
-                </div>
-              </div>
               </div>
               <div class="right">
                 card
