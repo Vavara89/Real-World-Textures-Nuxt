@@ -48,17 +48,16 @@ export default {
       type: Number,
       required: false,
       default: 0
-    }
+    },
+    selected_option: null,
   },
   data () {
     return {
-      selected: this.options.length > 0 ? this.options[0] : null,
+      selected: this.selected_option ? this.selected_option : this.options.length > 0 ? this.options[0] : null,
       open: false
     };
   },
-  mounted () {
-    this.$emit('input', this.selected);
-  }
+
 };
 </script>
 <style lang="scss" scoped>
