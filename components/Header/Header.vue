@@ -6,15 +6,11 @@
         class="header-logo"
         :class="{'header-logo--light': $route.name === 'signup'}"
       >
-        <SvgIconLogo />
+        <SvgIconLogo/>
       </nuxt-link>
-      <div class="header-search">
-        <input type="text" name="s" placeholder="Search" autocomplete="off" />
-
-        <Dropdown :options="options" :search="true" />
-      </div>
+      <header-search></header-search>
       <div class="header-nav">
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <input class="menu-btn" type="checkbox" id="menu-btn"/>
         <label class="menu-icon" for="menu-btn">
           <span class="navicon"></span>
         </label>
@@ -47,40 +43,40 @@
             <nuxt-link to="/signup">Sign Up</nuxt-link>
           </li>
           <li class="header-account" v-if="logged">
-             <a class="icon" @click="showAccount">Account</a>
-              <div class="logmenu" v-if="account">
-               <div class="logmenu-top">
-                  <p>{{ subscribe }} Subscription Credits</p>
-                  <p>{{ profile }}</p>
-                                 </div>
-                  <ul>
-                    <li>
-                      <a href>what's new</a>
-                    </li>
-                    <li>
-                      <a href>profile</a>
-                    </li>
-                    <li>
-                      <a href>my assests</a>
-                    </li>
-                    <li>
-                      <a href>my invoices</a>
-                    </li>
-                    <li>
-                      <a href>discount code</a>
-                    </li>
-                    <li>
-                      <a href>Pricing</a>
-                    </li>
-                    <li class="logout">
-                      <a href>Log out</a>
-                    </li>
-                  </ul>
-             </div>
+            <a class="icon" @click="showAccount">Account</a>
+            <div class="logmenu" v-if="account">
+              <div class="logmenu-top">
+                <p>{{ subscribe }} Subscription Credits</p>
+                <p>{{ profile }}</p>
+              </div>
+              <ul>
+                <li>
+                  <a href>what's new</a>
+                </li>
+                <li>
+                  <a href>profile</a>
+                </li>
+                <li>
+                  <a href>my assests</a>
+                </li>
+                <li>
+                  <a href>my invoices</a>
+                </li>
+                <li>
+                  <a href>discount code</a>
+                </li>
+                <li>
+                  <a href>Pricing</a>
+                </li>
+                <li class="logout">
+                  <a href>Log out</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="header-fav view-mobile" v-if="logged">
-              <span>{{ counts }}</span>
-             <a href>nevim</a>
+            <span>{{ counts }}</span>
+            <a href>nevim</a>
           </li>
         </ul>
       </div>
@@ -89,43 +85,30 @@
 </template>
 
 <script>
-import Dropdown from "@/components/Sidebar/Dropdown";
 import SvgIconLogo from "~/assets/img/logo.svg?inline";
+import HeaderSearch from "~/components/Header/HeaderSearch"
 
 export default {
   name: "Header",
   components: {
     SvgIconLogo,
-    Dropdown,
+    HeaderSearch
   },
   data() {
     return {
       account: false,
       subscribe: 332,
       profile: 'Freelancer',
-      options: [
-        {
-          value: "Textures",
-        },
-        {
-          value: "Models",
-        },
-        {
-          value: "HDRis",
-        },
-        {
-          value: "Brands",
-        },
-      ],
       // TODO: API logged / not logged
       logged: true,
       counts: 33,
     };
   },
+
   methods: {
     showAccount() {
       this.account = !this.account;
-    },
+    }
   },
 };
 </script>
