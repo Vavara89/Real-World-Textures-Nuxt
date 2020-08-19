@@ -33,7 +33,7 @@
                 </div>
                 <div class="tabs-content">
                   <div v-if="cardProfile" class="is-profile">
-                    <table style="width: 521px;">
+                    <table style="width: 621px;">
                       <tbody>
                         <tr>
                           <td style="width: 150px;" class="is-first">
@@ -77,8 +77,49 @@
                       </tbody>
                     </table>
                   </div>
-                  <div v-if="cardBilling">
-                    Billing info
+                  <div v-if="cardBilling" class="is-profile">
+                    <table style="width: 621px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 250px;" class="is-first">
+                            Payment Method
+                          </td>
+                          <td style="width: 200px;">
+                            CC Ending with 4329
+                          </td>
+                          <td style="width: 134px;">
+                            <img src="@/assets/img/cards/mastercard.png" class="bank">
+                          </td>
+                          <td style="width: 92px;">
+                            <span>Edit</span>
+                          </td>
+                          <td style="width: 92px;">
+                            <span>Remove</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 250px;" class="is-first top">
+                            Billing Address
+                          </td>
+                          <td style="width: 200px;">
+                            Vyhoňkopec 1471
+                            735 32 Rychvald
+                            Czech republic
+                            <br><br>
+                            VAT: 12345678
+                          </td>
+                          <td style="width: 134px;">
+&nbsp;
+                          </td>
+                          <td style="width: 92px;">
+                            <span>Edit</span>
+                          </td>
+                          <td style="width: 92px;">
+&nbsp;
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                   <div v-if="cardPassword" class="is-profile">
                     <table style="width: 521px;">

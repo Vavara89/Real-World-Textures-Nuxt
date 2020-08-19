@@ -302,6 +302,10 @@
                                     font-size: 14px;
                                     font-weight: normal;
                                     color: #394174;
+
+                                    &.top {
+                                        padding-top: 40px;
+                                    }
                                 }
 
                                 &.is-second {
@@ -327,6 +331,15 @@
                                         font-size: 14px;
                                         font-weight: lighter;
                                     }
+                                }
+
+                                span {
+                                    color: #4CBC81;
+                                    text-transform: uppercase;
+                                }
+
+                                .bank {
+                                    margin-left: 15px;
                                 }
                             }
                     }
