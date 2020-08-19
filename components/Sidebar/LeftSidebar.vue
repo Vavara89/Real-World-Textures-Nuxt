@@ -1,30 +1,66 @@
 <template>
-  <div class="leftsidebar">
-    <Dropdown :options="options" />
-    <div class="materials-menu">
-      <MaterialMenu :list="materials" />
+  <div>
+    <div v-if="!profile" class="leftsidebar">
+      <Dropdown :options="options" />
+      <div class="materials-menu">
+        <MaterialMenu :list="materials" />
+      </div>
+      <div v-if="!brands" class="refine-filter">
+        <RefineFilter :options="refineList" />
+      </div>
+      <div v-if="!(brands || brandsdetail)" class="brands-filter">
+        <RefineFilter :options="brandsList" />
+      </div>
+      <div v-if="!brandsdetail" class="manufacture-filter">
+        <ManufactureFilter :confidents="confidents" :brands="brands" />
+      </div>
+      <div v-if="!(brands || brandsdetail)" class="color-filter">
+        <ColorFilter :options="colorList" />
+      </div>
+      <div v-if="!(brands || brandsdetail)">
+        <button class="clearFilter h4">
+          Clear all Filters
+        </button>
+      </div>
+      <div v-if="brands" class="fil">
+        <button class="toggleOption">
+          Clear all filters
+        </button>
+      </div>
     </div>
-    <div v-if="!brands" class="refine-filter">
-      <RefineFilter :options="refineList" />
-    </div>
-    <div v-if="!(brands || brandsdetail)" class="brands-filter">
-      <RefineFilter :options="brandsList" />
-    </div>
-    <div v-if="!brandsdetail" class="manufacture-filter">
-      <ManufactureFilter :confidents="confidents" :brands="brands" />
-    </div>
-    <div v-if="!(brands || brandsdetail)" class="color-filter">
-      <ColorFilter :options="colorList" />
-    </div>
-    <div v-if="!(brands || brandsdetail)">
-      <button class="clearFilter h4">
-        Clear all Filters
-      </button>
-    </div>
-    <div v-if="brands" class="fil">
-      <button class="toggleOption">
-        Clear all filters
-      </button>
+    <div v-if="profile" class="leftsidebar profileside">
+      <ul class="profile">
+        <li>
+          <nuxt-link to="/" class="active">
+            Profile
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/">
+            My assets
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/">
+            My invoices
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/">
+            Discount code
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/">
+            Pricing
+          </nuxt-link>
+        </li>
+      </ul>
+      <div class="logout">
+      <nuxt-link to="/">
+            Log out
+      </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +86,10 @@ export default {
       default: false
     },
     brandsdetail: {
+      type: Boolean,
+      default: false
+    },
+    profile: {
       type: Boolean,
       default: false
     }
@@ -310,5 +350,29 @@ export default {
   background-color: $color-primary-700;
   color: $color-white;
   text-transform: uppercase;
+}
+
+.profile {
+
+  li {
+    text-align: center;
+    margin: 5px 0;
+
+    a {
+      width: 100%;
+      padding: 20px 0;
+      display: block;
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    a:hover {
+      background-color: #f2f3f9;
+    }
+
+    .active {
+      background-color: #f2f3f9;
+    }
+  }
 }
 </style>
