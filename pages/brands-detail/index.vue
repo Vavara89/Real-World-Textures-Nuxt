@@ -108,7 +108,8 @@
         </div>
       </div>
     </div>
-    <Modal v-model="modalOpen" :option="modalOpt" :list="manufactorList" />
+    <!-- <Modal v-model="modalOpen" :option="modalOpt" :list="manufactorList" /> -->
+    <Modal v-model="modalOpen" :option="modalOpt" :set="true" :list="manufactorList" />
   </div>
 </template>
 
