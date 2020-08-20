@@ -66,6 +66,8 @@
               font-weight: 500;
               padding: 2px 15px;
               border-radius: 24px;
+              transition: .5s ease;
+
               &:hover, &.active {
                 color: #394173;
                 background-color: #f2f3f9;
@@ -81,6 +83,8 @@
 .button {
   display: inline-block;
   border-radius: 100%;
+  transition: .5s ease;
+  
   img {
     vertical-align: middle;
   }
@@ -97,6 +101,28 @@
 
   &.nobg {
     background: none;
+  }
+
+  &.changer {
+
+    img.one{
+      transition: .5s ease;
+    }
+
+    img.two{
+      transition: .5s ease;
+    }
+
+    &:hover {
+      transition: .5s ease;
+      img.one{
+        transform: translate(9px, 0);
+      }
+  
+      img.two{
+        transform: translate(-9px, 0);
+      }
+    }
   }
 }
 
