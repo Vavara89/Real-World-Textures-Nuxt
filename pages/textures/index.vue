@@ -17,7 +17,7 @@
             </div>
             <div class="coles">
               <a href="#" class="button active nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" class="ar">
               </a>
             </div>
             <div class="coles">
@@ -31,7 +31,7 @@
             </div>
             <div class="coles">
               <a href="#" class="button active rotate nobg hover">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" class="ar">
               </a>
             </div>
             <div class="coles">

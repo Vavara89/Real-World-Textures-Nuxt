@@ -84,7 +84,11 @@
   display: inline-block;
   border-radius: 100%;
   transition: .5s ease;
-  
+
+  .ar {
+    transform: translate(2px, 0);
+  }
+
   img {
     vertical-align: middle;
   }
@@ -106,21 +110,23 @@
   &.changer {
 
     img.one{
+      transform: translate(5px, 0);
       transition: .5s ease;
     }
 
     img.two{
+      transform: translate(3px, 0);
       transition: .5s ease;
     }
 
     &:hover {
       transition: .5s ease;
       img.one{
-        transform: translate(9px, 0);
+        transform: translate(10px, 0);
       }
   
       img.two{
-        transform: translate(-9px, 0);
+        transform: translate(-6px, 0);
       }
     }
   }
