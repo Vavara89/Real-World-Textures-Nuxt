@@ -68,6 +68,7 @@ export default {
       .join('&');
     try{
       await catalog.filter('textures', qs).then(response => {
+        console.log(response.data);
         filter = new FilterClass(response.data);
       });
 
