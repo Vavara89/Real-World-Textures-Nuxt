@@ -64,7 +64,7 @@ export default {
   },
   data() {
     return {
-      search: this.$route.query['search'] ? this.$route.query['search'] : '',
+      search: this.$route.query['search_country'] ? this.$route.query['search_country'] : '',
       area_id: this.$route.query['area_id'] ? this.$route.query['area_id'] : '',
       continent: this.$route.query['continent'] ? this.$route.query['continent'] : null,
       open: false,
@@ -119,7 +119,7 @@ export default {
     selectCountry(item){
       this.search = item.name;
       this.pushToQuery('continent', item);
-      this.pushToQuery('search', this.search);
+      this.pushToQuery('search_country', this.search);
     },
     selectContinent(item){
       this.continent = item;

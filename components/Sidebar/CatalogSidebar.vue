@@ -11,16 +11,16 @@
         <RefineFilter :options="getRefines()"/>
       </div>
 
-      <div class="manufacture-filter">
+      <div v-if="getAreas()" class="manufacture-filter">
         <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()"/>
       </div>
 
-        <div class="color-filter">
+        <div v-if="getColors()" class="color-filter">
           <ColorFilter v-if="getColors()" :options="getColors()" />
         </div>
 
       <div>
-        <button type="reset" class="clearFilter h4">
+        <button @click="clearFilter()" type="reset" class="clearFilter h4">
           Clear all Filters
         </button>
       </div>
@@ -123,6 +123,9 @@ export default {
         };
       }
     },
+    clearFilter(){
+      this.$router.push({path: this.$route.path})
+    }
   }
 
 };
