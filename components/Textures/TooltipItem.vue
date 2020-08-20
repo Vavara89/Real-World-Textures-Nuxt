@@ -4,10 +4,13 @@
     ref="tooltip"
     class="tooltip"
     :style="styleObject"
-
     @mouseover="onHover()"
     @mouseout="onHoverOut()"
   >
+
+  <!-- @click="showDetails" -->
+
+
     <div class="tooltip-header" />
     <div class="tooltip-content">
       <!--
