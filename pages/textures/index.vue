@@ -63,13 +63,18 @@ export default {
   },
   async asyncData(context) {
     let filter = null;
-    await catalog.filter('textures').then(response => {
-      filter = new FilterClass(response.data);
-    });
+    try{
+      await catalog.filter('textures').then(response => {
+        filter = new FilterClass(response.data);
+      });
 
-    return {
-      filter
-    };
+      return {
+        filter
+      };
+    }catch (e){
+
+    }
+
   },
 
   data() {

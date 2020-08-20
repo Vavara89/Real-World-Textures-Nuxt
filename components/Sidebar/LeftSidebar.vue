@@ -4,7 +4,7 @@
       <Dropdown :options="options" />
 
       <div class="materials-menu">
-        <MaterialMenu :list="materials" />
+        <MaterialMenu :list="[]" />
       </div>
 
       <div v-if="!brands" class="refine-filter">
@@ -16,7 +16,7 @@
       </div>
 
       <div v-if="!brandsdetail" class="manufacture-filter">
-        <ManufactureFilter :confidents="confidents" :brands="brands" />
+        <ManufactureFilter :countries="confidents" :brands="brands" />
       </div>
 
       <div v-if="!(brands || brandsdetail)" class="color-filter">
