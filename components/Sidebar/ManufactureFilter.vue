@@ -1,40 +1,37 @@
 <template>
   <div class="area">
-    <button v-if="!brands" class="toggleOption" @click="toggleOption">
+    <button v-if="brands_list" class="toggleOption" @click="toggleOption">
       Select a manufacturer
     </button>
     <div>
-      <h3 class="h3">
-        Select by area
-      </h3>
-      <Dropdown :options="countries" :full="true" />
-      <div class="header-search noright">
-        <input type="text" name="s" placeholder="Search a Country" autocomplete="off">
-      </div>
+      <DropdownAreas :areas="areas"/>
     </div>
     <Modal v-model="modalOpen" :option="modalOpt" :list="manufactorList" />
   </div>
 </template>
 <script>
-import Dropdown from '@/components/Sidebar/Dropdown';
 import Modal from '@/components/Modal/Modal';
-
+import DropdownAreas from '~/components/Sidebar/DropdownAreas'
 export default {
   name: 'ManufactureFilter',
   components: {
-    Dropdown,
+    DropdownAreas,
     Modal
   },
 
   props: {
     countries: {
       type: Array,
-      required: true
+      required: false
     },
-    brands: {
-      type: Boolean,
-      default: false
-    }
+    areas: {
+      type: Array,
+      required: false,
+    },
+    brands_list:{
+      type: Array,
+      required: false
+    },
   },
 
   data () {
@@ -200,7 +197,7 @@ export default {
   methods: {
     toggleOption (event) {
       this.modalOpen = !this.modalOpen;
-    }
+    },
   }
 };
 </script>

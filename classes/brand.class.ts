@@ -5,7 +5,7 @@ export default class BrandClass {
   name: string | null = null;
   slug: string | null = null;
 
-  constructor (data = null) {
+  constructor (data:any) {
     if (data) {
       Object.assign(this, keysToCamel(data));
     }
