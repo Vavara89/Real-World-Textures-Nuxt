@@ -7,7 +7,7 @@
         <MaterialMenu v-if="getCategories()" :list="getCategories()" />
       </div>
 
-      <div v-if="getRefines" class="refine-filter">
+      <div v-if="getRefines()" class="refine-filter">
         <RefineFilter :options="getRefines()" />
       </div>
 

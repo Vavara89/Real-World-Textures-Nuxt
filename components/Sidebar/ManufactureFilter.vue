@@ -7,7 +7,7 @@
       <h3 class="h3">
         Select by area
       </h3>
-      <Dropdown :options="confidents" :full="true" />
+      <Dropdown :options="countries" :full="true" />
       <div class="header-search noright">
         <input type="text" name="s" placeholder="Search a Country" autocomplete="off">
       </div>
@@ -27,7 +27,7 @@ export default {
   },
 
   props: {
-    confidents: {
+    countries: {
       type: Array,
       required: true
     },

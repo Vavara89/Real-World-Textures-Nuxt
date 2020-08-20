@@ -69,7 +69,7 @@
                   <a href>Pricing</a>
                 </li>
                 <li class="logout">
-                  <a href>Log out</a>
+                  <a @click="logout">Log out</a>
                 </li>
               </ul>
             </div>
@@ -100,7 +100,7 @@ export default {
       subscribe: 332,
       profile: 'Freelancer',
       // TODO: API logged / not logged
-      logged: true,
+      logged: this.$auth.loggedIn,
       counts: 33,
     };
   },
@@ -108,7 +108,11 @@ export default {
   methods: {
     showAccount() {
       this.account = !this.account;
-    }
+    },
+    async logout(){
+      this.account = false;
+      await this.$auth.logout();
+    },
   },
 };
 </script>
