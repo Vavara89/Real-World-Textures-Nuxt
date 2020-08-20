@@ -10,14 +10,14 @@
         <div class="cell-content">
           <div class="rowes">
             <div class="coles">
-              <a href="#" class="button active nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
+              <a href="#" class="button active nobg changer">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12" class="one">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12" class="two">
               </a>
             </div>
             <div class="coles">
               <a href="#" class="button active nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" class="ar">
               </a>
             </div>
             <div class="coles">
@@ -31,13 +31,13 @@
             </div>
             <div class="coles">
               <a href="#" class="button active rotate nobg hover">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12" class="ar">
               </a>
             </div>
             <div class="coles">
-              <a href="#" class="button active rotate nobg hover">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
+              <a href="#" class="button active rotate nobg hover changer">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12" class="one">
+                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12" class="two">
               </a>
             </div>
           </div>

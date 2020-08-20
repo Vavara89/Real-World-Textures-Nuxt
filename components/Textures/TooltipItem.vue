@@ -45,12 +45,12 @@
 
       <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
         <template #prevArrow="arrowOption">
-          <div class="prev-slick prdel">
+          <div class="prev-slick">
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
           </div>
         </template>
         <template #nextArrow="arrowOption">
-          <div class="next-slick prdel" @click="showDetails">
+          <div class="next-slick" @click="showDetails">
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
           </div>
         </template>
@@ -155,7 +155,9 @@ export default {
         centerMode: true,
         centerPadding: '1px',
         variableWidth: false,
-        asNavFor: {}
+        asNavFor: {},
+        slidesToScroll: 1,
+        slidesToShow: 1
       },
       //       navCarousel: {
       //   dots: false,
@@ -212,8 +214,4 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/components/_tooltip.scss";
-
-.prdel {
-
-}
 </style>
