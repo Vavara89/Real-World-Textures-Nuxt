@@ -5,7 +5,7 @@ export default class CategoryClass {
   name: string | null = null;
   slug: string | null = null;
   child: Array<CategoryClass> | null = null;
-  active: boolean  = false;
+  absolute_url: string | null = null;
 
   constructor (data = null) {
     if (data) {

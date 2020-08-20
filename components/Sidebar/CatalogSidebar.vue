@@ -7,9 +7,9 @@
         <MaterialMenu v-if="getCategories()" :list="getCategories()" />
       </div>
 
-<!--      <div class="refine-filter">-->
-<!--        <RefineFilter :options="refineList" />-->
-<!--      </div>-->
+      <div v-if="getRefines" class="refine-filter">
+        <RefineFilter :options="getRefines()" />
+      </div>
 
 <!--      <div class="manufacture-filter">-->
 <!--        <ManufactureFilter :confidents="confidents" :brands="brands" />-->
@@ -79,6 +79,31 @@ export default {
           return this.filter.categories;
       }
     },
+    getRefines(){
+      if (this.$auth.loggedIn){
+        return  {
+          title: 'Refine By',
+          items: [
+            {
+              title: 'Free',
+              link: 'free',
+              active: false
+            },
+            {
+              title: 'My Assets',
+              link: 'assets',
+              active: false
+            },
+            {
+              title: 'Favourites',
+              link: 'favourites',
+              active: false
+            }
+          ]
+        };
+      }
+      return null;
+    }
   }
 
 };

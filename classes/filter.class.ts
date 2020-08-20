@@ -3,7 +3,7 @@ import CategoryClass from '~/classes/category.class';
 import BrandClass from '~/classes/brand.class';
 
 export default class FilterClass {
-  categories: Array<CategoryClass> | null = [];
+  categories: Array<CategoryClass> | [] = [];
   brands: Array<BrandClass> | null = [];
   colors: Array<String> | null = [];
   areas: Array<Array<String>> | null = [];

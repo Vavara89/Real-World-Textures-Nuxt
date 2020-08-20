@@ -1,15 +1,17 @@
 <template>
   <ul class="menuLeft">
-    <li v-for="(item, index) in list" :key="'item-' + index" class="text item">
-      <a v-if="!item.child" v-bind:class="{'active':(item.active)}">{{ item.name }}</a>
-      <a v-if="item.child" href="javascript:;" v-bind:class="{'active':(item.active)}">
+    <li v-for="(item, index) in list" :key="'item-'+ index + '-'+ item.id" class="text item">
+
+
+
+      <nuxt-link v-bind:class="{'active':item.id===active_id}" :to="item.absolute_url">
         {{ item.name }}
-        <ul class="subItems">
-          <li v-for="(child, index) in item.child" :key="'item-' + index" class="item">
-            <a v-bind:class="{'active':(child.active)}">{{ child.name }}</a>
-          </li>
-        </ul>
-      </a>
+      </nuxt-link>
+      <ul v-if="item.id===active_id" class="subItems">
+        <li v-for="(child, index) in item.child" :key="'item-' + index" class="item">
+          <nuxt-link v-bind:class="{'active':(child.id===active_id)}" :to="item.absolute_url">{{ child.name }}</nuxt-link>
+        </li>
+      </ul>
     </li>
   </ul>
 </template>
@@ -25,7 +27,7 @@ export default {
       type: Number,
       required: false
     },
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
