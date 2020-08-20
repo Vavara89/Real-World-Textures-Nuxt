@@ -3,9 +3,8 @@ import collectorWithUserAuth from "@/collectors/base_auth";
 const resource = 'catalog';
 
 export default {
-  async filter (type){
-    console.log(this.$route);
+  async filter (type, qs){
     return await collectorWithUserAuth
-      .get(`${resource}/${type}/filter`);
+      .get(`${resource}/${type}/filter?${qs}`, {search: 'example'});
   }
 };

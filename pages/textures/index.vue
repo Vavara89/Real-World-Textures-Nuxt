@@ -63,8 +63,11 @@ export default {
   },
   async asyncData(context) {
     let filter = null;
+    const qs = Object.keys(context.route.query)
+      .map(key => `${key}=${context.route.query[key]}`)
+      .join('&');
     try{
-      await catalog.filter('textures').then(response => {
+      await catalog.filter('textures', qs).then(response => {
         filter = new FilterClass(response.data);
       });
 

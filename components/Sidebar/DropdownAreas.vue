@@ -64,7 +64,8 @@ export default {
   },
   data() {
     return {
-      search: this.$route.query['country'] ? this.$route.query['country'] : '',
+      search: this.$route.query['search'] ? this.$route.query['search'] : '',
+      area_id: this.$route.query['area_id'] ? this.$route.query['area_id'] : '',
       continent: this.$route.query['continent'] ? this.$route.query['continent'] : null,
       open: false,
       open_suggestions: false,
@@ -86,7 +87,7 @@ export default {
       };
       if (this.areas) {
         let countries = this.areas.map(mapAreas);
-        if (this.selected) {
+        if (this.continent) {
           countries = this.areas.filter(item => item[1] === this.selected.value).map(mapAreas);
         }
 
@@ -117,13 +118,18 @@ export default {
     },
     selectCountry(item){
       this.search = item.name;
-      const query = {};
-      Object.assign(query, this.$route.query);
-      query['area_id'] = item.id
-      this.$router.push({path: this.$route.path, query: query})
+      this.pushToQuery('continent', item);
+      this.pushToQuery('search', this.search);
     },
     selectContinent(item){
       this.continent = item;
+      this.pushToQuery('area_id', item.id);
+    },
+    pushToQuery(key, value){
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query[key] = value;
+      this.$router.push({path: this.$route.path, query: query})
     }
   }
 

@@ -12,12 +12,12 @@
       </div>
 
       <div class="manufacture-filter">
-        <ManufactureFilter :areas="getAreas()" :brands_list="getBrands()"/>
+        <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()"/>
       </div>
 
-      <!--      <div class="color-filter">-->
-      <!--        <ColorFilter :options="colorList" />-->
-      <!--      </div>-->
+        <div class="color-filter">
+          <ColorFilter v-if="getColors()" :options="getColors()" />
+        </div>
 
       <div>
         <button type="reset" class="clearFilter h4">
@@ -113,7 +113,16 @@ export default {
         };
       }
       return null;
-    }
+    },
+
+    getColors(){
+      if (this.filter && this.filter.areas) {
+        return {
+          title: 'Color',
+          items: this.filter.colors
+        };
+      }
+    },
   }
 
 };
