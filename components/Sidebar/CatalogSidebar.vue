@@ -1,23 +1,23 @@
 <template>
   <div>
     <div class="leftsidebar">
-      <Dropdown v-if="getTypes()" :options="getTypes()" />
+      <Dropdown v-if="getTypes()" :options="getTypes()"/>
 
       <div class="materials-menu">
-        <MaterialMenu v-if="getCategories()" :list="getCategories()" />
+        <MaterialMenu v-if="getCategories()" :list="getCategories()"/>
       </div>
 
       <div v-if="getRefines()" class="refine-filter">
-        <RefineFilter :options="getRefines()" />
+        <RefineFilter :options="getRefines()"/>
       </div>
 
-<!--      <div class="manufacture-filter">-->
-<!--        <ManufactureFilter :confidents="confidents" :brands="brands" />-->
-<!--      </div>-->
+      <div class="manufacture-filter">
+        <ManufactureFilter :areas="getAreas()" :brands_list="getBrands()"/>
+      </div>
 
-<!--      <div class="color-filter">-->
-<!--        <ColorFilter :options="colorList" />-->
-<!--      </div>-->
+      <!--      <div class="color-filter">-->
+      <!--        <ColorFilter :options="colorList" />-->
+      <!--      </div>-->
 
       <div>
         <button type="reset" class="clearFilter h4">
@@ -44,16 +44,16 @@ export default {
     ManufactureFilter,
     ColorFilter
   },
-  props:{
-    filter:{
+  props: {
+    filter: {
       type: Object,
       required: false
     }
   },
-  methods:{
-    getTypes(){
-      if(this.filter && this.filter.counts){
-        return  [
+  methods: {
+    getTypes() {
+      if (this.filter && this.filter.counts) {
+        return [
           {
             value: 'Textures',
             count: this.filter.counts.textures
@@ -74,14 +74,24 @@ export default {
       }
       return null;
     },
-    getCategories(){
-      if(this.filter && this.filter.categories){
-          return this.filter.categories;
+    getCategories() {
+      if (this.filter && this.filter.categories) {
+        return this.filter.categories;
       }
     },
-    getRefines(){
-      if (this.$auth.loggedIn){
-        return  {
+    getBrands() {
+      if (this.filter && this.filter.brands) {
+        return this.filter.brands;
+      }
+    },
+    getAreas() {
+      if (this.filter && this.filter.areas) {
+        return this.filter.areas;
+      }
+    },
+    getRefines() {
+      if (this.$auth.loggedIn) {
+        return {
           title: 'Refine By',
           items: [
             {
@@ -110,9 +120,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/components/_leftSidebar.scss";
+
 .fil {
   text-align: center;
 }
+
 .toggleOption {
   margin: 0 -1.7rem;
   margin-top: 60px;

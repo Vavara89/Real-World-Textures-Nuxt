@@ -1,4 +1,3 @@
-import keysToCamel from '~/classes/keysToCamel';
 import CategoryClass from '~/classes/category.class';
 import BrandClass from '~/classes/brand.class';
 
