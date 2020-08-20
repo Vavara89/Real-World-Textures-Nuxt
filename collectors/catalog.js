@@ -1,11 +1,11 @@
-import collectorWithUserAuth from "~/collectors/base_auth";
-import baseCollector from "@/collectors/base";
+import collectorWithUserAuth from "@/collectors/base_auth";
 
-const resource = 'users/';
+const resource = 'catalog';
 
 export default {
-  async categories (type){
-    return await baseCollector()
-      .post(`${resource}catalog/categories/${type}`);
+  async filter (type){
+    console.log(this.$route);
+    return await collectorWithUserAuth
+      .get(`${resource}/${type}/filter`);
   }
 };

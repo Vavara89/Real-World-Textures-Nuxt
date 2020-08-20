@@ -2,21 +2,27 @@
   <div>
     <div v-if="!profile" class="leftsidebar">
       <Dropdown :options="options" />
+
       <div class="materials-menu">
         <MaterialMenu :list="materials" />
       </div>
+
       <div v-if="!brands" class="refine-filter">
         <RefineFilter :options="refineList" />
       </div>
+
       <div v-if="!(brands || brandsdetail)" class="brands-filter">
         <RefineFilter :options="brandsList" />
       </div>
+
       <div v-if="!brandsdetail" class="manufacture-filter">
         <ManufactureFilter :confidents="confidents" :brands="brands" />
       </div>
+
       <div v-if="!(brands || brandsdetail)" class="color-filter">
         <ColorFilter :options="colorList" />
       </div>
+
       <div v-if="!(brands || brandsdetail)">
         <button class="clearFilter h4">
           Clear all Filters
