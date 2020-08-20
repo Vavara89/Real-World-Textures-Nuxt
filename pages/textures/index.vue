@@ -4,7 +4,7 @@
     <div class="page-content">
       <ContentHeader/>
       <section class="services view-bottom">
-        <TextureGallery :textures="textures"/>
+        <TextureGallery :textures="textures" :noscale="true" />
       </section>
       <div class="table-cell middle">
         <div class="cell-content">

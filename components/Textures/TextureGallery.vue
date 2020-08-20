@@ -2,7 +2,7 @@
   <div class="textgallery">
     <ul class="textures">
       <li v-for="(texture, index) in textures" :key="'texture-' + index" class="texture" :class="{'brands': isBrand}">
-        <TextureItem :texture="texture" :shadow="shadow" :isBrand="isBrand" />
+        <TextureItem :texture="texture" :shadow="shadow" :isBrand="isBrand" :noscale="noscale" />
         <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" />
         <div v-if="texture.book" class="book">
           <img src="@/assets/img/icon-bookmark-3.svg" alt>
@@ -46,6 +46,10 @@ export default {
       default: true
     },
     isBrand: {
+      type: Boolean,
+      default: false
+    },
+    noscale: {
       type: Boolean,
       default: false
     }
