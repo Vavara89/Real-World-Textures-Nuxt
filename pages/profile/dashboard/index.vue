@@ -15,30 +15,151 @@
                       :class="{'selected': cardProfile}"
                       @click="toggleSelected('profile')"
                     >
-                      Profile</li>
+                      Profile
+                    </li>
                     <li
                       :class="{'selected': cardBilling}"
                       @click="toggleSelected('billing')"
                     >
-                      Billing info</li>
+                      Billing info
+                    </li>
                     <li
                       :class="{'selected': cardPassword}"
                       @click="toggleSelected('password')"
                     >
-                      Change password</li>
+                      Change password
+                    </li>
                   </ul>
                 </div>
                 <div class="tabs-content">
-                <div v-if="cardProfile">
-                  Profile
+                  <div v-if="cardProfile" class="is-profile">
+                    <table style="width: 621px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            First Name
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="name" placeholder="Enter name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Last Name
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="surname" placeholder="Enter last name">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Email Address
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="email" placeholder="Enter email">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Business Name
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="company" placeholder="Enter company">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center;" colspan="2">
+                            <button class="toggleOption">
+                              Update info
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div v-if="cardBilling" class="is-profile">
+                    <table style="width: 621px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 250px;" class="is-first">
+                            Payment Method
+                          </td>
+                          <td style="width: 200px;">
+                            CC Ending with 4329
+                          </td>
+                          <td style="width: 134px;">
+                            <img src="@/assets/img/cards/mastercard.png" class="bank">
+                          </td>
+                          <td style="width: 92px;">
+                            <span>Edit</span>
+                          </td>
+                          <td style="width: 92px;">
+                            <span>Remove</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 250px;" class="is-first top">
+                            Billing Address
+                          </td>
+                          <td style="width: 200px;">
+                            Vyhoňkopec 1471
+                            735 32 Rychvald
+                            Czech republic
+                            <br><br>
+                            VAT: 12345678
+                          </td>
+                          <td style="width: 134px;">
+&nbsp;
+                          </td>
+                          <td style="width: 92px;">
+                            <span>Edit</span>
+                          </td>
+                          <td style="width: 92px;">
+&nbsp;
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div v-if="cardPassword" class="is-profile">
+                    <table style="width: 521px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Old Password
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="oldpwd" placeholder="Old password">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            New Password
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="newpwd" placeholder="New password">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 150px;" class="is-first">
+                            Confirm Password
+                          </td>
+                          <td style="width: 370px;" class="is-second">
+                            <input type="text" name="newpwdconf" placeholder="New password confirmation">
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td style="text-align: center;" colspan="2">
+                            <button class="toggleOption">
+                              Update password
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                <div v-if="cardBilling">
-                  Billing info
-                </div>
-                <div v-if="cardPassword">
-                  Change password
-                </div>
-              </div>
               </div>
               <div class="right">
                 card
