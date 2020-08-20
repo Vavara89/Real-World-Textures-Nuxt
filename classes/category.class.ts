@@ -7,7 +7,7 @@ export default class CategoryClass {
   child: Array<CategoryClass> | null = null;
   absolute_url: string | null = null;
 
-  constructor (data = null) {
+  constructor (data: any) {
     if (data) {
       Object.assign(this, keysToCamel(data));
     }
