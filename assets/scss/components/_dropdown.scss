@@ -12,12 +12,12 @@
       &.full {
         .custom-select {
           position: relative;
-          left: -1.5rem;
-          width: calc(100%);
+          left: 0.5rem;
+          width: 254px;
 
         }
           .selected {
-          width: calc(100%);
+          width: 254px;
         }
       }
 
@@ -130,4 +130,56 @@
             width: 11rem;
         }
     }
+}
+
+.manu {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.suggestions {
+  color: #9093b9;
+  border-radius: 0px 0px 6px 6px;
+  background-color: #FBFBFF;
+  position: relative;
+
+  .countries {
+    position: absolute;
+    padding: 5px 10px 15px 50px;
+    top: 0;
+    left: 3px;
+    background-color: #FBFBFF;
+    width: 254px;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 0px 0px 6px 6px;
+
+    /* width */
+&::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+  background: #f2f3f9; 
+}
+ 
+/* Handle */
+&::-webkit-scrollbar-thumb {
+  background: #9093b9; 
+}
+
+/* Handle on hover */
+&::-webkit-scrollbar-thumb:hover {
+  background: #9093b9; 
+}
+
+span {
+  cursor: pointer;
+  font-size: 14px;
+  display: block;
+  text-align: left;
+  padding: 3px 0;
+}
+  }
 }

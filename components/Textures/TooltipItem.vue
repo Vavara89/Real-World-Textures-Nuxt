@@ -3,12 +3,12 @@
     v-show="hover"
     ref="tooltip"
     class="tooltip"
+    @click="showDetails"
     :style="styleObject"
     @mouseover="onHover()"
     @mouseout="onHoverOut()"
   >
 
-  <!-- @click="showDetails" -->
 
 
     <div class="tooltip-header" />
