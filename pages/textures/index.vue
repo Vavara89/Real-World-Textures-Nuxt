@@ -68,7 +68,6 @@ export default {
       .join('&');
     try{
       await catalog.filter('textures', qs).then(response => {
-        console.log(response.data);
         filter = new FilterClass(response.data);
       });
 
@@ -84,11 +83,6 @@ export default {
   data() {
     return {
       filter: null,
-      subtitle: 'Services',
-      title: 'Textures',
-      perex:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      button: 'Join our community on FB',
       textures: [
         {
           image: {

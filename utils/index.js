@@ -7,12 +7,22 @@ export const generateUuid = () => {
 };
 
 export const getUuid = () => {
-  let uuid = localStorage.getItem('po_proudu_uuid');
+  let uuid = localStorage.getItem('rwt_uuid');
   if (uuid === null) {
     uuid = generateUuid();
-    localStorage.setItem('po_proudu_uuid', uuid);
+    localStorage.setItem('rwt_uuid', uuid);
   }
   return uuid;
+};
+
+export const toggleElement = (arr, elem) => {
+  const index = arr.indexOf(elem);
+  if (index > -1) {
+    arr.splice(index, 1);
+  } else {
+    arr.push(elem);
+  }
+  return arr;
 };
 
 export const USER_AUTH_KEY_STORAGE = 'auth._token.local'

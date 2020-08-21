@@ -88,7 +88,7 @@ export default {
       if (this.areas) {
         let countries = this.areas.map(mapAreas);
         if (this.continent) {
-          countries = this.areas.filter(item => item[1] === this.selected.value).map(mapAreas);
+          countries = this.areas.filter(item => item[1] === this.continent).map(mapAreas);
         }
 
         if (this.search.length > 0) {
