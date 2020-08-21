@@ -78,6 +78,14 @@ export default {
 
     }
 
+    try{
+      await catalog.products('textures').then(response => {
+
+      }).catch(e => {});
+    }catch (e){
+
+    }
+
   },
 
   data() {
