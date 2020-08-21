@@ -53,6 +53,10 @@
 }
 
 .texture {
+  margin: 20px; 
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 9999px;
   @include mq(md, max) {
     // flex: 0 0 22rem;
   }
@@ -93,6 +97,12 @@
     position: relative;
     padding-bottom: 2.4rem;
 
+    &.noscale {
+      img {
+        border-radius: 35px;
+      }
+    }
+
     &.brands {
     line-height: 10.4rem;
 
@@ -120,6 +130,7 @@
   }
 
   &__content {
+    display: none;
     margin-top: 4rem;
     margin-left: 3.2rem;
 
