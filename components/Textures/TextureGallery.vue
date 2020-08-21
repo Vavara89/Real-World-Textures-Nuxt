@@ -4,13 +4,13 @@
       <li v-for="(texture, index) in textures" :key="'texture-' + index" class="texture" :class="{'brands': isBrand}">
         <TextureItem :texture="texture" :shadow="shadow" :isBrand="isBrand" :noscale="noscale" />
         <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" />
-        <div v-if="texture.book" class="book">
+        <div v-if="texture.is_bookmarked" class="book">
           <img src="@/assets/img/icon-bookmark-3.svg" alt>
         </div>
-        <div v-if="texture.paid" class="free">
+        <div v-if="texture.is_free" class="free">
           <img src="@/assets/img/icon-free.svg" alt>
         </div>
-        <div v-if="texture.download" class="download">
+        <div v-if="texture.in_assets" class="download">
           <img src="@/assets/img/icon-download-badge.svg" alt>
         </div>
       </li>
@@ -24,6 +24,7 @@
 import TextureItem from '@/components/Textures/TextureItem';
 import TooltipItem from '@/components/Textures/TooltipItem';
 import DetailModal from '@/components/DetailModal/DetailModal';
+import TexturesClass from "@/classes/textures.class.ts";
 
 export default {
   name: 'TextureGallery',

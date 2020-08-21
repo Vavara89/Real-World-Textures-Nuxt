@@ -4,7 +4,7 @@
     <div class="page-content">
       <ContentHeader/>
       <section class="services view-bottom">
-        <TextureGallery :textures="textures" :noscale="true" />
+        <TextureGallery :textures="textures" :noscale="true"/>
       </section>
       <div class="table-cell middle">
         <div class="cell-content">
@@ -53,6 +53,7 @@ import CatalogSidebar from '@/components/Sidebar/CatalogSidebar';
 import ContentHeader from '@/components/Textures/ContentHeader';
 import catalog from "@/collectors/catalog";
 import FilterClass from "@/classes/filter.class.ts";
+import TexturesClass from "@/classes/textures.class.ts";
 
 export default {
   name: 'Textures',
@@ -62,93 +63,88 @@ export default {
     ContentHeader
   },
   async asyncData(context) {
-    let filter = null;
     const qs = Object.keys(context.route.query)
       .map(key => `${key}=${context.route.query[key]}`)
       .join('&');
-    try{
-      await catalog.filter('textures', qs).then(response => {
-        filter = new FilterClass(response.data);
-      });
+    let filter = null;
+    let textures = null;
+    const filterPromise = catalog.filter('textures', qs).then(response => {
+      return filter = new FilterClass(response.data);
+    });
+    const productsPromise = catalog.products('textures', qs).then(response => {
+      const data = response.data;
+      return textures = data.results.map(item => new TexturesClass(item));
+    });
 
-      return {
-        filter
-      };
-    }catch (e){
-
-    }
-
-    try{
-      await catalog.products('textures').then(response => {
-
-      }).catch(e => {});
-    }catch (e){
-
-    }
-
+    await Promise.all([filterPromise, productsPromise])
+    return {
+      textures: textures,
+      filter: filter
+    };
   },
 
   data() {
     return {
       filter: null,
-      textures: [
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        },
-        {
-          image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
-            alt: ''
-          },
-          title: '0059 WOODVEENER OAK COPPER2'
-        }
-      ]
+      textures: [],
+      // textures: [
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   },
+      //   {
+      //     image: {
+      //       url: require('@/assets/img/textures/texture-jafholz.png'),
+      //       alt: ''
+      //     },
+      //     title: '0059 WOODVEENER OAK COPPER2'
+      //   }
+      // ]
     };
   }
 };

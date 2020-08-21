@@ -1,7 +1,7 @@
 <template>
   <div class="texture__block" :class="shadow ? 'texture--shadow' : ''">
     <div class="texture__image" :class="{'brands': isBrand, 'noscale': noscale}">
-      <img :src="texture.image.url" :alt="texture.image.alt">
+      <img :src="texture.cover" :alt="texture.name">
     </div>
     <div v-if="texture.name || texture.structure || texture.usage" class="texture__content">
       <h3 v-if="texture.name" class="texture__name name">

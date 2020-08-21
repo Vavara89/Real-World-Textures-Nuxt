@@ -8,42 +8,10 @@
     @mouseout="onHoverOut()"
   >
 
-  <!-- @click="showDetails" -->
-
-
     <div class="tooltip-header" />
     <div class="tooltip-content">
-      <!--
-              <VueSlickCarousel ref="sliderNav2" v-bind="navCarousel">
-          <template #prevArrow="arrowOption">
-            <div class="prev-slick">
-              <span class="button superb">
-                <img src="@/assets/img/icon-sliderarr.svg">
-              </span>
-            </div>
-          </template>
-          <template #nextArrow="arrowOption">
-            <div class="next-slick">
-              <span class="button superb">
-                <img src="@/assets/img/icon-sliderarr.svg">
-              </span>
-            </div>
-          </template>
-          <div class="imageItem">
-            <img :src="texture.image.url" :alt="texture.image.alt" >
-          </div>
-          <div class="imageItem">
-            <img :src="texture.image.url" :alt="texture.image.alt" >
-          </div>
-          <div class="imageItem">
-             <img :src="texture.image.url" :alt="texture.image.alt" >
-          </div>
-          <div class="imageItem">
-             <img :src="texture.image.url" :alt="texture.image.alt" >
-          </div>
-        </VueSlickCarousel> -->
 
-      <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
+      <VueSlickCarousel v-if="texture.gallery.length" v-bind="slickSlider">
         <template #prevArrow="arrowOption">
           <div class="prev-slick">
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
@@ -54,65 +22,15 @@
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
           </div>
         </template>
-        <div class="imageItem">
-          <img :src="texture.image.url" :alt="texture.image.alt" class>
-        </div>
-        <div class="imageItem">
-          <img :src="texture.image.url" :alt="texture.image.alt" class>
-        </div>
-        <div class="imageItem">
-          <img :src="texture.image.url" :alt="texture.image.alt" class>
-        </div>
-        <div class="imageItem">
-          <img :src="texture.image.url" :alt="texture.image.alt" class>
-        </div>
-        <div class="imageItem">
-          <img :src="texture.image.url" :alt="texture.image.alt" class>
-        </div>
-        <div class="imageItem">
-          <img :src="texture.image.url" :alt="texture.image.alt" class>
+        <div v-for="(image, index) in texture.gallery" :key="'texture-gallery' + index" class="imageItem">
+          <img :src="image.image" :alt="texture.name" class>
         </div>
       </VueSlickCarousel>
-
-      <!-- <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
-          <template #prevArrow="arrowOption">
-            <div class="prev-slick">
-              <span class="button superb">
-                <img src="@/assets/img/icon-sliderarr.svg">
-              </span>
-            </div>
-          </template>
-          <template #nextArrow="arrowOption">
-            <div class="next-slick">
-              <span class="button superb">
-                <img src="@/assets/img/icon-sliderarr.svg">
-              </span>
-            </div>
-          </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-        </VueSlickCarousel> -->
     </div>
     <div class="tooltip-footer">
       <div class="title">
         <h3 class="name">
-          {{ texture.title }}
+          {{ texture.name }}
         </h3>
       </div>
       <div class="credits-bookmark">
@@ -149,38 +67,13 @@ export default {
   },
   data () {
     return {
-      navCarousel: {
+      slickSlider: {
         dots: false,
-        infinite: false,
-        centerMode: true,
+        infinite: true,
+        centerMode: false,
         centerPadding: '1px',
-        variableWidth: false,
-        asNavFor: {},
         slidesToScroll: 1,
         slidesToShow: 1
-      },
-      //       navCarousel: {
-      //   dots: false,
-      //   infinite: false,
-      //   centerMode: true,
-      //   centerPadding: '1px',
-      //   variableWidth: false,
-      //   slidesToScroll: 1,
-      //   slidesToShow: 3,
-      //   asNavFor: {},
-      //   initialSlide: 0,
-      //   useTranform: false
-      // },
-      mainCarousel: {
-        arrows: false,
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        centerMode: true,
-        centerPadding: '1px',
-        variableWidth: true,
-        infinite: false,
-        draggable: false,
-        swipe: false
       },
       hover: true,
       toolChange: false
@@ -190,9 +83,6 @@ export default {
     styleObject () {
       return this.toolChange ? { right: '0' } : { left: '0' };
     }
-  },
-  mounted () {
-    this.navCarousel.asNavFor = this.$refs.sliderMain;
   },
   methods: {
     onHover () {
@@ -214,4 +104,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/components/_tooltip.scss";
+</style>
+
+<style>
+.slick-slide{
+  transform: none;
+  width: auto !important;
+}
 </style>
