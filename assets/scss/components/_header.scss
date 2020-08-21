@@ -28,6 +28,45 @@
     font-size: 0;
     position: relative;
 
+    &.ar {
+      position: relative;
+
+      .arr {
+        position: absolute;
+        right: 20px;
+        top: 14px;
+        width: 10px;
+        height: 10px;
+        background-image: url(~@/assets/img/icon-arrow_bottom.svg);
+        background-repeat: no-repeat;
+        background-size: 10px 10px;
+        background-position: center center;
+        z-index: 9;
+        -webkit-transition: -webkit-transform .2s ease-in-out;
+                transition:         transform .2s ease-in-out;
+
+        &.view-arr {
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    &.noright {
+      margin-left: 0;
+
+      input {
+        width: 254px;
+        background-color: #FBFBFF;
+        border-radius: 30px;
+        color: #394174;
+
+        &.view-opened {
+          border-radius: 30px 30px 0 0;
+        }
+      }
+    }
+
     @media only screen and (max-width: 1310px) {
       margin-left: auto;
       right: 130px;
