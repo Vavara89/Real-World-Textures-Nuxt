@@ -3,7 +3,6 @@
     v-show="hover"
     ref="tooltip"
     class="tooltip"
-    @click="showDetails"
     :style="styleObject"
     @mouseover="onHover()"
     @mouseout="onHoverOut()"
@@ -22,12 +21,15 @@
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
           </div>
         </template>
-        <div v-for="(image, index) in texture.gallery" :key="'texture-gallery' + index" class="imageItem">
+        <div v-if="!texture.gallery.length" @click="showDetails" class="imageItem">
+          <img :src="texture.cover" :alt="texture.name" class>
+        </div>
+        <div  @click="showDetails" v-for="(image, index) in texture.gallery" :key="'texture-gallery' + index" class="imageItem">
           <img :src="image.image" :alt="texture.name" class>
         </div>
       </VueSlickCarousel>
     </div>
-    <div class="tooltip-footer">
+    <div  @click="showDetails" class="tooltip-footer">
       <div class="title">
         <h3 class="name">
           {{ texture.name }}
@@ -69,9 +71,8 @@ export default {
     return {
       slickSlider: {
         dots: false,
-        infinite: true,
+        infinite: false,
         centerMode: false,
-        centerPadding: '1px',
         slidesToScroll: 1,
         slidesToShow: 1
       },
@@ -97,7 +98,8 @@ export default {
       return this.toolChange = false;
     },
     showDetails () {
-      this.showDetail(this.texture);
+      const path = `${this.texture.category.url}/product-${this.texture.slug}`;
+      this.$router.push({path: path});
     }
   }
 };
@@ -107,8 +109,8 @@ export default {
 </style>
 
 <style>
-.slick-slide{
-  transform: none;
+.tooltip-content .slick-slide{
+  transform: none !important;
   width: auto !important;
 }
 </style>

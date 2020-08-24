@@ -2,222 +2,258 @@
 @import "@/assets/scss/pages/buttons.scss";
 @import "@/assets/scss/components/_buttons.scss";
 
+.model-opened {
+  height: 100vh;
+  overflow: hidden;
+}
+
 .detailModal {
-    width: 100%;
-    height: 100%;
-    background: rgba(57, 65, 115, 0.8);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    text-align: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(57, 65, 115, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  text-align: center;
+  display: flex;
+  align-items: center;
 
-    // &::before {
-    //     content: '';
-    //     display: inline-block;
-    //     vertical-align: middle;
-    //     height: 100%;
-    // }
 
-    .container {
-        width: 125.5rem;
-        height: 85rem;
-        border-radius: 0.8rem;
-        background-color: $color-white;
-        display: inline-flex;
-        vertical-align: middle;
-        padding: 0;
+  .slick-slide {
+    .previewImg {
+      transform: scale(0.8);
+      transition: all .3s ease-in-out;
 
-        .imageDetails {
-            min-width: 77.5rem;
-            height: 100%;
-            float: left;
-            padding: 2rem 4.8rem 0 2rem;
-
-            .imageDetails-header {
-                display: flex;
-                justify-content: space-between;
-
-                .imageDetails-options {
-                    display: flex;
-                    margin-top: 3rem;
-
-                    .download {
-                        margin-right: 2.4rem;
-                    }
-
-                    .freeMark {
-                        &::before {
-                            content: '';
-                            height: 100%;
-                            vertical-align: middle;
-                            display: inline-block;
-                        }
-
-                        a {
-                            display: inline-block;
-                            vertical-align: middle;
-                        }
-                    }
-                }
-            }
-
-            .imageDetails-content {
-                text-align: center;
-                .previewImg {
-                    img {
-                        width: 55rem;
-                    }
-                }
-                .tutorial {
-                    display: flex;
-                    justify-content: flex-end;
-                }
-            }
-
-            .imageDetails-footer {
-                padding: 6.4rem;
-
-                .imageItem {
-                    margin: 0 0.8rem;
-                    width: 9.6rem!important;
-                    img {
-                        width: 8rem;
-                    }
-                }
-
-                .slick-slider {
-                    height: 8rem;
-                    width: 48rem;
-                    margin: auto;
-
-                    .button {
-                        width: 2rem;
-                        height: 2rem;
-
-                        img {
-                            width: 2rem;
-                        }
-                    }
-
-                    .prev-slick {
-                        &::before {
-                            content: none;
-                        }
-                    }
-                    .next-slick {
-    
-                        &::before {
-                            content: none;
-                        }
-    
-                        .button {
-                            transform: rotate(180Deg);
-                        }
-                    }
-
-                    .slick-slide {
-                        width: 9.6rem!important;
-                        transform: none;
-                    }
-                }
-            }
-        }
-
-        .details {
-            float: left;
-            height: 100%;
-            padding: 5.5rem 4rem;
-            background-color: $color-primary-100;
-            border-top-right-radius: 0.8rem;
-            border-bottom-right-radius: 0.8rem;
-            text-align: left;
-
-            .label {
-                width: 13.5rem;                
-            }
-
-            .title {
-                margin-bottom: 2rem;
-            }
-
-            .credits-bookmark {
-                display: flex;
-                margin-bottom: 6rem;
-                justify-content: space-between;
-
-                .credits {
-                    label {
-                        color: $color-white;
-                        padding: 1rem 1.5rem;
-                        background-color: $color-primary-600;
-                        border-radius: 1.2rem;
-                    }
-                }
-            }
-
-            .options {
-                .option-item {
-                    display: flex;
-                    margin-bottom: 2rem;
-
-                    &.resolution {
-                        align-items: center;
-                    }
-
-                    &.dimension {
-                        align-items: flex-end;
-                    }
-                }
-            }
-
-            .description {
-                margin-bottom: 3rem;
-            }
-
-            .brand {
-                display: flex;
-                margin-bottom: 6rem;
-
-                .option {
-                    .brand {
-                        text-transform: uppercase;
-                        margin-bottom: 0;
-                    }
-
-                    .brand-link {
-                        text-decoration: underline;
-                    }
-                }
-            }
-
-            .download {
-                text-align: center;
-
-                button {
-                    width: 40rem;
-                    padding: 1.5rem 0;
-                    border-radius: 3rem;
-                    font-size: 1.4rem;
-                    border: none;
-                    color: $color-white;
-                    text-transform: uppercase;
-                    letter-spacing: 0;
-
-                    &.button-primary {
-                        &::before {
-                            margin-right: 0;
-                           content: '';
-                        }
-                    }
-
-                    &.button-primary--blue {
-                        img {
-                            margin-right: 3rem;
-                        }
-                    }
-                }
-            }
-        }
+      img {
+        margin: 0 auto;
+      }
     }
+
+  }
+
+  .slick-slide.slick-current {
+    .previewImg {
+      transform: scale(1);
+    }
+  }
+
+
+  // &::before {
+  //     content: '';
+  //     display: inline-block;
+  //     vertical-align: middle;
+  //     height: 100%;
+  // }
+
+  .container {
+    width: 125.5rem;
+    height: 85rem;
+    border-radius: 0.8rem;
+    background-color: $color-white;
+    display: inline-flex;
+    vertical-align: middle;
+    padding: 0;
+
+    .imageDetails {
+      min-width: 77.5rem;
+      height: 100%;
+      float: left;
+      padding: 2rem 4.8rem 0 2rem;
+
+      .imageDetails-header {
+        display: flex;
+        justify-content: space-between;
+
+        .imageDetails-options {
+          display: flex;
+          margin-top: 3rem;
+
+          .download {
+            margin-right: 2.4rem;
+          }
+
+          .freeMark {
+            &::before {
+              content: '';
+              height: 100%;
+              vertical-align: middle;
+              display: inline-block;
+            }
+
+            a {
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+
+      .imageDetails-content {
+        text-align: center;
+
+        .previewImg {
+          img {
+            width: 55rem;
+          }
+        }
+
+        .tutorial {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+
+      .imageDetails-footer {
+        padding: 6.4rem;
+
+        .imageItem {
+          margin: 0 0.8rem;
+          width: 9.6rem !important;
+
+          img {
+            width: 8rem;
+          }
+        }
+
+        .slick-slider {
+          height: 8rem;
+          max-width: 48rem;
+          margin: 0 auto;
+
+          .button {
+            width: 2rem;
+            height: 2rem;
+
+            img {
+              width: 2rem;
+            }
+          }
+
+          .prev-slick {
+            &::before {
+              content: none;
+            }
+          }
+
+          .next-slick {
+
+            &::before {
+              content: none;
+            }
+
+            .button {
+              transform: rotate(180Deg);
+            }
+          }
+
+          .slick-slide {
+            width: 9.6rem !important;
+            transform: none;
+          }
+        }
+      }
+    }
+
+    .details {
+      float: left;
+      height: 100%;
+      padding: 5.5rem 4rem;
+      background-color: $color-primary-100;
+      border-top-right-radius: 0.8rem;
+      border-bottom-right-radius: 0.8rem;
+      text-align: left;
+
+      .label {
+        width: 13.5rem;
+      }
+
+      .title {
+        margin-bottom: 2rem;
+      }
+
+      .credits-bookmark {
+        display: flex;
+        margin-bottom: 6rem;
+        justify-content: space-between;
+
+        .credits {
+          label {
+            color: $color-white;
+            padding: 1rem 1.5rem;
+            background-color: $color-primary-600;
+            border-radius: 1.2rem;
+          }
+        }
+      }
+
+      .options {
+        .option-item {
+          display: flex;
+          margin-bottom: 2rem;
+
+          &.resolution {
+            align-items: center;
+          }
+
+          &.dimension {
+            align-items: flex-end;
+          }
+          &.error{
+            label{
+              color: red;
+            }
+          }
+        }
+      }
+
+      .description {
+        margin-bottom: 3rem;
+      }
+
+      .brand {
+        display: flex;
+        margin-bottom: 6rem;
+
+        .option {
+          .brand {
+            text-transform: uppercase;
+            margin-bottom: 0;
+          }
+
+          .brand-link {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .download {
+        text-align: center;
+
+        button {
+          width: 40rem;
+          padding: 1.5rem 0;
+          border-radius: 3rem;
+          font-size: 1.4rem;
+          border: none;
+          color: $color-white;
+          text-transform: uppercase;
+          letter-spacing: 0;
+
+          &.button-primary {
+            &::before {
+              margin-right: 0;
+              content: '';
+            }
+          }
+
+          &.button-primary--blue {
+            img {
+              margin-right: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }

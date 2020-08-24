@@ -1,10 +1,13 @@
-.slick-slide {
-	transition: all .3s ease-in-out;
-	transform: scale(0.8);
-	width: 80vw !important;
-	// max-width: 153.6rem;
-	outline: none !important;
+.slick-slider:not(.default){
+  .slick-slide {
+    transition: all .3s ease-in-out;
+    transform: scale(0.8);
+    width: 80vw !important;
+    // max-width: 153.6rem;
+    outline: none !important;
+  }
 }
+
 
 .slick-slide {
   border-radius: 1rem;
@@ -81,7 +84,7 @@
 			height: 120%;
 			top: -10%;
 			left: -10%;
-			
+
 			background: url(~@/assets/img/icon-arrow_left.svg) no-repeat center/contain;
 			background-size: 1.2rem;
 			background-color: #F2F3F9;

@@ -4,7 +4,7 @@
       <Dropdown v-if="getTypes()" :options="getTypes()"/>
 
       <div class="materials-menu">
-        <MaterialMenu v-if="getCategories()" :list="getCategories()"/>
+        <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_id="activeCategory ? activeCategory.id : null"/>
       </div>
 
       <div v-if="getRefines()" class="refine-filter">
@@ -15,7 +15,7 @@
         <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()"/>
       </div>
 
-        <div v-if="getColors()" class="color-filter">
+        <div v-if="getColors()" class="color-filter" ref="colorFilter">
           <ColorFilter v-if="getColors()" :options="getColors()" />
         </div>
 
@@ -34,6 +34,7 @@ import RefineFilter from '@/components/Sidebar/RefineFilter';
 import ManufactureFilter from '@/components/Sidebar/ManufactureFilter';
 import ColorFilter from '@/components/Sidebar/ColorFilter';
 import FilterClass from "@/classes/filter.class.ts";
+import CategoryClass from "@/classes/category.class.ts";
 
 export default {
   name: 'CatalogSidebar',
@@ -48,6 +49,10 @@ export default {
     filter: {
       type: Object,
       required: false
+    },
+    activeCategory:{
+      type: Object,
+      required: false,
     }
   },
   methods: {
@@ -96,23 +101,33 @@ export default {
           items: [
             {
               title: 'Free',
-              link: 'free',
-              active: false
+              link: 'is_free',
+              active: this.$route.query['is_free'] ? this.$route.query['is_free'] : false
             },
             {
               title: 'My Assets',
               link: 'assets',
-              active: false
+              active: this.$route.query['own'] ? this.$route.query['own'] : false
             },
             {
               title: 'Favourites',
               link: 'favourites',
-              active: false
+              active: this.$route.query['is_favorites'] ? this.$route.query['is_favorites'] : false
             }
           ]
         };
+      }else {
+        return {
+          title: 'Refine By',
+          items: [
+            {
+              title: 'Free',
+              link: 'free',
+              active: false
+            },
+          ]
+        };
       }
-      return null;
     },
 
     getColors(){
@@ -122,9 +137,10 @@ export default {
           items: this.filter.colors
         };
       }
+      return false;
     },
     clearFilter(){
-      this.$router.push({path: this.$route.path})
+      this.$router.push({path: this.$route.path});
     }
   }
 

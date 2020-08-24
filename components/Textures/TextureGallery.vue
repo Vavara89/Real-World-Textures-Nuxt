@@ -15,7 +15,6 @@
         </div>
       </li>
     </ul>
-    <DetailModal v-model="modalOpen" :texture="selectedTexture" />
     <div class="clear" />
   </div>
 </template>

@@ -4,12 +4,13 @@
 
 
 
-      <nuxt-link v-bind:class="{'active':item.id===active_id}" :to="item.absolute_url">
-        {{ item.name }}
-      </nuxt-link>
-      <ul v-if="item.id===active_id" class="subItems">
+       <a v-bind:class="{'active':isActive(item)}" @click="toCategory(item)">
+          {{ item.name }}
+        </a>
+
+      <ul v-if="isActive(item)" class="subItems">
         <li v-for="(child, index) in item.child" :key="'item-' + index" class="item">
-          <nuxt-link v-bind:class="{'active':(child.id===active_id)}" :to="item.absolute_url">{{ child.name }}</nuxt-link>
+          <a v-bind:class="{'active':(isActive(child))}" @click="toCategory(child)">{{ child.name }}</a>
         </li>
       </ul>
     </li>
@@ -23,10 +24,29 @@ export default {
       type: Array,
       required: true
     },
-    active_id: {
+    active_id:{
       type: Number,
       required: false
+    }
+  },
+  methods: {
+    isActive(item) {
+      if (this.active_id === item.id) {
+        return true;
+      }
+      if (item.child.length) {
+        const active_child = item.child.filter(item => item.id === this.active_id);
+        if (active_child.length) {
+          return active_child.pop().id === this.active_id;
+        }
+      }
+      return false;
+
     },
+    toCategory(item){
+        this.active_id = item.id;
+        this.$router.replace(item.absolute_url);
+    }
   },
 }
 </script>

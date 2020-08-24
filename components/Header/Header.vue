@@ -19,13 +19,13 @@
             <nuxt-link :to="'/textures'">Textures</nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/textures'">Models</nuxt-link>
+            <nuxt-link :to="'/models'">Models</nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/textures'">Hdris</nuxt-link>
+            <nuxt-link :to="'/hdrs'">Hdris</nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/textures'">Brands</nuxt-link>
+            <nuxt-link :to="'/brands'">Brands</nuxt-link>
           </li>
           <li class="line">
             <a href>About</a>
@@ -46,18 +46,18 @@
             <a class="icon" @click="showAccount">Account</a>
             <div class="logmenu" v-if="account">
               <div class="logmenu-top">
-                <p>{{ subscribe }} Subscription Credits</p>
+                <p>{{ credits }} Subscription Credits</p>
                 <p>{{ profile }}</p>
               </div>
               <ul>
                 <li>
-                  <a href>what's new</a>
+                  <a href="/profile">what's new</a>
                 </li>
                 <li>
-                  <a href>profile</a>
+                  <a href="/profile/dashboard">profile</a>
                 </li>
                 <li>
-                  <a href>my assests</a>
+                  <a href="/profile/assets">my assests</a>
                 </li>
                 <li>
                   <a href>my invoices</a>
@@ -74,9 +74,9 @@
               </ul>
             </div>
           </li>
-          <li class="header-fav view-mobile" v-if="logged">
+          <li style="cursor: pointer" @click="toBookmarks" class="header-fav view-mobile" v-if="logged">
             <span>{{ counts }}</span>
-            <a href>nevim</a>
+            <a href="/bookmarked">a</a>
           </li>
         </ul>
       </div>
@@ -98,21 +98,56 @@ export default {
     return {
       account: false,
       subscribe: 332,
-      profile: 'Freelancer',
-      // TODO: API logged / not logged
       logged: this.$auth.loggedIn,
-      counts: 33,
+      bookmarked: null,
     };
   },
 
+  computed: {
+    user() {
+      return this.$auth.user.user;
+    },
+    profile() {
+      if (this.user.subscribe) {
+        return this.user.subscribe.name;
+      }
+      return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
+    },
+    credits() {
+      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
+    },
+    counts: {
+      get() {
+        if (this.bookmarked === null) {
+          this.bookmarked = this.user.profile.bookmarks_hdr.length + this.user.profile.bookmarks_models.length +
+            this.user.profile.bookmarks_textures.length;
+        }
+        return this.bookmarked;
+      },
+      set(value) {
+        this.bookmarked = value;
+      }
+    },
+
+  },
+  created() {
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === 'setBookmarks') {
+        this.counts = state.bookmarks;
+      }
+    });
+  },
   methods: {
     showAccount() {
       this.account = !this.account;
     },
-    async logout(){
+    async logout() {
       this.account = false;
       await this.$auth.logout();
     },
+    toBookmarks() {
+      return this.$router.push({path: '/bookmarked'});
+    }
   },
 };
 </script>

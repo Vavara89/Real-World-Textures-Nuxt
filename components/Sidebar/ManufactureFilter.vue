@@ -1,8 +1,8 @@
 <template>
   <div class="area">
-    <button v-if="brands_list" class="toggleOption" @click="toggleOption">
-      Select a manufacturer
-    </button>
+<!--    <button v-if="brands_list" class="toggleOption" @click="toggleOption">-->
+<!--      Select a manufacturer-->
+<!--    </button>-->
     <div>
       <DropdownAreas :areas="areas"/>
     </div>

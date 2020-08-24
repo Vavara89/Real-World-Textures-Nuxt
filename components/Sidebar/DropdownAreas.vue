@@ -26,7 +26,7 @@
             v-for="(item, index) in getContinents()"
             :key="'item-' + index"
             class="item"
-            @click="continent=item; open=false; $emit('input', item)"
+            @click="selectContinent(item); open=false; $emit('input', item)"
           >
             {{ item }}
           </div>
@@ -52,6 +52,9 @@
               {{ item.name }}
             </span>
           </li>
+          <li v-if="!getCountries().length">
+            <span>Empty result search</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -72,7 +75,7 @@ export default {
     },
     selected_option: null
   },
-  data () {
+  data() {
     return {
       search: this.$route.query.search_country ? this.$route.query.search_country : '',
       area_id: this.$route.query.area_id ? this.$route.query.area_id : '',
@@ -83,17 +86,17 @@ export default {
     };
   },
   methods: {
-    getContinents () {
+    getContinents() {
       let continents = null;
       if (this.areas) {
         continents = this.areas.map(item => item[1]).filter((v, i, a) => a.indexOf(v) === i);
       }
       return continents;
     },
-    getCountries () {
+    getCountries() {
       const countries = [];
       const mapAreas = (item) => {
-        return { name: item[0], id: item[2] };
+        return {name: item[0], id: item[2]};
       };
       if (this.areas) {
         let countries = this.areas.map(mapAreas);
@@ -112,35 +115,58 @@ export default {
       }
       return countries;
     },
-    onKeyUpSearch () {
+    onKeyUpSearch() {
       if (this.keyUpTimeOut) {
         clearTimeout(this.keyUpTimeOut);
       }
       this.keyUpTimeOut = setTimeout(() => {
         this.open_suggestions = this.search.length > 0;
+        if (!this.open_suggestions) {
+          this.cleanQuery('area_id');
+          this.cleanQuery('search_country');
+        }else{
+          this.pushToQuery('search_country', this.search);
+        }
       }, 200);
     },
-    closeSuggestions () {
+    closeSuggestions() {
       setTimeout(() => {
         this.open_suggestions = false;
       }, 300);
     },
-    selectCountry (item) {
+    selectCountry(item) {
       this.search = item.name;
-      this.pushToQuery('continent', item);
+      this.pushToQuery('continent', this.continent);
       this.pushToQuery('search_country', this.search);
-    },
-    selectContinent (item) {
-      this.continent = item;
       this.pushToQuery('area_id', item.id);
     },
-    pushToQuery (key, value) {
+    selectContinent(item) {
+      this.continent = item;
+      this.pushToQuery('continent', item);
+    },
+    pushToQuery(key, value) {
       const query = {};
       Object.assign(query, this.$route.query);
       query[key] = value;
-      this.$router.push({ path: this.$route.path, query });
+      this.$router.push({path: this.$route.path, query});
+    },
+    cleanQuery(key) {
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query[key] ? delete query[key] : null;
+      this.$router.push({path: this.$route.path, query});
     }
-  }
+  },
+  watch: {
+    $route(to, from) {
+      if (!this.$route.query['search_country']) {
+        this.search = '';
+      }
+      if(!this.$route.query['continent']){
+        this.continent = '';
+      }
+    }
+  },
 
 };
 </script>

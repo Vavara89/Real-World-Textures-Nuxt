@@ -25,4 +25,18 @@ export const toggleElement = (arr, elem) => {
   return arr;
 };
 
+export const pushQuery = (router, route, key, value) => {
+  const query = {};
+  Object.assign(query, route.query);
+  query[key] = value;
+  router.push({path: route.path, query: query});
+}
+
+export const removeQuery = (router, route, key) => {
+  const query = {};
+  Object.assign(query, route.query);
+  delete query[key];
+  router.push({path: route.path, query: query});
+}
+
 export const USER_AUTH_KEY_STORAGE = 'auth._token.local'

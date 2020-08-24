@@ -1,31 +1,17 @@
 <template>
   <div>
-    <div v-if="!assets">
+    <div v-if="!assets && path">
       <h4 class="h4">
-        <nuxt-link
-          to="/"
-        >
-          Filter
-        </nuxt-link>
-        <span> > </span>
-        <nuxt-link
-          to="/"
-        >
-          All
-        </nuxt-link>
-        <span> > </span>
-        <nuxt-link
-          to="/"
-        >
-          Concrete
-        </nuxt-link>
-        <span> > </span>
-        <nuxt-link
-          to="/"
-          class="filter is-active"
-        >
-          Mossy
-        </nuxt-link>
+
+        <template v-if="path.length" v-for="(item, index) in path">
+          <nuxt-link
+            :class="{'active filter': (index+1 === path.length)}"
+            :to="item.url"
+          >
+            {{item.name}}
+          </nuxt-link>
+          <span v-if="!(index+1 === path.length)"> > </span>
+        </template>
       </h4>
     </div>
     <div v-if="assets">
@@ -47,6 +33,10 @@ export default {
     assets: {
       type: Boolean,
       default: false
+    },
+    path:{
+      type: Array,
+      default: []
     }
   }
 };

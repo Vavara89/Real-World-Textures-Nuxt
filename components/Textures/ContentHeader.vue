@@ -1,6 +1,6 @@
 <template>
   <div class="content-header">
-    <Filters :assets="assets" />
+    <Filters :assets="assets" :path="path"/>
     <SortOption />
   </div>
 </template>
@@ -18,7 +18,12 @@ export default {
     assets: {
       type: Boolean,
       default: false
-    }
+    },
+    path: {
+      type: Array,
+      default: [],
+      required: false
+    },
   }
 };
 </script>
