@@ -61,12 +61,12 @@ export default {
     }
   },
   env: {
-    // baseUrl: 'http://127.0.0.1:8000/'
-    baseUrl: 'http://34.107.89.42/'
+    baseUrl: 'http://127.0.0.1:8000/'
+    // baseUrl: 'http://34.107.89.42/'
   },
   axios: {
-    baseURL: 'http://34.107.89.42/api'
-    // baseURL: 'http://127.0.0.1:8000/api'
+    // baseURL: 'http://34.107.89.42/api'
+    baseURL: 'http://127.0.0.1:8000/api'
   },
   auth: {
     plugins: [

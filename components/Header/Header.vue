@@ -22,7 +22,7 @@
             <nuxt-link :to="'/models'">Models</nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/hdrs'">Hdris</nuxt-link>
+            <nuxt-link :to="'/hdr'">Hdris</nuxt-link>
           </li>
           <li>
             <nuxt-link :to="'/brands'">Brands</nuxt-link>

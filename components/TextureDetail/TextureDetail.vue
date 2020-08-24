@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="options">
-          <div class="option-item resolution" :class="{error: resolution_error}">
+          <div v-if="options.length > 1" class="option-item resolution" :class="{error: resolution_error}">
             <div class="label">
               <label class="h3">Resolution:</label>
             </div>
@@ -86,13 +86,13 @@
           </div>
           <div class="option-item dimension">
             <div class="label">
-              <label class="h3">Texture<br>Dimensions:</label>
+              <label class="h3">{{ type_title }}<br>Dimensions:</label>
             </div>
             <div class="option">
               <label class="text">{{ texture.dimension }}</label>
             </div>
           </div>
-          <div class="option-item">
+          <div v-if="texture.maps.length > 0" class="option-item">
             <div class="label">
               <label class="h3">Consisting of:</label>
             </div>
@@ -111,7 +111,7 @@
             {{ texture.description }}
           </p>
         </div>
-        <div class="brand">
+        <div v-if="texture.brand" class="brand">
           <div class="label">
             <label class="h3">Brand:</label>
           </div>
@@ -156,6 +156,14 @@ export default {
       type: Object,
       default: null
     },
+    type_title: {
+      type: String,
+      required: true
+    },
+    type_code: {
+      type: String,
+      required: true
+    }
   },
 
 
@@ -221,7 +229,7 @@ export default {
       }).pop();
       this.processing = true;
 
-      catalog.download('textures', this.texture.id, resolution.name).then(response=>{
+      catalog.download(this.type_code, this.texture.id, resolution.name).then(response=>{
         let interval = undefined;
         const data = response.data;
         if (data.download_link){
@@ -229,7 +237,7 @@ export default {
           this.processing = false;
         }else{
           interval = setInterval(()=>{
-            catalog.download('textures',this.texture.id, resolution.name).then(response => {
+            catalog.download(this.type_code,this.texture.id, resolution.name).then(response => {
               const data = response.data;
               if (data.download_link){
                 window.location.href = data.download_link;
@@ -250,7 +258,7 @@ export default {
       if (!this.$auth.loggedIn) {
         return this.toLogin();
       }
-      profile.toggleBookMark('textures', this.texture.id).then(response => {
+      profile.toggleBookMark(this.type_code, this.texture.id).then(response => {
         this.texture.isBookmarked = !response.data.deleted;
         this.$store.commit('setBookmarks', response.data.totals);
       });

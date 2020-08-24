@@ -99,7 +99,7 @@ export default {
     },
     showDetails () {
       const path = `${this.texture.category.url}/product-${this.texture.slug}`;
-      this.$router.push({path: path});
+      this.$router.replace({path: path});
     }
   }
 };
