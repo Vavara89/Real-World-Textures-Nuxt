@@ -162,7 +162,29 @@
                 </div>
               </div>
               <div class="right">
-                card
+                <div class="clearfix">
+                  <div class="c100 p75 big scaled">
+                    <span class="isscaled">
+                      555</span>
+                    <div class="slice">
+                      <div class="bar" />
+                      <div class="fill" />
+                    </div>
+                    <span class="topas">Subscription Credits</span>
+                  </div>
+                  <button class="toggleOption2 bot">
+                      buy more credits
+                    </button>
+                </div>
+                <div class="credit">
+                <p>Hobby Monthly</p>
+                <p>Credits renew on 03/31/2020</p>
+                      <div class="logout">
+      <nuxt-link to="/">
+           Cancel Subscription
+      </nuxt-link>
+      </div>
+                </div>
               </div>
             </div>
           </div>
