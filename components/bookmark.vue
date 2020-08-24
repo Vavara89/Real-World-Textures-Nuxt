@@ -8,14 +8,14 @@
           @click="toggleSelected()"
         ></div>
         <div class="bookmark__img">
-          <img :src="item.image.url" :alt="item.image.alt" />
+          <img :src="item.image" :alt="item.name" />
         </div>
       </div>
-      <div class="bookmark__desc">{{ item.desc }}</div>
+      <div class="bookmark__desc">{{ item.name }}</div>
     </div>
     <div class="bookmark__part">
       <div class="bookmark__cost">{{ item.cost }} {{ appendText }}</div>
-      <div class="bookmark__btn" @click="deleteBookmark(index)">Delete</div>
+      <div class="bookmark__btn" @click="deleteBookmark(item)">Delete</div>
     </div>
   </div>
 </template>
@@ -28,17 +28,13 @@ export default {
       type: Object,
       required: true
     },
-    index: {
-      type: Number,
-      required: true
-    }
   },
   methods: {
     toggleSelected() {
       this.item.selected = !this.item.selected;
     },
-    deleteBookmark(index) {
-      this.$emit("deleteBookmark", index);
+    deleteBookmark(item) {
+      this.$emit("deleteBookmark", item);
     }
   },
   computed: {

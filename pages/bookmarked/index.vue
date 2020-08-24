@@ -2,23 +2,24 @@
   <div>
     <section class="bookmarks">
       <div class="container container--box">
+        <h2 v-if="!bookmarks.length">Your bookmarks is empty for now</h2>
         <div class="bookmarks__list" v-if="bookmarks.length > 0">
           <Bookmark v-for="(item,index) in bookmarks"
-            @deleteBookmark="deleteBookmark"
-            :item="item"
-            :index="index"
-            :key="index"
+                    @deleteBookmark="deleteBookmark"
+                    :item="item"
+                    :index="index"
+                    :key="index"
           />
         </div>
-        <div class="bookmarks__credits">
+        <div v-if="bookmarks.length > 0" class="bookmarks__credits">
           <div class="bookmarks__credits__part">
             <div class="bookmarks__credits__title">
               Your Credits Left:
             </div>
             <div class="bookmarks__credits__subscription">
-              {{ subscriptionCredits }} Subscription
+              {{ profile.credits }} credits
             </div>
-            <Button :link="subscriptionLink" text="Upgrade Subscription" type="secondary"/>
+            <Button :link="subscriptionLink"  :text="'Upgrade Subscription'" type="secondary"/>
           </div>
           <div class="bookmarks__credits__part">
             <div class="bookmarks__credits__title">
@@ -27,7 +28,7 @@
             <div class="bookmarks__credits__title">
               Total Items: <span>{{ selectedBookmarks }}</span>
             </div>
-            <Button :link="subscriptionLink" text="Download Selected" type="primary" color="large"/>
+            <Button :link="'javascript:void(0)'" @click="download" :text="buttonText" type="primary" color="large"/>
           </div>
         </div>
       </div>
@@ -38,6 +39,8 @@
 <script>
 import Bookmark from "@/components/Bookmark";
 import Button from "@/components/Button";
+import profile from "@/collectors/profile";
+import BookmarkClass from "@/classes/bookmark.class.ts";
 
 export default {
   name: "Bookmarks",
@@ -45,57 +48,53 @@ export default {
     Bookmark,
     Button
   },
+  async asyncData(context) {
+    if (context && context.$auth.loggedIn) {
+      profile.setToken(context.$auth.user.user.token);
+    }
+    const bookmarks = [];
+    await profile.getBookmarks().then((response) => {
+      ['textures', 'models', 'hdrs'].forEach((type) => {
+        response.data[type].map((item) => {
+          const data = {
+            id: item.id,
+            image: item.cover,
+            name: item.name,
+            type: type,
+            cost: item.credits,
+            selected: false
+          };
+          bookmarks.push(new BookmarkClass(data))
+        });
+      });
+    });
+    return {
+      bookmarks: bookmarks
+    }
+  },
   data() {
     return {
-      subscriptionCredits: 565,
-      subscriptionLink: "",
-      bookmarks: [
-        {
-          image: {
-            url: require("@/assets/img/textures/texture-technistone.png"),
-            alt: "Logo"
-          },
-          desc: "Cliff Grey Chunky 008",
-          cost: 8,
-          selected: false,
-        },
-        {
-          image: {
-            url: require("@/assets/img/textures/texture-technistone.png"),
-            alt: "Logo"
-          },
-          desc: "Cliff Grey Chunky 008",
-          cost: 1,
-          selected: false,
-        },
-        {
-          image: {
-            url: require("@/assets/img/textures/texture-technistone.png"),
-            alt: "Logo"
-          },
-          desc: "Cliff Grey Chunky 008",
-          cost: 0,
-          selected: false,
-        },
-        {
-          image: {
-            url: require("@/assets/img/textures/texture-technistone.png"),
-            alt: "Logo"
-          },
-          desc: "Cliff Grey Chunky 008",
-          cost: 23,
-          selected: false,
-        },
-      ],
+      subscriptionLink: "/profile/dashboard",
+      bookmarks: [],
+      buttonText: 'Download Selected'
     };
   },
   methods: {
-    deleteBookmark($event) {
-      this.bookmarks.splice($event, 1);
-      console.log('ahoj');
+    deleteBookmark(item) {
+      this.$nuxt.$loading.start();
+      profile.toggleBookMark(item.type, item.id).then(()=>{
+        this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== item.id);
+        this.$nuxt.$loading.finish();
+      });
+    },
+    download(){
+      this.buttonText = 'Please wait, preparing assets';
     },
   },
   computed: {
+    profile(){
+      return this.$auth.user.user.profile;
+    },
     selectedBookmarks() {
       const result = this.bookmarks.filter(bookmark => bookmark.selected === true);
       return result.length;

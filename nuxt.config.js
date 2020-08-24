@@ -65,7 +65,7 @@ export default {
     // baseUrl: 'http://34.107.89.42/'
   },
   axios: {
-    // baseUrl: 'http://34.107.89.42/'
+    // baseURL: 'http://34.107.89.42/api'
     baseURL: 'http://127.0.0.1:8000/api'
   },
   auth: {

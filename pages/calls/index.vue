@@ -4,6 +4,7 @@
     <LoginModals text="Captcha" modal="captcha" />
     <LoginModals text="Bookmarked" modal="bookmarked" />
     <LoginModals text="Wrong" modal="wrong" />
+
     <LoginModals text="Reset" modal="reset" />
   </div>
 </template>

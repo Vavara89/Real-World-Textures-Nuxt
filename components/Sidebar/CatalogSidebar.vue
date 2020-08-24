@@ -122,8 +122,8 @@ export default {
           items: [
             {
               title: 'Free',
-              link: 'free',
-              active: false
+              link: 'is_free',
+              active: this.$route.query['is_free'] ? this.$route.query['is_free'] : false
             },
           ]
         };

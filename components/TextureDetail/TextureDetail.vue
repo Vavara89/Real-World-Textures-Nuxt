@@ -98,7 +98,7 @@
             </div>
             <div class="option">
               <ul class="consisting-list">
-                <li v-for="(item, index) in texture.maps" :key="'consist-' + index" class="text">
+                <li v-for="(item, index) in texture.maps.slice(0, 5)" :key="'consist-' + index" class="text">
                   {{ item }}
                 </li>
               </ul>
@@ -196,7 +196,6 @@ export default {
     this.texture.resolutions.map(item => {
       this.options.push({value: `${item.size}x${item.size} (${item.name})`});
     });
-    console.log(this.texture);
   },
 
   methods: {
