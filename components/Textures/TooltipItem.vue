@@ -41,8 +41,8 @@
             {{ texture.credits }} credits
           </h4>
         </div>
-        <div class="bookmark">
-          <img :src="texture.ribbon">
+        <div v-if="texture.isBookmarked" class="bookmark">
+          <img src="@/assets/img/icon-bookmark-3.svg">
         </div>
       </div>
     </div>
