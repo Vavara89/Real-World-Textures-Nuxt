@@ -10,7 +10,7 @@
     <div class="tooltip-header" />
     <div class="tooltip-content">
 
-      <VueSlickCarousel v-if="texture.gallery.length" v-bind="slickSlider">
+      <VueSlickCarousel class="default" v-if="texture.gallery.length" v-bind="slickSlider">
         <template #prevArrow="arrowOption">
           <div class="prev-slick">
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
