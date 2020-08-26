@@ -22,13 +22,15 @@
               </tr>
               <tr>
                 <td style="padding-left: 20px;">
-                  <ToggleSwitch first_text="Monthly plans" second_text="Annual plans" />
+                  <ToggleSwitch first_text="Monthly plans" second_text="Annual plans" @setDuration="childMessageReceived" />
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
-                  13$
+                  <span v-if="isMonth">17$</span>
+                  <span v-if="!isMonth">13$</span>
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
-                  27$
+                  <span v-if="isMonth">35$</span>
+                  <span v-if="!isMonth">27$</span>
                 </td>
                 <td style="border-left: 1px solid #DDE0ED;">
 &nbsp;
@@ -120,14 +122,12 @@
 <script>
 import LeftSidebar from '@/components/Sidebar/LeftSidebar';
 import ToggleSwitch from '@/components/ToggleSwitch';
-import Button from '@/components/Button';
 
 export default {
   name: 'Textures',
   components: {
     LeftSidebar,
-    ToggleSwitch,
-    Button
+    ToggleSwitch
   },
   data () {
     return {
@@ -135,11 +135,20 @@ export default {
       title: 'Textures',
       perex:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      button: 'Join our community on FB'
+      button: 'Join our community on FB',
+      isMonth: true
     };
   },
   methods: {
-
+    childMessageReceived (duration) {
+      if (duration === 'month') {
+        this.isMonth = true;
+      }
+      if (duration === 'year') {
+        this.isMonth = false;
+      }
+      console.log('zpráva z Toggle', duration);
+    }
   }
 };
 </script>

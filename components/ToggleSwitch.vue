@@ -1,11 +1,18 @@
 <template>
   <div class="toggle">
     <fieldset class="toggle__fieldset superb" :class="{'pricing': first_text && second_text}">
-      <input id="monthly" type="radio" value="monthly" name="toggle" checked>
+      <input
+        id="monthly"
+        type="radio"
+        value="monthly"
+        name="toggle"
+        checked
+        @change="setMonth"
+      >
       <label for="monthly"><span v-if="first_text">{{ first_text }}</span><span v-if="!first_text">Monthly</span></label>
-      <input id="yearly" type="radio" value="yearly" name="toggle">
+      <input id="yearly" type="radio" value="yearly" name="toggle" @change="setYear">
       <label for="yearly"><span v-if="second_text">{{ second_text }}</span><span v-if="!second_text">Yearly</span></label>
-      <span class="toggle__switch"/>
+      <span class="toggle__switch" />
     </fieldset>
   </div>
 </template>
@@ -21,6 +28,14 @@ export default {
     second_text: {
       type: String,
       required: false
+    }
+  },
+  methods: {
+    setMonth () {
+      this.$emit('setDuration', 'month');
+    },
+    setYear () {
+      this.$emit('setDuration', 'year');
     }
   }
 };

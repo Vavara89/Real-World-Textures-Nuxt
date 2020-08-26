@@ -16,6 +16,10 @@ $toggle-height: 3.2rem;
         right: 20px;
       }
     }
+
+    &.pricing {
+      background-color: #F2F3F9;
+    }
   }
 
   input[type="radio"] {
@@ -60,10 +64,18 @@ $toggle-height: 3.2rem;
   .pricing {
     label {
       width: 12rem;
+      font-size: 12px;
+      color: #394174;
     }
 
     .toggle__switch{
       width: 12rem;
+      background-color: #394174;
+    }
+
+    input[type="radio"]:checked + label {
+      font-size: 12px;
+      color: #fff;
     }
 
     input[type="radio"]:checked + label + .toggle__switch,
