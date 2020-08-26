@@ -57,6 +57,21 @@ $toggle-height: 3.2rem;
     @include transition-base(transform);
   }
 
+  .pricing {
+    label {
+      width: 12rem;
+    }
+
+    .toggle__switch{
+      width: 12rem;
+    }
+
+    input[type="radio"]:checked + label + .toggle__switch,
+    input[type="radio"]:checked + label:nth-of-type(n) + .toggle__switch {
+      transform: translateX(12rem);
+    }
+  }
+
   input[type="radio"]:checked + label + .toggle__switch,
   input[type="radio"]:checked + label:nth-of-type(n) + .toggle__switch {
     transform: translateX($toggle-width/2);

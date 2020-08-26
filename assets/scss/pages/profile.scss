@@ -216,8 +216,72 @@
     }
 
     .invoices {
-        border: 1px solid red;
-    }  
+      margin-left: 70px;
+      width: 1300px;
+  }  
+
+  .discount {
+    height: 400px;
+    width: 600px;
+    text-align: center;
+    margin: 60px auto 0 auto;
+
+    h2 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #0A0D27;
+      padding-bottom: 40px;
+    }
+
+    h3 {
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #9093B9;
+    }
+
+    input {
+      margin-top: 80px;
+      width: 560px;
+      height: 64px;
+      padding: 0 30px;
+      border: 1px solid #DDE0ED;
+      margin-bottom: 50px;
+    }
+
+    input::placeholder {
+      font-size: 16px;
+      font-weight: lighter;
+      color: #9093B9;
+    }
+
+}  
+
+.pricing {
+
+  margin-left: 200px;
+  margin-top: 20px;
+
+  td {
+    color: #394174;
+    font-size: 14px;
+
+    &.padd-20 {
+      padding-bottom: 20px;
+    }
+  }
+
+  .price {
+    color: #9093B9;
+    font-size: 36px;
+    font-weight: bold;
+  }
+
+  .head {
+    font-size: 24px;
+    color: #0A0D27;
+    font-weight: bold;
+  }
+}
 
     .wrapper-profile {
         background-color: #FBFBFF;
@@ -288,18 +352,6 @@
 
                     .is-profile {
                             td {
-
-                                .toggleOption {
-                                    margin: 4rem -1.7rem 0 -1.7rem;
-                                    padding: 1rem 5.3rem;
-                                    border: none;
-                                    font-weight: bold;
-                                    border-radius: 5rem;
-                                    background-color: $color-primary-700;
-                                    color: $color-white;
-                                    text-transform: uppercase;
-                                    cursor: pointer;
-                                }
 
                                 &.is-first {
                                     padding: 10px 0;
@@ -1334,3 +1386,49 @@
     }
     
   }
+
+  .toggleOption {
+    margin: 2rem 0 0 0;
+    padding: 1rem 5.3rem;
+    border: none;
+    font-weight: bold;
+    border-radius: 5rem;
+    background-color: $color-primary-700;
+    color: $color-white;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &.gray {
+      background: #C3C7DE;
+      margin: 0;
+    }
+
+    &.green {
+      background: #4CBC81;
+      margin: 0;
+    }
+}
+
+.invoices {
+  .toggleOption {
+    margin: 0;
+}
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0A0D27;
+    margin-left: 40px;
+  }
+  table {
+    margin-top: 50px;
+  }
+  table tr td {
+    padding: 20px 0;
+  }
+  table tr:nth-child(odd) td{
+    background-color: #F2F3F9;
+}
+table tr:nth-child(even) td{
+  background-color: #FBFBFF;
+}
+}
