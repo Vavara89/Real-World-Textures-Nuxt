@@ -33,6 +33,8 @@ export default class FilterClass {
     "models": null,
     "hdr": null
   };
+  catalog_type: String | null = '';
+
   constructor (data: Filter) {
     if (data) {
       Object.assign(this, data);

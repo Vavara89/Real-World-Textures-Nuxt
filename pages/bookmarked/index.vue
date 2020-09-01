@@ -54,7 +54,7 @@ export default {
     }
     const bookmarks = [];
     await profile.getBookmarks().then((response) => {
-      ['textures', 'models', 'hdrs'].forEach((type) => {
+      ['textures', 'models', 'hdr'].forEach((type) => {
         response.data[type].map((item) => {
           const data = {
             id: item.id,
@@ -82,9 +82,10 @@ export default {
   methods: {
     deleteBookmark(item) {
       this.$nuxt.$loading.start();
-      profile.toggleBookMark(item.type, item.id).then(()=>{
+      profile.toggleBookMark(item.type, item.id).then((response)=>{
         this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== item.id);
         this.$nuxt.$loading.finish();
+        this.$store.commit('setBookmarks', response.data.totals);
       });
     },
     download(){

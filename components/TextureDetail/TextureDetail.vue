@@ -10,10 +10,8 @@
           </div>
           <div class="imageDetails-options">
 
-            <div class="download">
-              <a href="javascript:void(0)" @click="downLoad" class="badge-circle color-bck-secondary--purple h4">
-                <img src="@/assets/img/icon-download.svg">
-              </a>
+            <div v-if="texture.in_assets" class="download">
+              <img src="@/assets/img/icon-download.svg">
             </div>
 
             <div v-show="texture.is_free" class="freeMark">
@@ -120,6 +118,17 @@
             <a target="_blank" class="brand-link" :href="texture.brand.webSite">{{ texture.brand.webSite }}</a>
           </div>
         </div>
+        <div v-if="texture.longitude && texture.latitude" class="description">
+          <label class="h3">Location:</label>
+          <div class="text">
+            <p>
+              {{ formatCoords()}}
+            </p>
+            <p>
+              <a target="_blank" :href="getGoogleLink()">show on Google Maps</a>
+            </p>
+          </div>
+        </div>
         <div class="download">
           <div style="color: red" class="downloadErrors" v-if="downloadErrors">
             <h3>{{ downloadErrors }}</h3>
@@ -143,6 +152,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import Dropdown from '@/components/Sidebar/Dropdown';
 import profile from "@/collectors/profile";
 import catalog from "@/collectors/catalog";
+import formatcoords from "formatcoords";
 
 export default {
   name: 'TextureDetail',
@@ -212,6 +222,12 @@ export default {
       this.$router.push({path: path});
     },
 
+    formatCoords(){
+      return formatcoords(this.texture.latitude,this.texture.longitude).format();
+    },
+    getGoogleLink(){
+      return `http://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
+    },
     toLogin() {
       this.$router.push({path: '/login'});
     },
@@ -262,7 +278,8 @@ export default {
         this.texture.isBookmarked = !response.data.deleted;
         this.$store.commit('setBookmarks', response.data.totals);
       });
-    }
+    },
+
   }
 };
 </script>

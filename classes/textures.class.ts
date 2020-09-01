@@ -10,7 +10,9 @@ export default class TexturesClass {
   credits: number | null = null;
   gallery: Array<Object> | null = [];
   slug: string | null = null;
-  in_assets: boolean | null = null;
+  in_assets: boolean | null = false;
+  latitude: number | null = null;
+  longitude: number | null = null;
 
   constructor (data: any) {
     if (data) {

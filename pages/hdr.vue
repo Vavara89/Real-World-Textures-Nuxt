@@ -22,7 +22,7 @@ import Pager from "@/components/Pager/Pager"
 
 
 export default {
-  name: 'Textures',
+  name: 'Hdr',
   components: {
     TextureGallery,
     CatalogSidebar,
@@ -35,7 +35,7 @@ export default {
     let filter = null;
     let pager = null;
     let product = null;
-    await catalog.loadCatalog(context.route, 'textures', context).then(data => {
+    await catalog.loadCatalog(context.route, 'hdr', context).then(data => {
       filter = data[0];
       textures = data[1].textures;
       pager = data[1].pager;
@@ -59,7 +59,7 @@ export default {
       activeCategory: null,
       filter:{},
       pager: {},
-      baseUrl: '/textures',
+      baseUrl: '/hdr',
       product: null
     };
   },
@@ -69,8 +69,7 @@ export default {
       const fromRoot = from.matched[0].path;
       const toRoot = to.matched[0].path;
       if (fromRoot === toRoot) {
-        this.$nuxt.$loading.start();
-        catalog.loadCatalog(to, 'textures').then(data => {
+        catalog.loadCatalog(to, 'hdr').then(data => {
           const filter = data[0];
           if(isSearchedChanged){
              delete this.filter['categories'];
@@ -81,16 +80,16 @@ export default {
           this.activeCategory = data[2];
           this.product = data[3];
         }).catch((error => {
-        })).finally(()=>{
-          this.$nuxt.$loading.finish();
-        });
+          console.log('Errors');
+          console.log(error);
+        }));
       }
     }
   },
   computed:{
     path(){
       let data = [
-        {name: 'Textures', url: this.baseUrl}
+        {name: 'HDR', url: this.baseUrl}
       ];
       if(this.activeCategory){
         this.activeCategory.ancestors.map(item => data.push({name: item.name, url:`${this.baseUrl}/${item.slug}`}));

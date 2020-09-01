@@ -36,13 +36,13 @@
           <li>
             <a href>Pricing</a>
           </li>
-          <li v-if="!logged">
+          <li v-if="!getIsLogged()">
             <nuxt-link to="/login">Log In</nuxt-link>
           </li>
-          <li class="header-button" v-if="!logged">
+          <li class="header-button" v-if="!getIsLogged()">
             <nuxt-link to="/signup">Sign Up</nuxt-link>
           </li>
-          <li class="header-account" v-if="logged">
+          <li class="header-account" v-if="getIsLogged()">
             <a class="icon" @click="showAccount">Account</a>
             <div class="logmenu" v-if="account">
               <div class="logmenu-top">
@@ -147,6 +147,9 @@ export default {
     },
     toBookmarks() {
       return this.$router.push({path: '/bookmarked'});
+    },
+    getIsLogged(){
+      return this.$auth.loggedIn;
     }
   },
 };

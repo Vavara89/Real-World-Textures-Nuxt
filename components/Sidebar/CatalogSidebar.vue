@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="leftsidebar">
-      <Dropdown v-if="getTypes()" :options="getTypes()"/>
+      <Dropdown @input="changeCatalogType" v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" />
 
       <div class="materials-menu">
         <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_id="activeCategory ? activeCategory.id : null"/>
@@ -61,23 +61,36 @@ export default {
         return [
           {
             value: 'Textures',
-            count: this.filter.counts.textures
+            count: this.filter.counts.textures,
+            short: 'textures'
           },
           {
             value: 'Models',
-            count: this.filter.counts.models
+            count: this.filter.counts.models,
+            short: 'models'
+
           },
           {
             value: 'HDRis',
-            count: this.filter.counts.hdr
+            count: this.filter.counts.hdr,
+            short: 'hdr'
+
           },
           {
             value: 'Brands',
-            count: this.filter.counts.brands
+            count: this.filter.counts.brands,
+            short: 'brands'
           }
         ];
       }
       return null;
+    },
+    getActiveType(){
+      const types = this.getTypes();
+      if(this.filter && this.filter.catalog_type){
+        return types.filter(item => item.short === this.filter.catalog_type).pop();
+      }
+      return  {};
     },
     getCategories() {
       if (this.filter && this.filter.categories) {
@@ -141,6 +154,9 @@ export default {
     },
     clearFilter(){
       this.$router.push({path: this.$route.path});
+    },
+    changeCatalogType(value){
+      this.$router.replace({path: "/"+value.short, query: this.$route.query});
     }
   }
 
