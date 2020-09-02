@@ -14,21 +14,15 @@
                     <li
                       :class="{'selected': cardProfile}"
                       @click="toggleSelected('profile')"
-                    >
-                      Profile
-                    </li>
+                    >Profile</li>
                     <li
                       :class="{'selected': cardBilling}"
                       @click="toggleSelected('billing')"
-                    >
-                      Billing info
-                    </li>
+                    >Billing info</li>
                     <li
                       :class="{'selected': cardPassword}"
                       @click="toggleSelected('password')"
-                    >
-                      Change password
-                    </li>
+                    >Change password</li>
                   </ul>
                 </div>
                 <div class="tabs-content">
@@ -91,10 +85,10 @@
                             <img src="@/assets/img/cards/mastercard.png" class="bank">
                           </td>
                           <td style="width: 92px;">
-                            <span>Edit</span>
+                            <span><a href="#" class="button-tertiary button-tertiary--green">Edit</a></span>
                           </td>
                           <td style="width: 92px;">
-                            <span>Remove</span>
+                            <span><a href="#" class="button-tertiary button-tertiary--green">Remove</a></span>
                           </td>
                         </tr>
                         <tr>
@@ -112,7 +106,7 @@
 &nbsp;
                           </td>
                           <td style="width: 92px;">
-                            <span>Edit</span>
+                             <span><a href="#" class="button-tertiary button-tertiary--green">Edit</a></span>
                           </td>
                           <td style="width: 92px;">
 &nbsp;

@@ -58,7 +58,7 @@
         </li>
         <li>
           <nuxt-link to="/">
-            Pricing
+            Pricing and plans
           </nuxt-link>
         </li>
       </ul>

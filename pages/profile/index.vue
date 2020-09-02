@@ -2,7 +2,7 @@
   <div>
     <section class="services inprofile">
       <div class="container container--content">
-        <CardGrid :cards="boxes" :isProfile="true" />
+        <CardGrid :cards="boxes" :is-profile="true" />
         <CardSidebar
           v-for="(card, index) in boxes"
           :key="index"
@@ -98,7 +98,7 @@
     <section v-if="countWindow == 3">
       <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
-        <VueSlickCarousel class="default" ref="sliderNav2" v-bind="navCarousel">
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -136,7 +136,7 @@
 
       <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
-        <VueSlickCarousel class="default" ref="sliderNav2" v-bind="navCarousel">
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -170,11 +170,13 @@
             <img src="@/assets/img/textures/blue.svg">
           </div>
         </VueSlickCarousel>
+        <div class="circle-big" />
+        <div class="circle-small" />
       </div>
 
       <div class="imageDetails-footer last">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
-        <VueSlickCarousel class="default" ref="sliderNav" v-bind="navCarousel">
+        <VueSlickCarousel ref="sliderNav" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -213,7 +215,7 @@
     <section v-if="countWindow == 5">
       <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
-        <VueSlickCarousel class="default" ref="sliderNav2" v-bind="navCarousel2">
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -251,7 +253,7 @@
 
       <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
-        <VueSlickCarousel class="default" ref="sliderNav2" v-bind="navCarousel2">
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -285,11 +287,13 @@
             <img src="@/assets/img/textures/blue.svg">
           </div>
         </VueSlickCarousel>
+        <div class="circle-big" />
+        <div class="circle-small" />
       </div>
 
       <div class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
-        <VueSlickCarousel class="default" ref="sliderNav2" v-bind="navCarousel2">
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -325,7 +329,8 @@
         </VueSlickCarousel>
       </div>
     </section>
-    <SectionSubscribe :isProfile="true" />
+    <SectionSubscribe :is-profile="true" />
+    <div class="bluewrapper" />
   </div>
 </template>
 

@@ -17,11 +17,31 @@
 
   &.profile {
     @include mq(xl, min) {
-      position: static;
+      position: relative;
       margin-top: 0;
-      margin-bottom: 20rem;
+      margin-bottom: -45rem;
       height: auto;
       background-image: none;
+      z-index: 2000;
+    }
+
+    @include mq(xl, max) {
+      position: relative;
+      margin-top: 0;
+      margin-bottom: -25rem;
+      height: auto;
+      background-image: none;
+      z-index: 2000;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      bottom: 1px;
+      z-index: -1;
+      transform: scale(0.6);
+      box-shadow: 0px 0px 80px 20px #000000;
     }
   }
 

@@ -33,6 +33,15 @@
     @include button-primary-large;
     border: none;
   }
+
+  &--discount {
+    width: 400px;
+    font-size: 15px;
+
+    &:hover {
+      width: 400px !important;
+    }
+  }
 }
 
 // Secondary buttons

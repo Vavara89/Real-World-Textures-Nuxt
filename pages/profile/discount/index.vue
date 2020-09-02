@@ -12,7 +12,7 @@
           </h3>
 
           <input type="text" placeholder="Your Discount Code">
-          <Button link="" text="apply your discount" type="primary" color="green" />
+          <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
         </div>
       </section>
     </div>

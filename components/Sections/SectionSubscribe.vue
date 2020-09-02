@@ -5,10 +5,10 @@
         <div class="subscribe-inner">
           <SectionTitle :title="title" :is-centered="false" :is-inverted="true" />
           <div class="toggle-button-wrap">
-            <ToggleSwitch />
+            <ToggleSwitch @setDuration="childMessageReceived" />
           </div>
           <div class="price-table">
-            <PriceCardGrid :cards="cards" />
+            <PriceCardGrid :cards="cards" :duration="duration" />
           </div>
         </div>
       </div>
@@ -43,7 +43,8 @@ export default {
           title: 'Freelancer',
           subtitle: 'per month/person',
           currency: '$',
-          price: '15',
+          price: '17',
+          priceYear: '13',
           desc: '200 credits/month',
           buttontext: 'Get Freelancer',
           buttonlink: '/'
@@ -52,13 +53,25 @@ export default {
           title: 'Studio',
           subtitle: 'per month/seat',
           currency: '$',
-          price: '32',
+          price: '35',
+          priceYear: '27',
           desc: '700 credits/month',
           buttontext: 'Get Studio',
           buttonlink: '/'
         }
-      ]
+      ],
+      duration: ''
     };
+  },
+  methods: {
+    childMessageReceived (duration) {
+      if (duration === 'month') {
+        this.duration = duration;
+      }
+      if (duration === 'year') {
+        this.duration = duration;
+      }
+    }
   }
 };
 </script>
