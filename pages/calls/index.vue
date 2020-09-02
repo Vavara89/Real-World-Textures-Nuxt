@@ -4,24 +4,27 @@
     <LoginModals text="Captcha" modal="captcha" />
     <LoginModals text="Bookmarked" modal="bookmarked" />
     <LoginModals text="Wrong" modal="wrong" />
-
     <LoginModals text="Reset" modal="reset" />
+
+    <LoginModals text="Payment" modal="payment" />
+    <LoginModals text="Address" modal="address" />
+    <LoginModals text="Unsubscribe" modal="unsubscribe" />
   </div>
 </template>
 
 <script>
-import LoginModals from "@/components/LoginModals/LoginModals";
+import LoginModals from '@/components/LoginModals/LoginModals';
 
 export default {
-  name: "Calls",
+  name: 'Calls',
   components: {
-    LoginModals,
-  },
-  data() {
-    return {
-    }
+    LoginModals
   },
   props: {
+  },
+  data () {
+    return {
+    };
   },
   methods: {
   }

@@ -44,7 +44,33 @@
         max-width: 480px;
         line-height: 48px;
         margin: 0 auto;
-        padding: 40px 0;
+        padding: 40px 20px;
+        text-align: center;
+
+        table
+       {
+           max-width: 600px;
+           display: block;
+         margin: 90px auto 0 auto;
+       }
+
+
+       tr td:first-child {
+        width: 240px;
+        color: #394174;
+    }
+
+        &.address {
+            max-width: none;
+            line-height: normal;
+            margin-top: 230px;
+            margin-bottom: 80px;
+            font-weight: 400;
+
+            input {
+                margin: 6px 0;
+            }
+        }
 
         h2 {
             font-size: 36px;
@@ -120,14 +146,14 @@
             color: #394174;
         }
 
-        input.email {
+        input.email, input.input {
             color: #394174;
             font-weight: 300;
-            line-height: 40px;
+            line-height: normal;
             min-width: 320px;
             height: 40px;
             margin-left: 20px;
-            padding: 0 10px;
+            padding: 0 25px;
             outline: 0;
             border-radius: 8px;
             border: 1px solid #dde0ed;
@@ -140,7 +166,6 @@
                 font-size: 13px;
                 color: #b2b3b8;
                 font-weight: 300;
-                line-height: 40px;
             }
 
             @media only screen and (max-width: 468px) {
@@ -148,6 +173,17 @@
                 min-width: auto;
                 margin-left: 0;
               }
+        }
+
+        input.input {
+            color: #394174;
+            font-weight: 400;
+            font-size: 13px;
+        &::placeholder {
+            color: #394174;
+            font-weight: 400;
+            font-size: 13px;
+        }
         }
 
         button.email {
@@ -168,6 +204,14 @@
             -o-transition: opacity 0.2s linear;
             transition: opacity 0.2s linear;
             opacity: 1;
+
+            &.special {
+                margin-top: 40px;
+                padding: 20px 100px;
+                position: absolute; left: 50%;
+                transform: translate(-50%, 0);
+
+            }
 
             &:hover {
                 opacity: 0.8;
