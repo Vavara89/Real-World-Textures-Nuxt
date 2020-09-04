@@ -8,7 +8,6 @@
 
     <LoginModals text="Payment" modal="payment" />
     <LoginModals text="Address" modal="address" />
-    <LoginModals text="Unsubscribe" modal="unsubscribe" />
   </div>
 </template>
 

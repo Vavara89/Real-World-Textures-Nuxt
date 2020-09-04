@@ -31,10 +31,31 @@
     background: #ffffff;
     border-radius: 16px;
     overflow: auto;
+    cursor: auto;
 
-    @media only screen and (max-height: 500px) {
-        align-items: stretch; 
-    }
+
+         &.card {
+            height: 625px;
+
+            @media only screen and (max-height:500px) {
+                justify-content: start;
+                padding-bottom: 100px;
+              }
+        }
+
+        &.is-background {
+            background-color: #fbfbff;
+        }
+
+        &.is-address {
+            height: 760px;
+
+            @media only screen and (max-height:700px) {
+                justify-content: start;
+                align-items: flex-start;
+              }
+        }
+
 
     @media only screen and (max-width: 320px) {
         min-width: 320px; 
@@ -58,17 +79,43 @@
        tr td:first-child {
         width: 240px;
         color: #394174;
+
+    }
+    &.is-card {
+        tr td:first-child {
+            width: 135px;
+    
+        }
     }
 
         &.address {
             max-width: none;
             line-height: normal;
-            margin-top: 230px;
+            margin-top: 60px;
             margin-bottom: 80px;
             font-weight: 400;
 
             input {
                 margin: 6px 0;
+            }
+
+            &.is-card {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding-top: 0;
+
+                input {
+                    min-width: 357px;
+                    &.small {
+                        width: 136px;
+                        min-width: auto;
+
+                        &::placeholder {
+                            color: #9093B9;
+                            font-weight: 300;
+                        }
+                    }
+                }
             }
         }
 
@@ -206,15 +253,72 @@
             opacity: 1;
 
             &.special {
+                position: relative;
+                width: 370px;
                 margin-top: 40px;
-                padding: 20px 100px;
+                height: 64px;
                 position: absolute; left: 50%;
                 transform: translate(-50%, 0);
-
+                background: linear-gradient(to right, #6EC89A 50%, #4CBC81 50%);
+                background-size: 200% 100%;
+                background-position: right bottom;
+                transition: all .4s ease;
+                overflow: hidden;
             }
 
+            .ar {
+                height: 32px;
+                width: 32px;
+                background-image: url(~@/assets/img/arrow-right.svg);
+                background-repeat: no-repeat;
+                background-position: center  center;
+                position: absolute;
+                left: -200px;
+                top: 50%;
+                transform: translate(0, -50%);
+                 -webkit-transition: all ease 0.4s;
+                -moz-transition: all ease 0.4s;
+                transition: all ease 0.4s;
+            }
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                -webkit-transition: all ease 0.4s;
+                -moz-transition: all ease 0.4s;
+                transition: all ease 0.4s;
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:hover span {
+                opacity: 0;
+              }
+
+              &:hover span:nth-child(2) {
+                opacity: 1;
+              }
+
             &:hover {
+                width: 500px;
                 opacity: 0.8;
+                padding: 20px 0;
+                box-shadow: inset 0 0 0 0 #31302B;
+                -webkit-transition: all ease 0.4s;
+                -moz-transition: all ease 0.4s;
+                transition: all ease 0.4s;
+                background-position: left bottom;
+
+                .ar {
+                    left: 160px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                }
             }
         }
     }

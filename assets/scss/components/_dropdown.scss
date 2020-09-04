@@ -9,6 +9,36 @@
         z-index: 10;
       }
 
+      &.input {
+        margin: 6px 0 6px 20px;
+
+        .custom-select {
+          min-width: 320px;
+        }
+
+        .selected {
+          color: #394174;
+          font-weight: 400;
+          font-size: 13px;
+          min-width: 320px;
+          outline: 0;
+          border-radius: 8px;
+          border: 1px solid #dde0ed;
+          background-color: #fff;
+        }
+
+        .selected.open{
+          border-radius: 8px 8px 0 0;
+        }
+
+        .items {
+          background-color: #fff;
+          border-left: 1px solid #dde0ed;
+          border-right: 1px solid #dde0ed;
+          border-bottom: 1px solid #dde0ed;
+        }
+      }
+
       &.full {
         .custom-select {
           position: relative;

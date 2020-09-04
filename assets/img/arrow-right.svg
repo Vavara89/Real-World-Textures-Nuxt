@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="šipka_celá" data-name="šipka celá" transform="translate(0 32) rotate(-90)">
+    <circle id="Ellipse_34" data-name="Ellipse 34" cx="16" cy="16" r="16" fill="#f2f3f9" opacity="0"/>
+    <g id="šipka_tvar" data-name="šipka tvar" transform="translate(11 20.686) rotate(-90)">
+      <path id="Path_10" data-name="Path 10" d="M0,0V8H8" transform="translate(5.657 0) rotate(45)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

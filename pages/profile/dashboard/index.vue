@@ -1,6 +1,8 @@
 <template>
   <div class="page-container">
     <LeftSidebar :profile="true" />
+    <LoginModals text="" modal="address" :openaddress="openAddress" @setDuration="childMessageReceived" />
+    <LoginModals text="" modal="payment" :openpayment="openPayment" @setDuration="childMessageReceived" />
     <div class="page-content">
       <section class="services view-bottom">
         <div class="wrapper-profile">
@@ -14,15 +16,21 @@
                     <li
                       :class="{'selected': cardProfile}"
                       @click="toggleSelected('profile')"
-                    >Profile</li>
+                    >
+                      Profile
+                    </li>
                     <li
                       :class="{'selected': cardBilling}"
                       @click="toggleSelected('billing')"
-                    >Billing info</li>
+                    >
+                      Billing info
+                    </li>
                     <li
                       :class="{'selected': cardPassword}"
                       @click="toggleSelected('password')"
-                    >Change password</li>
+                    >
+                      Change password
+                    </li>
                   </ul>
                 </div>
                 <div class="tabs-content">
@@ -85,7 +93,7 @@
                             <img src="@/assets/img/cards/mastercard.png" class="bank">
                           </td>
                           <td style="width: 92px;">
-                            <span><a href="#" class="button-tertiary button-tertiary--green">Edit</a></span>
+                            <span><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage('payment')">Edit</a></span>
                           </td>
                           <td style="width: 92px;">
                             <span><a href="#" class="button-tertiary button-tertiary--green">Remove</a></span>
@@ -106,7 +114,7 @@
 &nbsp;
                           </td>
                           <td style="width: 92px;">
-                             <span><a href="#" class="button-tertiary button-tertiary--green">Edit</a></span>
+                            <span><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage('address')">Edit</a></span>
                           </td>
                           <td style="width: 92px;">
 &nbsp;
@@ -190,17 +198,21 @@
 
 <script>
 import LeftSidebar from '@/components/Sidebar/LeftSidebar';
+import LoginModals from '@/components/LoginModals/LoginModals';
 
 export default {
   name: 'Textures',
   components: {
-    LeftSidebar
+    LeftSidebar,
+    LoginModals
   },
   data () {
     return {
       cardProfile: true,
       cardBilling: false,
       cardPassword: false,
+      openAddress: false,
+      openPayment: false,
 
       subtitle: 'Services',
       title: 'Textures',
@@ -359,6 +371,24 @@ export default {
         this.cardProfile = false;
         this.cardBilling = false;
         this.cardPassword = true;
+      }
+    },
+    childMessageReceived (duration) {
+      if (duration === 'payment') {
+        this.openPayment = false;
+      }
+
+      if (duration === 'address') {
+        this.openAddress = false;
+      }
+    },
+    toggleMessage (data) {
+      if (data === 'address') {
+        this.openAddress = !this.openAddress;
+      }
+
+      if (data === 'payment') {
+        this.openPayment = !this.openPayment;
       }
     }
   }

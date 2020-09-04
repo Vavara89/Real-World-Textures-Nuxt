@@ -1,6 +1,7 @@
 <template>
   <div>
-    <span class="cursor" @click="toggleMessage(modal)">{{ text }}</span>
+    <!-- <span class="cursor" @click="toggleMessage(modal)">{{ text }}</span> -->
+    <span><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage(modal)">{{ text }}</a></span>
     <div v-if="taken" class="modal">
       <div class="inner">
         <span class="close" @click="toggleMessage(modal)" />
@@ -50,7 +51,7 @@
         <span class="close" @click="toggleMessage(modal)" />
         <h2>Reset your password</h2>
         <form method="post" class="email" @submit="checkEmail">
-          <label class="email">Your email adress</label>
+          <label class="email">Your email address</label>
           <input
             id="email"
             v-model="email"
@@ -69,45 +70,66 @@
         </form>
       </div>
     </div>
-    <div v-if="payment" class="modal">
-      <div class="inner">
-        <span class="close" @click="toggleMessage(modal)" />
+    <div v-if="payment || openpayment" class="modal card is-background">
+      <div class="inner address is-card">
+        <span class="close" @click="toggleMessage(modal), setPayment()" />
         <h2>Update Payment Method</h2>
         <h3>Secured and encrypted by lorem ipsum</h3>
         <form method="post" class="email" @submit="checkEmail">
-          <label class="email">Card Number</label>
-          <input
-            id="card"
-            v-model="email"
-            class="email"
-            :class="{'email--error': errors.length && !added}"
-            type="text"
-            placeholder=""
-            name="card"
-          >
-          <label class="email">Expiration Date</label>
-          <input
-            id="card"
-            v-model="email"
-            class="email"
-            :class="{'email--error': errors.length && !added}"
-            type="text"
-            placeholder=""
-            name="card"
-          >
-          <div class="errors" :class="{'success': added}">
-            <span v-if="errors.length">{{ errors[0] }}</span>
-          </div>
-          <button type="submit" class="email">
-            Update payment method
-          </button>
+          <table style="text-align: left; margin-top: 60px;">
+            <tbody>
+              <tr>
+                <td colspan="1">
+                  Card Number
+                </td>
+                <td colspan="3">
+                  <input
+                    :class="{'email--error': errors.length && !added}"
+                    type="text"
+                    class="input"
+                    name="address"
+                    placeholder=""
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Expiration Date</td>
+                <td>
+                  <input
+                    :class="{'email--error': errors.length && !added}"
+                    type="text"
+                    placeholder="MM/YY"
+                    class="input small"
+                    name="suit"
+                  >
+                </td>
+                <td style="width: 65px; text-align: right;">
+                  CVV
+                </td>
+                <td>
+                  <input
+                    :class="{'email--error': errors.length && !added}"
+                    type="text"
+                    placeholder=""
+                    class="input small"
+                    name="suit"
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </form>
+        <button type="submit" class="email special">
+          <span>Update Payment Method</span>
+          <span>Update now</span>
+          <div class="ar" />
+        </button>
       </div>
     </div>
-    <div v-if="address" class="modal">
+    <div v-if="address || openaddress" class="modal is-address is-background">
       <div class="inner address">
-        <span class="close" @click="toggleMessage(modal)" />
-        <h2>Edit Your Billing Adress</h2>
+        <span class="close" @click="toggleMessage(modal), setAddress()" />
+        <h2>Edit Your Billing address</h2>
         <form method="post" class="email" @submit="checkEmail">
           <table style="text-align: left;">
             <tbody>
@@ -174,13 +196,7 @@
               <tr>
                 <td>State/Territory</td>
                 <td>
-                  <input
-                    :class="{'email--error': errors.length && !added}"
-                    type="text"
-                    placeholder=""
-                    class="input"
-                    name="state"
-                  >
+                  <Dropdown :options="options" :input="true" />
                 </td>
               </tr>
               <tr>
@@ -201,23 +217,29 @@
             <span v-if="errors.length">{{ errors[0] }}</span>
           </div>
           <button type="submit" class="email special">
-            Update billing adress
+            <span>Update billing address</span>
+            <span>Update now</span>
+            <div class="ar" />
           </button>
         </form>
       </div>
     </div>
     <div
-      v-if="taken || captcha || bookmarked || wrong || reset || payment || address"
+      v-if="taken || captcha || bookmarked || wrong || reset || payment || address || openaddress || openpayment"
       class="silkscreen"
-      @click="toggleMessage(modal)"
+      @click="toggleMessage(modal), setPayment(), setAddress()"
     />
   </div>
 </template>
 
 <script>
+import Dropdown from '@/components/Sidebar/Dropdown';
+
 export default {
   name: 'LoginModals',
-  components: {},
+  components: {
+    Dropdown
+  },
   props: {
     text: {
       type: String,
@@ -226,6 +248,14 @@ export default {
     modal: {
       type: String,
       required: true
+    },
+    openaddress: {
+      type: Boolean,
+      default: false
+    },
+    openpayment: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -241,8 +271,40 @@ export default {
     wrong: false,
     reset: false,
     payment: false,
-    address: false
+    address: false,
+    options: [
+      {
+        value: 'Moldave'
+      },
+      {
+        value: 'Czech Republic'
+      },
+      {
+        value: 'England'
+      },
+      {
+        value: 'United States'
+      },
+      {
+        value: 'France'
+      },
+      {
+        value: 'Nebraska'
+      }
+    ]
   }),
+  watch: {
+    openpayment (newValue) {
+      if (newValue) {
+        this.scrollSwitcher('payment');
+      }
+    },
+    openaddress (newValue) {
+      if (newValue) {
+        this.scrollSwitcher('address');
+      }
+    }
+  },
   methods: {
     scrollSwitcher (state) {
       if (state) {
@@ -314,6 +376,18 @@ export default {
     resetForm () {
       this.email = '';
       this.errors = [];
+    },
+    setPayment () {
+      if (this.openpayment) {
+        this.$emit('setDuration', 'payment');
+        this.toggleMessage('payment');
+      }
+    },
+    setAddress () {
+      if (this.openaddress) {
+        this.$emit('setDuration', 'address');
+        this.toggleMessage('address');
+      }
     }
   }
 };

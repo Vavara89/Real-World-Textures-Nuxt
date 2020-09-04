@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" :class="{search: search, 'full': full}">
+  <div class="dropdown" :class="{search: search, 'full': full, 'input': input}">
     <div
       class="custom-select"
       :tabindex="tabindex"
@@ -50,13 +50,17 @@ export default {
       default: 0
     },
     selected_option: null,
+    input: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     return {
       selected: this.selected_option ? this.selected_option : this.options.length > 0 ? this.options[0] : null,
       open: false
     };
-  },
+  }
 
 };
 </script>
