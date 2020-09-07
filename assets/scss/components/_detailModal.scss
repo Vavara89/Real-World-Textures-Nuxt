@@ -256,4 +256,14 @@
       }
     }
   }
+
+  .changed:hover img.image{
+    display:none;
+    }
+    .changed img.hover{
+    display:none;
+    }
+    .changed:hover img.hover{
+    display:block;
+    }
 }

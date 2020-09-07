@@ -66,9 +66,10 @@
             <label>{{ texture.credits }}</label>
             credits
           </div>
-          <div class="bookmark">
+          <div class="bookmark changed">
             <a href="javascript:void(0)" @click="toggleBookMark">
-              <img v-if="!texture.isBookmarked" src="@/assets/img/icon-bookmark-1.svg">
+              <img v-if="!texture.isBookmarked" src="@/assets/img/icon-bookmark-1.svg" class="image">
+              <img v-if="!texture.isBookmarked" src="@/assets/img/icon-bookmark-2.svg" class="hover">
               <img v-if="texture.isBookmarked" src="@/assets/img/icon-bookmark-2.svg">
             </a>
           </div>
@@ -133,7 +134,7 @@
           <div style="color: red" class="downloadErrors" v-if="downloadErrors">
             <h3>{{ downloadErrors }}</h3>
           </div>
-          <button v-show="!processing" class="button-primary" @click="downLoad">
+          <button v-show="!processing" class="button-primary nohover" @click="downLoad">
             Download for {{ texture.credits }} credits
           </button>
           <button v-show="processing" class="button-primary button-primary--blue">

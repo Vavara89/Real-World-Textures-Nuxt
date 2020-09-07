@@ -131,7 +131,7 @@
           </div>
         </div>
         <div class="download">
-          <button v-show="!processing" class="button-primary" @click="process">
+          <button v-show="!processing" class="button-primary nohover" @click="process">
             Download for {{ texture.credits }} credits
           </button>
           <button v-show="processing" class="button-primary button-primary--blue">

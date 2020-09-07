@@ -24,22 +24,24 @@
   padding: 0 4rem;
   color: $color-white;
 
-  &:hover{
-    padding-left:2.5rem !important;
-    padding-right:3rem !important;
-  }
-
-  &:hover:before{
-    display: inline-block;
-    margin-right: 1.5rem;
-    content: url("~@/assets/img/icon/icon_arrow-right.svg");
-    width:1.4rem;
-    height:1.4rem;
-    margin-top: -1rem;
-    margin-right: 1rem;
-
-    @include mq(sm, max) {
-      margin-top: -0.3rem;
+  &:not(.nohover) {
+    &:hover{
+      padding-left:2.5rem !important;
+      padding-right:3rem !important;
+    }
+  
+    &:hover:before{
+      display: inline-block;
+      margin-right: 1.5rem;
+      content: url("~@/assets/img/icon/icon_arrow-right.svg");
+      width:1.4rem;
+      height:1.4rem;
+      margin-top: -1rem;
+      margin-right: 1rem;
+  
+      @include mq(sm, max) {
+        margin-top: -0.3rem;
+      }
     }
   }
 
