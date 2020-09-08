@@ -212,9 +212,12 @@ export default {
     this.options.push({
       value: 'Choose resolution'
     });
-    this.texture.resolutions.map(item => {
-      this.options.push({value: `${item.size}x${item.size} (${item.name})`});
-    });
+    if(this.texture.resolutions){
+      this.texture.resolutions.map(item => {
+        this.options.push({value: `${item.size}x${item.size} (${item.name})`});
+      });
+    }
+
   },
 
   methods: {

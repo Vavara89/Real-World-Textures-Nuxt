@@ -7,11 +7,11 @@
         <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_id="activeCategory ? activeCategory.id : null"/>
       </div>
 
-      <div v-if="getRefines()" class="refine-filter">
+      <div v-if="getRefines().items.length" class="refine-filter">
         <RefineFilter :options="getRefines()"/>
       </div>
 
-      <div v-if="getAreas()" class="manufacture-filter">
+      <div v-if="getAreas().length" class="manufacture-filter">
         <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()"/>
       </div>
 
@@ -19,7 +19,7 @@
           <ColorFilter v-if="getColors()" :options="getColors()" />
         </div>
 
-      <div>
+      <div v-if="canClear">
         <button @click="clearFilter()" type="reset" class="clearFilter h4">
           Clear all Filters
         </button>
@@ -53,6 +53,11 @@ export default {
     activeCategory:{
       type: Object,
       required: false,
+    },
+    canClear:{
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   methods: {
@@ -103,44 +108,48 @@ export default {
       }
     },
     getAreas() {
+      console.log(this.filter);
       if (this.filter && this.filter.areas) {
         return this.filter.areas;
       }
+      return [];
     },
     getRefines() {
-      if (this.$auth.loggedIn) {
-        return {
+        const data =  {
           title: 'Refine By',
           items: [
-            {
-              title: 'Free',
-              link: 'is_free',
-              active: this.$route.query['is_free'] ? this.$route.query['is_free'] : false
-            },
-            {
-              title: 'My Assets',
-              link: 'assets',
-              active: this.$route.query['own'] ? this.$route.query['own'] : false
-            },
-            {
-              title: 'Favourites',
-              link: 'favourites',
-              active: this.$route.query['is_favorites'] ? this.$route.query['is_favorites'] : false
-            }
           ]
         };
-      }else {
-        return {
-          title: 'Refine By',
-          items: [
-            {
-              title: 'Free',
-              link: 'is_free',
-              active: this.$route.query['is_free'] ? this.$route.query['is_free'] : false
-            },
-          ]
-        };
-      }
+        if(this.filter.free){
+          data.items.push(
+              {
+                title: 'Free',
+                link: 'is_free',
+                active: this.$route.query['is_free'] ? this.$route.query['is_free'] : false
+              },
+          )
+        }
+
+        if(this.filter.own && this.$auth.loggedIn){
+          data.items.push(
+              {
+                title: 'My Assets',
+                link: 'assets',
+                active: this.$route.query['own'] ? this.$route.query['own'] : false
+              }
+          )
+        }
+
+        if(this.filter.favs && this.$auth.loggedIn){
+          data.items.push(
+              {
+                title: 'Favourites',
+                link: 'favourites',
+                active: this.$route.query['is_favorites'] ? this.$route.query['is_favorites'] : false
+              }
+          )
+        }
+        return data;
     },
 
     getColors(){

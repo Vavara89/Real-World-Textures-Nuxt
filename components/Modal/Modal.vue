@@ -9,21 +9,21 @@
         </div>
         <div class="modal-title">
           <h2 v-if="!set" class="h2">
-            Official distributors of<br>Technistone
+            Official distributors of<br>{{ brand.name }}
           </h2>
           <h2 v-if="set" class="h2">
             Select real world<br>manufacturers
           </h2>
         </div>
-        <div>
-          <input type="text" placeholder="E.g. Ton">
-          <button class="toggleOption">
+        <div v-if="canSearch">
+          <input v-model="term"  type="text" placeholder="E.g. Ton">
+          <button @click="search" class="toggleOption">
             Confirm
           </button>
         </div>
       </div>
       <div class="modal-body">
-        <ManufactorList :list="list" :set="set" />
+        <ManufactorList :list="search()" :set="set" />
       </div>
       <div class="modal-footer" />
     </div>
@@ -52,16 +52,31 @@ export default {
     set: {
       type: Boolean,
       default: false
+    },
+    canSearch: {
+      type: Boolean,
+      default: true
+    },
+    brand:{
+      type: Object,
+      default: {},
+      required: false
     }
   },
   data () {
     return {
-
+      term: '',
+      timeOut: undefined,
     };
   },
   methods: {
     close () {
       this.$emit('input', !this.value);
+    },
+    search(){
+      return this.list.filter((item)=>{
+          return this.term ? item.name.indexOf(this.term) > -1 : true;
+      });
     }
   }
 };

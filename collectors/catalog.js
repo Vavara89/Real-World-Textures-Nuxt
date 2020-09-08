@@ -4,6 +4,8 @@ import FilterClass from "@/classes/filter.class.ts";
 import PagerClass from "@/classes/pager.class.ts";
 import TexturesClass from "@/classes/textures.class.ts";
 import ProductClass from "@/classes/product.class.ts";
+import BrandClass from '@/classes/brand.class';
+import DistributorClass from '@/classes/distributor.class';
 
 const resource = 'catalog';
 
@@ -49,11 +51,15 @@ export default {
     return await this.getCollector()
       .post(`${resource}/${type}/download/${id}-${resolution}`);
   },
-
+  async distributors(slug){
+    return await this.getCollector()
+      .get(`${resource}/brands/distributors/${slug}`);
+  },
   async loadCatalog(route, catalogType, context){
     let qs = Object.keys(route.query)
       .map(key => `${key}=${route.query[key]}`)
       .join('&');
+
     let activeCategory = {};
     let categoryPromise = null;
     let productPromise = null;
@@ -92,5 +98,30 @@ export default {
       return {textures: textures, pager: new PagerClass(response.data)}
     });
     return await Promise.all([filterPromise, productsPromise, categoryPromise, productPromise]);
+  },
+  async loadBrand(route, catalogType, brandSlug){
+    let qs = Object.keys(route.query)
+      .map(key => `${key}=${route.query[key]}`)
+      .join('&');
+
+    const filterPromise = await this.filter(catalogType, qs).then(response => {
+      return new FilterClass(response.data);
+    });
+
+    const brandPromise = await this.product(catalogType, brandSlug).then(response => {
+      return new BrandClass(response.data);
+    });
+
+    const productsPromise = await this.products(`brands-products/${brandSlug}`, qs).then(response => {
+      return {
+        textures: response.data.textures,
+        models: response.data.models
+      };
+    });
+    const distributors = await this.distributors(brandSlug).then(response => {
+      return response.data.map((item)=>new DistributorClass(item));
+    });
+
+    return await  Promise.all([filterPromise, brandPromise, productsPromise, distributors])
   }
 };

@@ -36,7 +36,7 @@
         </h3>
       </div>
       <div class="credits-bookmark">
-        <div class="credits">
+        <div v-if="texture.credits" class="credits">
           <h4 class="text">
             {{ texture.credits }} credits
           </h4>
@@ -98,8 +98,13 @@ export default {
       return this.toolChange = false;
     },
     showDetails () {
-      const path = `${this.texture.category.url}/product-${this.texture.slug}`;
-      this.$router.replace({path: path});
+      if(this.texture.absoluteUrl){
+        this.$router.replace({path: this.texture.absoluteUrl});
+      }else{
+        const path = `${this.texture.category.url}/product-${this.texture.slug}`;
+        this.$router.replace({path: path});
+      }
+
     }
   }
 };

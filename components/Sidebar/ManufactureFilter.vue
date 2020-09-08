@@ -1,12 +1,12 @@
 <template>
   <div class="area">
-<!--    <button v-if="brands_list" class="toggleOption" @click="toggleOption">-->
-<!--      Select a manufacturer-->
-<!--    </button>-->
+    <button v-if="brands_list" class="toggleOption" @click="toggleOption">
+      Select a manufacturer
+    </button>
     <div>
       <DropdownAreas :areas="areas"/>
     </div>
-    <Modal v-model="modalOpen" :option="modalOpt" :list="manufactorList" />
+    <Modal v-model="modalOpen" :option="modalOpt" :list="brands_list" :set="true"/>
   </div>
 </template>
 <script>
@@ -38,159 +38,6 @@ export default {
     return {
       modalOpt: 'manufactorList',
       modalOpen: false,
-      manufactorList: [
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        },
-        {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        }
-      ]
     };
   },
 

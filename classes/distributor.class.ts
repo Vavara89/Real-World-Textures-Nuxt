@@ -1,13 +1,10 @@
 import keysToCamel from '~/classes/keysToCamel';
 
-export default class BrandClass {
+export default class DistributorClass {
   id: number | null = null;
   name: string | null = null;
-  slug: string | null = null;
-  categories: [] | null = null;
-  web_site: string | null = null;
-  description: string | null = null;
-  logo: string | null = null;
+  address: string | null = null;
+  website: string | null = null;
 
   constructor (data:any) {
     if (data) {

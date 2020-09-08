@@ -62,7 +62,7 @@
           </div>
           <div class="column">
             <div class="green-column">
-              <img src="@/assets/img/brands/logo.png">
+              <img src="assets/img/brands/logo.png">
             </div>
           </div>
         </div>
@@ -75,13 +75,13 @@
           <div class="rowes">
             <div class="coles">
               <a href="#" class="button active nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
+                <img src="assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
+                <img src="assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
               </a>
             </div>
             <div class="coles">
               <a href="#" class="button active nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+                <img src="assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
               </a>
             </div>
             <div class="coles">
@@ -95,13 +95,13 @@
             </div>
             <div class="coles">
               <a href="#" class="button active rotate nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
+                <img src="assets/img/icon-arrow_left.svg" style="margin:10px;" width="12">
               </a>
             </div>
             <div class="coles">
               <a href="#" class="button active rotate nobg">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
-                <img src="@/assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
+                <img src="assets/img/icon-arrow_left.svg" style="margin:10px 0 10px 6px;" width="12">
+                <img src="assets/img/icon-arrow_left.svg" style="margin:10px 6px 10px -7px;" width="12">
               </a>
             </div>
           </div>
@@ -298,7 +298,7 @@ export default {
       cards: [
         {
           image: {
-            url: require('@/assets/img/tutorials/0.png'),
+            url: require('assets/img/tutorials/0.png'),
             alt: ''
           },
           title: 'For Architects',
@@ -310,7 +310,7 @@ export default {
         },
         {
           image: {
-            url: require('@/assets/img/tutorials/1.png'),
+            url: require('assets/img/tutorials/1.png'),
             alt: ''
           },
           title: 'For 3D Artists',
@@ -322,7 +322,7 @@ export default {
         },
         {
           image: {
-            url: require('@/assets/img/tutorials/2.png'),
+            url: require('assets/img/tutorials/2.png'),
             alt: ''
           },
           title: 'For Manufacturers',
@@ -333,7 +333,7 @@ export default {
         },
         {
           image: {
-            url: require('@/assets/img/tutorials/0.png'),
+            url: require('assets/img/tutorials/0.png'),
             alt: ''
           },
           title: 'For Manufacturers',
@@ -344,7 +344,7 @@ export default {
         },
         {
           image: {
-            url: require('@/assets/img/tutorials/1.png'),
+            url: require('assets/img/tutorials/1.png'),
             alt: ''
           },
           title: 'For Manufacturers',
@@ -355,7 +355,7 @@ export default {
         },
         {
           image: {
-            url: require('@/assets/img/tutorials/2.png'),
+            url: require('assets/img/tutorials/2.png'),
             alt: ''
           },
           title: 'For Manufacturers',
@@ -368,56 +368,56 @@ export default {
       textures: [
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'
         },
         {
           image: {
-            url: require('@/assets/img/textures/texture-jafholz.png'),
+            url: require('assets/img/textures/texture-jafholz.png'),
             alt: ''
           },
           title: '0059 WOODVEENER OAK COPPER2'

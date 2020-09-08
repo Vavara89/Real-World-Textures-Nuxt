@@ -5,17 +5,17 @@
         <li v-for="(item, index) in list" :key="'logo-' + index" class="manufactor-item">
           <div class="manufactor-company">
             <p class="filter">
-              {{ item.company }}
+              {{ item.name }}
             </p>
           </div>
           <div class="manufactor-location">
             <p class="filter">
-              {{ item.location }}
+              {{ item.address }}
             </p>
           </div>
           <div class="manufactor-site">
             <p class="button-secondary button-secondary--undefined">
-              {{ item.site }}
+              {{ item.website }}
             </p>
           </div>
         </li>
@@ -27,7 +27,9 @@
         <li v-for="(item, index) in list" :key="'logo-' + index" class="manufactor-item">
           <div class="manufactor-company">
             <p class="filter">
-              <input type="checkbox" >{{ item.company }}
+              <label :for="'brand-'+item.id">
+                <input :id="'brand-'+item.id" type="checkbox" :value="item.id">{{ item.name }}
+              </label>
             </p>
           </div>
         </li>
@@ -51,7 +53,7 @@ export default {
   },
   data () {
     return {
-
+      selected_brands:[],
     };
   },
   methods: {
