@@ -42,7 +42,8 @@ export default {
             isOpened: false,
             videoCover: "",
             text: "<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>"
-          }
+          },
+          video: 'https://www.youtube.com/embed/iZMkzjrA5hM'
         },
         {
           image: {

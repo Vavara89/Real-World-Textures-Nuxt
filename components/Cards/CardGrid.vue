@@ -5,9 +5,8 @@
       :key="'logo-' + index"
       class="card"
       :class="{'view-margin': isMore}"
-      @click="toggleSidebar(index)"
     >
-      <Card :card="card" :is-profile="isProfile" :is-tutorial="isTutorial" />
+      <Card @selected="toggleSidebar(index)" :card="card" :is-profile="isProfile" :is-tutorial="isTutorial" />
     </li>
   </ul>
 </template>

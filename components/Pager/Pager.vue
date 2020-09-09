@@ -47,7 +47,6 @@ export default {
   },
   methods:{
     isActive(page){
-      console.log(this.activePage);
       return this.activePage === page;
     },
     paginate(page){

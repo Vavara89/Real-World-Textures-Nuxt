@@ -6,13 +6,13 @@
                     <SectionTitle :subtitle="subtitle" :title="title" :isCentered="false" />
                     <div class="explore-button-wrap">
                         <Button
-                            link="#"
+                            link="/textures"
                             text="Explore Textures"
                             type="primary"
                             color="green"
                         />
                         <Button
-                            link="#"
+                            link="/models"
                             text="Explore Models"
                             type="primary"
                             color="blue"

@@ -1,10 +1,10 @@
 <template>
   <div class="card__block" :class="{'card__block--tutorial': isTutorial}">
-    <div class="card__img">
+    <div @click="$emit('selected')" class="card__img">
       <img :src="card.image.url" :alt="card.image.alt">
     </div>
     <div class="card__content">
-      <header class="card__header">
+      <header @click="$emit('selected')" class="card__header">
         <h3 class="card__title name" :class="{'profile': isProfile}">
           {{ card.title }}
         </h3>
@@ -14,7 +14,7 @@
       </header>
       <span class="buttonprofile" v-if="isProfile">
         <Button
-          link="#"
+          :link="card.link"
           text="Go to gallery"
           type="secondary"
           color=""

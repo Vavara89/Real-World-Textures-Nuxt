@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <LeftSidebar :profile="true" />
+    <ProfileSidebar :profile="true" />
     <div class="page-content">
       <section class="services view-bottom">
         <div class="invoices">
@@ -8,82 +8,87 @@
 
           <table style="width: 930px;">
             <tbody>
-              <tr style="height: 23px;">
-                <td style="width: 111px; height: 23px; text-align: center;">
-                  03/31/2020
-                </td>
-                <td style="width: 155px; height: 23px; text-align: center;">
-                  Subscription
-                </td>
-                <td style="width: 204px; height: 23px; text-align: center;">
-                  $15.00
-                </td>
-                <td style="width: 196px; height: 23px;">
-                  Processor Declined
-                </td>
-                <td style="width: 258px; height: 23px; text-align: center;">
-                  <button class="toggleOption">
-                    Download receipt
-                  </button>
-                </td>
-              </tr>
-              <tr style="height: 23px;">
-                <td style="width: 111px; height: 23px; text-align: center;">
-                  03/31/2020
-                </td>
-                <td style="width: 155px; height: 23px; text-align: center;">
-                  Subscription
-                </td>
-                <td style="width: 204px; height: 23px; text-align: center;">
-                  $15.00
-                </td>
-                <td style="width: 196px; height: 23px;">
-                  Processor Declined
-                </td>
-                <td style="width: 258px; height: 23px; text-align: center;">
-                  <button class="toggleOption">
-                    Download receipt
-                  </button>
+<!--              <tr style="height: 23px;">-->
+<!--                <td style="width: 111px; height: 23px; text-align: center;">-->
+<!--                  03/31/2020-->
+<!--                </td>-->
+<!--                <td style="width: 155px; height: 23px; text-align: center;">-->
+<!--                  Subscription-->
+<!--                </td>-->
+<!--                <td style="width: 204px; height: 23px; text-align: center;">-->
+<!--                  $15.00-->
+<!--                </td>-->
+<!--                <td style="width: 196px; height: 23px;">-->
+<!--                  Processor Declined-->
+<!--                </td>-->
+<!--                <td style="width: 258px; height: 23px; text-align: center;">-->
+<!--                  <button class="toggleOption">-->
+<!--                    Download receipt-->
+<!--                  </button>-->
+<!--                </td>-->
+<!--              </tr>-->
+              <tr>
+                <td colspan="5">
+                  <h3 style="text-align: center">You don't have invoices yet</h3>
                 </td>
               </tr>
-              <tr style="height: 23px;">
-                <td style="width: 111px; height: 23px; text-align: center;">
-                  03/31/2020
-                </td>
-                <td style="width: 155px; height: 23px; text-align: center;">
-                  Subscription
-                </td>
-                <td style="width: 204px; height: 23px; text-align: center;">
-                  $15.00
-                </td>
-                <td style="width: 196px; height: 23px;">
-                  Processor Declined
-                </td>
-                <td style="width: 258px; height: 23px; text-align: center;">
-                  <button class="toggleOption">
-                    Download receipt
-                  </button>
-                </td>
-              </tr>
-              <tr style="height: 23px;">
-                <td style="width: 111px; height: 23px; text-align: center;">
-                  03/31/2020
-                </td>
-                <td style="width: 155px; height: 23px; text-align: center;">
-                  Subscription
-                </td>
-                <td style="width: 204px; height: 23px; text-align: center;">
-                  $15.00
-                </td>
-                <td style="width: 196px; height: 23px;">
-                  Processor Declined
-                </td>
-                <td style="width: 258px; height: 23px; text-align: center;">
-                  <button class="toggleOption">
-                    Download receipt
-                  </button>
-                </td>
-              </tr>
+<!--              <tr style="height: 23px;">-->
+<!--                <td style="width: 111px; height: 23px; text-align: center;">-->
+<!--                  03/31/2020-->
+<!--                </td>-->
+<!--                <td style="width: 155px; height: 23px; text-align: center;">-->
+<!--                  Subscription-->
+<!--                </td>-->
+<!--                <td style="width: 204px; height: 23px; text-align: center;">-->
+<!--                  $15.00-->
+<!--                </td>-->
+<!--                <td style="width: 196px; height: 23px;">-->
+<!--                  Processor Declined-->
+<!--                </td>-->
+<!--                <td style="width: 258px; height: 23px; text-align: center;">-->
+<!--                  <button class="toggleOption">-->
+<!--                    Download receipt-->
+<!--                  </button>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              <tr style="height: 23px;">-->
+<!--                <td style="width: 111px; height: 23px; text-align: center;">-->
+<!--                  03/31/2020-->
+<!--                </td>-->
+<!--                <td style="width: 155px; height: 23px; text-align: center;">-->
+<!--                  Subscription-->
+<!--                </td>-->
+<!--                <td style="width: 204px; height: 23px; text-align: center;">-->
+<!--                  $15.00-->
+<!--                </td>-->
+<!--                <td style="width: 196px; height: 23px;">-->
+<!--                  Processor Declined-->
+<!--                </td>-->
+<!--                <td style="width: 258px; height: 23px; text-align: center;">-->
+<!--                  <button class="toggleOption">-->
+<!--                    Download receipt-->
+<!--                  </button>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              <tr style="height: 23px;">-->
+<!--                <td style="width: 111px; height: 23px; text-align: center;">-->
+<!--                  03/31/2020-->
+<!--                </td>-->
+<!--                <td style="width: 155px; height: 23px; text-align: center;">-->
+<!--                  Subscription-->
+<!--                </td>-->
+<!--                <td style="width: 204px; height: 23px; text-align: center;">-->
+<!--                  $15.00-->
+<!--                </td>-->
+<!--                <td style="width: 196px; height: 23px;">-->
+<!--                  Processor Declined-->
+<!--                </td>-->
+<!--                <td style="width: 258px; height: 23px; text-align: center;">-->
+<!--                  <button class="toggleOption">-->
+<!--                    Download receipt-->
+<!--                  </button>-->
+<!--                </td>-->
+<!--              </tr>-->
             </tbody>
           </table>
           <!-- DivTable.com -->
@@ -94,12 +99,12 @@
 </template>
 
 <script>
-import LeftSidebar from '@/components/Sidebar/LeftSidebar';
+import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
   name: 'Textures',
   components: {
-    LeftSidebar
+    ProfileSidebar
   },
   data () {
     return {

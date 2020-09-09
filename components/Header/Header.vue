@@ -57,16 +57,16 @@
                   <a href="/profile/dashboard">profile</a>
                 </li>
                 <li>
-                  <a href="/profile/assets">my assests</a>
+                  <a href="/textures?assets=true">my assests</a>
                 </li>
                 <li>
-                  <a href>my invoices</a>
+                  <a href="/profile/invoices">my invoices</a>
                 </li>
                 <li>
-                  <a href>discount code</a>
+                  <a href="/profile/discount">discount code</a>
                 </li>
                 <li>
-                  <a href>Pricing</a>
+                  <a href="/profile/pricing">Pricing</a>
                 </li>
                 <li class="logout">
                   <a @click="logout">Log out</a>

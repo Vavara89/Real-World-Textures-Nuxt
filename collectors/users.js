@@ -41,18 +41,11 @@ export default {
   },
   async saveProfile (data){
     const profile = collectorWithUserAuth
-      .put(`${resource}profile/`, data);
+      .post(`${resource}profile/update`, data);
     return new ProfileClass(profile.data);
   },
   async changePassword (data){
-    const response = await collectorWithUserAuth
-      .post(`${resource}change_password/`, data);
-    return true;
-  },
-  async subscribe (email) {
-    const url = `${resource}subscribe/`;
-    const response = await collector
-      .post(url, { email });
-    return true;
+    return  await collectorWithUserAuth
+      .post(`${resource}change_password`, data);
   }
 };

@@ -59,7 +59,6 @@ export default {
     },
     brand:{
       type: Object,
-      default: {},
       required: false
     }
   },

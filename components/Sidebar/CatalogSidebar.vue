@@ -108,7 +108,6 @@ export default {
       }
     },
     getAreas() {
-      console.log(this.filter);
       if (this.filter && this.filter.areas) {
         return this.filter.areas;
       }

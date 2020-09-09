@@ -2,7 +2,7 @@
   <div>
     <section class="services inprofile">
       <div class="container container--content">
-        <CardGrid :cards="boxes" :is-profile="true" />
+        <CardGrid :cards="boxes" :is-profile="true"/>
         <CardSidebar
           v-for="(card, index) in boxes"
           :key="index"
@@ -21,10 +21,11 @@
               New partners
             </p>
             <p class="perx">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit
+              amet nibh. Aenean ac malesuada quam, et tempor magna.
             </p>
             <Button
-              link="#"
+              link="/brands"
               text="Exploare all brands"
               type="secondary"
               color=""
@@ -33,32 +34,10 @@
         </div>
         <div class="cols">
           <div class="wrappers">
-            <div class="boxes">
-              <img src="@/assets/img/partners/1.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/2.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/3.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/1.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/2.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/3.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/1.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/2.svg">
-            </div>
-            <div class="boxes">
-              <img src="@/assets/img/partners/3.svg">
+            <div v-for="partner in partners" class="boxes">
+              <a :href="partner.link">
+                <img :width="'100px'" :height="'50px'" :src="partner.image.url" :alt="partner.image.alt">
+              </a>
             </div>
           </div>
         </div>
@@ -75,7 +54,8 @@
               Hot news?
             </p>
             <p class="perx">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit
+              amet nibh. Aenean ac malesuada quam, et tempor magna.
             </p>
             <Button
               link="#"
@@ -89,7 +69,7 @@
           <section class="services view-bottom">
             <div class="container container--box">
               <!-- <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" /> -->
-              <CardGrid :cards="cards" :is-more="true" :is-tutorial="true" />
+              <CardGrid :cards="tutorials" :is-more="true" :is-tutorial="true"/>
             </div>
           </section>
         </div>
@@ -97,7 +77,7 @@
     </section>
     <section v-if="countWindow == 3">
       <div class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -113,29 +93,14 @@
               </span>
             </div>
           </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
+          <div v-for="item in textures" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
       </div>
 
       <div class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -151,31 +116,16 @@
               </span>
             </div>
           </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
+          <div v-for="item in models" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
-        <div class="circle-big" />
-        <div class="circle-small" />
+        <div class="circle-big"/>
+        <div class="circle-small"/>
       </div>
 
       <div class="imageDetails-footer last">
-        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -191,30 +141,15 @@
               </span>
             </div>
           </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
+          <div v-for="item in hdr" class="imageItem">
+              <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
       </div>
     </section>
     <section v-if="countWindow == 5">
       <div class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -230,29 +165,14 @@
               </span>
             </div>
           </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
+          <div v-for="item in textures" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
       </div>
 
       <div class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -268,31 +188,16 @@
               </span>
             </div>
           </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
+          <div v-for="item in models" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
-        <div class="circle-big" />
-        <div class="circle-small" />
+        <div class="circle-big"/>
+        <div class="circle-small"/>
       </div>
 
       <div class="imageDetails-footer last2">
-        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -308,29 +213,14 @@
               </span>
             </div>
           </template>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/coral.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/red.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/sand.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/brown.svg">
-          </div>
-          <div class="imageItem">
-            <img src="@/assets/img/textures/blue.svg">
+          <div v-for="item in hdr" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
       </div>
     </section>
-    <SectionSubscribe :is-profile="true" />
-    <div class="bluewrapper" />
+    <SectionSubscribe :is-profile="true"/>
+    <div class="bluewrapper"/>
   </div>
 </template>
 
@@ -345,6 +235,8 @@ import CardSidebar from '@/components/Cards/CardSidebar';
 
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+import catalog from '@/collectors/catalog';
+import main from '@/collectors/main';
 
 export default {
   name: 'Tutorials',
@@ -356,8 +248,66 @@ export default {
     VueSlickCarousel,
     CardSidebar
   },
+  async asyncData (ctx) {
+    let partners = [];
+    let textures = [];
+    let models = [];
+    let hdr = [];
+    let tutorials = [];
+    await catalog.products('brands', 'page_size=10').then(response => {
+      partners = response.data.results.map((item) => {
+        return {
+          link: item.absolute_url,
+          image: {
+            url: item.logo,
+            alt: item.name,
+          }
+        };
+      });
+    });
+    await main.tutorials(4).then(response => {
+      tutorials = response.data.results.map(item => {
+        return {
+          image: {
+            url: item.cover,
+            alt: item.name
+          },
+          title: item.name,
+          subtitle:
+            'Looking for nice floor or material for facade? No problem!',
+          text: item.description,
+          link: item.video_url,
+        };
+      });
+    });
+
+    await catalog.products('textures', 'page_size=10').then(response => {
+      textures = response.data.results;
+    });
+
+    await catalog.products('hdr', 'page_size=10').then(response => {
+      hdr = response.data.results;
+    });
+    await catalog.products('models', 'page_size=10').then(response => {
+      models = response.data.results;
+    });
+
+    return {
+      partners: partners,
+      tutorials: tutorials,
+      models: models,
+      hdr: hdr,
+      textures: textures
+    };
+  },
   data () {
     return {
+      partners: [],
+      tutorials: [],
+      models: [],
+      hdr: [],
+      textures: [],
+
       subtitle: 'Services',
       title: 'Tutorials',
       subtitle_textures: 'Latest releases of',
@@ -370,52 +320,6 @@ export default {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       button: 'Join our community on FB',
       cards: [
-        {
-          image: {
-            url: require('@/assets/img/tutorials/0.png'),
-            alt: ''
-          },
-          title: 'For Architects',
-          subtitle:
-            'Looking for nice floor or material for facade? No problem!',
-          text:
-            'Choose the best material for your project, make visualisation for your client and buy a surface in the real world.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/1.png'),
-            alt: ''
-          },
-          title: 'For 3D Artists',
-          subtitle:
-            'Take it all! Diffuse, reflection, glosiness, bump, displacement ambient occlusion and even subsurface scattering...',
-          text:
-            'PBR materials  and 3D models  from real worldwide manufacturers.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/2.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/0.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        }
       ],
       boxes: [
         {
@@ -428,7 +332,7 @@ export default {
             '',
           text:
             '',
-          link: '#',
+          link: '/textures',
           sidebar: {
             isOpened: false,
             videoCover: '',
@@ -445,7 +349,7 @@ export default {
             '',
           text:
             '',
-          link: '#',
+          link: '/models',
           sidebar: {
             isOpened: false,
             videoCover: '',
@@ -462,7 +366,7 @@ export default {
             '',
           text:
             '',
-          link: '#',
+          link: '/hdrs',
           sidebar: {
             isOpened: false,
             videoCover: '',

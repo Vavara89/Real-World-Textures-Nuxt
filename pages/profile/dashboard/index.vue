@@ -1,16 +1,17 @@
 <template>
   <div class="page-container">
-    <LeftSidebar :profile="true" />
-    <LoginModals text="" modal="address" :openaddress="openAddress" @setDuration="childMessageReceived" />
-    <LoginModals text="" modal="payment" :openpayment="openPayment" @setDuration="childMessageReceived" />
+    <ProfileSidebar :profile="true"/>
+    <LoginModals text="" modal="address" :openaddress="openAddress" @setDuration="childMessageReceived"/>
+    <LoginModals text="" modal="payment" :openpayment="openPayment" @setDuration="childMessageReceived"/>
     <div class="page-content">
       <section class="services view-bottom">
         <div class="wrapper-profile">
           <div class="wrapper-inner">
             <div class="containers">
-              <div class="iconic" />
+              <div class="iconic"/>
               <div class="left">
-                <h2>Jiří Slovák</h2><h3>jirislovak@email.com<h3 /></h3>
+                <h2>{{ profile }}</h2>
+                <h3>{{ email }}</h3>
                 <div class="tabs">
                   <ul>
                     <li
@@ -37,127 +38,140 @@
                   <div v-if="cardProfile" class="is-profile">
                     <table style="width: 621px;">
                       <tbody>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            First Name
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="name" placeholder="Enter name">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            Last Name
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="surname" placeholder="Enter last name">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            Email Address
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="email" placeholder="Enter email">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            Business Name
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="company" placeholder="Enter company">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="text-align: center;" colspan="2">
-                            <button class="toggleOption">
-                              Update info
-                            </button>
-                          </td>
-                        </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          First Name
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="first_name" type="text" name="name" placeholder="Enter name">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          Last Name
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="last_name" type="text" name="surname" placeholder="Enter last name">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          Email Address
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="email" type="text" name="email" placeholder="Enter email">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          Business Name
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="business_name" type="text" name="company" placeholder="Enter company">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="text-align: center;" colspan="2">
+                          <button @click="saveProfile()" class="toggleOption">
+                            Update info
+                          </button>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
                   <div v-if="cardBilling" class="is-profile">
                     <table style="width: 621px;">
                       <tbody>
-                        <tr>
-                          <td style="width: 250px;" class="is-first">
-                            Payment Method
-                          </td>
-                          <td style="width: 200px;">
-                            CC Ending with 4329
-                          </td>
-                          <td style="width: 134px;">
-                            <img src="@/assets/img/cards/mastercard.png" class="bank">
-                          </td>
-                          <td style="width: 92px;">
-                            <span><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage('payment')">Edit</a></span>
-                          </td>
-                          <td style="width: 92px;">
-                            <span><a href="#" class="button-tertiary button-tertiary--green">Remove</a></span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 250px;" class="is-first top">
-                            Billing Address
-                          </td>
-                          <td style="width: 200px;">
-                            Vyhoňkopec 1471
-                            735 32 Rychvald
-                            Czech republic
-                            <br><br>
-                            VAT: 12345678
-                          </td>
-                          <td style="width: 134px;">
-&nbsp;
-                          </td>
-                          <td style="width: 92px;">
-                            <span><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage('address')">Edit</a></span>
-                          </td>
-                          <td style="width: 92px;">
-&nbsp;
-                          </td>
-                        </tr>
+                      <tr>
+                        <td style="width: 250px;" class="is-first">
+                          Payment Method
+                        </td>
+                        <td style="width: 200px;">
+                          CC Ending with 4329
+                        </td>
+                        <td style="width: 134px;">
+                          <img src="@/assets/img/cards/mastercard.png" class="bank">
+                        </td>
+                        <td style="width: 92px;">
+                          <span><a href="#" class="button-tertiary button-tertiary--green"
+                                   @click="toggleMessage('payment')">Edit</a></span>
+                        </td>
+                        <td style="width: 92px;">
+                          <span><a href="#" class="button-tertiary button-tertiary--green">Remove</a></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 250px;" class="is-first top">
+                          Billing Address
+                        </td>
+                        <td style="width: 200px;">
+                          Vyhoňkopec 1471
+                          735 32 Rychvald
+                          Czech republic
+                          <br><br>
+                          VAT: 12345678
+                        </td>
+                        <td style="width: 134px;">
+                          &nbsp;
+                        </td>
+                        <td style="width: 92px;">
+                          <span><a href="#" class="button-tertiary button-tertiary--green"
+                                   @click="toggleMessage('address')">Edit</a></span>
+                        </td>
+                        <td style="width: 92px;">
+                          &nbsp;
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
                   <div v-if="cardPassword" class="is-profile">
                     <table style="width: 521px;">
                       <tbody>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            Old Password
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="oldpwd" placeholder="Old password">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            New Password
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="newpwd" placeholder="New password">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td style="width: 150px;" class="is-first">
-                            Confirm Password
-                          </td>
-                          <td style="width: 370px;" class="is-second">
-                            <input type="text" name="newpwdconf" placeholder="New password confirmation">
-                          </td>
-                        </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          Old Password
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="old_password" type="password" name="oldpwd" placeholder="Old password">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          New Password
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="new_password" type="password" name="newpwd" placeholder="New password">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="width: 150px;" class="is-first">
+                          Confirm Password
+                        </td>
+                        <td style="width: 370px;" class="is-second">
+                          <input v-model="repeat_password" type="password" name="newpwdconf"
+                                 placeholder="New password confirmation">
+                        </td>
+                      </tr>
+                      <tr v-if="password_errors">
+                        <td colspan="2">
+                          {{ password_errors }}
+                        </td>
+                      </tr>
+                      <tr v-if="password_success">
+                        <td colspan="2">
+                          {{ password_success }}
+                        </td>
+                      </tr>
 
-                        <tr>
-                          <td style="text-align: center;" colspan="2">
-                            <button class="toggleOption">
-                              Update password
-                            </button>
-                          </td>
-                        </tr>
+                      <tr>
+                        <td style="text-align: center;" colspan="2">
+                          <button @click="changePassword()" class="toggleOption">
+                            Update password
+                          </button>
+                        </td>
+                      </tr>
                       </tbody>
                     </table>
                   </div>
@@ -167,25 +181,25 @@
                 <div class="clearfix">
                   <div class="c100 p75 big scaled">
                     <span class="isscaled">
-                      555</span>
+                      {{ credits }}</span>
                     <div class="slice">
-                      <div class="bar" />
-                      <div class="fill" />
+                      <div class="bar"/>
+                      <div class="fill"/>
                     </div>
                     <span class="topas">Subscription Credits</span>
                   </div>
-                  <button class="toggleOption2 bot">
-                    buy more credits
-                  </button>
+<!--                  <button class="toggleOption2 bot">-->
+<!--                    buy more credits-->
+<!--                  </button>-->
                 </div>
                 <div class="credit">
                   <p>Hobby Monthly</p>
-                  <p>Credits renew on 03/31/2020</p>
-                  <div class="logout">
-                    <nuxt-link to="/">
-                      Cancel Subscription
-                    </nuxt-link>
-                  </div>
+                  <p>Credits renew on 20/09/2020</p>
+<!--                  <div class="logout">-->
+<!--                    <nuxt-link to="/">-->
+<!--                      Cancel Subscription-->
+<!--                    </nuxt-link>-->
+<!--                  </div>-->
                 </div>
               </div>
             </div>
@@ -199,10 +213,13 @@
 <script>
 import LeftSidebar from '@/components/Sidebar/LeftSidebar';
 import LoginModals from '@/components/LoginModals/LoginModals';
+import users from '@/collectors/users';
+import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
   name: 'Textures',
   components: {
+    ProfileSidebar,
     LeftSidebar,
     LoginModals
   },
@@ -214,143 +231,16 @@ export default {
       openAddress: false,
       openPayment: false,
 
-      subtitle: 'Services',
-      title: 'Textures',
-      perex:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      button: 'Join our community on FB',
-      cards: [
-        {
-          image: {
-            url: require('@/assets/img/tutorials/0.png'),
-            alt: ''
-          },
-          title: 'For Architects',
-          subtitle:
-            'Looking for nice floor or material for facade? No problem!',
-          text:
-            'Choose the best material for your project, make visualisation for your client and buy a surface in the real world.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/1.png'),
-            alt: ''
-          },
-          title: 'For 3D Artists',
-          subtitle:
-            'Take it all! Diffuse, reflection, glosiness, bump, displacement ambient occlusion and even subsurface scattering...',
-          text:
-            'PBR materials  and 3D models  from real worldwide manufacturers.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/2.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/0.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/1.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        },
-        {
-          image: {
-            url: require('@/assets/img/tutorials/2.png'),
-            alt: ''
-          },
-          title: 'For Manufacturers',
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        }
-      ],
-      textures: [
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        },
-        {
-          image: {
-            url: require('@/assets/img/brands/logo.png'),
-            alt: ''
-          }
-        }
-      ]
+      first_name: this.$auth.user.user.profile.first_name,
+      last_name: this.$auth.user.user.profile.last_name,
+      email: this.$auth.user.user.email,
+      business_name: this.$auth.user.user.profile.business_name,
+
+      old_password: '',
+      new_password: '',
+      repeat_password: '',
+      password_errors: false,
+      password_success: false,
     };
   },
   methods: {
@@ -390,7 +280,65 @@ export default {
       if (data === 'payment') {
         this.openPayment = !this.openPayment;
       }
-    }
+    },
+    saveProfile () {
+      const data = {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email,
+        business_name: this.business_name,
+      };
+      users.saveProfile(data).then(data => {
+        console.log(data.response);
+      }).catch(error => {
+        console.log(error.response);
+      });
+    },
+    changePassword () {
+
+      if(this.new_password !== this.repeat_password){
+        this.password_errors ='Please check passwords. These passwords do not match';
+        return  false;
+      }
+      if(!this.new_password || !this.old_password){
+        this.password_errors ='Old password and new password field should be filled';
+        return  false;
+      }
+
+      const data = {
+        old_password: this.old_password,
+        new_password: this.new_password
+      };
+      this.password_success = false;
+      this.password_errors = false;
+
+      users.changePassword(data).then(data => {
+        this.password_success = 'Password updated';
+      }).catch(response => {
+        const errors = [];
+        if(response.response.data['password']){
+          errors.push(response.response.data['password'][0]);
+        }
+        if(response.response.data.old_password){
+          errors.push(response.response.data.old_password[0]);
+        }
+        this.password_errors = errors.join('<br/>');
+      });
+    },
+  },
+  computed: {
+    user () {
+      return this.$auth.user.user;
+    },
+    profile () {
+      if (this.user.subscribe) {
+        return this.user.subscribe.name;
+      }
+      return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
+    },
+    credits () {
+      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
+    },
   }
 };
 </script>

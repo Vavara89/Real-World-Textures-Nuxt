@@ -12,19 +12,16 @@
         <div v-if="paused && !isSafari" class="sidebar__video__cover" @click="togglePlay">
           <!-- <img src="/assets/img/sidebar-cover.jpg"/> -->
         </div>
-        <video id="videoElement" controls preload="auto" crossorigin @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused">
-          <source
-            src="https://rwt_public_videos.storage.googleapis.com/videos/staalboek-reawote.mp4"
-            type="video/mp4"
-          />
-        </video>
+        <iframe v-if="card.video" width="100%" height="315" :src="card.video" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture">
+
+        </iframe>
       </div>
-      <div class="sidebar__list">
-        <div class="sidebar__list__itm"></div>
-        <div class="sidebar__list__itm"></div>
-        <div class="sidebar__list__itm"></div>
-        <div class="sidebar__list__itm"></div>
-      </div>
+<!--      <div class="sidebar__list">-->
+<!--        <div class="sidebar__list__itm"></div>-->
+<!--        <div class="sidebar__list__itm"></div>-->
+<!--        <div class="sidebar__list__itm"></div>-->
+<!--        <div class="sidebar__list__itm"></div>-->
+<!--      </div>-->
     </div>
   </div>
 </template>

@@ -21,14 +21,14 @@
             width: 100%;
             margin-top: 30px;
           }
-          
+
           .column {
             display: flex;
             flex-direction: column;
             flex-basis: 100%;
             flex: 1;
           }
-          
+
           .blue-column {
             min-width: 354px;
             margin-right: 10px;
@@ -60,7 +60,7 @@
                 .flex-row-container > .flex-row-item {
                     flex: 1 1 30%; /*grow | shrink | basis */
                 }
-                
+
                 .flex-row-item {
                 text-align: center;
                 margin-bottom: 10px;
@@ -81,7 +81,7 @@
                 font-weight: 500;
             }
           }
-          
+
           .green-column {
               width: 354px;
               height: 177px;

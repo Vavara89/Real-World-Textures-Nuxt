@@ -1,89 +1,94 @@
 .textgallery {
 
-    .clear {
-        clear: both;
-    }
-    .textures {
-        padding: 0 1.8rem;
-        grid-gap: 0.8rem 0.8rem;
-        grid-template-columns: repeat(auto-fill, 230px);
+  .clear {
+    clear: both;
+  }
 
-        .texture {
-            position: relative;
-            // width: 25.5rem;
-            // height: 25.5rem;
-            width: 20rem;
-            height: 20rem;
-            
-            &.brands {
-                margin: 15px;
-                width: 21.1rem;
-                height: 10.8rem;
-                border-radius: 8px;
-                background-color: #fff;
-                text-align: center;
-                transform-style: preserve-3d;
-                cursor: pointer;
+  .textures {
+    padding: 0 1.8rem;
+    grid-gap: 0.8rem 0.8rem;
+    grid-template-columns: repeat(auto-fill, 230px);
 
-                transform: scale(1);
-                transition-duration: 0.3s;
-                transition-property: all;
-                transition-timing-function: ease-in-out;
-                -webkit-transition-property: all;
-                -webkit-transition-duration: 0.3s;
-                -webkit-transition-timing-function: ease-in-out;
+    .texture {
+      position: relative;
+      // width: 25.5rem;
+      // height: 25.5rem;
+      width: 20rem;
+      height: 20rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-                &::after {
-                    transform: translateZ(-1px);
-                    position: absolute;
-                    z-index: -1; 
-                    right: 0;
-                    bottom: -4px;
-                    left: 0;
-                    display: block;
-                    width: 75%;
-                    height: .32rem;
-                    margin: 0 auto;
-                    content: "";
-                    border-radius: 50%;
-                    background-color: rgba($color-primary-900, .0);
-            
-                    filter: blur(.4rem);
-                    @include transition-base;
-                  }
+      &.brands {
+        margin: 15px;
+        width: 21.1rem;
+        height: 10.8rem;
+        border-radius: 8px;
+        background-color: #fff;
+        text-align: center;
+        transform-style: preserve-3d;
+        cursor: pointer;
 
-                &:hover {
+        transform: scale(1);
+        transition-duration: 0.3s;
+        transition-property: all;
+        transition-timing-function: ease-in-out;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-in-out;
 
-                    transform: scale(1.08);
-                    transition-duration: 0.3s;
-                    transition-property: all;
-                    transition-timing-function: ease-in-out;
-                    -webkit-transition-property: all;
-                    -webkit-transition-duration: 0.3s;
-                    -webkit-transition-timing-function: ease-in-out;
-                    &::after {
-                        background-color: rgba($color-primary-900, .4);
-                      }
-                }
-            }
+        &::after {
+          transform: translateZ(-1px);
+          position: absolute;
+          z-index: -1;
+          right: 0;
+          bottom: -4px;
+          left: 0;
+          display: block;
+          width: 75%;
+          height: .32rem;
+          margin: 0 auto;
+          content: "";
+          border-radius: 50%;
+          background-color: rgba($color-primary-900, .0);
 
-            .book {
-                position: absolute;
-                left: 10px;
-                top: 10px;
-            }
-
-            .free {
-                position: absolute;
-                right: 10px;
-                top: 10px;
-            }
-
-            .download {
-                left: 10px;
-                bottom: 10px;
-                position: absolute;
-            }
+          filter: blur(.4rem);
+          @include transition-base;
         }
+
+        &:hover {
+
+          transform: scale(1.08);
+          transition-duration: 0.3s;
+          transition-property: all;
+          transition-timing-function: ease-in-out;
+          -webkit-transition-property: all;
+          -webkit-transition-duration: 0.3s;
+          -webkit-transition-timing-function: ease-in-out;
+
+          &::after {
+            background-color: rgba($color-primary-900, .4);
+          }
+        }
+      }
+
+      .book {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+
+      .free {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+
+      .download {
+        left: 10px;
+        bottom: 10px;
+        position: absolute;
+      }
     }
+  }
 }

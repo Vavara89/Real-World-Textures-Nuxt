@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <LeftSidebar :profile="true" />
+    <ProfileSidebar :profile="true"/>
     <div class="page-content">
       <section class="services view-bottom">
         <div class="discount">
@@ -22,11 +22,12 @@
 <script>
 import LeftSidebar from '@/components/Sidebar/LeftSidebar';
 import Button from '@/components/Button';
+import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
   name: 'Textures',
   components: {
-    LeftSidebar,
+    ProfileSidebar,
     Button
   },
   data () {
