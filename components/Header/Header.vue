@@ -6,26 +6,34 @@
         class="header-logo"
         :class="{'header-logo--light': $route.name === 'signup'}"
       >
-        <SvgIconLogo/>
+        <SvgIconLogo />
       </nuxt-link>
-      <header-search></header-search>
+      <header-search />
       <div class="header-nav">
-        <input class="menu-btn" type="checkbox" id="menu-btn"/>
+        <input id="menu-btn" class="menu-btn" type="checkbox">
         <label class="menu-icon" for="menu-btn">
-          <span class="navicon"></span>
+          <span class="navicon" />
         </label>
         <ul class="menu">
           <li>
-            <nuxt-link :to="'/textures'">Textures</nuxt-link>
+            <nuxt-link :to="'/textures'">
+              Textures
+            </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/models'">Models</nuxt-link>
+            <nuxt-link :to="'/models'">
+              Models
+            </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/hdr'">Hdris</nuxt-link>
+            <nuxt-link :to="'/hdr'">
+              Hdris
+            </nuxt-link>
           </li>
           <li>
-            <nuxt-link :to="'/brands'">Brands</nuxt-link>
+            <nuxt-link :to="'/brands'">
+              Brands
+            </nuxt-link>
           </li>
           <li class="line">
             <a href>About</a>
@@ -37,44 +45,61 @@
             <a href>Pricing</a>
           </li>
           <li v-if="!getIsLogged()">
-            <nuxt-link to="/login">Log In</nuxt-link>
+            <nuxt-link to="/login">
+              Log In
+            </nuxt-link>
           </li>
-          <li class="header-button" v-if="!getIsLogged()">
-            <nuxt-link to="/signup">Sign Up</nuxt-link>
+          <li v-if="!getIsLogged()" class="header-button">
+            <nuxt-link to="/signup">
+              Sign Up
+            </nuxt-link>
           </li>
-          <li class="header-account" v-if="getIsLogged()">
-            <a class="icon" @click="showAccount">Account</a>
-            <div class="logmenu" v-if="account">
-              <div class="logmenu-top">
-                <p>{{ credits }} Subscription Credits</p>
-                <p>{{ profile }}</p>
+          <li v-if="getIsLogged()" class="header-account">
+            <a
+              class="icon"
+              @click="showAccount('again')"
+              @mouseover="hover = true"
+              @mouseleave="trigger()"
+            >Account</a>
+            <div
+              v-if="account || hover "
+              v-click-outside="externalClick"
+              class="missing"
+              @mouseover="trigger('on')"
+              @mouseleave="hover = false"
+            >
+              <div class="logmenu">
+                <div class="logmenu-top">
+                  <p>{{ credits }} Subscription Credits</p>
+                  <p>{{ profile }}</p>
+                </div>
+                <ul>
+                  <li>
+                    <a href="/profile">what's new</a>
+                  </li>
+                  <li>
+                    <a href="/profile/dashboard">profile</a>
+                  </li>
+                  <li>
+                    <a href="/textures?assets=true">my assests</a>
+                  </li>
+                  <li>
+                    <a href="/profile/invoices">my invoices</a>
+                  </li>
+                  <li>
+                    <a href="/profile/discount">discount code</a>
+                  </li>
+                  <li>
+                    <a href="/profile/pricing">Pricing</a>
+                  </li>
+                  <li class="logout">
+                    <a @click="logout">Log out</a>
+                  </li>
+                </ul>
               </div>
-              <ul>
-                <li>
-                  <a href="/profile">what's new</a>
-                </li>
-                <li>
-                  <a href="/profile/dashboard">profile</a>
-                </li>
-                <li>
-                  <a href="/textures?assets=true">my assests</a>
-                </li>
-                <li>
-                  <a href="/profile/invoices">my invoices</a>
-                </li>
-                <li>
-                  <a href="/profile/discount">discount code</a>
-                </li>
-                <li>
-                  <a href="/profile/pricing">Pricing</a>
-                </li>
-                <li class="logout">
-                  <a @click="logout">Log out</a>
-                </li>
-              </ul>
             </div>
           </li>
-          <li style="cursor: pointer" @click="toBookmarks" class="header-fav view-mobile" v-if="logged">
+          <li v-if="logged" style="cursor: pointer" class="header-fav view-mobile" @click="toBookmarks">
             <span>{{ counts }}</span>
             <a href="/bookmarked">a</a>
           </li>
@@ -85,52 +110,57 @@
 </template>
 
 <script>
-import SvgIconLogo from "~/assets/img/logo.svg?inline";
-import HeaderSearch from "~/components/Header/HeaderSearch"
+import vClickOutside from 'v-click-outside';
+import SvgIconLogo from '~/assets/img/logo.svg?inline';
+import HeaderSearch from '~/components/Header/HeaderSearch';
 
 export default {
-  name: "Header",
+  name: 'Header',
   components: {
     SvgIconLogo,
     HeaderSearch
   },
-  data() {
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
+  data () {
     return {
       account: false,
       subscribe: 332,
       logged: this.$auth.loggedIn,
       bookmarked: null,
+      hover: false
     };
   },
 
   computed: {
-    user() {
+    user () {
       return this.$auth.user.user;
     },
-    profile() {
+    profile () {
       if (this.user.subscribe) {
         return this.user.subscribe.name;
       }
       return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
     },
-    credits() {
+    credits () {
       return this.profile.subscribe ? this.profile.subscribe.credits : 0;
     },
     counts: {
-      get() {
+      get () {
         if (this.bookmarked === null) {
           this.bookmarked = this.user.profile.bookmarks_hdr.length + this.user.profile.bookmarks_models.length +
             this.user.profile.bookmarks_textures.length;
         }
         return this.bookmarked;
       },
-      set(value) {
+      set (value) {
         this.bookmarked = value;
       }
-    },
+    }
 
   },
-  created() {
+  created () {
     this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'setBookmarks') {
         this.counts = state.bookmarks;
@@ -138,20 +168,33 @@ export default {
     });
   },
   methods: {
-    showAccount() {
+    trigger (state) {
+      if (state !== 'on') {
+        this.myToid = setTimeout(() => { this.hover = false; }, 0);
+      }
+
+      if (state === 'on') {
+        clearTimeout(this.myToid);
+      }
+    },
+    externalClick (event) {
+      this.showAccount();
+      this.hover = false;
+    },
+    showAccount (state) {
       this.account = !this.account;
     },
-    async logout() {
+    async logout () {
       this.account = false;
       await this.$auth.logout();
     },
-    toBookmarks() {
-      return this.$router.push({path: '/bookmarked'});
+    toBookmarks () {
+      return this.$router.push({ path: '/bookmarked' });
     },
-    getIsLogged(){
+    getIsLogged () {
       return this.$auth.loggedIn;
     }
-  },
+  }
 };
 </script>
 

@@ -29,6 +29,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '@/plugins/vClickOutside', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -57,7 +58,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend (config, ctx) {
     }
   },
   env: {
@@ -81,8 +82,8 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: {url: '/users/auth', method: 'post', propertyName: 'access'},
-          user: {url: '/users/profile', method: 'get', propertyName: false},
+          login: { url: '/users/auth', method: 'post', propertyName: 'access' },
+          user: { url: '/users/profile', method: 'get', propertyName: false },
           logout: false
         }
       },
@@ -96,5 +97,5 @@ export default {
         secret: '9AU0QeNQxx_--TW0FXOe_Mim'
       }
     }
-  },
-}
+  }
+};

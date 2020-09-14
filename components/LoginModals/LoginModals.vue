@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <span class="cursor" @click="toggleMessage(modal)">{{ text }}</span> -->
-    <span><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage(modal)">{{ text }}</a></span>
+    <span v-if="text"><a href="#" class="button-tertiary button-tertiary--green" @click="toggleMessage(modal)">{{ text }}</a></span>
     <div v-if="taken" class="modal">
       <div class="inner">
         <span class="close" @click="toggleMessage(modal)" />

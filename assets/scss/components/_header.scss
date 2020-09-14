@@ -278,10 +278,16 @@
       &.header-account {
         position: relative;
 
-        .logmenu {
+        .missing {
           position: absolute;
-          top: 50px;
+          top: 35px;
           right: 10px;
+          padding-top: 15px;
+          z-index: 80;
+       
+
+        .logmenu {
+        
           background: #fff;
           width: 300px;
           z-index: 999;
@@ -333,6 +339,7 @@
             }
           }
         }
+      }
       }
 
       &.header-account a.icon {
@@ -387,7 +394,7 @@
           color: #ffffff;
           border: 2px solid white;
           border-radius: 50%;
-          z-index: 33;
+          z-index: 1;
           text-align: center;
           line-height: 18px;
         }
