@@ -46,6 +46,17 @@
           width: 254px;
 
         }
+        &.size {
+          .selected {
+            background-size: 10px 10px;
+            background-position: right 18px top 13px;
+          }
+
+          .selected.open{
+            background-position: right 18px top 18px;
+          }
+        }
+
           .selected {
           width: 254px;
         }

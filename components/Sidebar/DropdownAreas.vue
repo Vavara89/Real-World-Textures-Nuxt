@@ -3,7 +3,7 @@
     <h3 class="h3 manu">
       Manufactured in
     </h3>
-    <div class="dropdown full">
+    <div class="dropdown full size">
       <div
         class="custom-select"
         :tabindex="tabindex"
@@ -16,6 +16,10 @@
         >
           <span v-if="continent">
             {{ continent }}
+          </span>
+
+          <span v-if="!continent">
+            Select a Continent
           </span>
         </div>
         <div
