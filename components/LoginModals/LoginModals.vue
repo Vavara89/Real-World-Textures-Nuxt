@@ -74,7 +74,7 @@
       <div class="inner address is-card">
         <span class="close" @click="toggleMessage(modal), setPayment()" />
         <h2>Update Payment Method</h2>
-        <h3>Secured and encrypted by lorem ipsum</h3>
+        <h3 class="upper">Secured and encrypted by lorem ipsum</h3>
         <form method="post" class="email" @submit="checkEmail">
           <table style="text-align: left; margin-top: 60px;">
             <tbody>
