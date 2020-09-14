@@ -341,6 +341,7 @@
     h3 {
       font-size: 14px;
       letter-spacing: 1px;
+      text-transform: uppercase;
       color: #9093B9;
     }
 
@@ -356,7 +357,10 @@
 
     input::placeholder {
       font-size: 16px;
+      line-height: normal;
       font-weight: lighter;
+position: relative;
+top: 3px;
       color: #9093B9;
     }
 
