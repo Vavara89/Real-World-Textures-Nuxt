@@ -536,6 +536,31 @@
     }
 }
 
+.buttonek {
+  color: #4cbc81;
+    height: 4.8rem;
+    margin-left: -3.2rem;
+    padding: 0 3.2rem;
+    background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 10rem;
+    white-space: nowrap;
+    transition: 0.3s background-color ease-in-out;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 175%;
+    letter-spacing: .075rem;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #394174;
+    }
+}
+
 
 .clearfix:before,.clearfix:after {content: " "; display: table;}
 .clearfix:after {clear: both;}

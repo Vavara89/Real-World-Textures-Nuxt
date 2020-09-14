@@ -94,11 +94,11 @@
                           <img src="@/assets/img/cards/mastercard.png" class="bank">
                         </td>
                         <td style="width: 92px;">
-                          <span><a href="#" class="button-tertiary button-tertiary--green"
+                          <span><a href="#" class="buttonek"
                                    @click="toggleMessage('payment')">Edit</a></span>
                         </td>
                         <td style="width: 92px;">
-                          <span><a href="#" class="button-tertiary button-tertiary--green">Remove</a></span>
+                          <span><a href="#" class="buttonek">Remove</a></span>
                         </td>
                       </tr>
                       <tr>
@@ -116,7 +116,7 @@
                           &nbsp;
                         </td>
                         <td style="width: 92px;">
-                          <span><a href="#" class="button-tertiary button-tertiary--green"
+                          <span><a href="#" class="buttonek"
                                    @click="toggleMessage('address')">Edit</a></span>
                         </td>
                         <td style="width: 92px;">
