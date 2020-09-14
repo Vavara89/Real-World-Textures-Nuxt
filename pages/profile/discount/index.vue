@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar :profile="true"/>
+    <ProfileSidebar :profile="true" />
     <div class="page-content">
       <section class="services view-bottom">
         <div class="discount">
@@ -11,7 +11,7 @@
             and get 1 month subscription for 1$
           </h3>
 
-          <input type="text" placeholder="Your Discount Code">
+          <input type="text" placeholder="Your Discount Code" class="chrome">
           <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
         </div>
       </section>
@@ -36,8 +36,16 @@ export default {
       title: 'Textures',
       perex:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      button: 'Join our community on FB'
+      button: 'Join our community on FB',
+      chrome: false
     };
+  },
+  created () {
+    if (process.browser) {
+      if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1){
+        this.chrome = true;
+      }
+    }
   },
   methods: {
 

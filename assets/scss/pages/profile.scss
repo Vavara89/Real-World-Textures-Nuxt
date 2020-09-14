@@ -357,12 +357,16 @@
 
     input::placeholder {
       font-size: 16px;
-      line-height: normal;
       font-weight: lighter;
-position: relative;
-top: 3px;
       color: #9093B9;
     }
+
+    @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+      input::placeholder {
+        position: relative;
+        top: 3px;
+      }
+  }
 
 }  
 
