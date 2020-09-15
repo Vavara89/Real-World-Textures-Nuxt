@@ -46,9 +46,9 @@
           <label class="signup__checkbox h4-lowercase" :class="{'signup__checkbox--checked': input.agree}">
             <input @change="validateAgree" type="checkbox" v-model="input.agree"/>Creating an account means you’re okay
             with our
-            <nuxt-link to="/">Terms of Service</nuxt-link>
+            <nuxt-link to="/content/terms-and-conditions">Terms of Service</nuxt-link>
             and our
-            <nuxt-link to="/">Privacy Policy.</nuxt-link>
+            <nuxt-link to="/content/privacy-policy">Privacy Policy.</nuxt-link>
           </label>
           <form-input-errors v-if="hasErrors('agree')" :errors="getErrors('agree')"/>
           <div class="signup__submit">
