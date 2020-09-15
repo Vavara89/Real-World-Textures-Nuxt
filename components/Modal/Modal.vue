@@ -1,7 +1,7 @@
 <template>
   <div v-show="value" class="modal" :class="[option]">
     <div class="modal-container">
-      <div class="modal-header">
+      <div class="modal-header"  :class="{'heights': !canSearch}">
         <div class="modal-close">
           <a href="#" class="button" @click.prevent="close">
             <img src="@/assets/img/icon-cross.svg" style="margin:10px;" width="12">
