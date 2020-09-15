@@ -217,7 +217,8 @@ import users from '@/collectors/users';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
-  name: 'Textures',
+  name: 'Dashboard',
+  middleware: 'auth',
   components: {
     ProfileSidebar,
     LeftSidebar,

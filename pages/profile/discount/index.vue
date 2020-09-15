@@ -25,7 +25,8 @@ import Button from '@/components/Button';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
-  name: 'Textures',
+  name: 'Discount',
+  middleware: 'auth',
   components: {
     ProfileSidebar,
     Button

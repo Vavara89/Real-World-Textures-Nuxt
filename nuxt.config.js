@@ -43,7 +43,8 @@ let production =  {
     '@nuxtjs/auth',
     '@nuxtjs/style-resources',
     '@nuxtjs/svg',
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    'cookie-universal-nuxt',
   ],
   styleResources: {
     scss: [
@@ -93,6 +94,13 @@ let production =  {
         client_id: '373123692545-gm0g4sohn7fa0i9c39cln90i0b41kpe3.apps.googleusercontent.com',
         secret: '9AU0QeNQxx_--TW0FXOe_Mim'
       }
+    },
+    cookie: {
+      prefix: 'auth.',
+      options: {
+        path: '/'
+      },
+      expires: 1,
     }
   }
 };

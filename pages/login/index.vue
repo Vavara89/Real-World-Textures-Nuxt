@@ -81,6 +81,22 @@ export default {
           email: this.input.email,
           password: this.input.password
         }
+      }).then(()=>{
+        const authRefreshTokenLocal = this.$auth.$storage.getCookie('auth._refresh_token.local')
+        const authTokenLocal = this.$auth.$storage.getCookie('auth._token.local')
+        const authStrategy = this.$auth.$storage.getCookie('auth.strategy')
+        let expire = process.env.LOGIN_REMEMBER_EXPIRED | 10;
+
+        if(this.rememberPassword){
+          const options = {
+            'maxAge': 60*60*24 * expire,
+            'path': '/'
+          };
+          this.$cookies.set('auth._refresh_token.local', authRefreshTokenLocal, options);
+          this.$cookies.set('auth._token.local', authTokenLocal, options)
+          this.$cookies.set('auth._token.local', authStrategy, options)
+        }
+
       }).catch(errors => {
         if(errors.response.status === 400){
           const dataErrors = keysToCamel(errors.response.data);

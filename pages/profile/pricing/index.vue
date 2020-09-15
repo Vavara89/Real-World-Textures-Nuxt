@@ -124,7 +124,8 @@ import ToggleSwitch from '@/components/ToggleSwitch';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
-  name: 'Textures',
+  name: 'Pricing',
+  middleware: 'auth',
   components: {
     ProfileSidebar,
     ToggleSwitch

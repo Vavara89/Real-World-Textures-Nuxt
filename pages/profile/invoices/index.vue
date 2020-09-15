@@ -102,7 +102,8 @@
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
-  name: 'Textures',
+  name: 'Invoice',
+  middleware: 'auth',
   components: {
     ProfileSidebar
   },

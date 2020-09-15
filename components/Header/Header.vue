@@ -99,7 +99,7 @@
               </div>
             </div>
           </li>
-          <li v-if="logged" style="cursor: pointer" class="header-fav view-mobile" @click="toBookmarks">
+          <li v-if="getIsLogged()" style="cursor: pointer" class="header-fav view-mobile" @click="toBookmarks">
             <span>{{ counts }}</span>
             <a href="/bookmarked">a</a>
           </li>
@@ -165,6 +165,7 @@ export default {
       if (mutation.type === 'setBookmarks') {
         this.counts = state.bookmarks;
       }
+
     });
   },
   methods: {
@@ -187,6 +188,7 @@ export default {
     async logout () {
       this.account = false;
       await this.$auth.logout();
+      return this.$router.push({ path: '/login' });
     },
     toBookmarks () {
       return this.$router.push({ path: '/bookmarked' });

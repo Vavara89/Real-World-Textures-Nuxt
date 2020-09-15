@@ -240,6 +240,7 @@ import main from '@/collectors/main';
 
 export default {
   name: 'Tutorials',
+  middleware: 'auth',
   components: {
     SectionTitle,
     CardGrid,
