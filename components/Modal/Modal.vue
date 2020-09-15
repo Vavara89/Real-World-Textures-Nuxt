@@ -15,8 +15,8 @@
             Select real world<br>manufacturers
           </h2>
         </div>
-        <div v-if="canSearch">
-          <input v-model="term"  type="text" placeholder="E.g. Ton">
+        <div v-if="canSearch" class="search">
+          <input v-model="term" type="text" placeholder="E.g. Ton">
           <button @click="search" class="toggleOption">
             Confirm
           </button>

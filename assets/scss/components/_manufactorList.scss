@@ -8,11 +8,33 @@
         .manufactor-item {
             width: 100%;
             margin-bottom: 1.6rem;
+            // border: 1px solid blue;
 
             div {
                 width: 33%;
                 float: left;
                 text-align: left;
+                padding-right: 20px;
+                padding-bottom: 1.6rem;
+
+                &:hover {
+                    label {
+                      
+                        color: black;
+                    }
+                }
+
+                label {
+                    color: #9093B9;
+                    transition: 0.3s ease;
+
+                    input {
+                        border: 1px solid #9093B9;
+                        border-radius: 4px;
+                        padding: 0;
+                        margin: 0 10px 0 0;
+                    }
+                }
             }
         }
     }
