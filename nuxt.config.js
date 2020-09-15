@@ -1,5 +1,4 @@
-
-export default {
+let production =  {
   mode: 'universal',
   /*
   ** Headers of the page
@@ -62,12 +61,10 @@ export default {
     }
   },
   env: {
-    // baseUrl: 'http://127.0.0.1:8000/'
     baseUrl: 'http://34.107.89.42/'
   },
   axios: {
     baseURL: 'http://34.107.89.42/api'
-    // baseURL: 'http://127.0.0.1:8000/api'
   },
   auth: {
     plugins: [
@@ -99,3 +96,12 @@ export default {
     }
   }
 };
+
+try{
+  const localhost = require('./nuxt.localhost.config');
+  production = Object.assign(production, localhost.congig);
+}catch (e){
+  console.log(e);
+}
+
+export default production;
