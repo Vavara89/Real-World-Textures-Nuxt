@@ -1,7 +1,7 @@
 <template>
   <div v-show="value" class="modal" :class="[option]">
     <div class="modal-container">
-      <div class="modal-header">
+      <div class="modal-header"  :class="{'heights': !canSearch}">
         <div class="modal-close">
           <a href="#" class="button" @click.prevent="close">
             <img src="@/assets/img/icon-cross.svg" style="margin:10px;" width="12">
@@ -85,12 +85,16 @@ export default {
 
                     .toggleOption {
                     margin: 0 -1.7rem;
-                    padding: 1rem 3.3rem;
+                    padding: 1rem 5.3rem;
                     border: none;
                     font-weight: bold;
                     border-radius: 5rem;
-                    background-color: $color-primary-700;
+                    background-color: #DDE0ED;
                     color: $color-white;
                     text-transform: uppercase;
+
+                    &:hover {
+                      background-color: #4CBC81;
+                    }
                 }
 </style>

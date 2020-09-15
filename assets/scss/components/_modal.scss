@@ -68,6 +68,10 @@
         padding-top: 10.3rem;
         padding-left: 16.5rem;
 
+        &.heights {
+            height: 22rem;
+        }
+
         @media only screen and (max-width: 650px) {
             padding-left: 5rem;
           }
