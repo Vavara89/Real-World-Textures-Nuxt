@@ -20,3 +20,6 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+#Localhost settings
+— nuxt.localhost.config.example.js rename t0 nuxt.localhost.config.js and replace what you need

@@ -89,7 +89,7 @@ export default {
   computed:{
     path(){
       let data = [
-        {name: 'HDR', url: this.baseUrl}
+        {name: 'HDRis', url: this.baseUrl}
       ];
       if(this.activeCategory){
         this.activeCategory.ancestors.map(item => data.push({name: item.name, url:`${this.baseUrl}/${item.slug}`}));
