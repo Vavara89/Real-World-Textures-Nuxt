@@ -85,12 +85,16 @@ export default {
 
                     .toggleOption {
                     margin: 0 -1.7rem;
-                    padding: 1rem 3.3rem;
+                    padding: 1rem 5.3rem;
                     border: none;
                     font-weight: bold;
                     border-radius: 5rem;
-                    background-color: $color-primary-700;
+                    background-color: #DDE0ED;
                     color: $color-white;
                     text-transform: uppercase;
+
+                    &:hover {
+                      background-color: #4CBC81;
+                    }
                 }
 </style>
