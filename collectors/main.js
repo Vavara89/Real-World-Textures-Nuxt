@@ -43,5 +43,10 @@ export default {
     const url = `${resource}software`;
     return  await this.getCollector()
       .get(url);
+  },
+  async page(slug) {
+    const url = `${resource}pages/${slug}`;
+    return  await this.getCollector()
+      .get(url);
   }
 };
