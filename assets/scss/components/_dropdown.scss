@@ -11,6 +11,22 @@
 
       &.input {
         margin: 6px 0 6px 20px;
+        position: relative;
+
+        .showarrow {
+          position: absolute;
+          top:5px;
+          right: 10px;
+          width: 32px;
+          height: 32px;
+          z-index: 99;
+          border-radius: 32px;
+          background-image: url(~@/assets/img/icon-arrow_bottom.svg);
+          background-size: 12px 12px;
+          background-position: center 8px;
+          background-repeat: no-repeat;
+          transition: background-color .3s ease;
+        }
 
         .custom-select {
           min-width: 320px;
@@ -23,11 +39,13 @@
           min-width: 320px;
           outline: 0;
           border-radius: 8px;
+          background-image: none;
           border: 1px solid #dde0ed;
           background-color: #fff;
         }
 
         .selected.open{
+          background-image: none;
           border-radius: 8px 8px 0 0;
           border-bottom: 0px solid #dde0ed;
         }
@@ -37,6 +55,18 @@
           border-left: 1px solid #dde0ed;
           border-right: 1px solid #dde0ed;
           border-bottom: 1px solid #dde0ed;
+        }
+
+        .showarrowopen {
+          background-position: center 12px;
+          background-image: url(~@/assets/img/icon-arrow_top.svg);
+        }
+
+        &:hover {
+
+          .showarrow {
+            background-color: #F2F3F9;
+          }
         }
       }
 

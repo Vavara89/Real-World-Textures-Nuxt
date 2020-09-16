@@ -1,6 +1,11 @@
 <template>
   <div class="dropdown" :class="{search: search, 'full': full, 'input': input}">
     <div
+      v-if="input"
+      :class="{showarrowopen: open}"
+      class="showarrow"
+    />
+    <div
       class="custom-select"
       :tabindex="tabindex"
       @blur="open = false"
