@@ -30,7 +30,7 @@
                       v-bind:style="{ margin: 0, fontSize: 11 + 'px' }"
                     />
                   </div>
-                  <div class="flex-row-item">
+                  <div class="flex-row-item buys">
                     <button  class="toggleOption" @click="openDistributors">
                       Where to buy
                     </button>
