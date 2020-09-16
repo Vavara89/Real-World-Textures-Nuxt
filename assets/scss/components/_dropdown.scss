@@ -41,6 +41,9 @@
       }
 
       &.full {
+        position: relative;
+        left: -2rem;
+
         .custom-select {
           position: relative;
           left: 0.5rem;
@@ -48,9 +51,13 @@
 
         }
         &.size {
+          .custom-select {
+            width: 290px;
+          }
           .selected {
             background-size: 10px 10px;
             background-position: right 18px top 13px;
+            width: 290px;
           }
 
           .selected.open{
@@ -191,7 +198,7 @@
     top: 0;
     left: 3px;
     background-color: #FBFBFF;
-    width: 254px;
+    width: 285px;
     max-height: 300px;
     overflow-y: auto;
     border-radius: 0px 0px 6px 6px;

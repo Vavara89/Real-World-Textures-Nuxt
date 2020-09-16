@@ -1,7 +1,7 @@
 <template>
   <div v-if="getContinents()">
     <h3 class="h3 manu">
-      Manufactured in
+      Select by area
     </h3>
     <div class="dropdown full size">
       <div

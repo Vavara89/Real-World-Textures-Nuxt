@@ -33,7 +33,7 @@
 
       .arr {
         position: absolute;
-        right: 20px;
+        right: -13px;
         top: 14px;
         width: 10px;
         height: 10px;
@@ -56,7 +56,7 @@
       margin-left: 0;
 
       input {
-        width: 254px;
+        width: 290px;
         background-color: #FBFBFF;
         border-radius: 30px;
         color: #394174;
@@ -67,13 +67,13 @@
       }
     }
 
+    &.noright {
+      right: 15px;
+    }
+
     @media only screen and (max-width: 1310px) {
       margin-left: auto;
       right: 130px;
-
-      &.noright {
-        right: 0;
-      }
     }
 
     input {
