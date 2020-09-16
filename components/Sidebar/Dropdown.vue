@@ -4,6 +4,7 @@
       v-if="input"
       :class="{showarrowopen: open}"
       class="showarrow"
+      @click="open = !open"
     />
     <div
       class="custom-select"
