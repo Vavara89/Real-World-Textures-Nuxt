@@ -66,7 +66,7 @@
           </div>
         </div>
         <div class="cols news">
-          <section class="services view-bottom">
+          <section class="services view-bottom view-tut">
             <div class="container container--box">
               <!-- <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" /> -->
               <CardGrid :cards="tutorials" :is-more="true" :is-tutorial="true"/>

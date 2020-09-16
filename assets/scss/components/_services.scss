@@ -4,10 +4,52 @@
 
   &.inprofile {
     padding: 20.8rem 0 20.8rem;
+
+    @include mq(md, max) {
+      padding: 1rem 0 20.8rem;
+  
+    }
   }
 
   &.news {
     padding-left: 0;
+  }
+
+  &.view-tut {
+    padding: 10.8rem 0 2.8rem !important;
+
+    .cards {
+      overflow: hidden;
+      padding-bottom: 30px;
+
+
+    @include mq(md, min) {
+      padding-left: 25px;
+      width: calc(100% + 100px);
+  
+    }
+    }
+
+    .container {
+      padding: 0;
+      margin: 0 20px;
+
+      @include mq(md, max) {
+        margin: 0 80px 0 25px;
+
+        .card__title {
+          font-size: 1.4rem;
+        }
+
+        .card__text {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    @include mq(md, max) {
+      padding: 0rem 0 2.8rem !important;
+    }
   }
 
   &.view-bottom {

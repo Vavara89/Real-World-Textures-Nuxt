@@ -4,7 +4,7 @@
       v-for="(card, index) in cards"
       :key="'logo-' + index"
       class="card"
-      :class="{'view-margin': isMore}"
+      :class="{'view-margin': isMore, 'view-tutorial': isTutorial,}"
     >
       <Card @selected="toggleSidebar(index)" :card="card" :is-profile="isProfile" :is-tutorial="isTutorial" />
     </li>
