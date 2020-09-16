@@ -23,6 +23,7 @@ import Pager from "@/components/Pager/Pager"
 
 export default {
   name: 'Hdr',
+  scrollToTop: true,
   components: {
     TextureGallery,
     CatalogSidebar,

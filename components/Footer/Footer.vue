@@ -8,19 +8,20 @@
         <p
           class="footer__text"
         >
-          We are lorem ipsum nteger euismod a tellus sit amet sagittis. Etiam at felis tellus. Integer vel nisl quis neque porta sodales. Aliquam nec laoreet libero.
+          We are lorem ipsum nteger euismod a tellus sit amet sagittis. Etiam at felis tellus. Integer vel nisl quis
+          neque porta sodales. Aliquam nec laoreet libero.
         </p>
-        <FooterSocial />
+        <FooterSocial/>
       </div>
-      <FooterNav :footernavs="footernavs" />
+      <FooterNav :footernavs="footernavs"/>
       <div class="footer__community">
         <h3 class="footer__title">
           Join our community
         </h3>
-        <FooterMailForm />
+        <FooterMailForm/>
       </div>
       <div class="footer__policy">
-        <FooterLinks />
+        <FooterLinks/>
         <div class="footer__copyright">
           &copy; REALWORLD TEXTURES. All rights reserved.
         </div>
@@ -43,24 +44,59 @@ export default {
     FooterMailForm,
     FooterLinks
   },
-  data () {
+  data() {
     return {
       footernavs: [
         {
           title: 'Company',
-          sub_menus: ['About', 'Partners', 'Jobs', 'Press']
+          sub_menus: [
+            {
+              'url': '/content/about',
+              'name': 'About',
+            },
+            {
+              'url': '/brands',
+              'name': 'Partners',
+            },
+          ],
         },
         {
           title: 'Learning',
-          sub_menus: ['Tutorials', 'Get Help', 'FAQ']
-        },
-        {
-          title: 'Community',
-          sub_menus: ['Community Gallery', 'Forum']
+          sub_menus: [
+            {
+              'url': '/tutorials',
+              'name': 'Tutorials',
+            },
+            {
+              'url': '/',
+              'name': 'FAQ',
+              'hash': 'faq'
+            },
+          ]
         },
         {
           title: 'Get in Touch',
-          sub_menus: ['E-mail Us', 'Facebook', 'Instagram', 'Youtube']
+          sub_menus: [{
+            'url': `mailto:${process.env.contacts.email}`,
+            'name': 'E-mail Us',
+            'external': true
+          },
+          {
+            'url': process.env.contacts.facebook_link,
+            'name': "Facebook",
+            'external': true
+          },
+            {
+              'url': process.env.contacts.instagram_link,
+              'name': "Instagram",
+              'external': true
+            },
+            {
+              'url': process.env.contacts.youtube_link,
+              'name': "Youtube",
+              'external': true
+            },
+          ]
         }
       ]
     };

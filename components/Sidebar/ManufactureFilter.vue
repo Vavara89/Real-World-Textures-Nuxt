@@ -1,6 +1,6 @@
 <template>
   <div class="area">
-    <button v-if="brands_list" class="toggleOption" @click="toggleOption">
+    <button v-if="brands_list && brands_list.length" class="toggleOption" @click="toggleOption">
       Select a manufacturer
     </button>
     <div>

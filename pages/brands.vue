@@ -23,6 +23,7 @@ import Modal from '@/components/Modal/Modal';
 
 export default {
   name: 'Brands',
+  scrollToTop: true,
   components: {
     TextureGallery,
     CatalogSidebar,

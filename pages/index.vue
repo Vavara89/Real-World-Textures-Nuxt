@@ -5,7 +5,7 @@
         <SectionPhilosophy />
         <SectionServices />
         <SectionSubscribe />
-        <SectionFaq :faqs="faqs"/>
+        <SectionFaq :id="'faq'" :faqs="faqs"/>
         <SectionCompatibility :logos="soft"/>
         <SectionPartners :logos="brands"/>
         <SectionOffer :subtitle="offer.subtitle" :title="offer.title" :button="offer.button" />

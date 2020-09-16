@@ -62,7 +62,13 @@ let production =  {
     }
   },
   env: {
-    baseUrl: 'http://34.107.89.42/'
+    baseUrl: 'http://34.107.89.42/',
+    contacts: {
+      youtube_link:'http://youtube.com',
+      facebook_link:'http://facebook.com',
+      instagram_link:'http://instagram.com',
+      email: 'info@rwt.ru',
+    }
   },
   axios: {
     baseURL: 'http://34.107.89.42/api'
@@ -102,7 +108,8 @@ let production =  {
       },
       expires: 1,
     }
-  }
+  },
+
 };
 
 try{
