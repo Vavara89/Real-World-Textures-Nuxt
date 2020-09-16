@@ -37,6 +37,14 @@
                     }
                 }
             }
+
+            .perx {
+                float: right;
+                display: block;
+                width: calc(100% - 25px);
+                position: relative;
+                top: -27px;
+            }
         }
     }
 

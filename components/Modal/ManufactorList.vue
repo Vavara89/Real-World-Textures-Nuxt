@@ -28,7 +28,8 @@
           <div class="manufactor-company">
             <p class="filter">
               <label :for="'brand-'+item.id">
-                <input :id="'brand-'+item.id" type="checkbox" :value="item.id">{{ item.name }}
+                <input :id="'brand-'+item.id" type="checkbox" :value="item.id">
+                <span class="perx">{{ item.name }}</span>
               </label>
             </p>
           </div>
