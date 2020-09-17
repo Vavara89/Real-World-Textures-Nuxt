@@ -6,7 +6,7 @@
         <h3 v-if="subtitle" class="h3 section__subtitle">{{ subtitle }}</h3>
         <h2 class="h1 section__title" :class="{'section__title--perexed': perex}">{{ title }}</h2>
         <p class="p section__perex" v-if="perex">{{ perex }}</p>
-        <p class="p" v-if="button"><a href="#" class="button-secondary">{{ button }}</a></p>
+        <p class="p" v-if="button"><a :href="buttonLink" class="button-secondary">{{ button }}</a></p>
     </div>
 </template>
 
@@ -29,6 +29,10 @@ export default {
         button: {
             type: String,
             required: false
+        },
+        buttonLink: {
+          type: String,
+          required: false
         },
         isCentered: {
             type: Boolean,

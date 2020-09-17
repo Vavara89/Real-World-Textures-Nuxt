@@ -11,6 +11,7 @@
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ServerError from "@/components/ServerError/ServerError"
+import main from "@/collectors/main";
 
 export default {
   components: {
@@ -26,6 +27,7 @@ export default {
     };
   },
   created () {
+
     this.$nuxt.$on('server-error', (data) => {
       if(data.response){
         this.serverMessageError = data.response.data ? data.response.data : '';

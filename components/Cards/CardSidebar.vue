@@ -16,12 +16,6 @@
 
         </iframe>
       </div>
-<!--      <div class="sidebar__list">-->
-<!--        <div class="sidebar__list__itm"></div>-->
-<!--        <div class="sidebar__list__itm"></div>-->
-<!--        <div class="sidebar__list__itm"></div>-->
-<!--        <div class="sidebar__list__itm"></div>-->
-<!--      </div>-->
     </div>
   </div>
 </template>

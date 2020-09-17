@@ -33,10 +33,10 @@ export default {
     return  await this.getCollector()
       .get(url);
   },
-  async tutorials(page_size = 10) {
+  async tutorials(page_size = 10, page = 1) {
     const url = `${resource}tutorials`;
     return  await this.getCollector()
-      .get(url+'?page_size='+page_size);
+      .get(url+'?page_size='+page_size+'&page='+page);
   },
 
   async software() {
@@ -48,5 +48,21 @@ export default {
     const url = `${resource}pages/${slug}`;
     return  await this.getCollector()
       .get(url);
+  },
+  async service(page_size = 10, page = 1) {
+    const url = `${resource}services`;
+    return  await this.getCollector()
+      .get(url+'?page_size='+page_size+'&page='+page);
+  },
+  async text_blocks(page_size=10) {
+    const url = `${resource}textblocks`;
+    return  await this.getCollector()
+      .get(url+'?page_size='+page_size);
+  },
+
+  async feedback(data){
+    const url = `${resource}feedback`;
+    return  await this.getCollector()
+      .post(url, data);
   }
 };

@@ -2,12 +2,14 @@
   <div>
     <section class="services view-bottom">
       <div class="container container--box">
-        <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" />
-        <CardGrid :cards="cards" :isMore="true" :isTutorial="true" />
-        <p class="centered top160" v-if="button"><a href="#" class="button-primary">Load more tutorials</a></p>
+        <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" :button-link="buttonLink"/>
+        <CardGrid :cards="cards" :isMore="true" :isTutorial="true"/>
+        <p class="centered top160" v-if="next_pager">
+          <a @click="paginate" class="button-primary">Load more tutorials</a>
+        </p>
       </div>
     </section>
-    <SectionFaq :noPadding="true"/>
+    <SectionFaq :faqs="faqs" :noPadding="true"/>
   </div>
 </template>
 
@@ -15,6 +17,7 @@
 import SectionTitle from "@/components/SectionParts/SectionTitle";
 import CardGrid from "@/components/Cards/CardGrid";
 import SectionFaq from "@/components/Sections/SectionFaq";
+import main from "@/collectors/main";
 
 export default {
   name: "Tutorials",
@@ -23,85 +26,97 @@ export default {
     CardGrid,
     SectionFaq
   },
+  async asyncData(context) {
+    let cards = [];
+    let faqs = {};
+    let next_pager = false;
+    await main.faqs().then(response => {
+      faqs = response.data.results;
+    });
+    const page = context['route'].query['page'] ? parseInt(context['route'].query['page'], 10) : 1;
+    let request = 1;
+     while (page >= request){
+       await main.tutorials(8, request).then((response) => {
+        response.data.results.forEach(item => {
+          cards.push({
+            image: {
+              url: item.cover,
+              alt: ""
+            },
+            title: item.id + item.name,
+            subtitle: item.sub_title,
+            text: item.text,
+            link: item.video_url,
+            sidebar:{
+              isOpened: false,
+              video: item.video_url,
+              text: item.text
+            }
+          });
+        });
+        next_pager = response.data.next_page;
+        console.log(next_pager);
+      });
+      request+=1;
+    }
+
+    return {
+      faqs: faqs,
+      cards: cards,
+      next_pager: next_pager
+    };
+  },
   data() {
     return {
       subtitle: "Services",
       title: "Tutorials",
-      perex:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       button: "Join our community on FB",
-      cards: [
-        {
-          image: {
-            url: require("@/assets/img/tutorials/0.png"),
-            alt: ""
-          },
-          title: "For Architects",
-          subtitle:
-            "Looking for nice floor or material for facade? No problem!",
-          text:
-            "Choose the best material for your project, make visualisation for your client and buy a surface in the real world.",
-          link: "#"
-        },
-        {
-          image: {
-            url: require("@/assets/img/tutorials/1.png"),
-            alt: ""
-          },
-          title: "For 3D Artists",
-          subtitle:
-            "Take it all! Diffuse, reflection, glosiness, bump, displacement ambient occlusion and even subsurface scattering...",
-          text:
-            "PBR materials  and 3D models  from real worldwide manufacturers.",
-          link: "#"
-        },
-        {
-          image: {
-            url: require("@/assets/img/tutorials/2.png"),
-            alt: ""
-          },
-          title: "For Manufacturers",
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
-          link: "#"
-        },
-        {
-          image: {
-            url: require("@/assets/img/tutorials/0.png"),
-            alt: ""
-          },
-          title: "For Manufacturers",
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
-          link: "#"
-        },
-        {
-          image: {
-            url: require("@/assets/img/tutorials/1.png"),
-            alt: ""
-          },
-          title: "For Manufacturers",
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
-          link: "#"
-        },
-        {
-          image: {
-            url: require("@/assets/img/tutorials/2.png"),
-            alt: ""
-          },
-          title: "For Manufacturers",
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
-          link: "#"
-        }
-      ]
+      buttonLink: process.env.contacts.facebook_link,
+      cards: [],
+      faqs: [],
+      next_pager: false
     };
-  }
+  },
+  computed: {
+    perex() {
+      const data = this.$store.getters.textBlocks.filter(item => item.key === 'tutorials');
+      if (data.length) {
+        return data.pop().content;
+      }
+      return '';
+    }
+  },
+  methods: {
+    paginate(e) {
+      e.preventDefault();
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query['page'] = this.next_pager;
+      this.$router.push({path: this.$route.path, query: query});
+    },
+  },
+  watch: {
+    $route(to, from) {
+      const page = to.query['page'];
+      if (page > 1) {
+        main.tutorials(8, page).then(response => {
+          response.data.results.forEach(item => {
+            this.cards.push({
+              image: {
+                url: item.cover,
+                alt: ""
+              },
+              title: item.title,
+              subtitle: item.sub_title,
+              text: item.text,
+              link: item.video_url,
+            });
+          });
+          this.next_pager = response.data.next_page;
+        });
+      }
+    }
+  },
 };
 </script>
 

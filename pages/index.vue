@@ -3,7 +3,7 @@
         <SectionRealworld />
         <SectionExample />
         <SectionPhilosophy />
-        <SectionServices />
+        <SectionServices :cards="services"/>
         <SectionSubscribe />
         <SectionFaq :id="'faq'" :faqs="faqs"/>
         <SectionCompatibility :logos="soft"/>
@@ -41,6 +41,7 @@ export default {
       let faqs = [];
       let brands = [];
       let soft = [];
+      let services = [];
 
       await main.faqs().then(response => {
         faqs = response.data.results;
@@ -68,10 +69,34 @@ export default {
           };
         })
       });
+
+      await main.service().then(response => {
+        services = response.data.results.map(item => {
+          return {
+            image: {
+              url: item.cover,
+              alt: item.name
+            },
+            title: item.name,
+            subtitle: item.sub_title,
+
+            text: item.content,
+            link: "#",
+            sidebar: {
+              isOpened: false,
+              videoCover: "",
+              text: item.content
+            },
+            video: item.video
+          }
+        });
+      });
+
       return {
         faqs: faqs,
         brands: brands,
-        soft: soft
+        soft: soft,
+        services: services,
       };
   },
   data() {
@@ -86,7 +111,8 @@ export default {
             },
           faqs:[],
           brands: [],
-          soft: []
+          soft: [],
+          services: [],
         };
     }
 };

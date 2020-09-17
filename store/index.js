@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import main from "@/collectors/main";
 
 const createStore = () => {
   return new Vuex.Store({
@@ -7,7 +8,8 @@ const createStore = () => {
       textures: null,
       filter: null,
       category: null,
-      bookmarks: null
+      bookmarks: null,
+      textBlocks: null,
     },
     mutations: {
       setPager(state, pager) {
@@ -24,6 +26,9 @@ const createStore = () => {
       },
       setBookmarks(state, bookmarks) {
         state.bookmarks = bookmarks;
+      },
+      setTextBlocks(state, textBlocks){
+        state.textBlocks = textBlocks;
       }
     },
     actions: {
@@ -41,6 +46,12 @@ const createStore = () => {
       },
       setBookmarks(vuexContext, data) {
         vuexContext.commit('setBookmarks', data);
+      },
+      async nuxtServerInit ({ commit }, { req }) {
+      await main.text_blocks().then(response => {
+         commit('setTextBlocks', response.data.results);
+       }).catch((error)=>{
+       });
       }
     },
     getters: {
@@ -58,6 +69,9 @@ const createStore = () => {
       },
       bookmarks(state) {
         return state.bookmarks;
+      },
+      textBlocks(state){
+        return state.textBlocks;
       }
     }
   });

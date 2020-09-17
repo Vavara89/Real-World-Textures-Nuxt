@@ -22,63 +22,16 @@ export default {
     CardGrid,
     CardSidebar
   },
+  props:{
+    cards:{
+      type: Array,
+      required: false
+    }
+  },
   data() {
     return {
       subtitle: "Services",
       title: "What are we providing?",
-      cards: [
-        {
-          image: {
-            url: require("@/assets/img/spheres/sphere-1.png"),
-            alt: ""
-          },
-          title: "For Architects",
-          subtitle:
-            "Looking for nice floor or material for facade? No problem!",
-          text:
-            "Choose the best material for your project, make visualisation for your client and buy a surface in the real world.",
-          link: "#",
-          sidebar: {
-            isOpened: false,
-            videoCover: "",
-            text: "<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>"
-          },
-          video: 'https://www.youtube.com/embed/iZMkzjrA5hM'
-        },
-        {
-          image: {
-            url: require("@/assets/img/spheres/sphere-2.png"),
-            alt: ""
-          },
-          title: "For 3D Artists",
-          subtitle:
-            "Textures sets for both Specular/Glossiness andMetal/Roughness workflow",
-          text:
-            "PBR materials and 3D models from real worldwide manufacturers.",
-          link: "#",
-          sidebar: {
-            isOpened: false,
-            videoCover: "",
-            text: "<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>"
-          }
-        },
-        {
-          image: {
-            url: require("@/assets/img/spheres/sphere-3.png"),
-            alt: ""
-          },
-          title: "For Manufacturers",
-          subtitle: "There is no material or model we can't handle with!",
-          text:
-            "Scan and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
-          link: "#",
-          sidebar: {
-            isOpened: false,
-            videoCover: "",
-            text: "<p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p><p>Choose the best material for your project, make visualisation for your client and buy a surface in the real world.</p>"
-          }
-        }
-      ]
     };
   },
   methods: {

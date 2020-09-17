@@ -8,8 +8,7 @@
         <p
           class="footer__text"
         >
-          We are lorem ipsum nteger euismod a tellus sit amet sagittis. Etiam at felis tellus. Integer vel nisl quis
-          neque porta sodales. Aliquam nec laoreet libero.
+          {{textBlock.content}}
         </p>
         <FooterSocial/>
       </div>
@@ -35,6 +34,7 @@ import FooterSocial from '@/components/Footer/FooterSocial';
 import FooterNav from '@/components/Footer/FooterNav';
 import FooterMailForm from '@/components/Footer/FooterMailForm';
 import FooterLinks from '@/components/Footer/FooterLinks';
+import main from "@/collectors/main";
 
 export default {
   name: 'Footer',
@@ -44,8 +44,12 @@ export default {
     FooterMailForm,
     FooterLinks
   },
+  created() {
+    this.textBlock = this.$store.getters.textBlocks.filter(item => item.key === 'footer').pop();
+  },
   data() {
     return {
+      textBlock: {},
       footernavs: [
         {
           title: 'Company',
@@ -98,8 +102,9 @@ export default {
             },
           ]
         }
-      ]
+      ],
     };
   }
+
 };
 </script>
