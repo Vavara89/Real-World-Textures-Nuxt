@@ -22,7 +22,7 @@
             v-for="(item, index) in options"
             :key="'item-' + index"
             class="item"
-            @click="selected=item; open=false; $emit('input', item)"
+            @click="selectCatalogType(item); open=false; $emit('input', item)"
           >
             {{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span>
           </div>
@@ -49,15 +49,21 @@ export default {
       options: [
         {
           value: "Models",
+          url:'models'
         },
         {
           value: "Textures",
+          url:'textures'
         },
         {
           value: "HDRis",
+          url:'hdr'
+
         },
         {
           value: "Brands",
+          url:'brands'
+
         },
       ],
     };
@@ -65,7 +71,7 @@ export default {
 
   methods: {
 
-    searchHandler(e) {
+    searchHandler() {
       if (this.timeOut) {
         clearTimeout(this.timeOut);
       }
@@ -73,9 +79,8 @@ export default {
         const current_query = {};
         Object.assign(current_query, this.$route.query);
         current_query['search'] = this.search;
-        this.$router.push({path: this.$route.path, query: current_query})
+        this.$router.push({path: this.selected.url, query: current_query})
       }, 1000);
-      return e;
     },
     getCatalogRoutes() {
       const catalogRoutes = ['textures', 'hdr', 'models', 'brands'];
@@ -87,6 +92,10 @@ export default {
     isCatalogRoute() {
       const catalogRoutes = this.getCatalogRoutes();
       return catalogRoutes.indexOf(this.route) >= 0;
+    },
+    selectCatalogType(value){
+      this.selected=value;
+      this.searchHandler();
     },
     getOrDefaultSelected(){
       if (this.selected_option) {
