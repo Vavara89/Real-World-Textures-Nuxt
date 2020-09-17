@@ -34,7 +34,6 @@ export default {
   }),
   methods: {
     scrollSwitcher(state) {
-      console.log(state);
       if (state) {
         document.body.style.overflow = 'hidden';
       } else {

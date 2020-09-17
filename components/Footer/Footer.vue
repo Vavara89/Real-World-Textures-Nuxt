@@ -8,7 +8,7 @@
         <p
           class="footer__text"
         >
-          {{textBlock.content}}
+          {{ textBlock.content }}
         </p>
         <FooterSocial/>
       </div>
@@ -80,16 +80,17 @@ export default {
         },
         {
           title: 'Get in Touch',
-          sub_menus: [{
-            'url': `mailto:${process.env.contacts.email}`,
-            'name': 'E-mail Us',
-            'external': true
-          },
-          {
-            'url': process.env.contacts.facebook_link,
-            'name': "Facebook",
-            'external': true
-          },
+          sub_menus: [
+            {
+              'url': `mailto:${process.env.contacts.email}`,
+              'name': 'E-mail Us',
+              'external': true
+            },
+            {
+              'url': process.env.contacts.facebook_link,
+              'name': "Facebook",
+              'external': true
+            },
             {
               'url': process.env.contacts.instagram_link,
               'name': "Instagram",
