@@ -30,13 +30,16 @@ export default {
   },
   methods:{
     subscribe(e){
+      String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+      }
       this.error = false;
       this.success = false;
       e.preventDefault();
       main.subscribe(this.email).then(data => {
-        this.success = 'You are success subscribed';
+        this.success = 'You are successfully subscribed.';
       }).catch(data => {
-          this.error = data.response.data.email[0];
+          this.error = data.response.data.email[0].capitalize();
       });
       return false;
     }
