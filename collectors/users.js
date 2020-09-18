@@ -44,6 +44,10 @@ export default {
       .post(`${resource}profile/update`, data);
     return new ProfileClass(profile.data);
   },
+  async saveAddress(data){
+    return collectorWithUserAuth
+      .post(`${resource}profile/address`, data);
+  },
   async changePassword (data){
     return  await collectorWithUserAuth
       .post(`${resource}change_password`, data);

@@ -1,7 +1,8 @@
 <template>
   <div :class="{'success': success}" class="success-holder">
     <div class="success-info">
-      <h3>Data success saved</h3>
+      <div class="success-icon"></div>
+      <span class="title">{{title}}</span>
     </div>
   </div>
 </template>
@@ -12,13 +13,12 @@ export default {
   props:{
     title:{
       type: String,
-      default: 'Data success saved'
+      default: 'Data successfully saved'
     },
     success: {
       type: Boolean,
       default: false
     }
-
   },
   data(){
     return {
@@ -27,3 +27,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import "@/assets/scss/components/_success.scss";
+</style>

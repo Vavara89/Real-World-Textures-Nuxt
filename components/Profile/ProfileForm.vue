@@ -1,11 +1,7 @@
 <template>
 
   <div class="success-holder">
-    <div v-if="saved">
-      <div class="success-info">
-        <h2>Data success saved</h2>
-      </div>
-    </div>
+    <Success :success="saved" :title="'Profile successfully saved'"></Success>
     <table style="width: 621px;">
       <tbody>
       <tr>
@@ -65,9 +61,12 @@
 import users from "~/collectors/users";
 import keysToCamel from "~/classes/keysToCamel";
 import FormInputErrors from '@/components/Forms/FormInputErrors'
+import Success from '@/components/Success/Success'
+
 export default {
   components: {
-    FormInputErrors
+    FormInputErrors,
+    Success
   },
   name: "ProfileForm",
   data() {
@@ -98,11 +97,7 @@ export default {
       this.cleanErrors();
       users.saveProfile(data).then(data => {
           this.saved = true;
-          this.$notify({
-            type: 'success',
-            title: 'Hello there',
-            message: 'That\'s the success!'
-          });
+          setTimeout(()=>this.saved = false, 5000);
       }).catch(errors => {
         if(errors.response.status === 400){
           const dataErrors = keysToCamel(errors.response.data);
