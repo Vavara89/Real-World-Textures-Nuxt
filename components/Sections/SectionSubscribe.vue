@@ -44,11 +44,14 @@ export default {
   computed:{
     cards(){
       const prices = this.$store.getters.prices;
+      if(!prices.length){
+        return [];
+      }
       const products = {
         'pro':prices.filter(item => item.stripe_product.is_pro === true),
         'freelancer': prices.filter(item => item.stripe_product.is_pro === false)
       };
-      if(products.pro && products.freelancer){
+      if(products.pro.length && products.freelancer.length){
         const titles = {
           'pro': products.pro[0].stripe_product.name,
           'freelancer': products.freelancer[0].stripe_product.name,

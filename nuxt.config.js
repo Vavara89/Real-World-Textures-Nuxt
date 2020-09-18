@@ -28,7 +28,9 @@ let production =  {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '@/plugins/vClickOutside', ssr: false }
+    { src: '@/plugins/vClickOutside', ssr: false },
+    { src: '~/plugins/notifications-ssr', mode: 'server'},
+    { src: '~/plugins/notifications-client', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -59,7 +61,8 @@ let production =  {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
+    vendor: ['vue-notifications']
   },
   env: {
     baseUrl: 'http://34.107.89.42/',
@@ -75,7 +78,7 @@ let production =  {
   },
   auth: {
     plugins: [
-      '~/plugins/auth.js'
+      '~/plugins/auth.js',
     ],
     redirect: {
       login: '/login',
