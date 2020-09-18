@@ -38,30 +38,59 @@ export default {
   data () {
     return {
       title: 'Subscribe',
-      cards: [
-        {
-          title: 'Freelancer',
-          subtitle: 'per month/person',
-          currency: '$',
-          price: '17',
-          priceYear: '13',
-          desc: '200 credits/month',
-          buttontext: 'Get Freelancer',
-          buttonlink: '/'
-        },
-        {
-          title: 'Studio',
-          subtitle: 'per month/seat',
-          currency: '$',
-          price: '35',
-          priceYear: '27',
-          desc: '700 credits/month',
-          buttontext: 'Get Studio',
-          buttonlink: '/'
-        }
-      ],
       duration: ''
     };
+  },
+  computed:{
+    cards(){
+      const prices = this.$store.getters.prices;
+      const products = {
+        'pro':prices.filter(item => item.stripe_product.is_pro === true),
+        'freelancer': prices.filter(item => item.stripe_product.is_pro === false)
+      };
+      if(products.pro && products.freelancer){
+        const titles = {
+          'pro': products.pro[0].stripe_product.name,
+          'freelancer': products.freelancer[0].stripe_product.name,
+        };
+        const price_year = {
+            'pro':products.pro.filter(item => item.is_year === true)[0],
+            'freelancer':products.freelancer.filter(item => item.is_year === true)[0],
+        };
+        const price_month = {
+          'pro':products.pro.filter(item => item.is_year === false)[0],
+          'freelancer':products.freelancer.filter(item => item.is_year === false)[0],
+        };
+
+        return [
+          {
+            title: titles.pro,
+            subtitle: 'per month/person',
+            currency: '$',
+            price: price_month.pro.amount,
+            priceYear: parseInt(price_year.pro.amount)/12,
+            desc: `${price_month.pro.credits} credits/month`,
+            desc_month: `${price_month.pro.credits} credits/month`,
+            desc_year: `${parseInt(price_year.pro.credits)/12} credits/month`,
+            buttontext: `Get ${titles.pro}`,
+            buttonlink: '/'
+          },
+          {
+            title: titles.freelancer,
+            subtitle: 'per month/seat',
+            currency: '$',
+            price: price_month.freelancer.amount,
+            priceYear: parseInt(price_year.freelancer.amount)/12,
+            desc: `${price_month.freelancer.credits} credits/month`,
+            desc_month: `${price_month.freelancer.credits} credits/month`,
+            desc_year: `${parseInt(price_year.freelancer.credits)/12} credits/month`,
+            buttontext: `Get ${titles.freelancer}`,
+            buttonlink: '/'
+          }
+        ];
+      }
+      return  [];
+    }
   },
   methods: {
     childMessageReceived (duration) {
@@ -71,6 +100,8 @@ export default {
       if (duration === 'year') {
         this.duration = duration;
       }
+    },
+    getLink(){
     }
   }
 };

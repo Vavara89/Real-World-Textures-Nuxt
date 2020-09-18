@@ -13,8 +13,11 @@
       <p v-if="duration !== 'year'" class="pricecard__price">
         {{ card.currency }}{{ card.price }}
       </p>
-      <p class="pricecard__desc">
-        {{ card.desc }}
+      <p v-if="duration === 'year'" class="pricecard__desc">
+        {{ card.desc_year }}
+      </p>
+      <p v-if="duration !== 'year'" class="pricecard__desc">
+        {{ card.desc_month }}
       </p>
       <Button :link="card.buttonlink" :text="card.buttontext" type="primary" width="wide" />
     </div>

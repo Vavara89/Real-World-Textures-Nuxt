@@ -1,5 +1,6 @@
 import Vuex from 'vuex';
-import main from "@/collectors/main";
+import main from '@/collectors/main';
+import commercial from '@/collectors/commercial';
 
 const createStore = () => {
   return new Vuex.Store({
@@ -10,68 +11,77 @@ const createStore = () => {
       category: null,
       bookmarks: null,
       textBlocks: null,
+      prices: null,
     },
     mutations: {
-      setPager(state, pager) {
+      setPager (state, pager) {
         state.pager = pager;
       },
-      setTextures(state, textures) {
+      setTextures (state, textures) {
         state.textures = textures;
       },
-      setFilter(state, filter) {
+      setFilter (state, filter) {
         state.filter = filter;
       },
-      setCategory(state, category) {
+      setCategory (state, category) {
         state.category = category;
       },
-      setBookmarks(state, bookmarks) {
+      setBookmarks (state, bookmarks) {
         state.bookmarks = bookmarks;
       },
-      setTextBlocks(state, textBlocks){
+      setTextBlocks (state, textBlocks) {
         state.textBlocks = textBlocks;
-      }
+      },
+      setPrices (state, products) {
+        state.prices = products;
+      },
     },
     actions: {
-      setPager(vuexContext, article) {
+      setPager (vuexContext, article) {
         vuexContext.commit('setArticle', article);
       },
-      setTextures(vuexContext, pager) {
+      setTextures (vuexContext, pager) {
         vuexContext.commit('setPager', pager);
       },
-      setFilter(vuexContext, data) {
+      setFilter (vuexContext, data) {
         vuexContext.commit('serFilter', data);
       },
-      setCategory(vuexContext, data) {
+      setCategory (vuexContext, data) {
         vuexContext.commit('setCategory', data);
       },
-      setBookmarks(vuexContext, data) {
+      setBookmarks (vuexContext, data) {
         vuexContext.commit('setBookmarks', data);
       },
       async nuxtServerInit ({ commit }, { req }) {
-      await main.text_blocks().then(response => {
-         commit('setTextBlocks', response.data.results);
-       }).catch((error)=>{
-       });
+        await main.text_blocks().then(response => {
+          commit('setTextBlocks', response.data.results);
+        });
+        await commercial.prices().then(response => {
+          commit('setPrices', response.data.results);
+        });
       }
     },
     getters: {
-      filter(state) {
+      filter (state) {
         return state.filter;
       },
-      textures(state) {
+      textures (state) {
         return state.textures;
       },
-      pager(state) {
+      pager (state) {
         return state.pager;
       },
-      category(state) {
+      category (state) {
         return state.category;
       },
-      bookmarks(state) {
+      bookmarks (state) {
         return state.bookmarks;
       },
-      textBlocks(state){
+      textBlocks (state) {
         return state.textBlocks;
+      },
+      prices (state) {
+        return state.prices;
       }
     }
   });

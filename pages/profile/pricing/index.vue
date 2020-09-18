@@ -25,12 +25,12 @@
                   <ToggleSwitch first_text="Monthly plans" second_text="Annual plans" @setDuration="childMessageReceived" />
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
-                  <span v-if="isMonth">17$</span>
-                  <span v-if="!isMonth">13$</span>
+                  <span v-if="isMonth">{{ idleMonth.amount }}$</span>
+                  <span v-if="!isMonth">{{ idleYears.amount }}$</span>
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
-                  <span v-if="isMonth">35$</span>
-                  <span v-if="!isMonth">27$</span>
+                  <span v-if="isMonth">{{ proMonth.amount }}$</span>
+                  <span v-if="!isMonth">{{ proYears.amount }}$</span>
                 </td>
                 <td style="border-left: 1px solid #DDE0ED;">
 &nbsp;
@@ -55,26 +55,15 @@
                   Credits Per Month
                 </td>
                 <td style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
-                  200
+                  <span v-if="isMonth">{{ idleMonth.credits }}</span>
+                  <span v-if="!isMonth">{{ idleYears.credits }}</span>
+
                 </td>
                 <td style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
-                  700
+                  <span v-if="isMonth">{{ proMonth.credits }}</span>
+                  <span v-if="!isMonth">{{ proMonth.credits }}</span>
                 </td>
                 <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
-&nbsp;
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 20px 0 20px 40px;">
-                  Company Revenue Return
-                </td>
-                <td style="text-align: center; padding: 20px 0 40px 0; border-left: 1px solid #DDE0ED;">
-                  up to 100K $
-                </td>
-                <td style="text-align: center; padding: 20px 0 40px 0; border-left: 1px solid #DDE0ED;">
-                  above 100K $
-                </td>
-                <td style="border-left: 1px solid #DDE0ED;">
 &nbsp;
                 </td>
               </tr>
@@ -134,8 +123,6 @@ export default {
     return {
       subtitle: 'Services',
       title: 'Textures',
-      perex:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       button: 'Join our community on FB',
       isMonth: true
     };
@@ -148,9 +135,34 @@ export default {
       if (duration === 'year') {
         this.isMonth = false;
       }
-      console.log('zpráva z Toggle', duration);
+    },
+    getPro(){
+      const prices = this.$store.getters.prices;
+      return prices ? prices.filter(item => item.stripe_product.is_pro === true) : [];
+    },
+    getIdle(){
+      const prices = this.$store.getters.prices;
+      return prices ? prices.filter(item => item.stripe_product.is_pro === false) : [];
+    },
+  },
+  computed:{
+    proYears(){
+      return this.getPro().filter(item => item.is_year === true)[0];
+    },
+    proMonth(){
+      return this.getPro().filter(item => item.is_year === false)[0];
+    },
+    idleYears(){
+      return this.getIdle().filter(item => item.is_year === true)[0];
+
+    },
+    idleMonth(){
+      return this.getIdle().filter(item => item.is_year === false)[0];
+
     }
+
   }
+
 };
 </script>
 
