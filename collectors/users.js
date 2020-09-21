@@ -48,6 +48,10 @@ export default {
     return collectorWithUserAuth
       .post(`${resource}profile/address`, data);
   },
+  async savePayment(data){
+    return collectorWithUserAuth
+      .post(`${resource}profile/payment`, data);
+  },
   async changePassword (data){
     return  await collectorWithUserAuth
       .post(`${resource}change_password`, data);

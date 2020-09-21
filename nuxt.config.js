@@ -30,7 +30,8 @@ let production =  {
   plugins: [
     { src: '@/plugins/vClickOutside', ssr: false },
     { src: '~/plugins/notifications-ssr', mode: 'server'},
-    { src: '~/plugins/notifications-client', mode: 'client' }
+    { src: '~/plugins/notifications-client', mode: 'client' },
+    { src: '~/plugins/v-mask', mode: 'client' },
   ],
   /*
   ** Nuxt.js dev-modules

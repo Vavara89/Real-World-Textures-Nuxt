@@ -137,13 +137,11 @@ export default {
     Success
   },
   middleware: 'auth',
-  props: {
-    opened: false,
-    send: false,
-    isSubmitted: false
-  },
   data(){
     return {
+      send: false,
+      isSubmitted: false,
+      opened: false,
       formErrors: {
         country:[],
         state:[],
@@ -192,9 +190,9 @@ export default {
       users.saveAddress(this.data).then((data)=>{
         this.process = false;
         this.saved = true;
+        this.$auth.fetchUser();
 
       }).catch(errors=>{
-        console.log(errors.response.status);
         if(errors.response.status === 400){
           Object.keys(errors.response.data).map((key)=>{this.formErrors[key] = errors.response.data[key]});
           console.log(this.formErrors);
@@ -207,12 +205,13 @@ export default {
         document.body.style.overflow = 'hidden';
       } else {
         this.send = false;
+        this.saved = false;
         document.body.style.overflow = 'auto';
       }
       this.opened = !this.opened;
     },
-    toggleMessage() {
-      this.scrollSwitcher(true);
+    toggleMessage(close=false) {
+      this.scrollSwitcher(close);
     },
     hasErrors(input) {
       return this.getErrors(input).length > 0;

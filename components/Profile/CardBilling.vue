@@ -1,7 +1,7 @@
 <template>
   <div>
     <CardBillingModal ref="billing_form"></CardBillingModal>
-<!--    <LoginModals text="" modal="payment" :openpayment="false" @setDuration="childMessageReceived"/>-->
+    <PaymentBillingModal ref="payment_form"></PaymentBillingModal>
     <table style="width: 621px;">
       <tbody>
         <tr >
@@ -9,7 +9,7 @@
             Payment Method
           </td>
           <td v-if="!payment" colspan="3">
-            <a href="#" class="button-primary button-secondary">Add new</a>
+            <a @click="openPayment()" href="#" class="button-primary button-secondary">Add new</a>
           </td>
           <template v-if="payment">
             <td  style="width: 200px;">
@@ -19,7 +19,7 @@
               <img src="@/assets/img/cards/mastercard.png" class="bank">
             </td>
             <td style="width: 92px;">
-                            <span><a href="#" class="buttonek">Edit</a></span>
+                <span><a @click="openPayment()" href="#" class="buttonek">Edit</a></span>
             </td>
             <td style="width: 92px;">
               <span><a href="#" class="buttonek">Remove</a></span>
@@ -67,7 +67,7 @@
 import Success from "~/components/Success/Success"
 import LoginModals from '@/components/LoginModals/LoginModals';
 import CardBillingModal from '@/components/Profile/CardBillingModal';
-
+import PaymentBillingModal from "@/components/Profile/PaymentBillingModal";
 
 export default {
   name: "CardBilling",
@@ -78,11 +78,15 @@ export default {
   components:{
     Success,
     LoginModals,
-    CardBillingModal
+    CardBillingModal,
+    PaymentBillingModal
   },
   methods: {
     openAddress(){
       this.$refs.billing_form.scrollSwitcher(true);
+    },
+    openPayment(){
+      this.$refs.payment_form.scrollSwitcher(true);
     },
     childMessageReceived (duration) {
       if (duration === 'payment') {
@@ -104,7 +108,7 @@ export default {
     },
     payment(){
       const payment = this.user.payment;
-      if(payment.card){
+      if(payment && payment.last4){
         return payment;
       }
       return false;
