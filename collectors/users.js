@@ -52,6 +52,14 @@ export default {
     return collectorWithUserAuth
       .post(`${resource}profile/payment`, data);
   },
+  async updatePayment(data){
+    return collectorWithUserAuth
+      .patch(`${resource}profile/payment/update`, data);
+  },
+  async deletePayment(){
+    return collectorWithUserAuth
+      .delete(`${resource}profile/payment/delete`);
+  },
   async changePassword (data){
     return  await collectorWithUserAuth
       .post(`${resource}change_password`, data);

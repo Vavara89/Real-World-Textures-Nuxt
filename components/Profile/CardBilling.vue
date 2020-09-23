@@ -2,6 +2,7 @@
   <div>
     <CardBillingModal ref="billing_form"></CardBillingModal>
     <PaymentBillingModal ref="payment_form"></PaymentBillingModal>
+    <ConfirmModal @confirmed="delete_payment" title="Are you sure for delete this payment method?" ref="remove_payment_accept"></ConfirmModal>
     <table style="width: 621px;">
       <tbody>
         <tr >
@@ -13,16 +14,16 @@
           </td>
           <template v-if="payment">
             <td  style="width: 200px;">
-              CC Ending with 4329
+              CC Ending with {{ payment.last4 }}
             </td>
             <td  style="width: 134px;">
-              <img src="@/assets/img/cards/mastercard.png" class="bank">
+              <img width="50" v-if="payment.brand" :src="payment.brand" class="bank">
             </td>
             <td style="width: 92px;">
                 <span><a @click="openPayment()" href="#" class="buttonek">Edit</a></span>
             </td>
             <td style="width: 92px;">
-              <span><a href="#" class="buttonek">Remove</a></span>
+              <span><a @click="removePayment()" href="#" class="buttonek">Remove</a></span>
             </td>
           </template>
 
@@ -68,6 +69,8 @@ import Success from "~/components/Success/Success"
 import LoginModals from '@/components/LoginModals/LoginModals';
 import CardBillingModal from '@/components/Profile/CardBillingModal';
 import PaymentBillingModal from "@/components/Profile/PaymentBillingModal";
+import ConfirmModal from "@/components/Confirm/ConfirmModal"
+import users from "@/collectors/users";
 
 export default {
   name: "CardBilling",
@@ -79,7 +82,8 @@ export default {
     Success,
     LoginModals,
     CardBillingModal,
-    PaymentBillingModal
+    PaymentBillingModal,
+    ConfirmModal
   },
   methods: {
     openAddress(){
@@ -96,6 +100,20 @@ export default {
       if (duration === 'address') {
         this.openAddress = false;
       }
+    },
+    removePayment(){
+      this.$refs.remove_payment_accept.scrollSwitcher(true);
+    },
+    delete_payment(){
+      this.$refs.remove_payment_accept.processing = true;
+      users.deletePayment().then(()=>{
+        this.$auth.fetchUser().then(()=>{
+          this.$refs.remove_payment_accept.processing = false;
+          this.$refs.remove_payment_accept.scrollSwitcher(false);
+          this.$refs.payment_form.cleanAttributes();
+        });
+
+      });
     }
   },
   computed:{
@@ -114,8 +132,6 @@ export default {
       return false;
     },
     empty(){
-      console.log(!this.payment);
-      console.log(this.address);
       return !this.payment && !this.address;
     },
     user () {

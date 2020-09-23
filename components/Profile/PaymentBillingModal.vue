@@ -5,7 +5,7 @@
         <span class="close" @click="toggleMessage()"/>
         <h2>Update Payment Method</h2>
         <div class="success-holder-center">
-          <Success :success="saved" :title="'Address successfully saved'"></Success>
+          <Success :success="saved" :title="'Payment method successfully saved'"></Success>
         </div>
         <h3 class="upper">Secured and encrypted by Stripe</h3>
         <form method="post" class="email" @submit="save">
@@ -23,6 +23,8 @@
                   name="card_number"
                   v-model="number"
                   v-mask="card_number_mask"
+                  :readonly="is_update"
+                  :disabled="is_update"
                   placeholder=""
                 >
                 <div class="errors">
@@ -52,12 +54,14 @@
               <td>
                 <input
                   :class="{'email--error': formErrors['cvc'].length}"
-                  type="text"
+                  type="password"
                   placeholder=""
                   class="input small"
                   name="cvv"
                   v-model="cvc"
                   v-mask="cvv_mask"
+                  :readonly="is_update"
+                  :disabled="is_update"
                 >
                 <div class="errors">
                   <span v-if="formErrors['cvc'].length">{{ formErrors['cvc'][0] }}</span>
@@ -95,12 +99,12 @@ export default {
       opened: false,
       saved: false,
       send: false,
-      number: '',
-      exp_date: '',
-      cvc: '',
-      card_number_mask: '#### #### #### ?#?#?#?# ?#?#?#',
+      number: null,
+      exp_date: null,
+      cvc: null,
+      card_number_mask: null,
       exp_date_mask: '##/##',
-      cvv_mask: '###?#',
+      cvv_mask: null,
       formErrors: {
         number: [],
         exp_date: [],
@@ -110,6 +114,34 @@ export default {
   },
   components: {
     Success,
+  },
+  created() {
+    this.number = this.is_update ? `**** **** **** ${this.last4}` : '';
+    this.exp_date = this.is_update ? '22/12' : '';
+    this.cvc =  this.is_update ? '***': '';
+    if(!this.is_update){
+      this.card_number_mask = '#### #### #### ?#?#?#?# ?#?#?#';
+      this.cvv_mask = '###?#';
+    }
+  },
+  computed:{
+    is_update(){
+      const payment = this.user.payment;
+      if(payment && payment.last4){
+        return true;
+      }
+      return false;
+    },
+    user () {
+      return this.$auth.user.user;
+    },
+    last4(){
+      const payment = this.user.payment;
+      if(payment && payment.last4){
+        return payment.last4;
+      }
+      return null;
+    }
   },
   methods: {
     scrollSwitcher(state) {
@@ -131,20 +163,29 @@ export default {
       }
       this.cleanErrors();
       const years_month = this.exp_date.split('/');
-      const data = {
-        number: this.number.replace(/\s/g,''),
-        exp_month: years_month[0],
-        exp_year: years_month[1],
-        cvc: this.cvc
+      let data = {};
+      let method = ()=>{};
+
+      if(this.is_update){
+        data = {
+          exp_month: years_month[0],
+          exp_year: years_month[1],
+        };
+        method = users.updatePayment;
+      }else{
+        data = {
+          number: this.number.replace(/\s/g,''),
+          exp_month: years_month[0],
+          exp_year: years_month[1],
+          cvc: this.cvc
+        }
+        method = users.savePayment;
       }
+
       this.send = true;
-      users.savePayment(data).then(() => {
+      method(data).then(() => {
         this.saved = true;
         this.$auth.fetchUser();
-        this.exp_date ='';
-        this.number ='';
-        this.cvc ='';
-        this.exp_date_mask ='';
       }).catch(errors => {
         if (errors.response.status === 400) {
           Object.keys(errors.response.data).map((key) => {
@@ -159,7 +200,6 @@ export default {
           if(errors.response.data['stripe_errors']){
             this.formErrors.number = [...this.formErrors.number, ...errors.response.data['stripe_errors']];
           }
-          console.log(this.formErrors);
         }
       }).finally(() => {
         this.send = false;
@@ -172,6 +212,11 @@ export default {
     cleanError(input) {
       this.formErrors[input] = [];
     },
+    cleanAttributes(){
+      this.number = null;
+      this.cvc = null;
+      this.exp_date = null;
+    }
   }
 }
 </script>
