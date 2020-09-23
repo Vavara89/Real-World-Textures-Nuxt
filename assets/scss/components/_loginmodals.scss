@@ -172,7 +172,7 @@
       min-width: 320px;
       padding: 0;
       margin: 0 5px 0 0;
-      float: right;
+
 
       &.success {
         color: #4CBC81;
@@ -190,15 +190,25 @@
     .errors span {
       position: relative;
       top: -10px;
+      left: 25px;
     }
 
     form.email {
       margin-top: 60px;
+      min-width: 480px;
     }
 
     label.email {
       font-size: 14px;
       color: #394174;
+      float: left;
+      position: relative;
+      top: -5px;
+
+    }
+
+    input.email {
+      float: right;
     }
 
     input.email, input.input, textarea.input {
@@ -219,6 +229,7 @@
 
       &::placeholder {
         font-size: 13px;
+        line-height: normal;
         color: #b2b3b8;
         font-weight: 300;
       }
@@ -319,6 +330,25 @@
         opacity: 1;
       }
 
+      &.auto {
+        margin-left: -170px;
+        position: relative;
+        top: 20px;
+
+
+        &:hover {
+          width: auto;
+          padding: 13px 40px;
+        }
+      }
+
+      &.autos {
+        &:hover {
+          width: auto;
+          padding: 13px 40px;
+        }
+      }
+
       &:hover {
         width: 500px;
         opacity: 0.8;
@@ -351,4 +381,44 @@
 
 .upper {
   text-transform: uppercase;
+}
+
+.isrelative {
+  position: relative;
+  top: 20px;
+}
+
+.clear {
+  clear: both;
+}
+
+label.token {
+  font-size: 14px;
+  color: #394174;
+  position: relative;
+  width: 100%;
+  top: -5px;
+  float: left;
+  text-align: right;
+  width: 140px;
+}
+
+
+.recover {
+ margin-left: 0;
+}
+
+.height {
+  height: 80px !important;
+}
+
+
+.rec {
+  .input-form-error {
+    position: relative;
+    top: 5px;
+    left: 20px; 
+    line-height: 1.5;
+    padding-left: 140px;
+  }
 }

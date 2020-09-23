@@ -263,3 +263,14 @@ span {
 }
   }
 }
+
+.ischeck {
+  border: 1px solid red;
+  width: 20px;
+  height: 20px;
+  float: left;
+}
+
+.ischecked {
+  border: 1px solid blue;
+}

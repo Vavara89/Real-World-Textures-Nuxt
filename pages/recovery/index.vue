@@ -20,10 +20,11 @@
           <div class="errors" :class="{'success': !this.errors}">
             <span v-if="errors.length">{{ errors[0] }}</span>
           </div>
-          <button :class="[isSubmitted ? 'loading' : '']" type="submit" class="email">confirm</button>
+          <button :class="[isSubmitted ? 'loading' : '']" type="submit" class="email auto">confirm</button>
+          <div class="clear" />
         </form>
-        <nuxt-link class="style green" :to="'/login'">Back to login</nuxt-link> or
-        <nuxt-link class="style" :to="'/recovery-finish'">Do you have token already?</nuxt-link>
+        <span class="isrelative"><nuxt-link class="style green" :to="'/login'">Back to login</nuxt-link> or
+        <nuxt-link class="style" :to="'/recovery-finish'">Do you have token already?</nuxt-link></span>
 
       </div>
     </div>

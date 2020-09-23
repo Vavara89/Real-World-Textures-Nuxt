@@ -13,12 +13,12 @@
       </div>
     </div>
 
-    <div v-if="!success" class="modal">
+    <div v-if="!success" class="modal rec">
       <div class="inner">
         <h2>Change your password</h2>
         <p>We were send you token on email, please check it</p>
         <form method="post" class="email" @submit="recovery">
-          <div>
+          <div style="height: 50px;" :class="{'height': hasErrors('token') && isFilled('token')}">
             <label class="token">Token from email</label>
             <input
               id="token"
@@ -27,17 +27,17 @@
               :class="{'email--error': hasErrors('token') && isFilled('token')}"
               type="text"
               placeholder="Token number"
-              name="email"
+              name="email recover"
             >
             <form-input-errors v-if="hasErrors('token')" :errors="getErrors('token')" />
           </div>
 
-          <div>
+          <div style="height: 50px;" :class="{'height': hasErrors('token') && isFilled('token')}">
             <label class="token">Password</label>
             <input
               id="password"
               v-model="input.password"
-              class="email"
+              class="email recover"
               :class="{'email--error': hasErrors('password') && isFilled('password')}"
               type="password"
               placeholder="New password"
@@ -46,7 +46,7 @@
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')" />
           </div>
 
-          <button :disabled="isSubmitted" :class="[isSubmitted ? 'loading' : '']" type="submit" class="email">
+          <button :disabled="isSubmitted" :class="[isSubmitted ? 'loading' : '']" type="submit" class="email autos">
             confirm
           </button>
         </form>

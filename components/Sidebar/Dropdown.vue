@@ -26,8 +26,9 @@
           v-for="(item, index) in options"
           :key="'item-' + index"
           class="item"
-          @click="selected=item; open=false; $emit('input', item)"
+          @click="selected=item; checkselect ? open=true : open=false; $emit('input', item); clickCheck(selected.value, item.value)"
         >
+          <div :class="{'ischecked': selected == item}" class="ischeck" />
           {{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span>
         </div>
       </div>
@@ -59,15 +60,37 @@ export default {
     input: {
       type: Boolean,
       default: false
+    },
+    checkselect: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
       selected: this.selected_option ? this.selected_option : this.options.length > 0 ? this.options[0] : null,
-      open: false
+      open: false,
+      checked: false,
+      isselected: []
     };
-  }
+  },
+  methods: {
 
+    clickCheck (sel) {
+      if (this.isselected) {
+        this.isselected.map((item) => {
+          if (sel === item) {
+            this.isselected.includes(sel) && this.isselected.splice(this.isselected.indexOf(sel), 1);
+          } else {
+            this.isselected.push(sel);
+          }
+        });
+      } else {
+        this.isselected.push(sel);
+      }
+      console.log(this.isselected);
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

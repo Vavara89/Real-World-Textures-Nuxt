@@ -80,7 +80,7 @@
               <label class="h3">Resolution:</label>
             </div>
             <div class="option">
-              <Dropdown :options="options" v-model="resolution"/>
+              <Dropdown :options="options" :checkselect="true" v-model="resolution"/>
             </div>
           </div>
           <div class="option-item dimension">
