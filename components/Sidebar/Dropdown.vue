@@ -16,7 +16,12 @@
         :class="{open: open}"
         @click="open = !open"
       >
-        {{ selected.value }} <span v-if="selected.count" class="count">({{ selected.count }})</span>
+        <span v-if="!checkselect">{{ selected.value }} <span v-if="selected.count" class="count">({{ selected.count }})</span></span>
+        <span
+          v-for="(item, index) in isselected.slice(0, 5)"
+          v-if="checkselect"
+        >{{ item.match(/\(([^)]+)\)/)[1] }}<span v-if="isselected.length > 1 && isselected.length !== index + 1">, </span></span>
+        <span v-if="checkselect && isselected.length === 0">Choose resolution</span>
       </div>
       <div
         class="items"
@@ -26,10 +31,10 @@
           v-for="(item, index) in options"
           :key="'item-' + index"
           class="item"
-          @click="selected=item; checkselect ? open=true : open=false; $emit('input', item); clickCheck(selected.value, item.value)"
+          @click="selected=item; checkselect ? open=true : open=false; $emit('input', item); checkselect ? clickCheck(selected.value, item.value) : {}"
         >
-          <div :class="{'ischecked': selected == item}" class="ischeck" />
-          {{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span>
+          <div v-if="item.value !== 'Choose resolution' && checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck"></div>
+          <span v-if="item.value !== 'Choose resolution'">{{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span></span>
         </div>
       </div>
     </div>
@@ -77,18 +82,11 @@ export default {
   methods: {
 
     clickCheck (sel) {
-      if (this.isselected) {
-        this.isselected.map((item) => {
-          if (sel === item) {
-            this.isselected.includes(sel) && this.isselected.splice(this.isselected.indexOf(sel), 1);
-          } else {
-            this.isselected.push(sel);
-          }
-        });
+      if (this.isselected.includes(sel)) {
+        this.isselected.splice(this.isselected.indexOf(sel), 1);
       } else {
         this.isselected.push(sel);
       }
-      console.log(this.isselected);
     }
   }
 };

@@ -265,12 +265,25 @@ span {
 }
 
 .ischeck {
-  border: 1px solid red;
-  width: 20px;
-  height: 20px;
+  border: 1px solid #9093B9;
+  width: 13px;
+  height: 13px;
   float: left;
+  border-radius: 3px;
+  margin-top: 6px;
+  margin-right: 5px;
 }
 
 .ischecked {
-  border: 1px solid blue;
+  border: 1px solid #4CBC81;
+  background: #4CBC81;
+  color: white;
+}
+
+.ischecked:before {
+  content: "✓";
+  position: relative;
+  top: -7px;
+  left: 1px;
+  font-size: 13px;
 }
