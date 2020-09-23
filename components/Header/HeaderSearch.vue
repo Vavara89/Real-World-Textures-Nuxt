@@ -63,7 +63,6 @@ export default {
         {
           value: "Brands",
           url:'brands'
-
         },
       ],
     };
@@ -103,8 +102,10 @@ export default {
       }
       if (this.isCatalogRoute() && !this.selected_option) {
         const selectedCategory = this.route.replace('-slug', '');
+        const filtered = this.options.filter((item)=>item.url === selectedCategory)[0];
         return this.selected_option = {
-          value: selectedCategory.toUpperCase()
+          value: filtered['value'],
+          url: filtered['url']
         };
       }
       this.selected_option = this.selected_option ? this.selected_option : this.options[0];
