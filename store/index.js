@@ -82,6 +82,9 @@ const createStore = () => {
       },
       prices (state) {
         return state.prices;
+      },
+      subscription(state){
+        return state.auth.user.user.subscription;
       }
     }
   });

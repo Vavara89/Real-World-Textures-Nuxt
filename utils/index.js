@@ -39,4 +39,23 @@ export const removeQuery = (router, route, key) => {
   router.push({path: route.path, query: query});
 }
 
+
+export const subscribeCurrentIs = (pro, year, subscription = null) => {
+  if(!subscription){
+    return false;
+  }
+  const product = subscription.product;
+  if (!product) {
+    return false;
+  }
+  return product.stripe_product.is_pro === pro && product.is_year === year;
+}
+export const subscribeStatus = (subscription = null) => {
+  return   !(subscription) ? '' : subscription.status;
+}
+
+export const subscriptionActive = (subscription) => {
+  return subscribeStatus(subscription) === 'active';
+}
+
 export const USER_AUTH_KEY_STORAGE = 'auth._token.local'
