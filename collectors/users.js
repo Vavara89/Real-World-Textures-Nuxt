@@ -63,5 +63,11 @@ export default {
   async changePassword (data){
     return  await collectorWithUserAuth
       .post(`${resource}change_password`, data);
-  }
+  },
+
+  async subscribe(price_id){
+    return await collectorWithUserAuth.post(`${resource}profile/subscription`, {
+      'price_id':price_id
+    });
+  },
 };

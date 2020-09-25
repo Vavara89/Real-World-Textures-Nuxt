@@ -1,6 +1,8 @@
 <template>
   <div class="page-container">
     <ProfileSidebar :profile="true" />
+    <ConfirmModal @confirmed="subscribe" :description='confirmTitle' ref="confirm_subscribe"></ConfirmModal>
+
     <div class="page-content">
       <section class="services view-bottom">
         <div class="pricing">
@@ -26,11 +28,11 @@
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
                   <span v-if="isMonth">{{ idleMonth.amount }}$</span>
-                  <span v-if="!isMonth">{{ idleYears.amount }}$</span>
+                  <span v-if="!isMonth">{{ idleYears.amount/12 }}$</span>
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
                   <span v-if="isMonth">{{ proMonth.amount }}$</span>
-                  <span v-if="!isMonth">{{ proYears.amount }}$</span>
+                  <span v-if="!isMonth">{{ proYears.amount/12 }}$</span>
                 </td>
                 <td style="border-left: 1px solid #DDE0ED;">
 &nbsp;
@@ -56,12 +58,12 @@
                 </td>
                 <td style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
                   <span v-if="isMonth">{{ idleMonth.credits }}</span>
-                  <span v-if="!isMonth">{{ idleYears.credits }}</span>
+                  <span v-if="!isMonth">{{ idleYears.credits/12 }}</span>
 
                 </td>
                 <td style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
                   <span v-if="isMonth">{{ proMonth.credits }}</span>
-                  <span v-if="!isMonth">{{ proMonth.credits }}</span>
+                  <span v-if="!isMonth">{{ proYears.credits/12 }}</span>
                 </td>
                 <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
 &nbsp;
@@ -72,33 +74,36 @@
 &nbsp;
                 </td>
                 <td style="padding: 20px 0; text-align: center;">
-                  <button class="toggleOption gray">
-                    Owned
+<!--                  <button class="toggleOption gray">-->
+<!--                    Owned-->
+<!--                  </button>-->
+                  <button @click="confirm(false)" class="toggleOption green">
+                    Subscribe
                   </button>
                 </td>
                 <td style="padding: 20px 0; text-align: center;">
-                  <button class="toggleOption green">
-                    Upgrade
+                  <button @click="confirm(true)" class="toggleOption green">
+                    Subscribe
                   </button>
                 </td>
                 <td>
 &nbsp;
                 </td>
               </tr>
-              <tr>
-                <td>
-&nbsp;
-                </td>
-                <td style="text-align: center; padding-left: 32px;">
-                  <a href="#" class="button-tertiary button-tertiary--green">cancle subscription</a>
-                </td>
-                <td>
-&nbsp;
-                </td>
-                <td>
-&nbsp;
-                </td>
-              </tr>
+<!--              <tr>-->
+<!--                <td>-->
+<!--&nbsp;-->
+<!--                </td>-->
+<!--                <td style="text-align: center; padding-left: 32px;">-->
+<!--                  <a href="#" class="button-tertiary button-tertiary&#45;&#45;green">cancle subscription</a>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--&nbsp;-->
+<!--                </td>-->
+<!--                <td>-->
+<!--&nbsp;-->
+<!--                </td>-->
+<!--              </tr>-->
             </tbody>
           </table>
           <!-- DivTable.com -->
@@ -111,20 +116,24 @@
 <script>
 import ToggleSwitch from '@/components/ToggleSwitch';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
+import users from "@/collectors/users";
+import ConfirmModal from '@/components/Confirm/ConfirmModal';
 
 export default {
   name: 'Pricing',
   middleware: 'auth',
   components: {
     ProfileSidebar,
-    ToggleSwitch
+    ToggleSwitch,
+    ConfirmModal
   },
   data () {
     return {
       subtitle: 'Services',
       title: 'Textures',
       button: 'Join our community on FB',
-      isMonth: true
+      isMonth: true,
+      selectedPrice: {},
     };
   },
   methods: {
@@ -144,6 +153,21 @@ export default {
       const prices = this.$store.getters.prices;
       return prices ? prices.filter(item => item.stripe_product.is_pro === false) : [];
     },
+
+    confirm(isPro = false){
+      const prices = this.$store.getters.prices;
+      this.selectedPrice = prices.filter(item => item.stripe_product.is_pro === isPro && item.is_year === !this.isMonth).pop();
+      this.$refs.confirm_subscribe.scrollSwitcher();
+    },
+
+    subscribe(){
+      users.subscribe(this.selectedPrice.id).then((data)=>{
+        alert("You are success subscribed!");
+      }).catch(()=>{
+        alert("Sorry, something was badly");
+      });
+    },
+
   },
   computed:{
     proYears(){
@@ -158,8 +182,15 @@ export default {
     },
     idleMonth(){
       return this.getIdle().filter(item => item.is_year === false)[0];
-
-    }
+    },
+    confirmTitle(){
+      if(this.selectedPrice){
+        const amount = this.selectedPrice.is_year ? this.selectedPrice.amount/12 : this.selectedPrice.amount;
+        const credits = this.selectedPrice.credits;
+        return `After you will confirm, from your bank account will reserve ever month ${amount}$, and you will get ${credits} credits`;
+      }
+      return "";
+    },
 
   }
 
