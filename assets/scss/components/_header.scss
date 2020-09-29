@@ -511,6 +511,12 @@
 
 }
 
+.no-menu {
+  @media only screen and (min-width: 950px) {
+    display: none;
+  }
+}
+
 .mobile-menu {
   font-size: 15px;
   font-weight: bold;
