@@ -90,6 +90,15 @@
       left: 3.2rem;
     }
 
+    &.iserror {
+      margin-top: 3rem;
+    }
+
+    .errors {
+      color:$color-secondary-red;
+      margin: 5px 0 10px 0;
+    }
+
     // @media screen and (-webkit-min-device-pixel-ratio:0) {
     //   input[type="password"] {
     //      -webkit-text-stroke-width: 0.8rem;
@@ -142,6 +151,10 @@
       font-size: 1.4rem;
       font-weight: 500;
       margin-left: 3.2rem;
+    }
+
+    &.iserror {
+      margin-top: 4rem;
     }
   }
 
