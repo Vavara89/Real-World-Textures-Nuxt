@@ -18,6 +18,10 @@
       margin-left: 0rem;
     }
 
+    @media only screen and (max-width: 450px) {
+      display: inline;
+    }
+
     &__part {
       &:last-child {
         min-width: 51.5rem;
