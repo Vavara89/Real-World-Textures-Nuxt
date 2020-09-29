@@ -23,7 +23,7 @@
             <form-input-errors v-if="hasErrors('email')" :errors="getErrors('email')"/>
 
           </div>
-          <div class="login__input" :class="{'login__input--filled': checkInputPassword, 'iserror': hasErrors('password')}">
+          <div class="login__input" :class="{'login__input--filled': checkInputPassword, 'iserror': hasErrors('password'), 'typeerror': hasErrors('email')}">
             <input type="password" v-model="input.password">
             <label for>Password</label>
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')"/>

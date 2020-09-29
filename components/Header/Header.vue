@@ -99,6 +99,32 @@
               </div>
             </div>
           </li>
+                          <ul>
+                            <li class="mobile-menu">
+                    Account
+                  </li>
+                  <li>
+                    <a href="/profile">what's new</a>
+                  </li>
+                  <li>
+                    <a href="/profile/dashboard">profile</a>
+                  </li>
+                  <li>
+                    <a href="/textures?assets=true">my assests</a>
+                  </li>
+                  <li>
+                    <a href="/profile/invoices">my invoices</a>
+                  </li>
+                  <li>
+                    <a href="/profile/discount">discount code</a>
+                  </li>
+                  <li>
+                    <a href="/profile/pricing">Pricing</a>
+                  </li>
+                  <li class="logout">
+                    <a @click="logout">Log out</a>
+                  </li>
+                </ul>
           <li v-if="getIsLogged()" style="cursor: pointer" class="header-fav view-mobile" @click="toBookmarks">
             <span>{{ counts }}</span>
             <a href="/bookmarked">a</a>
