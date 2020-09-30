@@ -15,41 +15,41 @@
           <span class="navicon" />
         </label>
         <ul class="menu">
-          <li>
+          <li @click="hideMenu()">
             <nuxt-link :to="'/textures'">
               Textures
             </nuxt-link>
           </li>
-          <li>
+          <li @click="hideMenu()">
             <nuxt-link :to="'/models'">
               Models
             </nuxt-link>
           </li>
-          <li>
+          <li @click="hideMenu()">
             <nuxt-link :to="'/hdr'">
               Hdris
             </nuxt-link>
           </li>
-          <li>
+          <li @click="hideMenu()">
             <nuxt-link :to="'/brands'">
               Brands
             </nuxt-link>
           </li>
-          <li class="line">
+          <li class="line" @click="hideMenu()">
             <a href>About</a>
           </li>
-          <li>
+          <li @click="hideMenu()">
             <a href>Services</a>
           </li>
-          <li>
+          <li @click="hideMenu()">
             <a href>Pricing</a>
           </li>
-          <li v-if="!getIsLogged()">
+          <li v-if="!getIsLogged()" @click="hideMenu()">
             <nuxt-link to="/login">
               Log In
             </nuxt-link>
           </li>
-          <li v-if="!getIsLogged()" class="header-button">
+          <li v-if="!getIsLogged()" class="header-button" @click="hideMenu()">
             <nuxt-link to="/signup">
               Sign Up
             </nuxt-link>
@@ -75,22 +75,34 @@
                 </div>
                 <ul>
                   <li>
-                    <a href="/profile">what's new</a>
+                    <nuxt-link :to="'/profile'">
+                      What's new
+                    </nuxt-link>
                   </li>
                   <li>
-                    <a href="/profile/dashboard">profile</a>
+                    <nuxt-link :to="'/profile/dashboard'">
+                      Profile
+                    </nuxt-link>
                   </li>
                   <li>
-                    <a href="/textures?assets=true">my assests</a>
+                    <nuxt-link :to="'/textures?assets=true'">
+                      My assests
+                    </nuxt-link>
                   </li>
                   <li>
-                    <a href="/profile/invoices">my invoices</a>
+                    <nuxt-link :to="'/profile/invoices'">
+                      My invoices
+                    </nuxt-link>
                   </li>
                   <li>
-                    <a href="/profile/discount">discount code</a>
+                    <nuxt-link :to="'/profile/discount'">
+                      Discount code
+                    </nuxt-link>
                   </li>
                   <li>
-                    <a href="/profile/pricing">Pricing</a>
+                    <nuxt-link :to="'/profile/pricing'">
+                      Pricing
+                    </nuxt-link>
                   </li>
                   <li class="logout">
                     <a @click="logout">Log out</a>
@@ -99,32 +111,49 @@
               </div>
             </div>
           </li>
-                          <ul class="no-menu">
-                            <li class="mobile-menu">
-                    Account
-                  </li>
-                  <li>
-                    <a href="/profile">what's new</a>
-                  </li>
-                  <li>
-                    <a href="/profile/dashboard">profile</a>
-                  </li>
-                  <li>
-                    <a href="/textures?assets=true">my assests</a>
-                  </li>
-                  <li>
-                    <a href="/profile/invoices">my invoices</a>
-                  </li>
-                  <li>
-                    <a href="/profile/discount">discount code</a>
-                  </li>
-                  <li>
-                    <a href="/profile/pricing">Pricing</a>
-                  </li>
-                  <li class="logout">
-                    <a @click="logout">Log out</a>
-                  </li>
-                </ul>
+          <ul v-if="getIsLogged()" class="no-menu">
+            <li class="mobile-menu" @click="hideMenu()">
+              Account
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/profile'">
+                What's new
+              </nuxt-link>
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/profile/dashboard'">
+                Profile
+              </nuxt-link>
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/textures?assets=true'">
+                My assests
+              </nuxt-link>
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/profile/invoices'">
+                My invoices
+              </nuxt-link>
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/profile/discount'">
+                Discount code
+              </nuxt-link>
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/profile/pricing'">
+                Pricing
+              </nuxt-link>
+            </li>
+            <li @click="hideMenu()">
+              <nuxt-link :to="'/bookmarked'">
+                Bookmarks
+              </nuxt-link>
+            </li>
+            <li class="logout">
+              <a @click="logout">Log out</a>
+            </li>
+          </ul>
           <li v-if="getIsLogged()" style="cursor: pointer" class="header-fav view-mobile" @click="toBookmarks">
             <span>{{ counts }}</span>
             <a href="/bookmarked">a</a>
@@ -191,7 +220,6 @@ export default {
       if (mutation.type === 'setBookmarks') {
         this.counts = state.bookmarks;
       }
-
     });
   },
   methods: {
@@ -220,7 +248,16 @@ export default {
       return this.$router.push({ path: '/bookmarked' });
     },
     getIsLogged () {
+      console.log(this.$auth.loggedIn)
       return this.$auth.loggedIn;
+    },
+    hideMenu () {
+      const toggleButton = document.getElementById('menu-btn');
+      if (toggleButton.checked === true) {
+        toggleButton.checked = false;
+      } else {
+        toggleButton.checked = true;
+      }
     }
   }
 };
