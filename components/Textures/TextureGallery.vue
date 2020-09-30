@@ -23,7 +23,6 @@
 import TextureItem from '@/components/Textures/TextureItem';
 import TooltipItem from '@/components/Textures/TooltipItem';
 import DetailModal from '@/components/DetailModal/DetailModal';
-import TexturesClass from "@/classes/textures.class.ts";
 
 export default {
   name: 'TextureGallery',
