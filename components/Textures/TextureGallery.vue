@@ -2,8 +2,8 @@
   <div class="textgallery">
     <ul class="textures">
       <li v-for="(texture, index) in textures" :key="'texture-' + index" class="texture" :class="{'brands': isBrand}">
-        <TextureItem :texture="texture" :shadow="shadow" :isBrand="isBrand" :noscale="noscale" />
-        <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" />
+        <TextureItem  :texture="texture" :shadow="shadow" :isBrand="isBrand" :noscale="noscale" />
+        <TooltipItem  v-if="detail && !isBrand" :texture="texture" :show-detail="showDetail" />
         <div v-if="texture.isBookmarked" class="book">
           <img src="@/assets/img/icon-bookmark-3.svg" alt>
         </div>
@@ -23,7 +23,6 @@
 import TextureItem from '@/components/Textures/TextureItem';
 import TooltipItem from '@/components/Textures/TooltipItem';
 import DetailModal from '@/components/DetailModal/DetailModal';
-import TexturesClass from "@/classes/textures.class.ts";
 
 export default {
   name: 'TextureGallery',
