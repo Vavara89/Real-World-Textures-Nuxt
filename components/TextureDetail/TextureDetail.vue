@@ -119,7 +119,7 @@
             <a target="_blank" class="brand-link" :href="texture.brand.webSite">{{ texture.brand.webSite }}</a>
           </div>
         </div>
-        <div v-if="texture.longitude && texture.latitude" class="description">
+        <div v-if="texture.longitude && texture.latitude" class="description locator">
           <label class="h3">Location:</label>
           <div class="text">
             <p>

@@ -219,6 +219,82 @@
         </VueSlickCarousel>
       </div>
     </section>
+
+
+    <section v-if="countWindow == 1">
+      <div class="imageDetails-footer special">
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
+        <VueSlickCarousel ref="sliderNav3" class="default" v-bind="navCarousel3">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div v-for="item in textures" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
+          </div>
+        </VueSlickCarousel>
+      </div>
+
+      <div class="imageDetails-footer special">
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
+        <VueSlickCarousel ref="sliderNav3" class="default" v-bind="navCarousel3">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div v-for="item in models" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
+          </div>
+        </VueSlickCarousel>
+        <div class="circle-big"/>
+        <div class="circle-small"/>
+      </div>
+
+      <div class="imageDetails-footer last2">
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
+        <VueSlickCarousel ref="sliderNav3" class="default" v-bind="navCarousel3">
+          <template #prevArrow="arrowOption">
+            <div class="prev-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <template #nextArrow="arrowOption">
+            <div class="next-slick">
+              <span class="button superb">
+                <img src="@/assets/img/icon-sliderarr.svg">
+              </span>
+            </div>
+          </template>
+          <div v-for="item in hdr" class="imageItem">
+            <img :src="item.cover" :alt="item.name">
+          </div>
+        </VueSlickCarousel>
+      </div>
+    </section>
+
+
     <SectionSubscribe :is-profile="true"/>
     <div class="bluewrapper"/>
   </div>
@@ -399,6 +475,18 @@ export default {
         initialSlide: 0,
         useTranform: false
       },
+      navCarousel3: {
+        dots: false,
+        infinite: false,
+        centerMode: false,
+        centerPadding: '1px',
+        variableWidth: false,
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        asNavFor: {},
+        initialSlide: 0,
+        useTranform: false
+      },
       options: [
         {
           value: 'Choose resolutions'
@@ -427,6 +515,7 @@ export default {
   mounted () {
     this.navCarousel.asNavFor = this.$refs.sliderMain;
     this.navCarousel2.asNavFor = this.$refs.sliderMain;
+    this.navCarousel3.asNavFor = this.$refs.sliderMain;
     this.$nextTick(function () {
       this.onResize();
     });
@@ -440,10 +529,15 @@ export default {
       this.showCount();
     },
     showCount () {
-      if (window.innerWidth < 950) {
+      if (window.innerWidth < 450) {
+        this.countWindow = 1;
+        console.log(1);
+      } else if (window.innerWidth < 950) {
         this.countWindow = 3;
+        console.log(3);
       } else {
         this.countWindow = 5;
+        console.log(5);
       }
     }
   }

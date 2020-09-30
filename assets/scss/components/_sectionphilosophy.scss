@@ -215,6 +215,18 @@
     }
   }
 
+  @media only screen and (max-width: 460px) {
+    .philosophy-img-circle-itm {
+      font-size: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 330px) {
+    .philosophy-img-circle-itm {
+      font-size: 0.8rem;
+    }
+  }
+
   .philosophy-img-circle-itm.view-first {
     top: 20%;
     left: -2%;

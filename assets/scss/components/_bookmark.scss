@@ -58,11 +58,19 @@
     @media only screen and (max-width: 900px) {
       font-size: 1.3rem;
     }
+
+    @media only screen and (max-width: 450px) {
+    margin: 10px 0;
+    }
   }
 
   &__part {
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: 450px) {
+      display: block;
+    }
 
     &:first-child {
       flex: 1;

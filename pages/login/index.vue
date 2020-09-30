@@ -23,13 +23,13 @@
             <form-input-errors v-if="hasErrors('email')" :errors="getErrors('email')"/>
 
           </div>
-          <div class="login__input" :class="{'login__input--filled': checkInputPassword}">
+          <div class="login__input" :class="{'login__input--filled': checkInputPassword, 'iserror': hasErrors('password'), 'typeerror': hasErrors('email')}">
             <input type="password" v-model="input.password">
             <label for>Password</label>
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')"/>
 
           </div>
-          <div class="login__link">
+          <div class="login__link" :class="{'iserror': hasErrors('password')}">
             <nuxt-link to="/recovery">forgotten password?</nuxt-link>
           </div>
           <label class="login__checkbox" :class="{'login__checkbox--checked': rememberPassword}">

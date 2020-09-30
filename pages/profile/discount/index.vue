@@ -11,7 +11,10 @@
             and get 1 month subscription for 1$
           </h3>
 
-          <input type="text" placeholder="Your Discount Code" class="chrome">
+<div class="input__discount" :class="{'input__discount--filled': checkInputDiscount}">
+          <input type="text" class="chrome" v-model="input.discount">
+          <label for>Your Discount Code</label>
+          </div>
           <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
         </div>
       </section>
@@ -38,7 +41,10 @@ export default {
       perex:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       button: 'Join our community on FB',
-      chrome: false
+      chrome: false,
+            input: {
+        discount: "",
+      },
     };
   },
   created () {
@@ -50,6 +56,14 @@ export default {
   },
   methods: {
 
+  },
+    computed: {
+    checkInputDiscount() {
+      if (this.input.discount.length > 0) {
+        return true;
+      }
+      return false;
+    }
   }
 };
 </script>

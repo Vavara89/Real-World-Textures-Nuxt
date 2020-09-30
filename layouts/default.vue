@@ -1,17 +1,17 @@
 <template>
   <div class="wrapper">
-    <server-error :status="serverMessageStatus" :message="serverMessageError" :showErrorsMessage="showErrorsMessage"/>
-    <Header/>
-    <nuxt/>
-    <Footer v-if="$route.name !== 'login' && $route.name !== 'signup'"/>
+    <server-error :status="serverMessageStatus" :message="serverMessageError" :show-errors-message="showErrorsMessage" />
+    <Header />
+    <nuxt />
+    <Footer v-if="$route.name !== 'login' && $route.name !== 'signup'" />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import ServerError from "@/components/ServerError/ServerError"
-import main from "@/collectors/main";
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
+import ServerError from '@/components/ServerError/ServerError';
+import main from '@/collectors/main';
 
 export default {
   components: {
@@ -19,23 +19,27 @@ export default {
     Footer,
     ServerError
   },
-  data: ()=>{
+  data: () => {
     return {
       showErrorsMessage: false,
       serverMessageError: '',
-      serverMessageStatus: '',
+      serverMessageStatus: ''
     };
   },
   created () {
-
     this.$nuxt.$on('server-error', (data) => {
-      if(data.response){
+      if (data.response) {
         this.serverMessageError = data.response.data ? data.response.data : '';
         this.serverMessageStatus = data.response.status ? data.response.status : '';
         this.showErrorsMessage = true;
       }
-    })
+    });
   },
+  head: {
+    bodyAttrs: {
+      ontouchstart: 'ontouchstart'
+    }
+  }
 
 };
 </script>

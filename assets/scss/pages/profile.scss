@@ -187,7 +187,8 @@
   }
 
   @media (max-width: 450px) {
-    top: 38%;
+    //top: 38%;
+    display: none;
   }
 
   @media (max-width: 400px) {
@@ -224,9 +225,15 @@
         }
     }
 
+    &.special {
+      .imageItem {
+        height: auto;
+      }
+    }
+
     .imageItem {
         text-align: center;
-        margin: -10px 0.8rem 0 0.8rem;
+        // margin: -10px 0.8rem 0 0.8rem;
         height: 100%;
         width: 20%;
         outline: 0;
@@ -266,7 +273,7 @@
         width: 95%;
         margin: 50px auto 0 auto;
         position: relative;
-        left: -10px;
+        // left: -10px;
         z-index: 2000;
 
         @media only screen and (max-width: 950px) {
@@ -343,30 +350,52 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #9093B9;
+      margin-bottom: 80px;
     }
 
+    .input__discount {
+      position: relative;
+
+      label {
+        @include transition-base;
+        position: absolute;
+        font-size: 1.6rem;
+        top: 2.2rem;
+        left: 3.2rem;
+      }
+      
     input {
-      margin-top: 80px;
       width: 560px;
       height: 64px;
       line-height: normal;
       padding: 0 30px;
       border: 1px solid #DDE0ED;
       margin-bottom: 50px;
-    }
+      position: relative;
 
-    input::placeholder {
-      font-size: 16px;
-      font-weight: lighter;
-      color: #9093B9;
-    }
+      &:focus {
+        padding-top: 2rem;
 
-    @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
-      input::placeholder {
-        position: relative;
-        top: 3px;
+        &~label {
+          top: 0.6rem;
+          color: $color-secondary-green;
+          font-size: 1.2rem;
+        }
       }
+    }
+
+  &--filled {
+    input {
+      padding-top: 2rem;
+    }
+
+    label {
+      top: 0.6rem;
+      color: $color-secondary-green;
+      font-size: 1.2rem;
+    }
   }
+}
 
 }
 

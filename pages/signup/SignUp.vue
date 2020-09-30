@@ -17,18 +17,18 @@
           <span>or</span>
         </div>
         <form class="signup__form">
-          <div :class="['signup__input', isFilled(input.firstName), hasErrors('firstName') ? 'input-invalid' : '']">
+          <div :class="['signup__input', isFilled(input.firstName), hasErrors('firstName') || isFilled(input.firstName) ? 'input-invalid' : '']">
             <input @blur="validateFirstName" type="text" v-model="input.firstName"/>
             <label for>{{ label.txtFirstName }}</label>
             <form-input-errors v-if="hasErrors('firstName')" :errors="getErrors('firstName')"/>
           </div>
-          <div :class="['signup__input', isFilled(input.email), hasErrors('email') ? 'input-invalid' : '']">
+          <div :class="['signup__input', isFilled(input.email), hasErrors('email') || isFilled(input.email)?  'input-invalid' : '']">
             <input type="text" v-model="input.email"/>
             <label for>{{ label.txtEmail }}</label>
             <form-input-errors v-if="hasErrors('email')" :errors="getErrors('email')"/>
 
           </div>
-          <div :class="['signup__input', isFilled(input.password), hasErrors('password') ? 'input-invalid' : '']">
+          <div :class="['signup__input', isFilled(input.password), hasErrors('password') || isFilled(input.password) ? 'input-invalid' : '']">
             <input type="password" v-model="input.password"/>
             <label for>{{ label.txtPassword }}</label>
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')"/>

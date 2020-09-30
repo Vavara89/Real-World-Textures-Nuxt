@@ -54,6 +54,7 @@
     display: inline-flex;
     vertical-align: middle;
     padding: 0;
+    
 
     .imageDetails {
       min-width: 77.5rem;
@@ -211,6 +212,10 @@
         margin-bottom: 3rem;
       }
 
+      .locator {
+        margin-bottom: 6rem;
+      }
+
       .brand {
         display: flex;
         margin-bottom: 6rem;
@@ -254,6 +259,10 @@
           }
         }
       }
+    }
+
+    .models-detail {
+
     }
   }
 

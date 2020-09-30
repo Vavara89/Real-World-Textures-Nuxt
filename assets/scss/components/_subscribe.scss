@@ -61,6 +61,16 @@
     position: absolute;
     top: 105px;
     right: 0;
+
+    @media only screen and (max-width: 580px) {
+        position: static;
+    right: 0;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 20px;
+    }
   }
 
   .price-table {
