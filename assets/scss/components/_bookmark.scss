@@ -8,6 +8,12 @@
   @media only screen and (max-width: 1000px) {
     padding: 0 5rem 0 3rem;
   }
+
+  @media only screen and (max-width: 450px) {
+    padding: 0 3rem 0 3rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
   &:nth-child(2n) {
     background: $color-primary-300;
   }
@@ -61,39 +67,59 @@
 
     @media only screen and (max-width: 450px) {
     margin: 10px 0;
+    text-align: center;
     }
   }
 
   &__part {
     display: flex;
     align-items: center;
+    width: 100%;
 
     @media only screen and (max-width: 450px) {
       display: block;
     }
 
     &:first-child {
-      flex: 1;
-      max-width: 75rem;
+      @media only screen and (min-width: 450px) {
+        flex: 1;
+        max-width: 75rem;
+        width: auto;
+      }
     }
 
     &:last-child {
       flex: 1;
-      justify-content: space-between;
-      max-width: 24rem;
-      margin-left: 4rem;
+      justify-content: center;
+      max-width: auto;
+    margin-left: 0;
+    text-align: center;
+
+      @media only screen and (min-width: 450px) {
+        justify-content: space-between;
+        max-width: 24rem;
+        margin-left: 4rem;
+        text-align: left;
+      }
     }
 
     &__left {
-      flex: 1;
+      
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      max-width: 28rem;
       margin-right: 10rem;
+      width: 100%;
 
       @media only screen and (max-width: 900px) {
         margin-right: 2rem;
+      }
+
+      @media only screen and (min-width: 450px) {
+        flex: 1;
+        max-width: 28rem;
+        justify-content: space-between;
+        width: auto;
       }
     }
 
