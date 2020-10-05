@@ -5,6 +5,7 @@
     <LoginModals text="Bookmarked" modal="bookmarked" />
     <LoginModals text="Wrong" modal="wrong" />
     <LoginModals text="Reset" modal="reset" />
+    <LoginModals text="Unsubscribe" modal="unsubscribe" />
 
     <LoginModals text="Payment" modal="payment" />
     <LoginModals text="Address" modal="address" />

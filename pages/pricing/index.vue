@@ -1,11 +1,10 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar :profile="true" />
     <ConfirmModal ref="confirm_subscribe" :description="confirmTitle" @confirmed="subscribe" />
 
     <div class="page-content">
       <section class="services view-bottom">
-        <div class="pricing notmobile">
+        <div class="pricing notmobile selfpage">
           <table>
             <tbody>
               <tr>
@@ -13,10 +12,10 @@
                 &nbsp;
                 </td>
                 <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
-                  Indie licence
+                  Freelancer
                 </td>
                 <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
-                  Pro licence
+                  Studio
                 </td>
                 <td style="width: 200px; border-left: 1px solid #DDE0ED;">
                 &nbsp;
@@ -85,7 +84,7 @@
                     {{ status() }}
                   </button>
                   <button v-if="!currentIs(false, !isMonth)" class="toggleOption green" @click="confirm(false)">
-                    Subscribe
+                    Get Freelancer
                   </button>
                 </td>
                 <td style="padding: 20px 0; text-align: center;">
@@ -93,7 +92,7 @@
                     {{ status() }}
                   </button>
                   <button v-if="!currentIs(true, !isMonth)" class="toggleOption green" @click="confirm(true)">
-                    Subscribe
+                    Get Studio
                   </button>
                 </td>
                 <td>
@@ -128,7 +127,7 @@
                 </td>
               </tr>
               <tr>
-                <td style="padding-left: 20px;">
+                <td style="padding-left: 20px; display: flex; justify-content: center;">
                   <ToggleSwitch
                     first_text="Monthly plans"
                     second_text="Annual plans"
@@ -143,7 +142,7 @@
               </tr>
               <tr>
                 <td style="text-align: center;" class="head padd-20">
-                  Indie licence
+                  Freelancer
                 </td>
               </tr>
               <tr>
@@ -171,14 +170,14 @@
                     {{ status() }}
                   </button>
                   <button v-if="!currentIs(false, !isMonth)" class="toggleOption green" @click="confirm(false)">
-                    Subscribe
+                    Get Freelancer
                   </button>
                 </td>
               </tr>
 
               <tr>
                 <td style="width: 300px; text-align: center;" class="head padd-20">
-                  Pro licence
+                  Studio
                 </td>
               </tr>
               <tr>
@@ -208,10 +207,18 @@
                     {{ status() }}
                   </button>
                   <button v-if="!currentIs(true, !isMonth)" class="toggleOption green" @click="confirm(true)">
-                    Subscribe
+                    Get Studio
                   </button>
                 </td>
               </tr>
+
+              <tr />
+
+              <tr />
+
+              <tr />
+
+              <tr />
             <!--              <tr>-->
             <!--                <td>-->
             <!--&nbsp;-->

@@ -17,7 +17,7 @@
       <div class="inner">
         <h2>Change your password</h2>
         <p>We were send you token on email, please check it</p>
-        <form method="post" class="email" @submit="recovery">
+        <form method="post" class="email" autocomplete="off" @submit="recovery">
           <div style="height: 50px;" :class="{'height': hasErrors('token') && isFilled('token')}">
             <label class="token">Token from email</label>
             <input

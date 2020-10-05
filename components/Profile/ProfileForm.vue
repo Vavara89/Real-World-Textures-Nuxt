@@ -2,7 +2,7 @@
 
   <div class="success-holder">
     <Success :success="saved" :title="'Profile successfully saved'"></Success>
-    <table style="width: 621px;">
+    <table style="max-width: 621px;">
       <tbody>
       <tr>
         <td style="width: 150px;" class="is-first">

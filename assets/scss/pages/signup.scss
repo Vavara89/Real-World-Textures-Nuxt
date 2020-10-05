@@ -142,6 +142,10 @@
       margin: 5px 0 10px 0;
       position: absolute; right: 0; top: 80px;
     }
+
+    @media screen and (max-width:950px) {
+      margin-top: 60px;
+    }
   }
 
   &__link {

@@ -1,12 +1,13 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar :profile="true"/>
+    <ProfileSidebar :profile="true" />
+    <UnsubscribeModal ref="unsubscribe_modal" />
     <div class="page-content">
       <section class="services view-bottom">
         <div class="wrapper-profile">
           <div class="wrapper-inner">
             <div class="containers">
-              <div class="iconic"/>
+              <div class="iconic" />
               <div class="left">
                 <h2>{{ profile }}</h2>
                 <h3>{{ email }}</h3>
@@ -34,13 +35,13 @@
                 </div>
                 <div class="tabs-content">
                   <div v-if="cardProfile" class="is-profile">
-                    <ProfileForm></ProfileForm>
+                    <ProfileForm />
                   </div>
                   <div v-if="cardBilling" class="is-profile">
-                    <CardBilling></CardBilling>
+                    <CardBilling />
                   </div>
                   <div v-if="cardPassword" class="is-profile">
-                    <ChangePassword></ChangePassword>
+                    <ChangePassword />
                   </div>
                 </div>
               </div>
@@ -50,23 +51,23 @@
                     <span class="isscaled">
                       {{ credits }}</span>
                     <div class="slice">
-                      <div class="bar"/>
-                      <div class="fill"/>
+                      <div class="bar" />
+                      <div class="fill" />
                     </div>
                     <span class="topas">Subscription Credits</span>
                   </div>
-<!--                  <button class="toggleOption2 bot">-->
-<!--                    buy more credits-->
-<!--                  </button>-->
+                  <button class="toggleOption2 bot">
+                    <a href="#" class="" @click="openPayment()"> buy more credits new</a>
+                  </button>
                 </div>
                 <div class="credit">
                   <p>Hobby Monthly</p>
                   <p>Credits renew on 20/09/2020</p>
-<!--                  <div class="logout">-->
-<!--                    <nuxt-link to="/">-->
-<!--                      Cancel Subscription-->
-<!--                    </nuxt-link>-->
-<!--                  </div>-->
+                  <!--                  <div class="logout">-->
+                  <!--                    <nuxt-link to="/">-->
+                  <!--                      Cancel Subscription-->
+                  <!--                    </nuxt-link>-->
+                  <!--                  </div>-->
                 </div>
               </div>
             </div>
@@ -79,10 +80,11 @@
 
 <script>
 import LeftSidebar from '@/components/Sidebar/LeftSidebar';
-import ChangePassword from "~/components/Profile/ChangePassword"
+import ChangePassword from '~/components/Profile/ChangePassword';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 import CardBilling from '@/components/Profile/CardBilling';
 import ProfileForm from '@/components/Profile/ProfileForm';
+import UnsubscribeModal from '@/components/Profile/UnsubscribeModal';
 
 export default {
   name: 'Dashboard',
@@ -92,7 +94,8 @@ export default {
     LeftSidebar,
     CardBilling,
     ProfileForm,
-    ChangePassword
+    ChangePassword,
+    UnsubscribeModal
 
   },
   data () {
@@ -102,8 +105,22 @@ export default {
       cardPassword: false,
       openAddress: false,
       openPayment: false,
-      email: this.$auth.user.user.email,
+      email: this.$auth.user.user.email
     };
+  },
+  computed: {
+    user () {
+      return this.$auth.user.user;
+    },
+    profile () {
+      if (this.user.subscribe) {
+        return this.user.subscribe.name;
+      }
+      return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
+    },
+    credits () {
+      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
+    }
   },
   methods: {
     toggleSelected (data) {
@@ -125,20 +142,9 @@ export default {
         this.cardPassword = true;
       }
     },
-  },
-  computed: {
-    user () {
-      return this.$auth.user.user;
-    },
-    profile () {
-      if (this.user.subscribe) {
-        return this.user.subscribe.name;
-      }
-      return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
-    },
-    credits () {
-      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
-    },
+    openPayment () {
+      this.$refs.unsubscribe_modal.scrollSwitcher(true);
+    }
   }
 };
 </script>

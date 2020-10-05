@@ -1,7 +1,7 @@
 <template>
   <div>
     <Success :success="saved" :title="'Password successfully changed'"></Success>
-    <table style="width: 521px;">
+    <table style="max-width: 521px;">
       <tbody>
       <tr>
         <td style="width: 150px;" class="is-first">

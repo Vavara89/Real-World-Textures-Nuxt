@@ -3,7 +3,7 @@
     <CardBillingModal ref="billing_form"></CardBillingModal>
     <PaymentBillingModal ref="payment_form"></PaymentBillingModal>
     <ConfirmModal @confirmed="delete_payment" title="Are you sure for delete this payment method?" ref="remove_payment_accept"></ConfirmModal>
-    <table style="width: 621px;">
+    <table style="max-width: 621px;">
       <tbody>
         <tr >
           <td style="width: 250px;" class="is-first">

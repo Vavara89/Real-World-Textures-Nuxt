@@ -4,11 +4,11 @@
       <div class="container container--small">
         <!-- <h1 class="signup__title">{{ title }}</h1> -->
         <div class="signup__btn-wrap">
-          <div @click="facebook" class="button-quaternary button-quaternary--blue">
+          <div class="button-quaternary button-quaternary--blue" @click="facebook">
             sign up by
             <b>facebook</b>
           </div>
-          <div @click="google" class="button-quaternary button-quaternary--salmon">
+          <div class="button-quaternary button-quaternary--salmon" @click="google">
             sing up by
             <b>google</b>
           </div>
@@ -18,46 +18,46 @@
         </div>
         <form class="signup__form">
           <div :class="['signup__input', isFilled(input.firstName), hasErrors('firstName') || isFilled(input.firstName) ? 'input-invalid' : '']">
-            <input @blur="validateFirstName" type="text" v-model="input.firstName"/>
+            <input v-model="input.firstName" type="text" @blur="validateFirstName">
             <label for>{{ label.txtFirstName }}</label>
-            <form-input-errors v-if="hasErrors('firstName')" :errors="getErrors('firstName')"/>
+            <form-input-errors v-if="hasErrors('firstName')" :errors="getErrors('firstName')" />
           </div>
-          <div :class="['signup__input', isFilled(input.email), hasErrors('email') || isFilled(input.email)?  'input-invalid' : '']">
-            <input type="text" v-model="input.email"/>
+          <div :class="['signup__input', isFilled(input.email), hasErrors('email') || isFilled(input.email)? 'input-invalid' : '']">
+            <input v-model="input.email" type="text">
             <label for>{{ label.txtEmail }}</label>
-            <form-input-errors v-if="hasErrors('email')" :errors="getErrors('email')"/>
-
+            <form-input-errors v-if="hasErrors('email')" :errors="getErrors('email')" />
           </div>
           <div :class="['signup__input', isFilled(input.password), hasErrors('password') || isFilled(input.password) ? 'input-invalid' : '']">
-            <input type="password" v-model="input.password"/>
+            <input v-model="input.password" type="password">
             <label for>{{ label.txtPassword }}</label>
-            <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')"/>
+            <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')" />
           </div>
           <div class="signup__recaptcha">
             <vue-recaptcha
               ref="recaptcha"
-              :loadRecaptchaScript="true"
+              :load-recaptcha-script="true"
               sitekey="6LfzhK4ZAAAAADYraaQUsspKmiLcIstMvTfTclYK"
               @expired="onCaptchaExpired"
               @verify="setCaptchaToken"
-            ></vue-recaptcha>
-            <form-input-errors v-if="hasErrors('recaptcha')" :errors="getErrors('recaptcha')"/>
+            />
+            <form-input-errors v-if="hasErrors('recaptcha')" :errors="getErrors('recaptcha')" />
           </div>
           <label class="signup__checkbox h4-lowercase" :class="{'signup__checkbox--checked': input.agree}">
-            <input @change="validateAgree" type="checkbox" v-model="input.agree"/>Creating an account means you’re okay
+            <input v-model="input.agree" type="checkbox" @change="validateAgree">Creating an account means you’re okay
             with our
             <nuxt-link to="/content/terms-and-conditions">Terms of Service</nuxt-link>
             and our
             <nuxt-link to="/content/privacy-policy">Privacy Policy.</nuxt-link>
           </label>
-          <form-input-errors v-if="hasErrors('agree')" :errors="getErrors('agree')"/>
+          <form-input-errors v-if="hasErrors('agree')" :errors="getErrors('agree')" />
           <div class="signup__submit">
             <button
               class="button-primary button-primary--large"
               :class="[isSubmitted ? 'loading' : '']"
               type="submit"
               @click="submit"
-            >Sign Up
+            >
+              Sign Up
             </button>
           </div>
         </form>
@@ -67,43 +67,42 @@
 </template>
 
 <script>
-import Button from "@/components/Button";
-import VueRecaptcha from "vue-recaptcha";
-import email from "vuelidate";
-import users from "~/collectors/users";
-import FormInputErrors from '@/components/Forms/FormInputErrors'
-import keysToCamel from "@/classes/keysToCamel.ts";
-
+import VueRecaptcha from 'vue-recaptcha';
+import email from 'vuelidate';
+import Button from '@/components/Button';
+import users from '~/collectors/users';
+import FormInputErrors from '@/components/Forms/FormInputErrors';
+import keysToCamel from '@/classes/keysToCamel.ts';
 
 export default {
-  name: "SignUp",
+  name: 'SignUp',
   components: {
     Button,
     VueRecaptcha,
     FormInputErrors
   },
-  data() {
+  data () {
     return {
-      title: "Account Regsiter",
+      title: 'Account Regsiter',
       label: {
-        txtFirstName: "First Name",
-        txtEmail: "E-mail Address",
-        txtPassword: "Password"
+        txtFirstName: 'First Name',
+        txtEmail: 'E-mail Address',
+        txtPassword: 'Password'
       },
       input: {
         firstName: '',
         email: '',
         password: '',
         agree: false,
-        recaptcha: false,
+        recaptcha: false
       },
       isSubmitted: false,
       formErrors: {
-        firstName:[],
+        firstName: [],
         email: [],
         password: [],
         agree: [],
-        recaptcha: [],
+        recaptcha: []
       },
       errorsMessages: {
         firstName: {
@@ -120,13 +119,13 @@ export default {
         },
         recaptcha: {
           invalid: 'You should verify captcha'
-        },
-      },
+        }
+      }
     };
   },
   computed: {},
   methods: {
-    submit: function (e) {
+    submit (e) {
       e.preventDefault();
       this.cleanErrors();
       if (this.frontendValidation()) {
@@ -134,59 +133,59 @@ export default {
         this.register();
       }
     },
-    setCaptchaToken(token) {
+    setCaptchaToken (token) {
       this.input.recaptcha = token;
       this.cleanError('recaptcha');
     },
-    frontendValidation() {
+    frontendValidation () {
       const validEmail = this.isEmailValid(this.input.mail);
       if (!validEmail) {
-        this.addFormValidationError('email', this.errorsMessages.email.invalid)
+        this.addFormValidationError('email', this.errorsMessages.email.invalid);
       }
       const validPassword = this.isPasswordValid(this.input.password);
 
       if (!validPassword) {
-        this.addFormValidationError('password', this.errorsMessages.password.invalid)
+        this.addFormValidationError('password', this.errorsMessages.password.invalid);
       }
       this.validateAgree();
       this.validateFirstName();
 
       if (!this.input.recaptcha) {
-        this.addFormValidationError('recaptcha', this.errorsMessages.recaptcha.invalid)
+        this.addFormValidationError('recaptcha', this.errorsMessages.recaptcha.invalid);
       }
       return this.formIsValid();
     },
-    validateAgree() {
+    validateAgree () {
       if (!this.input.agree) {
-        this.addFormValidationError('agree', this.errorsMessages.agree.invalid)
+        this.addFormValidationError('agree', this.errorsMessages.agree.invalid);
       } else {
         this.cleanError('agree');
       }
     },
-    validateFirstName() {
-      if(!this.input.firstName.length){
-        this.addFormValidationError('firstName', this.errorsMessages.firstName.invalid)
-      }else{
+    validateFirstName () {
+      if (!this.input.firstName.length) {
+        this.addFormValidationError('firstName', this.errorsMessages.firstName.invalid);
+      } else {
         this.cleanError('firstName');
       }
     },
-    isFilled(value) {
-      return (value === '') ? "" : "signup__input--filled";
+    isFilled (value) {
+      return (value === '') ? '' : 'signup__input--filled';
     },
 
-    isEmailValid() {
+    isEmailValid () {
       return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.input.email);
     },
-    isPasswordValid() {
+    isPasswordValid () {
       return this.input.password.length >= 7 && (/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*)$/.test(this.input.password));
     },
-    addFormValidationError(input, message) {
+    addFormValidationError (input, message) {
       this.formErrors[input].push(message);
     },
-    hasErrors(input) {
+    hasErrors (input) {
       return this.getErrors(input).length > 0;
     },
-    formIsValid() {
+    formIsValid () {
       let hasErrors = false;
       Object.keys(this.formErrors).map((key) => {
         if (this.formErrors[key].length > 0) {
@@ -195,33 +194,31 @@ export default {
       });
       return !hasErrors;
     },
-    getErrors(input) {
+    getErrors (input) {
       return this.formErrors[input].length ? this.formErrors[input] : [];
     },
-    cleanErrors() {
-      Object.keys(this.formErrors).map((key) => this.cleanError(key));
+    cleanErrors () {
+      Object.keys(this.formErrors).map(key => this.cleanError(key));
     },
-    cleanError(input) {
+    cleanError (input) {
       this.formErrors[input] = [];
     },
 
-    async register() {
-
+    async register () {
       await users.register({
         email: this.input.email,
         password: this.input.password,
         recaptcha: this.input.recaptcha,
-        first_name: this.input.firstName,
-      }).catch(((errors) => {
-        if(errors.response){
+        first_name: this.input.firstName
+      }).catch((errors) => {
+        if (errors.response) {
           const dataErrors = keysToCamel(errors.response.data);
-          Object.keys(dataErrors).map((key)=>{this.formErrors[key] = dataErrors[key]});
+          Object.keys(dataErrors).map((key) => { this.formErrors[key] = dataErrors[key]; });
         }
-      })).finally(()=>{
+      }).finally(() => {
         this.isSubmitted = false;
       });
       await this.login();
-
     },
     facebook () {
       this.$auth.loginWith('facebook');
@@ -229,20 +226,19 @@ export default {
     google () {
       this.$auth.loginWith('google');
     },
-    onCaptchaExpired() {
+    onCaptchaExpired () {
       this.$refs.recaptcha.reset();
       this.input.recaptcha = null;
     },
-    async login(){
-      if (this.formIsValid()){
-        await  this.$auth.loginWith('local', {
+    async login () {
+      if (this.formIsValid()) {
+        await this.$auth.loginWith('local', {
           data: {
             email: this.input.email,
             password: this.input.password
           }
         });
       }
-
     }
 
   }

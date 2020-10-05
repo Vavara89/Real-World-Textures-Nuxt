@@ -36,10 +36,14 @@
             </nuxt-link>
           </li>
           <li class="line" @click="hideMenu()">
-            <a href>About</a>
+            <nuxt-link :to="{ path: '/',hash:'#about'}">
+              About
+            </nuxt-link>
           </li>
           <li @click="hideMenu()">
-            <a href>Services</a>
+            <nuxt-link :to="{ path: '/',hash:'#services'}">
+              Services
+            </nuxt-link>
           </li>
           <li @click="hideMenu()">
             <a href>Pricing</a>

@@ -26,7 +26,7 @@
             </p>
             <Button
               link="/brands"
-              text="Exploare all brands"
+              text="Explore all brands"
               type="secondary"
               color=""
             />
