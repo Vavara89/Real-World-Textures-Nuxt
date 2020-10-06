@@ -19,6 +19,10 @@
   display: flex;
   align-items: center;
 
+  &.visuallyscoll {
+    align-items: flex-start;
+    overflow: auto;
+  }
 
   .slick-slide {
     .previewImg {
@@ -48,16 +52,18 @@
 
   .container {
     width: 125.5rem;
-    height: 85rem;
+    min-height: 85rem;
     border-radius: 0.8rem;
     background-color: $color-white;
     display: inline-flex;
     vertical-align: middle;
     padding: 0;
+    flex-wrap: wrap;
     
 
     .imageDetails {
       min-width: 77.5rem;
+      flex-basis: 77.5rem;
       height: 100%;
       float: left;
       padding: 2rem 4.8rem 0 2rem;
@@ -164,6 +170,7 @@
       border-top-right-radius: 0.8rem;
       border-bottom-right-radius: 0.8rem;
       text-align: left;
+      flex-basis: 0;
 
       .label {
         width: 13.5rem;
@@ -261,8 +268,38 @@
       }
     }
 
-    .models-detail {
+    .visuallyshow {
+      height: 22.4rem;
+      display: flex;
+      width: 100%;
 
+
+      .relatedtextures, .relatedslider {
+        flex-basis: 31.5rem;
+        height: 100%;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .relatedtextures {
+        flex-basis: 31.5rem;
+        background-color: #F8F9FE;
+
+        h3 {
+          font-size: 2.4rem;
+          font-weight: bold;
+          text-align: left;
+          margin-bottom: 20px;
+        }
+      }
+
+      .relatedslider {
+        flex-basis: calc(100% - 315px);
+        background-color: #F2F3F9;
+      }
     }
   }
 

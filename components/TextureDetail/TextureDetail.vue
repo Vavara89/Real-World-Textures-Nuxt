@@ -1,5 +1,5 @@
 <template>
-  <div v-if="texture" class="detailModal">
+  <div v-if="texture" class="detailModal" :class="{'visuallyscoll': type_code === 'models'}">
     <div class="container">
       <div class="imageDetails">
         <div class="imageDetails-header">
@@ -9,7 +9,6 @@
             </a>
           </div>
           <div class="imageDetails-options">
-
             <div v-if="texture.in_assets" class="download">
               <img src="@/assets/img/icon-download.svg">
             </div>
@@ -21,11 +20,9 @@
         </div>
         <div class="imageDetails-content">
           <VueSlickCarousel ref="sliderMain" v-bind="sliderMain" class="default">
-
             <div v-for="item_image in texture.gallery" class="previewImg">
               <img :src="item_image.image">
             </div>
-
           </VueSlickCarousel>
 
           <div v-if="texture.tutorialUrl && type_code != 'models'" class="tutorial">
@@ -51,7 +48,6 @@
             <div v-for="item_image in texture.gallery" class="imageItem">
               <img :src="item_image.image" :alt="texture.name" class>
             </div>
-
           </VueSlickCarousel>
         </div>
       </div>
@@ -80,7 +76,7 @@
               <label class="h3">Resolution:</label>
             </div>
             <div class="option">
-              <Dropdown :options="options" :checkselect="true" v-model="resolution"/>
+              <Dropdown v-model="resolution" :options="options" :checkselect="true" />
             </div>
           </div>
           <div class="option-item dimension">
@@ -123,7 +119,7 @@
           <label class="h3">Location:</label>
           <div class="text">
             <p>
-              {{ formatCoords()}}
+              {{ formatCoords() }}
             </p>
             <p>
               <a target="_blank" :href="getGoogleLink()">show on Google Maps</a>
@@ -131,7 +127,7 @@
           </div>
         </div>
         <div class="download">
-          <div style="color: red" class="downloadErrors" v-if="downloadErrors">
+          <div v-if="downloadErrors" style="color: red" class="downloadErrors">
             <h3>{{ downloadErrors }}</h3>
           </div>
           <button v-show="!processing" class="button-primary nohover" @click="downLoad">
@@ -143,17 +139,46 @@
           </button>
         </div>
       </div>
+      <div v-if="type_code === 'models'" class="visuallyshow">
+        <div class="relatedtextures">
+          <h3>Related<br>textures:</h3>
+          <a href="#" class="button-secondary">See all</a>
+        </div>
+        <div class="relatedslider">
+          <!-- <div class="imageDetails-footer">
+            <VueSlickCarousel ref="sliderRelated" v-bind="sliderRelated">
+              <template #prevArrow="arrowOption">
+                <div class="prev-slick">
+                  <a href="#" class="button">
+                    <img src="@/assets/img/icon-arrow_left.svg">
+                  </a>
+                </div>
+              </template>
+              <template #nextArrow="arrowOption">
+                <div class="next-slick">
+                  <a href="#" class="button">
+                    <img src="@/assets/img/icon-arrow_left.svg">
+                  </a>
+                </div>
+              </template>
+              <div v-for="item_image in texture.gallery" class="imageItem">
+                <img :src="item_image.image" :alt="texture.name" class>
+              </div>
+            </VueSlickCarousel> -->
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 </template>
 <script>
 import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+import formatcoords from 'formatcoords';
 import Dropdown from '@/components/Sidebar/Dropdown';
-import profile from "@/collectors/profile";
-import catalog from "@/collectors/catalog";
-import formatcoords from "formatcoords";
+import profile from '@/collectors/profile';
+import catalog from '@/collectors/catalog';
 
 export default {
   name: 'TextureDetail',
@@ -177,8 +202,7 @@ export default {
     }
   },
 
-
-  data() {
+  data () {
     return {
       sliderMain: {
         dots: false,
@@ -186,7 +210,7 @@ export default {
         centerMode: true,
         variableWidth: false,
         slidesToScroll: 1,
-        slidesToShow: 1,
+        slidesToShow: 1
       },
       navCarousel: {
         dots: false,
@@ -194,7 +218,15 @@ export default {
         slidesToScroll: 1,
         slidesToShow: this.texture.gallery.length && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
         asNavFor: {},
-        focusOnSelect: true,
+        focusOnSelect: true
+      },
+      sliderRelated: {
+        dots: false,
+        infinite: false,
+        slidesToScroll: 1,
+        slidesToShow: this.texture.gallery.length && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
+        asNavFor: {},
+        focusOnSelect: true
       },
       options: [],
       processing: false,
@@ -204,39 +236,44 @@ export default {
     };
   },
 
-  mounted() {
+  mounted () {
     this.navCarousel.asNavFor = this.$refs.sliderMain;
-    console.log(this.type_code, this.type_title)
+    this.sliderRelated.asNavFor = this.$refs.sliderMain;
+
+    if (this.texture) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   },
 
-  created() {
+  created () {
     this.options.push({
       value: 'Choose resolution'
     });
-    if(this.texture.resolutions){
-      this.texture.resolutions.map(item => {
-        this.options.push({value: `${item.size}x${item.size} (${item.name})`});
+    if (this.texture.resolutions) {
+      this.texture.resolutions.map((item) => {
+        this.options.push({ value: `${item.size}x${item.size} (${item.name})` });
       });
     }
-
   },
 
   methods: {
-    close() {
+    close () {
       const path = this.$route.path.replace('product-' + this.texture.slug, '');
-      this.$router.push({path: path});
+      this.$router.push({ path });
     },
 
-    formatCoords(){
-      return formatcoords(this.texture.latitude,this.texture.longitude).format();
+    formatCoords () {
+      return formatcoords(this.texture.latitude, this.texture.longitude).format();
     },
-    getGoogleLink(){
+    getGoogleLink () {
       return `http://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
     },
-    toLogin() {
-      this.$router.push({path: '/login'});
+    toLogin () {
+      this.$router.push({ path: '/login' });
     },
-    downLoad() {
+    downLoad () {
       if (!this.$auth.loggedIn) {
         this.toLogin();
       }
@@ -244,23 +281,23 @@ export default {
         this.resolution_error = true;
         return;
       }
-      const resolution = this.texture.resolutions.filter(item => {
-        const value = {value: `${item.size}x${item.size} (${item.name})`};
+      const resolution = this.texture.resolutions.filter((item) => {
+        const value = { value: `${item.size}x${item.size} (${item.name})` };
         return value.value === this.resolution.value;
       }).pop();
       this.processing = true;
 
-      catalog.download(this.type_code, this.texture.id, resolution.name).then(response=>{
-        let interval = undefined;
+      catalog.download(this.type_code, this.texture.id, resolution.name).then((response) => {
+        let interval;
         const data = response.data;
-        if (data.download_link){
+        if (data.download_link) {
           window.location.href = data.download_link;
           this.processing = false;
-        }else{
-          interval = setInterval(()=>{
-            catalog.download(this.type_code,this.texture.id, resolution.name).then(response => {
+        } else {
+          interval = setInterval(() => {
+            catalog.download(this.type_code, this.texture.id, resolution.name).then((response) => {
               const data = response.data;
-              if (data.download_link){
+              if (data.download_link) {
                 window.location.href = data.download_link;
                 clearInterval(interval);
                 this.processing = false;
@@ -268,22 +305,20 @@ export default {
             });
           }, 15000);
         }
-
-      }).catch(error => {
+      }).catch((error) => {
         this.downloadErrors = error.response.data.errors;
         this.processing = false;
       });
-
     },
-    toggleBookMark() {
+    toggleBookMark () {
       if (!this.$auth.loggedIn) {
         return this.toLogin();
       }
-      profile.toggleBookMark(this.type_code, this.texture.id).then(response => {
+      profile.toggleBookMark(this.type_code, this.texture.id).then((response) => {
         this.texture.isBookmarked = !response.data.deleted;
         this.$store.commit('setBookmarks', response.data.totals);
       });
-    },
+    }
 
   }
 };
