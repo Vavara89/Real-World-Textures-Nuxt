@@ -17,16 +17,19 @@ export default {
           {
             'url': process.env.contacts.facebook_link,
             'icon': require("~/assets/img/social-facebook.svg"),
+            'iconactive': require("~/assets/img/social-facebook-green.svg"),
             'external': true
           },
           {
             'url': process.env.contacts.instagram_link,
             'icon': require("~/assets/img/social-instagram.svg"),
+            'iconactive': require("~/assets/img/social-instagram-green.svg"),
             'external': true
           },
           {
             'url': process.env.contacts.youtube_link,
             'icon': require("~/assets/img/social-youtube.svg"),
+            'iconactive': require("~/assets/img/social-youtube-green.svg"),
             'external': true
           },
         ]

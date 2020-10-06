@@ -28,11 +28,11 @@
 
   &:not(.nohover) {
     &:hover{
-      padding-left:2.5rem;
-      padding-right:3rem !important;
+      // padding-left:2.5rem;
+      // padding-right:3rem !important;
 
       @include mq(sm, max) {
-        padding-left: 3.4rem;
+        // padding-left: 3.4rem;
        }
       
     }

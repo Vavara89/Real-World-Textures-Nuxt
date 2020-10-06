@@ -44,5 +44,10 @@
       display: block;
       width: 100%;
     }
+    @include mq(lg, min) {
+      &:hover {
+       width: 181px !important;
+      }
+    }
   }
 }
