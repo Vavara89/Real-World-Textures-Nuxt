@@ -24,6 +24,7 @@
               <tr>
                 <td style="padding-left: 20px;">
                   <ToggleSwitch
+                    v-if="width > 1000"
                     first_text="Monthly plans"
                     second_text="Annual plans"
                     @setDuration="childMessageReceived"
@@ -129,6 +130,7 @@
               <tr>
                 <td style="padding-left: 20px; display: flex; justify-content: center;">
                   <ToggleSwitch
+                    v-if="width < 1000"
                     first_text="Monthly plans"
                     second_text="Annual plans"
                     @setDuration="childMessageReceived"
@@ -242,7 +244,8 @@ export default {
       button: 'Join our community on FB',
       isMonth: true,
       selectedPrice: {},
-      subscribed: null
+      subscribed: null,
+      width: null
     };
   },
   computed: {
@@ -272,7 +275,22 @@ export default {
   created () {
     this.fetchSubscribed();
   },
+    mounted () {
+    this.$nextTick(function () {
+      this.onResize();
+    });
+    window.addEventListener('resize', this.onResize);
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.onResize);
+  },
   methods: {
+    onResize () {
+      this.innerWidth();
+    },
+    innerWidth () {
+      this.width = window.innerWidth;
+    },
     childMessageReceived (duration) {
       if (duration === 'month') {
         this.isMonth = true;

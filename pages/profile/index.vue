@@ -531,13 +531,10 @@ export default {
     showCount () {
       if (window.innerWidth < 450) {
         this.countWindow = 1;
-        console.log(1);
       } else if (window.innerWidth < 950) {
         this.countWindow = 3;
-        console.log(3);
       } else {
         this.countWindow = 5;
-        console.log(5);
       }
     }
   }
