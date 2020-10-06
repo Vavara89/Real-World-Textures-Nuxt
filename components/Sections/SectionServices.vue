@@ -1,5 +1,5 @@
 <template>
-  <section class="services">
+  <section id="services" class="services">
     <div class="container container--content">
       <SectionTitle :title="title" :subtitle="subtitle" />
       <CardGrid :cards="cards" />
