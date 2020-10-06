@@ -1,6 +1,7 @@
 <template>
   <a
     :href="link"
+    :target="text === 'play tutorial' ? '_blank' : '_self'"
     :class="'button-' + type + ' ' + 'button-' + type + '--' + color + (width ? ' button-' + type + '--' + width : '')"
   ><span>{{ text }}</span></a>
 </template>
