@@ -4,7 +4,7 @@
     <div class="page-content">
       <ContentHeader :path="path"/>
       <section class="services view-bottom">
-        <TextureGallery :textures="brands" :is-brand="true" :noscale="true"/>
+        <BrandGallery :brands="brands"/>
         <h2 style="text-align: center" v-if="!brands.length">Search result is empty, try to change your search params</h2>
       </section>
       <Pager :pager="pager" />
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import TextureGallery from '@/components/Textures/TextureGallery';
+import BrandGallery from '@/components/Textures/BrandGallery';
 import CatalogSidebar from '@/components/Sidebar/CatalogSidebar';
 import ContentHeader from '@/components/Textures/ContentHeader';
 import catalog from "@/collectors/catalog";
@@ -25,7 +25,7 @@ export default {
   name: 'Brands',
   scrollToTop: true,
   components: {
-    TextureGallery,
+    BrandGallery,
     CatalogSidebar,
     ContentHeader,
     Pager,
