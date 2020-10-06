@@ -24,25 +24,40 @@
   padding: 0 4rem;
   color: $color-white;
   border:0;
+  position: relative;
 
   &:not(.nohover) {
     &:hover{
-      padding-left:2.5rem !important;
+      padding-left:2.5rem;
       padding-right:3rem !important;
+
+      @include mq(sm, max) {
+        padding-left: 3.4rem;
+       }
+      
     }
   
     &:hover:before{
       display: inline-block;
       margin-right: 1.5rem;
       content: url("~@/assets/img/icon/icon_arrow-right.svg");
-      width:1.4rem;
-      height:1.4rem;
-      margin-top: -1rem;
       margin-right: 1rem;
-  
+
       @include mq(sm, max) {
-        margin-top: -0.3rem;
+       position: absolute;
+       top: 15px;
+       left:12px;
       }
+     
+      &:not(.static) {
+        width:1.4rem;
+        height:1.4rem;
+        margin-top: -1rem;
+        @include mq(sm, max) {
+          margin-top: -0.3rem;
+        }
+      }
+
     }
   }
 

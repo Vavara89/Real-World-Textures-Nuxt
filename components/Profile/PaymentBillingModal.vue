@@ -19,12 +19,12 @@
                 </td>
                 <td
                   colspan="3"
-                  :class="{'card-bottom--error': formErrors['number'].length,}"
+                  :class="{'card-bottom--error': formErrors['number'].length}"
                 >
                   <input
                     v-model="number"
                     v-mask="card_number_mask"
-                    :class="{'email--error': formErrors['number'].length,}"
+                    :class="{'email--error': formErrors['number'].length}"
                     type="text"
                     class="input"
                     name="card_number"

@@ -10,7 +10,7 @@
             Payment Method
           </td>
           <td v-if="!payment" colspan="3">
-            <a @click="openPayment()" href="#" class="button-primary button-secondary">Add new</a>
+            <a @click="openPayment()" href="#" class="button-secondary" style="text-transform: uppercase;">Add new</a>
           </td>
           <template v-if="payment">
             <td  style="width: 200px;">
@@ -53,7 +53,7 @@
             </td>
           </template>
           <td v-if="!address" colspan="3">
-            <a href="#" class="button-primary button-secondary" @click="openAddress()">Add new</a>
+            <a href="#" class="button-secondary" @click="openAddress()" style="text-transform: uppercase;">Add new</a>
           </td>
 
         </tr>
