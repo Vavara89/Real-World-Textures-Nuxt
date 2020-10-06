@@ -79,7 +79,7 @@
                 <td>
                 &nbsp;
                 </td>
-                <td style="padding: 20px 0; text-align: center;">
+                <td style="padding: 50px 0 20px 0; text-align: center;">
                   <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
                     {{ status() }}
                   </button>
@@ -87,7 +87,7 @@
                     Get Freelancer
                   </button>
                 </td>
-                <td style="padding: 20px 0; text-align: center;">
+                <td style="padding: 50px 0 20px 0; text-align: center;">
                   <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
                     {{ status() }}
                   </button>
@@ -165,7 +165,7 @@
                 </td>
               </tr>
               <tr>
-                <td style="padding: 20px 0; text-align: center;">
+                <td style="padding: 50px 0 50px 0; text-align: center;">
                   <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
                     {{ status() }}
                   </button>
@@ -202,7 +202,7 @@
               </tr>
 
               <tr>
-                <td style="padding: 20px 0; text-align: center;">
+                <td style="padding: 50px 0 50px 0; text-align: center;">
                   <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
                     {{ status() }}
                   </button>
@@ -211,28 +211,6 @@
                   </button>
                 </td>
               </tr>
-
-              <tr />
-
-              <tr />
-
-              <tr />
-
-              <tr />
-            <!--              <tr>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td style="text-align: center; padding-left: 32px;">-->
-            <!--                  <a href="#" class="button-tertiary button-tertiary&#45;&#45;green">cancle subscription</a>-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--              </tr>-->
             </tbody>
           </table>
           <!-- DivTable.com -->

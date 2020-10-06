@@ -36,7 +36,7 @@
             </nuxt-link>
           </li>
           <li class="line" @click="hideMenu()">
-            <nuxt-link :to="{ path: '/',hash:'#about'}">
+            <nuxt-link to="/content/about">
               About
             </nuxt-link>
           </li>
@@ -46,7 +46,9 @@
             </nuxt-link>
           </li>
           <li @click="hideMenu()">
-            <a href>Pricing</a>
+            <nuxt-link to="/pricing">
+              Pricing
+            </nuxt-link>
           </li>
           <li v-if="!getIsLogged()" @click="hideMenu()">
             <nuxt-link to="/login">
