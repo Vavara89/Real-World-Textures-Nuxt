@@ -28,7 +28,7 @@
 
           </VueSlickCarousel>
 
-          <div v-if="texture.tutorialUrl" class="tutorial">
+          <div v-if="texture.tutorialUrl && type_code != 'models'" class="tutorial">
             <a :href="texture.tutorialUrl" target="_blank"><label class="badge-play h4">Tutorial</label></a>
           </div>
         </div>
@@ -206,6 +206,7 @@ export default {
 
   mounted() {
     this.navCarousel.asNavFor = this.$refs.sliderMain;
+    console.log(this.type_code, this.type_title)
   },
 
   created() {
