@@ -8,4 +8,13 @@
         margin-right: 1rem;
         margin-top: 1rem;
     }
+
+    @media only screen and (max-width: 800px) {
+        margin-top: 15px;
+        display: block;
+
+        .dropdown {
+            margin-top: 10px;
+        }
+      }
 }
