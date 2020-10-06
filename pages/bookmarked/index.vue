@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      subscriptionLink: "/profile/dashboard",
+      subscriptionLink: "/profile/pricing",
       bookmarks: [],
       buttonText: 'Download Selected'
     };

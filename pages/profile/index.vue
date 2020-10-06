@@ -443,7 +443,7 @@ export default {
             '',
           text:
             '',
-          link: '/hdrs',
+          link: '/hdr',
           sidebar: {
             isOpened: false,
             videoCover: '',

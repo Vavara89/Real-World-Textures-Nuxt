@@ -11,8 +11,8 @@
           <br>
           <br>
           <div class="buttons-row">
-            <button :disabled="processing" @click="$emit('confirmed')" class="button-primary button-primary--blue toggleOption">Confirm</button>
-            <button :disabled="processing" @click="scrollSwitcher(false)" class="button-primary button-primary--green toggleOption">Cancel</button>
+            <button :disabled="processing" @click="$emit('confirmed')" class="button-primary button-primary--blue toggleOption static">Confirm</button>
+            <button :disabled="processing" @click="scrollSwitcher(false)" class="button-primary button-primary--green toggleOption static">Cancel</button>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default {
     },
     description:{
       type: String,
-      default: 'Are you sure for confirm this action?'
+      default: 'Are you sure you want to confirm this action?'
     },
     processing:{
       type: Boolean,

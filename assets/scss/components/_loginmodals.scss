@@ -74,7 +74,6 @@
       margin: 90px auto 0 auto;
     }
 
-
     tr td:first-child {
       width: 240px;
       color: #394174;
@@ -84,7 +83,6 @@
     &.is-card {
       tr td:first-child {
         width: 135px;
-
       }
     }
 
@@ -104,11 +102,20 @@
         margin-bottom: 0;
         padding-top: 0;
 
+        .card-bottom--error {
+          padding-bottom: 20px;
+        }
+
+        .errors {
+          min-width: auto;
+          position: absolute;
+        }
+
         input {
           min-width: 357px;
 
           &.small {
-            width: 136px;
+            width: 145px;
             min-width: auto;
 
             &::placeholder {
@@ -187,11 +194,11 @@
     }
 
 
-    .errors span {
-      position: relative;
-      top: -10px;
-      left: 25px;
-    }
+    // .errors span {
+    //  position: relative;
+    //  top: -10px;
+    //  left: 25px;
+    // }
 
     form.email {
       margin-top: 60px;
