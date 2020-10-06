@@ -145,6 +145,8 @@
           <a href="#" class="button-secondary">See all</a>
         </div>
         <div class="relatedslider">
+
+          <!-- Carousel Models start -->
           <!-- <div class="imageDetails-footer">
             <VueSlickCarousel ref="sliderRelated" v-bind="sliderRelated">
               <template #prevArrow="arrowOption">
@@ -164,8 +166,10 @@
               <div v-for="item_image in texture.gallery" class="imageItem">
                 <img :src="item_image.image" :alt="texture.name" class>
               </div>
-            </VueSlickCarousel> -->
-        </div>
+            </VueSlickCarousel>
+        </div>-->
+        <!-- Carousel Models end -->
+
       </div>
     </div>
   </div>
