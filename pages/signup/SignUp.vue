@@ -49,7 +49,9 @@
             and our
             <nuxt-link to="/content/privacy-policy">Privacy Policy.</nuxt-link>
           </label>
+          <div :class="['signup__input', isFilled(input.agree), hasErrors('agree') ? 'input-agree' : '']">
           <form-input-errors v-if="hasErrors('agree')" :errors="getErrors('agree')" />
+          </div>
           <div class="signup__submit">
             <button
               class="button-primary button-primary--large"
