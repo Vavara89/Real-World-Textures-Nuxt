@@ -447,11 +447,19 @@ label.token {
  }
 
  .inner-helper {
-  padding-top: 120px !important;
+  @media only screen and (max-width: 550px) {
+    height: 670px !important;
+  }
+  @media only screen and (min-width: 550px) {
+    height: 580px;
+  }
  }
 
  .button-helper {
-  margin-top: 60px !important;
+  margin-top: 40px !important;
+  @media only screen and (max-width: 470px) {
+    margin-top: 60px !important;
+  }
  }
 
 .height {
@@ -476,5 +484,9 @@ label.token {
     position: relative;
     top: 5px;
     line-height: 1.5;
+  }
+
+  @media only screen and (max-width: 550px) {
+    height: 580px;
   }
 }

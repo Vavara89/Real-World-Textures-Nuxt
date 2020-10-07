@@ -13,8 +13,8 @@
       </div>
     </div>
 
-    <div v-if="!success" class="modal rec">
-      <div class="inner" :class="{'inner-helper': hasErrors('token') && isFilled('token')}">
+    <div v-if="!success" class="modal rec" :class="{'inner-helper': hasErrors('token') && isFilled('token')}">
+      <div class="inner">
         <h2>Change your password</h2>
         <p>We were send you token on email, please check it</p>
         <form method="post" class="email" autocomplete="off" @submit="recovery">

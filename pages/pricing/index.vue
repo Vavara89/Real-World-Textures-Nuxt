@@ -275,7 +275,7 @@ export default {
   created () {
     this.fetchSubscribed();
   },
-    mounted () {
+  mounted () {
     this.$nextTick(function () {
       this.onResize();
     });

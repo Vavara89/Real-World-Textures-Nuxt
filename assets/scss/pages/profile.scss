@@ -2135,6 +2135,7 @@ table tr:nth-child(even) td{
                 @media screen and (max-width:1200px) {
                   text-indent: 50px;
                   line-height: 100%;
+                  margin-top: 0;
              }
             }
 
@@ -2168,7 +2169,7 @@ table tr:nth-child(even) td{
                     background-position: center center;
 
                     @media screen and (max-width:1200px) {
-                      top: 65px;
+                      top: -5px;
                       left: -10px;
                  }
                 }

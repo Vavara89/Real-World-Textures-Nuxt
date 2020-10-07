@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar :profile="true" />
+    <ProfileSidebar :profile="true" v-if="width > 1200" />
     <UnsubscribeModal ref="unsubscribe_modal" />
     <div class="page-content">
       <section class="services view-bottom">
@@ -105,7 +105,8 @@ export default {
       cardPassword: false,
       openAddress: false,
       openPayment: false,
-      email: this.$auth.user.user.email
+      email: this.$auth.user.user.email,
+      width: null
     };
   },
   computed: {
@@ -122,7 +123,22 @@ export default {
       return this.profile.subscribe ? this.profile.subscribe.credits : 0;
     }
   },
+  mounted () {
+    this.$nextTick(function () {
+      this.onResize();
+    });
+    window.addEventListener('resize', this.onResize);
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.onResize);
+  },
   methods: {
+    onResize () {
+      this.innerWidth();
+    },
+    innerWidth () {
+      this.width = window.innerWidth;
+    },
     toggleSelected (data) {
       if (data === 'profile') {
         this.cardProfile = true;
