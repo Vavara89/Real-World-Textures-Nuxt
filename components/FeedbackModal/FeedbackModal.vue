@@ -1,12 +1,12 @@
 <template>
   <div v-if="opened">
     <div class="modal centered-window">
-      <div class="inner">
+      <div class="inner faq__modal">
         <span class="close" @click="scrollSwitcher(false)"/>
         <div v-if="send" class="success-message">
             <img src="@/assets/img/icon-bookmarked.svg" alt>
             <h2>Your message success send</h2>
-            <p class="style">
+            <p class="style nowrap">
               We will keep in touch with your soon as it possible.
             </p>
         </div>
