@@ -62,7 +62,7 @@
   }
 
   .inner {
-    max-width: 480px;
+    max-width: 520px;
     line-height: 48px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -142,6 +142,7 @@
       font-size: 14px;
       line-height: 24px;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .green {
@@ -166,6 +167,14 @@
 
       &:hover {
         background-color: #F2F3F9;
+      }
+    }
+
+    .isrecovery {
+      .errors {
+        margin: 0;
+        position: relative;
+        top: -10px;
       }
     }
 
@@ -201,21 +210,22 @@
     // }
 
     form.email {
-      margin-top: 60px;
-      min-width: 480px;
+      margin-top: 40px;
+      display: flex;
+      flex-flow: wrap;
+      // min-width: 480px;
     }
 
     label.email {
       font-size: 14px;
       color: #394174;
-      float: left;
       position: relative;
-      top: -5px;
-
+      // top: -5px;
+      padding-right: 15px;
     }
 
     input.email {
-      float: right;
+      // float: right;
     }
 
     input.email, input.input, textarea.input {
@@ -241,8 +251,8 @@
       }
 
       @media only screen and (max-width: 468px) {
-        width: calc(100% - 60px);
-        min-width: auto;
+        width: 100%;
+        min-width: 270px;
         margin-left: 0;
       }
     }
@@ -269,7 +279,6 @@
       font-weight: 600;
       text-transform: uppercase;
       min-width: 220px;
-      margin-top: 30px;
       padding: 13px 40px;
       cursor: pointer;
       background-color: #4CBC81;
@@ -282,6 +291,7 @@
       -o-transition: opacity 0.2s linear;
       transition: opacity 0.2s linear;
       opacity: 1;
+      margin: 30px auto 0 auto;
 
       &.special {
         position: relative;
@@ -337,10 +347,7 @@
       }
 
       &.auto {
-        margin-left: -170px;
-        position: relative;
-        top: 20px;
-
+        margin: 20px auto 0 auto;
 
         &:hover {
           width: auto;
@@ -402,29 +409,51 @@ label.token {
   font-size: 14px;
   color: #394174;
   position: relative;
-  width: 100%;
-  top: -5px;
-  float: left;
   text-align: right;
   width: 140px;
+  padding-right: 15px;
+  display: inline-flex;
+
+  @media only screen and (max-width: 550px) {
+    text-align: left;
+    display: block;
+  }
 }
 
 
 .recover {
- margin-left: 0;
-}
+  margin-left: 0;
+ }
+
+ .inner-helper {
+  padding-top: 120px !important;
+ }
+
+ .button-helper {
+  margin-top: 60px !important;
+ }
 
 .height {
   height: 80px !important;
+
+  @media only screen and (max-width: 550px) {
+    height: 120px !important;
+  }
 }
 
 
 .rec {
+  .errors {
+    position: absolute;
+    left: 143px;
+
+    @media only screen and (max-width: 550px) {
+      left: 0;
+    }
+  }
   .input-form-error {
     position: relative;
     top: 5px;
-    left: 20px; 
     line-height: 1.5;
-    padding-left: 140px;
   }
 }

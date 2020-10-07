@@ -6,6 +6,7 @@
         <h2>Reset your password</h2>
         <form @submit="recovery" method="post" class="email">
           <label class="email">Your email address</label>
+          <div class="isrecovery">
           <input
             class="email"
             :class="{'email--error': errors.length}"
@@ -19,6 +20,7 @@
           />
           <div class="errors" :class="{'success': !this.errors}">
             <span v-if="errors.length">{{ errors[0] }}</span>
+          </div>
           </div>
           <button :class="[isSubmitted ? 'loading' : '']" type="submit" class="email auto">confirm</button>
           <div class="clear" />

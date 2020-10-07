@@ -14,11 +14,11 @@
     </div>
 
     <div v-if="!success" class="modal rec">
-      <div class="inner">
+      <div class="inner" :class="{'inner-helper': hasErrors('token') && isFilled('token')}">
         <h2>Change your password</h2>
         <p>We were send you token on email, please check it</p>
         <form method="post" class="email" autocomplete="off" @submit="recovery">
-          <div style="height: 50px;" :class="{'height': hasErrors('token') && isFilled('token')}">
+          <div style="position: relative;" :class="{'height': hasErrors('token') && isFilled('token')}">
             <label class="token">Token from email</label>
             <input
               id="token"
@@ -32,7 +32,7 @@
             <form-input-errors v-if="hasErrors('token')" :errors="getErrors('token')" />
           </div>
 
-          <div style="height: 50px;" :class="{'height': hasErrors('token') && isFilled('token')}">
+          <div style="position: relative;" :class="{'height': hasErrors('token') && isFilled('token')}">
             <label class="token">Password</label>
             <input
               id="password"
@@ -46,7 +46,7 @@
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')" />
           </div>
 
-          <button :disabled="isSubmitted" :class="[isSubmitted ? 'loading' : '']" type="submit" class="email autos">
+          <button :disabled="isSubmitted" :class="[isSubmitted ? 'loading' : '', {'button-helper': hasErrors('token') && isFilled('token')}]" type="submit" class="email autos">
             confirm
           </button>
         </form>
