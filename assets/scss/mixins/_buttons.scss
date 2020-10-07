@@ -42,11 +42,12 @@
       margin-right: 1.5rem;
       content: url("~@/assets/img/icon/icon_arrow-right.svg");
       margin-right: 1rem;
+      margin-top: 0.4rem;
 
       @include mq(sm, max) {
-       position: absolute;
-       top: 15px;
-       left:12px;
+       // position: absolute;
+       // top: 15px;
+       // left:12px;
       }
      
       &:not(.static) {
