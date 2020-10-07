@@ -12,7 +12,7 @@
         </div>
         <div v-if="!send">
         <h2>Please let us know how we can help you</h2>
-          <form method="post" class="email" @submit="process">
+          <form method="post" class="email faq__inner" @submit="process">
             <input
               id="email"
               v-model="email"
@@ -22,7 +22,7 @@
               placeholder="Your email address"
               name="email"
             />
-            <div class="errors" :class="{'success': send}">
+            <div class="errors" :class="{'success': send, 'email--error--faq': formErrors['email'].length && !send}">
               <span v-if="formErrors['email'].length">{{ formErrors['email'][0] }}</span>
             </div>
 
@@ -52,7 +52,7 @@
               <span v-if="formErrors['question'].length">{{ formErrors['question'][0] }}</span>
             </div>
 
-            <button :class="[isSubmitted ? 'loading' : '']" type="submit" class="email">
+            <button :class="[isSubmitted ? 'loading' : '']" type="submit" class="email autos">
               Send
             </button>
           </form>

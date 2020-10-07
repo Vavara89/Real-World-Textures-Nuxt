@@ -214,6 +214,27 @@
       display: flex;
       flex-flow: wrap;
       // min-width: 480px;
+
+      &.faq__inner {
+        justify-content: center;
+
+        .errors {
+          width: 100%;
+
+          &.email--error--faq {
+            margin-top: -20px;
+            margin-bottom: 20px;
+          }
+         }
+
+        input {
+         margin-bottom: 20px;
+        }
+
+        input, textarea {
+          width: 100% !important;
+        }
+      }
     }
 
     label.email {
