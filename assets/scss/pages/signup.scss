@@ -7,6 +7,10 @@
   &__wrap {
     padding: 6rem 0;
     width: 100%;
+
+    @media screen and (min-width:1231px) {
+      max-width: 600px;
+    }
   }
 
   &__title {
@@ -134,7 +138,7 @@
   &__recaptcha {
     display: flex;
     justify-content: flex-end;
-    margin-top: 1.6rem;
+    margin-top: 3rem;
     position: relative;
 
     .errors {

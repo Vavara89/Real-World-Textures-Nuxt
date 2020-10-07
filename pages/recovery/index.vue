@@ -8,7 +8,7 @@
           <label class="email">Your email address</label>
           <input
             class="email"
-            :class="{'email--error': errors.length && !added}"
+            :class="{'email--error': errors.length}"
             type="text"
             placeholder="Your email address"
             id="email"
