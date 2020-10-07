@@ -1,7 +1,7 @@
 <template>
   <section class="example">
     <div class="container">
-      <SectionTitle :subtitle="subtitle" :title="title" :isCentered="true" />
+      <SectionTitle :subtitle="subtitle" :title="title" :isCentered="true"/>
       <!-- <img :src="image.url" :alt="image.alt" class="example__image" /> -->
     </div>
     <div class="container container--4k">
@@ -13,26 +13,15 @@
           <template #nextArrow="arrowOption">
             <div class="next-slick">{{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}</div>
           </template>
-          <div>
-            <img :src="image.url" :alt="image.alt" class />
-          </div>
-          <div>
-            <img :src="image.url" :alt="image.alt" class />
-          </div>
-          <div>
-            <img :src="image.url" :alt="image.alt" class />
+          <div v-for="slide in slides">
+            <img :src="slide.cover" :alt="slide.name" class/>
           </div>
         </VueSlickCarousel>
         <VueSlickCarousel ref="sliderMain" v-bind="mainCarousel">
-          <div>
-            <TextureGrid :textures="textures" :shadow="true" :mainpage="true" />
+          <div v-for="slide in slides">
+            <TextureGrid  :textures="toNuxtTextures(slide.products)" :shadow="true" :mainpage="true"/>
           </div>
-          <div>
-            <TextureGrid :textures="textures" :shadow="true" :mainpage="true" />
-          </div>
-          <div>
-            <TextureGrid :textures="textures" :shadow="true" :mainpage="true" />
-          </div>
+
         </VueSlickCarousel>
       </div>
     </div>
@@ -40,30 +29,36 @@
 </template>
 
 <script>
-import SectionTitle from "@/components/SectionParts/SectionTitle";
-import TextureGrid from "@/components/Textures/TextureGrid";
-import VueSlickCarousel from "vue-slick-carousel";
-import "vue-slick-carousel/dist/vue-slick-carousel.css";
-import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import SectionTitle from '@/components/SectionParts/SectionTitle';
+import TextureGrid from '@/components/Textures/TextureGrid';
+import VueSlickCarousel from 'vue-slick-carousel';
+import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
 export default {
-  name: "SectionExample",
+  name: 'SectionExample',
   components: {
     SectionTitle,
     TextureGrid,
     VueSlickCarousel
   },
-  mounted() {
+  mounted () {
     this.navCarousel.asNavFor = this.$refs.sliderMain;
   },
-  data() {
+  props: {
+    slides: {
+      type: Array,
+      required: false
+    }
+  },
+  data () {
     return {
-      subtitle: "Example of usage",
+      subtitle: 'Example of usage',
       navCarousel: {
         dots: true,
         infinite: false,
         centerMode: true,
-        centerPadding: "1px",
+        centerPadding: '1px',
         variableWidth: true,
         asNavFor: {}
       },
@@ -72,76 +67,81 @@ export default {
         slidesToScroll: 1,
         slidesToShow: 1,
         centerMode: true,
-        centerPadding: "1px",
+        centerPadding: '1px',
         variableWidth: true,
         infinite: false,
         draggable: false,
         swipe: false
       },
       title:
-        "With PBR materials present your product in any think able environment",
+        'With PBR materials present your product in any think able environment',
       image: {
-        url: require("~/assets/img/textures/preview-img.jpg"),
-        alt: "example of use"
+        url: require('~/assets/img/textures/preview-img.jpg'),
+        alt: 'example of use'
       },
       textures: [
         {
           image: {
-            url: require("~/assets/img/textures/texture-technistone.png"),
-            alt: "Backhausen"
+            url: require('~/assets/img/textures/texture-technistone.png'),
+            alt: 'Backhausen'
           },
-          name: "Backhausen",
-          structure: "Viola",
-          usage: "fabric over bar stool"
+          name: 'Backhausen',
+          structure: 'Viola',
+          usage: 'fabric over bar stool'
         },
         {
           image: {
-            url: require("~/assets/img/textures/texture-shipwood.png"),
-            alt: "Shipwood"
+            url: require('~/assets/img/textures/texture-shipwood.png'),
+            alt: 'Shipwood'
           },
-          name: "Shipwood",
-          structure: "Pyramids",
-          usage: "kitchen island"
+          name: 'Shipwood',
+          structure: 'Pyramids',
+          usage: 'kitchen island'
         },
         {
           image: {
-            url: require("~/assets/img/textures/texture-technistone.png"),
-            alt: "Jafholz"
+            url: require('~/assets/img/textures/texture-technistone.png'),
+            alt: 'Jafholz'
           },
-          name: "Jafholz",
-          structure: "Cedar",
-          usage: "kitchen cabinet"
+          name: 'Jafholz',
+          structure: 'Cedar',
+          usage: 'kitchen cabinet'
         },
         {
           image: {
-            url: require("~/assets/img/textures/texture-princparket.png"),
-            alt: "Princ Parket"
+            url: require('~/assets/img/textures/texture-princparket.png'),
+            alt: 'Princ Parket'
           },
-          name: "Princ Parket",
-          structure: "Volcano",
-          usage: "wooden floor"
+          name: 'Princ Parket',
+          structure: 'Volcano',
+          usage: 'wooden floor'
         },
         {
           image: {
-            url: require("~/assets/img/textures/texture-technistone.png"),
-            alt: "Technistone"
+            url: require('~/assets/img/textures/texture-technistone.png'),
+            alt: 'Technistone'
           },
-          name: "Technistone",
-          structure: "Cloudy Onyx",
-          usage: "kitchen countertop"
+          name: 'Technistone',
+          structure: 'Cloudy Onyx',
+          usage: 'kitchen countertop'
         }
       ]
     };
   },
   methods: {
-    // TODO: Delete when connected to API
-    getImage(fileName) {
-      const flags = require.context(
-        "../../assets/img/textures",
-        false,
-        /\.png$/
-      );
-      return flags(`./${fileName}.png`);
+    toNuxtTextures (textures) {
+        return textures.map(item => {
+          return         {
+            image: {
+              url: item['image'],
+              alt: ''
+            },
+            name: '',
+            structure: '',
+            usage: '',
+            url: item['url']
+          }
+        });
     }
   }
 };

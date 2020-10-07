@@ -1,7 +1,7 @@
 <template>
     <div>
-        <SectionRealworld />
-        <SectionExample />
+        <SectionRealworld :slides="top_slider"/>
+        <SectionExample :slides="examples_slider"/>
         <SectionPhilosophy />
         <SectionServices :cards="services"/>
         <SectionSubscribe />
@@ -42,6 +42,8 @@ export default {
       let brands = [];
       let soft = [];
       let services = [];
+      let top_slider = [];
+      let examples_slider = [];
 
       await main.faqs().then(response => {
         faqs = response.data.results;
@@ -92,11 +94,19 @@ export default {
         });
       });
 
+      await main.main_feed().then(response => {
+        top_slider = response.data.top_slider;
+        examples_slider = response.data.examples_slider;
+        console.log(examples_slider);
+      });
+
       return {
         faqs: faqs,
         brands: brands,
         soft: soft,
         services: services,
+        examples_slider:examples_slider,
+        top_slider: top_slider
       };
   },
   data() {
@@ -113,6 +123,8 @@ export default {
           brands: [],
           soft: [],
           services: [],
+          examples_slider: [],
+          top_slider:[]
         };
     }
 };

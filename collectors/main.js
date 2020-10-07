@@ -64,5 +64,11 @@ export default {
     const url = `${resource}feedback`;
     return  await this.getCollector()
       .post(url, data);
+  },
+
+  async main_feed(data){
+    const url = `${resource}main`;
+    return  await this.getCollector()
+      .get(url, data);
   }
 };
