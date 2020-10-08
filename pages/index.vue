@@ -1,7 +1,7 @@
 <template>
     <div>
-        <SectionRealworld :slides="top_slider"/>
-        <SectionExample :slides="examples_slider"/>
+        <SectionRealworld v-if="top_slider.length" :slides="top_slider"/>
+        <SectionExample v-if="examples_slider.length" :slides="examples_slider"/>
         <SectionPhilosophy />
         <SectionServices :cards="services"/>
         <SectionSubscribe />

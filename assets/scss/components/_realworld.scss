@@ -32,7 +32,11 @@
     background-image: url(~@/assets/img/spheres/sphere-bg.png);
     background-repeat: no-repeat;
     background-position: center;
+    transition: opacity 300ms;
 
+    &.opacity_in{
+      opacity: 0;
+    }
     @include mq(lg, max) {
       margin-top: 40px;
       margin-left: auto;
@@ -84,6 +88,11 @@
   &-control {
     width: 20%;
     text-align: center;
+    transition: opacity 300ms;
+
+    &.opacity_in{
+      opacity: 0;
+    }
 
     @include mq(lg, max) {
       position: relative;

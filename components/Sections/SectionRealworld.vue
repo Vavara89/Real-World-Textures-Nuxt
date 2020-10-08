@@ -20,9 +20,9 @@
           </div>
         </div>
 
-        <div class="explore-texture">
-          <div class="slider-wrapper">
-            <VueSlickCarousel @beforeChange="beforeChangeSlick" ref="sliderMain" v-bind="sliderMain"
+        <div :class="{'opacity_in':!slidesInits}" class="explore-texture">
+          <div  class="slider-wrapper">
+            <VueSlickCarousel @init="slidesInits=true" @beforeChange="beforeChangeSlick" ref="sliderMain" v-bind="sliderMain"
                               class="default zoom-slider">
 
               <template v-for="slide in slides">
@@ -36,7 +36,7 @@
 
 
         </div>
-        <div class="explore-control">
+        <div :class="{'opacity_in':!slidesInits}" class="explore-control">
           <div><a class="explore-control-prev" @click="next()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
           </div>
           <VueSlickCarousel ref="sliderNav" v-bind="sliderNav" class="default zoom-slider-nav">
@@ -116,7 +116,8 @@ export default {
       texture_prev: require('~/assets/img/spheres/sphere-5.png'),
       texture_next: require('~/assets/img/spheres/sphere-6.png'),
       slickCurrentIndex: 1,
-      direction: null
+      direction: null,
+      slidesInits: false,
     };
   },
   computed: {
