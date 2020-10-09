@@ -34,12 +34,12 @@
 
           </div>
 
-
+           <div class="explore-circle" />
         </div>
         <div :class="{'opacity_in':!slidesInits}" class="explore-control">
           <div><a class="explore-control-prev" @click="next()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
           </div>
-          <VueSlickCarousel ref="sliderNav" v-bind="sliderNav" class="default zoom-slider-nav">
+          <VueSlickCarousel ref="sliderNav" v-bind="sliderNav" class="default zoom-slider-nav zoom-slider-wide">
             <template v-for="(slide, key) in slides">
               <p class="explore-texture-number">{{ slide.name }}</p>
             </template>
@@ -47,7 +47,7 @@
 
 
           <p class="explore-texture-title">{{ slideSubTitle }}</p>
-          <div>
+          <div class="button-phone">
             <Button
               :link="slideUrl"
               :text="slideButtonName"

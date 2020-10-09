@@ -2350,7 +2350,19 @@ table tr:nth-child(even) td{
 
 .clearfix:before,.clearfix:after {content: " "; display: table;}
 .clearfix:after {clear: both;}
-.clearfix {*zoom: 1; position: relative; height: 500px;}
+.clearfix {*zoom: 1; position: relative; height: 500px;
+
+  .points {
+    position: absolute;
+    top: 110px;
+    left: -30px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #394174;
+    z-index: 999;
+    transform: rotate(180deg);
+  }
+}
 
 /****************************************************************
  *

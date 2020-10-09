@@ -3,6 +3,7 @@
         <li v-for="social in socials" class="footer-social__item">
             <a target="_blank" :href="social.url" class="footer-social__link">
                 <img :src="social.icon" />
+                <img :src="social.iconactive" class="icongreen" />
             </a>
         </li>
     </ul>

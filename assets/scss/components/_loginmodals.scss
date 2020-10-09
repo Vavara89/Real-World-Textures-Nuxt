@@ -329,14 +329,18 @@
         width: 370px;
         margin-top: 40px;
         height: 64px;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, 0);
+        // position: absolute;
+        //left: 50%;
+        //transform: translate(-50%, 0);
         background: linear-gradient(to right, #6EC89A 50%, #4CBC81 50%);
         background-size: 200% 100%;
         background-position: right bottom;
         transition: all .4s ease;
         overflow: hidden;
+
+        @include mq(md, max) {
+          pointer-events: none;
+        }
       }
 
       .ar {
@@ -420,11 +424,20 @@
     min-height: 500px;
     bottom: auto;
     height: auto;
+
+    &.min-height {
+      min-height: 625px;
+    }
   }
 }
 
 .upper {
   text-transform: uppercase;
+
+  &.upper-perex {
+    max-width: 380px;
+    margin: 0 auto 30px auto;
+  }
 }
 
 .isrelative {

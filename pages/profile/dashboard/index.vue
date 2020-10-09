@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar :profile="true" v-if="width > 1200" />
+    <ProfileSidebar v-if="width > 1200" :profile="true" />
     <UnsubscribeModal ref="unsubscribe_modal" />
     <div class="page-content">
       <section class="services view-bottom">
@@ -48,6 +48,9 @@
               <div class="right">
                 <div class="clearfix">
                   <div class="c100 p75 big scaled">
+                    <div class="points">
+                      + 200
+                    </div>
                     <span class="isscaled">
                       {{ credits }}</span>
                     <div class="slice">
@@ -57,7 +60,7 @@
                     <span class="topas">Subscription Credits</span>
                   </div>
                   <button class="toggleOption2 bot">
-                    <a href="#" class="" @click="openPayment()"> buy more credits</a>
+                    <a href="#" class="" @click="openUnsubscribe()"> buy more credits</a>
                   </button>
                 </div>
                 <div class="credit">
@@ -158,7 +161,7 @@ export default {
         this.cardPassword = true;
       }
     },
-    openPayment () {
+    openUnsubscribe () {
       this.$refs.unsubscribe_modal.scrollSwitcher(true);
     }
   }

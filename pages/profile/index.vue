@@ -196,6 +196,8 @@
         <div class="circle-small"/>
       </div>
 
+
+
       <div class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
@@ -214,6 +216,7 @@
             </div>
           </template>
           <div v-for="item in hdr" class="imageItem">
+            <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" :isBrand="isBrand" />
             <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
@@ -306,6 +309,7 @@ import SectionTitle from '@/components/SectionParts/SectionTitle';
 import CardGrid from '@/components/Cards/CardGrid';
 import SectionSubscribe from '@/components/Sections/SectionSubscribe';
 import Button from '@/components/Button';
+import TooltipItem from '@/components/Textures/TooltipItem';
 
 import CardSidebar from '@/components/Cards/CardSidebar';
 
@@ -323,7 +327,8 @@ export default {
     SectionSubscribe,
     Button,
     VueSlickCarousel,
-    CardSidebar
+    CardSidebar,
+    TooltipItem
   },
   async asyncData (ctx) {
     let partners = [];
@@ -509,7 +514,9 @@ export default {
       ],
       processing: false,
       showWindow: false,
-      countWindow: 1
+      countWindow: 1,
+      selectedTexture: {},
+      modalOpen: false
     };
   },
   mounted () {
@@ -536,6 +543,10 @@ export default {
       } else {
         this.countWindow = 5;
       }
+    },
+     showDetail (selectedTexture) {
+      this.selectedTexture = selectedTexture;
+      this.modalOpen = true;
     }
   }
 };

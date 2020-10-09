@@ -1,9 +1,9 @@
 @mixin button-base {
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border-radius: $br-round;
+  border-radius: $br-round !important;
   white-space: nowrap;
 
   @include transition-base(background-color);
