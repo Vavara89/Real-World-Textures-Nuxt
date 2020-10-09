@@ -81,18 +81,18 @@
                 &nbsp;
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
-                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
+                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green" @click="confirm(false)">
+                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
                     Get Freelancer
                   </button>
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
-                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
+                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green" @click="confirm(true)">
+                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(true)">
                     Get Studio
                   </button>
                 </td>
@@ -168,10 +168,10 @@
               </tr>
               <tr>
                 <td style="padding: 50px 0 50px 0; text-align: center;">
-                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
+                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green" @click="confirm(false)">
+                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
                     Get Freelancer
                   </button>
                 </td>
@@ -205,10 +205,10 @@
 
               <tr>
                 <td style="padding: 50px 0 50px 0; text-align: center;">
-                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
+                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green" @click="confirm(true)">
+                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(true)">
                     Get Studio
                   </button>
                 </td>

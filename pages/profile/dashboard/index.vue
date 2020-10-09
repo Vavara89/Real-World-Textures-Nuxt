@@ -57,7 +57,7 @@
                     <span class="topas">Subscription Credits</span>
                   </div>
                   <button class="toggleOption2 bot">
-                    <a href="#" class="" @click="openPayment()"> buy more credits new</a>
+                    <a href="#" class="" @click="openPayment()"> buy more credits</a>
                   </button>
                 </div>
                 <div class="credit">

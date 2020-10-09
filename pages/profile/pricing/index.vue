@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar :profile="true" />
+    <ProfileSidebar v-if="width > 1200" :profile="true" />
     <ConfirmModal ref="confirm_subscribe" :description="confirmTitle" @confirmed="subscribe" />
 
     <div class="page-content">
@@ -25,6 +25,7 @@
               <tr>
                 <td style="padding-left: 20px;">
                   <ToggleSwitch
+                    v-if="width > 1000"
                     first_text="Monthly plans"
                     second_text="Annual plans"
                     @setDuration="childMessageReceived"
@@ -128,8 +129,9 @@
                 </td>
               </tr>
               <tr>
-                <td style="padding-left: 20px;">
+                <td style="padding-left: 20px; display: flex; justify-content: center;">
                   <ToggleSwitch
+                    v-if="width < 1000"
                     first_text="Monthly plans"
                     second_text="Annual plans"
                     @setDuration="childMessageReceived"
@@ -166,7 +168,7 @@
                 </td>
               </tr>
               <tr>
-                <td style="padding: 20px 0; text-align: center;">
+                <td style="padding: 50px 0 50px 0; text-align: center;">
                   <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
                     {{ status() }}
                   </button>
@@ -203,7 +205,7 @@
               </tr>
 
               <tr>
-                <td style="padding: 20px 0; text-align: center;">
+                <td style="padding: 50px 0 50px 0; text-align: center;">
                   <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
                     {{ status() }}
                   </button>
@@ -257,7 +259,8 @@ export default {
       button: 'Join our community on FB',
       isMonth: true,
       selectedPrice: {},
-      subscribed: null
+      subscribed: null,
+      width: null
     };
   },
   computed: {
@@ -287,7 +290,22 @@ export default {
   created () {
     this.fetchSubscribed();
   },
+  mounted () {
+    this.$nextTick(function () {
+      this.onResize();
+    });
+    window.addEventListener('resize', this.onResize);
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.onResize);
+  },
   methods: {
+    onResize () {
+      this.innerWidth();
+    },
+    innerWidth () {
+      this.width = window.innerWidth;
+    },
     childMessageReceived (duration) {
       if (duration === 'month') {
         this.isMonth = true;

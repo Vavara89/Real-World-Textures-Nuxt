@@ -343,7 +343,9 @@
       font-weight: bold;
       color: #0A0D27;
       padding-bottom: 40px;
+      line-height: 150%;
     }
+  
 
     h3 {
       font-size: 14px;
@@ -382,6 +384,10 @@
           font-size: 1.2rem;
         }
       }
+
+      @media screen and (max-width:950px) {
+        width: calc(100% - 50px) !important;
+      }
     }
 
   &--filled {
@@ -395,6 +401,11 @@
       font-size: 1.2rem;
     }
   }
+}
+
+@media screen and (max-width:950px) {
+  width: 100% !important;
+  margin: 60px auto 70px auto !important;
 }
 
 }
@@ -1569,7 +1580,7 @@
   .bot {
     position: absolute;
     top: 370px;
-    left: 92px;
+    left: 105px;
     z-index: 13;
     transform: rotate(0) !important;
   }
@@ -1654,6 +1665,10 @@
       background: #4CBC81;
       margin: 0;
     }
+
+    &.staticwidth {
+      width: 23e;
+    }
 }
 
 .invoices {
@@ -1665,6 +1680,10 @@
     font-weight: bold;
     color: #0A0D27;
     margin-left: 40px;
+
+    @media (max-width: 1200px) {
+     margin-left: 0 !important;
+  }
   }
   table {
     margin-top: 50px;
@@ -2019,7 +2038,7 @@ table tr:nth-child(even) td{
 
     .invoices {
       margin-left: 70px;
-      width: 1300px;
+      width: calc(100% - 140px);
   }
 
   .discount {
@@ -3228,7 +3247,7 @@ table tr:nth-child(even) td{
   .bot {
     position: absolute;
     top: 370px;
-    left: 92px;
+    left: 105px;
     z-index: 13;
     transform: rotate(0) !important;
   }
