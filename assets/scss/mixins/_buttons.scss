@@ -25,6 +25,32 @@
   color: $color-white;
   border:0;
   position: relative;
+  overflow: hidden;
+  transition: 1s all;
+
+  span {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:before{
+    position: absolute;
+    left: 0;
+    top: calc(50% + 2px);
+    content: url("~@/assets/img/icon/icon_arrow-right.svg");
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translate(-100%, -50%);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
 
   &:not(.nohover) {
     &:hover{
@@ -34,32 +60,46 @@
       @include mq(sm, max) {
         // padding-left: 3.4rem;
        }
-      
+       span {
+        -moz-transform: translate(7%, 0);
+        -ms-transform: translate(7%, 0);
+        -webkit-transform: translate(7%, 0);
+        transform: translate(7%, 0);
+      }
+    }
+
+    &:hover:before{
+      position: absolute;
+      content: url("~@/assets/img/icon/icon_arrow-right.svg");
+      -moz-transform: translate(120%, -50%);
+      -ms-transform: translate(120%, -50%);
+      -webkit-transform: translate(120%, -50%);
+      transform: translate(120%, -50%);
     }
   
-    &:hover:before{
-      display: inline-block;
-      margin-right: 1.5rem;
-      content: url("~@/assets/img/icon/icon_arrow-right.svg");
-      margin-right: 1rem;
-      margin-top: 0.4rem;
+    //&:hover:before{
+     // display: inline-block;
+    //  margin-right: 1.5rem;
+     // content: url("~@/assets/img/icon/icon_arrow-right.svg");
+     // margin-right: 1rem;
+     // margin-top: 0.4rem;
 
-      @include mq(sm, max) {
+      //@include mq(sm, max) {
        // position: absolute;
        // top: 15px;
        // left:12px;
-      }
+     // }
      
-      &:not(.static) {
-        width:1.4rem;
-        height:1.4rem;
-        margin-top: -1rem;
-        @include mq(sm, max) {
-          margin-top: -0.3rem;
-        }
-      }
+    //  &:not(.static) {
+     //   width:1.4rem;
+      //  height:1.4rem;
+     //   margin-top: -1rem;
+      //  @include mq(sm, max) {
+     //     margin-top: -0.3rem;
+      //  }
+     // }
 
-    }
+   // }
   }
 
   @include button-base;
