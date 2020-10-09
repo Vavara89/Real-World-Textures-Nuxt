@@ -1,40 +1,47 @@
 <template>
-    <section class="offer">
-        <div class="container container--box">
-            <div class="offer__box">
-                <SectionTitle
-                    :subtitle="subtitle"
-                    :title="title"
-                    :isCentered="true"
-                    :isInverted="true"
-                />
-                <a :href="button.link" class="offer__button button-primary">{{ button.text }}</a>
-            </div>
-        </div>
-    </section>
+  <section class="offer">
+    <div class="container container--box">
+      <div class="offer__box">
+        <SectionTitle
+          :subtitle="subtitle"
+          :title="title"
+          :is-centered="true"
+          :is-inverted="true"
+        />
+        <Button
+          :link="button.link"
+          :text="button.text"
+          type="primary"
+          color="green"
+        />
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import SectionTitle from "@/components/SectionParts/SectionTitle";
+import SectionTitle from '@/components/SectionParts/SectionTitle';
+import Button from '@/components/Button';
 
 export default {
-    name: "SectionOffer",
-    components: {
-        SectionTitle
+  name: 'SectionOffer',
+  components: {
+    SectionTitle,
+    Button
+  },
+  props: {
+    subtitle: {
+      type: String,
+      required: false
     },
-    props: {
-        subtitle: {
-            type: String,
-            required: false
-        },
-        title: {
-            type: String,
-            required: true
-        },
-        button: {
-            type: Object,
-            required: true
-        }
+    title: {
+      type: String,
+      required: true
+    },
+    button: {
+      type: Object,
+      required: true
     }
+  }
 };
 </script>
