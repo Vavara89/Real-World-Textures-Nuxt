@@ -18,19 +18,19 @@
             </div>
           </div>
         </div>
-        <div class="imageDetails-content">
-          <VueSlickCarousel ref="sliderMain" v-bind="sliderMain" class="default">
+        <div v-if="texture.gallery.length" class="imageDetails-content">
+          <VueSlickCarousel v-if="texture.gallery.length" ref="sliderMain" v-bind="sliderMain" class="default">
             <div v-for="item_image in texture.gallery" class="previewImg">
               <img :src="item_image.image">
             </div>
           </VueSlickCarousel>
 
-          <div v-if="texture.tutorialUrl && type_code != 'models'" class="tutorial">
+          <div v-if="texture.tutorialUrl && type_code !== 'models'" class="tutorial">
             <a :href="texture.tutorialUrl" target="_blank"><label class="badge-play h4">Tutorial</label></a>
           </div>
         </div>
         <div v-if="texture.gallery" class="imageDetails-footer">
-          <VueSlickCarousel ref="sliderNav" v-bind="navCarousel">
+          <VueSlickCarousel v-if="texture.related" ref="sliderNav" v-bind="navCarousel">
             <template #prevArrow="arrowOption">
               <div class="prev-slick">
                 <a href="#" class="button">
@@ -45,7 +45,7 @@
                 </a>
               </div>
             </template>
-            <div v-for="item_image in texture.gallery" class="imageItem">
+            <div v-for="item_image in texture.related" class="imageItem">
               <img :src="item_image.image" :alt="texture.name" class>
             </div>
           </VueSlickCarousel>
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="options">
-          <div v-if="options.length > 1" class="option-item resolution" :class="{error: resolution_error}">
+          <div class="option-item resolution" :class="{error: resolution_error}">
             <div class="label">
               <label class="h3">Resolution:</label>
             </div>
@@ -87,13 +87,13 @@
               <label class="text">{{ texture.dimension }}</label>
             </div>
           </div>
-          <div v-if="texture.maps.length > 0" class="option-item">
+          <div  class="option-item">
             <div class="label">
               <label class="h3">Consisting of:</label>
             </div>
             <div class="option">
               <ul class="consisting-list">
-                <li v-for="(item, index) in texture.maps.slice(0, 5)" :key="'consist-' + index" class="text">
+                <li v-for="(item, index) in texture.maps" :key="'consist-' + index" class="text">
                   {{ item }}
                 </li>
               </ul>
@@ -130,10 +130,10 @@
           <div v-if="downloadErrors" style="color: red" class="downloadErrors">
             <h3>{{ downloadErrors }}</h3>
           </div>
-          <button v-show="!processing" class="button-primary nohover" @click="downLoad">
+          <button v-if="!processing" class="button-primary nohover" @click="downLoad">
             Download for {{ texture.credits }} credits
           </button>
-          <button v-show="processing" class="button-primary button-primary--blue">
+          <button v-if="processing" class="button-primary button-primary--blue">
             <img src="@/assets/img/icon-processing-button.svg">
             Processing... Continue Browsing
           </button>
@@ -220,7 +220,7 @@ export default {
         dots: false,
         infinite: false,
         slidesToScroll: 1,
-        slidesToShow: this.texture.gallery.length && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
+        slidesToShow: this.texture.gallery && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
         asNavFor: {},
         focusOnSelect: true
       },
@@ -228,7 +228,7 @@ export default {
         dots: false,
         infinite: false,
         slidesToScroll: 1,
-        slidesToShow: this.texture.gallery.length && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
+        slidesToShow: this.texture.gallery && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
         asNavFor: {},
         focusOnSelect: true
       },

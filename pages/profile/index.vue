@@ -76,9 +76,9 @@
       </div>
     </section>
     <section v-if="countWindow == 3">
-      <div class="imageDetails-footer">
+      <div v-if="textures.length" class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel">
+        <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -99,9 +99,9 @@
         </VueSlickCarousel>
       </div>
 
-      <div class="imageDetails-footer">
+      <div v-if="models.length" class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel">
+        <VueSlickCarousel v-if="models.length" ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -124,8 +124,8 @@
         <div class="circle-small"/>
       </div>
 
-      <div class="imageDetails-footer last">
-        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
+      <div v-if="hdr.length" class="imageDetails-footer last">
+        <SectionTitle v-if="hdr.length" :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
         <VueSlickCarousel ref="sliderNav" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -150,7 +150,7 @@
     <section v-if="countWindow == 5">
       <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -173,7 +173,7 @@
 
       <div class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <VueSlickCarousel v-if="models.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -200,7 +200,7 @@
 
       <div class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <VueSlickCarousel v-if="hdr.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -227,7 +227,7 @@
     <section v-if="countWindow == 1">
       <div class="imageDetails-footer special">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav3" class="default" v-bind="navCarousel3">
+        <VueSlickCarousel v-if="textures.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -250,7 +250,7 @@
 
       <div class="imageDetails-footer special">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav3" class="default" v-bind="navCarousel3">
+        <VueSlickCarousel v-if="models.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -273,9 +273,9 @@
         <div class="circle-small"/>
       </div>
 
-      <div class="imageDetails-footer last2">
+      <div v-if="hdr.length" class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
-        <VueSlickCarousel ref="sliderNav3" class="default" v-bind="navCarousel3">
+        <VueSlickCarousel v-if="hdr.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
