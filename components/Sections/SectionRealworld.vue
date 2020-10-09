@@ -1,5 +1,5 @@
 <template>
-  <section class="realworld">
+  <section class="realworld" style="background-color: #FBFBFF;">
     <div class="container">
       <div class="explore">
         <div class="explore-content">
@@ -21,6 +21,7 @@
         </div>
 
         <div :class="{'opacity_in':!slidesInits}" class="explore-texture">
+          <div class="explore-circle-texture" />
           <div  class="slider-wrapper">
             <VueSlickCarousel @init="slidesInits=true" @beforeChange="beforeChangeSlick" ref="sliderMain" v-bind="sliderMain"
                               class="default zoom-slider">
