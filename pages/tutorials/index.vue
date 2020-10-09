@@ -45,7 +45,7 @@ export default {
             },
             title: item.id + item.name,
             subtitle: item.sub_title,
-            text: item.text,
+            text: item.description,
             link: item.video_url,
             sidebar:{
               isOpened: false,
