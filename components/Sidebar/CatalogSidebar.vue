@@ -1,26 +1,31 @@
 <template>
   <div>
-    <div class="leftsidebar">
-      <Dropdown @input="changeCatalogType" v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" />
+    <div class="leftsidebar" :class="{'leftsidebar--open': openBurger, 'leftsidebar--close': width < 1200}">
+      <div v-if="width < 1200" class="menu-hamburger" :class="{'change': openBurger}" @click="openBurgerMenu()">
+        <div class="bar1" />
+        <div class="bar2" />
+        <div class="bar3" />
+      </div>
+      <Dropdown v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" @input="changeCatalogType" />
 
       <div class="materials-menu">
-        <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_id="activeCategory ? activeCategory.id : null"/>
+        <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_id="activeCategory ? activeCategory.id : null" />
       </div>
 
       <div v-if="getRefines().items.length" class="refine-filter">
-        <RefineFilter :options="getRefines()"/>
+        <RefineFilter :options="getRefines()" />
       </div>
 
       <div v-if="getAreas().length" class="manufacture-filter">
-        <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()"/>
+        <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()" />
       </div>
 
-        <div v-if="getColors()" class="color-filter" ref="colorFilter">
-          <ColorFilter v-if="getColors()" :options="getColors()" />
-        </div>
+      <div v-if="getColors()" ref="colorFilter" class="color-filter">
+        <ColorFilter v-if="getColors()" :options="getColors()" />
+      </div>
 
       <div v-if="canClear">
-        <button @click="clearFilter()" type="reset" class="clearFilter h4">
+        <button type="reset" class="clearFilter h4" @click="clearFilter()">
           Clear all Filters
         </button>
       </div>
@@ -33,8 +38,8 @@ import MaterialMenu from '@/components/Sidebar/MaterialMenu';
 import RefineFilter from '@/components/Sidebar/RefineFilter';
 import ManufactureFilter from '@/components/Sidebar/ManufactureFilter';
 import ColorFilter from '@/components/Sidebar/ColorFilter';
-import FilterClass from "@/classes/filter.class.ts";
-import CategoryClass from "@/classes/category.class.ts";
+import FilterClass from '@/classes/filter.class.ts';
+import CategoryClass from '@/classes/category.class.ts';
 
 export default {
   name: 'CatalogSidebar',
@@ -50,18 +55,42 @@ export default {
       type: Object,
       required: false
     },
-    activeCategory:{
+    activeCategory: {
       type: Object,
-      required: false,
+      required: false
     },
-    canClear:{
+    canClear: {
       type: Boolean,
       required: false,
       default: true
     }
   },
+  data () {
+    return {
+      openBurger: false,
+      width: null
+    };
+  },
+  mounted () {
+    this.$nextTick(function () {
+      this.onResize();
+    });
+    window.addEventListener('resize', this.onResize);
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.onResize);
+  },
   methods: {
-    getTypes() {
+    onResize () {
+      this.innerWidth();
+    },
+    innerWidth () {
+      this.width = window.innerWidth;
+    },
+    openBurgerMenu () {
+      this.openBurger = !this.openBurger;
+    },
+    getTypes () {
       if (this.filter && this.filter.counts) {
         return [
           {
@@ -90,68 +119,68 @@ export default {
       }
       return null;
     },
-    getActiveType(){
+    getActiveType () {
       const types = this.getTypes();
-      if(this.filter && this.filter.catalog_type){
+      if (this.filter && this.filter.catalog_type) {
         return types.filter(item => item.short === this.filter.catalog_type).pop();
       }
-      return  {};
+      return {};
     },
-    getCategories() {
+    getCategories () {
       if (this.filter && this.filter.categories) {
         return this.filter.categories;
       }
     },
-    getBrands() {
+    getBrands () {
       if (this.filter && this.filter.brands) {
         return this.filter.brands;
       }
     },
-    getAreas() {
+    getAreas () {
       if (this.filter && this.filter.areas) {
         return this.filter.areas;
       }
       return [];
     },
-    getRefines() {
-        const data =  {
-          title: 'Refine By',
-          items: [
-          ]
-        };
-        if(this.filter.free){
-          data.items.push(
-              {
-                title: 'Free',
-                link: 'is_free',
-                active: this.$route.query['is_free'] ? this.$route.query['is_free'] : false
-              },
-          )
-        }
+    getRefines () {
+      const data = {
+        title: 'Refine By',
+        items: [
+        ]
+      };
+      if (this.filter.free) {
+        data.items.push(
+          {
+            title: 'Free',
+            link: 'is_free',
+            active: this.$route.query.is_free ? this.$route.query.is_free : false
+          }
+        );
+      }
 
-        if(this.filter.own && this.$auth.loggedIn){
-          data.items.push(
-              {
-                title: 'My Assets',
-                link: 'assets',
-                active: this.$route.query['own'] ? this.$route.query['own'] : false
-              }
-          )
-        }
+      if (this.filter.own && this.$auth.loggedIn) {
+        data.items.push(
+          {
+            title: 'My Assets',
+            link: 'assets',
+            active: this.$route.query.own ? this.$route.query.own : false
+          }
+        );
+      }
 
-        if(this.filter.favs && this.$auth.loggedIn){
-          data.items.push(
-              {
-                title: 'Favourites',
-                link: 'favourites',
-                active: this.$route.query['is_favorites'] ? this.$route.query['is_favorites'] : false
-              }
-          )
-        }
-        return data;
+      if (this.filter.favs && this.$auth.loggedIn) {
+        data.items.push(
+          {
+            title: 'Favourites',
+            link: 'favourites',
+            active: this.$route.query.is_favorites ? this.$route.query.is_favorites : false
+          }
+        );
+      }
+      return data;
     },
 
-    getColors(){
+    getColors () {
       if (this.filter && this.filter.areas) {
         return {
           title: 'Color',
@@ -160,11 +189,11 @@ export default {
       }
       return false;
     },
-    clearFilter(){
-      this.$router.push({path: this.$route.path});
+    clearFilter () {
+      this.$router.push({ path: this.$route.path });
     },
-    changeCatalogType(value){
-      this.$router.replace({path: "/"+value.short, query: this.$route.query});
+    changeCatalogType (value) {
+      this.$router.replace({ path: '/' + value.short, query: this.$route.query });
     }
   }
 
@@ -211,5 +240,36 @@ export default {
       background-color: #f2f3f9;
     }
   }
+}
+
+.menu-hamburger {
+  position: absolute;
+  top: 120px;
+  left: 100%;
+  background-color: #394174;
+  z-index:100;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
 }
 </style>

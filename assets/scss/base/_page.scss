@@ -40,6 +40,8 @@ img {
 
 .page-container {
   display: flex;
+  position: relative;
+  min-height: 700px;
 }
 
 .page-content {
