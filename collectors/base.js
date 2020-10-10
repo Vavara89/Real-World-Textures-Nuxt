@@ -16,6 +16,7 @@ baseCollector.interceptors.response.use((response) => {
 }, error => {
   if (error.response && error.response.status >= 500) {
     try{
+      console.log('Server error');
       $nuxt.$emit('server-error', error);
     }catch (e){
 

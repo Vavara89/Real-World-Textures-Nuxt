@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showErrorsMessage" class="calls">
+  <div class="calls">
     <div class="modal">
       <div class="inner">
         <span @click="close" class="close"></span>
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     close(){
-      this.showErrorsMessage = false;
+      this.$emit('close');
     },
     scrollSwitcher(state) {
       if (state) {
