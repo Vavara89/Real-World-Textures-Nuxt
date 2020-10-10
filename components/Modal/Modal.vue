@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="modal-body">
-        <ManufactorList :list="search()" :set="set" />
+        <ManufactorList @change="change" :list="search()" :set="set" />
       </div>
       <div class="modal-footer" />
     </div>
@@ -76,6 +76,9 @@ export default {
       return this.list.filter((item)=>{
           return this.term ? item.name.indexOf(this.term) > -1 : true;
       });
+    },
+    change(brands){
+      this.$emit('change', brands)
     }
   }
 };

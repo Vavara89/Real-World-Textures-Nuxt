@@ -76,7 +76,7 @@
               <label class="h3">Resolution:</label>
             </div>
             <div class="option">
-              <Dropdown v-model="resolution" :options="options" :checkselect="true" />
+              <Dropdown v-model="resolution" :options="options" :checkselect="true"/>
             </div>
           </div>
           <div class="option-item dimension">
@@ -87,7 +87,7 @@
               <label class="text">{{ texture.dimension }}</label>
             </div>
           </div>
-          <div  class="option-item">
+          <div class="option-item">
             <div class="label">
               <label class="h3">Consisting of:</label>
             </div>
@@ -167,12 +167,12 @@
                 <img :src="item_image.image" :alt="texture.name" class>
               </div>
             </VueSlickCarousel>
-        </div>
-        <!-- Carousel Models end -->
+          </div>
+          <!-- Carousel Models end -->
 
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 <script>
@@ -264,6 +264,21 @@ export default {
 
   methods: {
     close () {
+      if (document.referrer) {
+        const a = document.createElement('a');
+        a.href = document.referrer;
+        const path = a.pathname;
+        let is_catalog = false;
+
+        ['/textures', '/models', '/hdrs'].forEach(item =>{
+          if (path.startsWith(item)){
+            is_catalog = true;
+          }
+        })
+        if (is_catalog) {
+          return this.$router.push({ path });
+        }
+      }
       const path = this.$route.path.replace('product-' + this.texture.slug, '');
       this.$router.push({ path });
     },

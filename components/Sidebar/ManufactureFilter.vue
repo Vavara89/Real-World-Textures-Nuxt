@@ -6,7 +6,7 @@
     <div>
       <DropdownAreas :areas="areas"/>
     </div>
-    <Modal v-model="modalOpen" :option="modalOpt" :list="brands_list" :set="true"/>
+    <Modal @change="setSelected" v-model="modalOpen" :option="modalOpt" :list="brands_list" :set="true"/>
   </div>
 </template>
 <script>
@@ -45,6 +45,25 @@ export default {
     toggleOption (event) {
       this.modalOpen = !this.modalOpen;
     },
+    setSelected(brands) {
+        if(brands.length){
+          this.pushToQuery('brand_id__in', brands.join(','))
+        }else{
+          this.cleanQuery('brand_id__in')
+        }
+    },
+    pushToQuery(key, value) {
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query[key] = value;
+      this.$router.push({path: this.$route.path, query});
+    },
+    cleanQuery(key) {
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query[key] ? delete query[key] : null;
+      this.$router.push({path: this.$route.path, query});
+    }
   }
 };
 </script>
