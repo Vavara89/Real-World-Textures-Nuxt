@@ -3,7 +3,7 @@
     <div class="container">
       <div class="explore">
         <div class="explore-content">
-          <SectionTitle :subtitle="subtitle" :title="title" :isCentered="false"/>
+          <SectionTitle :subtitle="subtitle" :title="title" :is-centered="false" />
           <div class="explore-button-wrap">
             <Button
               link="/textures"
@@ -22,32 +22,39 @@
 
         <div :class="{'opacity_in':!slidesInits}" class="explore-texture">
           <div class="explore-circle-texture" />
-          <div  class="slider-wrapper">
-            <VueSlickCarousel @init="slidesInits=true" @beforeChange="beforeChangeSlick" ref="sliderMain" v-bind="sliderMain"
-                              class="default zoom-slider">
-
+          <div class="slider-wrapper">
+            <VueSlickCarousel
+              ref="sliderMain"
+              v-bind="sliderMain"
+              class="default zoom-slider"
+              @init="slidesInits=true"
+              @beforeChange="beforeChangeSlick"
+            >
               <template v-for="slide in slides">
                 <div class="slide-wrapper">
                   <img class="static" :src="slide.image">
                 </div>
               </template>
             </VueSlickCarousel>
-
           </div>
 
-           <div class="explore-circle" />
+          <div class="explore-circle" />
         </div>
         <div :class="{'opacity_in':!slidesInits}" class="explore-control">
-          <div><a class="explore-control-prev" @click="next()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
+          <div>
+            <a class="explore-control-prev" @click="next()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
           </div>
           <VueSlickCarousel ref="sliderNav" v-bind="sliderNav" class="default zoom-slider-nav zoom-slider-wide">
             <template v-for="(slide, key) in slides">
-              <p class="explore-texture-number">{{ slide.name }}</p>
+              <p class="explore-texture-number">
+                {{ slide.name }}
+              </p>
             </template>
           </VueSlickCarousel>
 
-
-          <p class="explore-texture-title">{{ slideSubTitle }}</p>
+          <p class="explore-texture-title">
+            {{ slideSubTitle }}
+          </p>
           <div class="button-phone">
             <Button
               :link="slideUrl"
@@ -56,7 +63,8 @@
               color=""
             />
           </div>
-          <div><a class="explore-control-next" @click="prev()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
+          <div>
+            <a class="explore-control-next" @click="prev()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
           </div>
         </div>
       </div>
@@ -65,9 +73,9 @@
 </template>
 
 <script>
+import VueSlickCarousel from 'vue-slick-carousel';
 import SectionTitle from '@/components/SectionParts/SectionTitle';
 import Button from '@/components/Button';
-import VueSlickCarousel from 'vue-slick-carousel';
 
 export default {
   name: 'SectionRealworld',
@@ -94,9 +102,9 @@ export default {
         speed: 0,
         useTransform: true,
         useCSS: false,
-        infinite:false,
+        infinite: false
       },
-      sliderNav:{
+      sliderNav: {
         dots: false,
         slidesToScroll: 1,
         slidesToShow: 1,
@@ -106,7 +114,7 @@ export default {
         speed: 0,
         useTransform: true,
         useCSS: false,
-        infinite:false,
+        infinite: false
       },
       slides_html: '',
       subtitle: 'Real World Textures',
@@ -118,19 +126,19 @@ export default {
       texture_next: require('~/assets/img/spheres/sphere-6.png'),
       slickCurrentIndex: 1,
       direction: null,
-      slidesInits: false,
+      slidesInits: false
     };
   },
   computed: {
     slideSubTitle () {
-      return this.slides[this.slickCurrentIndex]['sub_title'];
+      return this.slides[this.slickCurrentIndex].sub_title;
     },
     slideButtonName () {
-      return this.slides[this.slickCurrentIndex]['button_name'];
+      return this.slides[this.slickCurrentIndex].button_name;
     },
     slideUrl () {
-      return this.slides[this.slickCurrentIndex]['button_url'];
-    },
+      return this.slides[this.slickCurrentIndex].button_url;
+    }
 
   },
   methods: {
@@ -155,16 +163,16 @@ export default {
       }
     },
 
-    beforeChangeNav(current, next){
+    beforeChangeNav (current, next) {
       const toOut = document.querySelector(`.slick-slide[data-index='${next}'] .explore-texture-number`);
       const toIn = document.querySelector(`.slick-slide[data-index='${next}'] .explore-texture-number`);
-      toOut.classList.add('zoom-out')
-      toIn.classList.add('zoom-in')
+      toOut.classList.add('zoom-out');
+      toIn.classList.add('zoom-in');
     },
     beforeChangeSlick (current, next) {
       const after_me = document.querySelector(`.slick-slide[data-index='${next + 1}'] .slide-wrapper`);
       const before_me = document.querySelector(`.slick-slide[data-index='${next - 1}'] .slide-wrapper`);
-      document.querySelectorAll('.slick-slide .slide-wrapper').forEach(item => {
+      document.querySelectorAll('.slick-slide .slide-wrapper').forEach((item) => {
         item.classList.remove('opacity_in');
       });
       if (after_me) {
@@ -174,7 +182,7 @@ export default {
         before_me.classList.add('opacity_in');
       }
       this.slickCurrentIndex = next;
-    },
+    }
 
   }
 };
