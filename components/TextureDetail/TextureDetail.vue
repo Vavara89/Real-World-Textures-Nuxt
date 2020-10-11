@@ -29,8 +29,8 @@
             <a :href="texture.tutorialUrl" target="_blank"><label class="badge-play h4">Tutorial</label></a>
           </div>
         </div>
-        <div v-if="texture.gallery" class="imageDetails-footer">
-          <VueSlickCarousel v-if="texture.related" ref="sliderNav" v-bind="navCarousel">
+        <div v-if="texture.gallery.length" class="imageDetails-footer">
+          <VueSlickCarousel v-if="texture.gallery.length" ref="sliderNav" v-bind="navCarousel">
             <template #prevArrow="arrowOption">
               <div class="prev-slick">
                 <a href="#" class="button">
@@ -45,7 +45,7 @@
                 </a>
               </div>
             </template>
-            <div v-for="item_image in texture.related" class="imageItem">
+            <div v-for="item_image in texture.gallery" class="imageItem">
               <img :src="item_image.image" :alt="texture.name" class>
             </div>
           </VueSlickCarousel>
