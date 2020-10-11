@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <nuxt-child :product="product"></nuxt-child>
+    <nuxt-child @closed="closed" :product="product"></nuxt-child>
     <CatalogSidebar :filter="filter" :active-category="activeCategory"/>
     <div class="page-content">
       <ContentHeader :path="path"/>
@@ -100,6 +100,12 @@ export default {
         })
       }
       return data;
+    }
+  },
+  methods:{
+    closed(){
+      document.body.style.overflow = '';
+      this.product = null;
     }
   }
 };

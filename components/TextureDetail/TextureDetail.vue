@@ -29,8 +29,8 @@
             <a :href="texture.tutorialUrl" target="_blank"><label class="badge-play h4">Tutorial</label></a>
           </div>
         </div>
-        <div v-if="texture.gallery" class="imageDetails-footer">
-          <VueSlickCarousel v-if="texture.related" ref="sliderNav" v-bind="navCarousel">
+        <div v-if="texture.gallery.length" class="imageDetails-footer">
+          <VueSlickCarousel v-if="texture.gallery.length" ref="sliderNav" v-bind="navCarousel">
             <template #prevArrow="arrowOption">
               <div class="prev-slick">
                 <a href="#" class="button">
@@ -45,7 +45,7 @@
                 </a>
               </div>
             </template>
-            <div v-for="item_image in texture.related" class="imageItem">
+            <div v-for="item_image in texture.gallery" class="imageItem">
               <img :src="item_image.image" :alt="texture.name" class>
             </div>
           </VueSlickCarousel>
@@ -112,7 +112,7 @@
           </div>
           <div v-if="texture.brand" class="option">
             <label class="brand">{{ texture.brand.name }}</label>
-            <a target="_blank" class="brand-link" :href="texture.brand.webSite">{{ texture.brand.webSite }}</a>
+            <a target="_blank" class="brand-link" :href="formatWebsite(texture.brand.webSite)">{{ texture.brand.webSite }}</a>
           </div>
         </div>
         <div v-if="texture.longitude && texture.latitude" class="description locator">
@@ -241,17 +241,14 @@ export default {
   },
 
   mounted () {
+    document.body.style.overflow = 'hidden';
     this.navCarousel.asNavFor = this.$refs.sliderMain;
     this.sliderRelated.asNavFor = this.$refs.sliderMain;
-
-    if (this.texture) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
   },
 
+
   created () {
+
     this.options.push({
       value: 'Choose resolution'
     });
@@ -264,7 +261,8 @@ export default {
 
   methods: {
     close () {
-      if (document.referrer) {
+      const url = this.texture.slug;
+      if (document.referrer && document.referrer !== document.location.href) {
         const a = document.createElement('a');
         a.href = document.referrer;
         const path = a.pathname;
@@ -279,8 +277,9 @@ export default {
           return this.$router.push({ path });
         }
       }
-      const path = this.$route.path.replace('product-' + this.texture.slug, '');
+      const path = this.$route.path.replace('product-' + url, '');
       this.$router.push({ path });
+      this.$emit('closed');
     },
 
     formatCoords () {
@@ -288,6 +287,12 @@ export default {
     },
     getGoogleLink () {
       return `http://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
+    },
+    formatWebsite(web){
+      if(!web.startsWith('http')){
+        return `http://${web}`;
+      }
+      return web;
     },
     toLogin () {
       this.$router.push({ path: '/login' });
