@@ -16,7 +16,7 @@
 
     .branddetail {
         padding: 0 5rem;
-        margin-top: 10rem;
+        margin-top: 14rem;
         margin-bottom: 1rem;
 
         .all {
@@ -43,6 +43,10 @@
                 margin-bottom: 30px;
               }
 
+              @media only screen and (max-width: 450px) {
+                min-width: auto;
+              }
+
             .top {
                 .toggleOption {
                     margin: 0 -1.7rem;
@@ -53,6 +57,10 @@
                     background-color: $color-primary-700;
                     color: $color-white;
                     text-transform: uppercase;
+
+                    @media only screen and (max-width: 450px) {
+                        margin: 0 auto;
+                      }
                 }
 
                 .flex-row-container {
@@ -106,6 +114,9 @@
                 max-height: 8rem;
                 display: inline-block;
                 vertical-align: middle;
+              }
+              @media only screen and (max-width: 450px) {
+                width: auto;
               }
           }
     }

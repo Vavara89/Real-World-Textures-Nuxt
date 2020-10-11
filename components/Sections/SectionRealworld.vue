@@ -67,6 +67,9 @@
             <a class="explore-control-next" @click="prev()"><img src="@/assets/img/icon-arrow.png" alt=""></a>
           </div>
         </div>
+        <div class="explore-scroll">
+          <div />
+        </div>
       </div>
     </div>
   </section>
