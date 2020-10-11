@@ -61,7 +61,7 @@
 
 .texture {
   margin: 20px;
-  padding: 20px;
+  // padding: 20px;
   @include mq(md, max) {
     // flex: 0 0 22rem;
   }

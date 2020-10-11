@@ -53,7 +53,7 @@
                     <span v-if="formErrors['exp_date'].length">{{ formErrors['exp_date'][0] }}</span>
                   </div>
                 </td>
-                <td style="width: 65px; text-align: right; padding-right: 10px;">
+                <td style="width: 65px; text-align: right; padding-left: 10px; padding-right: 10px;">
                   CVV
                 </td>
                 <td>
@@ -68,7 +68,7 @@
                     :readonly="is_update"
                     :disabled="is_update"
                   >
-                  <div class="errors">
+                  <div v-if="width > 500" class="errors">
                     <span v-if="formErrors['cvc'].length">{{ formErrors['cvc'][0] }}</span>
                   </div>
                 </td>
@@ -115,7 +115,8 @@ export default {
         number: [],
         exp_date: [],
         cvc: []
-      }
+      },
+      width: null
     };
   },
   computed: {
@@ -137,6 +138,15 @@ export default {
       return null;
     }
   },
+  mounted () {
+    this.$nextTick(function () {
+      this.onResize();
+    });
+    window.addEventListener('resize', this.onResize);
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.onResize);
+  },
   created () {
     this.number = this.is_update ? `**** **** **** ${this.last4}` : '';
     this.exp_date = this.is_update ? '22/12' : '';
@@ -147,6 +157,12 @@ export default {
     }
   },
   methods: {
+    onResize () {
+      this.innerWidth();
+    },
+    innerWidth () {
+      this.width = window.innerWidth;
+    },
     scrollSwitcher (state) {
       if (state) {
         document.body.style.overflow = 'hidden';

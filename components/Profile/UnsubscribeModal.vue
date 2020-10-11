@@ -10,6 +10,7 @@
         </form>
         <button type="submit" class="email special">
           Confirm cancle
+          <div class="ar" />
         </button>
       </div>
     </div>
