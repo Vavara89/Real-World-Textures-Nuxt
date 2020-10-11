@@ -2,11 +2,14 @@
   <div class="area">
     <button v-if="brands_list && brands_list.length" class="toggleOption" @click="toggleOption">
       Select a manufacturer
+      <template v-if="getSelectedBrandsCount()">
+        <span>({{getSelectedBrandsCount()}})</span>
+      </template>
     </button>
     <div>
       <DropdownAreas :areas="areas"/>
     </div>
-    <Modal v-model="modalOpen" :option="modalOpt" :list="brands_list" :set="true"/>
+    <Modal @change="setSelected" v-model="modalOpen" :option="modalOpt" :list="brands_list" :set="true"/>
   </div>
 </template>
 <script>
@@ -42,9 +45,35 @@ export default {
   },
 
   methods: {
+    getSelectedBrandsCount(){
+      const q = this.$route.query;
+      if(q['brand_id__in']){
+        return q['brand_id__in'].split(',').length;
+      }
+      return false;
+    },
     toggleOption (event) {
       this.modalOpen = !this.modalOpen;
     },
+    setSelected(brands) {
+        if(brands.length){
+          this.pushToQuery('brand_id__in', brands.join(','))
+        }else{
+          this.cleanQuery('brand_id__in')
+        }
+    },
+    pushToQuery(key, value) {
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query[key] = value;
+      this.$router.push({path: this.$route.path, query});
+    },
+    cleanQuery(key) {
+      const query = {};
+      Object.assign(query, this.$route.query);
+      query[key] ? delete query[key] : null;
+      this.$router.push({path: this.$route.path, query});
+    }
   }
 };
 </script>

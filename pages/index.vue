@@ -97,7 +97,6 @@ export default {
       await main.main_feed().then(response => {
         top_slider = response.data.top_slider;
         examples_slider = response.data.examples_slider;
-        console.log(examples_slider);
       });
 
       return {

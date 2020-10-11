@@ -210,8 +210,7 @@ export default {
     counts: {
       get () {
         if (this.bookmarked === null) {
-          this.bookmarked = this.user.profile.bookmarks_hdr.length + this.user.profile.bookmarks_models.length +
-            this.user.profile.bookmarks_textures.length;
+          this.bookmarked = this.user.profile.total_bookmarked;
         }
         return this.bookmarked;
       },

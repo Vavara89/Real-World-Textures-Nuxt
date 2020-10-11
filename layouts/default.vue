@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <server-error :status="serverMessageStatus" :message="serverMessageError" :show-errors-message="showErrorsMessage" />
+    <server-error v-if="showErrorsMessage" @close="closeError" :status="serverMessageStatus" :message="serverMessageError"  />
     <Header />
     <nuxt />
     <Footer v-if="$route.name !== 'login' && $route.name !== 'signup'" />
@@ -34,6 +34,12 @@ export default {
         this.showErrorsMessage = true;
       }
     });
+  },
+  methods:{
+    closeError(){
+      this.showErrorsMessage = false;
+      document.body.style.overflowY = "auto";
+    }
   },
   head: {
     bodyAttrs: {
