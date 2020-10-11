@@ -9,7 +9,7 @@
       <Dropdown v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" @input="changeCatalogType" />
 
       <div class="materials-menu">
-        <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_id="activeCategory ? activeCategory.id : null" />
+        <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_category="activeCategory" />
       </div>
 
       <div v-if="getRefines().items.length" class="refine-filter">
@@ -163,7 +163,7 @@ export default {
           {
             title: 'My Assets',
             link: 'assets',
-            active: this.$route.query.own ? this.$route.query.own : false
+            active: this.$route.query.assets ? this.$route.query.assets : false
           }
         );
       }
@@ -173,7 +173,7 @@ export default {
           {
             title: 'Favourites',
             link: 'favourites',
-            active: this.$route.query.is_favorites ? this.$route.query.is_favorites : false
+            active: this.$route.query.favourites ? this.$route.query.favourites : false
           }
         );
       }

@@ -2,6 +2,9 @@
   <div class="area">
     <button v-if="brands_list && brands_list.length" class="toggleOption" @click="toggleOption">
       Select a manufacturer
+      <template v-if="getSelectedBrandsCount()">
+        <span>({{getSelectedBrandsCount()}})</span>
+      </template>
     </button>
     <div>
       <DropdownAreas :areas="areas"/>
@@ -42,6 +45,13 @@ export default {
   },
 
   methods: {
+    getSelectedBrandsCount(){
+      const q = this.$route.query;
+      if(q['brand_id__in']){
+        return q['brand_id__in'].split(',').length;
+      }
+      return false;
+    },
     toggleOption (event) {
       this.modalOpen = !this.modalOpen;
     },
