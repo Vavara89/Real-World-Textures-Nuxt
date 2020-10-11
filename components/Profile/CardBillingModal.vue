@@ -1,8 +1,8 @@
 <template>
   <div v-if="opened">
     <div class="modal is-address is-background centered-window">
+              <span class="close" @click="toggleMessage()"/>
       <div class="inner address">
-        <span class="close" @click="toggleMessage()"/>
         <h2>Edit Your Billing address</h2>
         <div class="success-holder-center">
           <Success :success="saved" :title="'Address successfully saved'"></Success>

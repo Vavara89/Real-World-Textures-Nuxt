@@ -33,13 +33,19 @@
   overflow: auto;
   cursor: auto;
 
-
   &.card {
     height: 625px;
 
     @media only screen and (max-height: 500px) {
       justify-content: start;
-      padding-bottom: 100px;
+      align-items: flex-start;
+      top: 0 !important;
+      transform: translateY(0) !important;
+      min-height: auto !important;
+    }
+
+    @media only screen and (max-width: 700px) {
+      padding-top: 0px;
     }
   }
 
@@ -53,12 +59,52 @@
     @media only screen and (max-height: 700px) {
       justify-content: start;
       align-items: flex-start;
+      top: 0 !important;
+      transform: translateY(0) !important;
+      min-height: auto !important;
+    }
+
+    @media only screen and (max-width: 700px) {
+     padding-top: 170px;
     }
   }
 
 
   @media only screen and (max-width: 320px) {
     min-width: 320px;
+  }
+
+  &.tutorial .inner {
+    position: fixed;
+    top: 0;
+
+    iframe {
+      margin: 20px 0;
+    }
+
+    @media only screen and (max-width: 700px) {
+      padding-top: 80px;
+    }
+  }
+
+  .close {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+    background-color: #fbfbff;
+    border-radius: 30px;
+    background-image: url(~@/assets/img/closebutton.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 36px 36px;
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: #F2F3F9;
+    }
   }
 
   .inner {
@@ -71,13 +117,16 @@
     table {
       max-width: 600px;
       display: block;
-      margin: 90px auto 0 auto;
+      margin: 60px auto 0 auto;
     }
 
     tr td:first-child {
       width: 240px;
       color: #394174;
 
+      @media only screen and (max-width: 468px) {
+        width: 150px;
+      }
     }
 
     &.is-card {
@@ -118,11 +167,15 @@
         }
 
         input {
-          min-width: 357px;
+          min-width: 100%;
 
           &.small {
             width: 145px;
             min-width: auto;
+
+            @media only screen and (max-width: 480px) {
+              width: 100px;
+            }
 
             &::placeholder {
               color: #9093B9;
@@ -160,26 +213,6 @@
       font-weight: 500;
     }
 
-    .close {
-      width: 36px;
-      height: 36px;
-      position: absolute;
-      right: 40px;
-      top: 40px;
-      cursor: pointer;
-      background-color: #fbfbff;
-      border-radius: 30px;
-      background-image: url(~@/assets/img/closebutton.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 36px 36px;
-      transition: 0.3s ease;
-
-      &:hover {
-        background-color: #F2F3F9;
-      }
-    }
-
     .isrecovery {
       .errors {
         margin: 0;
@@ -205,7 +238,6 @@
       }
 
       @media only screen and (max-width: 468px) {
-        width: calc(100% - 60px);
         min-width: auto;
         margin: 0 auto;
         float: none;
@@ -283,7 +315,7 @@
 
       @media only screen and (max-width: 468px) {
         width: 100%;
-        min-width: 270px;
+        min-width: auto;
         margin-left: 0;
       }
     }
@@ -339,7 +371,7 @@
         overflow: hidden;
 
         @include mq(md, max) {
-          pointer-events: none;
+          width: auto;
         }
       }
 
@@ -411,6 +443,14 @@
           left: 160px;
           top: 50%;
           transform: translate(0, -50%);
+
+          @include mq(md, max) {
+            left: 15px;
+          }
+        }
+
+        @include mq(md, max) {
+          width: auto;
         }
       }
     }

@@ -8,12 +8,14 @@
           :is-centered="true"
           :is-inverted="true"
         />
+        <div class="offer__button">
         <Button
           :link="button.link"
           :text="button.text"
           type="primary"
           color="green"
         />
+        </div>
       </div>
     </div>
   </section>

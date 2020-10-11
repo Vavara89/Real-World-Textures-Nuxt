@@ -60,17 +60,17 @@
                     <span class="topas">Subscription Credits</span>
                   </div>
                   <button class="toggleOption2 bot">
-                    <a href="#" class="" @click="openUnsubscribe()"> buy more credits</a>
+                    <a href="#" class=""> buy more credits</a>
                   </button>
                 </div>
                 <div class="credit">
                   <p>Hobby Monthly</p>
                   <p>Credits renew on 20/09/2020</p>
-                  <!--                  <div class="logout">-->
-                  <!--                    <nuxt-link to="/">-->
-                  <!--                      Cancel Subscription-->
-                  <!--                    </nuxt-link>-->
-                  <!--                  </div>-->
+                  <div class="logout">
+                    <a @click="openUnsubscribe()">
+                      Cancel Subscription
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

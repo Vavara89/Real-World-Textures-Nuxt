@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="leftsidebar" :class="{'leftsidebar--open': openBurger, 'leftsidebar--close': width < 1200}">
-      <div v-if="width < 1200" class="menu-hamburger" :class="{'change': openBurger}" @click="openBurgerMenu()">
-        <div class="bar1" />
-        <div class="bar2" />
-        <div class="bar3" />
+    <div class="leftsidebar" :class="{'leftsidebar--open': openBurger, 'leftsidebar--close': width < 1200, 'leftsidebar--default': width > 1200}">
+      <div v-if="width < 1200" class="nav-icon3" :class="{'open': openBurger}" @click="openBurgerMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
       </div>
       <Dropdown v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" @input="changeCatalogType" />
 
@@ -271,5 +271,85 @@ export default {
 .change .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
+}
+
+
+.nav-icon3 {
+  position: absolute;
+  top: 120px;
+  left: 100%;
+  background-color: #394174;
+  z-index:100;
+  width: 60px;
+  height: 60px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+
+.nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 40px;
+  background: #fff;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.nav-icon3 span:nth-child(1) {
+  top: 15px;
+  left: 10px;
+}
+
+.nav-icon3 span:nth-child(2) {
+  top: 27px;
+    left: 10px;
+}
+
+.nav-icon3 span:nth-child(3) {
+    top: 39px;
+    left: 10px;
+}
+
+.nav-icon3 span:nth-child(4) {
+  top: 36px;
+  left: 10px;
+}
+
+.nav-icon3.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+.nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 27px;
+  left: 10px;
+}
+
+.nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 27px;
+  left: 10px;
+}
+
+.nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
 }
 </style>
