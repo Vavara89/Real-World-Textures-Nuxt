@@ -36,7 +36,7 @@
           <div class="wrappers">
             <div v-for="partner in partners" class="boxes">
               <a :href="partner.link">
-                <img :width="'100px'" :height="'50px'" :src="partner.image.url" :alt="partner.image.alt">
+                <img :src="partner.image.url" :alt="partner.image.alt">
               </a>
             </div>
           </div>

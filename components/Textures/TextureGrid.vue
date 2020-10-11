@@ -1,6 +1,7 @@
 <template>
   <div>
     <ul class="textures" :class="{'mainpage': mainpage}">
+      <div :class="{'textures--center': mainpage}">
       <li class="texture" v-for="(texture, index) in textures" :key="'texture-' + index">
         <Texture v-if="!texture.url" :texture="texture" :shadow="shadow"/>
         <nuxt-link v-if="texture.url" :to="texture.url">
@@ -8,6 +9,7 @@
         </nuxt-link>
 
       </li>
+            </div>
       <div class="clear"></div>
     </ul>
   </div>

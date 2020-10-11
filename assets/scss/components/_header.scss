@@ -503,6 +503,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  position: relative;
+  z-index: 10;
 
   @media only screen and (max-width: 950px) {
     overflow: hidden;

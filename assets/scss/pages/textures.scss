@@ -1,6 +1,10 @@
 .page-content {
     background-color: $color-bck-light;
 
+    &.page-content-branddetail {
+        padding-bottom: 10rem;
+    }
+
     .services {
         padding: 0;
 
@@ -12,7 +16,7 @@
     .branddetail {
         padding: 0 5rem;
         margin-top: 10rem;
-        margin-bottom: 15rem;
+        margin-bottom: 1rem;
 
         .all {
             display: flex;

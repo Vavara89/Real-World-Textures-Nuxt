@@ -9,6 +9,14 @@
   // TODO
 
   &.mainpage {
+
+    .textures--center {
+      text-align: center;
+      display:flex;
+      justify-content:center;
+      padding-bottom: 2rem;
+    }
+
     .texture {
       margin: 0;
       padding: 0;
@@ -99,13 +107,6 @@
 
   &__image {
     position: relative;
-    //padding-bottom: 2.4rem;
-
-    &.noscale {
-      img {
-        border-radius: 35px;
-      }
-    }
 
     &.brands {
     line-height: 10.4rem;
@@ -189,24 +190,21 @@
         position: absolute;
         right: 0;
         bottom: 0;
-        left: 0;
+        left: 50%;
         display: block;
         width: 180px;
         height: .32rem;
-        margin: 0 0 0 35px;
         content: "";
         border-radius: 50%;
         background-color: rgba($color-primary-900, .2);
+        transform: translateX(-50%);
 
-         @media only screen and (max-width: 1600px) {
-  
-          
-          width: 75%;
-          margin: 0 auto;
-        
-      }
         filter: blur(.4rem);
         @include transition-base;
+
+        @media only screen and (max-width: 1600px) {
+          width: 75%; 
+      }
       }
 
       // &:hover {

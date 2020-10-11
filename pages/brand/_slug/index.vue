@@ -1,9 +1,9 @@
 <template>
   <div class="page-container">
-    <CatalogSidebar :filter="filter" :canClear="false"/>
+    <CatalogSidebar :filter="filter" :can-clear="false" />
 
-    <div class="page-content">
-      <ContentHeader :path="path"/>
+    <div class="page-content page-content-branddetail">
+      <ContentHeader :path="path" />
 
       <section class="branddetail">
         <SectionTitle :title="brand.name" :subtitle="''" />
@@ -13,11 +13,13 @@
             <div class="blue-column">
               <div class="top">
                 <div class="flex-row-container">
-                  <div class="flex-row-item links" v-bind:style="{ fontSize: 11 + 'px' }">
+                  <div v-if="brand.categories.length" class="flex-row-item links" :style="{ fontSize: 11 + 'px' }">
                     <h4>
-                      <template v-if="brand.categories.length" v-for="(val,index) of brand.categories">
-                          <nuxt-link :to="val.absoluteUrl" > {{ val.name }} </nuxt-link>
-                          <span v-if="index !== (brand.categories.length - 1)"> | </span>
+                      <template v-for="(val,index) of brand.categories" v-if="brand.categories.length">
+                        <nuxt-link :to="val.absoluteUrl">
+                          {{ val.name }}
+                        </nuxt-link>
+                        <span v-if="index !== (brand.categories.length - 1)"> | </span>
                       </template>
                     </h4>
                   </div>
@@ -27,11 +29,11 @@
                       :text="brand.webSite"
                       type="secondary"
                       color=""
-                      v-bind:style="{ margin: 0, fontSize: 11 + 'px' }"
+                      :style="{ margin: 0, fontSize: 11 + 'px' }"
                     />
                   </div>
                   <div class="flex-row-item buys">
-                    <button  class="toggleOption" @click="openDistributors">
+                    <button class="toggleOption" @click="openDistributors">
                       Where to buy
                     </button>
                   </div>
@@ -40,7 +42,6 @@
               <p class="text">
                 {{ brand.description }}
               </p>
-
             </div>
           </div>
           <div class="column">
@@ -79,24 +80,24 @@ export default {
     Button,
     CatalogSidebar
   },
-  async asyncData(context) {
+  async asyncData (context) {
     let brand = [];
     let filter = null;
     let products = null;
     let distributors = null;
 
-    await catalog.loadBrand(context.route, 'brands', context.route.params.slug).then(data => {
+    await catalog.loadBrand(context.route, 'brands', context.route.params.slug).then((data) => {
       filter = data[0];
       brand = data[1];
       products = data[2];
       distributors = data[3];
     });
     return {
-      brand: brand,
-      filter: filter,
-      products: products,
-      distributors: distributors
-    }
+      brand,
+      filter,
+      products,
+      distributors
+    };
   },
   data () {
     return {
@@ -107,20 +108,20 @@ export default {
       modalOpen: false
     };
   },
-  computed:{
-    path(){
-      let data = [
-        {name: 'Brands', url: '/brands'}
+  computed: {
+    path () {
+      const data = [
+        { name: 'Brands', url: '/brands' }
       ];
       data.push({
         name: this.brand.name,
-        url: this.brand.absoluteUrl,
-      })
+        url: this.brand.absoluteUrl
+      });
       return data;
     }
   },
-  methods:{
-    openDistributors(){
+  methods: {
+    openDistributors () {
       this.modalOpen = true;
     }
   }

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="leftsidebar" :class="{'leftsidebar--open': openBurger, 'leftsidebar--close': width < 1200, 'leftsidebar--default': width > 1200}">
+    <div v-if="width" class="leftsidebar" :class="{'leftsidebar--open': openBurger, 'leftsidebar--close': width < 1200, 'leftsidebar--default': width > 1200}">
       <div v-if="width < 1200" class="nav-icon3" :class="{'open': openBurger}" @click="openBurgerMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
       <Dropdown v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" @input="changeCatalogType" />
 

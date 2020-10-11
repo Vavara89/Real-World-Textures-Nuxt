@@ -9,6 +9,10 @@
   .logos {
     margin-top: 12rem;
 
+    img {
+      filter: grayscale(100%);
+    }
+
     @include mq(md, max) {
       margin-top: 6.4rem;
     }
