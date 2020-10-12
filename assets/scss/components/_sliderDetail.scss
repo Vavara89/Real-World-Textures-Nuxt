@@ -1,36 +1,64 @@
-.sliderDatail {
-    width: 51rem;
-    height: 51rem;
-    position: absolute;
-    top: 0;
-    background-color: blue;
+.sliderDetail {
+  width: 51rem;
+  height: 51rem;
+  position: absolute;
+  top: 0;
+  background-color: blue;
 }
 
+<<<<<<< HEAD
 .imageItem .sliderDatail {
     overflow: hidden;
     height: 0;
     opacity: 0;
     z-index: 10;
     transition: all .3s ease-in-out;
+=======
+.imageItem .sliderDetail {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: all .3s ease-in-out;
+>>>>>>> af970411c003fb3b9a5ae6e61de1e2d763e68187
 }
 
-.imageItem:hover > .sliderDatail {
-    height: auto;
-    opacity: 1;
-    transition-delay: .1s;
-    transition: all .3s ease-in-out;
-  
-  
-    .sliderDatailContent {
-      animation: 1s delay-overflow;
-      transform: translate(0, 0);
+.imageItem:hover > .sliderDetail {
+  height: auto;
+  opacity: 1;
+  transition-delay: .1s;
+  transition: all .3s ease-in-out;
+
+
+  .sliderDetailContent {
+    animation: 1s delay-overflow;
+    transform: translate(0, 0);
+    width: 40rem;
+    height: 40rem;
+
+    img {
       width: 40rem;
       height: 40rem;
-  
-      img {
-        width: 40rem;
-        height: 40rem;
-      }
-  
     }
+
   }
+}
+
+.slider.opacity_in{
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.slide-example{
+  width: 300px;
+  height: 300px;
+  &.green{
+    background: green;
+  }
+  &.white{
+    background: white;
+  }
+  &.red{
+    background: red;
+  }
+}

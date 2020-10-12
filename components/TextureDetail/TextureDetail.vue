@@ -234,7 +234,7 @@ export default {
       },
       options: [],
       processing: false,
-      resolution: null,
+      resolution: [],
       resolution_error: false,
       downloadErrors: false
     };
@@ -254,7 +254,9 @@ export default {
     });
     if (this.texture.resolutions) {
       this.texture.resolutions.map((item) => {
-        this.options.push({ value: `${item.size}x${item.size} (${item.name})` });
+        const label = `${item.size}x${item.size} (${item.name})`;
+        this.options.push({ value: label });
+        item['label'] = label;
       });
     }
   },
@@ -301,17 +303,15 @@ export default {
       if (!this.$auth.loggedIn) {
         this.toLogin();
       }
-      if (!this.resolution) {
+      if (!this.resolution.length) {
         this.resolution_error = true;
         return;
       }
-      const resolution = this.texture.resolutions.filter((item) => {
-        const value = { value: `${item.size}x${item.size} (${item.name})` };
-        return value.value === this.resolution.value;
-      }).pop();
+      const resolutions = this.texture.resolutions.filter((item) => {
+        return this.resolution.indexOf(item.label) >= 0;
+      }).map((item)=>{return item.resolution});
       this.processing = true;
-
-      catalog.download(this.type_code, this.texture.id, resolution.name).then((response) => {
+      catalog.download(this.type_code, this.texture.id, {'resolutions':resolutions}).then((response) => {
         let interval;
         const data = response.data;
         if (data.download_link) {
@@ -319,7 +319,7 @@ export default {
           this.processing = false;
         } else {
           interval = setInterval(() => {
-            catalog.download(this.type_code, this.texture.id, resolution.name).then((response) => {
+            catalog.download(this.type_code, this.texture.id, {'resolutions':resolutions}).then((response) => {
               const data = response.data;
               if (data.download_link) {
                 window.location.href = data.download_link;
@@ -327,7 +327,7 @@ export default {
                 this.processing = false;
               }
             });
-          }, 15000);
+          }, 3000);
         }
       }).catch((error) => {
         this.downloadErrors = error.response.data.errors;

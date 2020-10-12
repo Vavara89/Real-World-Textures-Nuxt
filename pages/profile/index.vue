@@ -167,7 +167,7 @@
           </template>
           <div v-for="item in textures" class="imageItem">
             <img :src="item.cover" :alt="item.name">
-            <CardSliderDetail />
+            <CardSliderDetail :id="item.id" :hovered="true"/>
           </div>
         </VueSlickCarousel>
       </div>
