@@ -1,14 +1,29 @@
 <template>
   <div class="sliderDetail">
     <div class="sliderDetailContent">
-      Tool tip
       <div v-if="hovered" :data-slider-selector="'slider-'+id" class="slider opacity_in">
-        <VueSlickCarousel @init="init" v-bind="sliderMain" ref="sliderMain" class="default">
-          <div class="slide-example red"></div>
-          <div class="slide-example green"></div>
-          <div class="slide-example white"></div>
+        <VueSlickCarousel ref="sliderMain" v-bind="sliderMain" class="default" @init="init">
+          <div class="slide-example red" />
+          <div class="slide-example green" />
+          <div class="slide-example white" />
         </VueSlickCarousel>
-
+      </div>
+      <div class="sliderDetailContent-footer">
+        <div class="title">
+          <h3 class="name">
+            Name
+          </h3>
+        </div>
+        <div class="credits-bookmark">
+          <div class="credits">
+            <h4 class="text">
+              credits
+            </h4>
+          </div>
+          <div class="bookmark">
+            <img width="50" src="@/assets/img/icon-bookmark-3.svg">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,16 +47,6 @@ export default {
       required: false
     }
   },
-  methods: {
-    init () {
-      setTimeout(()=>{
-        const slider = document.querySelector(`[data-slider-selector="slider-${this.id}"]`);
-        slider.classList.remove('opacity_in');
-
-      }, 1000);
-
-    }
-  },
   data () {
     return {
       sliderMain: {
@@ -49,9 +54,17 @@ export default {
         infinite: false,
         centerMode: false,
         variableWidth: false,
-        slidesToScroll: 1,
-      },
+        slidesToScroll: 1
+      }
     };
+  },
+  methods: {
+    init () {
+      setTimeout(() => {
+        const slider = document.querySelector(`[data-slider-selector="slider-${this.id}"]`);
+        slider.classList.remove('opacity_in');
+      }, 1000);
+    }
   }
 };
 </script>
