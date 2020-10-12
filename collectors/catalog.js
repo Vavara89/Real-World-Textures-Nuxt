@@ -47,9 +47,9 @@ export default {
       .get(`${resource}/${type}/${slug}`);
   },
 
-  async download(type, id, resolution){
+  async download(type, id, data){
     return await this.getCollector()
-      .post(`${resource}/${type}/download/${id}-${resolution}`);
+      .post(`${resource}/${type}/download/${id}`, data);
   },
   async distributors(slug){
     return await this.getCollector()

@@ -31,7 +31,7 @@
           v-for="(item, index) in options"
           :key="'item-' + index"
           class="item"
-          @click="selected=item; checkselect ? open=true : open=false; $emit('input', item); checkselect ? clickCheck(selected.value, item.value) : {}"
+          @click="click(item)"
         >
           <div v-if="item.value !== 'Choose resolution' && checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck"></div>
           <span v-if="item.value !== 'Choose resolution'">{{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span></span>
@@ -87,6 +87,15 @@ export default {
       } else {
         this.isselected.push(sel);
       }
+    },
+    click(item){
+      this.open = this.checkselect;
+      this.selected=item;
+      if(this.checkselect){
+        this.clickCheck(this.selected.value, item.value)
+      }
+      const data = this.checkselect ? this.isselected : item;
+      this.$emit('input', data)
     }
   }
 };
