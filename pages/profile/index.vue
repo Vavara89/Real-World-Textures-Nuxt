@@ -148,7 +148,7 @@
       </div>
     </section>
     <section v-if="countWindow == 5">
-      <div class="imageDetails-footer">
+      <div class="imageDetails-footer imageDetails--profile">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
         <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -167,6 +167,7 @@
           </template>
           <div v-for="item in textures" class="imageItem">
             <img :src="item.cover" :alt="item.name">
+            <CardSliderDetail />
           </div>
         </VueSlickCarousel>
       </div>
@@ -216,7 +217,6 @@
             </div>
           </template>
           <div v-for="item in hdr" class="imageItem">
-            <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" :isBrand="isBrand" />
             <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
@@ -310,6 +310,7 @@ import CardGrid from '@/components/Cards/CardGrid';
 import SectionSubscribe from '@/components/Sections/SectionSubscribe';
 import Button from '@/components/Button';
 import TooltipItem from '@/components/Textures/TooltipItem';
+import CardSliderDetail from '@/components/CardSliderDetail/CardSliderDetail';
 
 import CardSidebar from '@/components/Cards/CardSidebar';
 
@@ -328,7 +329,8 @@ export default {
     Button,
     VueSlickCarousel,
     CardSidebar,
-    TooltipItem
+    TooltipItem,
+    CardSliderDetail,
   },
   async asyncData (ctx) {
     let partners = [];

@@ -101,6 +101,13 @@
       position: relative;
       padding: 20rem 6.4rem;
 
+      &.imageDetails--profile {
+
+          .slick-list {
+            height: 40.2rem;
+          }
+        }
+
       @media (max-width: 1350px) {
         //width: 170px;
         padding: 15rem 6.4rem;
