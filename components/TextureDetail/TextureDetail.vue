@@ -94,7 +94,7 @@
             <div class="option">
               <ul class="consisting-list">
                 <li v-for="(item, index) in texture.maps" :key="'consist-' + index" class="text">
-                  {{ item }}
+                  {{ get_map_name(item) }}
                 </li>
               </ul>
             </div>
@@ -240,7 +240,24 @@ export default {
       resolution: [],
       resolution_error: false,
       downloadErrors: false,
-      processing: false
+      processing: false,
+      map_titles: {
+        AO: 'Ambient occlusion',
+        NRM: 'Normal map',
+        DISP: 'Displacement',
+        DIFF: 'Diffuse',
+        COL: 'Color',
+        REFL: 'Reflection',
+        GLOSS:'Glosiness',
+        ROUGH: 'Roughness',
+        METAL: 'Metallic',
+        SPEC: 'Specular',
+        SPECLVL: 'Specular level',
+        IOR:'IOR',
+        SSS: 'Subsurface scattering',
+        SSSABSORB: 'SSS absorbtion'
+
+      }
     };
   },
 
@@ -250,22 +267,21 @@ export default {
     this.navCarousel.asNavFor = this.$refs.sliderMain;
     this.sliderRelated.asNavFor = this.$refs.sliderMain;
     const downloads = this.$store.getters.checkDownload;
-    console.log(downloads);
     if (downloads.length) {
       this.setProcess(downloads);
       const resolutions = this.downloadingResolutions(downloads);
-      if(resolutions.length){
+      if (resolutions.length) {
         this.recursiveDownload(resolutions);
       }
     } else {
-      if(this.$auth.user && this.$auth.user.user){
+      if (this.$auth.user && this.$auth.user.user) {
         users.setToken(this.$auth.user.user.token);
         users.downloading_states().then(response => {
           if (response.data.length) {
             this.setProcess(response.data);
             const resolutions = this.downloadingResolutions(response.data);
             console.log(resolutions);
-            if(resolutions.length){
+            if (resolutions.length) {
               this.recursiveDownload(resolutions);
             }
           }
@@ -395,6 +411,13 @@ export default {
         this.texture.isBookmarked = !response.data.deleted;
         this.$store.commit('setBookmarks', response.data.totals);
       });
+    },
+
+    get_map_name (item) {
+      if (this.map_titles[item]) {
+        return this.map_titles[item];
+      }
+      return item;
     }
 
   }

@@ -3,7 +3,9 @@
     <div class="sliderDetailContent">
       <div v-if="hovered" :data-slider-selector="'slider-'+id" class="slider opacity_in">
         <VueSlickCarousel v-if="texture.gallery.length" ref="sliderMain" v-bind="sliderMain" class="default" @init="init">
-          <img v-for="gallery in texture.gallery" :src="gallery.cover" alt="">
+          <div v-for="gallery in texture.gallery" class="slide">
+            <img :src="gallery.image" alt="">
+          </div>
         </VueSlickCarousel>
       </div>
       <div class="sliderDetailContent-footer">
@@ -15,7 +17,7 @@
         <div class="credits-bookmark">
           <div class="credits">
             <h4 class="text">
-              {{texture.credits}}
+              {{texture.credits}} credits
             </h4>
           </div>
           <div v-if="texture.is_bookmarked" class="bookmark">

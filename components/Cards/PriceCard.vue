@@ -47,7 +47,7 @@ export default {
       if(!this.user){
         this.$router.replace('/login')
       }else{
-        this.$router.replace('/profile/payment?payment=true')
+        this.$router.replace('/profile/dashboard?payment=true')
       }
     }
   },

@@ -44,16 +44,9 @@
   transition: opacity 2s;
 }
 
-.slide-example{
-  width: 100px;
-  height: 390px;
-  &.green{
-    background: #D3D3D3;
-  }
-  &.white{
-    background: #C0C0C0;
-  }
-  &.red{
-    background: #A9A9A9;
+.slide{
+  text-align: center;
+  img{
+    margin: 0 auto;
   }
 }

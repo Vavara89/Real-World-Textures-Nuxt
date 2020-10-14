@@ -13,7 +13,7 @@
             <div class="blue-column">
               <div class="top">
                 <div class="flex-row-container">
-                  <div v-if="brand.categories.length" class="flex-row-item links" :style="{ fontSize: 11 + 'px' }">
+                  <div v-if="brand.categories.length > 0" class="flex-row-item links" :style="{ fontSize: 11 + 'px' }">
                     <h4>
                       <template v-for="(val,index) of brand.categories" v-if="brand.categories.length">
                         <nuxt-link :to="val.absoluteUrl">
@@ -32,7 +32,7 @@
                       :style="{ margin: 0, fontSize: 11 + 'px' }"
                     />
                   </div>
-                  <div class="flex-row-item buys">
+                  <div v-if="brand.count_where_buy > 0" class="flex-row-item buys">
                     <button class="toggleOption" @click="openDistributors">
                       Where to buy
                     </button>

@@ -100,6 +100,7 @@
 .imageDetails-footer {
       position: relative;
       padding: 20rem 6.4rem;
+      z-index: 2001;
 
       &.imageDetails--profile {
 
@@ -362,7 +363,7 @@
       padding-bottom: 40px;
       line-height: 150%;
     }
-  
+
 
     h3 {
       font-size: 14px;
@@ -382,7 +383,7 @@
         top: 2.2rem;
         left: 3.2rem;
       }
-      
+
     input {
       width: 560px;
       height: 64px;
@@ -658,7 +659,7 @@
       margin-left: 0;
       width: 100%;
  }
-   
+
     }
 
 
@@ -2113,7 +2114,7 @@ table tr:nth-child(even) td{
         top: 2.2rem;
         left: 3.2rem;
       }
-      
+
     input {
       width: 560px;
       height: 64px;
@@ -2349,7 +2350,7 @@ table tr:nth-child(even) td{
       margin-left: 0;
       width: 100%;
  }
-   
+
     }
 
 
