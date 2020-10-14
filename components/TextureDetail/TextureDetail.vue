@@ -112,7 +112,9 @@
           </div>
           <div v-if="texture.brand" class="option">
             <label class="brand">{{ texture.brand.name }}</label>
-            <a target="_blank" class="brand-link" :href="formatWebsite(texture.brand.webSite)">{{ texture.brand.webSite }}</a>
+            <a target="_blank" class="brand-link" :href="formatWebsite(texture.brand.webSite)">{{
+                texture.brand.webSite
+              }}</a>
           </div>
         </div>
         <div v-if="texture.longitude && texture.latitude" class="description locator">
@@ -134,7 +136,7 @@
             Download for {{ texture.credits }} credits
           </button>
           <button v-if="processing" class="button-primary button-primary--blue">
-            <img src="@/assets/img/icon-processing-button.svg">
+            <img class="rotate" src="@/assets/img/icon-processing-button.svg">
             Processing... Continue Browsing
           </button>
         </div>
@@ -183,6 +185,7 @@ import formatcoords from 'formatcoords';
 import Dropdown from '@/components/Sidebar/Dropdown';
 import profile from '@/collectors/profile';
 import catalog from '@/collectors/catalog';
+import users from '@/collectors/users';
 
 export default {
   name: 'TextureDetail',
@@ -203,7 +206,8 @@ export default {
     type_code: {
       type: String,
       required: true
-    }
+    },
+
   },
 
   data () {
@@ -233,21 +237,51 @@ export default {
         focusOnSelect: true
       },
       options: [],
-      processing: false,
       resolution: [],
       resolution_error: false,
-      downloadErrors: false
+      downloadErrors: false,
+      processing: false
     };
   },
 
   mounted () {
+    console.log('mounted');
     document.body.style.overflow = 'hidden';
     this.navCarousel.asNavFor = this.$refs.sliderMain;
     this.sliderRelated.asNavFor = this.$refs.sliderMain;
+    const downloads = this.$store.getters.checkDownload;
+    console.log(downloads);
+    if (downloads.length) {
+      this.setProcess(downloads);
+      const resolutions = this.downloadingResolutions(downloads);
+      if(resolutions.length){
+        this.recursiveDownload(resolutions);
+      }
+    } else {
+      if(this.$auth.user && this.$auth.user.user){
+        users.setToken(this.$auth.user.user.token);
+        users.downloading_states().then(response => {
+          if (response.data.length) {
+            this.setProcess(response.data);
+            const resolutions = this.downloadingResolutions(response.data);
+            console.log(resolutions);
+            if(resolutions.length){
+              this.recursiveDownload(resolutions);
+            }
+          }
+        });
+      }
+
+    }
   },
 
-
   created () {
+    console.log('created');
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === 'setForDownload') {
+        this.setProcess(state.forDownload);
+      }
+    });
 
     this.options.push({
       value: 'Choose resolution'
@@ -262,36 +296,42 @@ export default {
   },
 
   methods: {
-    close () {
-      const url = this.texture.slug;
-      if (document.referrer && document.referrer !== document.location.href) {
-        const a = document.createElement('a');
-        a.href = document.referrer;
-        const path = a.pathname;
-        let is_catalog = false;
-
-        ['/textures', '/models', '/hdrs'].forEach(item =>{
-          if (path.startsWith(item)){
-            is_catalog = true;
-          }
-        })
-        if (is_catalog) {
-          return this.$router.push({ path });
+    downloadingResolutions (data) {
+      let resolutions = [];
+      data.map(item => {
+        if (item['from_book_mark'] === false && item['id'] === this.texture.id) {
+          resolutions = item['resolutions'];
         }
+      });
+      return resolutions;
+    },
+    setProcess (data) {
+      if (!this.texture) {
+        return;
       }
+      data.map(item => {
+        if (item['from_book_mark'] === false && item['id'] === this.texture.id) {
+          this.processing = true;
+        }
+      });
+      if (!data.length) {
+        this.processing = false;
+      }
+    },
+    close () {
+      this.$emit('close');
+      const url = this.texture.slug;
       const path = this.$route.path.replace('product-' + url, '');
       this.$router.push({ path });
-      this.$emit('closed');
     },
-
     formatCoords () {
       return formatcoords(this.texture.latitude, this.texture.longitude).format();
     },
     getGoogleLink () {
       return `http://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
     },
-    formatWebsite(web){
-      if(!web.startsWith('http')){
+    formatWebsite (web) {
+      if (!web.startsWith('http')) {
         return `http://${web}`;
       }
       return web;
@@ -301,7 +341,7 @@ export default {
     },
     downLoad () {
       if (!this.$auth.loggedIn) {
-        this.toLogin();
+        return this.toLogin();
       }
       if (!this.resolution.length) {
         this.resolution_error = true;
@@ -309,29 +349,42 @@ export default {
       }
       const resolutions = this.texture.resolutions.filter((item) => {
         return this.resolution.indexOf(item.label) >= 0;
-      }).map((item)=>{return item.resolution});
+      }).map((item) => {
+        return item.resolution;
+      });
       this.processing = true;
-      catalog.download(this.type_code, this.texture.id, {'resolutions':resolutions}).then((response) => {
-        let interval;
+      this.recursiveDownload(resolutions);
+    },
+    recursiveDownload (resolutions) {
+      clearTimeout(window[`product_${this.texture.id}`]);
+      const item = {
+        'id': this.texture.id,
+        'type': this.type_code,
+        'resolutions': resolutions
+      };
+      const forDownload = this.$store.getters.forDownload;
+      if (forDownload.filter(item => {
+        return item['id'] !== this.texture.id;
+      }).length) {
+        forDownload.push(item);
+        this.$store.commit('setForDownload', forDownload);
+      }
+      catalog.download('textures', this.texture.id, { 'resolutions': resolutions }).then((response) => {
         const data = response.data;
         if (data.download_link) {
           window.location.href = data.download_link;
-          this.processing = false;
+          clearTimeout(window[`product_${this.texture.id}`]);
+          const forDownload = this.$store.getters.forDownload.filter((product) => product['id'] !== this.texture.id);
+          this.$store.commit('setForDownload', forDownload);
         } else {
-          interval = setInterval(() => {
-            catalog.download(this.type_code, this.texture.id, {'resolutions':resolutions}).then((response) => {
-              const data = response.data;
-              if (data.download_link) {
-                window.location.href = data.download_link;
-                clearInterval(interval);
-                this.processing = false;
-              }
-            });
-          }, 3000);
+          window[`product_${this.texture.id}`] = setTimeout(() => {
+            this.recursiveDownload(resolutions);
+          }, 5000);
         }
       }).catch((error) => {
         this.downloadErrors = error.response.data.errors;
         this.processing = false;
+        clearTimeout(timeout);
       });
     },
     toggleBookMark () {

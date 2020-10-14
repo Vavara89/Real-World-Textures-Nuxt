@@ -14,6 +14,7 @@
 import SignUp from "@/pages/signup/SignUp";
 
 export default {
+  auth: 'guest',
   data() {
     return {
       bannerTxt1: "Get started for FREE",

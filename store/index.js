@@ -1,6 +1,8 @@
 import Vuex from 'vuex';
 import main from '@/collectors/main';
 import commercial from '@/collectors/commercial';
+import users from '@/collectors/users';
+import profile from '@/collectors/profile';
 
 const createStore = () => {
   return new Vuex.Store({
@@ -12,6 +14,8 @@ const createStore = () => {
       bookmarks: null,
       textBlocks: null,
       prices: null,
+      forDownload: [],
+      checkDownload:[]
     },
     mutations: {
       setPager (state, pager) {
@@ -35,8 +39,17 @@ const createStore = () => {
       setPrices (state, products) {
         state.prices = products;
       },
+      setForDownload(state, item){
+        state.forDownload = item;
+      },
+      setCheckDownload(state, run){
+         state.checkDownload = run;
+      }
     },
     actions: {
+      setCheckDownload(vuexContext, runFor){
+        vuexContext.commit('checkDownload', runFor);
+      },
       setPager (vuexContext, article) {
         vuexContext.commit('setArticle', article);
       },
@@ -52,13 +65,26 @@ const createStore = () => {
       setBookmarks (vuexContext, data) {
         vuexContext.commit('setBookmarks', data);
       },
-      async nuxtServerInit ({ commit }, { req }) {
+      setForDownload(vuexContext, data){
+        vuexContext.commit('setForDownload', data);
+      },
+      async nuxtServerInit ({ dispatch, commit, state }, { req }) {
         await main.text_blocks().then(response => {
           commit('setTextBlocks', response.data.results);
         });
         await commercial.prices().then(response => {
           commit('setPrices', response.data.results);
         });
+        if(state['auth']['user'] && state['auth']['user']['user']){
+          const token = state['auth']['user']['user']['token'];
+          users.setToken(token);
+          await  users.downloading_states().then(response => {
+            if (response.data){
+              commit('setCheckDownload', response.data);
+            }
+          });
+        }
+
       }
     },
     getters: {
@@ -85,6 +111,12 @@ const createStore = () => {
       },
       subscription(state){
         return state.auth.user.user.subscription;
+      },
+      forDownload(state){
+        return state.forDownload;
+      },
+      checkDownload(state){
+        return state.checkDownload;
       }
     }
   });

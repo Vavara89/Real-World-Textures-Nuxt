@@ -38,6 +38,14 @@
     font-size: 16px;
     height: 64px;
   }
+  img{
+    position: relative;
+    left: -20px;
+  }
+  &.loading{
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }
 
 // Secondary buttons
@@ -87,5 +95,15 @@
 
   &--blue {
     @include button-quaternary-blue;
+  }
+}
+
+.rotate {
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
   }
 }

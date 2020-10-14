@@ -2,25 +2,23 @@
   <div class="sliderDetail">
     <div class="sliderDetailContent">
       <div v-if="hovered" :data-slider-selector="'slider-'+id" class="slider opacity_in">
-        <VueSlickCarousel ref="sliderMain" v-bind="sliderMain" class="default" @init="init">
-          <div class="slide-example red" />
-          <div class="slide-example green" />
-          <div class="slide-example white" />
+        <VueSlickCarousel v-if="texture.gallery.length" ref="sliderMain" v-bind="sliderMain" class="default" @init="init">
+          <img v-for="gallery in texture.gallery" :src="gallery.cover" alt="">
         </VueSlickCarousel>
       </div>
       <div class="sliderDetailContent-footer">
         <div class="title">
           <h3 class="name">
-            Name
+            {{texture.name}}
           </h3>
         </div>
         <div class="credits-bookmark">
           <div class="credits">
             <h4 class="text">
-              credits
+              {{texture.credits}}
             </h4>
           </div>
-          <div class="bookmark">
+          <div v-if="texture.is_bookmarked" class="bookmark">
             <img width="50" src="@/assets/img/icon-bookmark-3.svg">
           </div>
         </div>
@@ -38,6 +36,10 @@ export default {
     VueSlickCarousel
   },
   props: {
+    texture: {
+      type: Object,
+      required: true
+    },
     hovered: {
       type: Boolean,
       required: false

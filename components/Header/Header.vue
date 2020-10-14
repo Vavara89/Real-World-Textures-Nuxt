@@ -196,7 +196,7 @@ export default {
 
   computed: {
     user () {
-      return this.$auth.user.user;
+      return !!this.$auth.user && !!this.$auth.user.user ? this.$auth.user.user : null;
     },
     profile () {
       if (this.user.subscribe) {
@@ -253,8 +253,7 @@ export default {
       return this.$router.push({ path: '/bookmarked' });
     },
     getIsLogged () {
-      console.log(this.$auth.loggedIn)
-      return this.$auth.loggedIn;
+      return !!this.$auth.user && !!this.$auth.user.user && !!this.$auth.user.user.profile;
     },
     hideMenu () {
       const toggleButton = document.getElementById('menu-btn');

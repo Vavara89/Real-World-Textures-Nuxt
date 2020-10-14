@@ -32,6 +32,12 @@
             <label for>{{ label.txtPassword }}</label>
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')" />
           </div>
+          <div :class="'signup__input'">
+            <select class="default">
+              <option>What is your work profile?</option>
+              <option v-for="label in types" value="">{{label}}</option>
+            </select>
+          </div>
           <div class="signup__recaptcha">
             <vue-recaptcha
               ref="recaptcha"
@@ -75,13 +81,15 @@ import Button from '@/components/Button';
 import users from '~/collectors/users';
 import FormInputErrors from '@/components/Forms/FormInputErrors';
 import keysToCamel from '@/classes/keysToCamel.ts';
+import Dropdown from '@/components/Sidebar/Dropdown';
 
 export default {
   name: 'SignUp',
   components: {
     Button,
     VueRecaptcha,
-    FormInputErrors
+    FormInputErrors,
+    Dropdown
   },
   data () {
     return {
@@ -106,6 +114,27 @@ export default {
         agree: [],
         recaptcha: []
       },
+      types: [
+        'Architecture: private firm',
+        'Architecture: sole practitioner/freelancer',
+        'Architecture: construction/real estate',
+        'Architecture: academic',
+        'Architecture: student',
+        'Provider of architectural products/construction materials',
+        'Landscape',
+        'Urbanism',
+        'Interior design',
+        'Design',
+        '3D artist',
+        'Game developer',
+        'Film industry',
+        'Fashion',
+        'Transportation',
+        'Engineering',
+        'Real estate',
+        'Media/PR agency',
+        'Other',
+      ],
       errorsMessages: {
         firstName: {
           invalid: 'This field is required'
@@ -125,7 +154,13 @@ export default {
       }
     };
   },
-  computed: {},
+  computed: {
+    profile_types () {
+      return this.types.map(item =>{
+        return { value: item }
+      });
+    },
+  },
   methods: {
     submit (e) {
       e.preventDefault();
@@ -179,7 +214,8 @@ export default {
       return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.input.email);
     },
     isPasswordValid () {
-      return this.input.password.length >= 7 && (/^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*)$/.test(this.input.password));
+      console.log(this.input.password);
+      return this.input.password.length >= 7 && (/(?=.*[0-9])/.test(this.input.password));
     },
     addFormValidationError (input, message) {
       this.formErrors[input].push(message);
@@ -243,7 +279,8 @@ export default {
       }
     }
 
-  }
+  },
+
 };
 </script>
 

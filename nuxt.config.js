@@ -96,13 +96,13 @@ let production =  {
         }
       },
       facebook: {
-        client_id: '221960029050181',
+        client_id: '1027291147700087',
         userinfo_endpoint: 'https://graph.facebook.com/v6.0/me?fields=name,email',
         scope: ['public_profile', 'email']
       },
       google: {
-        client_id: '373123692545-gm0g4sohn7fa0i9c39cln90i0b41kpe3.apps.googleusercontent.com',
-        secret: '9AU0QeNQxx_--TW0FXOe_Mim'
+        client_id: '135799743259-rka8sila4i8f8qdquk6b4utlejiclgah.apps.googleusercontent.com',
+        secret: 'b1ufbjb7LkqD_ea-ptH3qBcF'
       }
     },
     cookie: {

@@ -1,7 +1,7 @@
 <template>
   <div class="errors">
-    <div v-for="error in errors" class="input-form-error">
-      {{error}}
+    <div class="input-form-error">
+      {{errors[0]}}
     </div>
   </div>
 </template>

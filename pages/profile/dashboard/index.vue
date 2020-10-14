@@ -38,7 +38,7 @@
                     <ProfileForm />
                   </div>
                   <div v-if="cardBilling" class="is-profile">
-                    <CardBilling />
+                    <CardBilling ref="card_billing"/>
                   </div>
                   <div v-if="cardPassword" class="is-profile">
                     <ChangePassword />
@@ -47,24 +47,25 @@
               </div>
               <div class="right">
                 <div class="clearfix">
-                  <div class="c100 p75 big scaled">
-                    <div class="points">
+                  <div   class="c100 p75 big scaled">
+                    <div v-if="profile.subscribe" class="points">
                       + 200
                     </div>
                     <span class="isscaled">
                       {{ credits }}</span>
-                    <div class="slice">
+                    <div v-if="profile.subscribe" class="slice">
                       <div class="bar" />
                       <div class="fill" />
                     </div>
                     <span class="topas">Subscription Credits</span>
                   </div>
-                  <button class="toggleOption2 bot">
-                    <a href="#" class=""> buy more credits</a>
+                  <button  class="toggleOption2 bot">
+                    <nuxt-link to="/profile/pricing" v-if="!profile.subscribe">buy more credits</nuxt-link>
+                    <nuxt-link to="/profile/pricing" v-if="profile.subscribe">buy more credits</nuxt-link>
                   </button>
                 </div>
-                <div class="credit">
-                  <p>Hobby Monthly</p>
+                <div v-if="profile.subscribe" class="credit">
+                  <p>{{profile.subscribe.name}}</p>
                   <p>Credits renew on 20/09/2020</p>
                   <div class="logout">
                     <a @click="openUnsubscribe()">
@@ -131,6 +132,9 @@ export default {
       this.onResize();
     });
     window.addEventListener('resize', this.onResize);
+    if(this.$route.query['payment']){
+      this.toggleSelected('billing');
+    }
   },
   destroyed () {
     window.removeEventListener('resize', this.onResize);

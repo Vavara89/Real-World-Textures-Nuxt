@@ -231,7 +231,6 @@ import { subscribeCurrentIs, subscribeStatus, subscriptionActive } from '@/utils
 
 export default {
   name: 'Pricing',
-  middleware: 'auth',
   components: {
     ProfileSidebar,
     ToggleSwitch,
@@ -249,6 +248,15 @@ export default {
     };
   },
   computed: {
+    payment(){
+      if(this.$auth.user && this.$auth.user.user.payment){
+        const payment = this.$auth.user.user.payment;
+        if(payment && payment.last4){
+          return payment;
+        }
+      }
+      return false;
+    },
     proYears () {
       return this.getPro().filter(item => item.is_year === true)[0];
     },
@@ -309,6 +317,9 @@ export default {
     },
 
     confirm (isPro = false) {
+      if(!this.payment){
+        return this.$router.replace('/profile/dashboard?payment=true')
+      }
       const prices = this.$store.getters.prices;
       this.selectedPrice = prices.filter(item => item.stripe_product.is_pro === isPro && item.is_year === !this.isMonth).pop();
       this.$refs.confirm_subscribe.scrollSwitcher();
@@ -327,7 +338,7 @@ export default {
       return subscribeCurrentIs(pro, year, this.subscribed);
     },
     fetchSubscribed () {
-      this.subscribed = this.$store.getters.subscription;
+      // this.subscribed = this.$store.getters.subscription;
     },
     status () {
       return subscribeStatus(this.subscribed);

@@ -58,7 +58,7 @@
               amet nibh. Aenean ac malesuada quam, et tempor magna.
             </p>
             <Button
-              link="#"
+              link="https://facebook.com"
               text="Join our community on FB"
               type="secondary"
               color=""
@@ -148,9 +148,9 @@
       </div>
     </section>
     <section v-if="countWindow == 5">
-      <div class="imageDetails-footer imageDetails--profile">
+      <div v-if="textures.length" class="imageDetails-footer imageDetails--profile">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
-        <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <VueSlickCarousel  ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -167,14 +167,13 @@
           </template>
           <div v-for="item in textures" class="imageItem">
             <img :src="item.cover" :alt="item.name">
-            <CardSliderDetail :id="item.id" :hovered="true"/>
+            <CardSliderDetail :texture="item" :id="item.id" :hovered="true"/>
           </div>
         </VueSlickCarousel>
       </div>
-
-      <div class="imageDetails-footer">
+      <div v-if="models.length" class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
-        <VueSlickCarousel v-if="models.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <VueSlickCarousel  ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -196,12 +195,9 @@
         <div class="circle-big"/>
         <div class="circle-small"/>
       </div>
-
-
-
-      <div class="imageDetails-footer last2">
+      <div v-if="hdr.length" class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
-        <VueSlickCarousel v-if="hdr.length" ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <VueSlickCarousel  ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">

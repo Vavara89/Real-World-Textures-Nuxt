@@ -81,7 +81,7 @@ export default {
       return !!this.pager.next;
     },
     canPaginate(){
-      return this.pager.count > this.perPage;
+      return this.pager.count > this.pager.page_size;
     },
     activePage(){
       return this.pager.current;

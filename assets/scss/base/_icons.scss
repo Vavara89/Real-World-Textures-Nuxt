@@ -12,3 +12,14 @@
 		mask-image: url(~assets/img/icon-cross.svg);
 	}
 }
+
+.loader{
+  mask-repeat: no-repeat;
+  mask-image: url(~assets/img/loading.svg);
+  width: 150px;
+  height: 150px;
+  background: $color-secondary-green;
+  display: block;
+  margin: auto;
+  mask-size: contain;
+}

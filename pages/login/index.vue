@@ -56,6 +56,7 @@ export default {
     Button,
     FormInputErrors
   },
+
   data() {
     return {
       title: "Account Login",

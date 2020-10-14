@@ -1,6 +1,5 @@
 <template>
   <div>
-    <TextureDetail @closed="$emit('closed')" v-if="product" :type_title="'Texture'" :type_code="'textures'" :texture="product"></TextureDetail>
   </div>
 </template>
 <script>

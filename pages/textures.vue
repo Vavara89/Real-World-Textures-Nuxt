@@ -1,7 +1,15 @@
 <template>
   <div class="page-container">
-    <nuxt-child @closed="closed" :product="product"></nuxt-child>
+    <TextureDetail  @close="close"
+                    v-if="opened_detail"
+                    :type_title="'Texture'"
+                    :type_code="'textures'"
+                    :texture="product">
+
+    </TextureDetail>
+
     <CatalogSidebar :filter="filter" :active-category="activeCategory"/>
+
     <div class="page-content">
       <ContentHeader :path="path"/>
       <section class="services view-bottom">
@@ -14,6 +22,7 @@
 </template>
 
 <script>
+import TextureDetail from '@/components/TextureDetail/TextureDetail'
 import TextureGallery from '@/components/Textures/TextureGallery';
 import CatalogSidebar from '@/components/Sidebar/CatalogSidebar';
 import ContentHeader from '@/components/Textures/ContentHeader';
@@ -27,7 +36,8 @@ export default {
     TextureGallery,
     CatalogSidebar,
     ContentHeader,
-    Pager
+    Pager,
+    TextureDetail
   },
   async asyncData(context) {
     let textures = [];
@@ -41,7 +51,6 @@ export default {
       pager = data[1].pager;
       activeCategory = data[2];
       product = data[3];
-
     });
     return {
       textures: textures,
@@ -49,6 +58,7 @@ export default {
       filter: filter,
       pager: pager,
       product: product,
+      opened_detail: product !== null
     }
   },
 
@@ -60,7 +70,8 @@ export default {
       filter:{},
       pager: {},
       baseUrl: '/textures',
-      product: null
+      product: null,
+      opened_detail: false
     };
   },
   watch: {
@@ -68,6 +79,13 @@ export default {
       const isSearchedChanged = ((from.query['search'] && to.query['to']) && (from.query['search'] !== to.query['to'])) === true;
       const fromRoot = from.matched[0].path;
       const toRoot = to.matched[0].path;
+      const isFromProduct = !!from.params['product'];
+      const isToProduct = !!to.params['product'];
+
+      if(fromRoot === toRoot && isToProduct && this.product){
+        this.opened_detail = true;
+        return;
+      }
       if (fromRoot === toRoot) {
         this.$nuxt.$loading.start();
         catalog.loadCatalog(to, 'textures').then(data => {
@@ -80,6 +98,7 @@ export default {
           this.pager = data[1].pager;
           this.activeCategory = data[2];
           this.product = data[3];
+          this.opened_detail = this.product !== null;
         }).catch((error => {
         })).finally(()=>{
           this.$nuxt.$loading.finish();
@@ -97,15 +116,15 @@ export default {
         data.push({
           name: this.activeCategory.name,
           url: `${this.baseUrl}/${this.activeCategory.slug}`
-        })
+        });
       }
       return data;
     }
   },
   methods:{
-    closed(){
+    close(){
       document.body.style.overflow = '';
-      this.product = null;
+      this.opened_detail = false;
     }
   }
 };

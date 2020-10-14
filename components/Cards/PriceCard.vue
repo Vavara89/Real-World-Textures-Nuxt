@@ -19,7 +19,7 @@
       <p v-if="duration !== 'year'" class="pricecard__desc">
         {{ card.desc_month }}
       </p>
-      <Button :link="card.buttonlink" :text="card.buttontext" type="primary" width="wide" />
+        <Button  @click="subscribe" :link="'javascript:void(0);'" :text="card.buttontext" type="primary" width="wide" />
     </div>
   </div>
 </template>
@@ -41,6 +41,29 @@ export default {
       type: String,
       default: ''
     }
+  },
+  methods:{
+    subscribe(e){
+      if(!this.user){
+        this.$router.replace('/login')
+      }else{
+        this.$router.replace('/profile/payment?payment=true')
+      }
+    }
+  },
+  computed:{
+    user(){
+      return this.$auth.user ? this.$auth.user.user : null;
+    },
+    payment(){
+      if(this.$auth.user && this.$auth.user.user.payment){
+        const payment = this.$auth.user.user.payment;
+        if(payment && payment.last4){
+          return payment;
+        }
+      }
+      return false;
+    },
   }
 };
 </script>

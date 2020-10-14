@@ -19,7 +19,7 @@
             <div class="bookmarks__credits__subscription">
               {{ profile.credits }} credits
             </div>
-            <Button :link="subscriptionLink"  :text="'Upgrade Subscription'" type="secondary"/>
+            <Button :link="subscriptionLink" :text="'Upgrade Subscription'" type="secondary"/>
           </div>
           <div class="bookmarks__credits__part">
             <div class="bookmarks__credits__title">
@@ -28,7 +28,12 @@
             <div class="bookmarks__credits__title">
               Total Items: <span>{{ selectedBookmarks }}</span>
             </div>
-            <Button :link="'javascript:void(0)'" @click="download" :text="buttonText" type="primary" color="large"/>
+            <button @click="downloads" class="button-primary button-primary--large"
+                    :class="{'button-primary--blue':downloading}">
+              <img v-if="downloading" class="rotate" src="@/assets/img/icon-processing-button.svg">
+              <span v-if="downloading">Processing... Continue Browsing</span>
+              <span v-if="!downloading">Download Selected</span>
+            </button>
           </div>
         </div>
       </div>
@@ -37,22 +42,24 @@
 </template>
 
 <script>
-import Bookmark from "@/components/Bookmark";
-import Button from "@/components/Button";
-import profile from "@/collectors/profile";
-import BookmarkClass from "@/classes/bookmark.class.ts";
+import Bookmark from '@/components/Bookmark';
+import Button from '@/components/Button';
+import profile from '@/collectors/profile';
+import BookmarkClass from '@/classes/bookmark.class.ts';
+import catalog from '@/collectors/catalog';
+import users from '@/collectors/users';
 
 export default {
-  name: "Bookmarks",
+  name: 'Bookmarks',
   components: {
     Bookmark,
     Button
   },
-  async asyncData(context) {
-    if (context && context.$auth.loggedIn) {
-      profile.setToken(context.$auth.user.user.token);
+  async fetch () {
+    if (this.$auth.loggedIn) {
+      profile.setToken(this.$auth.user.user.token);
+      users.setToken(this.$auth.user.user.token);
     }
-    const bookmarks = [];
     await profile.getBookmarks().then((response) => {
       ['textures', 'models', 'hdr'].forEach((type) => {
         response.data[type].map((item) => {
@@ -64,56 +71,138 @@ export default {
             cost: item.credits,
             selected: false
           };
-          bookmarks.push(new BookmarkClass(data))
+          this.bookmarks.push(new BookmarkClass(data));
         });
       });
     });
-    return {
-      bookmarks: bookmarks
-    }
+    await users.downloading_states().then(response => {
+      this.server_downloading = response.data;
+      const book_marks = this.server_downloading.filter((item) => {
+        return item['from_book_mark'] === true;
+      }).map((item) => {
+        return item['id'];
+      });
+      this.bookmarks.map(item => {
+        item.selected = book_marks.includes(item.id);
+      });
+      this.downloading = this.bookmarks.filter(bookmark => bookmark.selected === true).length > 0;
+
+    });
   },
-  data() {
+  data () {
     return {
-      subscriptionLink: "/profile/pricing",
+      subscriptionLink: '/profile/pricing',
       bookmarks: [],
-      buttonText: 'Download Selected'
+      mountains: [],
+      buttonText: 'Download Selected',
+      downloading: false,
+      selectError: false,
+      starting_download: false,
+      server_downloading: []
     };
   },
+  mounted () {
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === 'setForDownload') {
+        this.downloading = state.forDownload.length > 0;
+        const pks = state.forDownload.map(item => {
+          return item['id'];
+        });
+        this.bookmarks.forEach((item) => {
+          item.selected = pks.indexOf(item['id']) > -1;
+        });
+        if (!pks) {
+          this.bookmarks.forEach((item) => {
+            item.selected = false;
+          });
+        }
+      }
+    });
+    if(this.$store.getters.checkDownload.length){
+      const pk_list = this.$store.getters.checkDownload.map((item)=>{
+        return item['id'];
+      });
+
+      this.bookmarks.forEach(bookmark => {
+        if(pk_list.indexOf(bookmark.id) > -1){
+          this.runDownload(bookmark);
+        }
+      });
+    }
+
+  },
   methods: {
-    deleteBookmark(item) {
+    deleteBookmark (item) {
       this.$nuxt.$loading.start();
-      profile.toggleBookMark(item.type, item.id).then((response)=>{
+      profile.toggleBookMark(item.type, item.id).then((response) => {
         this.bookmarks = this.bookmarks.filter(bookmark => bookmark.id !== item.id);
         this.$nuxt.$loading.finish();
         this.$store.commit('setBookmarks', response.data.totals);
       });
     },
-    download(){
-      this.buttonText = 'Please wait, preparing assets';
+    downloads () {
+
+      const forDownload = this.bookmarks.filter(bookmark => bookmark.selected === true);
+      this.selectError = !forDownload.length;
+      if (this.selectError) {
+        return false;
+      }
+      this.starting_download = true;
+      forDownload.forEach(item => {
+        this.runDownload(item);
+      });
     },
+    runDownload (item) {
+      const forDownload = this.$store.getters.forDownload;
+      if (forDownload.indexOf(item) === -1) {
+        forDownload.push(item);
+        item.resolutions = [0];
+        this.$store.commit('setForDownload', forDownload);
+      }
+
+      let interval;
+      catalog.download(item.type, item.id, { 'resolutions': item.resolutions }).then((response) => {
+        const data = response.data;
+        if (data.download_link) {
+          window.location.href = data.download_link;
+          const forDownload = this.$store.getters.forDownload.filter((product) => product['id'] !== item['id']);
+          this.$store.commit('setForDownload', forDownload);
+          clearInterval(interval);
+        } else {
+          interval = setTimeout(() => {
+            this.runDownload(item);
+          }, 5000);
+        }
+      }).catch((error) => {
+        clearTimeout(interval);
+        this.downloadErrors = error.response.data.errors;
+      });
+    }
+
   },
   computed: {
-    profile(){
+    profile () {
       return this.$auth.user.user.profile;
     },
-    selectedBookmarks() {
+    selectedBookmarks () {
       const result = this.bookmarks.filter(bookmark => bookmark.selected === true);
       return result.length;
     },
-    totalCredits() {
+    totalCredits () {
       let sum = 0;
       this.bookmarks.forEach(bookmark => {
         sum += bookmark.cost;
       });
       return sum;
     },
-    appendText() {
+    appendText () {
       if (this.totalCredits < 1 || this.totalCredits > 1) {
-        return "Credits";
+        return 'Credits';
       } else {
-        return "Credit";
+        return 'Credit';
       }
-    }
+    },
+
   }
 };
 </script>
