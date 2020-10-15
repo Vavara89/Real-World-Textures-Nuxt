@@ -116,11 +116,11 @@ let production =  {
 
 };
 
-try{
-  const localhost = require('./nuxt.localhost.config');
-  production = Object.assign(production, localhost.congig);
-}catch (e){
-  console.log(e);
-}
+// try{
+//   const localhost = require('./nuxt.localhost.config');
+//   production = Object.assign(production, localhost.congig);
+// }catch (e){
+//   console.log(e);
+// }
 
 export default production;

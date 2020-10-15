@@ -30,18 +30,7 @@
     "vuelidate": "^0.7.5"
   },
   "devDependencies": {
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-mozjpeg": "^9.0.0",
-    "imagemin-pngquant": "^9.0.0",
-    "imagemin-svgo": "^8.0.0",
-    "lqip-loader": "^2.2.0",
-    "node-sass": "^4.14.1",
-    "responsive-loader": "^1.2.0",
-    "sass-loader": "^8.0.2",
-    "sharp": "^0.25.4",
-    "sqip-loader": "^1.0.0",
-    "webp-loader": "^0.6.0",
-    "@nuxt/typescript-build": "^0.6.0",
+    "@nuxt/typescript-build": "^0.6.7",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.1.0",
@@ -50,7 +39,18 @@
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.2.2",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.0",
+    "imagemin-svgo": "^8.0.0",
+    "lqip-loader": "^2.2.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.0.1",
-    "vue-eslint-parser": "^7.0.0"
+    "responsive-loader": "^1.2.0",
+    "sass-loader": "^8.0.2",
+    "sharp": "^0.25.4",
+    "sqip-loader": "^1.0.0",
+    "vue-eslint-parser": "^7.0.0",
+    "webp-loader": "^0.6.0"
   }
 }
