@@ -359,10 +359,11 @@ export default {
       if (!this.$auth.loggedIn) {
         return this.toLogin();
       }
+      this.resolution_error = !this.resolution.length;
       if (!this.resolution.length) {
-        this.resolution_error = true;
         return;
       }
+      this.downloadErrors = false;
       const resolutions = this.texture.resolutions.filter((item) => {
         return this.resolution.indexOf(item.label) >= 0;
       }).map((item) => {

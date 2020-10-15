@@ -37,6 +37,7 @@ let production =  {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxt/typescript-build'
   ],
   /*
   ** Nuxt.js modules
@@ -46,7 +47,6 @@ let production =  {
     '@nuxtjs/auth',
     '@nuxtjs/style-resources',
     '@nuxtjs/svg',
-    '@nuxt/typescript-build',
     'cookie-universal-nuxt',
   ],
   styleResources: {
@@ -66,7 +66,7 @@ let production =  {
     vendor: ['vue-notifications']
   },
   env: {
-    baseUrl: 'http://34.107.89.42/',
+    baseUrl: 'https://rwt.bypixelfield.com/',
     contacts: {
       youtube_link:'http://youtube.com',
       facebook_link:'http://facebook.com',
@@ -75,7 +75,7 @@ let production =  {
     }
   },
   axios: {
-    baseURL: 'http://34.107.89.42/api'
+    baseURL: 'https://rwt.bypixelfield.com/api'
   },
   auth: {
     plugins: [
