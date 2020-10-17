@@ -25,7 +25,7 @@
                   </div>
                   <div class="flex-row-item where">
                     <Button
-                      :link="brand.webSite"
+                      :link="formatWebsite()"
                       :text="brand.webSite"
                       type="secondary"
                       color=""
@@ -123,6 +123,11 @@ export default {
   methods: {
     openDistributors () {
       this.modalOpen = true;
+    },
+    formatWebsite(){
+      if(this.brand.webSite.startWith('http')){
+        return `http://${this.brand.webSite}`;
+      }
     }
   }
 };

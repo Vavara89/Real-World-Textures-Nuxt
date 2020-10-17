@@ -2,7 +2,6 @@ import Vuex from 'vuex';
 import main from '@/collectors/main';
 import commercial from '@/collectors/commercial';
 import users from '@/collectors/users';
-import profile from '@/collectors/profile';
 
 const createStore = () => {
   return new Vuex.Store({
