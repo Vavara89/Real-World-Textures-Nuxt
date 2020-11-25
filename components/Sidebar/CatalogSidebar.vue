@@ -1,15 +1,48 @@
 <template>
   <div>
-    <div v-if="width" class="leftsidebar" :class="{'leftsidebar--open': openBurger, 'leftsidebar--close': width < 1200, 'leftsidebar--default': width > 1200}">
-      <div v-if="width < 1200" class="nav-icon3" :class="{'open': openBurger}" @click="openBurgerMenu()">
+    <div
+      v-if="width"
+      class="leftsidebar"
+      :class="{
+        'leftsidebar--open': openBurger,
+        'leftsidebar--close': width < 1200,
+        'leftsidebar--default': width > 1200,
+      }"
+    >
+      <div
+        v-if="width < 1200"
+        class="nav-icon3"
+        :class="{ open: openBurger }"
+        @click="openBurgerMenu()"
+      >
         <span></span>
         <span></span>
         <span></span>
       </div>
-      <Dropdown v-if="getTypes()" :options="getTypes()" :selected_option="getActiveType()" @input="changeCatalogType" />
+
+      <div class="sidebar-logo">
+        <nuxt-link
+          to="/"
+          class="header-logo"
+          :class="{ 'header-logo--light': $route.name === 'signup' }"
+        >
+          <SvgIconLogo />
+        </nuxt-link>
+      </div>
+
+      <Dropdown
+        v-if="getTypes()"
+        :options="getTypes()"
+        :selected_option="getActiveType()"
+        @input="changeCatalogType"
+      />
 
       <div class="materials-menu">
-        <MaterialMenu v-if="getCategories()" :list="getCategories()" :active_category="activeCategory" />
+        <MaterialMenu
+          v-if="getCategories()"
+          :list="getCategories()"
+          :active_category="activeCategory"
+        />
       </div>
 
       <div v-if="getRefines().items.length" class="refine-filter">
@@ -17,7 +50,11 @@
       </div>
 
       <div v-if="getAreas().length" class="manufacture-filter">
-        <ManufactureFilter v-if="getAreas()" :areas="getAreas()" :brands_list="getBrands()" />
+        <ManufactureFilter
+          v-if="getAreas()"
+          :areas="getAreas()"
+          :brands_list="getBrands()"
+        />
       </div>
 
       <div v-if="getColors()" ref="colorFilter" class="color-filter">
@@ -33,174 +70,179 @@
   </div>
 </template>
 <script>
-import Dropdown from '@/components/Sidebar/Dropdown';
-import MaterialMenu from '@/components/Sidebar/MaterialMenu';
-import RefineFilter from '@/components/Sidebar/RefineFilter';
-import ManufactureFilter from '@/components/Sidebar/ManufactureFilter';
-import ColorFilter from '@/components/Sidebar/ColorFilter';
-import FilterClass from '@/classes/filter.class.ts';
-import CategoryClass from '@/classes/category.class.ts';
+import SvgIconLogo from "~/assets/img/logo.svg?inline";
+import Dropdown from "@/components/Sidebar/Dropdown";
+import MaterialMenu from "@/components/Sidebar/MaterialMenu";
+import RefineFilter from "@/components/Sidebar/RefineFilter";
+import ManufactureFilter from "@/components/Sidebar/ManufactureFilter";
+import ColorFilter from "@/components/Sidebar/ColorFilter";
+import FilterClass from "@/classes/filter.class.ts";
+import CategoryClass from "@/classes/category.class.ts";
 
 export default {
-  name: 'CatalogSidebar',
+  name: "CatalogSidebar",
   components: {
     Dropdown,
     MaterialMenu,
     RefineFilter,
     ManufactureFilter,
-    ColorFilter
+    ColorFilter,
+    SvgIconLogo,
   },
   props: {
     filter: {
       type: Object,
-      required: false
+      required: false,
     },
     activeCategory: {
       type: Object,
-      required: false
+      required: false,
     },
     canClear: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
-  data () {
+  data() {
     return {
       openBurger: false,
-      width: null
+      width: null,
     };
   },
-  mounted () {
+  mounted() {
     this.$nextTick(function () {
       this.onResize();
     });
-    window.addEventListener('resize', this.onResize);
+    window.addEventListener("resize", this.onResize);
   },
-  destroyed () {
-    window.removeEventListener('resize', this.onResize);
+  destroyed() {
+    window.removeEventListener("resize", this.onResize);
   },
   methods: {
-    onResize () {
+    onResize() {
       this.innerWidth();
     },
-    innerWidth () {
+    innerWidth() {
       this.width = window.innerWidth;
     },
-    openBurgerMenu () {
+    openBurgerMenu() {
       this.openBurger = !this.openBurger;
     },
-    getTypes () {
+    getTypes() {
       if (this.filter && this.filter.counts) {
         return [
           {
-            value: 'Textures',
+            value: "Textures",
             count: this.filter.counts.textures,
-            short: 'textures'
+            short: "textures",
           },
           {
-            value: 'Models',
+            value: "Models",
             count: this.filter.counts.models,
-            short: 'models'
-
+            short: "models",
           },
           {
-            value: 'HDRis',
+            value: "HDRis",
             count: this.filter.counts.hdr,
-            short: 'hdr'
-
+            short: "hdr",
           },
           {
-            value: 'Brands',
+            value: "Brands",
             count: this.filter.counts.brands,
-            short: 'brands'
-          }
+            short: "brands",
+          },
         ];
       }
       return null;
     },
-    getActiveType () {
+    getActiveType() {
       const types = this.getTypes();
       if (this.filter && this.filter.catalog_type) {
-        return types.filter(item => item.short === this.filter.catalog_type).pop();
+        return types
+          .filter((item) => item.short === this.filter.catalog_type)
+          .pop();
       }
       return {};
     },
-    getCategories () {
+    getCategories() {
       if (this.filter && this.filter.categories) {
         return this.filter.categories;
       }
     },
-    getBrands () {
+    getBrands() {
       if (this.filter && this.filter.brands) {
         return this.filter.brands;
       }
     },
-    getAreas () {
+    getAreas() {
       if (this.filter && this.filter.areas) {
         return this.filter.areas;
       }
       return [];
     },
-    getRefines () {
+    getRefines() {
       const data = {
-        title: 'Refine By',
-        items: [
-        ]
+        title: "Refine By",
+        items: [],
       };
       if (this.filter.free) {
-        data.items.push(
-          {
-            title: 'Free',
-            link: 'is_free',
-            active: this.$route.query.is_free ? this.$route.query.is_free : false
-          }
-        );
+        data.items.push({
+          title: "Free",
+          link: "is_free",
+          active: this.$route.query.is_free ? this.$route.query.is_free : false,
+        });
       }
 
       if (this.filter.own && this.$auth.loggedIn) {
-        data.items.push(
-          {
-            title: 'My Assets',
-            link: 'assets',
-            active: this.$route.query.assets ? this.$route.query.assets : false
-          }
-        );
+        data.items.push({
+          title: "My Assets",
+          link: "assets",
+          active: this.$route.query.assets ? this.$route.query.assets : false,
+        });
       }
 
       if (this.filter.favs && this.$auth.loggedIn) {
-        data.items.push(
-          {
-            title: 'Favourites',
-            link: 'favourites',
-            active: this.$route.query.favourites ? this.$route.query.favourites : false
-          }
-        );
+        data.items.push({
+          title: "Favourites",
+          link: "favourites",
+          active: this.$route.query.favourites
+            ? this.$route.query.favourites
+            : false,
+        });
       }
       return data;
     },
 
-    getColors () {
+    getColors() {
       if (this.filter && this.filter.areas) {
         return {
-          title: 'Color',
-          items: this.filter.colors
+          title: "Color",
+          items: this.filter.colors,
         };
       }
       return false;
     },
-    clearFilter () {
+    clearFilter() {
       this.$router.push({ path: this.$route.path });
     },
-    changeCatalogType (value) {
-      this.$router.replace({ path: '/' + value.short, query: this.$route.query });
-    }
-  }
-
+    changeCatalogType(value) {
+      this.$router.replace({
+        path: "/" + value.short,
+        query: this.$route.query,
+      });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
 @import "@/assets/scss/components/_leftSidebar.scss";
+
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
 
 .fil {
   text-align: center;
@@ -219,7 +261,6 @@ export default {
 }
 
 .profile {
-
   li {
     text-align: center;
     margin: 5px 0;
@@ -247,13 +288,15 @@ export default {
   top: 120px;
   left: 100%;
   background-color: #394174;
-  z-index:100;
+  z-index: 100;
   display: inline-block;
   cursor: pointer;
   padding: 10px 15px;
 }
 
-.bar1, .bar2, .bar3 {
+.bar1,
+.bar2,
+.bar3 {
   width: 35px;
   height: 5px;
   background-color: #fff;
@@ -266,20 +309,21 @@ export default {
   transform: rotate(-45deg) translate(-9px, 6px);
 }
 
-.change .bar2 {opacity: 0;}
+.change .bar2 {
+  opacity: 0;
+}
 
 .change .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
-
 .nav-icon3 {
   position: absolute;
   top: 120px;
   left: 100%;
   background-color: #394174;
-  z-index:100;
+  z-index: 100;
   width: 60px;
   height: 60px;
   -webkit-transform: rotate(0deg);
@@ -310,12 +354,12 @@ export default {
 
 .nav-icon3 span:nth-child(2) {
   top: 27px;
-    left: 10px;
+  left: 10px;
 }
 
 .nav-icon3 span:nth-child(3) {
-    top: 39px;
-    left: 10px;
+  top: 39px;
+  left: 10px;
 }
 
 .nav-icon3 span:nth-child(4) {

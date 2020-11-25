@@ -1,7 +1,7 @@
 .leftsidebar {
     display: flex;
     flex-direction: column;
-    top: 0;
+    top: -178px;
     left: 0;
     width: 32rem;
     min-width: 28rem;
@@ -30,10 +30,10 @@
       margin-top: 5rem;
       // padding-left: 2.4rem;
     }
-    
+
     ul {
         padding: 2.4rem;
-        
+
         .item {
             line-height: 32px;
             .active {
@@ -62,11 +62,11 @@
             outline: none;
             -webkit-appearance: none;
         }
-        
+
     }
-    
+
     .materials-menu {
-        margin-top: 1rem;        
+        margin-top: 1rem;
 
         ul {
             li {
@@ -103,7 +103,7 @@
                 padding: 0.3rem 1.5rem;
                 border-radius: 3rem;
                 margin-left: -1.5rem;
-    
+
                 &:hover {
                   background-color: #f2f3f9;
                 }
@@ -184,7 +184,7 @@
 
                     &.active {
                       background-color: #F2F3F9;
-                      
+
                       // .colorItem {
                       //     box-shadow: none;
                       // }
@@ -218,7 +218,7 @@
           background-color: $color-primary-700;
         }
     }
-  
+
     &__close {
       @include transition-base;
       display: flex;
@@ -231,28 +231,28 @@
       height: 3.6rem;
       border-radius: 50%;
       cursor: pointer;
-  
+
       svg {
         display: block;
         width: 2rem;
         height: 2rem;
-  
+
         path {
           fill: $color-primary-700;
           @include transition-base;
         }
       }
-  
+
       &:hover {
         background: $color-primary-700;
         border-radius: 50%;
-  
+
         path {
           fill: $color-white;
         }
       }
     }
-  
+
     &__title {
       color: $color-primary-900;
       font-size: 3.6rem;
@@ -261,7 +261,7 @@
       margin-bottom: 1.6rem;
       max-width: 45rem;
     }
-  
+
     &__subtitle {
       font-size: 1.6rem;
       line-height: 145%;
@@ -269,40 +269,40 @@
       margin-bottom: 4.8rem;
       max-width: 45rem;
     }
-  
+
     &__cnt {
       position: relative;
       overflow-y: auto;
       padding-right: 5rem;
-  
+
     }
-  
+
     &__text {
       font-weight: 300;
       line-height: 145%;
       color: $color-primary-700;
       max-width: 45rem;
       margin-bottom: 4rem;
-  
+
       p {
         margin-bottom: 2rem;
-  
+
         &:first-child {
           margin-top: 0;
         }
-  
+
         &:last-child {
           margin-bottom: 0;
         }
       }
     }
-  
+
     &__video {
       position: relative;
       max-width: 45rem;
       border-radius: 1rem;
       overflow: hidden;
-  
+
       &__cover {
         position: absolute;
         top: 0;
@@ -312,7 +312,7 @@
         z-index: 5;
         cursor: pointer;
         background-color: rgba($color-primary-900, 0.7);
-  
+
         &:after {
           position: absolute;
           content: "";
@@ -326,26 +326,26 @@
           height: 5.7rem;
           transition: 200ms;
         }
-  
+
         &:hover {
           &:after {
             transform: scale(1.2);
           }
         }
       }
-  
+
       video {
         display: block;
         width: 100%;
       }
     }
-  
+
     &__list {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 2.4rem;
       margin: 2.4rem 0;
-  
+
       &__itm {
         position: relative;
         overflow: hidden;
@@ -353,7 +353,7 @@
         background-color: $color-primary-300;
         border-radius: 1rem;
         cursor: pointer;
-  
+
         &:after {
           display: block;
           content: "";
@@ -365,7 +365,7 @@
           background: rgba($color-primary-900, 0.3);
           @include transition-base;
         }
-  
+
         &:hover, &--active {
           &:after {
             background: rgba($color-primary-900, 0);
@@ -373,7 +373,7 @@
         }
       }
     }
-  
+
     &--opened {
       transform: translateX(0);
     }
@@ -402,15 +402,15 @@
           background-repeat: no-repeat;
           background-position: 40px  center;
         }
-    
+
         a:hover {
           background-color: #f2f3f9;
         }
-        
+
       }
     }
   }
-  
+
   .leftMenu {
     border: 1px solid red;
   }

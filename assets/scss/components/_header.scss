@@ -1,30 +1,18 @@
+
 .header {
   padding: 40px 0;
   min-height: 16rem;
   background-color: #fbfbff;
-
   &-inner {
-    display: flex;
-    flex-wrap: wrap;
     margin: 0 auto;
     max-width: 1750px;
     padding: 0 15px;
-  }
-
-  &-logo {
-    &--light {
-      svg {
-        max-width: 8.8rem;
-        path {
-          fill: $color-white;
-        }
-      }
-    }
+    position: relative;
   }
 
   &-search {
     margin-top: 15px;
-    margin-left: 5rem;
+    margin-left: 28rem;
     font-size: 0;
     position: relative;
 
@@ -56,7 +44,7 @@
       margin-left: 0;
 
       input {
-        width: 290px;
+        max-width: 290px;
         background-color: #FBFBFF;
         border-radius: 30px;
         color: #394174;
@@ -71,7 +59,7 @@
       right: 15px;
     }
 
-    @media only screen and (max-width: 1310px) {
+    @media only screen and (max-width: 1800px) {
       margin-left: auto;
       right: 130px;
     }
@@ -96,22 +84,11 @@
         color: #fff !important;
       }
 
-      @include mq(lg, max) {
-        width: 150px;
-      }
-
-      @media only screen and (max-width: 1500px) {
-        width: 140px;
-      }
-
-      @media only screen and (max-width: 1310px) {
-        width: 270px;
-      }
-
-      @media only screen and (max-width: 580px) {
-        width: 150px;
+      @include mq(md, max) {
+        max-width: 200px;
       }
     }
+
     select {
       width: 130px;
       height: 42px;
@@ -134,7 +111,6 @@
   &-nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
     margin-top: 15px;
     margin-left: auto !important;
 
@@ -142,21 +118,14 @@
       display: none;
     }
 
-    @include mq(xxl, max) {
-      margin-left: 20px;
-    }
-
-    @include mq(xl, max) {
-      width: 100%;
-    }
-
     @include mq(md, max) {
       flex-direction: column;
-      margin-left: 0;
+      width: 100%;
 
       .menu-icon {
         cursor: pointer;
         padding: 28px 20px;
+        margin-bottom: 30px;
         position: relative;
         user-select: none;
         display: block !important;
@@ -260,7 +229,7 @@
           padding-right: 10px;
         }
 
-        @media only screen and (max-width: 1500px) {
+        @media only screen and (max-width: 1700px) {
           padding: 10px 13px;
         }
 
@@ -292,7 +261,6 @@
 
 
         .logmenu {
-
           background: #fff;
           width: 300px;
           z-index: 999;
@@ -346,7 +314,6 @@
           }
         }
       }
-
       }
 
       &.header-account a.icon {
@@ -474,6 +441,17 @@
   }
 }
 
+.header-logo {
+  &--light {
+    svg {
+      max-width: 8.8rem;
+      path {
+        fill: $color-white;
+      }
+    }
+  }
+}
+
 .header.header-signup {
   background: linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
   background: -o-linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
@@ -487,6 +465,7 @@
     li a {
       color: white;
     }
+
     .navicon,
     .navicon:before,
     .navicon:after
@@ -510,8 +489,6 @@
   @media only screen and (max-width: 950px) {
     overflow: hidden;
   }
-
-
 }
 
 .no-menu {
@@ -532,3 +509,21 @@
   width: 80%;
   padding-left: 20px;
 }
+
+.flex-menu {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 1800px) {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+}
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+
+}
+
