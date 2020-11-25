@@ -3,6 +3,12 @@
   padding: 40px 0;
   min-height: 16rem;
   background-color: #fbfbff;
+  position: fixed;
+  border-bottom: 1px solid;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+
   &-inner {
     margin: 0 auto;
     max-width: 1750px;
@@ -62,6 +68,10 @@
     @media only screen and (max-width: 1800px) {
       margin-left: auto;
       right: 130px;
+    }
+
+    @include mq(md, max) {
+      display: none;
     }
 
     input {
@@ -133,10 +143,10 @@
         .navicon {
           background: #333;
           display: block;
-          height: 2px;
+          height: 3px;
           position: relative;
           transition: background 0.2s ease-out;
-          width: 18px;
+          width: 40px;
           float: right;
         }
 
@@ -151,11 +161,11 @@
           width: 100%;
         }
         .navicon:before {
-          top: 5px;
+          top: 8px;
         }
 
         .navicon:after {
-          top: -5px;
+          top: -8px;
         }
       }
 
