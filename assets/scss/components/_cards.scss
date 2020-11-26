@@ -100,10 +100,10 @@
       width: auto;
     }
   }
-  
+
 
   &:hover {
-    box-shadow: 0 1rem 2.4rem rgba($color-primary-900, .3);
+    filter: drop-shadow(5px 53px 64px rgba(1, 12, 47, 0.2));
 
     .card__img {
         transform: scale(1.15);
@@ -113,7 +113,7 @@
         -webkit-transition-property: all;
         -webkit-transition-duration: 0.3s;
         -webkit-transition-timing-function: ease-in-out;
-      
+
     }
   }
 

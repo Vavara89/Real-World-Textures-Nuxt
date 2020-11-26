@@ -113,326 +113,324 @@
 </template>
 
 <script>
-import SectionTitle from '@/components/SectionParts/SectionTitle';
-import TextureGallery from '@/components/Textures/TextureGallery';
-import LeftSidebar from '@/components/Sidebar/LeftSidebar';
-import ContentHeader from '@/components/Textures/ContentHeader';
-import Modal from '@/components/Modal/Modal';
-import Button from '@/components/Button';
+import SectionTitle from "@/components/SectionParts/SectionTitle";
+import TextureGallery from "@/components/Textures/TextureGallery";
+import LeftSidebar from "@/components/Sidebar/LeftSidebar";
+import ContentHeader from "@/components/Textures/ContentHeader";
+import Modal from "@/components/Modal/Modal";
+import Button from "@/components/Button";
 
 export default {
-  name: 'Textures',
+  name: "Textures",
   components: {
     SectionTitle,
     TextureGallery,
     LeftSidebar,
     ContentHeader,
     Modal,
-    Button
+    Button,
   },
-  asyncData () {
-
-  },
-  data () {
+  asyncData() {},
+  data() {
     return {
-      subtitle: '',
-      title: 'Marc Jackobs',
+      subtitle: "",
+      title: "Marc Jackobs",
       perex:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      button: 'Join our community on FB',
-      modalOpt: 'manufactorList',
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit amet nibh. Aenean ac malesuada quam, et tempor magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      button: "Join our community on FB",
+      modalOpt: "manufactorList",
       modalOpen: false,
       manufactorList: [
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
 
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
         },
         {
-          company: 'Company name like Stone',
-          location: 'Ostrava, Czech Rep.',
-          site: 'companynamestone.cz'
-        }
+          company: "Company name like Stone",
+          location: "Ostrava, Czech Rep.",
+          site: "companynamestone.cz",
+        },
       ],
       cards: [
         {
           image: {
-            url: require('assets/img/tutorials/0.png'),
-            alt: ''
+            url: require("assets/img/tutorials/0.png"),
+            alt: "",
           },
-          title: 'For Architects',
+          title: "For Architects",
           subtitle:
-            'Looking for nice floor or material for facade? No problem!',
+            "Looking for nice floor or material for facade? No problem!",
           text:
-            'Choose the best material for your project, make visualisation for your client and buy a surface in the real world.',
-          link: '#'
+            "Choose the best material for your project, make visualisation for your client and buy a surface in the real world.",
+          link: "#",
         },
         {
           image: {
-            url: require('assets/img/tutorials/1.png'),
-            alt: ''
+            url: require("assets/img/tutorials/1.png"),
+            alt: "",
           },
-          title: 'For 3D Artists',
+          title: "For 3D Artists",
           subtitle:
-            'Take it all! Diffuse, reflection, glosiness, bump, displacement ambient occlusion and even subsurface scattering...',
+            "Take it all! Diffuse, reflection, glosiness, bump, displacement ambient occlusion and even subsurface scattering...",
           text:
-            'PBR materials  and 3D models  from real worldwide manufacturers.',
-          link: '#'
+            "PBR materials  and 3D models  from real worldwide manufacturers.",
+          link: "#",
         },
         {
           image: {
-            url: require('assets/img/tutorials/2.png'),
-            alt: ''
+            url: require("assets/img/tutorials/2.png"),
+            alt: "",
           },
-          title: 'For Manufacturers',
+          title: "For Manufacturers",
           subtitle: "There is no material or model we can't handle with!",
           text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#",
         },
         {
           image: {
-            url: require('assets/img/tutorials/0.png'),
-            alt: ''
+            url: require("assets/img/tutorials/0.png"),
+            alt: "",
           },
-          title: 'For Manufacturers',
+          title: "For Manufacturers",
           subtitle: "There is no material or model we can't handle with!",
           text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#",
         },
         {
           image: {
-            url: require('assets/img/tutorials/1.png'),
-            alt: ''
+            url: require("assets/img/tutorials/1.png"),
+            alt: "",
           },
-          title: 'For Manufacturers',
+          title: "For Manufacturers",
           subtitle: "There is no material or model we can't handle with!",
           text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#",
         },
         {
           image: {
-            url: require('assets/img/tutorials/2.png'),
-            alt: ''
+            url: require("assets/img/tutorials/2.png"),
+            alt: "",
           },
-          title: 'For Manufacturers',
+          title: "For Manufacturers",
           subtitle: "There is no material or model we can't handle with!",
           text:
-            'Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.',
-          link: '#'
-        }
+            "Scann and postprocess your material or model, provide it through our website and get to know architects about your company and  its products.",
+          link: "#",
+        },
       ],
       textures: [
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
+          title: "0059 WOODVEENER OAK COPPER2",
         },
         {
           image: {
-            url: require('assets/img/textures/texture-jafholz.png'),
-            alt: ''
+            url: require("assets/img/textures/texture-jafholz.png"),
+            alt: "",
           },
-          title: '0059 WOODVEENER OAK COPPER2'
-        }
-      ]
+          title: "0059 WOODVEENER OAK COPPER2",
+        },
+      ],
     };
   },
   methods: {
-    toggleOption (event) {
+    toggleOption(event) {
       this.modalOpen = !this.modalOpen;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-  @import "@/assets/scss/pages/textures.scss";
+@import "@/assets/scss/pages/textures.scss";
 </style>
