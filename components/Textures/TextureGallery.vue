@@ -1,17 +1,32 @@
 <template>
   <div class="textgallery">
     <ul class="textures">
-      <li v-for="(texture, index) in textures" :key="'texture-' + index" class="texture" :class="{'brands': isBrand}">
-        <TextureItem :texture="texture" :shadow="shadow" :isBrand="isBrand" :noscale="noscale" />
-        <TooltipItem v-if="detail" :texture="texture" :show-detail="showDetail" :isBrand="isBrand" />
+      <li
+        v-for="(texture, index) in textures"
+        :key="'texture-' + index"
+        class="texture"
+        :class="{ brands: isBrand }"
+      >
+        <TextureItem
+          :texture="texture"
+          :shadow="shadow"
+          :isBrand="isBrand"
+          :noscale="noscale"
+        />
+        <TooltipItem
+          v-if="detail"
+          :texture="texture"
+          :show-detail="showDetail"
+          :isBrand="isBrand"
+        />
         <div v-if="texture.isBookmarked" class="book">
-          <img src="@/assets/img/icon-bookmark-3.svg" alt>
+          <img src="@/assets/img/icon-bookmark-3.svg" alt />
         </div>
         <div v-if="texture.isFree" class="free">
-          <img src="@/assets/img/icon-free.svg" alt>
+          <img src="@/assets/img/icon-free.svg" alt />
         </div>
         <div v-if="texture.in_assets" class="download">
-          <img src="@/assets/img/icon-download-badge.svg" alt>
+          <img src="@/assets/img/icon-download-badge.svg" alt />
         </div>
       </li>
     </ul>
@@ -20,54 +35,53 @@
 </template>
 
 <script>
-import TextureItem from '@/components/Textures/TextureItem';
-import TooltipItem from '@/components/Textures/TooltipItem';
-import DetailModal from '@/components/DetailModal/DetailModal';
+import TextureItem from "@/components/Textures/TextureItem";
+import TooltipItem from "@/components/Textures/TooltipItem";
+import DetailModal from "@/components/DetailModal/DetailModal";
 
 export default {
-  name: 'TextureGallery',
+  name: "TextureGallery",
   components: {
     TextureItem,
     TooltipItem,
-    DetailModal
+    DetailModal,
   },
   props: {
     textures: {
       type: Array,
-      required: true
+      required: true,
     },
     shadow: {
       type: Boolean,
-      default: false
+      default: false,
     },
     detail: {
       type: Boolean,
-      default: true
+      default: true,
     },
     isBrand: {
       type: Boolean,
-      default: false
+      default: false,
     },
     noscale: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
       selectedTexture: {},
-      modalOpen: false
+      modalOpen: !this.modalOpen,
     };
   },
   methods: {
-    showDetail (selectedTexture) {
+    showDetail(selectedTexture) {
       this.selectedTexture = selectedTexture;
       this.modalOpen = true;
-    }
-  }
+    },
+  },
 };
-
 </script>
 <style lang="scss" scoped>
-    @import "@/assets/scss/components/_texturegallery.scss"
+@import "@/assets/scss/components/_texturegallery.scss";
 </style>
