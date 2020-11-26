@@ -1,18 +1,29 @@
 @media (min-width: 61.25em) {
     .philosophy {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      width: calc(100% - 60px);
       overflow: hidden;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
     }
   }
+  .philosophy-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    max-width: 158rem;
+    margin: 0 auto;
+    margin-top: 10rem;
+    padding: 0 4.8rem;
+
+    @media (max-width: 1000px) {
+      flex-direction: column;
+  }
+  }
+
   .philosophy-list {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 1;

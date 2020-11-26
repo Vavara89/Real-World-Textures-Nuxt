@@ -1,12 +1,20 @@
 <template>
   <div class="texture__block" :class="shadow ? 'texture--shadow' : ''">
-    <div class="texture__image" :class="{'brands': isBrand, 'noscale': noscale}">
-      <img :width="'150px'" height="'50px'" v-if="isBrand" :src="getCover()" :alt="texture.name">
-      <img v-if="!isBrand" :src="getCover()" :alt="texture.name">
+    <div class="texture__image" :class="{ brands: isBrand, noscale: noscale }">
+      <img
+        :width="'100px'"
+        height="'50px'"
+        v-if="isBrand"
+        :src="getCover()"
+        :alt="texture.name"
+      />
+      <img v-if="!isBrand" :src="getCover()" :alt="texture.name" />
     </div>
     <template v-if="!isBrand">
-  
-      <div v-if="texture.name || texture.structure || texture.usage" class="texture__content">
+      <div
+        v-if="texture.name || texture.structure || texture.usage"
+        class="texture__content"
+      >
         <h3 v-if="texture.name" class="texture__name name">
           {{ texture.name }}
         </h3>
@@ -18,38 +26,37 @@
         </p>
       </div>
     </template>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TextureItem',
+  name: "TextureItem",
   props: {
     texture: {
       type: Object,
-      required: true
+      required: true,
     },
     shadow: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isBrand: {
       type: Boolean,
-      default: false
+      default: true,
     },
     noscale: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   methods: {
-    getCover () {
+    getCover() {
       if (this.texture.cover) {
         return this.texture.cover;
       }
       return this.texture.logo;
-    }
-  }
+    },
+  },
 };
 </script>
