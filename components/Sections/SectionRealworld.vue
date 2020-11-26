@@ -1,8 +1,5 @@
 <template>
-  <section
-    class="realworld"
-    style="background-color: #fbfbff; padding-top: 240px"
-  >
+  <section class="realworld">
     <div class="container">
       <div class="explore">
         <div class="explore-content">
@@ -213,3 +210,14 @@ export default {
   },
 };
 </script>
+<style scoped>
+.realworld {
+  background-color: #fbfbff;
+  padding-top: 250px;
+}
+@media only screen and (max-width: 950px) {
+  .realworld {
+    padding-top: 150px;
+  }
+}
+</style>

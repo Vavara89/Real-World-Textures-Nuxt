@@ -14,6 +14,7 @@
           <SvgIconLogo />
         </nuxt-link>
         <div class="header-empty-logo" v-else />
+
         <div class="flex-menu">
           <header-search />
 
