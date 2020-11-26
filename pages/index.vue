@@ -1,5 +1,5 @@
 <template>
-  <div class="main-part">
+  <div>
     <SectionRealworld v-if="top_slider.length" :slides="top_slider" />
     <SectionExample v-if="examples_slider.length" :slides="examples_slider" />
     <SectionPhilosophy />

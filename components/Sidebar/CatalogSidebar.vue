@@ -331,6 +331,10 @@ export default {
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
   cursor: pointer;
+
+  @include mq(md, max) {
+    top: 28px;
+  }
 }
 
 .nav-icon3 span {

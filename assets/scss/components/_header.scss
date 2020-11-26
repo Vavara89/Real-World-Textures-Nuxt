@@ -4,10 +4,15 @@
   min-height: 16rem;
   background-color: #fbfbff;
   position: fixed;
-  border-bottom: 1px solid;
   left: 0;
   right: 0;
   z-index: 10000;
+
+  @include mq(md, max) {
+    padding: 10px 0;
+    border-bottom: 1px solid;
+    min-height: 0rem;
+  }
 
   &-inner {
     margin: 0 auto;
@@ -194,12 +199,22 @@
         clear: both;
         max-height: 0;
         transition: max-height 0.2s ease-out;
+        @include mq(md, max) {
+          position: absolute;
+          top: 116px;
+          left: 0;
+          right: 0;
+          background: white;
+        }
       }
 
       li {
         display: block !important;
         clear: both;
         width: 100%;
+        @include mq(md, max) {
+          text-align: center;
+        }
 
         a {
           display: block;
@@ -458,7 +473,11 @@
       path {
         fill: $color-white;
       }
+
     }
+  }
+  @include mq(md, max) {
+    transform: scale(0.7);
   }
 }
 
