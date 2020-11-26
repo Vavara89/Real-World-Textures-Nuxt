@@ -1,4 +1,4 @@
-let production =  {
+let production = {
   mode: 'universal',
   /*
   ** Headers of the page
@@ -29,7 +29,7 @@ let production =  {
   */
   plugins: [
     { src: '@/plugins/vClickOutside', ssr: false },
-    { src: '~/plugins/notifications-ssr', mode: 'server'},
+    { src: '~/plugins/notifications-ssr', mode: 'server' },
     { src: '~/plugins/notifications-client', mode: 'client' },
     { src: '~/plugins/v-mask', mode: 'client' },
   ],
@@ -61,16 +61,19 @@ let production =  {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     },
     vendor: ['vue-notifications']
   },
   env: {
+    // baseUrl: 'http://192.168.0.73:8000/',
     baseUrl: 'https://rwt.bypixelfield.com/',
+
+
     contacts: {
-      youtube_link:'http://youtube.com',
-      facebook_link:'http://facebook.com',
-      instagram_link:'http://instagram.com',
+      youtube_link: 'http://youtube.com',
+      facebook_link: 'http://facebook.com',
+      instagram_link: 'http://instagram.com',
       email: 'info@rwt.ru',
     }
   },
