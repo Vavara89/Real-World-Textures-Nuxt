@@ -213,7 +213,6 @@ export default {
 <style scoped>
 .realworld {
   background-color: #fbfbff;
-  padding-top: 250px;
 }
 @media only screen and (max-width: 950px) {
   .realworld {
