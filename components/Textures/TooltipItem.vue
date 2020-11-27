@@ -32,7 +32,7 @@
     <div  @click="showDetails" class="tooltip-footer">
       <div class="title">
         <h3 class="name">
-          {{ texture.name }}
+          <span v-if="texture.materialNumber">{{ texture.materialNumber }}</span> {{ texture.name }}
         </h3>
       </div>
       <div class="credits-bookmark">
