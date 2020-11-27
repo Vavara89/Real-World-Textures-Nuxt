@@ -41,7 +41,6 @@
         <MaterialMenu
           v-if="getCategories()"
           :list="getCategories()"
-          :active_category="activeCategory"
         />
       </div>
 

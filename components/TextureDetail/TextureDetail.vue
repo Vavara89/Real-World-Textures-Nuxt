@@ -1,5 +1,6 @@
 <template>
-  <div v-if="texture" class="detailModal" :class="{'visuallyscoll': type_code === 'models'}">
+  <div  v-if="texture" class="detailModal with-background" :class="{'visuallyscoll': type_code === 'models'}">
+    <div @click.prevent="close" class="background"></div>
     <div class="container">
       <div class="imageDetails">
         <div class="imageDetails-header">
@@ -304,7 +305,7 @@ export default {
     });
     if (this.texture.resolutions) {
       this.texture.resolutions.map((item) => {
-        const label = `${item.size}x${item.size} (${item.name})`;
+        const label = `${item.resolution}x${item.resolution}px (${item.name})`;
         this.options.push({ value: label });
         item['label'] = label;
       });
@@ -339,6 +340,9 @@ export default {
       const url = this.texture.slug;
       const path = this.$route.path.replace('product-' + url, '');
       this.$router.push({ path });
+    },
+    tryClose () {
+
     },
     formatCoords () {
       return formatcoords(this.texture.latitude, this.texture.longitude).format();

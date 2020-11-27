@@ -1,5 +1,10 @@
 <template>
   <ul class="menuLeft">
+    <li class="item">
+      <a v-bind:class="{'active':allActive}" :href='allLink'>
+        All
+      </a>
+    </li>
     <li v-for="(item, index) in list" :key="'item-'+ index + '-'+ item.id" class="text item">
 
 
@@ -23,40 +28,40 @@ export default {
       type: Array,
       required: true
     },
-    active_category: {
-      type: Object,
-      required: false
-    }
   },
   data () {
     return {
       active_id: null,
     };
   },
-
+  computed: {
+    allLink () {
+      return this.$route.matched[0].path;
+    },
+    allActive () {
+      return this.allLink === this.$route.path;
+    }
+  },
   methods: {
     isActive (item) {
-      if (this.active_category) {
-        this.active_id = this.active_category.id;
-      }else{
-        this.active_id = null;
-      }
-      if (this.active_id === item.id) {
+      const currentUrl = this.$route.path;
+      if (item.absolute_url === currentUrl) {
         return true;
       }
       if (item.child.length) {
-        const active_child = item.child.filter(item => item.id === this.active_id);
-        if (active_child.length) {
-          return active_child.pop().id === this.active_id;
-        }
+        const active_child = item.child.filter(item => item.absolute_url.replace('?', '') === currentUrl);
+        return active_child.length;
       }
       return false;
 
     },
     toCategory (item) {
-      this.active_id = item.id;
-      this.$router.replace(item.absolute_url);
-    }
+      const currentUrl = this.$route.path;
+      if(currentUrl !== item.absolute_url){
+        this.$router.replace(item.absolute_url);
+      }
+    },
+
   },
 };
 </script>
