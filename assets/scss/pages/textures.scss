@@ -1,123 +1,125 @@
 .page-content {
-    background-color: $color-bck-light;
+  background-color: $color-bck-light;
 
-    &.page-content-branddetail {
-        padding-bottom: 10rem;
+  &.page-content-branddetail {
+    padding-bottom: 10rem;
+  }
+
+  .services {
+    padding: 0;
+    margin-top: 3rem;
+
+    .clear {
+      clear: both;
+    }
+  }
+
+  .branddetail {
+    padding: 0 5rem;
+    margin-top: 14rem;
+    margin-bottom: 1rem;
+
+    .all {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 30px;
     }
 
-    .services {
-        padding: 0;
-        margin-top: 3rem;
+    .column {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+      flex: 1;
+    }
 
-        .clear {
-            clear: both;
+    .blue-column {
+      min-width: 354px;
+      margin-right: 10px;
+
+      @media only screen and (max-width: 1090px) {
+        margin-right: 0;
+        margin-bottom: 30px;
+      }
+
+      @media only screen and (max-width: 450px) {
+        min-width: auto;
+      }
+
+      .top {
+        .toggleOption {
+          margin: 0 -1.7rem;
+          padding: 1rem 3.3rem;
+          border: none;
+          font-weight: bold;
+          border-radius: 5rem;
+          background-color: $color-primary-700;
+          color: $color-white;
+          text-transform: uppercase;
+
+          @media only screen and (max-width: 450px) {
+            margin: 0 auto;
+          }
         }
+
+        .flex-row-container {
+          margin-bottom: 40px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .flex-row-container > .flex-row-item {
+          flex: 1 1 30%; /*grow | shrink | basis */
+        }
+
+        .flex-row-item {
+          text-align: center;
+          margin-bottom: 10px;
+
+          &.links {
+            text-align: left;
+          }
+
+          &.where {
+            padding: 0 10px;
+          }
+
+          &.buys {
+            display: flex;
+            margin-left: auto;
+            padding-left: 20px;
+          }
+        }
+      }
+
+      .text {
+        font-size: 14px;
+        color: #9093B9;
+        font-weight: 500;
+      }
     }
 
-    .branddetail {
-        padding: 0 5rem;
-        margin-top: 14rem;
-        margin-bottom: 1rem;
+    .green-column {
+      width: 354px;
+      height: 177px;
+      line-height: 17.7rem;
+      margin: auto;
+      background-color: #fff;
+      text-align: center;
 
-        .all {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: 100%;
-            margin-top: 30px;
-          }
+      img {
+        max-width: 13.1rem;
+        max-height: 8rem;
+        display: inline-block;
+        vertical-align: middle;
+      }
 
-          .column {
-            display: flex;
-            flex-direction: column;
-            flex-basis: 100%;
-            flex: 1;
-          }
-
-          .blue-column {
-            min-width: 354px;
-            margin-right: 10px;
-
-            @media only screen and (max-width: 1090px) {
-                margin-right: 0;
-                margin-bottom: 30px;
-              }
-
-              @media only screen and (max-width: 450px) {
-                min-width: auto;
-              }
-
-            .top {
-                .toggleOption {
-                    margin: 0 -1.7rem;
-                    padding: 1rem 3.3rem;
-                    border: none;
-                    font-weight: bold;
-                    border-radius: 5rem;
-                    background-color: $color-primary-700;
-                    color: $color-white;
-                    text-transform: uppercase;
-
-                    @media only screen and (max-width: 450px) {
-                        margin: 0 auto;
-                      }
-                }
-
-                .flex-row-container {
-                    margin-bottom: 40px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .flex-row-container > .flex-row-item {
-                    flex: 1 1 30%; /*grow | shrink | basis */
-                }
-
-                .flex-row-item {
-                text-align: center;
-                margin-bottom: 10px;
-
-                &.links{
-                    text-align: left;
-                    }
-
-                    &.where{
-                        padding: 0 10px;
-                        }
-
-                        &.buys{
-                            display: flex;
-                            margin-left: auto;
-                            padding-left: 20px;
-                            }
-                }
-            }
-
-            .text {
-                font-size: 14px;
-                color: #9093B9;
-                font-weight: 500;
-            }
-          }
-
-          .green-column {
-              width: 354px;
-              height: 177px;
-              line-height: 17.7rem;
-              margin: auto;
-              background-color: #fff;
-              text-align: center;
-
-              img {
-                max-width: 13.1rem;
-                max-height: 8rem;
-                display: inline-block;
-                vertical-align: middle;
-              }
-              @media only screen and (max-width: 450px) {
-                width: auto;
-              }
-          }
+      @media only screen and (max-width: 450px) {
+        width: auto;
+      }
     }
+  }
 }

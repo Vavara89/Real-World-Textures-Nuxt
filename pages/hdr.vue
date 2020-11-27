@@ -5,9 +5,11 @@
     <div class="page-content">
       <ContentHeader :path="path"/>
       <section class="services view-bottom">
-        <TextureGallery :textures="textures" :noscale="true"/>
-        <h2 style="text-align: center" v-if="!textures.length">Search result is empty, try to change your search params</h2>
-      </section>
+        <div class="catalog-page">
+          <TextureGallery :textures="textures" :noscale="true"/>
+          <h2 style="text-align: center" v-if="!textures.length">Search result is empty, try to change your search params</h2>
+        </div>
+        </section>
       <Pager :pager="pager" />
     </div>
   </div>

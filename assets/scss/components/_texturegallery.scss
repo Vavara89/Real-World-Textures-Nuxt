@@ -102,6 +102,14 @@
       }
     }
   }
+
+  &.catalog{
+    .textures{
+      .texture{
+        display: inline;
+      }
+    }
+  }
 }
 
 .texture__content {

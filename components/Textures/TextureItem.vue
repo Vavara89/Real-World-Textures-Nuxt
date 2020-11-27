@@ -10,7 +10,7 @@
       />
       <img v-if="!isBrand" :src="getCover()" :alt="texture.name" />
     </div>
-    <template v-if="!isBrand">
+    <template v-if="!isBrand && showContent">
       <div
         v-if="texture.name || texture.structure || texture.usage"
         class="texture__content"
@@ -48,6 +48,10 @@ export default {
     noscale: {
       type: Boolean,
       default: false,
+    },
+    showContent: {
+      type: Boolean,
+      default: true,
     },
   },
   methods: {
