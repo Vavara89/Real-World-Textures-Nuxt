@@ -42,7 +42,7 @@
             <vue-recaptcha
               ref="recaptcha"
               :load-recaptcha-script="true"
-              sitekey="6LfzhK4ZAAAAADYraaQUsspKmiLcIstMvTfTclYK"
+              sitekey="6Le9u-8ZAAAAAKFsoiakKmu8zRx8H_T3DCW-xzPR"
               @expired="onCaptchaExpired"
               @verify="setCaptchaToken"
             />
