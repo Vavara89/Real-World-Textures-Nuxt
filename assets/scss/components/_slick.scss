@@ -15,7 +15,8 @@
   div div {
 		outline: none;
 		>img {
-			border-radius: 1rem;
+      border-radius: 1rem;
+      width: 100%;
 		}
 	}
 }
@@ -25,7 +26,7 @@
 }
 
 .preview .slick-dots {
-	bottom: -60px;
+  height: 4px;
 }
 
 .preview .slick-dots li button:before {
@@ -34,11 +35,20 @@
 	background-color: #1F2444;
 	border-radius: 4px;
 	opacity: .15;
-	z-index: 10;
+  z-index: 10;
+  @include mq(xl, max) {
+    height: 2px;
+  }
+  @include mq(md, max) {
+    width: 1px;
+  }
 }
 
 .preview .slick-dots li {
   width: 75px;
+  @include mq(md, max) {
+    width: 20px;
+  }
 }
 
 .preview .slick-dots li.slick-active button:before {
@@ -48,7 +58,10 @@
 
 .preview .slick-dots li button,
 .preview .slick-dots li button:before {
-	width: 65px;
+  width: 65px;
+  @include mq(md, max) {
+    width: 20px;
+  }
 }
 .preview {
 
@@ -100,7 +113,7 @@
 		&:hover:after,
 		&:hover ~ &:after,
 		&:checked ~ &:after {
-			opacity: 1;
+			// opacity: 1;
 		}
 
 		&.slick-disabled {
@@ -109,22 +122,23 @@
 	}
 
 	.prev-slick {
-		left: calc(10vw - 1.6rem);
+		left: calc(10vw + 7%);
 	}
 	.next-slick {
-		top: calc(50% - 1.6rem + 15px);
+		top: calc(50% - 1.6rem);
 		-webkit-transform-origin: center top;
 		-webkit-transform:rotate(-180deg);
 		-moz-transform:rotate(-180deg);
 		-ms-transform:rotate(-180deg);
 		-o-transform:rotate(-180deg);
 		transform:rotate(-180deg);
-		right: calc(10vw - 1.6rem);
+		right: calc(10vw + 7%)
 	}
 }
 
 .preview {
-  margin: 6rem -4.8rem;
+  margin: 0 -4.8rem;
+  padding-bottom: 150px;
   overflow: hidden;
   position: relative;
 

@@ -1,5 +1,5 @@
 .example {
-  padding: 18rem 0 14.4rem 0;
+  padding: 18rem 0 0 0;
   overflow: hidden;
   background-color: $color-bck-light;
 
@@ -13,7 +13,7 @@
 
   .section__heading {
     max-width: 81.6rem;
-    margin-bottom: 11.5rem;
+
 
     @include mq(sm, max) {
       margin-bottom: 7.2rem;

@@ -2,7 +2,6 @@
   <section class="example">
     <div class="container">
       <SectionTitle :subtitle="subtitle" :title="title" :isCentered="true" />
-      <img :src="image.url" :alt="image.alt" class="example__image" />
     </div>
     <div class="container container--4k">
       <div class="preview">
@@ -86,53 +85,6 @@ export default {
         url: require("~/assets/img/textures/preview-img.jpg"),
         alt: "example of use",
       },
-      textures: [
-        {
-          image: {
-            url: require("~/assets/img/textures/texture-technistone.png"),
-            alt: "Backhausen",
-          },
-          name: "Backhausen",
-          structure: "Viola",
-          usage: "fabric over bar stool",
-        },
-        {
-          image: {
-            url: require("~/assets/img/textures/texture-shipwood.png"),
-            alt: "Shipwood",
-          },
-          name: "Shipwood",
-          structure: "Pyramids",
-          usage: "kitchen island",
-        },
-        {
-          image: {
-            url: require("~/assets/img/textures/texture-technistone.png"),
-            alt: "Jafholz",
-          },
-          name: "Jafholz",
-          structure: "Cedar",
-          usage: "kitchen cabinet",
-        },
-        {
-          image: {
-            url: require("~/assets/img/textures/texture-princparket.png"),
-            alt: "Princ Parket",
-          },
-          name: "Princ Parket",
-          structure: "Volcano",
-          usage: "wooden floor",
-        },
-        {
-          image: {
-            url: require("~/assets/img/textures/texture-technistone.png"),
-            alt: "Technistone",
-          },
-          name: "Technistone",
-          structure: "Cloudy Onyx",
-          usage: "kitchen countertop",
-        },
-      ],
     };
   },
   methods: {
@@ -141,11 +93,11 @@ export default {
         return {
           image: {
             url: item["image"],
-            alt: "",
+            alt: "jh",
           },
-          name: "",
-          structure: "",
-          usage: "",
+          name: "GGG",
+          structure: "jhbk",
+          usage: "ygygy",
           url: item["url"],
         };
       });

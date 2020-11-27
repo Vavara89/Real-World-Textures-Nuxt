@@ -55,7 +55,7 @@
             v-bind="sliderNav"
             class="default zoom-slider-nav zoom-slider-wide"
           >
-            <template v-for="(slide, key) in slides">
+            <template v-for="slide in slides">
               <p class="explore-texture-number">
                 {{ slide.name }}
               </p>

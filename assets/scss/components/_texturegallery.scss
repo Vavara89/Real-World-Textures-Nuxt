@@ -29,7 +29,8 @@
         max-width: auto;
         flex: 1 0 20rem;
       }
-  
+
+
 
       &.brands {
         margin: 15px;
@@ -107,4 +108,8 @@
       }
     }
   }
+}
+
+.texture__content {
+  display: block !important;
 }
