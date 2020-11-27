@@ -40,16 +40,23 @@ export default {
     },
     allActive () {
       return this.allLink === this.$route.path;
-    }
+    },
+    isBrandPage(){
+      return this.$route.matched[0].path === '/brands'
+    },
   },
   methods: {
+
     isActive (item) {
-      const currentUrl = this.$route.path;
+      const currentUrl = this.$route.path.split('?')[0];
       if (item.absolute_url === currentUrl) {
         return true;
       }
       if (item.child.length) {
-        const active_child = item.child.filter(item => item.absolute_url.replace('?', '') === currentUrl);
+        const active_child = item.child.filter(item =>{
+          const url = item.absolute_url.split('?')[0];
+          return url === currentUrl;
+        });
         return active_child.length;
       }
       return false;

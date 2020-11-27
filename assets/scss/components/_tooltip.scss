@@ -41,6 +41,8 @@
         transition: all .3s ease-in-out;
         width: 20rem;
         height: 20rem;
+        display: flex;
+        object-fit: contain;
       }
 
     }
