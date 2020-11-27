@@ -483,10 +483,6 @@
 
 .header.header-signup {
   background: linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
-  background: -o-linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
-  background: -ms-linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
-  background: -moz-linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
-  background: -webkit-linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
 
   @include mq(lg, max) {
     background: $color-bck-dark;
