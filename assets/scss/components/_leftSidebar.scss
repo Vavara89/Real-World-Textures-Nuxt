@@ -9,9 +9,15 @@
     z-index: 99999;
     padding: 4rem 3rem;
     position: relative;
+
+    &.profileside{
+      top: 0px;
+      z-index: 0;
+    }
     @include mq(md, max) {
       top: auto;
     }
+
     @include transition-base;
     &--open {
       position: absolute;
