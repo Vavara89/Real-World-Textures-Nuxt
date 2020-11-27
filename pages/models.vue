@@ -5,8 +5,10 @@
     <div class="page-content">
       <ContentHeader :path="path"/>
       <section class="services view-bottom">
-        <TextureGallery :textures="models" :noscale="true"/>
-        <h2 style="text-align: center" v-if="!models.length">Search result is empty, try to change your search params</h2>
+        <div class="catalog-page">
+          <TextureGallery :textures="models" :noscale="true"/>
+          <h2 style="text-align: center" v-if="!models.length">Search result is empty, try to change your search params</h2>
+        </div>
       </section>
       <Pager :pager="pager" />
     </div>

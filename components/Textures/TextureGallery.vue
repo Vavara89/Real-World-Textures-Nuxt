@@ -1,5 +1,5 @@
 <template>
-  <div class="textgallery">
+  <div :class="classList" class="textgallery">
     <ul class="textures">
       <li
         v-for="(texture, index) in textures"
@@ -12,6 +12,7 @@
           :shadow="shadow"
           :isBrand="isBrand"
           :noscale="noscale"
+          :showContent="false"
         />
         <TooltipItem
           v-if="detail"
@@ -67,6 +68,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    classList: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {
