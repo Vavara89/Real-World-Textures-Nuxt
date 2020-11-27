@@ -12,7 +12,7 @@
         <div v-if="paused && !isSafari" class="sidebar__video__cover" @click="togglePlay">
           <!-- <img src="/assets/img/sidebar-cover.jpg"/> -->
         </div>
-        <iframe v-if="card.video" width="100%" height="315" :src="card.video" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture">
+        <iframe v-if="card.video && card.sidebar.isOpened" width="100%" height="315" :src="card.video" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture">
 
         </iframe>
       </div>
