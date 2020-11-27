@@ -6,7 +6,13 @@
     <div class="header-inner">
       <div class="flex-header">
         <div class="left-container">
-          <SvgIconLogo />
+          <nuxt-link
+            to="/"
+            class="header-logo"
+            :class="{ 'header-logo--light': $route.name === 'signup' }"
+          >
+            <SvgIconLogo />
+          </nuxt-link>
           <header-search />
         </div>
         <div class="flex-menu">
@@ -271,8 +277,48 @@ export default {
   },
 };
 </script>
-<style>
-.left-container {
-  display: flex;
+
+<style lang="scss">
+.header-signup {
+  .header-inner {
+    max-width: 2126px;
+  }
+  .flex-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media only screen and (max-width: 1230px) {
+      flex-direction: column;
+    }
+    @media only screen and (max-width: 950px) {
+      flex-direction: row;
+    }
+  }
+  .signup-container__left {
+    @media only screen and (max-width: 950px) {
+      padding-top: 200px;
+    }
+  }
+
+  .left-container {
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: 1230px) {
+      flex-direction: column;
+      justify-content: center;
+    }
+    .header-search {
+      margin-left: 135px;
+      margin-top: 15px;
+      @media only screen and (max-width: 1800px) {
+        margin-left: 100px;
+        right: 50px;
+      }
+      @media only screen and (max-width: 1440px) {
+        margin-left: 50px;
+        right: 20px;
+      }
+    }
+  }
 }
 </style>
