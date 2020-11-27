@@ -129,6 +129,7 @@
 
       .imageDetails-footer {
         padding: 6.4rem;
+        position: relative;
 
         .imageItem {
           margin: 0 0.8rem;
@@ -145,6 +146,9 @@
           margin: 0 auto;
 
           .button {
+            position: absolute;
+            display: block;
+            top: 0;
             width: 2rem;
             height: 2rem;
 
@@ -155,13 +159,13 @@
 
           .prev-slick {
             &::before {
-              content: none;
+              content: "";
             }
           }
 
           .next-slick {
             &::before {
-              content: none;
+              content: "";
             }
 
             .button {
@@ -342,3 +346,9 @@
     display:block;
     }
 }
+
+.slick-prev.slick-disabled:before {
+  display: none;
+}
+
+
