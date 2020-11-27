@@ -6,10 +6,7 @@
   margin: 0 auto;
   // padding: 0 5rem;
 
-  // TODO
-
   &.mainpage {
-
     .textures--center {
       text-align: center;
       display: flex;
@@ -18,7 +15,7 @@
 
     .texture {
       margin: 0;
-      padding: 0;
+      padding: 10px;
       background: transparent;
       border-radius: 0;
     }
@@ -79,9 +76,8 @@
   float: left;
 
   &:hover {
-
       .texture__image:not(.brands):not(.noscale) img {
-        transform: scale(1.15);
+        transform: scale(1.1);
         transition-duration: 0.3s;
         transition-property: all;
         transition-timing-function: ease-in-out;
@@ -194,7 +190,6 @@
   }
 
   &--shadow {
-
     .texture__image:not(.brands) {
       img {
         transform: scale(1);
@@ -207,7 +202,6 @@
       }
     }
     .texture__image {
-
       &:after {
         position: absolute;
         right: 0;

@@ -1,5 +1,4 @@
 .textgallery {
-
   .clear {
     clear: both;
   }
@@ -11,13 +10,11 @@
 
     @include mq(lg, max) {
       display: flex;
-    flex-wrap: wrap;
+     flex-wrap: wrap;
     }
 
     .texture {
       position: relative;
-      // width: 25.5rem;
-      // height: 25.5rem;
       width: 20rem;
       height: 20rem;
       display: flex;
@@ -29,8 +26,6 @@
         max-width: auto;
         flex: 1 0 20rem;
       }
-
-
 
       &.brands {
         margin: 15px;
@@ -70,8 +65,7 @@
         }
 
         &:hover {
-
-          transform: scale(1.08);
+          transform: scale(0.5);
           transition-duration: 0.3s;
           transition-property: all;
           transition-timing-function: ease-in-out;

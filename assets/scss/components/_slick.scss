@@ -8,7 +8,6 @@
   }
 }
 
-
 .slick-slide {
   border-radius: 1rem;
 
@@ -63,8 +62,8 @@
     width: 20px;
   }
 }
-.preview {
 
+.preview {
   .slick {
     &-prev, &-next {
       &:before {
@@ -72,6 +71,7 @@
       }
     }
   }
+
 	.prev-slick, .next-slick {
 		cursor: pointer;
 		position: absolute;
@@ -123,7 +123,8 @@
 
 	.prev-slick {
 		left: calc(10vw + 7%);
-	}
+  }
+
 	.next-slick {
 		top: calc(50% - 1.6rem);
 		-webkit-transform-origin: center top;
