@@ -215,7 +215,7 @@
         background-color: rgba($color-primary-900, 0.08);
         transform: translateX(-50%);
 
-        filter: blur(.8rem);
+        filter: blur(.9rem);
         @include transition-base;
 
         @media only screen and (max-width: 1600px) {
