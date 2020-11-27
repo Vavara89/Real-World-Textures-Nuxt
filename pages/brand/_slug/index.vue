@@ -52,7 +52,7 @@
         </div>
       </section>
       <section class="services view-bottom">
-        <TextureGallery :textures="[...products.textures, ...products.models]" />
+        <TextureGallery :class-list="'catalog'" :textures="[...products.textures, ...products.models]" />
       </section>
     </div>
     <Modal v-model="modalOpen" :can-search="false" :brand="brand" :option="'manufactorList'" :list="distributors" />
