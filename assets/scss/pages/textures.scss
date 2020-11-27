@@ -16,8 +16,11 @@
 
   .branddetail {
     padding: 0 5rem;
-    margin-top: 14rem;
     margin-bottom: 1rem;
+
+    @include mq(md, max) {
+      margin-top: 14rem;
+    }
 
     .all {
       display: flex;
@@ -112,7 +115,6 @@
 
       img {
         max-width: 13.1rem;
-        max-height: 8rem;
         display: inline-block;
         vertical-align: middle;
       }
