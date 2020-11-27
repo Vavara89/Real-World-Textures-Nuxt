@@ -125,9 +125,11 @@ export default {
       this.modalOpen = true;
     },
     formatWebsite(){
-      if(this.brand.webSite.startWith('http')){
-        return `http://${this.brand.webSite}`;
+      const website = this.brand.webSite;
+      if(website && !website.startsWith('http')){
+        return `http://${website}`;
       }
+      return website;
     }
   }
 };
