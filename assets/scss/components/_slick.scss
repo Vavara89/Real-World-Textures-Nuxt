@@ -1,8 +1,8 @@
 .slick-slider:not(.default){
   .slick-slide {
     transition: all .3s ease-in-out;
-    transform: scale(0.92);
-    width: 85vw !important;
+    transform: scale(0.8);
+    width: 80vw !important;
     // max-width: 153.6rem;
     outline: none !important;
   }
@@ -12,7 +12,8 @@
   border-radius: 1rem;
 
   div div {
-		outline: none;
+    outline: none;
+
 		>img {
       border-radius: 1rem;
       width: 100%;
@@ -35,9 +36,11 @@
 	border-radius: 4px;
 	opacity: .15;
   z-index: 10;
+
   @include mq(xl, max) {
     height: 2px;
   }
+
   @include mq(md, max) {
     width: 1px;
   }
@@ -58,6 +61,7 @@
 .preview .slick-dots li button,
 .preview .slick-dots li button:before {
   width: 65px;
+
   @include mq(md, max) {
     width: 20px;
   }
@@ -122,23 +126,31 @@
 	}
 
 	.prev-slick {
-    left: calc(10vw + 0.9rem);
+    left: calc(10vw - 2rem);
     transform: scale(1.8);
 
     @include mq(xxl, max) {
-      left: calc(10vw );
+      transform: scale(1.5);
+    }
+
+    @include mq(sm, max) {
       transform: scale(1);
+      left: calc(10vw);
     }
   }
 
 	.next-slick {
 		top: 50%;
-    right: calc(10vw + 0.9rem);
+    right: calc(10vw - 2rem);
     transform: scale(1.8) rotate(-180deg);
 
     @include mq(xxl, max) {
-      right: calc(10vw );
+      transform: scale(1.5) rotate(-180deg);
+    }
+
+    @include mq(sm, max) {
       transform: scale(1) rotate(-180deg);
+      right: calc(10vw);
     }
 	}
 }
@@ -150,6 +162,10 @@
   overflow: hidden;
   position: relative;
 
+   .slick-active{
+    transform: scale(1) !important;
+  }
+
   .slick-slider + .slick-slider {
     margin-top: 10rem;
 
@@ -158,11 +174,7 @@
     }
 
     @include mq(md, max) {
-      margin-top: 5rem;
-    }
-
-    .slick-center {
-      transform: scale(1);
+      margin-top: 4rem;
     }
   }
 }

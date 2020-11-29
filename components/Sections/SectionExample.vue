@@ -16,7 +16,7 @@
               {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
             </div>
           </template>
-          <div v-for="slide in slides" :key="'slide-' + slide">
+          <div class="scale" v-for="slide in slides" :key="'slide-' + slide">
             <img :src="slide.cover" :alt="slide.name" class />
           </div>
         </VueSlickCarousel>
