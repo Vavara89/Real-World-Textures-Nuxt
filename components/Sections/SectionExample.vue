@@ -93,11 +93,11 @@ export default {
         return {
           image: {
             url: item["image"],
-            alt: item['name'],
+            alt: item["name"],
           },
-          name: item['name'],
-          structure: item['structure'],
-          usage: item['usage'],
+          name: item["name"],
+          structure: item["structure"],
+          usage: item["usage"],
           url: item["url"],
         };
       });

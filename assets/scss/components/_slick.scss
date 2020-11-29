@@ -1,8 +1,8 @@
 .slick-slider:not(.default){
   .slick-slide {
     transition: all .3s ease-in-out;
-    transform: scale(0.8);
-    width: 80vw !important;
+    transform: scale(0.92);
+    width: 85vw !important;
     // max-width: 153.6rem;
     outline: none !important;
   }
@@ -78,7 +78,7 @@
 		display: block;
 		width: 3.2rem;
 		height: 3.2rem;
-		top: calc(50% - 1.6rem);
+		top: 50%;
 		background: url(~@/assets/img/icon-arrow_left__white.svg) no-repeat center/contain;
 		background-size: 1.2rem;
 		background-color: $color-primary-700;
@@ -122,29 +122,44 @@
 	}
 
 	.prev-slick {
-		left: calc(10vw + 7%);
+    left: calc(10vw + 0.9rem);
+    transform: scale(1.8);
+
+    @include mq(xxl, max) {
+      left: calc(10vw );
+      transform: scale(1);
+    }
   }
 
 	.next-slick {
-		top: calc(50% - 1.6rem);
-		-webkit-transform-origin: center top;
-		-webkit-transform:rotate(-180deg);
-		-moz-transform:rotate(-180deg);
-		-ms-transform:rotate(-180deg);
-		-o-transform:rotate(-180deg);
-		transform:rotate(-180deg);
-		right: calc(10vw + 7%)
+		top: 50%;
+    right: calc(10vw + 0.9rem);
+    transform: scale(1.8) rotate(-180deg);
+
+    @include mq(xxl, max) {
+      right: calc(10vw );
+      transform: scale(1) rotate(-180deg);
+    }
 	}
 }
 
 .preview {
   margin: 0 -4.8rem;
+  padding-top: 100px;
   padding-bottom: 150px;
   overflow: hidden;
   position: relative;
 
   .slick-slider + .slick-slider {
     margin-top: 10rem;
+
+    @include mq(xl, max) {
+      margin-top: 8rem;
+    }
+
+    @include mq(md, max) {
+      margin-top: 5rem;
+    }
 
     .slick-center {
       transform: scale(1);

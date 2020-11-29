@@ -1,7 +1,7 @@
 .textures {
   // display: grid !important;
   overflow: visible;
-  width: 100%;
+  max-width: 80%;
   // max-width: 154rem;
   margin: 0 auto;
   // padding: 0 5rem;
@@ -115,15 +115,15 @@
     }
 
     @media (max-width: 1500px) {
-      min-height: 250px;
-    }
-
-    @media (max-width: 1000px) {
       min-height: 150px;
     }
 
+    @media (max-width: 1000px) {
+      min-height: 120px;
+    }
+
     @media (max-width: 600px) {
-      min-height: 100px;
+      min-height: 80px;
     }
 
     &.brands {
@@ -160,6 +160,9 @@
     @include mq(xxl, min) {
       margin-left: 6.4rem;
     }
+    @include mq(xl, max) {
+      margin-top: 1rem;
+    }
   }
 
   &__name {
@@ -173,11 +176,13 @@
   }
 
   &__structure {
-    margin-bottom: 2.4rem;
+    margin-bottom: 1rem;
     font-size: 1.1vw;
 
     @media (max-width: 697px) {
       font-size: 1.5vw;
+      margin-bottom: 0.5rem;
+
       }
   }
 
