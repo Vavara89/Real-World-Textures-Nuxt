@@ -1,53 +1,77 @@
 <template>
-  <div  v-if="texture" class="detailModal with-background" :class="{'visuallyscoll': type_code === 'models'}">
+  <div
+    v-if="texture"
+    class="detailModal with-background"
+    :class="{ visuallyscoll: type_code === 'models' }"
+  >
     <div @click.prevent="close" class="background"></div>
     <div class="container">
       <div class="imageDetails">
         <div class="imageDetails-header">
           <div>
             <a class="button" @click.prevent="close">
-              <img src="@/assets/img/icon-cross.svg" style="margin:10px;" width="12">
+              <img
+                src="@/assets/img/icon-cross.svg"
+                style="margin: 10px"
+                width="12"
+              />
             </a>
           </div>
           <div class="imageDetails-options">
             <div v-if="texture.in_assets" class="download">
-              <img src="@/assets/img/icon-download.svg">
+              <img src="@/assets/img/icon-download.svg" />
             </div>
 
             <div v-show="texture.is_free" class="freeMark">
-              <a href class="badge-rounded color-bck-secondary--green h4">Free</a>
+              <a href class="badge-rounded color-bck-secondary--green h4"
+                >Free</a
+              >
             </div>
           </div>
         </div>
         <div v-if="texture.gallery.length" class="imageDetails-content">
-          <VueSlickCarousel v-if="texture.gallery.length" ref="sliderMain" v-bind="sliderMain" class="default">
+          <VueSlickCarousel
+            v-if="texture.gallery.length"
+            ref="sliderMain"
+            v-bind="sliderMain"
+            class="default"
+          >
             <div v-for="item_image in texture.gallery" class="previewImg">
-              <img :src="item_image.image">
+              <img :src="item_image.image" />
             </div>
           </VueSlickCarousel>
 
-          <div v-if="texture.tutorialUrl && type_code !== 'models'" class="tutorial">
-            <a :href="texture.tutorialUrl" target="_blank"><label class="badge-play h4">Tutorial</label></a>
+          <div
+            v-if="texture.tutorialUrl && type_code !== 'models'"
+            class="tutorial"
+          >
+            <a :href="texture.tutorialUrl" target="_blank"
+              ><label class="badge-play h4">Tutorial</label></a
+            >
           </div>
         </div>
         <div v-if="texture.gallery.length" class="imageDetails-footer">
-          <VueSlickCarousel v-if="texture.gallery.length" ref="sliderNav" v-bind="navCarousel">
+          <VueSlickCarousel
+            v-if="texture.gallery.length"
+            ref="sliderNav"
+            v-bind="navCarousel"
+          >
             <template #prevArrow="arrowOption">
               <div class="prev-slick">
-                <a href="#" class="button">
-                  <img src="@/assets/img/icon-arrow_left.svg">
+                <a href="#" class="button-ttttttt">
+                  <img src="@/assets/img/icon-arrow_left.svg" />
                 </a>
               </div>
             </template>
             <template #nextArrow="arrowOption">
               <div class="next-slick">
                 <a href="#" class="button">
-                  <img src="@/assets/img/icon-arrow_left.svg">
+                  <img src="@/assets/img/icon-arrow_left.svg" />
                 </a>
               </div>
             </template>
             <div v-for="item_image in texture.gallery" class="imageItem">
-              <img :src="item_image.image" :alt="texture.name" class>
+              <img :src="item_image.image" :alt="texture.name" class />
             </div>
           </VueSlickCarousel>
         </div>
@@ -65,24 +89,42 @@
           </div>
           <div class="bookmark changed">
             <a href="javascript:void(0)" @click="toggleBookMark">
-              <img v-if="!texture.isBookmarked" src="@/assets/img/icon-bookmark-1.svg" class="image">
-              <img v-if="!texture.isBookmarked" src="@/assets/img/icon-bookmark-2.svg" class="hover">
-              <img v-if="texture.isBookmarked" src="@/assets/img/icon-bookmark-2.svg">
+              <img
+                v-if="!texture.isBookmarked"
+                src="@/assets/img/icon-bookmark-1.svg"
+                class="image"
+              />
+              <img
+                v-if="!texture.isBookmarked"
+                src="@/assets/img/icon-bookmark-2.svg"
+                class="hover"
+              />
+              <img
+                v-if="texture.isBookmarked"
+                src="@/assets/img/icon-bookmark-2.svg"
+              />
             </a>
           </div>
         </div>
         <div class="options">
-          <div class="option-item resolution" :class="{error: resolution_error}">
+          <div
+            class="option-item resolution"
+            :class="{ error: resolution_error }"
+          >
             <div class="label">
               <label class="h3">Resolution:</label>
             </div>
             <div class="option">
-              <Dropdown v-model="resolution" :options="options" :checkselect="true"/>
+              <Dropdown
+                v-model="resolution"
+                :options="options"
+                :checkselect="true"
+              />
             </div>
           </div>
           <div class="option-item dimension">
             <div class="label">
-              <label class="h3">{{ type_title }}<br>Dimensions:</label>
+              <label class="h3">{{ type_title }}<br />Dimensions:</label>
             </div>
             <div class="option">
               <label class="text">{{ texture.dimension }}</label>
@@ -94,7 +136,11 @@
             </div>
             <div class="option">
               <ul class="consisting-list">
-                <li v-for="(item, index) in texture.maps" :key="'consist-' + index" class="text">
+                <li
+                  v-for="(item, index) in texture.maps"
+                  :key="'consist-' + index"
+                  class="text"
+                >
                   {{ get_map_name(item) }}
                 </li>
               </ul>
@@ -113,12 +159,18 @@
           </div>
           <div v-if="texture.brand" class="option">
             <label class="brand">{{ texture.brand.name }}</label>
-            <a target="_blank" class="brand-link" :href="formatWebsite(texture.brand.webSite)">{{
-                texture.brand.webSite
-              }}</a>
+            <a
+              target="_blank"
+              class="brand-link"
+              :href="formatWebsite(texture.brand.webSite)"
+              >{{ texture.brand.webSite }}</a
+            >
           </div>
         </div>
-        <div v-if="texture.longitude && texture.latitude" class="description locator">
+        <div
+          v-if="texture.longitude && texture.latitude"
+          class="description locator"
+        >
           <label class="h3">Location:</label>
           <div class="text">
             <p>
@@ -133,109 +185,120 @@
           <div v-if="downloadErrors" style="color: red" class="downloadErrors">
             <h3>{{ downloadErrors }}</h3>
           </div>
-          <button v-if="!processing" class="button-primary nohover" @click="downLoad">
+          <button
+            v-if="!processing"
+            class="button-primary nohover"
+            @click="downLoad"
+          >
             Download for {{ texture.credits }} credits
           </button>
           <button v-if="processing" class="button-primary button-primary--blue">
-            <img class="rotate" src="@/assets/img/icon-processing-button.svg">
+            <img class="rotate" src="@/assets/img/icon-processing-button.svg" />
             Processing... Continue Browsing
           </button>
         </div>
       </div>
       <div v-if="type_code === 'models'" class="visuallyshow">
         <div class="relatedtextures">
-          <h3>Related<br>textures:</h3>
+          <h3>Related<br />textures:</h3>
           <a href="#" class="button-secondary">See all</a>
         </div>
         <div class="relatedslider">
-
           <!-- Carousel Models start -->
           <div class="imageDetails-footer">
-            <VueSlickCarousel ref="sliderRelated" v-bind="sliderRelated" class="default">
+            <VueSlickCarousel
+              ref="sliderRelated"
+              v-bind="sliderRelated"
+              class="default"
+            >
               <template #prevArrow="arrowOption">
                 <div class="prev-slick">
                   <a href="#" class="button">
-                    <img src="@/assets/img/icon-arrow_left.svg">
+                    <img src="@/assets/img/icon-arrow_left.svg" />
                   </a>
                 </div>
               </template>
               <template #nextArrow="arrowOption">
                 <div class="next-slick">
                   <a href="#" class="button">
-                    <img src="@/assets/img/icon-arrow_left.svg">
+                    <img src="@/assets/img/icon-arrow_left.svg" />
                   </a>
                 </div>
               </template>
               <div v-for="item_image in texture.gallery" class="imageItem">
-                <img :src="item_image.image" :alt="texture.name" class>
+                <img :src="item_image.image" :alt="texture.name" class />
               </div>
             </VueSlickCarousel>
           </div>
           <!-- Carousel Models end -->
-
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import VueSlickCarousel from 'vue-slick-carousel';
-import 'vue-slick-carousel/dist/vue-slick-carousel.css';
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
-import formatcoords from 'formatcoords';
-import Dropdown from '@/components/Sidebar/Dropdown';
-import profile from '@/collectors/profile';
-import catalog from '@/collectors/catalog';
-import users from '@/collectors/users';
+import VueSlickCarousel from "vue-slick-carousel";
+import "vue-slick-carousel/dist/vue-slick-carousel.css";
+import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import formatcoords from "formatcoords";
+import Dropdown from "@/components/Sidebar/Dropdown";
+import profile from "@/collectors/profile";
+import catalog from "@/collectors/catalog";
+import users from "@/collectors/users";
 
 export default {
-  name: 'TextureDetail',
+  name: "TextureDetail",
   components: {
     VueSlickCarousel,
-    Dropdown
+    Dropdown,
   },
 
   props: {
     texture: {
       type: Object,
-      default: null
+      default: null,
     },
     type_title: {
       type: String,
-      required: true
+      required: true,
     },
     type_code: {
       type: String,
-      required: true
+      required: true,
     },
-
   },
 
-  data () {
+  data() {
     return {
       sliderMain: {
         dots: false,
         infinite: false,
-        centerMode: true,
+        centerMode: false,
         variableWidth: false,
         slidesToScroll: 1,
-        slidesToShow: 1
+        slidesToShow: 1,
       },
       navCarousel: {
         dots: false,
         infinite: false,
         slidesToScroll: 1,
-        slidesToShow: this.texture.gallery && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
+        slidesToShow:
+          this.texture.gallery && this.texture.gallery.length >= 5
+            ? 5
+            : this.texture.gallery.length,
         asNavFor: {},
-        focusOnSelect: true
+        focusOnSelect: true,
       },
       sliderRelated: {
         dots: false,
         infinite: false,
         slidesToScroll: 1,
-        slidesToShow: this.texture.gallery && this.texture.gallery.length >= 5 ? 5 : this.texture.gallery.length,
+        slidesToShow:
+          this.texture.gallery && this.texture.gallery.length >= 5
+            ? 5
+            : this.texture.gallery.length,
         asNavFor: {},
-        focusOnSelect: true
+        focusOnSelect: true,
       },
       options: [],
       resolution: [],
@@ -243,28 +306,27 @@ export default {
       downloadErrors: false,
       processing: false,
       map_titles: {
-        AO: 'Ambient occlusion',
-        NRM: 'Normal map',
-        DISP: 'Displacement',
-        DIFF: 'Diffuse',
-        COL: 'Color',
-        REFL: 'Reflection',
-        GLOSS:'Glosiness',
-        ROUGH: 'Roughness',
-        METAL: 'Metallic',
-        SPEC: 'Specular',
-        SPECLVL: 'Specular level',
-        IOR:'IOR',
-        SSS: 'Subsurface scattering',
-        SSSABSORB: 'SSS absorbtion'
-
-      }
+        AO: "Ambient occlusion",
+        NRM: "Normal map",
+        DISP: "Displacement",
+        DIFF: "Diffuse",
+        COL: "Color",
+        REFL: "Reflection",
+        GLOSS: "Glosiness",
+        ROUGH: "Roughness",
+        METAL: "Metallic",
+        SPEC: "Specular",
+        SPECLVL: "Specular level",
+        IOR: "IOR",
+        SSS: "Subsurface scattering",
+        SSSABSORB: "SSS absorbtion",
+      },
     };
   },
 
-  mounted () {
-    console.log('mounted');
-    document.body.style.overflow = 'hidden';
+  mounted() {
+    console.log("mounted");
+    document.body.style.overflow = "hidden";
     this.navCarousel.asNavFor = this.$refs.sliderMain;
     this.sliderRelated.asNavFor = this.$refs.sliderMain;
     const downloads = this.$store.getters.checkDownload;
@@ -277,7 +339,7 @@ export default {
     } else {
       if (this.$auth.user && this.$auth.user.user) {
         users.setToken(this.$auth.user.user.token);
-        users.downloading_states().then(response => {
+        users.downloading_states().then((response) => {
           if (response.data.length) {
             this.setProcess(response.data);
             const resolutions = this.downloadingResolutions(response.data);
@@ -288,46 +350,51 @@ export default {
           }
         });
       }
-
     }
   },
 
-  created () {
-    console.log('created');
+  created() {
+    console.log("created");
     this.$store.subscribe((mutation, state) => {
-      if (mutation.type === 'setForDownload') {
+      if (mutation.type === "setForDownload") {
         this.setProcess(state.forDownload);
       }
     });
 
     this.options.push({
-      value: 'Choose resolution'
+      value: "Choose resolution",
     });
     if (this.texture.resolutions) {
       this.texture.resolutions.map((item) => {
         const label = `${item.resolution}x${item.resolution}px (${item.name})`;
         this.options.push({ value: label });
-        item['label'] = label;
+        item["label"] = label;
       });
     }
   },
 
   methods: {
-    downloadingResolutions (data) {
+    downloadingResolutions(data) {
       let resolutions = [];
-      data.map(item => {
-        if (item['from_book_mark'] === false && item['id'] === this.texture.id) {
-          resolutions = item['resolutions'];
+      data.map((item) => {
+        if (
+          item["from_book_mark"] === false &&
+          item["id"] === this.texture.id
+        ) {
+          resolutions = item["resolutions"];
         }
       });
       return resolutions;
     },
-    setProcess (data) {
+    setProcess(data) {
       if (!this.texture) {
         return;
       }
-      data.map(item => {
-        if (item['from_book_mark'] === false && item['id'] === this.texture.id) {
+      data.map((item) => {
+        if (
+          item["from_book_mark"] === false &&
+          item["id"] === this.texture.id
+        ) {
           this.processing = true;
         }
       });
@@ -335,31 +402,32 @@ export default {
         this.processing = false;
       }
     },
-    close () {
-      this.$emit('close');
+    close() {
+      this.$emit("close");
       const url = this.texture.slug;
-      const path = this.$route.path.replace('product-' + url, '');
+      const path = this.$route.path.replace("product-" + url, "");
       this.$router.push({ path });
     },
-    tryClose () {
-
+    tryClose() {},
+    formatCoords() {
+      return formatcoords(
+        this.texture.latitude,
+        this.texture.longitude
+      ).format();
     },
-    formatCoords () {
-      return formatcoords(this.texture.latitude, this.texture.longitude).format();
-    },
-    getGoogleLink () {
+    getGoogleLink() {
       return `http://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
     },
-    formatWebsite (web) {
-      if (!web.startsWith('http')) {
+    formatWebsite(web) {
+      if (!web.startsWith("http")) {
         return `http://${web}`;
       }
       return web;
     },
-    toLogin () {
-      this.$router.push({ path: '/login' });
+    toLogin() {
+      this.$router.push({ path: "/login" });
     },
-    downLoad () {
+    downLoad() {
       if (!this.$auth.loggedIn) {
         return this.toLogin();
       }
@@ -368,64 +436,74 @@ export default {
         return;
       }
       this.downloadErrors = false;
-      const resolutions = this.texture.resolutions.filter((item) => {
-        return this.resolution.indexOf(item.label) >= 0;
-      }).map((item) => {
-        return item.resolution;
-      });
+      const resolutions = this.texture.resolutions
+        .filter((item) => {
+          return this.resolution.indexOf(item.label) >= 0;
+        })
+        .map((item) => {
+          return item.resolution;
+        });
       this.processing = true;
       this.recursiveDownload(resolutions);
     },
-    recursiveDownload (resolutions) {
+    recursiveDownload(resolutions) {
       clearTimeout(window[`product_${this.texture.id}`]);
       const item = {
-        'id': this.texture.id,
-        'type': this.type_code,
-        'resolutions': resolutions
+        id: this.texture.id,
+        type: this.type_code,
+        resolutions: resolutions,
       };
       const forDownload = this.$store.getters.forDownload;
-      if (forDownload.filter(item => {
-        return item['id'] !== this.texture.id;
-      }).length) {
+      if (
+        forDownload.filter((item) => {
+          return item["id"] !== this.texture.id;
+        }).length
+      ) {
         forDownload.push(item);
-        this.$store.commit('setForDownload', forDownload);
+        this.$store.commit("setForDownload", forDownload);
       }
-      catalog.download('textures', this.texture.id, { 'resolutions': resolutions }).then((response) => {
-        const data = response.data;
-        if (data.download_link) {
-          window.location.href = data.download_link;
-          clearTimeout(window[`product_${this.texture.id}`]);
-          const forDownload = this.$store.getters.forDownload.filter((product) => product['id'] !== this.texture.id);
-          this.$store.commit('setForDownload', forDownload);
-        } else {
-          window[`product_${this.texture.id}`] = setTimeout(() => {
-            this.recursiveDownload(resolutions);
-          }, 5000);
-        }
-      }).catch((error) => {
-        this.downloadErrors = error.response.data.errors;
-        this.processing = false;
-        clearTimeout(timeout);
-      });
+      catalog
+        .download("textures", this.texture.id, { resolutions: resolutions })
+        .then((response) => {
+          const data = response.data;
+          if (data.download_link) {
+            window.location.href = data.download_link;
+            clearTimeout(window[`product_${this.texture.id}`]);
+            const forDownload = this.$store.getters.forDownload.filter(
+              (product) => product["id"] !== this.texture.id
+            );
+            this.$store.commit("setForDownload", forDownload);
+          } else {
+            window[`product_${this.texture.id}`] = setTimeout(() => {
+              this.recursiveDownload(resolutions);
+            }, 5000);
+          }
+        })
+        .catch((error) => {
+          this.downloadErrors = error.response.data.errors;
+          this.processing = false;
+          clearTimeout(timeout);
+        });
     },
-    toggleBookMark () {
+    toggleBookMark() {
       if (!this.$auth.loggedIn) {
         return this.toLogin();
       }
-      profile.toggleBookMark(this.type_code, this.texture.id).then((response) => {
-        this.texture.isBookmarked = !response.data.deleted;
-        this.$store.commit('setBookmarks', response.data.totals);
-      });
+      profile
+        .toggleBookMark(this.type_code, this.texture.id)
+        .then((response) => {
+          this.texture.isBookmarked = !response.data.deleted;
+          this.$store.commit("setBookmarks", response.data.totals);
+        });
     },
 
-    get_map_name (item) {
+    get_map_name(item) {
       if (this.map_titles[item]) {
         return this.map_titles[item];
       }
       return item;
-    }
-
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">

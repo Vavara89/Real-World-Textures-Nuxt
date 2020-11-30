@@ -18,6 +18,8 @@
   text-align: center;
   display: flex;
   align-items: center;
+  overflow: scroll;
+  padding: 100px 0;
 
   &.with-background{
     background: transparent;
@@ -31,11 +33,6 @@
     left: 0;
     z-index: -1;
     cursor: pointer;
-  }
-
-  @media (max-width: 1255px) {
-    display: inline;
-    overflow: scroll;
   }
 
   &.visuallyscoll {
@@ -61,32 +58,39 @@
   }
 
   .container {
-    width: 125.5rem;
+    max-width: 90%;
     border-radius: 0.8rem;
     background-color: $color-white;
-    display: inline-flex;
-    vertical-align: middle;
+    display: flex;
+    justify-content: space-between;
     padding: 0;
-    flex-wrap: wrap;
+    margin: auto;
+    position: relative;
 
-    @media (max-width: 1255px) {
-      width: 100%;
-    }
+     @include mq(md, max) {
+       max-width: 100%;
+      }
+
+      @include mq(sm, max) {
+        flex-direction: column;
+      }
 
     .imageDetails {
-      min-width: 77.5rem;
-      flex-basis: 77.5rem;
-      height: 100%;
-      float: left;
-      padding: 2rem 4.8rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 20px;
+      width: 60%;
+      position: relative;
 
-    @media (max-width: 1255px) {
-      min-width: 100%;
-      flex-basis: 100%;
-    }
+      @include mq(sm, max) {
+        width: 100%;
+      }
+
       .imageDetails-header {
-        display: flex;
-        justify-content: space-between;
+        position: absolute;
+        top: 22px;
+        left: 25px;
 
         .imageDetails-options {
           display: flex;
@@ -113,11 +117,14 @@
       }
 
       .imageDetails-content {
-        text-align: center;
 
         .previewImg {
           img {
-            width: 55rem;
+            max-width: 80%;
+
+            @include mq(sm, max) {
+              max-width: 50%;
+             }
           }
         }
 
@@ -128,15 +135,22 @@
       }
 
       .imageDetails-footer {
-        padding: 6.4rem;
-        position: relative;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include mq(sm, max) {
+          position: relative;
+          margin-top: 60px;
+         }
 
         .imageItem {
           margin: 0 0.8rem;
-          width: 9.6rem !important;
+          max-width: 9.6rem !important;
 
           img {
-            width: 8rem;
+            max-width: 8rem;
           }
         }
 
@@ -144,13 +158,13 @@
           height: 8rem;
           max-width: 48rem;
           margin: 0 auto;
+          position: relative;
 
           .button {
-            position: absolute;
-            display: block;
-            top: 0;
+            position: relative;
             width: 2rem;
             height: 2rem;
+            background: red;
 
             img {
               width: 2rem;
@@ -181,26 +195,37 @@
             display: inline-block;
             vertical-align: middle;
           }
+
+          .slick-track {
+            display: flex;
+            justify-content: center;
+          }
         }
       }
     }
 
     .details {
-      float: left;
       height: 100%;
-      padding: 5.5rem 4rem;
       background-color: $color-primary-100;
       border-top-right-radius: 0.8rem;
       border-bottom-right-radius: 0.8rem;
       text-align: left;
-      flex-basis: 0;
+      max-width: 40%;
+      padding: 20px;
+
+      @include mq(sm, max) {
+        max-width: 100%;
+       }
+
 
       .label {
-        width: 13.5rem;
+        max-width: 13.5rem;
+        margin-right: 20px;
       }
 
       .title {
         margin-bottom: 2rem;
+
       }
 
       .credits-bookmark {
@@ -214,6 +239,7 @@
             padding: 1rem 1.5rem;
             background-color: $color-primary-600;
             border-radius: 1.2rem;
+            margin-right: 10px;
           }
         }
       }
@@ -225,6 +251,7 @@
 
           &.resolution {
             align-items: center;
+            flex-wrap: wrap;
           }
 
           &.dimension {
@@ -267,7 +294,8 @@
         text-align: center;
 
         button {
-          width: 40rem;
+          max-width: 40rem;
+          min-width: 25rem;
           padding: 1.5rem 0;
           border-radius: 3rem;
           font-size: 1.4rem;
@@ -289,10 +317,6 @@
             }
           }
         }
-      }
-
-      @media (max-width: 1255px) {
-        flex-basis: 100%;
       }
 
     }
@@ -350,5 +374,6 @@
 .slick-prev.slick-disabled:before {
   display: none;
 }
+
 
 

@@ -10,7 +10,7 @@
       </div>
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
-        <h3 class="footer__title">Join our community 00000000</h3>
+        <h3 class="footer__title">Join our community</h3>
         <FooterMailForm />
       </div>
       <div class="footer__policy">
