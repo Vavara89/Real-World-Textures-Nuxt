@@ -4,26 +4,27 @@
     :class="$route.name == 'signup' ? 'header-signup' : ''"
   >
     <div class="header-inner">
-      <div class="flex-header">
-        <nuxt-link
-          v-if="!isCatalogRoute()"
-          to="/"
-          class="header-logo"
-          :class="{ 'header-logo--light': $route.name === 'signup' }"
-        >
-          <SvgIconLogo />
-        </nuxt-link>
-        <div class="header-empty-logo" v-else />
+      <div class="header__flex">
+        <div class="header__logo">
+          <nuxt-link
+            v-if="!isCatalogRoute()"
+            to="/"
+            class="header-logo"
+            :class="{ 'header-logo--light': $route.name === 'signup' }"
+          >
+            <SvgIconLogo />
+          </nuxt-link>
+        </div>
 
-        <div class="flex-menu">
+        <div class="header__search">
           <header-search />
-
           <div class="header-nav">
             <input id="menu-btn" class="menu-btn" type="checkbox" />
             <label class="menu-icon" for="menu-btn">
               <span class="navicon" />
             </label>
-            <ul class="menu">
+
+            <ul class="menu first-menu">
               <li @click="hideMenu()">
                 <nuxt-link :to="'/textures'"> Textures </nuxt-link>
               </li>
@@ -36,6 +37,13 @@
               <li @click="hideMenu()">
                 <nuxt-link :to="'/brands'"> Brands </nuxt-link>
               </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="header__menu">
+          <div class="header-nav">
+            <ul class="menu">
               <li class="line" @click="hideMenu()">
                 <nuxt-link to="/content/about"> About </nuxt-link>
               </li>
@@ -160,6 +168,7 @@
     </div>
   </header>
 </template>
+
 
 <script>
 import global from "~/mixins.js/global.js";
@@ -287,11 +296,11 @@ export default {
   border-left: 1px solid #bec0c9;
 }
 
-.header-empty-logo {
+/* .header-empty-logo {
   position: fixed;
   top: 0;
   left: 0;
-}
+} */
 
 @media only screen and (max-width: 1000px) {
   .line {
