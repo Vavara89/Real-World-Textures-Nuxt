@@ -53,12 +53,12 @@
 
   .slick-slide.slick-current {
     .previewImg {
-      transform: scale(1);
+      max-width: 70%;
     }
   }
 
   .container {
-    max-width: 90%;
+    max-width: 80%;
     border-radius: 0.8rem;
     background-color: $color-white;
     display: flex;
@@ -164,7 +164,6 @@
             position: relative;
             width: 2rem;
             height: 2rem;
-            background: red;
 
             img {
               width: 2rem;

@@ -8,6 +8,7 @@
     />
     <Header v-if="$route.name !== 'signup'" />
     <HeaderSignup v-if="$route.name === 'signup'" />
+    <HeaderTextures v-if="$route.name === 'textures'" />
     <nuxt />
     <Footer v-if="$route.name !== 'login' && $route.name !== 'signup'" />
   </div>

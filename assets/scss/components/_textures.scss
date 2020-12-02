@@ -1,12 +1,12 @@
 .textures {
-  // display: grid !important;
-  overflow: visible;
-  max-width: 80%;
-  // max-width: 154rem;
-  margin: 0 auto;
-  // padding: 0 5rem;
+  display: grid;
+  column-gap: 10px;
+  row-gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
 
   &.mainpage {
+    display: block;
+    padding: 0 175px;
     .textures--center {
       text-align: center;
       display: flex;
@@ -64,7 +64,7 @@
 }
 
 .texture {
-  margin: 20px;
+  margin: 45px;
   // padding: 20px;
   @include mq(md, max) {
     // flex: 0 0 22rem;
@@ -102,30 +102,6 @@
 
   &__image {
     position: relative;
-    @media (min-width: 3000px) {
-      min-height: 550px;
-    }
-
-    @media (max-width: 3000px) {
-      min-height: 300px;
-    }
-
-    @media (max-width: 2000px) {
-      min-height: 200px;
-    }
-
-    @media (max-width: 1500px) {
-      min-height: 150px;
-    }
-
-    @media (max-width: 1000px) {
-      min-height: 120px;
-    }
-
-    @media (max-width: 600px) {
-      min-height: 80px;
-    }
-
     &.brands {
     line-height: 10.4rem;
       min-height: auto;

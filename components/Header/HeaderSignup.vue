@@ -318,6 +318,9 @@ export default {
         margin-left: 50px;
         right: 20px;
       }
+      @include mq(xl, max) {
+        display: none;
+      }
     }
   }
 }

@@ -38,10 +38,7 @@
       />
 
       <div class="materials-menu">
-        <MaterialMenu
-          v-if="getCategories()"
-          :list="getCategories()"
-        />
+        <MaterialMenu v-if="getCategories()" :list="getCategories()" />
       </div>
 
       <div v-if="getRefines().items.length" class="refine-filter">
@@ -319,7 +316,7 @@ export default {
 
 .nav-icon3 {
   position: absolute;
-  top: 120px;
+  top: 66px;
   left: 100%;
   background-color: #394174;
   z-index: 100;

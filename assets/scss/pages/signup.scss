@@ -4,6 +4,8 @@
   justify-content: center;
   min-height: calc(100vh - 16rem);
 
+
+
   &__wrap {
     padding: 6rem 0;
     width: 100%;
@@ -96,13 +98,6 @@
       color: #EA8181;
       margin: 5px 0 10px 0;
     }
-
-    // @media screen and (-webkit-min-device-pixel-ratio:0) {
-    //   input[type="password"] {
-    //      -webkit-text-stroke-width: 0.8rem;
-    //      letter-spacing: 1rem;
-    //   }
-    // }
 
     input {
       @include transition-base;
@@ -212,6 +207,7 @@
       width: 100%;
     }
   }
+
   select {
     width: 100%;
     height: 6rem;
@@ -232,6 +228,7 @@
 .input-valid label{
   color:$color-secondary-green;
 }
+
 .input-invalid label{
   color:$color-secondary-red;
 }

@@ -3,7 +3,14 @@
     class="header"
     :class="$route.name == 'signup' ? 'header-signup' : ''"
   >
-    <div class="header-inner">
+    <div
+      class="header-inner"
+      :class="
+        $route.name == 'textures' || 'models' || 'hdr' || 'brands'
+          ? 'header-inner__secondary'
+          : ''
+      "
+    >
       <div class="header__flex">
         <div class="header__logo">
           <nuxt-link
@@ -14,6 +21,7 @@
           >
             <SvgIconLogo />
           </nuxt-link>
+          <div class="header-empty-logo" v-else />
         </div>
 
         <div class="header__search">
@@ -202,6 +210,7 @@ export default {
         ? this.$auth.user.user
         : null;
     },
+
     profile() {
       if (this.user.subscribe) {
         return this.user.subscribe.name;
@@ -210,9 +219,11 @@ export default {
         " "
       );
     },
+
     credits() {
       return this.profile.subscribe ? this.profile.subscribe.credits : 0;
     },
+
     counts: {
       get() {
         if (this.bookmarked === null) {
@@ -220,6 +231,7 @@ export default {
         }
         return this.bookmarked;
       },
+
       set(value) {
         this.bookmarked = value;
       },
@@ -240,10 +252,12 @@ export default {
       });
       return catalogRoutes;
     },
+
     isCatalogRoute() {
       const catalogRoutes = this.getCatalogRoutes();
       return catalogRoutes.indexOf(this.$route.name) >= 0;
     },
+
     trigger(state) {
       if (state !== "on") {
         this.myToid = setTimeout(() => {
@@ -255,21 +269,26 @@ export default {
         clearTimeout(this.myToid);
       }
     },
+
     externalClick(event) {
       this.showAccount();
       this.hover = false;
     },
+
     showAccount(state) {
       this.account = !this.account;
     },
+
     async logout() {
       this.account = false;
       await this.$auth.logout();
       return this.$router.push({ path: "/login" });
     },
+
     toBookmarks() {
       return this.$router.push({ path: "/bookmarked" });
     },
+
     getIsLogged() {
       return (
         !!this.$auth.user &&
@@ -277,6 +296,7 @@ export default {
         !!this.$auth.user.user.profile
       );
     },
+
     hideMenu() {
       const toggleButton = document.getElementById("menu-btn");
       if (toggleButton.checked === true) {
@@ -289,20 +309,47 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
+.header-inner__secondary {
+  margin: 0 auto;
+  padding: 0 15px;
+  padding-left: 60px;
+  position: relative;
+  max-width: 100%;
+
+  @media only screen and (max-width: 950px) {
+    min-height: 105px;
+  }
+
+  .header__search {
+    .header-nav {
+      @media only screen and (max-width: 1660px) {
+        display: none;
+      }
+
+      @media only screen and (max-width: 949px) {
+        display: block;
+      }
+    }
+  }
+
+  .header-empty-logo {
+    @media only screen and (max-width: 1200px) {
+      display: none;
+    }
+  }
+}
 .line {
   margin-left: 2.8rem;
   padding-left: 2.8rem;
   border-left: 1px solid #bec0c9;
 }
 
-/* .header-empty-logo {
-  position: fixed;
-  top: 0;
-  left: 0;
-} */
+.header-empty-logo {
+  width: 315px;
+}
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1325px) {
   .line {
     margin-left: 0;
     padding-left: 0;
