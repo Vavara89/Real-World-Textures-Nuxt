@@ -1,5 +1,5 @@
 <template>
-  <div @click="isOpened = !isOpened" class="faq__block">
+  <div @click="openFaq" class="faq__block">
     <h3 class="faq__title">{{ faq_question }}</h3>
     <div v-if="isOpened" class="faq__text">
       <div class="faq__wysiwyg" v-html="faq.answer"></div>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { isMobileDevice } from "~/utils";
 export default {
   name: "Faq",
   props: {
@@ -18,7 +19,7 @@ export default {
   },
   data() {
     return {
-      isOpened: false,
+      isOpened: true,
     };
   },
   computed: {
@@ -27,6 +28,13 @@ export default {
         return this.faq.question.substring(0, 110) + "…";
       }
       return this.faq.question;
+    },
+  },
+  methods: {
+    openFaq() {
+      if (isMobileDevice()) {
+        this.isOpened = !this.isOpened;
+      }
     },
   },
 };
