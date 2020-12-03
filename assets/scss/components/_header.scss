@@ -13,6 +13,7 @@
     padding: 10px 0;
     border-bottom: 1px solid;
     min-height: 0rem;
+    height: 122px;
   }
 
   &-inner {
@@ -26,21 +27,6 @@
     margin-top: 15px;
     margin-right: 140px;
     position: relative;
-
-    @include mq(xl, max) {
-      position: absolute;
-      right: 0;
-      top: 52px;
-      right: 5px;
-    }
-
-    @include mq(md, max) {
-      margin-top: 15px;
-      margin-right: 140px;
-      position: relative;
-      top: auto;
-      right: auto;
-    }
 
     @include mq(sm, max) {
       display: none;
@@ -103,6 +89,12 @@
       font-size: 14px;
       outline: none;
       vertical-align: top;
+
+      @media only screen and (max-width: 1200px) {
+        width: 180px;
+      }
+
+
 
       &:-internal-autofill-selected {
         background-color: #fff !important;
@@ -258,10 +250,6 @@
         @include mq(md, max) {
           padding-left: 10px;
           padding-right: 10px;
-        }
-
-        @media only screen and (max-width: 1700px) {
-          padding: 10px 13px;
         }
 
         &:hover {
@@ -471,7 +459,14 @@
     }
   }
 }
-
+.first-menu {
+  @media only screen and (max-width: 1364px) {
+    display: none;
+  }
+  @include mq(md, max) {
+    display: block;
+  }
+}
 .header-logo {
   &--light {
     svg {
@@ -556,10 +551,6 @@
 .header__search {
   display: flex;
   flex: 1;
-
-  @media only screen and (max-width: 1660px) {
-    flex: 0;
-  }
 
   @include mq(md, max) {
     align-items: center;

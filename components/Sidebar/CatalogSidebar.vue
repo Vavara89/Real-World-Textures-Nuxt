@@ -5,12 +5,12 @@
       class="leftsidebar"
       :class="{
         'leftsidebar--open': openBurger,
-        'leftsidebar--close': width < 1200,
-        'leftsidebar--default': width > 1200,
+        'leftsidebar--close': width < 950,
+        'leftsidebar--default': width > 950,
       }"
     >
       <div
-        v-if="width < 1200"
+        v-if="width < 950"
         class="nav-icon3"
         :class="{ open: openBurger }"
         @click="openBurgerMenu()"
