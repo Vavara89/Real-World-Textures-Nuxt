@@ -1,6 +1,25 @@
 .bookmarks {
   padding: 5rem 0 25rem;
 
+  &__header {
+    padding: 0 5rem 0 8rem;
+    min-height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items:  center;
+
+    &-selectAll {
+      text-transform: uppercase;
+      color:  $color-secondary-green;
+      cursor: pointer;
+    }
+    &-deleteAll {
+      text-transform: uppercase;
+      color: $color-secondary-salmon;
+      cursor: pointer;
+    }
+  }
+
   &__list {
     margin-bottom: 15rem;
   }

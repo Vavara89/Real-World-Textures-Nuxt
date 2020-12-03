@@ -4,7 +4,7 @@
       <div class="bookmark__part__left">
         <div
           class="bookmark__select"
-          :class="{'bookmark__select--selected': item.selected}"
+          :class="{ 'bookmark__select--selected': item.selected }"
           @click="toggleSelected()"
         ></div>
         <div class="bookmark__img">
@@ -15,7 +15,7 @@
     </div>
     <div class="bookmark__part">
       <div class="bookmark__cost">{{ item.cost }} {{ appendText }}</div>
-      <div class="bookmark__btn" @click="deleteBookmark(item)">Delete</div>
+      <div class="bookmark__btn" @click="deleteBookmark(item)">delete</div>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   props: {
     item: {
       type: Object,
-      required: true
+      required: true,
     },
   },
   methods: {
@@ -35,7 +35,7 @@ export default {
     },
     deleteBookmark(item) {
       this.$emit("deleteBookmark", item);
-    }
+    },
   },
   computed: {
     appendText() {
@@ -44,8 +44,8 @@ export default {
       } else {
         return "credit";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

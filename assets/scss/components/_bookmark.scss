@@ -20,18 +20,17 @@
 
   &__select {
     display: block;
-    width: 3.6rem;
-    height: 3.6rem;
-    min-width: 3.6rem;
-    background: $color-primary-800 url(~assets/img/icon-cross_white.svg) no-repeat center/contain;
-    background-size: 2rem;
-    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #9093B9;
+    border-radius: 30%;
     cursor: pointer;
     @include transition-base;
 
     &--selected {
       background: $color-secondary-green url(~assets/img/icon-check_thin.svg) no-repeat center/contain;
-      background-size: 2rem;
+      background-size: 11px;
+      border: none;
     }
 
     @media only screen and (max-width: 900px) {
@@ -104,7 +103,7 @@
     }
 
     &__left {
-      
+
       display: flex;
       justify-content: center;
       align-items: center;
