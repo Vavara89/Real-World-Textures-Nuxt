@@ -1,5 +1,8 @@
 .bookmarks {
   padding: 5rem 0 25rem;
+  @media only screen and (max-width: 949px) {
+    padding-top: 14rem;
+  }
 
   &__header {
     padding: 0 5rem 0 8rem;
@@ -13,15 +16,25 @@
       color:  $color-secondary-green;
       cursor: pointer;
     }
+
     &-deleteAll {
       text-transform: uppercase;
       color: $color-secondary-salmon;
       cursor: pointer;
     }
+
+    &-selected, &-totalCredits {
+      @media only screen and (max-width: 540px) {
+        display: none;
+      }
+    }
   }
 
   &__list {
     margin-bottom: 15rem;
+    @media only screen and (max-width: 540px) {
+      margin-bottom: 5rem;
+    }
   }
 
   &__credits {
@@ -38,7 +51,9 @@
     }
 
     @media only screen and (max-width: 450px) {
-      display: inline;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     &__part {
@@ -97,6 +112,10 @@
 
     .button-secondary {
       margin-left: -1rem;
+      @media only screen and (max-width: 450px) {
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 }
