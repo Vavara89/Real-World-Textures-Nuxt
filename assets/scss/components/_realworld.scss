@@ -6,35 +6,35 @@
   position: relative;
 
   &-circle-texture {
-  position: absolute;
-  width: 125%;
-  height: 750px;
-  left: 50%;
-  background-image: url(~@/assets/img/spheres/sphere-bg.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: translateX(-50%);
-  z-index: 2;
-}
+    position: absolute;
+    width: 125%;
+    height: 750px;
+    left: 50%;
+    background-image: url(~@/assets/img/spheres/sphere-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
 
-&-scroll {
-  height: 70px;
-  width: 3px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: 10px;
-  background-color: #DDE0ED;
-
-  div {
-    height: 50%;
-    width: 100%;
-    background-color: #0A0D27;
+  &-scroll {
+    height: 70px;
+    width: 3px;
     position: absolute;
     bottom: 0;
+    left: 0;
     border-radius: 10px;
+    background-color: #DDE0ED;
+
+    div {
+      height: 50%;
+      width: 100%;
+      background-color: #0A0D27;
+      position: absolute;
+      bottom: 0;
+      border-radius: 10px;
+    }
   }
-}
 
   &-circle {
     height: 850px;
@@ -82,9 +82,10 @@
     transition: opacity 300ms;
     margin-left: 80px;
 
-    &.opacity_in{
+    &.opacity_in {
       opacity: 0;
     }
+
     @include mq(lg, max) {
       margin-top: 40px;
       margin-left: auto;
@@ -145,7 +146,7 @@
     position: relative;
     z-index: 9;
 
-    &.opacity_in{
+    &.opacity_in {
       opacity: 0;
     }
 
@@ -212,44 +213,50 @@
     }
   }
 
-  .zoom-slider-nav{
-    .slick-track{
+  .zoom-slider-nav {
+    .slick-track {
       transition: transform 800ms cubic-bezier(0.000, 0, 0.000, 0.6);
     }
-    .slick-list{
+
+    .slick-list {
       overflow: inherit;
       position: absolute;
       pointer-events: none;
       top: 50%;
       transform: translateY(-50%);
     }
-    .slick-active{
-      .explore-texture-number{
+
+    .slick-active {
+      .explore-texture-number {
         transform: scale(1);
         opacity: 1;
 
         @include mq(lg, max) {
-            transform: translate(0,50px);
+          transform: translate(0, 50px);
         }
       }
     }
-    .explore-texture-number{
+
+    .explore-texture-number {
       transition: transform 800ms cubic-bezier(0.000, 0, 0.000, 0.6), opacity 600ms cubic-bezier(0.000, 0, 0.000, 0.6);
       transform-origin: left top;
       transform: scale(0.4);
       opacity: 0;
       margin-bottom: 0px;
-      &.zoom-in{
+
+      &.zoom-in {
         transform: scale(1);
         opacity: 1;
       }
-      &.zoom-out{
+
+      &.zoom-out {
         transform: scale(0.4);
         opacity: 0;
       }
     }
   }
-  .slider-wrapper{
+
+  .slider-wrapper {
     height: 100%;
     position: relative;
     z-index: 3;
@@ -259,14 +266,17 @@
       top: 50%;
       transform: translateY(-50%);
       margin: auto;
+
       .slick-list {
         overflow: inherit;
       }
-      .slick-track{
+
+      .slick-track {
         transition: transform 800ms cubic-bezier(0.000, 0, 0.000, 0.6);
       }
-      .slick-slide{
-        .slide-wrapper{
+
+      .slick-slide {
+        .slide-wrapper {
           transition: all 800ms cubic-bezier(0.000, 0, 0.000, 0.7);
           transform: scale(0.4) translateY(-50%);
           width: 240px;
@@ -274,10 +284,11 @@
           display: flex;
           opacity: 0;
 
-          &.opacity_in{
+          &.opacity_in {
             opacity: 1;
           }
-          img{
+
+          img {
             -webkit-filter: drop-shadow(5px 100px 51px rgba(1, 12, 47, 0.4));
             filter: drop-shadow(5px 100px 51px rgba(1, 12, 47, 0.4));
             width: 100%;
@@ -286,13 +297,15 @@
           }
 
         }
-        &.slick-active.slick-current{
-          .slide-wrapper{
+
+        &.slick-active.slick-current {
+          .slide-wrapper {
             transform: none;
             opacity: 1;
           }
-          &+.slick-slide{
-            .slide-wrapper{
+
+          & + .slick-slide {
+            .slide-wrapper {
               transform: scale(0.3) translateY(100%);
               opacity: 1;
             }

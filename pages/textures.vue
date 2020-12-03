@@ -34,6 +34,7 @@ import Pager from "@/components/Pager/Pager"
 
 export default {
   name: 'Textures',
+  layout: 'catalog',
   components: {
     TextureGallery,
     CatalogSidebar,

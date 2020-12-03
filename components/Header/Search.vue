@@ -34,11 +34,9 @@
 </template>
 
 <script>
-import global from "~/mixins.js/global.js";
 
 export default {
-  name: "HeaderSearch",
-  // mixins: [global],
+  name: "Search",
   data() {
     return {
       search: this.$route.query["search"] ? this.$route.query["search"] : "",
