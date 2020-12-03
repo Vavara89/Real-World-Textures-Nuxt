@@ -1,31 +1,15 @@
 <template>
-  <header
-    class="header"
-    :class="$route.name == 'signup' ? 'header-signup' : ''"
-  >
-    <div
-      class="header-inner"
-      :class="
-        $route.name == 'textures' || 'models' || 'hdr' || 'brands'
-          ? 'header-inner__secondary'
-          : ''
-      "
-    >
+  <header class="header" >
+    <div class="header-inner">
       <div class="header__flex">
         <div class="header__logo">
-          <nuxt-link
-            v-if="!isCatalogRoute()"
-            to="/"
-            class="header-logo"
-            :class="{ 'header-logo--light': $route.name === 'signup' }"
-          >
+          <nuxt-link to="/" class="header-logo">
             <SvgIconLogo />
           </nuxt-link>
-          <div class="header-empty-logo" v-else />
         </div>
 
         <div class="header__search">
-          <header-search />
+          <search />
           <div class="header-nav">
             <input id="menu-btn" class="menu-btn" type="checkbox" />
             <label class="menu-icon" for="menu-btn">
@@ -182,178 +166,18 @@
 import global from "~/mixins.js/global.js";
 import vClickOutside from "v-click-outside";
 import SvgIconLogo from "~/assets/img/logo.svg?inline";
-import HeaderSearch from "~/components/Header/HeaderSearch";
+import Search from "~/components/Header/Search";
+import header from '@/mixins.js/header';
 
 export default {
   name: "Header",
-  mixins: [global],
+  mixins: [global, header],
   components: {
     SvgIconLogo,
-    HeaderSearch,
+    Search,
   },
   directives: {
     clickOutside: vClickOutside.directive,
   },
-  data() {
-    return {
-      account: false,
-      subscribe: 332,
-      logged: this.$auth.loggedIn,
-      bookmarked: null,
-      hover: false,
-    };
-  },
-
-  computed: {
-    user() {
-      return !!this.$auth.user && !!this.$auth.user.user
-        ? this.$auth.user.user
-        : null;
-    },
-
-    profile() {
-      if (this.user.subscribe) {
-        return this.user.subscribe.name;
-      }
-      return [this.user.profile.first_name, this.user.profile.last_name].join(
-        " "
-      );
-    },
-
-    credits() {
-      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
-    },
-
-    counts: {
-      get() {
-        if (this.bookmarked === null) {
-          this.bookmarked = this.user.profile.total_bookmarked;
-        }
-        return this.bookmarked;
-      },
-
-      set(value) {
-        this.bookmarked = value;
-      },
-    },
-  },
-  created() {
-    this.$store.subscribe((mutation, state) => {
-      if (mutation.type === "setBookmarks") {
-        this.counts = state.bookmarks;
-      }
-    });
-  },
-  methods: {
-    getCatalogRoutes() {
-      const catalogRoutes = ["textures", "hdr", "models", "brands"];
-      catalogRoutes.map((route) => {
-        catalogRoutes.push(route + "-slug");
-      });
-      return catalogRoutes;
-    },
-
-    isCatalogRoute() {
-      const catalogRoutes = this.getCatalogRoutes();
-      return catalogRoutes.indexOf(this.$route.name) >= 0;
-    },
-
-    trigger(state) {
-      if (state !== "on") {
-        this.myToid = setTimeout(() => {
-          this.hover = false;
-        }, 0);
-      }
-
-      if (state === "on") {
-        clearTimeout(this.myToid);
-      }
-    },
-
-    externalClick(event) {
-      this.showAccount();
-      this.hover = false;
-    },
-
-    showAccount(state) {
-      this.account = !this.account;
-    },
-
-    async logout() {
-      this.account = false;
-      await this.$auth.logout();
-      return this.$router.push({ path: "/login" });
-    },
-
-    toBookmarks() {
-      return this.$router.push({ path: "/bookmarked" });
-    },
-
-    getIsLogged() {
-      return (
-        !!this.$auth.user &&
-        !!this.$auth.user.user &&
-        !!this.$auth.user.user.profile
-      );
-    },
-
-    hideMenu() {
-      const toggleButton = document.getElementById("menu-btn");
-      if (toggleButton.checked === true) {
-        toggleButton.checked = false;
-      } else {
-        toggleButton.checked = true;
-      }
-    },
-  },
 };
 </script>
-
-<style scoped lang='scss'>
-.header-inner__secondary {
-  margin: 0 auto;
-  padding: 0 15px;
-  padding-left: 60px;
-  position: relative;
-  max-width: 100%;
-
-  @media only screen and (max-width: 950px) {
-    min-height: 105px;
-  }
-
-  .header__search {
-    .header-nav {
-      @media only screen and (max-width: 1660px) {
-        display: none;
-      }
-
-      @media only screen and (max-width: 949px) {
-        display: block;
-      }
-    }
-  }
-
-  .header-empty-logo {
-    @media only screen and (max-width: 1200px) {
-      display: none;
-    }
-  }
-}
-.line {
-  margin-left: 2.8rem;
-  padding-left: 2.8rem;
-  border-left: 1px solid #bec0c9;
-}
-
-.header-empty-logo {
-  width: 315px;
-}
-
-@media only screen and (max-width: 1325px) {
-  .line {
-    margin-left: 0;
-    padding-left: 0;
-    border: 0;
-  }
-}
-</style>

@@ -2,61 +2,70 @@
   <div>
     <CardBillingModal ref="billing_form"></CardBillingModal>
     <PaymentBillingModal ref="payment_form"></PaymentBillingModal>
-    <ConfirmModal @confirmed="delete_payment" title="Are you sure for delete this payment method?" ref="remove_payment_accept"></ConfirmModal>
+    <ConfirmModal @confirmed="delete_payment" title="Are you sure for delete this payment method?"
+                  ref="remove_payment_accept"></ConfirmModal>
     <table style="max-width: 621px;">
       <tbody>
-        <tr >
-          <td style="width: 250px;" class="is-first">
-            Payment Method
+      <tr>
+        <td style="width: 250px;" class="is-first">
+          Payment Method
+        </td>
+        <td v-if="!payment" colspan="3">
+          <a @click="openPayment()" href="#" class="button-secondary" style="text-transform: uppercase;">Add new</a>
+        </td>
+        <template v-if="payment">
+          <td style="width: 200px;">
+            CC Ending with {{ payment.last4 }}
           </td>
-          <td v-if="!payment" colspan="3">
-            <a @click="openPayment()" href="#" class="button-secondary" style="text-transform: uppercase;">Add new</a>
+          <td style="width: 134px;">
+            <img width="50" v-if="payment.brand" :src="payment.brand" class="bank">
           </td>
-          <template v-if="payment">
-            <td  style="width: 200px;">
-              CC Ending with {{ payment.last4 }}
-            </td>
-            <td  style="width: 134px;">
-              <img width="50" v-if="payment.brand" :src="payment.brand" class="bank">
-            </td>
-            <td style="width: 92px;">
-                <span><a @click="openPayment()" href="#" class="buttonek">Edit</a></span>
-            </td>
-            <td style="width: 92px;">
-              <span><a @click="removePayment()" href="#" class="buttonek">Remove</a></span>
-            </td>
-          </template>
+          <td style="width: 92px;">
+            <span><a @click="openPayment()" href="#" class="buttonek">Edit</a></span>
+          </td>
+          <td style="width: 92px;">
+            <span><a @click="removePayment()" href="#" class="buttonek">Remove</a></span>
+          </td>
+        </template>
 
-        </tr>
-        <tr>
+      </tr>
+      <tr>
+        <td style="width: 250px;" class="is-first top">
+          Billing Address
+        </td>
+        <template v-if="address">
+          <td style="width: 200px;">
+            {{ address.street }} {{ address.apartments }}
+            {{ address.zip_code }} {{ address.city }}
+            {{ address.country }}
+            <br><br>
+
+          </td>
+          <td style="width: 134px;">
+            &nbsp;
+          </td>
+          <td style="width: 92px;">
+            <span>
+              <a href="#" class="buttonek" @click="openAddress()">Edit</a>
+            </span>
+          </td>
+          <td style="width: 92px;">
+            &nbsp;
+          </td>
+        </template>
+        <td v-if="!address" colspan="3">
+          <a href="#" class="button-secondary" @click="openAddress()" style="text-transform: uppercase;">Add new</a>
+        </td>
+
+      </tr>
+      <tr v-if="address.tax_id && address.tax_verification">
           <td style="width: 250px;" class="is-first top">
-            Billing Address
+              Tax ID
           </td>
-          <template v-if="address">
-            <td  style="width: 200px;">
-              {{address.street}} {{address.apartments}}
-              {{address.zip_code}} {{address.city}}
-              {{address.country}}
-              <br><br>
-
-            </td>
-            <td style="width: 134px;">
-              &nbsp;
-            </td>
-            <td  style="width: 92px;">
-                            <span>
-                              <a href="#" class="buttonek"
-                                     @click="openAddress()">Edit</a></span>
-            </td>
-            <td style="width: 92px;">
-              &nbsp;
-            </td>
-          </template>
-          <td v-if="!address" colspan="3">
-            <a href="#" class="button-secondary" @click="openAddress()" style="text-transform: uppercase;">Add new</a>
+          <td colspan="3" style="width: 134px;">
+            Status: {{address.tax_verification.status}}
           </td>
-
-        </tr>
+      </tr>
       </tbody>
     </table>
 
@@ -65,20 +74,19 @@
 </template>
 
 <script>
-import Success from "~/components/Success/Success"
+import Success from '~/components/Success/Success';
 import LoginModals from '@/components/LoginModals/LoginModals';
 import CardBillingModal from '@/components/Profile/CardBillingModal';
-import PaymentBillingModal from "@/components/Profile/PaymentBillingModal";
-import ConfirmModal from "@/components/Confirm/ConfirmModal"
-import users from "@/collectors/users";
+import PaymentBillingModal from '@/components/Profile/PaymentBillingModal';
+import ConfirmModal from '@/components/Confirm/ConfirmModal';
+import users from '@/collectors/users';
 
 export default {
-  name: "CardBilling",
-  data() {
-    return {
-    };
+  name: 'CardBilling',
+  data () {
+    return {};
   },
-  components:{
+  components: {
     Success,
     LoginModals,
     CardBillingModal,
@@ -86,10 +94,10 @@ export default {
     ConfirmModal
   },
   methods: {
-    openAddress(){
+    openAddress () {
       this.$refs.billing_form.scrollSwitcher(true);
     },
-    openPayment(){
+    openPayment () {
       this.$refs.payment_form.scrollSwitcher(true);
     },
     childMessageReceived (duration) {
@@ -101,13 +109,13 @@ export default {
         this.openAddress = false;
       }
     },
-    removePayment(){
+    removePayment () {
       this.$refs.remove_payment_accept.scrollSwitcher(true);
     },
-    delete_payment(){
+    delete_payment () {
       this.$refs.remove_payment_accept.processing = true;
-      users.deletePayment().then(()=>{
-        this.$auth.fetchUser().then(()=>{
+      users.deletePayment().then(() => {
+        this.$auth.fetchUser().then(() => {
           this.$refs.remove_payment_accept.processing = false;
           this.$refs.remove_payment_accept.scrollSwitcher(false);
           this.$refs.payment_form.cleanAttributes();
@@ -116,22 +124,22 @@ export default {
       });
     }
   },
-  computed:{
-    address(){
+  computed: {
+    address () {
       const address = this.user.address;
-      if(address.street){
+      if (address.street) {
         return address;
       }
       return false;
     },
-    payment(){
+    payment () {
       const payment = this.user.payment;
-      if(payment && payment.last4){
+      if (payment && payment.last4) {
         return payment;
       }
       return false;
     },
-    empty(){
+    empty () {
       return !this.payment && !this.address;
     },
     user () {
@@ -141,7 +149,7 @@ export default {
       return this.user.profile;
     },
   }
-}
+};
 
 </script>
 

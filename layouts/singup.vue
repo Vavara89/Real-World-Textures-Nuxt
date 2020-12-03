@@ -6,9 +6,8 @@
       :status="serverMessageStatus"
       :message="serverMessageError"
     />
-    <Header/>
+    <HeaderSignup  />
     <nuxt />
-    <Footer/>
   </div>
 </template>
 

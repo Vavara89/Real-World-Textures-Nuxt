@@ -6,7 +6,7 @@
       :status="serverMessageStatus"
       :message="serverMessageError"
     />
-    <Header/>
+    <HeaderCatalog/>
     <nuxt />
     <Footer/>
   </div>
@@ -17,7 +17,7 @@ import Header from "@/components/Header/Header";
 import HeaderSignup from "@/components/Header/HeaderSignup";
 import Footer from "@/components/Footer/Footer";
 import ServerError from "@/components/ServerError/ServerError";
-import main from "@/collectors/main";
+import HeaderCatalog from '@/components/Header/HeaderCatalog';
 
 export default {
   components: {
@@ -25,6 +25,7 @@ export default {
     Footer,
     ServerError,
     HeaderSignup,
+    HeaderCatalog
   },
   data: () => {
     return {
@@ -34,7 +35,6 @@ export default {
     };
   },
   created() {
-    console.log(this.$route.name);
     this.$nuxt.$on("server-error", (data) => {
       if (data.response) {
         this.serverMessageError = data.response.data ? data.response.data : "";

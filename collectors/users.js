@@ -95,4 +95,13 @@ export default {
       'price_id': price_id
     });
   },
+
+  async countries() {
+    return await this.getCollector().get(`${resource}countries`);
+  },
+
+  async regions(data, country_id=null) {
+    return collectorWithUserAuth
+      .post(`${resource}regions?country_id=${country_id}`, data);
+  },
 };

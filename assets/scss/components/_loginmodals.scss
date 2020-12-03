@@ -59,9 +59,9 @@
     @media only screen and (max-height: 700px) {
       justify-content: start;
       align-items: flex-start;
-      top: 0 !important;
       transform: translateY(0) !important;
       min-height: auto !important;
+      top: 50px !important;
     }
 
     @media only screen and (max-width: 700px) {
