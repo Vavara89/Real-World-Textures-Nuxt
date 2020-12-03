@@ -1,0 +1,12 @@
+.header {
+  &.catalog{
+    .header__flex {
+      padding: 40px 1.5rem 40px 7.5rem;
+
+      .left-holder{
+        flex: 0 1 825px;
+      }
+    }
+  }
+}
+

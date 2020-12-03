@@ -36,7 +36,7 @@
 <script>
 
 export default {
-  name: "Search",
+  name: "HeaderSearch",
   data() {
     return {
       search: this.$route.query["search"] ? this.$route.query["search"] : "",

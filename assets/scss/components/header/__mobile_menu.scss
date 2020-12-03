@@ -1,0 +1,97 @@
+
+.menu-btn {
+  display: none;
+}
+.menu-icon {
+  display: none;
+}
+
+@include mq(md, max) {
+  display: block;
+  width: 100%;
+
+  .menu-icon {
+    cursor: pointer;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+    display: block !important;
+
+    .navicon {
+      background: #333;
+      display: block;
+      height: 3px;
+      position: relative;
+      transition: background 0.2s ease-out;
+      width: 40px;
+      float: right;
+      &:before, &:after{
+        background: #333;
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all 0.2s ease-out;
+        width: 100%;
+      }
+      &:before {
+        top: 8px;
+      }
+      &:after {
+        top: -8px;
+      }
+    }
+  }
+
+  .menu-btn:checked ~ .menu {
+    max-height: 700px;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+
+  .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    @include mq(md, max) {
+      position: absolute;
+      top: 116px;
+      left: 0;
+      right: 0;
+      background: white;
+    }
+  }
+
+  li {
+    display: block !important;
+    clear: both;
+    width: 100%;
+    @include mq(md, max) {
+      text-align: center;
+    }
+
+    a {
+      display: block;
+      padding: 20px 20px;
+      text-decoration: none;
+    }
+  }
+
+  /* menu icon */
+}
+

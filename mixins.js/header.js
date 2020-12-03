@@ -6,6 +6,71 @@ export default {
       logged: this.$auth.loggedIn,
       bookmarked: null,
       hover: false,
+      catalogMenu: [
+        {
+          title: 'Textures',
+          link: '/textures'
+        },
+        {
+          title: 'Models',
+          link: '/models'
+        },
+        {
+          title: 'Hdris',
+          link: '/hdr'
+        },
+        {
+          title: 'Brands',
+          link: '/brands'
+        },
+      ],
+      mainMenu: [
+        {
+          title: 'About',
+          link: '/content/about'
+        },
+        {
+          title: 'Services',
+          link: {
+            path: '/',
+            hash: '#services'
+          }
+        },
+        {
+          title: 'Pricing',
+          link: '/pricing'
+        },
+      ],
+      profileMenu: [
+        {
+          title: 'What\'s new',
+          link: '/profile'
+        },
+        {
+          title: 'Profile',
+          link: '/profile/dashboard'
+        },
+        {
+          title: 'My assests',
+          link: '/textures?assets=true'
+        },
+        {
+          title: 'My invoices',
+          link: '/profile/invoices'
+        },
+        {
+          title: 'My discount',
+          link: '/profile/discount'
+        },
+        {
+          title: 'Pricing',
+          link: '/profile/pricing'
+        },
+        {
+          title: 'Bookmarks',
+          link: '/bookmarked'
+        },
+      ],
     };
   },
 

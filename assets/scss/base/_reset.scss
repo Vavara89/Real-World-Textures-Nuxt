@@ -85,6 +85,7 @@ video {
   padding: 0;
   vertical-align: baseline;
   border: 0;
+  outline: none;
 }
 a {
   text-decoration: none;
@@ -130,4 +131,7 @@ q:after {
 table {
   border-spacing: 0;
   border-collapse: collapse;
+}
+input, select, textarea, button{
+  outline: none;
 }

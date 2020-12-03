@@ -6,8 +6,7 @@
       :status="serverMessageStatus"
       :message="serverMessageError"
     />
-    <HeaderCatalog/>
-    <nuxt />
+      <nuxt />
     <Footer/>
   </div>
 </template>

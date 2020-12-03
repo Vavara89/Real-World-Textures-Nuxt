@@ -1,0 +1,22 @@
+.header {
+  &.header-signup {
+    background: linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
+    @include mq(lg, max) {
+      background: $color-bck-dark;
+
+      li a {
+        color: white;
+      }
+
+      .navicon,
+      .navicon:before,
+      .navicon:after {
+        background-color: white;
+      }
+
+      .menu-btn:checked .menu-icon .navicon {
+        background: transparent;
+      }
+    }
+  }
+}
