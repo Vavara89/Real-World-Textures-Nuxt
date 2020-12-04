@@ -1,7 +1,11 @@
 .header {
   &.catalog{
     .header__flex {
-      padding: 20px 1.5rem 20px 7.5rem;
+      padding: 40px 1.5rem 40px 7.5rem;
+
+      @include mq(md, max) {
+        padding: 20px 1.5rem 20px 7.5rem;
+      }
 
       .left-holder{
         flex: 0 1 825px;

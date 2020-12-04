@@ -2,15 +2,18 @@
   <header class="header signup">
     <div class="header-inner">
       <div class="header__flex">
-        <div class="left-holder">
-          <div class="header__logo">
+
+        <div class="header__left">
+           <div class="header__logo">
             <nuxt-link to="/" class="header-logo">
               <SvgIconLogo />
             </nuxt-link>
           </div>
+           <header-search />
+        </div>
 
-          <div class="search-menu-container">
-            <header-search />
+        <div class="header__right">
+              <div class="search-menu-container">
             <div class="header-nav catalog-nav hide-on-md-down">
               <ul class="menu">
                 <li
@@ -22,7 +25,6 @@
                 </li>
               </ul>
             </div>
-          </div>
         </div>
 
         <div class="header-nav">
@@ -100,6 +102,8 @@
             </template>
           </ul>
         </div>
+        </div>
+      
       </div>
     </div>
   </header>
