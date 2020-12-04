@@ -2,9 +2,7 @@
   background-color: #fbfbff;
 
   @include mq(md, max) {
-    position: absolute;
-    left: 0;
-    right: 0;
+    position: relative;
     z-index: 9;
     padding: 10px 0;
     border-bottom: 1px solid;
