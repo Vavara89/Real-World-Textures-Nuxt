@@ -172,7 +172,7 @@
   }
 }
 .hide-on-md-down {
-  @include mq(md, max) {
+  @include mq(xxl, max) {
     display: none;
   }
 }

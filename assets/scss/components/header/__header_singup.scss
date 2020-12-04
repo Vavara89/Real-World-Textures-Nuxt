@@ -1,11 +1,39 @@
 .header {
-  &.header-signup {
-    background: linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
+  &.signup {
+   background: linear-gradient(to right, $color-bck-dark 40%, #fbfbff 40%);
+   .header-logo {
+     & svg {
+       & path {
+        fill: white;
+       }
+     }
+   }
+
+   .left-holder {
+     flex: 1;
+   }
+
+   .search-menu-container { 
+      flex: 1;
+   }
+
+   .header-search {
+     input {
+      @include mq(xxl, max) {
+        width: 150px;
+       }
+     }
+   }
+
     @include mq(lg, max) {
       background: $color-bck-dark;
 
-      li a {
+      .menu-item a {
         color: white;
+
+        @include mq(md, max) {
+          color: #394174;
+         }
       }
 
       .navicon,
@@ -19,4 +47,6 @@
       }
     }
   }
+
+ 
 }

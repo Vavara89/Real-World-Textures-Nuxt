@@ -1,35 +1,30 @@
 <template>
-  <div class="signup-container">
-    <div class="signup-container__left">
-      <h1 class="signup__bannertxt1">{{ bannerTxt1 }}</h1>
-      <h3 class="signup__bannertxt2">{{ bannerTxt2 }}</h3>
-    </div>
-    <div class="signup-container__right">
-      <SignUp></SignUp>
-    </div>
-  </div>
+<sign-up></sign-up>
 </template>
 
 <script>
-import SignUp from "@/pages/signup/SignUp";
+import SignUp from '~/components/SignUp.vue';
+
 
 export default {
-  auth: 'guest',
+  layout: "singup",
+  auth: "guest",
   data() {
     return {
       bannerTxt1: "Get started for FREE",
-      bannerTxt2: "Then you can stay that way or choose from 2 simple subscription plan",
+      bannerTxt2:
+        "Then you can stay that way or choose from 2 simple subscription plan",
       input: {
         firstName: "",
         mail: "",
-        password: ""
+        password: "",
       },
-      agree: false
+      agree: false,
     };
   },
   components: {
     SignUp
-  }
+  },
 };
 </script>
 

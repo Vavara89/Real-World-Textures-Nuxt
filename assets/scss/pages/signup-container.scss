@@ -18,6 +18,10 @@
       width: 100%;
     }
 
+    @include mq(md, max) {
+      padding-top: 200px;
+    }
+
     h1 {
       @include font-h1;
       color:$color-white;

@@ -1,12 +1,31 @@
 .header {
   &.catalog{
     .header__flex {
-      padding: 40px 1.5rem 40px 7.5rem;
+      padding: 20px 1.5rem 20px 7.5rem;
 
       .left-holder{
         flex: 0 1 825px;
       }
+
+      .header-search {
+        @include mq(lg, max) {
+          display: none;
+        }
+
+        @include mq(md, max) {
+          display: block;
+        }
+
+         @include mq(sm, max) {
+          display: none;
+        }
+
+        input {
+          @include mq(xl, max) {
+           width: 180px;
+          }
+      }
     }
   }
 }
-
+}

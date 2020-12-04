@@ -329,7 +329,7 @@ export default {
   cursor: pointer;
 
   @include mq(md, max) {
-    top: 28px;
+    top: 10px;
   }
 }
 

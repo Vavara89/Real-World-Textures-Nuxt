@@ -6,25 +6,19 @@
       :status="serverMessageStatus"
       :message="serverMessageError"
     />
-      <nuxt />
-    <Footer/>
+    <nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header/Header";
-import HeaderSignup from "@/components/Header/HeaderSignup";
 import Footer from "@/components/Footer/Footer";
 import ServerError from "@/components/ServerError/ServerError";
-import HeaderCatalog from '@/components/Header/HeaderCatalog';
 
 export default {
   components: {
-    Header,
     Footer,
     ServerError,
-    HeaderSignup,
-    HeaderCatalog
   },
   data: () => {
     return {

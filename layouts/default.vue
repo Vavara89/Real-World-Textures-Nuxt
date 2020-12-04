@@ -14,7 +14,6 @@
 
 <script>
 import Header from "@/components/Header/Header";
-import HeaderSignup from "@/components/Header/HeaderSignup";
 import Footer from "@/components/Footer/Footer";
 import ServerError from "@/components/ServerError/ServerError";
 import main from "@/collectors/main";
@@ -24,7 +23,6 @@ export default {
     Header,
     Footer,
     ServerError,
-    HeaderSignup,
   },
   data: () => {
     return {

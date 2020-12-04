@@ -217,7 +217,7 @@ export default {
 }
 @media only screen and (max-width: 950px) {
   .realworld {
-    padding-top: 150px;
+    padding-top: 178px;
   }
 }
 </style>

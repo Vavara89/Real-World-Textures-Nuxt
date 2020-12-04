@@ -15,7 +15,7 @@
     padding: 28px 20px;
     position: relative;
     user-select: none;
-    display: block !important;
+    display: block ;
 
     .navicon {
       background: #333;
@@ -45,10 +45,12 @@
 
   .menu-btn:checked ~ .menu {
     max-height: 700px;
+    display: block;
   }
 
   .menu-btn:checked ~ .menu-icon .navicon {
     background: transparent;
+    background: white;
   }
 
   .menu-btn:checked ~ .menu-icon .navicon:before {
@@ -63,24 +65,26 @@
   .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
   }
+}
 
   .menu {
-    clear: both;
     max-height: 0;
     transition: max-height 0.2s ease-out;
+
     @include mq(md, max) {
       position: absolute;
-      top: 116px;
+      top: 107px;
       left: 0;
       right: 0;
       background: white;
     }
   }
 
-  li {
-    display: block !important;
-    clear: both;
-    width: 100%;
+  .menu-item {
+    // display: block;
+    // clear: both;
+    // width: 100%;
+
     @include mq(md, max) {
       text-align: center;
     }
@@ -89,9 +93,13 @@
       display: block;
       padding: 20px 20px;
       text-decoration: none;
+
+      @include mq(md, max) {
+        background: white;
+      }
     }
   }
 
   /* menu icon */
-}
+
 

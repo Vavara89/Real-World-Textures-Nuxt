@@ -1,56 +1,63 @@
 <template>
-  <header class="header catalog">
+  <header class="header catalog header-signup">
     <div class="header-inner">
       <div class="header__flex">
-
-
         <div class="left-holder">
           <div class="search-menu-container">
-            <header-search/>
+            <header-search />
             <div class="header-nav catalog-nav hide-on-md-down">
               <ul class="menu">
-                <li v-for="item in catalogMenu" @click="hideMenu()">
+                <li
+                  v-for="item in catalogMenu"
+                  @click="hideMenu()"
+                  class="menu-item"
+                >
                   <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
                 </li>
               </ul>
             </div>
           </div>
-
         </div>
 
-
         <div class="header-nav">
-          <input id="menu-btn" class="menu-btn" type="checkbox"/>
+          <input id="menu-btn" class="menu-btn" type="checkbox" />
           <label class="menu-icon" for="menu-btn">
-            <span class="navicon"/>
+            <span class="navicon" />
           </label>
 
           <ul class="menu">
-
-            <li class="hide-on-md-up" v-for="item in catalogMenu" @click="hideMenu()">
+            <li
+              class="hide-on-md-up menu-item"
+              v-for="item in catalogMenu"
+              @click="hideMenu()"
+            >
               <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
             </li>
 
-            <li v-for="item in mainMenu" class="line" @click="hideMenu()">
+            <li
+              v-for="item in mainMenu"
+              class="line menu-item"
+              @click="hideMenu()"
+            >
               <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
             </li>
 
             <template v-if="!getIsLogged()">
-              <li @click="hideMenu()">
+              <li @click="hideMenu()" class="menu-item">
                 <nuxt-link to="/login"> Log In</nuxt-link>
               </li>
-              <li class="header-button" @click="hideMenu()">
+              <li class="header-button menu-item" @click="hideMenu()">
                 <nuxt-link to="/signup"> Sign Up</nuxt-link>
               </li>
             </template>
             <template v-if="getIsLogged()">
-              <li class="header-account">
+              <li class="header-account menu-item">
                 <a
                   class="icon"
                   @click="showAccount('again')"
                   @mouseover="hover = true"
                   @mouseleave="trigger()"
-                >Account</a
+                  >Account</a
                 >
                 <div
                   v-if="account || hover"
@@ -65,10 +72,10 @@
                       <p>{{ profile }}</p>
                     </div>
                     <ul>
-                      <li v-for="item in profileMenu">
+                      <li v-for="item in profileMenu" class="menu-item">
                         <nuxt-link :to="item.link">{{ item.title }}</nuxt-link>
                       </li>
-                      <li class="logout">
+                      <li class="logout menu-item">
                         <a @click="logout">Log out</a>
                       </li>
                     </ul>
@@ -78,17 +85,15 @@
               <li
                 v-if="getIsLogged()"
                 style="cursor: pointer"
-                class="header-fav view-mobile"
+                class="header-fav view-mobile menu-item"
                 @click="toBookmarks"
               >
                 <span>{{ counts }}</span>
                 <a href="/bookmarked">a</a>
               </li>
             </template>
-
           </ul>
         </div>
-
       </div>
     </div>
   </header>
@@ -96,14 +101,14 @@
 
 
 <script>
-import global from '~/mixins.js/global.js';
-import vClickOutside from 'v-click-outside';
-import SvgIconLogo from '~/assets/img/logo.svg?inline';
-import HeaderSearch from '~/components/Header/HeaderSearch';
-import header from '@/mixins.js/header';
+import global from "~/mixins.js/global.js";
+import vClickOutside from "v-click-outside";
+import SvgIconLogo from "~/assets/img/logo.svg?inline";
+import HeaderSearch from "~/components/Header/HeaderSearch";
+import header from "@/mixins.js/header";
 
 export default {
-  name: 'Header',
+  name: "header-catalog",
   mixins: [global, header],
   components: {
     SvgIconLogo,
@@ -112,10 +117,9 @@ export default {
   directives: {
     clickOutside: vClickOutside.directive,
   },
-  data () {
-    return {
-    };
+  data() {
+    return {};
   },
-  computed: {}
+  computed: {},
 };
 </script>
