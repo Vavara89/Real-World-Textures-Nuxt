@@ -12,8 +12,8 @@
           </h3>
 
           <div class="input__discount" :class="{'input__discount--filled': checkInputDiscount}">
-            <input v-model="input.discount" type="text" class="chrome">
             <label for>Your Discount Code</label>
+            <input v-model="input.discount" type="text" class="chrome">
           </div>
           <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
         </div>
@@ -28,6 +28,7 @@ import Button from '@/components/Button';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
+  layout: "withoutLogo",
   name: 'Discount',
   middleware: 'auth',
   components: {

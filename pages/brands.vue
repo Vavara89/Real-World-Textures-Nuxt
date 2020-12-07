@@ -29,7 +29,7 @@ import Modal from "@/components/Modal/Modal";
 
 export default {
   name: "Brands",
-  layout: "catalog",
+  layout: "withoutLogo",
   scrollToTop: true,
   components: {
     BrandGallery,

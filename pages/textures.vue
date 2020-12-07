@@ -43,7 +43,7 @@ import HeaderCatalog from '@/components/Header/HeaderCatalog';
 
 export default {
   name: "Textures",
-  layout: "catalog",
+  layout: "withoutLogo",
   components: {
     TextureGallery,
     CatalogSidebar,

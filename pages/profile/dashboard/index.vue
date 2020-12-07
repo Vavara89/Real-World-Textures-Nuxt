@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar v-if="width > 1200" :profile="true" />
+    <ProfileSidebar v-if="width > 950" :profile="true" />
     <UnsubscribeModal ref="unsubscribe_modal" />
     <div class="page-content">
       <section class="services view-bottom">
@@ -91,6 +91,7 @@ import ProfileForm from '@/components/Profile/ProfileForm';
 import UnsubscribeModal from '@/components/Profile/UnsubscribeModal';
 
 export default {
+  layout: "withoutLogo",
   name: 'Dashboard',
   middleware: 'auth',
   components: {

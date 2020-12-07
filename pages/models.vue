@@ -26,7 +26,7 @@ import Pager from "@/components/Pager/Pager";
 
 export default {
   name: "Models",
-  layout: "catalog",
+  layout: "withoutLogo",
   scrollToTop: true,
   components: {
     TextureGallery,

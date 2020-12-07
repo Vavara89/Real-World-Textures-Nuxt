@@ -1,5 +1,10 @@
 <template>
   <div class="leftsidebar profileside">
+    <div class="profileside__logo">
+        <nuxt-link to="/" class="profileside-logo">
+          <SvgIconLogo />
+        </nuxt-link>
+      </div>
     <ul class="profile">
       <li>
         <nuxt-link to="/profile/dashboard" :class="{'active': isActive('profile')}">
@@ -35,6 +40,7 @@
   </div>
 </template>
 <script>
+import SvgIconLogo from "~/assets/img/logo.svg?inline";
 import Dropdown from '@/components/Sidebar/Dropdown';
 import MaterialMenu from '@/components/Sidebar/MaterialMenu';
 import RefineFilter from '@/components/Sidebar/RefineFilter';
@@ -44,6 +50,7 @@ import ColorFilter from '@/components/Sidebar/ColorFilter';
 export default {
   name: 'ProfileSidebar',
   components: {
+    SvgIconLogo,
     Dropdown,
     MaterialMenu,
     RefineFilter,

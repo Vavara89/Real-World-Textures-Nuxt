@@ -5,7 +5,7 @@
 
     <div class="page-content">
       <section class="services view-bottom">
-        <div class="pricing notmobile">
+        <div  v-if="width > 1000" class="pricing notmobile">
           <table>
             <tbody>
               <tr>
@@ -120,7 +120,7 @@
           <!-- DivTable.com -->
         </div>
 
-        <div class="pricing ismobile">
+        <div v-if="width < 1000" class="pricing ismobile">
           <table>
             <tbody>
               <tr>
@@ -245,6 +245,7 @@ import ConfirmModal from '@/components/Confirm/ConfirmModal';
 import { subscribeCurrentIs, subscribeStatus, subscriptionActive } from '@/utils';
 
 export default {
+  layout: "withoutLogo",
   name: 'Pricing',
   middleware: 'auth',
   components: {

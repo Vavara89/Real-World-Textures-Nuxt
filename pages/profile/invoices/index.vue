@@ -104,6 +104,7 @@
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
+  layout: "withoutLogo",
   name: 'Invoice',
   middleware: 'auth',
   components: {

@@ -12,6 +12,7 @@
       }
 
       .header-search {
+        margin-left: 250px;
         @include mq(lg, max) {
           display: none;
         }

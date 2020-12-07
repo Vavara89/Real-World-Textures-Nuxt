@@ -27,7 +27,7 @@ import Pager from "@/components/Pager/Pager";
 
 export default {
   name: "Hdr",
-  layout: "catalog",
+  layout: "withoutLogo",
   scrollToTop: true,
   components: {
     TextureGallery,

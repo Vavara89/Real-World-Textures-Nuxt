@@ -6,6 +6,7 @@
       :status="serverMessageStatus"
       :message="serverMessageError"
     />
+    <HeaderCatalog/>
     <nuxt />
     <Footer />
   </div>
@@ -14,11 +15,14 @@
 <script>
 import Footer from "@/components/Footer/Footer";
 import ServerError from "@/components/ServerError/ServerError";
+import HeaderCatalog from '~/components/Header/HeaderCatalog.vue';
+
 
 export default {
   components: {
+    HeaderCatalog,
     Footer,
-    ServerError,
+    ServerError
   },
   data: () => {
     return {

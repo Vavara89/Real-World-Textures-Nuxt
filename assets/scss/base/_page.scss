@@ -47,4 +47,8 @@ img {
 
 .page-content {
   width: 100%;
+
+  @media only screen and (max-width: 950px) {
+    padding-top: 30px;
+  }
 }
