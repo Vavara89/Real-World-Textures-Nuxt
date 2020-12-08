@@ -2,9 +2,10 @@
   &.catalog{
     .header__flex {
       padding: 40px 1.5rem 40px 7.5rem;
+      
 
       @include mq(md, max) {
-        padding: 20px 1.5rem 20px 7.5rem;
+        padding: 20px 1.5rem 20px 1.5rem;
       }
 
       .left-holder{
@@ -12,7 +13,7 @@
       }
 
       .header-search {
-        margin-left: 250px;
+        margin-left: 114px;
         @include mq(lg, max) {
           display: none;
         }

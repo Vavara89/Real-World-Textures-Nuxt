@@ -3,6 +3,11 @@
     <div class="header-inner">
       <div class="header__flex">
         <div class="left-holder">
+          <div class="header__logo">
+            <nuxt-link to="/" class="header-logo">
+              <SvgIconLogo />
+            </nuxt-link>
+          </div>
           <div class="search-menu-container">
             <header-search />
             <div class="header-nav catalog-nav hide-on-md-down">

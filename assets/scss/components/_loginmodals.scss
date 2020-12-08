@@ -32,6 +32,7 @@
   border-radius: 16px;
   overflow: auto;
   cursor: auto;
+  z-index: 999999;
 
   &.card {
     height: 625px;

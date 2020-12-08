@@ -6,7 +6,20 @@
 
   &.mainpage {
     display: block;
-    padding: 0 175px;
+    padding: 0 125px;
+
+    @include mq(lg, max) {
+      padding: 0 75px;
+    }
+
+    @include mq(md, max) {
+      padding: 0 35px;
+    }
+
+    @include mq(sm, max) {
+      padding: 0;
+    }
+
     .textures--center {
       text-align: center;
       display: flex;
@@ -118,10 +131,6 @@
         vertical-align: middle;
       }
     }
-
-    @media (max-width: 697px) {
-      padding-bottom: 1.2rem;
-      }
 
     img {
       @include transition-base;

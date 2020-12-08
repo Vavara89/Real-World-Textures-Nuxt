@@ -215,9 +215,4 @@ export default {
   background-color: #fbfbff;
   padding-top: 50px;
 }
-@media only screen and (max-width: 950px) {
-  .realworld {
-    padding-top: 178px;
-  }
-}
 </style>

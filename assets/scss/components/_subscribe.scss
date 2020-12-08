@@ -15,6 +15,10 @@
     background-image: none;
   }
 
+  @include mq(md, max) {
+    margin-bottom: 2rem;
+  }
+
   &.profile {
     @include mq(xl, min) {
       position: relative;
