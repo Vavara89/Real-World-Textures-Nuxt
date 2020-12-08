@@ -20,9 +20,10 @@
     background-color: #363A57;
 
     @include mq(lg, max) {
-      margin-bottom: .8rem;
+      margin-bottom: 2rem;
       margin-left: auto;
     }
+
     @include mq(md, max) {
       width: 100%;
       min-width: 0;

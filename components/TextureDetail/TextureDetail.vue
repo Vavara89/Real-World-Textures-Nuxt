@@ -134,7 +134,7 @@
             <div class="label">
               <label class="h3">Consisting of:</label>
             </div>
-            <div class="option">
+            <div class="option scroll">
               <ul class="consisting-list">
                 <li
                   v-for="(item, index) in texture.maps"
@@ -157,7 +157,7 @@
           <div class="label">
             <label class="h3">Brand:</label>
           </div>
-          <div v-if="texture.brand" class="option">
+          <div v-if="texture.brand" class="option scroll">
             <label class="brand">{{ texture.brand.name }}</label>
             <a
               target="_blank"

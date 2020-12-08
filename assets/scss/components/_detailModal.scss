@@ -69,6 +69,7 @@
 
      @include mq(md, max) {
        max-width: 100%;
+       width: 100%;
       }
 
       @include mq(sm, max) {
@@ -246,7 +247,6 @@
       .options {
         .option-item {
           display: flex;
-          margin-bottom: 2rem;
 
           .option {
             height: 100px;

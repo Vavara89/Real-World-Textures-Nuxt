@@ -20,16 +20,6 @@
         <span></span>
       </div>
 
-      <div class="sidebar-logo">
-        <nuxt-link
-          to="/"
-          class="header-logo"
-          :class="{ 'header-logo--light': $route.name === 'signup' }"
-        >
-          <SvgIconLogo />
-        </nuxt-link>
-      </div>
-
       <Dropdown
         v-if="getTypes()"
         :options="getTypes()"
@@ -329,7 +319,7 @@ export default {
   cursor: pointer;
 
   @include mq(md, max) {
-    top: 10px;
+    top: 1;
   }
 }
 

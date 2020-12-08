@@ -2,7 +2,7 @@
   padding: 16.2rem 0 1.6rem 0;
   background-color: $color-bck-dark;
 
-  @include mq(sm, max) {
+  @include mq(md, max) {
     padding: 5.6rem 0 1.6rem 0;
   }
 
