@@ -367,13 +367,13 @@
 
     .input__discount {
       position: relative;
+      display: inline-block;
 
       label {
         @include transition-base;
-        display: block;
-        font-size: 1.6rem;
-        margin-bottom: 20px;
-       
+        position: absolute;
+        top: 20px;
+        left: 20px;
       }
 
     input {

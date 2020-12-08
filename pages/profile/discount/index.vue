@@ -12,10 +12,12 @@
           </h3>
 
           <div class="input__discount" :class="{'input__discount--filled': checkInputDiscount}">
-            <label for>Your Discount Code</label>
             <input v-model="input.discount" type="text" class="chrome">
+            <label for>Your Discount Code</label>
           </div>
-          <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
+          <div style="display: block">
+            <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
+          </div>
         </div>
       </section>
     </div>
