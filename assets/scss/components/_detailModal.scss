@@ -160,30 +160,30 @@
           margin: 0 auto;
           position: relative;
 
-          .button {
-            position: relative;
-            width: 2rem;
-            height: 2rem;
+          // .button {
+          //   position: relative;
+          //   width: 2rem;
+          //   height: 2rem;
 
-            img {
-              width: 2rem;
-            }
-          }
+          //   img {
+          //     width: 2rem;
+          //   }
+          // }
 
-          .prev-slick {
-            &::before {
-              content: "";
-            }
-          }
+          // .prev-slick {
+          //   &::before {
+          //     content: "";
+          //   }
+          // }
 
-          .next-slick {
-            &::before {
-              content: "";
-            }
+          // .next-slick {
+          //   &::before {
+          //     content: "";
+          //   }
 
-            .button {
-              transform: rotate(180Deg);
-            }
+            // .button {
+            //   transform: rotate(180Deg);
+            // }
           }
 
           .slick-slide {
@@ -248,13 +248,13 @@
           display: flex;
           margin-bottom: 2rem;
 
-          &.resolution {
-            align-items: center;
-            flex-wrap: wrap;
+          .option {
+            height: 100px;
+            overflow-y: scroll;
           }
 
-          &.dimension {
-            align-items: flex-end;
+          &.resolution {
+            flex-wrap: wrap;
           }
 
           &.error{
@@ -267,6 +267,10 @@
 
       .description {
         margin-bottom: 3rem;
+        .text {
+          height: 100px;
+          overflow-y: scroll;
+        }
       }
 
       .locator {
@@ -368,10 +372,15 @@
     .changed:hover img.hover{
     display:block;
     }
+
+.pad {
+  padding-top: 25px;
 }
 
-.slick-prev.slick-disabled:before {
-  display: none;
+.my-prev, .my-next {
+  background-color: red;
+  width: 200px;
+  display: block;
 }
 
 

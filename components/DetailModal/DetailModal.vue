@@ -134,7 +134,7 @@
         <div class="options">
           <div class="option-item resolution">
             <div class="label">
-              <label class="h3">Resolution:</label>
+              <label class="h3">Resolutffion:</label>
             </div>
             <div class="option">
               <Dropdown :options="options" />
@@ -144,7 +144,7 @@
             <div class="label">
               <label class="h3">Texture<br />Dimensions:</label>
             </div>
-            <div class="option">
+            <div class="option pad">
               <label class="text">yyy X yyy cm</label>
             </div>
           </div>

@@ -126,7 +126,7 @@
             <div class="label">
               <label class="h3">{{ type_title }}<br />Dimensions:</label>
             </div>
-            <div class="option">
+            <div class="option pad">
               <label class="text">{{ texture.dimension }}</label>
             </div>
           </div>
