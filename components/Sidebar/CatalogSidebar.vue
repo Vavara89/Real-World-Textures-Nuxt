@@ -20,6 +20,12 @@
         <span></span>
       </div>
 
+       <div  v-if="width > 950" style="margin-left: 20px; margin-bottom: 40px;">
+        <nuxt-link to="/">
+          <SvgIconLogo />
+        </nuxt-link>
+        </div>
+
       <Dropdown
         v-if="getTypes()"
         :options="getTypes()"

@@ -1,6 +1,11 @@
 <template>
   <div>
     <div v-if="!profile" class="leftsidebar">
+      <div>
+        <nuxt-link to="/" class="profileside-logo">
+          <SvgIconLogo />
+        </nuxt-link>
+      </div>
       <Dropdown :options="options" />
 
       <div class="materials-menu">
