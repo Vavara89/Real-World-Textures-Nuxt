@@ -47,7 +47,7 @@
               </div>
               <div class="right">
                 <div class="clearfix">
-                  <div   class="c100 p75 big scaled">
+                  <div class="c100 p75 big scaled">
                     <div v-if="profile.subscribe" class="points">
                       + 200
                     </div>
@@ -59,7 +59,7 @@
                     </div>
                     <span class="topas">Subscription Credits</span>
                   </div>
-                  <button  class="toggleOption2 bot">
+                  <button class="toggleOption2 bot">
                     <nuxt-link to="/profile/pricing" v-if="!profile.subscribe">buy more credits</nuxt-link>
                     <nuxt-link to="/profile/pricing" v-if="profile.subscribe">buy more credits</nuxt-link>
                   </button>

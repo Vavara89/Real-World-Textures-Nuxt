@@ -32,7 +32,7 @@ export default {
     TextureGallery,
     CatalogSidebar,
     ContentHeader,
-    Pager,
+    Pager
   },
   async asyncData(context) {
     let models = [];

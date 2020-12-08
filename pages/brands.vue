@@ -1,6 +1,5 @@
 <template>
   <div class="page-container">
-    <HeaderCatalog />
     <CatalogSidebar
       :filter="filter"
       :active-category="activeCategory"
@@ -10,7 +9,7 @@
       <ContentHeader :path="path" />
       <section class="services view-bottom">
         <BrandGallery :brands="brands" />
-        <h2 style="text-align: center" v-if="!brands.length">
+        <h2 v-if="!brands.length" style="text-align: center">
           Search result is empty, try to change your search params
         </h2>
       </section>
@@ -20,32 +19,32 @@
 </template>
 
 <script>
-import BrandGallery from "@/components/Textures/BrandGallery";
-import CatalogSidebar from "@/components/Sidebar/CatalogSidebar";
-import ContentHeader from "@/components/Textures/ContentHeader";
-import catalog from "@/collectors/catalog";
-import Pager from "@/components/Pager/Pager";
-import Modal from "@/components/Modal/Modal";
+import BrandGallery from '@/components/Textures/BrandGallery';
+import CatalogSidebar from '@/components/Sidebar/CatalogSidebar';
+import ContentHeader from '@/components/Textures/ContentHeader';
+import catalog from '@/collectors/catalog';
+import Pager from '@/components/Pager/Pager';
+import Modal from '@/components/Modal/Modal';
 
 export default {
-  name: "Brands",
-  layout: "withoutLogo",
+  name: 'Brands',
+  layout: 'withoutLogo',
   scrollToTop: true,
   components: {
     BrandGallery,
     CatalogSidebar,
     ContentHeader,
     Pager,
-    Modal,
+    Modal
   },
-  async asyncData(context) {
+  async asyncData (context) {
     let brands = [];
     let activeCategory = null;
     let filter = null;
     let pager = null;
     let product = null;
 
-    await catalog.loadCatalog(context.route, "brands", context).then((data) => {
+    await catalog.loadCatalog(context.route, 'brands', context).then((data) => {
       filter = data[0];
       brands = data[1].textures;
       pager = data[1].pager;
@@ -53,40 +52,55 @@ export default {
       product = data[3];
     });
     return {
-      brands: brands,
-      activeCategory: activeCategory,
-      filter: filter,
-      pager: pager,
-      product: product,
+      brands,
+      activeCategory,
+      filter,
+      pager,
+      product
     };
   },
 
-  data() {
+  data () {
     return {
-      category_view: !!this.$route.params["slug"],
+      category_view: !!this.$route.params.slug,
       brands: [],
       activeCategory: null,
       filter: {},
       pager: {},
-      baseUrl: "/brands",
-      product: null,
+      baseUrl: '/brands',
+      product: null
     };
   },
+  computed: {
+    path () {
+      const data = [{ name: 'Brands', url: this.baseUrl }];
+      if (this.activeCategory) {
+        this.activeCategory.ancestors.map(item =>
+          data.push({ name: item.name, url: `${this.baseUrl}/${item.slug}` })
+        );
+        data.push({
+          name: this.activeCategory.name,
+          url: `${this.baseUrl}/${this.activeCategory.slug}`
+        });
+      }
+      return data;
+    }
+  },
   watch: {
-    $route(to, from) {
+    $route (to, from) {
       const isSearchedChanged =
-        (from.query["search"] &&
-          to.query["to"] &&
-          from.query["search"] !== to.query["to"]) === true;
+        (from.query.search &&
+          to.query.to &&
+          from.query.search !== to.query.to) === true;
       const fromRoot = from.matched[0].path;
       const toRoot = to.matched[0].path;
       if (fromRoot === toRoot) {
         catalog
-          .loadCatalog(to, "brands")
+          .loadCatalog(to, 'brands')
           .then((data) => {
             const filter = data[0];
             if (isSearchedChanged) {
-              delete this.filter["categories"];
+              delete this.filter.categories;
             }
 
             this.filter = { ...this.filter, ...filter };
@@ -96,27 +110,12 @@ export default {
             this.product = data[3];
           })
           .catch((error) => {
-            console.log("Errors");
+            console.log('Errors');
             console.log(error);
           });
       }
-    },
-  },
-  computed: {
-    path() {
-      let data = [{ name: "Brands", url: this.baseUrl }];
-      if (this.activeCategory) {
-        this.activeCategory.ancestors.map((item) =>
-          data.push({ name: item.name, url: `${this.baseUrl}/${item.slug}` })
-        );
-        data.push({
-          name: this.activeCategory.name,
-          url: `${this.baseUrl}/${this.activeCategory.slug}`,
-        });
-      }
-      return data;
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -8,6 +8,7 @@
     z-index: 99983;
     padding: 4rem 3rem;
     position: relative;
+    top: -120px;
 
 
     @include transition-base;
@@ -26,9 +27,9 @@
     &--default {
       position: relative;
 
-      @include mq(lg, max) {
-        top: auto;
-      }
+      // @include mq(lg, max) {
+      //   top: auto;
+      // }
     }
 
     h3 {

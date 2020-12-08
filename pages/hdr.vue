@@ -1,6 +1,5 @@
 <template>
   <div class="page-container">
-    <HeaderCatalog />
     <nuxt-child :product="product"></nuxt-child>
     <CatalogSidebar :filter="filter" :active-category="activeCategory" />
     <div class="page-content">

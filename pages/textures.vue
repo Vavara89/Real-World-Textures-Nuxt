@@ -6,14 +6,9 @@
       :type_title="'Texture'"
       :type_code="'textures'"
       :texture="product"
-    >
-    </TextureDetail>
-
+    />
     <CatalogSidebar :filter="filter" :active-category="activeCategory" />
-
     <div class="page-content">
-      <HeaderCatalog />
-
       <ContentHeader :path="path" />
       <section class="services view-bottom">
         <div class="catalog-page">
@@ -39,7 +34,7 @@ import CatalogSidebar from "@/components/Sidebar/CatalogSidebar";
 import ContentHeader from "@/components/Textures/ContentHeader";
 import catalog from "@/collectors/catalog";
 import Pager from "@/components/Pager/Pager";
-import HeaderCatalog from '@/components/Header/HeaderCatalog';
+
 
 export default {
   name: "Textures",
@@ -49,7 +44,6 @@ export default {
     CatalogSidebar,
     ContentHeader,
     Pager,
-    HeaderCatalog,
     TextureDetail,
   },
   async asyncData(context) {
