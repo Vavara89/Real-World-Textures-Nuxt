@@ -1,6 +1,6 @@
 <template>
   <div v-show="value" class="detailModal">
-    <div class="container">
+    <div class="detail-container">
       <div class="imageDetails">
         <div class="imageDetails-header">
           <div>

@@ -82,8 +82,6 @@
             color: #0A0D27;
             font-weight: bold;
             margin-bottom: 20px;
-
-        
           }
 
           .sub_heading {
@@ -149,17 +147,18 @@
       top: 50%;
   }
 
-  @media (max-width: 697px) {
-    top: 46%;
-}
+    @media (max-width: 697px) {
+      top: 46%;
+  }
 
-@media (max-width: 550px) {
-  top: 42%;
-}
+  @media (max-width: 550px) {
+    top: 42%;
+  }
 
-@media (max-width: 450px) {
-  top: 40%;
-}
+  @media (max-width: 450px) {
+    top: 40%;
+  }
+
   @media (max-width: 400px) {
     display: none;
   }
@@ -323,6 +322,11 @@
 .page-content {
     background-color: $color-bck-light;
 
+    @media only screen and (max-width: 950px) {
+      padding-top: 0px;
+    }
+}
+
     .services {
         padding: 0;
 
@@ -334,6 +338,7 @@
     .invoices {
       margin-left: 70px;
       width: calc(100% - 140px);
+      padding-top: 40px;
   }
 
   .discount {
@@ -509,8 +514,8 @@
 
                     @media (max-width: 750px) {
                       margin-top: 50px;
-                    margin-bottom: 20px;
-                  }
+                      margin-bottom: 20px;
+                    }
 
                     li {
                         display: inline-flex;
@@ -523,7 +528,7 @@
 
                         @media screen and (max-width: 715px) {
                           padding-bottom: 0;
-                          margin-right: 20px;
+                          margin-right: 10px;
                         }
 
                         &.selected {
@@ -535,6 +540,14 @@
                 .tabs-content {
 
                     .is-profile {
+                            tr {
+                              display: inline-block;
+                              @media screen and (max-width: 515px) {
+                                display: flex;
+                                flex-direction: column;
+                              }
+                            }
+
                             td {
 
                                 &.is-first {
@@ -608,8 +621,14 @@
                  flex-basis:430px;
                  order: 0;
                  margin-top: 50px;
-             }
-           }
+                }
+              }
+
+           @media (max-width: 750px) {
+              .right {
+                 margin-top: 0px;
+                }
+            }
         }
 
         @media screen and (max-width:1660px) {
@@ -643,7 +662,7 @@
 .buttonek {
   color: #4cbc81;
     height: 4.8rem;
-    margin-left: -3.2rem;
+    // margin-left: -3.2rem;
     padding: 0 3.2rem;
     background-color: transparent;
     display: inline-flex;
@@ -660,6 +679,10 @@
     letter-spacing: .075rem;
     text-transform: uppercase;
     border: 0;
+
+    @media screen and (max-width:760px) {
+      padding: 0 15px;
+    }
 
     &:hover {
       color: #394174;
@@ -745,7 +768,7 @@
   .c100.big {
     font-size: 240px;
     @media screen and (max-width:760px) {
-      font-size: 200px;
+      font-size: 216px;
     }
     
   }
@@ -1705,4 +1728,3 @@ table tr:nth-child(even) td{
   }
 }
 
-}
