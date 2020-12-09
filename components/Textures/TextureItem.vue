@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="texture__block" :class="shadow ? 'texture--shadow' : ''">
     <div class="texture__image" :class="{ brands: isBrand, noscale: noscale }">
       <img
