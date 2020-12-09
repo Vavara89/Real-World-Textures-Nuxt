@@ -1,25 +1,25 @@
 <template>
   <ul class="faq__grid">
-    <li class="faq__item" v-for="(faq, index) in faqs" :key="'id-' + index">
+    <li v-for="(faq, index) in faqs" :key="'id-' + index" class="faq__item">
       <Faq :faq="faq" />
     </li>
   </ul>
 </template>
 
 <script>
-import Faq from "@/components/Faqs/Faq";
+import Faq from '@/components/Faqs/Faq';
 
 export default {
-  name: "FaqGrid",
+  name: 'FaqGrid',
   components: {
-    Faq,
+    Faq
   },
 
   props: {
     faqs: {
       type: Array,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>
