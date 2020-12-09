@@ -41,10 +41,10 @@
             >
               <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
             </li>
-
+            <div class="line"></div>
             <li
               v-for="item in mainMenu"
-              class="line menu-item"
+              class="menu-item"
               @click="hideMenu()"
             >
               <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>

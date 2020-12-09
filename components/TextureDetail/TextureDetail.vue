@@ -5,7 +5,7 @@
     :class="{ visuallyscoll: type_code === 'models' }"
   >
     <div @click.prevent="close" class="background"></div>
-    <div class="container">
+    <div class="detail-container">
       <div class="imageDetails">
         <div class="imageDetails-header">
           <div>
