@@ -425,6 +425,9 @@
   height: 36px;
   background-color: #9093B9;
   margin-right: 50px;
+  @include mq(md, max) {
+    display: none;
+  }
 }
 
 
