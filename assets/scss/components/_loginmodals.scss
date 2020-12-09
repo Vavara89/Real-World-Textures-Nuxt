@@ -56,9 +56,15 @@
     @media only screen and (max-height: 700px) {
       justify-content: start;
       align-items: flex-start;
-      transform: translateY(0) !important;
+      transform: translateY(0);
       min-height: auto !important;
-      top: 50px !important;
+      top: 50px;
+    }
+
+    @include mq(sm, max) {
+      transform: translateY(-50%);
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -170,9 +176,15 @@
       font-weight: 400;
 
       @include mq(sm, max) {
-        padding-bottom: 100px;
+        padding-bottom: 10px;
+        margin-top: 20px;
       }
       
+      table {
+        @include mq(sm, max) {
+          margin: 0 auto;
+        }
+      }
 
       input {
         margin: 6px 0;
@@ -321,10 +333,6 @@
       position: relative;
       // top: -5px;
       padding-right: 15px;
-    }
-
-    input.email {
-      // float: right;
     }
 
     input.email, input.input, textarea.input {
