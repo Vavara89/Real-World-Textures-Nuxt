@@ -99,6 +99,11 @@
       font-size: 14px;
       vertical-align: top;
 
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #C3C7DE;
+        opacity: 1; /* Firefox */
+      }
+
       @media only screen and (max-width: 1240px) {
         width: 180px;
       }
@@ -213,7 +218,7 @@
           padding: 10px 15px;
           border-radius: 30px;
           font-size: 14px;
-          font-weight: 500;
+          font-weight: lighter;
           color: #9093B9;
           text-transform: uppercase;
           text-decoration: none;

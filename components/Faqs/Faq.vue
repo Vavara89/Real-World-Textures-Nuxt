@@ -3,17 +3,17 @@
     <h3 class="faq__title">
       {{ faq_question }}
     </h3>
-
-      <div v-if="isOpened" class="faq__text">
-        <div class="faq__wysiwyg" v-html="faq.answer" />
-      </div>
-
-<!-- 
-    <div v-if="!isMobileDevice">
+    <div>
       <div class="faq__text">
         <div class="faq__wysiwyg" v-html="faq.answer" />
       </div>
-    </div> -->
+    </div>
+
+    <div v-if="width < 950">
+      <div v-if="isOpened" class="faq__text">
+        <div class="faq__wysiwyg" v-html="faq.answer" />
+      </div>
+    </div>
   </div>
 </template>
 
