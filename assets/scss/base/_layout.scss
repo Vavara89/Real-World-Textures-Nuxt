@@ -182,3 +182,11 @@
     display: none;
   }
 }
+.show-on-mobile-only{
+  @include mq(md, min) {
+    display: none;
+  }
+  @include mq(sm, max) {
+    display: inherit;
+  }
+}
