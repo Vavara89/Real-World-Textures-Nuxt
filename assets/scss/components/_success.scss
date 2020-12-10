@@ -8,6 +8,14 @@
   .title{
     font-size: 20px;
     color: #3a4173;
+
+    @include mq(md, max) {
+      font-size: 16px;
+    }
+
+    @include mq(sm, max) {
+      font-size: 14px;
+    }
   }
 
 
@@ -30,5 +38,11 @@
     border-radius: 50%;
     background-size: 12px 12px;
     margin-right: 20px;
+
+    @include mq(md, max) {
+       margin-right: 10px;
+       width: 24px;
+       height: 24px;
+    }
   }
 }
