@@ -15,6 +15,7 @@
 
         @include mq(md, max) {
             flex: 0 0 100%;
+            margin: 10px auto;
           }
 
         &.news {
