@@ -103,7 +103,10 @@
 
 
   &:hover {
-    filter: drop-shadow(5px 53px 64px rgba(1, 12, 47, 0.2));
+    -webkit-box-shadow: 2px 30px 77px -10px rgba(0,0,0,0.39);
+    -moz-box-shadow: 2px 30px 77px -10px rgba(0,0,0,0.39);
+    box-shadow: 2px 30px 77px -10px rgba(0,0,0,0.39);
+    transition: box-shadow 0.3s ease-in-out;
 
     .card__img {
         transform: scale(1.15);
