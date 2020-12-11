@@ -147,6 +147,7 @@
     background-image: url(~@/assets/img/icon-arrow_bottom.svg);
     background-repeat: no-repeat;
     background-position: right 20px top 11px;
+    
 
     .count {
       font-weight: 300;
@@ -172,6 +173,7 @@
     right: 0;
     line-height: 26px;
     padding: 5px 0 15px 0;
+    // max-width: 112px;
 
     .count {
       position: absolute;
@@ -201,6 +203,12 @@
 
 .sortoption {
   .dropdown {
+    .selected {
+      max-width: 112px;
+    }
+    .items {
+      max-width: 112px;
+    }
     select {
       width: 11rem;
     }
