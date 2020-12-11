@@ -194,7 +194,7 @@
           </button>
           <button v-if="processing" class="button-primary button-primary--blue">
             <img class="rotate" src="@/assets/img/icon-processing-button.svg" />
-            Processing... Continue Browsing
+            Processing...
           </button>
         </div>
       </div>

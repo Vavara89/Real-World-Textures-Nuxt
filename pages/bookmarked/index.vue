@@ -55,7 +55,7 @@
                 class="rotate"
                 src="@/assets/img/icon-processing-button.svg"
               />
-              <span v-if="downloading">Processing... Continue Browsing</span>
+              <span v-if="downloading">Processing...</span>
               <span v-if="!downloading">Download Selected</span>
             </button>
           </div>

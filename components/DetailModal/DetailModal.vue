@@ -195,7 +195,7 @@
             class="button-primary button-primary--blue"
           >
             <img src="@/assets/img/icon-processing-button.svg" />
-            Processing... Continue Browsing
+            Processing...
           </button>
         </div>
       </div>
