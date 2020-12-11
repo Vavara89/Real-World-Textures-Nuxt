@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-
+        <div class="line"></div>
         <div class="header-nav">
           <input id="menu-btn" class="menu-btn" type="checkbox" />
           <label class="menu-icon" for="menu-btn">
@@ -38,7 +38,7 @@
             >
               <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
             </li>
-            <div class="line"></div>
+            <!-- <div class="line"></div> -->
             <li
               v-for="item in mainMenu"
               class="menu-item"
