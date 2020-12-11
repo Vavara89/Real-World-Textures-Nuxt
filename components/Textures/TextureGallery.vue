@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       selectedTexture: {},
-      modalOpen: false,
+      modalOpen: false
     };
   },
   methods: {

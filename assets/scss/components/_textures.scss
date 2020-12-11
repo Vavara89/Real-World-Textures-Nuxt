@@ -88,18 +88,18 @@
   width: 15%;
   float: left;
 
-  &:hover {
-      .texture__image:not(.brands):not(.noscale) img {
-        transform: scale(1.1);
-        transition-duration: 0.3s;
-        transition-property: all;
-        transition-timing-function: ease-in-out;
-        -webkit-transition-property: all;
-        -webkit-transition-duration: 0.3s;
-        -webkit-transition-timing-function: ease-in-out;
-      }
+  // &:hover {
+  //     .texture__image:not(.brands):not(.noscale) img {
+  //       // transform: scale(1.1);
+  //       transition-duration: 0.3s;
+  //       transition-property: all;
+  //       transition-timing-function: ease-in-out;
+  //       -webkit-transition-property: all;
+  //       -webkit-transition-duration: 0.3s;
+  //       -webkit-transition-timing-function: ease-in-out;
+  //     }
 
-  }
+  // }
 
   @media (max-width: 697px) {
     width: 25%;
@@ -180,7 +180,6 @@
   }
 
   &--shadow {
-
     .texture__image:not(.brands) {
       img {
         transform: scale(1);
@@ -188,7 +187,20 @@
         margin-bottom: 50px;
       }
     }
+
     .texture__image {
+      &:hover {
+        img {
+         transform: scale(1.1);
+         transition-duration: 0.3s;
+          transition-property: all;
+          transition-timing-function: ease-in-out;
+          -webkit-transition-property: all;
+          -webkit-transition-duration: 0.3s;
+          -webkit-transition-timing-function: ease-in-out;
+        }
+       }
+
       &:after {
         position: absolute;
         right: 0;
@@ -205,6 +217,7 @@
         filter: blur(.9rem);
         @include transition-base;
 
+    
         @media only screen and (max-width: 1600px) {
           width: 75%;
       }
