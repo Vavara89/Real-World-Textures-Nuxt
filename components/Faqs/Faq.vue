@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      isOpened: true
+      isOpened: false
     };
   },
   computed: {
