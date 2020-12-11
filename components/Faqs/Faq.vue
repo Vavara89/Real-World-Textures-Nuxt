@@ -50,7 +50,6 @@ export default {
   methods: {
     openFaq() {
       this.isOpened = !this.isOpened;
-      console.log(this.isOpened);
     }
   }
 };

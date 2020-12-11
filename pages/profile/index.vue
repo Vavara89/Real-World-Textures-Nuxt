@@ -169,6 +169,7 @@
             <img :src="item.cover" :alt="item.name">
             <CardSliderDetail :texture="item" :id="item.id" :hovered="true"/>
           </div>
+          
         </VueSlickCarousel>
       </div>
       <div v-if="models.length" class="imageDetails-footer">
