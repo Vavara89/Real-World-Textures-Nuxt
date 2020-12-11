@@ -18,7 +18,8 @@
   text-align: center;
   display: flex;
   align-items: center;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   padding: 100px 0;
 
@@ -55,7 +56,7 @@
   }
 
   .detail-container {
-    max-width: 80%;
+    max-width: 100%;
     border-radius: 0.8rem;
     background-color: $color-white;
     display: flex;
@@ -64,12 +65,12 @@
     margin: auto;
     position: relative;
 
-    @include mq(xxl, mim) {
-      max-width: 70%;
-     }
+    // @include mq(xxl, min) {
+    //   max-width: 100%;
+    //  }
 
      @include mq(md, max) {
-       max-width: 100%;
+      //  max-width: 100%;
        width: 100%;
       }
 
@@ -80,7 +81,6 @@
     .imageDetails {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       padding: 20px 20px;
       width: 60%;
       position: relative;
@@ -90,9 +90,10 @@
       }
 
       .imageDetails-header {
-        position: absolute;
-        top: 22px;
-        left: 25px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
 
         .imageDetails-options {
           display: flex;
@@ -133,9 +134,22 @@
           display: flex;
           justify-content: flex-end;
         }
-        .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
-          opacity: 0;
-          }
+        // .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
+        //   opacity: 0;
+        //   }
+
+        .slick-track {
+          position: relative;
+          top: 0;
+          left: 0;
+          display: block;
+          display: flex;
+          align-items: center;
+         }
+
+      .slick-prev:before {
+        display: none;
+        } 
       }
 
       .imageDetails-footer {
@@ -196,18 +210,23 @@
           }
 
           .slick-slide {
+            float: none;
             width: 9.6rem !important;
             transform: none;
             height: 100%;
             min-height: 1px;
             display: inline-block;
             vertical-align: middle;
+            text-align: center;
           }
 
           .slick-track {
             display: flex;
             justify-content: center;
+            align-items: center;
+            text-align: center;
           }
+
         }
       }
     }

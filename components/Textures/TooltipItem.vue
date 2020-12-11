@@ -9,8 +9,7 @@
   >
     <div class="tooltip-header" />
     <div class="tooltip-content">
-
-      <VueSlickCarousel class="default" v-if="texture.gallery.length" v-bind="slickSlider">
+      <VueSlickCarousel v-if="texture.gallery.length" class="default" v-bind="slickSlider">
         <template #prevArrow="arrowOption">
           <div class="prev-slick">
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
@@ -21,15 +20,15 @@
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
           </div>
         </template>
-        <div v-if="!texture.gallery.length" @click="showDetails" class="imageItem">
+        <div v-if="!texture.gallery.length" class="imageItem" @click="showDetails">
           <img :src="texture.cover" :alt="texture.name" class>
         </div>
-        <div  @click="showDetails" v-for="(image, index) in texture.gallery" :key="'texture-gallery' + index" class="imageItem">
+        <div v-for="(image, index) in texture.gallery" :key="'texture-gallery' + index" class="imageItem" @click="showDetails">
           <img :src="image.image" :alt="texture.name" class>
         </div>
       </VueSlickCarousel>
     </div>
-    <div  @click="showDetails" class="tooltip-footer">
+    <div class="tooltip-footer" @click="showDetails">
       <div class="title">
         <h3 class="name">
           <span v-if="texture.materialNumber">{{ texture.materialNumber }}</span> {{ texture.name }}
@@ -98,13 +97,12 @@ export default {
       return this.toolChange = false;
     },
     showDetails () {
-      if(this.texture.absoluteUrl){
-        this.$router.replace({path: this.texture.absoluteUrl});
-      }else{
+      if (this.texture.absoluteUrl) {
+        this.$router.replace({ path: this.texture.absoluteUrl });
+      } else {
         const path = `${this.texture.category.url}/product-${this.texture.slug}`;
-        this.$router.replace({path: path});
+        this.$router.replace({ path });
       }
-
     }
   }
 };

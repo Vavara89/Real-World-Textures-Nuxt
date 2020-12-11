@@ -1,14 +1,14 @@
- <template>
+<template>
   <div class="texture__block" :class="shadow ? 'texture--shadow' : ''">
     <div class="texture__image" :class="{ brands: isBrand, noscale: noscale }">
       <img
+        v-if="isBrand"
         :width="'100px'"
         height="'50px'"
-        v-if="isBrand"
         :src="getCover()"
         :alt="texture.name"
-      />
-      <img v-if="!isBrand" :src="getCover()" :alt="texture.name" />
+      >
+      <img v-if="!isBrand" :src="getCover()" :alt="texture.name">
     </div>
     <template v-if="!isBrand && showContent">
       <div
@@ -31,36 +31,36 @@
 
 <script>
 export default {
-  name: "TextureItem",
+  name: 'TextureItem',
   props: {
     texture: {
       type: Object,
-      required: true,
+      required: true
     },
     shadow: {
       type: Boolean,
-      default: false,
+      default: false
     },
     isBrand: {
       type: Boolean,
-      default: true,
+      default: true
     },
     noscale: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showContent: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   methods: {
-    getCover() {
+    getCover () {
       if (this.texture.cover) {
         return this.texture.cover;
       }
       return this.texture.logo;
-    },
-  },
+    }
+  }
 };
 </script>
