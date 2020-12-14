@@ -1,12 +1,14 @@
 .sliderDetail {
-  width: 51rem;
-  height: 51rem;
+  // width: 51rem;
+  // height: 51rem;
   position: absolute;
   top: 0;
   background-color: #fff;
+  z-index: 99999999;
   -webkit-box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
-    -moz-box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
-    box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
+  -moz-box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
+  box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
+  
 }
 
 .imageItem .sliderDetail {
@@ -24,18 +26,40 @@
   opacity: 1;
   transition-delay: .1s;
   transition: all .3s ease-in-out;
+  @include mq(xl, max) {
+    height: 44rem;
+    width: 44rem;
+  }
 
-
+  @include mq(lg, max) {
+    height: 36rem;
+    width: 36rem;
+  }
+  
   .sliderDetailContent {
     animation: 0.5s delay-overflow;
     transform: translate(0, 0);
     width: 51rem;
     height: 51rem;
 
+    @include mq(xl, max) {
+      height: 44rem;
+      width: 44rem;
+    }
+
+    @include mq(lg, max) {
+      height: 36rem;
+      width: 36rem;
+    }
+
     img {
       // width: 40rem;
       // height: 40rem;
-      width: 65%;
+      width: 75%;
+
+      @include mq(lg, max) {
+        width: 70%;
+      }
     }
   }
 }

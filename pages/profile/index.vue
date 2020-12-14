@@ -158,6 +158,7 @@
               </span>
             </div>
           </template>
+          
           <template #nextArrow="arrowOption">
             <div class="next-slick">
               <span class="button superb">
@@ -165,6 +166,7 @@
               </span>
             </div>
           </template>
+
           <div v-for="item in textures" class="imageItem">
             <img :src="item.cover" :alt="item.name">
             <CardSliderDetail :texture="item" :id="item.id" :hovered="true"/>

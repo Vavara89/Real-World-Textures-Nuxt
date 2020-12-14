@@ -41,6 +41,18 @@
 }
 
 .imageDetails--profile {
+
+  .sliderDetail {
+   left: -100px;
+
+   @include mq(xxl, max) {
+    left: -150px;
+   }
+   @include mq(xl, max) {
+    left: -120px;
+   }
+  }
+  
   .slick-prev, .slick-next {
     z-index: 99;
   }
@@ -56,7 +68,7 @@
       right: -100%;
       top: 0;
       z-index: 1;
-      background-color: #fff;
+      background-color: transparent;
     }
 
     &:before {
@@ -67,7 +79,12 @@
       left: -100%;
       top: 0;
       z-index: 999;
-      background-color: #fff;
+      background-color: transparent;
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -98,7 +115,12 @@
     background-image: url(~@/assets/img/icon-arrow_left.svg);
     background-position: 7px 6px;
     background-repeat: no-repeat;
+    top: 187px;
     left: 20px;
+
+    @include mq(lg, max) {
+      top: 130px;
+    }
 
     &::before {
       color: transparent;
@@ -122,8 +144,12 @@
     background-position: 7px 6px;
     background-repeat: no-repeat;
     transform: scaleX(-1);
-    top: 185px;
+    top: 175px;
     right: 25px;
+
+    @include mq(lg, max) {
+      top: 118px;
+    }
 
     &::before {
       color: transparent;
