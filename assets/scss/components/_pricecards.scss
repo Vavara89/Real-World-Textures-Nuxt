@@ -22,6 +22,8 @@
       text-align: center;
       height: 700px;
       max-width: 352px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
 
       @include mq(lg, max) {
         height: 600px;
@@ -103,36 +105,6 @@
       margin-bottom: 25px;
       text-align: left;
     }
-
-    // &__content p {
-    //   font-weight: 700;
-    // }
-
-    // &__subtitle {
-    //   color: #9093b9;
-    //   font-size: 14px;
-    // }
-
-    // &__price {
-    //   margin-top: 60px;
-    //   color: #fff;
-    //   font-size: 72px;
-
-    //   @include mq(md, max) {
-    //     margin-top: 20px;
-    //     font-size: 48px;
-    //   }
-    // }
-
-    // &__desc {
-    //   margin-bottom: 80px;
-    //   color: #fff;
-    //   font-size: 16px;
-
-    //   @include mq(md, max) {
-    //     margin-bottom: 20px;
-    //   }
-    // }
 
     // &__content .button-primary--wide {
 
