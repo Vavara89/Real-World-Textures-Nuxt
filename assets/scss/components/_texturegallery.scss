@@ -9,9 +9,6 @@
     grid-template-columns: repeat(auto-fill, 230px);
 
     @include mq(lg, max) {
-    display: flex;
-     flex-wrap: wrap;
-
      padding-top: 42px;
     }
 

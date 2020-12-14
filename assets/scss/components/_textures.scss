@@ -6,19 +6,7 @@
 
   &.mainpage {
     display: block;
-    padding: 0 125px;
-
-    @include mq(lg, max) {
-      padding: 0 75px;
-    }
-
-    @include mq(md, max) {
-      padding: 0 35px;
-    }
-
-    @include mq(sm, max) {
-      padding: 0;
-    }
+    padding: 0 15px;
 
     .textures--center {
       text-align: center;
@@ -35,7 +23,7 @@
 
     @media (max-width: 697px) {
       overflow-x: auto;
-      white-space: nowrap;
+      // white-space: nowrap;
       }
   }
 
@@ -78,6 +66,8 @@
 
 .texture {
   margin: 45px;
+  width: 20%;
+  float: left;
   // padding: 20px;
   @include mq(md, max) {
     // flex: 0 0 22rem;
@@ -85,8 +75,7 @@
   @include mq(sm, max) {
     // flex: 0 0 18rem;
   }
-  width: 15%;
-  float: left;
+
 
   // &:hover {
   //     .texture__image:not(.brands):not(.noscale) img {
@@ -101,17 +90,12 @@
 
   // }
 
-  @media (max-width: 697px) {
-    width: 25%;
-    display: inline-block;
-    float: none;
-    }
+  // @media (max-width: 697px) {
+  //   width: 25%;
+  //   display: inline-block;
+  //   float: none;
+  //   }
 
-  & + .texture {
-    @include mq(md, max) {
-      // margin-left: 4rem;
-    }
-  }
 
   &__image {
     position: relative;
