@@ -132,7 +132,7 @@
               <label class="text">{{ texture.dimension }}</label>
             </div>
           </div>
-          <div class="option-item">
+          <div class="option-item last">
             <div class="label">
               <label class="h3">Consisting of:</label>
             </div>
