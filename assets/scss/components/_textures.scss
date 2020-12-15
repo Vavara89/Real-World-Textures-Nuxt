@@ -9,13 +9,13 @@
     padding: 0 15px;
 
     .textures--center {
-      text-align: center;
+      text-align: left;
       display: flex;
       justify-content: space-between;
     }
 
     .texture {
-      margin: 0;
+      margin: 0 auto;
       padding: 10px;
       background: transparent;
       border-radius: 0;
@@ -122,8 +122,6 @@
   }
 
   &__content {
-    display: none;
-    margin-top: 4rem;
     margin-left: 3.2rem;
 
     @include mq(xxl, min) {
@@ -131,6 +129,12 @@
     }
     @include mq(xl, max) {
       margin-top: 1rem;
+    }
+    @include mq(md, max) {
+      margin-left: 1rem;
+    }
+    @include mq(sm, max) {
+      margin-left: rem;
     }
   }
 
@@ -168,7 +172,14 @@
       img {
         transform: scale(1);
         transition: all 0.3s ease-in-out;
-        margin-bottom: 50px;
+        margin-bottom: 60px;
+        @include mq(md, max) {
+          margin-bottom: 30px;
+        }
+
+        @include mq(sm, max) {
+          margin-bottom: 10px;
+        }
       }
     }
 
@@ -188,20 +199,19 @@
       &:after {
         position: absolute;
         right: 0;
-        bottom: 0;
+        bottom: 0px;
         left: 50%;
         display: block;
         width: 180px;
         height: 2.32rem;
         content: "";
-        border-radius: 50%;
-        background-color: rgba($color-primary-900, 0.08);
         transform: translateX(-50%);
-
-        filter: blur(.9rem);
+        border-radius: 50%;
+        background-color: rgba(10, 13, 39, 0.1);
+        -webkit-filter: blur(0.9rem);
+        filter: blur(0.9rem);
         @include transition-base;
 
-    
         @media only screen and (max-width: 1600px) {
           width: 75%;
       }
