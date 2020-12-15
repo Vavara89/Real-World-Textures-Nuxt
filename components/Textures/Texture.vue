@@ -37,4 +37,9 @@ export default {
 </script>
 
 <style>
+
+.texture__content {
+  display: block;
+  margin-left: 0;
+}
 </style>
