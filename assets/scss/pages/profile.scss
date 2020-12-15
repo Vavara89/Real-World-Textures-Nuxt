@@ -262,10 +262,10 @@
             height: 2rem;
             margin: 0 auto;
             content: "";
-            // border-radius: 50%;
-            // background-color: rgba(10, 13, 39, 0.1);
-            // -webkit-filter: blur(0.4rem);
-            // filter: blur(0.9rem);
+            border-radius: 50%;
+            background-color: rgba(10, 13, 39, 0.1);
+            -webkit-filter: blur(0.9rem);
+            filter: blur(0.9rem);
             transition: 0.3s all ease-in-out;
         }
 

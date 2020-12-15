@@ -60,7 +60,7 @@
           >
             <template #prevArrow="arrowOption">
               <div class="prev-slick">
-                <a href="#" class="button-ttttttt">
+                <a href="#" class="button">
                   <img src="@/assets/img/icon-arrow_left.svg">
                 </a>
               </div>
@@ -73,7 +73,7 @@
               </div>
             </template>
             <div v-for="item_image in texture.gallery" class="imageItem">
-              <img :src="item_image.image" :alt="texture.name" class>
+              <img :src="item_image.image" :alt="texture.name">
             </div>
           </VueSlickCarousel>
         </div>

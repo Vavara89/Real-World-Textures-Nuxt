@@ -119,6 +119,9 @@
       .imageDetails-content {
         .previewImg {
           img {
+            @include mq(xxl, min) {
+              max-width: 80%;
+             }
             max-width: 100%;
 
             // @include mq(md, max) {

@@ -96,7 +96,7 @@
                 &nbsp;
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
-                  <button class="toggleOption green staticwidth" @click="confirm(true)">
+                  <button class="toggleOption green staticwidth" @click="confirm(false)">
                     Get Free
                   </button>
                 </td>
