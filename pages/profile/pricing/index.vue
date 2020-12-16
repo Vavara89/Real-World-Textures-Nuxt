@@ -2,10 +2,9 @@
   <div class="page-container">
     <ProfileSidebar v-if="width > 1200" :profile="true" />
     <ConfirmModal ref="confirm_subscribe" :description="confirmTitle" @confirmed="subscribe" />
-
-    <div class="page-content">
+     <div class="page-content">
       <section class="services view-bottom">
-        <div  v-if="width > 1000" class="pricing notmobile">
+        <div  v-if="width > 1000" class="pricing notmobile selfpage">
           <table>
             <tbody>
               <tr>
@@ -13,14 +12,17 @@
                 &nbsp;
                 </td>
                 <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
-                  Indie licence
+                  Free
                 </td>
                 <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
-                  Pro licence
+                  Freelance
                 </td>
-                <td style="width: 200px; border-left: 1px solid #DDE0ED;">
+                <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
+                  Professional
+                </td>
+                <!-- <td style="width: 200px; border-left: 1px solid #DDE0ED;">
                 &nbsp;
-                </td>
+                </td> -->
               </tr>
               <tr>
                 <td style="padding-left: 20px;">
@@ -32,6 +34,9 @@
                   />
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
+                  <span>0$</span>
+                </td>
+                <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
                   <span v-if="isMonth">{{ idleMonth.amount }}$</span>
                   <span v-if="!isMonth">{{ idleYears.amount / 12 }}$</span>
                 </td>
@@ -39,9 +44,9 @@
                   <span v-if="isMonth">{{ proMonth.amount }}$</span>
                   <span v-if="!isMonth">{{ proYears.amount / 12 }}$</span>
                 </td>
-                <td style="border-left: 1px solid #DDE0ED;">
+                <!-- <td style="border-left: 1px solid #DDE0ED;">
                 &nbsp;
-                </td>
+                </td> -->
               </tr>
               <tr>
                 <td>
@@ -53,13 +58,22 @@
                 <td style="text-align: center; padding-bottom: 20px; border-left: 1px solid #DDE0ED;">
                   per month
                 </td>
-                <td style="border-left: 1px solid #DDE0ED;">
-                &nbsp;
+                <td style="text-align: center; padding-bottom: 20px; border-left: 1px solid #DDE0ED;">
+                  per month
                 </td>
+                <!-- <td style="border-left: 1px solid #DDE0ED;">
+                &nbsp;
+                </td> -->
               </tr>
               <tr>
                 <td style="padding: 20px 0 20px 40px; background-color: #F2F3F9;">
                   Credits Per Month
+                </td>
+                 <td
+                  style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
+                >
+                  <span v-if="isMonth">200+ freebies</span>
+                  <span v-if="!isMonth">400+ freebies</span>
                 </td>
                 <td
                   style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
@@ -73,33 +87,38 @@
                   <span v-if="isMonth">{{ proMonth.credits }}</span>
                   <span v-if="!isMonth">{{ proYears.credits / 12 }}</span>
                 </td>
-                <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
+                <!-- <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
                 &nbsp;
-                </td>
+                </td> -->
               </tr>
               <tr>
                 <td>
                 &nbsp;
                 </td>
-                <td style="padding: 20px 0; text-align: center;">
-                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
-                    {{ status() }}
-                  </button>
-                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green" @click="confirm(false)">
-                    Subscribe
+                <td style="padding: 50px 0 20px 0; text-align: center;">
+                  <button class="toggleOption green staticwidth" @click="confirm(false)">
+                    Get Free
                   </button>
                 </td>
-                <td style="padding: 20px 0; text-align: center;">
-                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
+                <td style="padding: 50px 0 20px 0; text-align: center;">
+                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green" @click="confirm(true)">
-                    Subscribe
+                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
+                    Get Freelance
                   </button>
                 </td>
-                <td>
+                <td style="padding: 50px 0 20px 0; text-align: center;">
+                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray staticwidth">
+                    {{ status() }}
+                  </button>
+                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(true)">
+                    Get Professional
+                  </button>
+                </td>
+                <!-- <td>
                 &nbsp;
-                </td>
+                </td> -->
               </tr>
             <!--              <tr>-->
             <!--                <td>-->
@@ -143,9 +162,45 @@
                 &nbsp;
                 </td>
               </tr>
+
               <tr>
                 <td style="text-align: center;" class="head padd-20">
-                  Indie licence
+                  Free
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center;" class="price">
+                  <span>0$</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="text-align: center; padding-bottom: 20px;">
+                  per month
+                </td>
+              </tr>
+              <tr>
+                <td
+                  style="text-align: center; padding: 20px 0; background-color: #F2F3F9;"
+                >
+                  <span v-if="isMonth">200+ freebies</span>
+                  <span v-if="!isMonth">400+ freebies</span>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 50px 0 50px 0; text-align: center;">
+                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
+                    {{ status() }}
+                  </button>
+                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
+                    Get Free
+                  </button>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td style="text-align: center;" class="head padd-20">
+                  Freelance
                 </td>
               </tr>
               <tr>
@@ -169,18 +224,18 @@
               </tr>
               <tr>
                 <td style="padding: 50px 0 50px 0; text-align: center;">
-                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray">
+                  <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green" @click="confirm(false)">
-                    Subscribe
+                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
+                    Get Freelance
                   </button>
                 </td>
               </tr>
 
               <tr>
                 <td style="width: 300px; text-align: center;" class="head padd-20">
-                  Pro licence
+                  Professional
                 </td>
               </tr>
               <tr>
@@ -206,28 +261,14 @@
 
               <tr>
                 <td style="padding: 50px 0 50px 0; text-align: center;">
-                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray">
+                  <button v-if="currentIs(true, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green" @click="confirm(true)">
-                    Subscribe
+                  <button v-if="!currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(true)">
+                    Get Professional
                   </button>
                 </td>
               </tr>
-            <!--              <tr>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td style="text-align: center; padding-left: 32px;">-->
-            <!--                  <a href="#" class="button-tertiary button-tertiary&#45;&#45;green">cancle subscription</a>-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--              </tr>-->
             </tbody>
           </table>
           <!-- DivTable.com -->
