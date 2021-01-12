@@ -9,7 +9,9 @@
     />
     <CatalogSidebar :filter="filter" :active-category="activeCategory" />
     <div class="page-content">
-      <ContentHeader :path="path" />
+      <div class="catalog-header">
+        <ContentHeader :path="path" />
+      </div>
       <section class="services view-bottom">
         <div class="catalog-page">
           <TextureGallery

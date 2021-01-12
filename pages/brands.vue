@@ -6,7 +6,9 @@
       :can-clear="false"
     />
     <div class="page-content">
-      <ContentHeader :path="path" />
+      <div class="catalog-header">
+        <ContentHeader :path="path" />
+      </div>
       <section class="services view-bottom">
         <BrandGallery :brands="brands" />
         <h2 v-if="!brands.length" style="text-align: center">

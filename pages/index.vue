@@ -1,13 +1,13 @@
 <template>
   <div>
-    <SectionRealworld v-if="top_slider.length" :slides="top_slider" />
-    <SectionExample v-if="examples_slider.length" :slides="examples_slider" />
-    <SectionPhilosophy />
-    <SectionServices :cards="services" />
-    <SectionSubscribe />
-    <SectionFaq :id="'faq'" :faqs="faqs" />
-    <SectionCompatibility :logos="soft" />
-    <SectionPartners :logos="brands" />
+    <SectionRealworld v-if="top_slider.length" :slides="top_slider"/>
+    <SectionExample v-if="examples_slider.length" :slides="examples_slider"/>
+    <SectionPhilosophy/>
+    <SectionServices :cards="services"/>
+    <SectionSubscribe/>
+    <SectionFaq :id="'faq'" :faqs="faqs"/>
+    <SectionCompatibility :logos="soft"/>
+    <SectionPartners :logos="brands"/>
     <SectionOffer
       :subtitle="offer.subtitle"
       :title="offer.title"
@@ -49,59 +49,65 @@ export default {
     let top_slider = [];
     let examples_slider = [];
 
-    await main.faqs().then((response) => {
-      faqs = response.data.results;
-    });
-
-    await catalog.products("brands", "page_size=10").then((response) => {
-      brands = response.data.results.map((item) => {
-        return {
-          link: item.absolute_url,
-          image: {
-            url: item.logo,
-            alt: item.name,
-          },
-        };
+    try {
+      await main.faqs().then((response) => {
+        faqs = response.data.results;
       });
-    });
 
-    await main.software().then((response) => {
-      soft = response.data.results.map((item) => {
-        return {
-          image: {
-            url: item.logo,
-            alt: item.name,
-          },
-        };
+      await catalog.products("brands", "page_size=10").then((response) => {
+        brands = response.data.results.map((item) => {
+          return {
+            link: item.absolute_url,
+            image: {
+              url: item.logo,
+              alt: item.name,
+            },
+          };
+        });
       });
-    });
 
-    await main.service().then((response) => {
-      services = response.data.results.map((item) => {
-        return {
-          image: {
-            url: item.cover,
-            alt: item.name,
-          },
-          title: item.name,
-          subtitle: item.sub_title,
+      await main.software().then((response) => {
+        soft = response.data.results.map((item) => {
+          return {
+            image: {
+              url: item.logo,
+              alt: item.name,
+            },
+          };
+        });
+      });
 
-          text: item.content,
-          link: "#",
-          sidebar: {
-            isOpened: false,
-            videoCover: "",
+      await main.service().then((response) => {
+        services = response.data.results.map((item) => {
+          return {
+            image: {
+              url: item.cover,
+              alt: item.name,
+            },
+            title: item.name,
+            subtitle: item.sub_title,
+
             text: item.content,
-          },
-          video: item.video,
-        };
+            link: "#",
+            sidebar: {
+              isOpened: false,
+              videoCover: "",
+              text: item.content,
+            },
+            video: item.video,
+          };
+        });
       });
-    });
 
-    await main.main_feed().then((response) => {
-      top_slider = response.data.top_slider;
-      examples_slider = response.data.examples_slider;
-    });
+      await main.main_feed().then((response) => {
+        top_slider = response.data.top_slider;
+        examples_slider = response.data.examples_slider;
+      });
+
+    } catch (e) {
+      console.log(e);
+    }
+
 
     return {
       faqs: faqs,

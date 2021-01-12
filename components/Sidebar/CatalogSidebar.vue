@@ -20,7 +20,7 @@
         <span></span>
       </div>
 
-       <div  v-if="width > 950" style="margin-left: 20px; margin-bottom: 40px;">
+       <div  v-if="width > 950" class="header-logo-catalog-sidebar">
         <nuxt-link to="/">
           <SvgIconLogo />
         </nuxt-link>
