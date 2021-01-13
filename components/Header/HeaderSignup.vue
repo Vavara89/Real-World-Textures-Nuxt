@@ -64,6 +64,7 @@
                   class="icon"
                   @click="showAccount('again')"
                   @mouseover="hover = true"
+                  @tap="hover = true"
                   @mouseleave="trigger()"
                   >Account</a
                 >
@@ -71,11 +72,13 @@
                   v-if="account || hover"
                   v-click-outside="externalClick"
                   class="missing"
+                  id="profile-menu"
                   @mouseover="trigger('on')"
                   @mouseleave="hover = false"
                 >
                   <div class="logmenu">
                     <div class="logmenu-top">
+                      <p @click="toggleProfileMenu()" class="close-profile-menu hide-on-md-up">back</p>
                       <p>{{ credits }} Subscription Credits</p>
                       <p>{{ profile }}</p>
                     </div>
@@ -103,7 +106,7 @@
           </ul>
         </div>
         </div>
-      
+
       </div>
     </div>
   </header>

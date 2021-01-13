@@ -5,12 +5,12 @@
         <div class="left-holder">
           <div class="header__logo">
             <nuxt-link to="/" class="header-logo">
-              <SvgIconLogo />
+              <SvgIconLogo/>
             </nuxt-link>
           </div>
 
           <div class="search-menu-container">
-            <header-search />
+            <header-search/>
             <div class="header-nav catalog-nav hide-on-md-down">
               <ul class="menu">
                 <li
@@ -26,9 +26,9 @@
         </div>
         <div class="line"></div>
         <div class="header-nav">
-          <input id="menu-btn" class="menu-btn" type="checkbox" />
+          <input id="menu-btn" class="menu-btn" type="checkbox"/>
           <label class="menu-icon" for="menu-btn">
-            <span class="navicon" />
+            <span class="navicon"/>
           </label>
 
           <ul class="menu">
@@ -62,18 +62,20 @@
                   class="icon"
                   @click="showAccount('again')"
                   @mouseover="hover = true"
+                  @tap="hover = true"
                   @mouseleave="trigger()"
-                  >Account</a
-                >
+                >Account</a>
                 <div
                   v-if="account || hover"
                   v-click-outside="externalClick"
                   class="missing"
+                  id="profile-menu"
                   @mouseover="trigger('on')"
                   @mouseleave="hover = false"
                 >
                   <div class="logmenu">
                     <div class="logmenu-top">
+                      <p @click="toggleProfileMenu()" class="close-profile-menu hide-on-md-up">back</p>
                       <p>{{ credits }} Subscription Credits</p>
                       <p>{{ profile }}</p>
                     </div>

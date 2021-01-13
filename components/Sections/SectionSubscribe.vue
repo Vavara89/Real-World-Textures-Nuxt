@@ -65,8 +65,7 @@ export default {
           freelancer: products.freelancer.filter(item => item.is_year === false)[0]
         };
 
-        return [
-          {
+        const free = {
             title: 'Free',
             descr_title_month: `200+ freebies`,
             descr_title_year: `400+ freebies`,
@@ -79,7 +78,8 @@ export default {
             price_year: '0',
             buttontext: 'Try for free',
             buttonlink: '/'
-          },
+          };
+        const products_plans = [
           {
             title: 'Freelance',
             descr_title_month: `${price_month.freelancer.credits} credits`,
@@ -108,31 +108,11 @@ export default {
             buttontext: 'Get professional',
             buttonlink: '/'
           }
-          // {
-          //   title: titles.freelancer,
-          //   subtitle: 'per month/seat',
-          //   currency: '$',
-          //   price: price_month.freelancer.amount,
-          //   priceYear: parseInt(price_year.freelancer.amount) / 12,
-          //   desc: `${price_month.freelancer.credits} credits/month`,
-          //   desc_month: `${price_month.freelancer.credits} credits/month`,
-          //   desc_year: `${parseInt(price_year.freelancer.credits) / 12} credits/month`,
-          //   buttontext: `Get ${titles.freelancer}`,
-          //   buttonlink: '/'
-          // },
-          // {
-          //   title: titles.freelancer,
-          //   subtitle: 'per month/seat',
-          //   currency: '$',
-          //   price: price_month.freelancer.amount,
-          //   priceYear: parseInt(price_year.freelancer.amount) / 12,
-          //   desc: `${price_month.freelancer.credits} credits/month`,
-          //   desc_month: `${price_month.freelancer.credits} credits/month`,
-          //   desc_year: `${parseInt(price_year.freelancer.credits) / 12} credits/month`,
-          //   buttontext: `Get ${titles.freelancer}`,
-          //   buttonlink: '/'
-          // }
         ];
+        if(!this.$auth.user){
+          products_plans.unshift(free);
+        }
+        return products_plans;
       }
       return [];
     }

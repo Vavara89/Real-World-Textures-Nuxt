@@ -147,8 +147,14 @@ export default {
 
     showAccount(state) {
       this.account = !this.account;
+      this.toggleProfileMenu();
     },
 
+    toggleProfileMenu(){
+      const element = document.getElementById('profile-menu');
+      const action = element.classList.contains('active') ? 'remove' : 'add';
+      document.getElementById('profile-menu').classList[action]('active');
+    },
     async logout() {
       this.account = false;
       await this.$auth.logout();
