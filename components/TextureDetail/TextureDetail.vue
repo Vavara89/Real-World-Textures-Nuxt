@@ -77,6 +77,43 @@
             </div>
           </VueSlickCarousel>
         </div>
+
+        <div v-if="type_code === 'models' && relatedTextures" class="visuallyshow">
+          <div class="relatedtextures">
+            <h3>Related<br>textures:</h3>
+            <a href="#" class="button-secondary">See all</a>
+          </div>
+          <div class="relatedslider">
+            <!-- Carousel Models start -->
+            <div class="imageDetails-footer">
+              <VueSlickCarousel
+                ref="sliderRelated"
+                v-bind="sliderRelated"
+                class="default"
+              >
+                <template #prevArrow="arrowOption">
+                  <div class="prev-slick">
+                    <a href="#" class="button">
+                      <img src="@/assets/img/icon-arrow_left.svg">
+                    </a>
+                  </div>
+                </template>
+                <template #nextArrow="arrowOption">
+                  <div class="next-slick">
+                    <a href="#" class="button">
+                      <img src="@/assets/img/icon-arrow_left.svg">
+                    </a>
+                  </div>
+                </template>
+                <div v-for="item_image in texture.gallery" class="imageItem">
+                  <img :src="item_image.image" :alt="texture.name" class>
+                </div>
+              </VueSlickCarousel>
+            </div>
+            <!-- Carousel Models end -->
+          </div>
+        </div>
+
       </div>
       <div class="details">
         <div class="title">
@@ -199,41 +236,6 @@
           </button>
         </div>
       </div>
-      <div v-if="type_code === 'models'" class="visuallyshow">
-        <div class="relatedtextures">
-          <h3>Related<br>textures:</h3>
-          <a href="#" class="button-secondary">See all</a>
-        </div>
-        <div class="relatedslider">
-          <!-- Carousel Models start -->
-          <div class="imageDetails-footer">
-            <VueSlickCarousel
-              ref="sliderRelated"
-              v-bind="sliderRelated"
-              class="default"
-            >
-              <template #prevArrow="arrowOption">
-                <div class="prev-slick">
-                  <a href="#" class="button">
-                    <img src="@/assets/img/icon-arrow_left.svg">
-                  </a>
-                </div>
-              </template>
-              <template #nextArrow="arrowOption">
-                <div class="next-slick">
-                  <a href="#" class="button">
-                    <img src="@/assets/img/icon-arrow_left.svg">
-                  </a>
-                </div>
-              </template>
-              <div v-for="item_image in texture.gallery" class="imageItem">
-                <img :src="item_image.image" :alt="texture.name" class>
-              </div>
-            </VueSlickCarousel>
-          </div>
-          <!-- Carousel Models end -->
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -353,7 +355,7 @@ export default {
   },
 
   created () {
-    console.log('created');
+    console.log(this.texture);
     this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'setForDownload') {
         this.setProcess(state.forDownload);
@@ -371,7 +373,11 @@ export default {
       });
     }
   },
-
+  computed: {
+    relatedTextures() {
+      return 'relatedTextures' in Object.keys(this.texture) ? this.texture['relatedTextures'] : [];
+    }
+  },
   methods: {
     downloadingResolutions (data) {
       let resolutions = [];
