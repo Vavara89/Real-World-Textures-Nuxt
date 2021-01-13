@@ -1,19 +1,24 @@
 .header {
-  &.catalog{
+  &.catalog {
     .header__flex {
-      padding: 40px 8.5rem 40px 11.5rem;
-      
+      padding: 40px 8.5rem 40px 36.5rem;
+
 
       @include mq(md, max) {
         padding: 20px 1.5rem 20px 1.5rem;
       }
 
-      .left-holder{
+      .left-holder {
         flex: 0 1 825px;
+
+        .header__logo {
+          @include mq(md, min) {
+            display: none;
+          }
+        }
       }
 
       .header-search {
-        margin-left: 132px;
         @include mq(lg, max) {
           display: none;
         }
@@ -22,16 +27,16 @@
           display: block;
         }
 
-         @include mq(sm, max) {
+        @include mq(sm, max) {
           display: none;
         }
 
         input {
           @include mq(xl, max) {
-           width: 180px;
+            width: 180px;
           }
+        }
       }
     }
   }
-}
 }
