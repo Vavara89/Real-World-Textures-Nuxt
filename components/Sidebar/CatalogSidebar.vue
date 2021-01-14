@@ -58,55 +58,6 @@
           Clear all Filters
         </button>
       </div>
-      <div
-        v-if="width < 950"
-        class="nav-icon3"
-        :class="{ open: openBurger }"
-        @click="openBurgerMenu()"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <div  v-if="width > 950" class="header-logo-catalog-sidebar">
-        <nuxt-link to="/">
-          <SvgIconLogo />
-        </nuxt-link>
-      </div>
-
-      <Dropdown
-        v-if="getTypes()"
-        :options="getTypes()"
-        :selected_option="getActiveType()"
-        @input="changeCatalogType"
-      />
-
-      <div class="materials-menu">
-        <MaterialMenu v-if="getCategories()" :list="getCategories()" />
-      </div>
-
-      <div v-if="getRefines().items.length" class="refine-filter">
-        <RefineFilter :options="getRefines()" />
-      </div>
-
-      <div v-if="getAreas().length" class="manufacture-filter">
-        <ManufactureFilter
-          v-if="getAreas()"
-          :areas="getAreas()"
-          :brands_list="getBrands()"
-        />
-      </div>
-
-      <div v-if="getColors()" ref="colorFilter" class="color-filter">
-        <ColorFilter v-if="getColors()" :options="getColors()" />
-      </div>
-
-      <div v-if="canClear">
-        <button type="reset" class="clearFilter h4" @click="clearFilter()">
-          Clear all Filters
-        </button>
-      </div>
     </div>
   </div>
 </template>
