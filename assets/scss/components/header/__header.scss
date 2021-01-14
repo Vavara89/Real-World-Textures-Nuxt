@@ -73,17 +73,18 @@
 
       .arr {
         position: absolute;
-        right: -13px;
-        top: 14px;
+        right: -18px;
+        top: 25px;
         width: 10px;
         height: 10px;
         background-image: url(~@/assets/img/icon-arrow_bottom.svg);
         background-repeat: no-repeat;
         background-size: 10px 10px;
         background-position: center center;
-        z-index: 9;
+        z-index: 5;
         -webkit-transition: -webkit-transform .2s ease-in-out;
         transition: transform .2s ease-in-out;
+        cursor: pointer;
 
         &.view-arr {
           -webkit-transform: rotate(180deg);

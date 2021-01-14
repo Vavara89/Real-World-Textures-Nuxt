@@ -27,6 +27,12 @@
           :class="{selectHide: !open}"
         >
           <div
+            class="item"
+            @click="selectContinent('All'); open=false; $emit('input', 'All')"
+          >
+            All
+          </div>
+          <div
             v-for="(item, index) in getContinents()"
             :key="'item-' + index"
             class="item"
@@ -37,14 +43,15 @@
         </div>
       </div>
     </div>
-    <div class="header-search noright ar">
-      <div class="arr" :class="{'view-arr': open_suggestions}"></div>
+    <div class="header-search noright ar dropdown full size">
+      <div class="arr" :class="{'view-arr': open_suggestions}" @click="openCountries"></div>
       <input
         v-model="search"
         type="text"
         name="s"
         placeholder="Search a Country"
         :class="{'view-opened': open_suggestions}"
+        class="search-area"
         autocomplete="off"
         @keyup="onKeyUpSearch"
         @blur="closeSuggestions"
@@ -90,6 +97,9 @@ export default {
     };
   },
   methods: {
+    openCountries (){
+      this.open_suggestions = !this.open_suggestions
+    },
     getContinents() {
       let continents = null;
       if (this.areas) {
@@ -104,7 +114,7 @@ export default {
       };
       if (this.areas) {
         let countries = this.areas.map(mapAreas);
-        if (this.continent) {
+        if (this.continent && this.continent !== 'All') {
           countries = this.areas.filter(item => item[1] === this.continent).map(mapAreas);
         }
 
@@ -145,6 +155,7 @@ export default {
       this.pushToQuery('area_id', item.id);
     },
     selectContinent(item) {
+      console.log(item,'1111')
       this.continent = item;
       this.pushToQuery('continent', item);
     },

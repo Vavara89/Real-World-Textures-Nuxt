@@ -27,6 +27,7 @@
                     <Button
                       :link="formatWebsite()"
                       :text="brand.webSite"
+                      target="_blank"
                       type="secondary"
                       color=""
                       :style="{ margin: 0, fontSize: 11 + 'px' }"

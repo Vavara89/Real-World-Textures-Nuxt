@@ -2,7 +2,7 @@
   <a
     @click="$emit('click')"
     :href="link"
-    :target="text === 'play tutorial' ? '_blank' : '_self'"
+    :target="targetlink"
     :class="'button-' + type + ' ' + 'button-' + type + '--' + color + (width ? ' button-' + type + '--' + width : '')"
   ><span>{{ text }}</span></a>
 </template>
@@ -14,6 +14,10 @@ export default {
     link: {
       type: String,
       required: true
+    },
+    target: {
+      type: String,
+      required: false
     },
     text: {
       type: String,
@@ -30,6 +34,12 @@ export default {
     width: {
       type: String,
       required: false
+    }
+  },
+  computed:{
+    targetlink(){
+      if (this.target && this.target === '_blank') return '_blank'
+      return  this.text === 'play tutorial' ? '_blank' : '_self'
     }
   }
 };

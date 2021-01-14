@@ -9,6 +9,19 @@
     z-index: 7;
   }
 
+  .search-area{
+    width: 290px;
+    height: 40px;
+    background-color: #FBFBFF;
+    border-radius: 30px;
+    margin-left: 5px;
+    margin-top: 13px;
+
+    &::placeholder{
+      color: #9093B9;
+    }
+  }
+
   &.input {
     margin: 6px 0 6px 20px;
     position: relative;
@@ -147,7 +160,7 @@
     background-image: url(~@/assets/img/icon-arrow_bottom.svg);
     background-repeat: no-repeat;
     background-position: right 20px top 11px;
-    
+
 
     .count {
       font-weight: 300;
