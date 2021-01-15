@@ -73,7 +73,7 @@
 
       .arr {
         position: absolute;
-        right: -18px;
+        right: 12px;
         top: 25px;
         width: 10px;
         height: 10px;
@@ -131,6 +131,7 @@
   &-nav {
     display: flex;
     flex-wrap: wrap;
+    padding-right: 8.5rem;
 
     @include mq(md, max) {
       display: block;
@@ -448,7 +449,7 @@
 
 .header__logo {
   flex: 0;
-  margin-right: 30px;
+  margin-right: 0;
   @include mq(md, max) {
     align-items: center;
     flex: 1;

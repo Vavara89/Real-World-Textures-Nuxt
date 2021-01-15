@@ -14,7 +14,8 @@ const createStore = () => {
       textBlocks: null,
       prices: null,
       forDownload: [],
-      checkDownload:[]
+      checkDownload:[],
+      redirectUrl: null
     },
     mutations: {
       setPager (state, pager) {
@@ -43,6 +44,9 @@ const createStore = () => {
       },
       setCheckDownload(state, run){
          state.checkDownload = run;
+      },
+      setRedirectUrl(state, url){
+        state.redirectUrl = url;
       }
     },
     actions: {
@@ -87,6 +91,9 @@ const createStore = () => {
       }
     },
     getters: {
+      redirectUrl (state) {
+        return state.redirectUrl;
+      },
       filter (state) {
         return state.filter;
       },

@@ -71,6 +71,14 @@ export default {
       default: false
     }
   },
+  watch: {
+    'selected.short' (data) {
+      if (data && data !== 'brands') {
+        const path = '/' + data;
+        this.$store.commit('setRedirectUrl', path);
+      }
+    }
+  },
   data () {
     return {
       selected: this.selected_option ? this.selected_option : this.options.length > 0 ? this.options[0] : null,

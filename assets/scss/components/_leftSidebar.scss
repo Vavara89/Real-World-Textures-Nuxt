@@ -8,7 +8,7 @@
   z-index: 99983;
   padding: 4rem 3rem;
   position: relative;
-  top: -120px;
+  //top: -120px;
 
 
   @include transition-base;
@@ -138,14 +138,15 @@
   .manufacture-filter {
     .toggleOption {
       margin: 0 -1.7rem;
-      padding: 1rem 3.3rem;
+      padding: 1rem 1.3rem;
       border: none;
       border-radius: 5rem;
       background-color: $color-primary-700;
       color: $color-white;
       text-transform: uppercase;
       margin-bottom: 8rem;
-      width: calc(100% + 3rem);
+      margin-left: -45px;
+      width: 100%;
       font-weight: bold;
     }
 

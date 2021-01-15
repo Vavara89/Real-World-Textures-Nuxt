@@ -97,13 +97,13 @@
 
     &.size {
       .custom-select {
-        width: 290px;
+        width: 100%;
       }
 
       .selected {
         background-size: 10px 10px;
         background-position: right 18px top 13px;
-        width: 290px;
+        width: 100%;
       }
 
       .selected.open {
@@ -241,13 +241,13 @@
 
   .countries {
     position: absolute;
-    padding: 5px 10px 15px 50px;
+    padding: 5px 10px 15px 40px;
     top: 0;
     left: 3px;
     background-color: #FBFBFF;
     width: 285px;
     max-height: 300px;
-    overflow-y: auto;
+    overflow: hidden scroll;
     border-radius: 0px 0px 6px 6px;
 
     /* width */

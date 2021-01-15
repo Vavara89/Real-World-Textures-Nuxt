@@ -410,7 +410,11 @@ export default {
     close () {
       this.$emit('close');
       const url = this.texture.slug;
-      const path = this.$route.path.replace('product-' + url, '');
+      let path = this.$route.path.replace('product-' + url, '');
+
+      if (this.$store.getters.redirectUrl) {
+        path = this.$store.getters.redirectUrl;
+      }
       this.$router.push({ path });
     },
     tryClose () {},

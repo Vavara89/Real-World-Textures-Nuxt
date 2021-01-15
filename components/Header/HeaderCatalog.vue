@@ -2,12 +2,14 @@
   <header class="header catalog header-signup">
     <div class="header-inner">
       <div class="header__flex">
-        <div class="left-holder">
+        <div class="logo">
           <div class="header__logo">
             <nuxt-link to="/" class="header-logo">
               <SvgIconLogo />
             </nuxt-link>
           </div>
+        </div>
+        <div class="left-holder">
           <div class="search-menu-container">
             <header-search />
             <div class="header-nav catalog-nav hide-on-md-down">
@@ -17,7 +19,7 @@
                   @click="hideMenu()"
                   class="menu-item"
                 >
-                  <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
+                  <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -36,7 +38,7 @@
               v-for="item in catalogMenu"
               @click="hideMenu()"
             >
-              <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
+              <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
             </li>
             <!-- <div class="line"></div> -->
             <li
@@ -129,5 +131,12 @@ export default {
     return {};
   },
   computed: {},
+  methods:{
+    setRedirectUrl(url){
+      if (url && url !== '/brands') {
+        this.$store.commit('setRedirectUrl', url);
+      }
+    }
+  }
 };
 </script>

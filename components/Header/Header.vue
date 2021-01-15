@@ -18,7 +18,7 @@
                   v-for="item in catalogMenu"
                   @click="hideMenu()"
                 >
-                  <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
+                  <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -37,7 +37,7 @@
               v-for="item in catalogMenu"
               @click="hideMenu()"
             >
-              <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
+              <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
             </li>
             <!-- <div class="line"></div> -->
             <li
@@ -126,5 +126,12 @@ export default {
     clickOutside: vClickOutside.directive,
   },
   computed: {},
+  methods:{
+    setRedirectUrl(url){
+      if (url && url !== '/brands') {
+        this.$store.commit('setRedirectUrl', url);
+      }
+    }
+  }
 };
 </script>

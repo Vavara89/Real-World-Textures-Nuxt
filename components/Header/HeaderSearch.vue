@@ -94,6 +94,10 @@ export default {
 
     selectCatalogType(value) {
       this.selected = value;
+      if (value.url && value.url !== 'brands') {
+        const path = '/' + value.url;
+        this.$store.commit('setRedirectUrl', path);
+      }
       this.searchHandler();
     },
     getOrDefaultSelected() {

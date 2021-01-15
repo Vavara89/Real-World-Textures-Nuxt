@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sidebar-wrapper">
     <div
       v-if="width"
       class="leftsidebar"
@@ -20,11 +20,11 @@
         <span></span>
       </div>
 
-       <div  v-if="width > 950" class="header-logo-catalog-sidebar">
-        <nuxt-link to="/">
-          <SvgIconLogo />
-        </nuxt-link>
-        </div>
+<!--       <div  v-if="width > 950" class="header-logo-catalog-sidebar">-->
+<!--        <nuxt-link to="/">-->
+<!--          <SvgIconLogo />-->
+<!--        </nuxt-link>-->
+<!--        </div>-->
 
       <Dropdown
         v-if="getTypes()"
@@ -43,6 +43,7 @@
 
       <div v-if="getAreas().length" class="manufacture-filter">
         <ManufactureFilter
+          class="manufacture-filter-drop"
           v-if="getAreas()"
           :areas="getAreas()"
           :brands_list="getBrands()"
@@ -53,10 +54,62 @@
         <ColorFilter v-if="getColors()" :options="getColors()" />
       </div>
 
-      <div v-if="canClear">
-        <button type="reset" class="clearFilter h4" @click="clearFilter()">
-          Clear all Filters
-        </button>
+<!--      <div v-if="canClear">-->
+<!--        <button type="reset" class="clearFilter h4" @click="clearFilter()">-->
+<!--          Clear all Filters-->
+<!--        </button>-->
+<!--      </div>-->
+
+      <div class="test">
+        <div
+          v-if="width < 950"
+          class="nav-icon3"
+          :class="{ open: openBurger }"
+          @click="openBurgerMenu()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div  v-if="width > 950" class="header-logo-catalog-sidebar">
+          <nuxt-link to="/">
+            <SvgIconLogo />
+          </nuxt-link>
+        </div>
+
+        <Dropdown
+          v-if="getTypes()"
+          :options="getTypes()"
+          :selected_option="getActiveType()"
+          @input="changeCatalogType"
+        />
+
+        <div class="materials-menu">
+          <MaterialMenu v-if="getCategories()" :list="getCategories()" />
+        </div>
+
+        <div v-if="getRefines().items.length" class="refine-filter">
+          <RefineFilter :options="getRefines()" />
+        </div>
+
+        <div v-if="getAreas().length" class="manufacture-filter">
+          <ManufactureFilter
+            v-if="getAreas()"
+            :areas="getAreas()"
+            :brands_list="getBrands()"
+          />
+        </div>
+
+        <div v-if="getColors()" ref="colorFilter" class="color-filter">
+          <ColorFilter v-if="getColors()" :options="getColors()" />
+        </div>
+
+        <div v-if="canClear"  :class="{'fixedButton': height, 'clear-btn': !height }">
+          <button type="reset" class="clearFilter h4" @click="clearFilter()">
+            Clear all Filters
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -100,6 +153,7 @@ export default {
     return {
       openBurger: false,
       width: null,
+      height: true
     };
   },
   mounted() {
@@ -107,11 +161,22 @@ export default {
       this.onResize();
     });
     window.addEventListener("resize", this.onResize);
+    window.addEventListener('scroll',this.scrollContent);
   },
   destroyed() {
     window.removeEventListener("resize", this.onResize);
+    window.removeEventListener('scroll',this.scrollContent);
   },
   methods: {
+    scrollContent(){
+      console.log(window.pageYOffset,'9999')
+      if (window.pageYOffset > 90){
+        this.height = false
+      }else {
+        this.height = true
+      }
+
+    },
     onResize() {
       this.innerWidth();
     },
@@ -126,7 +191,6 @@ export default {
         return [
           {
             value: "Textures",
-            count: this.filter.counts.textures,
             short: "textures",
           },
           {
@@ -230,10 +294,51 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/components/_leftSidebar.scss";
 
+.sidebar-wrapper{
+  overflow-y: scroll;
+  height: calc(100vh - 120px);
+  overflow-x: hidden;
+  margin-top: 50px;
+}
+.clear-btn button{
+  margin-top: 24px !important;
+  padding: 1rem 1rem !important;
+  width: 86% !important;
+}
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 3px;
+}
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background: #d0d5e7;
+  border-radius: 15px;
+}
+.sidebar-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .sidebar-logo {
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+}
+.manufacture-filter{
+  width: 23rem;
+}
+.manufacture-filter-drop .dropdown .selected, .manufacture-filter-drop .dropdown .custom-select{
+  width: 100% !important;
+}
+
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.fixedButton{
+  position: fixed;
+  top: calc(100% - 60px);
+  z-index: 10;
+  width: auto !important;
 }
 
 .fil {
@@ -243,13 +348,14 @@ export default {
 .toggleOption {
   margin: 0 -1.7rem;
   margin-top: 60px;
-  padding: 1rem 3.3rem;
+  padding: 1rem 1.3rem;
   border: none;
   font-weight: bold;
   border-radius: 5rem;
   background-color: $color-primary-700;
   color: $color-white;
   text-transform: uppercase;
+  width: 100%!important;
 }
 
 .profile {

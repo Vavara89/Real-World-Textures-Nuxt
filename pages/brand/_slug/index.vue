@@ -132,6 +132,9 @@ export default {
       }
       return website;
     }
+  },
+  created(){
+    this.$store.commit('setRedirectUrl',this.$route.path)
   }
 };
 </script>
