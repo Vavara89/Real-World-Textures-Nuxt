@@ -8,7 +8,7 @@
       </div>
       <section class="services view-bottom">
         <div class="catalog-page">
-          <TextureGallery :textures="textures" :noscale="true" />
+          <TextureGallery :textures="textures" :noscale="true" class="hdr-gallery"/>
           <h2 style="text-align: center" v-if="!textures.length">
             Search result is empty, try to change your search params
           </h2>

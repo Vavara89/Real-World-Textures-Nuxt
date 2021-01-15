@@ -64,8 +64,19 @@
   }
 }
 
+.hdr-gallery {
+  .noscale{
+    img{
+      border-radius: 8px !important;
+    }
+  }
+}
+
 .texture {
-  margin: 45px;
+  margin-top: 27px;
+  margin-bottom: 0;
+  margin-left: 20px;
+  margin-right: 20px;
   width: 20%;
   float: left;
   // padding: 20px;

@@ -1,15 +1,18 @@
 .tooltip {
-  width: 51rem;
-  height: 51rem;
-  background-color: $color-white;
+  width: 51.2rem;
+  height: 52rem !important;
+  background-color: #FBFBFF;
   position: absolute;
   top: 0;
+  box-shadow: 0 36px 40px 6px #465b924f;
+  z-index: 1000;
 
   .tooltip-content {
     overflow: hidden;
 
     .slick-prev {
       background: url(~@/assets/img/icon-arrow_left.svg) no-repeat center;
+      top: 96%;
 
       &::before {
         color: transparent;
@@ -19,6 +22,8 @@
     .slick-next {
       background: url(~@/assets/img/icon-arrow_left.svg) no-repeat center;
       transform: scaleX(-1);
+      top: 93.3%;
+      left: 0;
 
       &::before {
         color: transparent;
@@ -57,6 +62,10 @@
   .tooltip-footer {
     padding: 3.2rem;
 
+    .title{
+      margin-bottom: 10px;
+    }
+
     .credits-bookmark {
       display: flex;
       justify-content: space-between;
@@ -68,7 +77,6 @@
   overflow: hidden;
   height: 0;
   opacity: 0;
-  z-index: 1;
   transition: all .3s ease-in-out;
 
 }
@@ -76,23 +84,88 @@
 .texture:hover > .tooltip {
   height: auto;
   opacity: 1;
-  transition-delay: .1s;
+  //transition-delay: 5s;
   transition: all .3s ease-in-out;
 
 
   .imageItem {
     animation: 1s delay-overflow;
-    transform: translate(0, 0);
-    width: 40rem;
-    height: 40rem;
+    transform: translate(-50px, -40px);
+    width: 50rem;
+    height: 50rem;
 
     img {
-      width: 40rem;
-      height: 40rem;
+      width: 50rem;
+      height: 50rem;
+    }
+
+  }
+
+}
+
+.model-gallery .texture:hover > .tooltip{
+  .imageItem {
+    animation: 1s delay-overflow;
+    transform: translate(7px, 1px) !important;
+    width: 40rem !important;
+    height: 40rem !important;
+
+    img {
+      width: 40rem !important;
+      height: 40rem !important;
     }
 
   }
 }
+
+.hdr-gallery .tooltip{
+  width: 71.2rem !important;
+  height: 48rem !important;
+  border-radius: 8px;
+}
+
+.hdr-gallery {
+  .tooltip-content{
+    height: 40rem !important;
+  }
+  .tooltip-footer{
+    padding-top: 10px !important;
+  }
+  .slick-slider {
+    width: 80rem !important;
+    height: 39rem !important;
+    margin: auto;
+
+    .slick-prev {
+      top: 100%;
+      left: 28px !important;
+    }
+
+    .slick-next {
+      top: 97.3%;
+      left: 40px !important;
+    }
+  }
+
+}
+
+.hdr-gallery .texture:hover > .tooltip{
+  .imageItem {
+    animation: 1s delay-overflow;
+    transform: translate(1px, -14px) !important;
+    width: 71rem !important;
+    height: 38rem !important;
+
+    img {
+      width: 71rem !important;
+      height: 38rem !important;
+      object-fit: fill;
+    }
+
+  }
+}
+
+
 
 @media only screen and (max-width: 830px) {
   .texture .tooltip {

@@ -5,8 +5,8 @@
 
   .textures {
     padding: 0 1.8rem;
-    grid-gap: 0.8rem 0.8rem;
-    grid-template-columns: repeat(auto-fill, 230px);
+    grid-gap: 2rem 0.8rem;
+    grid-template-columns: repeat(auto-fill, 263px);
 
     @include mq(lg, max) {
      padding-top: 42px;
@@ -18,8 +18,8 @@
 
     .texture {
       position: relative;
-      width: 20rem;
-      height: 20rem;
+      width: 25.6rem;
+      height: 25.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -117,4 +117,18 @@
 
 .texture__content {
   display: block !important;
+}
+.model-gallery {
+  .texture {
+    width: 16rem !important;
+    height: 16rem !important;
+  }
+}
+
+.hdr-gallery {
+  .texture {
+    width: 21.6rem !important;
+    height: 10.8rem !important;
+  }
+
 }
