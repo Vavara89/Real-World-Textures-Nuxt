@@ -17,7 +17,7 @@
         </div>
         <div v-if="canSearch" class="search">
           <input v-model="term" type="text" placeholder="E.g. Ton">
-          <button @click="search" class="toggleOption">
+          <button @click="setFilter" class="toggleOption">
             Confirm
           </button>
         </div>
@@ -66,6 +66,7 @@ export default {
     return {
       term: '',
       timeOut: undefined,
+      selected_options: []
     };
   },
   methods: {
@@ -78,7 +79,10 @@ export default {
       });
     },
     change(brands){
-      this.$emit('change', brands)
+      this.selected_options = brands
+    },
+    setFilter(){
+      this.$emit('change', this.selected_options)
     }
   }
 };

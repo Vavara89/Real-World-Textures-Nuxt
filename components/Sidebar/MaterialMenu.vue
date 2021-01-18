@@ -1,7 +1,7 @@
 <template>
   <ul class="menuLeft">
     <li class="item">
-      <a v-bind:class="{'active':allActive}" :href='allLink'>
+      <a v-bind:class="{'active':allActive}" class="all-item" :href='allLink'>
         All
       </a>
     </li>

@@ -118,13 +118,7 @@ export default {
   },
   methods: {
     scrollContent(){
-      console.log(window.pageYOffset,'9999')
-      if (window.pageYOffset > 90){
-        this.height = false
-      }else {
-        this.height = true
-      }
-
+      this.height = window.pageYOffset <= 90;
     },
     onResize() {
       this.innerWidth();

@@ -122,9 +122,9 @@ export default {
     return {
       offer: {
         subtitle: "Try Real world textures and",
-        title: "Get 10 materials for free",
+        title: "Use free materials in your project",
         button: {
-          text: "Login to get 10 free textures",
+          text: "Login to get free textures",
           link: "/login",
         },
       },

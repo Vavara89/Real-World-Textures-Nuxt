@@ -46,6 +46,10 @@
     .item {
       line-height: 32px;
 
+      .all-item{
+        font-weight: 700;
+      }
+
       .active {
         font-weight: 700;
         color: $color-primary-700;
