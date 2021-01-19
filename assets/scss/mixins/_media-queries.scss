@@ -40,3 +40,27 @@ $breakpoints: (
     }
   }
 }
+
+@mixin logo-media{
+  @media (min-width: 991px) {
+    padding-top: 25px;
+  }
+  @media (max-width: 2200px) {
+    width: 275px;
+  }
+  @media (max-width: 2000px) {
+    width: 270px;
+  }
+  @media (max-width: 1700px) {
+    margin-right: 50px;
+  }
+  @media (max-width: 1500px) {
+    min-width: 254px;
+  }
+  @media (max-width: 1300px) {
+    min-width: 249px;
+  }
+  @media (max-width: 1100px) {
+    min-width: 244px;
+  }
+}

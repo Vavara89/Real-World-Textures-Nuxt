@@ -29,5 +29,9 @@ export default {
   async getBookmarks(){
     return await this.getCollector()
       .get(`${resource}bookmarks`);
+  },
+  async getInvoices(){
+    return await this.getCollector()
+      .get(`${resource}invoices`);
   }
 };
