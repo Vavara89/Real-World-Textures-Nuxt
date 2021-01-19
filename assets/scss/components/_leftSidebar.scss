@@ -6,7 +6,7 @@
   min-width: 28rem;
   background: $color-white;
   z-index: 99983;
-  padding: 4rem 3rem;
+  padding: 4rem 0 4rem 3.2rem;
   position: relative;
   //top: -120px;
 
@@ -36,7 +36,7 @@
   }
 
   h3 {
-    margin-top: 5rem;
+    margin-top: 3rem;
     // padding-left: 2.4rem;
   }
 
@@ -110,8 +110,9 @@
   }
 
   .refine-filter {
+    margin-left: 25px;
     ul {
-      padding: 2.4rem;
+      padding: 2.4rem 0;
 
       li {
         a {
@@ -176,8 +177,8 @@
   }
 
   .color-filter {
-    margin-top: 8rem;
-    margin-bottom: 14rem;
+    margin-top: 6rem;
+    margin-bottom: 12rem;
 
     .colorOptions {
       margin-top: 2rem;

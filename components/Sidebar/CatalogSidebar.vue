@@ -241,7 +241,11 @@ export default {
   overflow-y: scroll;
   height: calc(100vh - 120px);
   overflow-x: hidden;
-  margin-top: 50px;
+  margin-top: 65px;
+
+  @media (min-width: 991px) {
+    min-width: 32rem;
+  }
 }
 .clear-btn button{
   margin-top: 24px !important;
@@ -266,6 +270,10 @@ export default {
 }
 .manufacture-filter{
   width: 23rem;
+  margin-left: 15px;
+}
+.manufacture-filter-drop{
+  width: 260px;
 }
 .manufacture-filter-drop .dropdown .selected, .manufacture-filter-drop .dropdown .custom-select{
   width: 100% !important;
@@ -282,6 +290,7 @@ export default {
   top: calc(100% - 60px);
   z-index: 10;
   width: auto !important;
+  min-width: 247px;
 }
 
 .fil {
