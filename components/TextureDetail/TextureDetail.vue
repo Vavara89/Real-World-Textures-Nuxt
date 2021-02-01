@@ -113,7 +113,6 @@
             <!-- Carousel Models end -->
           </div>
         </div>
-
       </div>
       <div class="details">
         <div class="title">
@@ -326,6 +325,11 @@ export default {
       }
     };
   },
+  computed: {
+    relatedTextures () {
+      return 'relatedTextures' in Object.keys(this.texture) ? this.texture.relatedTextures : [];
+    }
+  },
 
   mounted () {
     console.log('mounted');
@@ -371,11 +375,6 @@ export default {
         this.options.push({ value: label });
         item.label = label;
       });
-    }
-  },
-  computed: {
-    relatedTextures() {
-      return 'relatedTextures' in Object.keys(this.texture) ? this.texture['relatedTextures'] : [];
     }
   },
   methods: {
@@ -489,9 +488,10 @@ export default {
           }
         })
         .catch((error) => {
+          console.log(error, '11111');
           this.downloadErrors = error.response.data.errors;
           this.processing = false;
-          clearTimeout(timeout);
+          // clearTimeout(timeout);
         });
     },
     toggleBookMark () {

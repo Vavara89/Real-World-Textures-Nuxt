@@ -147,11 +147,11 @@
 
        .slick-prev:before {
          display: none;
-         } 
+         }
 
         .slick-prev:after {
           display: none;
-          } 
+          }
       }
 
       .imageDetails-footer {
@@ -276,12 +276,15 @@
       }
 
       .options {
+        .dimension{
+          margin-bottom: 30px;
+        }
         .option-item {
           display: flex;
 
           .option {
-            height: 100px;
-            overflow-y: scroll;
+            height: fit-content !important;
+            overflow: visible !important;
             -webkit-overflow-scrolling: touch;
           }
 
@@ -296,7 +299,7 @@
              @media only screen and (max-width: 1350px) {
               height: 100px;
             }
-          
+
 
             .label {
               margin-right: 40px;
@@ -314,10 +317,23 @@
           }
 
           &.last {
-            height: 220px;
+            height: 100px;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+              width: 3px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background: #d0d5e7;
+              border-radius: 15px;
+            }
+            &::-webkit-scrollbar-track {
+              background: transparent;
+            }
 
             @include mq(lg, max) {
-              height: 150px;
+              height: 100px;
+              overflow-y: scroll;
              }
           }
 
@@ -330,12 +346,24 @@
       }
 
       .description {
+        margin-top: 30px;
         margin-bottom: 3rem;
         .text {
           height: 100px;
-          margin-top: 20px;
+          margin-top: 13px;
           overflow-y: scroll;
           -webkit-overflow-scrolling: touch;
+
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: #d0d5e7;
+            border-radius: 15px;
+          }
+          &::-webkit-scrollbar-track {
+            background: transparent;
+          }
         }
       }
 
