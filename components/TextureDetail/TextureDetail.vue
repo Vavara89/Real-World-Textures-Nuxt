@@ -425,7 +425,7 @@ export default {
       ).format();
     },
     getGoogleLink () {
-      return `http://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
+      return `https://maps.google.com/maps?q=${this.texture.latitude},${this.texture.longitude}`;
     },
     formatWebsite (web) {
       if (!web.startsWith('http')) {
