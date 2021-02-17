@@ -96,15 +96,13 @@
                 &nbsp;
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
-                  <button class="toggleOption green staticwidth" @click="confirm(false)">
-                    Get Free
-                  </button>
+
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
                   <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
+                  <button v-if="!currentIs(false, !isMonth) && !currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
                     Get Freelance
                   </button>
                 </td>
@@ -227,7 +225,7 @@
                   <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
                     {{ status() }}
                   </button>
-                  <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
+                  <button v-if="!currentIs(false, !isMonth) && !currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
                     Get Freelance
                   </button>
                 </td>
@@ -397,7 +395,7 @@ export default {
       return subscribeCurrentIs(pro, year, this.subscribed);
     },
     fetchSubscribed () {
-      // this.subscribed = this.$store.getters.subscription;
+      this.subscribed = this.$store.getters.subscription;
     },
     status () {
       return subscribeStatus(this.subscribed);
@@ -405,6 +403,7 @@ export default {
     haveActive () {
       return subscriptionActive(this.subscribed);
     }
+
 
   }
 

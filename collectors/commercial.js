@@ -25,5 +25,9 @@ export default {
     const url = `${resource}/products`;
     return  await this.getCollector()
       .get(url);
+  },
+  async initPay(data){
+    const url = `${resource}/payment`;
+    return  await this.getCollector().post(url, data);
   }
 };

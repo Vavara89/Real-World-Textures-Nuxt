@@ -54,7 +54,7 @@ export default {
         faqs = response.data.results;
       });
 
-      await catalog.products("brands", "page_size=10").then((response) => {
+      await catalog.products("brands", "page_size=10&trusted=true").then((response) => {
         brands = response.data.results.map((item) => {
           return {
             link: item.absolute_url,

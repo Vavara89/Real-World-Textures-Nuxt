@@ -158,7 +158,7 @@
               </span>
             </div>
           </template>
-          
+
           <template #nextArrow="arrowOption">
             <div class="next-slick">
               <span class="button superb">
@@ -171,7 +171,7 @@
             <img :src="item.cover" :alt="item.name">
             <CardSliderDetail :texture="item" :id="item.id" :hovered="true"/>
           </div>
-          
+
         </VueSlickCarousel>
       </div>
       <div v-if="models.length" class="imageDetails-footer">
@@ -337,7 +337,7 @@ export default {
     let models = [];
     let hdr = [];
     let tutorials = [];
-    await catalog.products('brands', 'page_size=10').then(response => {
+    await catalog.products('brands', 'page_size=10&trusted=true').then(response => {
       partners = response.data.results.map((item) => {
         return {
           link: item.absolute_url,
