@@ -2,9 +2,11 @@
   <div>
     <section class="bookmarks">
       <div class="container container--box">
-        <h2 v-if="!bookmarks.length">Your bookmarks is empty for now</h2>
+        <h2 v-if="!bookmarks.length">
+          Your bookmarks is empty for now
+        </h2>
         <div v-if="bookmarks.length" class="bookmarks__header">
-          <div @click="selectAllBookmark" class="bookmarks__header-selectAll">
+          <div class="bookmarks__header-selectAll" @click="selectAllBookmark">
             select all
           </div>
           <div class="bookmarks__header-selected">
@@ -13,22 +15,24 @@
           <div class="bookmarks__header-totalCredits">
             {{ totalCredits }} credits total
           </div>
-          <div @click="deletAllBookmark" class="bookmarks__header-deleteAll">
+          <div class="bookmarks__header-deleteAll" @click="deletAllBookmark">
             delete all
           </div>
         </div>
-        <div class="bookmarks__list" v-if="bookmarks.length > 0">
+        <div v-if="bookmarks.length > 0" class="bookmarks__list">
           <Bookmark
             v-for="(item, index) in bookmarks"
-            @deleteBookmark="deleteBookmark"
+            :key="index"
             :item="item"
             :index="index"
-            :key="index"
+            @deleteBookmark="deleteBookmark"
           />
         </div>
         <div v-if="bookmarks.length > 0" class="bookmarks__credits">
           <div class="bookmarks__credits__part">
-            <div class="bookmarks__credits__title">Your Credits Left:</div>
+            <div class="bookmarks__credits__title">
+              Your Credits Left:
+            </div>
             <div class="bookmarks__credits__subscription">
               {{ profile.credits }} Subscription
             </div>
@@ -46,15 +50,15 @@
               Total Items: <span>{{ selectedBookmarks }}</span>
             </div>
             <button
-              @click="downloads"
               class="button-primary button-primary--large"
               :class="{ 'button-primary--blue': downloading }"
+              @click="downloads"
             >
               <img
                 v-if="downloading"
                 class="rotate"
                 src="@/assets/img/icon-processing-button.svg"
-              />
+              >
               <span v-if="downloading">Processing...</span>
               <span v-if="!downloading">Download Selected</span>
             </button>
@@ -66,34 +70,35 @@
 </template>
 
 <script>
-import Bookmark from "@/components/Bookmark";
-import Button from "@/components/Button";
-import profile from "@/collectors/profile";
-import BookmarkClass from "@/classes/bookmark.class.ts";
-import catalog from "@/collectors/catalog";
-import users from "@/collectors/users";
+import Bookmark from '@/components/Bookmark';
+import Button from '@/components/Button';
+import profile from '@/collectors/profile';
+import BookmarkClass from '@/classes/bookmark.class.ts';
+import catalog from '@/collectors/catalog';
+import users from '@/collectors/users';
 
 export default {
-  name: "Bookmarks",
+  name: 'Bookmarks',
   components: {
     Bookmark,
-    Button,
+    Button
   },
-  async fetch() {
+  async fetch () {
     if (this.$auth.loggedIn) {
       profile.setToken(this.$auth.user.user.token);
       users.setToken(this.$auth.user.user.token);
     }
     await profile.getBookmarks().then((response) => {
-      ["textures", "models", "hdr"].forEach((type) => {
+      ['textures', 'models', 'hdr'].forEach((type) => {
         response.data[type].map((item) => {
           const data = {
             id: item.id,
             image: item.cover,
             name: item.name,
-            type: type,
+            type,
             cost: item.credits,
-            selected: false,
+            resolutions: item.resolutions,
+            selected: false
           };
           this.bookmarks.push(new BookmarkClass(data));
         });
@@ -103,41 +108,70 @@ export default {
       this.server_downloading = response.data;
       const book_marks = this.server_downloading
         .filter((item) => {
-          return item["from_book_mark"] === true;
+          return item.from_book_mark === true;
         })
         .map((item) => {
-          return item["id"];
+          return item.id;
         });
       this.bookmarks.map((item) => {
         item.selected = book_marks.includes(item.id);
       });
       this.downloading =
-        this.bookmarks.filter((bookmark) => bookmark.selected === true).length >
+        this.bookmarks.filter(bookmark => bookmark.selected === true).length >
         0;
     });
   },
-  data() {
+  data () {
     return {
-      subscriptionLink: "/profile/pricing",
+      subscriptionLink: '/profile/pricing',
       bookmarks: [],
       mountains: [],
-      buttonText: "Download Selected",
+      buttonText: 'Download Selected',
       downloading: false,
       selectError: false,
       starting_download: false,
       server_downloading: [],
-      processOfDeleting: false,
+      processOfDeleting: false
     };
   },
-  mounted() {
+  computed: {
+    profile () {
+      return this.$auth.user.user.profile;
+    },
+    selectedBookmarks () {
+      const result = this.bookmarks.filter(
+        bookmark => bookmark.selected === true
+      );
+      return result.length;
+    },
+
+    totalCredits () {
+      let sum = 0;
+      this.bookmarks.forEach((bookmark) => {
+        if (bookmark.selected) {
+          sum += bookmark.cost;
+        }
+      });
+      return sum;
+    },
+
+    appendText () {
+      if (this.totalCredits < 1 || this.totalCredits > 1) {
+        return 'Credits';
+      } else {
+        return 'Credit';
+      }
+    }
+  },
+  mounted () {
     this.$store.subscribe((mutation, state) => {
-      if (mutation.type === "setForDownload") {
+      if (mutation.type === 'setForDownload') {
         this.downloading = state.forDownload.length > 0;
         const pks = state.forDownload.map((item) => {
-          return item["id"];
+          return item.id;
         });
         this.bookmarks.forEach((item) => {
-          item.selected = pks.indexOf(item["id"]) > -1;
+          item.selected = pks.includes(item.id);
         });
         if (!pks) {
           this.bookmarks.forEach((item) => {
@@ -148,11 +182,11 @@ export default {
     });
     if (this.$store.getters.checkDownload.length) {
       const pk_list = this.$store.getters.checkDownload.map((item) => {
-        return item["id"];
+        return item.id;
       });
 
       this.bookmarks.forEach((bookmark) => {
-        if (pk_list.indexOf(bookmark.id) > -1) {
+        if (pk_list.includes(bookmark.id)) {
           this.runDownload(bookmark);
         }
       });
@@ -160,30 +194,30 @@ export default {
   },
 
   methods: {
-    deleteBookmark(item) {
+    deleteBookmark (item) {
       this.$nuxt.$loading.start();
       profile.toggleBookMark(item.type, item.id).then((response) => {
         this.bookmarks = this.bookmarks.filter(
-          (bookmark) => bookmark.id !== item.id
+          bookmark => bookmark.id !== item.id
         );
         this.$nuxt.$loading.finish();
-        this.$store.commit("setBookmarks", response.data.totals);
+        this.$store.commit('setBookmarks', response.data.totals);
       });
     },
 
-    async deletAllBookmark() {
+    async deletAllBookmark () {
       this.$nuxt.$loading.start();
       await this.bookmarks.map(async (item) => {
         await profile.toggleBookMark(item.type, item.id);
         this.bookmarks = this.bookmarks.filter(
-          (bookmark) => bookmark.id !== item.id
+          bookmark => bookmark.id !== item.id
         );
       });
       this.$nuxt.$loading.finish();
-      this.$store.commit("setBookmarks", 0);
+      this.$store.commit('setBookmarks', 0);
     },
 
-    selectAllBookmark() {
+    selectAllBookmark () {
       this.$nuxt.$loading.start();
       this.bookmarks.forEach(function (item) {
         item.selected = !item.selected;
@@ -191,9 +225,9 @@ export default {
       this.$nuxt.$loading.finish();
     },
 
-    downloads() {
+    downloads () {
       const forDownload = this.bookmarks.filter(
-        (bookmark) => bookmark.selected === true
+        bookmark => bookmark.selected === true
       );
       this.selectError = !forDownload.length;
       if (this.selectError) {
@@ -205,12 +239,12 @@ export default {
       });
     },
 
-    runDownload(item) {
+    runDownload (item) {
       const forDownload = this.$store.getters.forDownload;
-      if (forDownload.indexOf(item) === -1) {
+      if (!forDownload.includes(item)) {
         forDownload.push(item);
         item.resolutions = [0];
-        this.$store.commit("setForDownload", forDownload);
+        this.$store.commit('setForDownload', forDownload);
       }
 
       let interval;
@@ -221,9 +255,9 @@ export default {
           if (data.download_link) {
             window.location.href = data.download_link;
             const forDownload = this.$store.getters.forDownload.filter(
-              (product) => product["id"] !== item["id"]
+              product => product.id !== item.id
             );
-            this.$store.commit("setForDownload", forDownload);
+            this.$store.commit('setForDownload', forDownload);
             clearInterval(interval);
           } else {
             interval = setTimeout(() => {
@@ -235,37 +269,8 @@ export default {
           clearTimeout(interval);
           this.downloadErrors = error.response.data.errors;
         });
-    },
-  },
-  computed: {
-    profile() {
-      return this.$auth.user.user.profile;
-    },
-    selectedBookmarks() {
-      const result = this.bookmarks.filter(
-        (bookmark) => bookmark.selected === true
-      );
-      return result.length;
-    },
-
-    totalCredits() {
-      let sum = 0;
-      this.bookmarks.forEach((bookmark) => {
-        if (bookmark.selected) {
-          sum += bookmark.cost;
-        }
-      });
-      return sum;
-    },
-
-    appendText() {
-      if (this.totalCredits < 1 || this.totalCredits > 1) {
-        return "Credits";
-      } else {
-        return "Credit";
-      }
-    },
-  },
+    }
+  }
 };
 </script>
 
