@@ -6,11 +6,17 @@
         type="radio"
         value="monthly"
         name="toggle"
-        checked
         @change="setMonth"
       >
       <label for="monthly"><span v-if="first_text">{{ first_text }}</span><span v-if="!first_text">Monthly</span></label>
-      <input id="yearly" type="radio" value="yearly" name="toggle" @change="setYear">
+      <input
+        id="yearly"
+        type="radio"
+        value="yearly"
+        name="toggle"
+        checked
+        @change="setYear"
+      >
       <label for="yearly"><span v-if="second_text">{{ second_text }}</span><span v-if="!second_text">Yearly</span></label>
       <span class="toggle__switch" />
     </fieldset>
