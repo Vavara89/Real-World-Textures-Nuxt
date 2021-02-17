@@ -1,13 +1,14 @@
 <template>
   <div class="page-container">
-    <ProfileSidebar v-if="width > 950" :profile="true" />
-    <UnsubscribeModal ref="unsubscribe_modal" />
+    <ProfileSidebar v-if="width > 950" :profile="true"/>
+    <UnsubscribeModal ref="unsubscribe_modal"/>
+    <PaymentMoreModal ref="payment_modal"/>
     <div class="page-content">
       <section class="services view-bottom">
         <div class="wrapper-profile">
           <div class="wrapper-inner">
             <div class="containers">
-              <div class="iconic" />
+              <div class="iconic"/>
               <div class="left">
                 <h2>{{ profile }}</h2>
                 <h3>{{ email }}</h3>
@@ -35,13 +36,13 @@
                 </div>
                 <div class="tabs-content">
                   <div v-if="cardProfile" class="is-profile">
-                    <ProfileForm />
+                    <ProfileForm/>
                   </div>
                   <div v-if="cardBilling" class="is-profile">
                     <CardBilling ref="card_billing"/>
                   </div>
                   <div v-if="cardPassword" class="is-profile">
-                    <ChangePassword />
+                    <ChangePassword/>
                   </div>
                 </div>
               </div>
@@ -54,18 +55,17 @@
                     <span class="isscaled">
                       {{ credits }}</span>
                     <div v-if="profile.subscribe" class="slice">
-                      <div class="bar" />
-                      <div class="fill" />
+                      <div class="bar"/>
+                      <div class="fill"/>
                     </div>
                     <span class="topas">Subscription Credits</span>
                   </div>
                   <button class="toggleOption2 bot">
-                    <nuxt-link to="/profile/pricing" v-if="!profile.subscribe">buy more credits</nuxt-link>
-                    <nuxt-link to="/profile/pricing" v-if="profile.subscribe">buy more credits</nuxt-link>
+                    <a href="javascript:void(0)" @click="openPaymentMore()">buy more credits</a>
                   </button>
                 </div>
                 <div v-if="profile.subscribe" class="credit">
-                  <p>{{profile.subscribe.name}}</p>
+                  <p>{{ profile.subscribe.name }}</p>
                   <p>Credits renew on 20/09/2020</p>
                   <div class="logout">
                     <a @click="openUnsubscribe()">
@@ -89,6 +89,7 @@ import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 import CardBilling from '@/components/Profile/CardBilling';
 import ProfileForm from '@/components/Profile/ProfileForm';
 import UnsubscribeModal from '@/components/Profile/UnsubscribeModal';
+import PaymentMoreModal from '@/components/Profile/PaymentMoreModal';
 
 export default {
   layout: "withoutLogo",
@@ -100,10 +101,11 @@ export default {
     CardBilling,
     ProfileForm,
     ChangePassword,
-    UnsubscribeModal
+    UnsubscribeModal,
+    PaymentMoreModal
 
   },
-  data () {
+  data() {
     return {
       cardProfile: true,
       cardBilling: false,
@@ -115,39 +117,39 @@ export default {
     };
   },
   computed: {
-    user () {
+    user() {
       return this.$auth.user.user;
     },
-    profile () {
+    profile() {
       if (this.user.subscribe) {
         return this.user.subscribe.name;
       }
       return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
     },
-    credits () {
+    credits() {
       return this.profile.subscribe ? this.profile.subscribe.credits : 0;
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(function () {
       this.onResize();
     });
     window.addEventListener('resize', this.onResize);
-    if(this.$route.query['payment']){
+    if (this.$route.query['payment']) {
       this.toggleSelected('billing');
     }
   },
-  destroyed () {
+  destroyed() {
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
-    onResize () {
+    onResize() {
       this.innerWidth();
     },
-    innerWidth () {
+    innerWidth() {
       this.width = window.innerWidth;
     },
-    toggleSelected (data) {
+    toggleSelected(data) {
       if (data === 'profile') {
         this.cardProfile = true;
         this.cardBilling = false;
@@ -166,9 +168,13 @@ export default {
         this.cardPassword = true;
       }
     },
-    openUnsubscribe () {
+    openUnsubscribe() {
       this.$refs.unsubscribe_modal.scrollSwitcher(true);
+    },
+    openPaymentMore(){
+      this.$refs.payment_modal.scrollSwitcher(true);
     }
+
   }
 };
 </script>

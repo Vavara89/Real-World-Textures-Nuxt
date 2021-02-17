@@ -173,6 +173,10 @@
             <img :src="item.cover" :alt="item.name">
             <CardSliderDetail :id="item.id" :texture="item" :hovered="true" />
           </div>
+          <<<<<<< HEAD
+          =======
+
+          >>>>>>> 29fd26ce7fa0a535da6be698199c4bb4e38f182d
         </VueSlickCarousel>
       </div>
       <div v-if="models.length" class="imageDetails-footer">
@@ -336,7 +340,8 @@ export default {
     let models = [];
     let hdr = [];
     let tutorials = [];
-    await catalog.products('brands', 'page_size=10').then((response) => {
+
+    await catalog.products('brands', 'page_size=10&trusted=true').then((response) => {
       partners = response.data.results.map((item) => {
         return {
           link: item.absolute_url,

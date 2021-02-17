@@ -3,15 +3,26 @@
     <div class="modal card is-background centered-window min-height">
       <div class="inner address is-card">
         <span class="close" @click="toggleMessage()" />
-        <h2>Are you sure you want to cancel your subscription?</h2>
+        <h2>Please enter credits count</h2>
         <h3 class="upper upper-perex">
-          Please note: Any remaining credits will expire at the end of your current billing cycle
+          Please enter credits count
         </h3>
-        <button type="submit" class="email special">
-          Confirm cancle
+        <input
+          min="100"
+          v-model="quantity"
+          type="text"
+          class="input"
+          placeholder=""
+        >
+
+      </div>
+      <div class="inner">
+        <button @click="payment" type="submit" class="email special">
+          Pay now
           <div class="ar" />
         </button>
       </div>
+
     </div>
     <div class="silkscreen" />
   </div>
@@ -19,6 +30,7 @@
 
 <script>
 import Success from '@/components/Success/Success';
+import commercial from "~/collectors/commercial";
 
 export default {
   components: {
@@ -30,19 +42,9 @@ export default {
       saved: false,
       send: false,
       number: null,
-      exp_date: null,
-      cvc: null,
-      card_number_mask: null,
-      exp_date_mask: '##/##',
-      cvv_mask: null,
-      formErrors: {
-        number: [],
-        exp_date: [],
-        cvc: []
-      }
+      quantity: 100
+
     };
-  },
-  created () {
   },
   methods: {
     scrollSwitcher (state) {
@@ -57,6 +59,14 @@ export default {
     },
     toggleMessage (close = false) {
       this.scrollSwitcher(close);
+    },
+    async payment() {
+      const session = await commercial.initPay({
+        quantity:this.quantity
+      });
+      console.log(session);
+      const stripe = Stripe("pk_test_51H6sy0JPF3NHrntPzr6I0sc9Un4TtbyQsrbiLmBpLOZMHoDu9Fj07Xrq4Jana1ZC9cFk8yijeUctn4str7OPRVt000C6AS116F");
+      await stripe.redirectToCheckout({ sessionId: session.data.id });
     }
   }
 };

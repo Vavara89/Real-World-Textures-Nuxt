@@ -66,7 +66,7 @@ export default {
       users.setToken(this.$auth.user.user.token);
     }
     await profile.getInvoices().then((response) => {
-      this.invoices = response.data
+      this.invoices = response.data.filter((item)=>{return item.status === 'payed'});
     });
   },
 

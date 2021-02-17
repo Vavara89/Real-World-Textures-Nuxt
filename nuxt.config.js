@@ -12,7 +12,8 @@ let production = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [{ type: 'module', src: 'https://js.stripe.com/v3/' }],
   },
   /*
   ** Customize the progress-bar color

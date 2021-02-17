@@ -3,12 +3,12 @@
     <div class="container container--content">
       <div class="subscribe-outer">
         <div class="subscribe-inner">
-          <SectionTitle :title="title" :is-centered="false" :is-inverted="true" />
+          <SectionTitle :title="title" :is-centered="false" :is-inverted="true"/>
           <div class="toggle-button-wrap">
-            <ToggleSwitch @setDuration="childMessageReceived" />
+            <ToggleSwitch @setDuration="childMessageReceived"/>
           </div>
           <div class="price-table">
-            <PriceCardGrid :cards="cards" :duration="duration" />
+            <PriceCardGrid :cards="cards" :duration="duration"/>
           </div>
         </div>
       </div>
@@ -35,14 +35,14 @@ export default {
       required: false
     }
   },
-  data () {
+  data() {
     return {
       title: 'Subscribe',
       duration: ''
     };
   },
   computed: {
-    cards () {
+    cards() {
       const prices = this.$store.getters.prices;
       if (!prices.length) {
         return [];
@@ -67,27 +67,14 @@ export default {
 
         const free = {
           title: 'Free',
-          descr_title_month: '200+ freebies',
-          descr_title_year: '400+ freebies',
-          descr_subtitle: '',
-          descr_text1: 'Try it and enjoy our freebies',
-          descr_text2: 'Lorem ipsum',
-          descr_text3: 'Dolor sit amet',
-          currency: '$',
-          price_month: '0',
-          price_year: '0',
-          buttontext: 'Try for free',
+          descr_title_month: 'Free content',
+          descr_title_year: 'Free content',
+          descr_text1: 'Sign up for free and enjoy our free content',
+          buttontext: 'Get freelance',
           buttonlink: '/'
         };
         const products_plans = [
-          {
-            title: 'Free',
-            descr_title_month: 'Free content',
-            descr_title_year: 'Free content',
-            descr_text1: 'Sign up for free and enjoy our free content',
-            buttontext: 'Get freelance',
-            buttonlink: '/'
-          },
+       
           {
             title: 'Basic',
             descr_title_month: `${price_month.freelancer.credits} credits`,
@@ -126,7 +113,7 @@ export default {
     }
   },
   methods: {
-    childMessageReceived (duration) {
+    childMessageReceived(duration) {
       console.log(duration);
       if (duration === 'month') {
         this.duration = duration;
@@ -135,7 +122,7 @@ export default {
         this.duration = duration;
       }
     },
-    getLink () {
+    getLink() {
     }
   }
 };
