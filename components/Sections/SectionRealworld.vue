@@ -36,7 +36,7 @@
             >
               <template v-for="slide in slides">
                 <div class="slide-wrapper">
-                  <img class="static" :src="slide.image" />
+                  <img class="static" :src="slide.image">
                 </div>
               </template>
             </VueSlickCarousel>
@@ -46,9 +46,13 @@
         </div>
         <div :class="{ opacity_in: !slidesInits }" class="explore-control">
           <div>
-            <a class="explore-control-prev" @click="next()"
-              ><img src="@/assets/img/icon-arrow.png" alt=""
-            /></a>
+            <a
+              class="explore-control-prev"
+              @click="next()"
+            ><img
+              src="@/assets/img/icon-arrow.png"
+              alt=""
+            ></a>
           </div>
           <VueSlickCarousel
             ref="sliderNav"
@@ -74,9 +78,13 @@
             />
           </div>
           <div>
-            <a class="explore-control-next" @click="prev()"
-              ><img src="@/assets/img/icon-arrow.png" alt=""
-            /></a>
+            <a
+              class="explore-control-next"
+              @click="prev()"
+            ><img
+              src="@/assets/img/icon-arrow.png"
+              alt=""
+            ></a>
           </div>
         </div>
         <div class="explore-scroll">
@@ -88,24 +96,24 @@
 </template>
 
 <script>
-import VueSlickCarousel from "vue-slick-carousel";
-import SectionTitle from "@/components/SectionParts/SectionTitle";
-import Button from "@/components/Button";
+import VueSlickCarousel from 'vue-slick-carousel';
+import SectionTitle from '@/components/SectionParts/SectionTitle';
+import Button from '@/components/Button';
 
 export default {
-  name: "SectionRealworld",
+  name: 'SectionRealworld',
   components: {
     SectionTitle,
     Button,
-    VueSlickCarousel,
+    VueSlickCarousel
   },
   props: {
     slides: {
       type: Array,
-      required: false,
-    },
+      required: false
+    }
   },
-  data() {
+  data () {
     return {
       sliderMain: {
         dots: false,
@@ -117,7 +125,7 @@ export default {
         speed: 0,
         useTransform: true,
         useCSS: false,
-        infinite: false,
+        infinite: false
       },
       sliderNav: {
         dots: false,
@@ -129,35 +137,35 @@ export default {
         speed: 0,
         useTransform: true,
         useCSS: false,
-        infinite: false,
+        infinite: false
       },
-      slides_html: "",
-      subtitle: "Real World Textures",
-      title: "PBR materials and models from the real worldwide manufacturers",
-      texture_number: "0059",
-      texture_title: "WOODVEENER OAK COPPER2",
-      texture_current: require("~/assets/img/spheres/sphere-4-1.png"),
-      texture_prev: require("~/assets/img/spheres/sphere-5.png"),
-      texture_next: require("~/assets/img/spheres/sphere-6.png"),
+      slides_html: '',
+      subtitle: 'Real World Textures',
+      title: 'PBR materials and models from the real worldwide manufacturers',
+      texture_number: '0059',
+      texture_title: 'WOODVEENER OAK COPPER2',
+      texture_current: require('~/assets/img/spheres/sphere-4-1.png'),
+      texture_prev: require('~/assets/img/spheres/sphere-5.png'),
+      texture_next: require('~/assets/img/spheres/sphere-6.png'),
       slickCurrentIndex: 1,
       direction: null,
-      slidesInits: false,
+      slidesInits: false
     };
   },
   computed: {
-    slideSubTitle() {
+    slideSubTitle () {
       return this.slides[this.slickCurrentIndex].sub_title;
     },
-    slideButtonName() {
+    slideButtonName () {
       return this.slides[this.slickCurrentIndex].button_name;
     },
-    slideUrl() {
+    slideUrl () {
       return this.slides[this.slickCurrentIndex].button_url;
-    },
+    }
   },
   methods: {
-    next() {
-      this.direction = "down";
+    next () {
+      this.direction = 'down';
       if (this.slickCurrentIndex + 1 === this.slides.length) {
         this.$refs.sliderMain.goTo(1, true);
         this.$refs.sliderNav.goTo(1, true);
@@ -166,8 +174,8 @@ export default {
         this.$refs.sliderNav.next(true);
       }
     },
-    prev() {
-      this.direction = "up";
+    prev () {
+      this.direction = 'up';
       if (this.slickCurrentIndex === 0) {
         this.$refs.sliderMain.goTo(1);
         this.$refs.sliderNav.goTo(1, true);
@@ -177,40 +185,58 @@ export default {
       }
     },
 
-    beforeChangeNav(current, next) {
+    beforeChangeNav (current, next) {
       const toOut = document.querySelector(
         `.slick-slide[data-index='${next}'] .explore-texture-number`
       );
       const toIn = document.querySelector(
         `.slick-slide[data-index='${next}'] .explore-texture-number`
       );
-      toOut.classList.add("zoom-out");
-      toIn.classList.add("zoom-in");
+      toOut.classList.add('zoom-out');
+      toIn.classList.add('zoom-in');
     },
-    beforeChangeSlick(current, next) {
-      const after_me = document.querySelector(
-        `.slick-slide[data-index='${next + 1}'] .slide-wrapper`
-      );
-      const before_me = document.querySelector(
-        `.slick-slide[data-index='${next - 1}'] .slide-wrapper`
-      );
-      document
-        .querySelectorAll(".slick-slide .slide-wrapper")
-        .forEach((item) => {
-          item.classList.remove("opacity_in");
-        });
-      if (after_me) {
-        after_me.classList.add("opacity_in");
+    beforeChangeSlick (current, next) {
+      const prevBtn = document.getElementsByClassName('explore-control-prev');
+      const nextBtn = document.getElementsByClassName('explore-control-next');
+      if (next === this.slides.length - 1) {
+        prevBtn[0].classList.add('disable-btn');
+      } else {
+        prevBtn[0].classList.remove('disable-btn');
       }
-      if (before_me) {
-        before_me.classList.add("opacity_in");
+
+      if (next === 0) {
+        nextBtn[0].classList.add('disable-btn');
+      } else {
+        nextBtn[0].classList.remove('disable-btn');
       }
-      this.slickCurrentIndex = next;
-    },
-  },
+      // const after_me = document.querySelector(
+      //   `.slick-slide[data-index='${next + 1}'] .slide-wrapper`
+      // );
+      // const before_me = document.querySelector(
+      //   `.slick-slide[data-index='${next - 1}'] .slide-wrapper`
+      // );
+      // document
+      //   .querySelectorAll('.slick-slide .slide-wrapper')
+      //   .forEach((item) => {
+      //     item.classList.remove('opacity_in');
+      //   });
+      // if (after_me) {
+      //   after_me.classList.add('opacity_in');
+      // }
+      // if (before_me) {
+      //   before_me.classList.add('opacity_in');
+      // }
+      // this.slickCurrentIndex = next;
+    }
+  }
 };
 </script>
 <style scoped>
+.disable-btn{
+  background: #ebedf6;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .realworld {
   background-color: #fbfbff;
   padding-top: 50px;

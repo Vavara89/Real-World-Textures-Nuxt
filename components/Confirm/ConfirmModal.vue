@@ -3,47 +3,51 @@
     <div v-if="opened">
       <div class="modal is-address is-background centered-window">
         <div class="inner">
-          <span class="close" @click="toggleMessage()"/>
-          <h2>{{heading}}</h2>
+          <span class="close" @click="toggleMessage()" />
+          <h2>{{ heading }}</h2>
           <p class="style">
-            {{description}}
+            {{ description }}
           </p>
           <br>
           <br>
           <div class="buttons-row">
-            <button :disabled="processing" @click="$emit('confirmed')" class="button-primary button-primary--blue toggleOption static">Confirm</button>
-            <button :disabled="processing" @click="scrollSwitcher(false)" class="button-primary button-primary--green toggleOption static">Cancel</button>
+            <button :disabled="processing" class="button-primary button-primary--blue toggleOption static" @click="$emit('confirmed')">
+              Confirm
+            </button>
+            <button :disabled="processing" class="button-primary button-primary--green toggleOption static cancel-btn" @click="scrollSwitcher(false)">
+              Cancel
+            </button>
           </div>
         </div>
       </div>
-      <div class="silkscreen"/>
+      <div class="silkscreen" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props:{
-    heading:{
+  props: {
+    heading: {
       type: String,
       default: 'Please, confirm action'
     },
-    description:{
+    description: {
       type: String,
       default: 'Are you sure you want to confirm this action?'
     },
-    processing:{
+    processing: {
       type: Boolean,
       default: false
     }
   },
-  data(){
+  data () {
     return {
       opened: false
     };
   },
-  methods:{
-    scrollSwitcher(state) {
+  methods: {
+    scrollSwitcher (state) {
       if (state) {
         document.body.style.overflow = 'hidden';
       } else {
@@ -53,9 +57,15 @@ export default {
       }
       this.opened = !this.opened;
     },
-    toggleMessage(close=false) {
+    toggleMessage (close = false) {
       this.scrollSwitcher(close);
-    },
+    }
   }
-}
+};
 </script>
+
+<style scoped>
+.cancel-btn{
+  margin-left: 20px;
+}
+</style>
