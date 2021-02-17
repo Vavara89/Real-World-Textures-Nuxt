@@ -33,10 +33,19 @@
             <form-input-errors v-if="hasErrors('password')" :errors="getErrors('password')" />
           </div>
           <div :class="'signup__input'">
-            <select class="default">
-              <option>What is your work profile?</option>
-              <option v-for="label in types" value="">{{label}}</option>
+            <select v-model="input.proffesional" class="default">
+              <option selected="selected">
+                What is your work profile?
+              </option>
+              <option v-for="label in types" :value="label">
+                {{ label }}
+              </option>
             </select>
+          </div>
+          <div>
+            <label class="signup__checkbox h4-lowercase newsletters-check" :class="{'signup__checkbox--checked': input.newsletters}">
+              <input v-model="input.newsletters" type="checkbox">Newsletters
+            </label>
           </div>
           <div class="signup__recaptcha">
             <vue-recaptcha
@@ -95,7 +104,7 @@ export default {
     return {
       title: 'Account Regsiter',
       label: {
-        txtFirstName: 'First Name',
+        txtFirstName: 'Name',
         txtEmail: 'E-mail Address',
         txtPassword: 'Password'
       },
@@ -103,6 +112,8 @@ export default {
         firstName: '',
         email: '',
         password: '',
+        proffesional: 'What is your work profile?',
+        newsletters: false,
         agree: false,
         recaptcha: false
       },
@@ -133,14 +144,14 @@ export default {
         'Engineering',
         'Real estate',
         'Media/PR agency',
-        'Other',
+        'Other'
       ],
       errorsMessages: {
         firstName: {
           invalid: 'This field is required'
         },
         password: {
-          invalid: 'Password is as least 7 characters long and has at least 1 digit and 1 letter'
+          invalid: 'Password is as least 7 characters long and has  at least 1 uppercase letter, 1 lowercase letter and 1 number'
         },
         email: {
           invalid: 'Email is invalid'
@@ -156,10 +167,10 @@ export default {
   },
   computed: {
     profile_types () {
-      return this.types.map(item =>{
-        return { value: item }
+      return this.types.map((item) => {
+        return { value: item };
       });
-    },
+    }
   },
   methods: {
     submit (e) {
@@ -215,7 +226,7 @@ export default {
     },
     isPasswordValid () {
       console.log(this.input.password);
-      return this.input.password.length >= 7 && (/(?=.*[0-9])/.test(this.input.password));
+      return this.input.password.length >= 7 && (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/.test(this.input.password));
     },
     addFormValidationError (input, message) {
       this.formErrors[input].push(message);
@@ -247,6 +258,8 @@ export default {
         email: this.input.email,
         password: this.input.password,
         recaptcha: this.input.recaptcha,
+        proffesional: this.input.proffesional,
+        newsletters: this.input.newsletters,
         first_name: this.input.firstName
       }).catch((errors) => {
         if (errors.response) {
@@ -279,7 +292,7 @@ export default {
       }
     }
 
-  },
+  }
 
 };
 </script>

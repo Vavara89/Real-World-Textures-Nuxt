@@ -1,5 +1,5 @@
 export default {
-  data() {
+  data () {
     return {
       account: false,
       subscribe: null,
@@ -22,24 +22,17 @@ export default {
         {
           title: 'Brands',
           link: '/brands'
-        },
+        }
       ],
       mainMenu: [
         {
-          title: 'About',
-          link: '/content/about'
-        },
-        {
-          title: 'Services',
-          link: {
-            path: '/',
-            hash: '#services'
-          }
+          title: 'Digitization Services',
+          link: '/services'
         },
         {
           title: 'Pricing',
           link: '/pricing'
-        },
+        }
       ],
       profileMenu: [
         {
@@ -51,7 +44,11 @@ export default {
           link: '/profile/dashboard'
         },
         {
-          title: 'My assests',
+          title: 'Tutorials and Downloads',
+          link: '/tutorials'
+        },
+        {
+          title: 'My assets',
           link: '/textures?assets=true'
         },
         {
@@ -69,103 +66,103 @@ export default {
         {
           title: 'Bookmarks',
           link: '/bookmarked'
-        },
-      ],
+        }
+      ]
     };
   },
 
   computed: {
-    user() {
+    user () {
       return !!this.$auth.user && !!this.$auth.user.user
         ? this.$auth.user.user
         : null;
     },
 
-    profile() {
+    profile () {
       if (this.user.subscribe) {
         return this.user.subscribe.name;
       }
       return [this.user.profile.first_name, this.user.profile.last_name].join(
-        " "
+        ' '
       );
     },
 
-    credits() {
+    credits () {
       return this.profile.subscribe ? this.profile.subscribe.credits : 0;
     },
 
     counts: {
-      get() {
+      get () {
         if (this.bookmarked === null) {
           this.bookmarked = this.user.profile.total_bookmarked;
         }
         return this.bookmarked;
       },
 
-      set(value) {
+      set (value) {
         this.bookmarked = value;
-      },
-    },
+      }
+    }
   },
-  created() {
+  created () {
     this.$store.subscribe((mutation, state) => {
-      if (mutation.type === "setBookmarks") {
+      if (mutation.type === 'setBookmarks') {
         this.counts = state.bookmarks;
       }
     });
   },
   methods: {
-    getCatalogRoutes() {
-      const catalogRoutes = ["textures", "hdr", "models", "brands"];
+    getCatalogRoutes () {
+      const catalogRoutes = ['textures', 'hdr', 'models', 'brands'];
       catalogRoutes.map((route) => {
-        catalogRoutes.push(route + "-slug");
+        catalogRoutes.push(route + '-slug');
       });
       return catalogRoutes;
     },
 
-    isCatalogRoute() {
+    isCatalogRoute () {
       const catalogRoutes = this.getCatalogRoutes();
-      return catalogRoutes.indexOf(this.$route.name) >= 0;
+      return catalogRoutes.includes(this.$route.name);
     },
 
-    trigger(state) {
-      if (state !== "on") {
+    trigger (state) {
+      if (state !== 'on') {
         this.myToid = setTimeout(() => {
           this.hover = false;
         }, 0);
       }
 
-      if (state === "on") {
+      if (state === 'on') {
         clearTimeout(this.myToid);
       }
     },
 
-    externalClick(event) {
+    externalClick (event) {
       this.showAccount();
       this.hover = false;
     },
 
-    showAccount(state) {
+    showAccount (state) {
       this.account = !this.account;
       this.toggleProfileMenu();
     },
 
-    toggleProfileMenu(){
+    toggleProfileMenu () {
       const element = document.getElementById('profile-menu');
       const action = element.classList.contains('active') ? 'remove' : 'add';
       document.getElementById('profile-menu').classList[action]('active');
     },
-    async logout() {
+    async logout () {
       this.account = false;
       await this.$auth.logout();
-      return this.$router.push({ path: "/login" });
+      return this.$router.push({ path: '/login' });
     },
 
-    toBookmarks() {
-      return this.$router.push({ path: "/bookmarked" });
+    toBookmarks () {
+      return this.$router.push({ path: '/bookmarked' });
     },
 
-    getIsLogged() {
+    getIsLogged () {
       return (
         !!this.$auth.user &&
         !!this.$auth.user.user &&
@@ -173,13 +170,13 @@ export default {
       );
     },
 
-    hideMenu() {
-      const toggleButton = document.getElementById("menu-btn");
+    hideMenu () {
+      const toggleButton = document.getElementById('menu-btn');
       if (toggleButton.checked === true) {
         toggleButton.checked = false;
       } else {
         toggleButton.checked = true;
       }
-    },
-  },
+    }
+  }
 };

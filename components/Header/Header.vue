@@ -5,39 +5,43 @@
         <div class="left-holder">
           <div class="header__logo">
             <nuxt-link to="/" class="header-logo">
-              <SvgIconLogo/>
+              <SvgIconLogo />
             </nuxt-link>
           </div>
 
           <div class="search-menu-container">
-            <header-search/>
+            <header-search />
             <div class="header-nav catalog-nav hide-on-md-down">
               <ul class="menu">
                 <li
-                  class="menu-item"
                   v-for="item in catalogMenu"
+                  class="menu-item"
                   @click="hideMenu()"
                 >
-                  <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
+                  <nuxt-link :to="item.link" @click.native="setRedirectUrl(item.link)">
+                    {{ item.title }}
+                  </nuxt-link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="line"></div>
+        <div class="line" />
         <div class="header-nav">
-          <input id="menu-btn" class="menu-btn" type="checkbox"/>
+          <input id="menu-btn" class="menu-btn" type="checkbox">
           <label class="menu-icon" for="menu-btn">
-            <span class="navicon"/>
+            <span class="navicon" />
           </label>
 
           <ul class="menu">
             <li
-              class="hide-on-md-up menu-item"
               v-for="item in catalogMenu"
+              class="hide-on-md-up menu-item"
               @click="hideMenu()"
             >
-              <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
+              <nuxt-link :to="item.link" @click.native="setRedirectUrl(item.link)">
+                {{ item.title }}
+              </nuxt-link>
             </li>
             <!-- <div class="line"></div> -->
             <li
@@ -45,15 +49,21 @@
               class="menu-item"
               @click="hideMenu()"
             >
-              <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
+              <nuxt-link :to="item.link !== '/services' ? item.link : '#'" @click.native="setRedirectUrl(item.link)">
+                {{ item.title }}
+              </nuxt-link>
             </li>
 
             <template v-if="!getIsLogged()">
               <li class="menu-item" @click="hideMenu()">
-                <nuxt-link to="/login"> Log In</nuxt-link>
+                <nuxt-link to="/login">
+                  Log In
+                </nuxt-link>
               </li>
               <li class="header-button menu-item" @click="hideMenu()">
-                <nuxt-link to="/signup"> Sign Up</nuxt-link>
+                <nuxt-link to="/signup">
+                  Sign Up
+                </nuxt-link>
               </li>
             </template>
             <template v-if="getIsLogged()">
@@ -67,21 +77,25 @@
                 >Account</a>
                 <div
                   v-if="account || hover"
+                  id="profile-menu"
                   v-click-outside="externalClick"
                   class="missing"
-                  id="profile-menu"
                   @mouseover="trigger('on')"
                   @mouseleave="hover = false"
                 >
                   <div class="logmenu">
                     <div class="logmenu-top">
-                      <p @click="toggleProfileMenu()" class="close-profile-menu hide-on-md-up">back</p>
+                      <p class="close-profile-menu hide-on-md-up" @click="toggleProfileMenu()">
+                        back
+                      </p>
                       <p>{{ credits }} Subscription Credits</p>
                       <p>{{ profile }}</p>
                     </div>
                     <ul>
-                      <li class="menu-item" v-for="item in profileMenu">
-                        <nuxt-link :to="item.link">{{ item.title }}</nuxt-link>
+                      <li v-for="item in profileMenu" class="menu-item">
+                        <nuxt-link :to="item.link">
+                          {{ item.title }}
+                        </nuxt-link>
                       </li>
                       <li class="logout menu-item">
                         <a @click="logout">Log out</a>
@@ -107,28 +121,31 @@
   </header>
 </template>
 
-
 <script>
-import global from "~/mixins.js/global.js";
-import vClickOutside from "v-click-outside";
-import SvgIconLogo from "~/assets/img/logo.svg?inline";
-import HeaderSearch from "~/components/Header/HeaderSearch";
-import header from "@/mixins.js/header";
+import vClickOutside from 'v-click-outside';
+import global from '~/mixins.js/global.js';
+import SvgIconLogo from '~/assets/img/logo.svg?inline';
+import HeaderSearch from '~/components/Header/HeaderSearch';
+import header from '@/mixins.js/header';
 
 export default {
-  name: "Header",
-  mixins: [global, header],
+  name: 'Header',
   components: {
     SvgIconLogo,
-    HeaderSearch,
+    HeaderSearch
   },
   directives: {
-    clickOutside: vClickOutside.directive,
+    clickOutside: vClickOutside.directive
   },
+  mixins: [global, header],
   computed: {},
-  methods:{
-    setRedirectUrl(url){
-      if (url && url !== '/brands') {
+  methods: {
+    setRedirectUrl (url) {
+      console.log(url, '0000');
+
+      if (url && url === '/services') {
+        window.location.href = 'https://www.realworldtextures.com/';
+      } else if (url && url !== '/brands') {
         this.$store.commit('setRedirectUrl', url);
       }
     }
