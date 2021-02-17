@@ -2,15 +2,17 @@
   <footer class="footer">
     <div class="container container--content footer__grid">
       <div class="footer__info">
-        <h3 class="footer__title">Real World Textures</h3>
-        <p class="footer__text">
-          {{ textBlock.content }}
-        </p>
+        <h3 class="footer__title">
+          Real World Textures
+        </h3>
+        <p class="footer__text" v-html="textBlock.content" />
         <FooterSocial />
       </div>
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
-        <h3 class="footer__title">Join our community</h3>
+        <h3 class="footer__title">
+          Tutorials and downloads join our community
+        </h3>
         <FooterMailForm />
       </div>
       <div class="footer__policy">
@@ -24,83 +26,83 @@
 </template>
 
 <script>
-import FooterSocial from "@/components/Footer/FooterSocial";
-import FooterNav from "@/components/Footer/FooterNav";
-import FooterMailForm from "@/components/Footer/FooterMailForm";
-import FooterLinks from "@/components/Footer/FooterLinks";
-import main from "@/collectors/main";
+import FooterSocial from '@/components/Footer/FooterSocial';
+import FooterNav from '@/components/Footer/FooterNav';
+import FooterMailForm from '@/components/Footer/FooterMailForm';
+import FooterLinks from '@/components/Footer/FooterLinks';
+import main from '@/collectors/main';
 
 export default {
-  name: "Footer",
+  name: 'Footer',
   components: {
     FooterSocial,
     FooterNav,
     FooterMailForm,
-    FooterLinks,
+    FooterLinks
   },
-  created() {
-    this.textBlock = this.$store.getters.textBlocks
-      .filter((item) => item.key === "footer")
-      .pop();
-  },
-  data() {
+  data () {
     return {
       textBlock: {},
       footernavs: [
         {
-          title: "Company",
+          title: 'Company',
           sub_menus: [
             {
-              url: "/content/about",
-              name: "About",
+              url: '/content/about',
+              name: 'About'
             },
             {
-              url: "/brands",
-              name: "Partners",
-            },
-          ],
+              url: '/brands',
+              name: 'Partners'
+            }
+          ]
         },
         {
-          title: "Learning",
+          title: 'Learning',
           sub_menus: [
             {
-              url: "/tutorials",
-              name: "Tutorials",
+              url: '/tutorials',
+              name: 'Tutorials'
             },
             {
-              url: "/",
-              name: "FAQ",
-              hash: "faq",
-            },
-          ],
+              url: '/',
+              name: 'FAQ',
+              hash: 'faq'
+            }
+          ]
         },
         {
-          title: "Get in Touch",
+          title: 'Get in Touch',
           sub_menus: [
             {
               url: `mailto:${process.env.contacts.email}`,
-              name: "E-mail Us",
-              external: true,
+              name: 'E-mail Us',
+              external: true
             },
             {
               url: process.env.contacts.facebook_link,
-              name: "Facebook",
-              external: true,
+              name: 'Facebook',
+              external: true
             },
             {
               url: process.env.contacts.instagram_link,
-              name: "Instagram",
-              external: true,
+              name: 'Instagram',
+              external: true
             },
             {
               url: process.env.contacts.youtube_link,
-              name: "Youtube",
-              external: true,
-            },
-          ],
-        },
-      ],
+              name: 'Youtube',
+              external: true
+            }
+          ]
+        }
+      ]
     };
   },
+  created () {
+    this.textBlock = this.$store.getters.textBlocks
+      .filter(item => item.key === 'footer')
+      .pop();
+  }
 };
 </script>

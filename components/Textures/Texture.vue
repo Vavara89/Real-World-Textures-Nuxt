@@ -32,15 +32,21 @@ export default {
       type: Boolean,
       default: false
     }
-  },
+  }
 };
 </script>
-
 
 <style>
 
 .texture__content {
   display: block;
-  margin-left: 0;
+  text-align: left;
+  margin-top: 4rem;
+  margin-left: 5rem;
+}
+
+.texture__block .texture__image{
+  width: 250px;
+  height: 250px;
 }
 </style>

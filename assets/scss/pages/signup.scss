@@ -76,7 +76,7 @@
     height: 6.4rem;
 
     & + & {
-      margin-top: 1.6rem;
+      margin-top: 5rem;
     }
 
     label {
@@ -232,4 +232,8 @@
 
 .input-invalid label{
   color:$color-secondary-red;
+}
+.newsletters-check{
+  margin-top: 2rem !important;
+  margin-left: 0 !important;
 }

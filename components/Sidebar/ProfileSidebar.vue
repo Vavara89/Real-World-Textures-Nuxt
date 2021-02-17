@@ -1,13 +1,13 @@
 <template>
   <div class="leftsidebar profileside">
     <div class="profileside__logo">
-        <nuxt-link to="/" class="profileside-logo">
-          <SvgIconLogo />
-        </nuxt-link>
-      </div>
+      <nuxt-link to="/" class="profileside-logo">
+        <SvgIconLogo />
+      </nuxt-link>
+    </div>
     <ul class="profile">
       <li>
-        <nuxt-link to="/profile/dashboard" :class="{'active': isActive('profile')}">
+        <nuxt-link to="/profile/dashboard" :class="{'active': activeted === 'profile-dashboard'}">
           Profile
         </nuxt-link>
       </li>
@@ -17,17 +17,17 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/profile/invoices">
+        <nuxt-link to="/profile/invoices" :class="{'active': activeted === 'profile-invoices'}">
           My invoices
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/profile/discount">
+        <nuxt-link to="/profile/discount" :class="{'active': activeted === 'profile-discount'}">
           Discount code
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/profile/pricing">
+        <nuxt-link to="/profile/pricing" :class="{'active': activeted === 'profile-pricing'}">
           Pricing and plans
         </nuxt-link>
       </li>
@@ -40,7 +40,7 @@
   </div>
 </template>
 <script>
-import SvgIconLogo from "~/assets/img/logo.svg?inline";
+import SvgIconLogo from '~/assets/img/logo.svg?inline';
 import Dropdown from '@/components/Sidebar/Dropdown';
 import MaterialMenu from '@/components/Sidebar/MaterialMenu';
 import RefineFilter from '@/components/Sidebar/RefineFilter';
@@ -69,18 +69,32 @@ export default {
     profile: {
       type: Boolean,
       default: false
-    },
-    active: {
-      type: String,
-      default: 'profile'
     }
+    // active: {
+    //   type: String,
+    //   default: 'profile'
+    // }
   },
   data () {
-    return {};
+    return {
+      activeted: null
+    };
   },
-  methods: {
-    isActive (type) {
-      return type === this.active;
+  created () {
+    console.log(this.$route.name);
+    switch (this.$route.name) {
+      case 'profile-pricing':
+        this.activeted = 'profile-pricing';
+        break;
+      case 'profile-dashboard':
+        this.activeted = 'profile-dashboard';
+        break;
+      case 'profile-discount':
+        this.activeted = 'profile-discount';
+        break;
+      case 'profile-invoices':
+        this.activeted = 'profile-invoices';
+        break;
     }
   }
 };
@@ -112,10 +126,11 @@ export default {
 
     a {
       width: 100%;
-      padding: 20px 0;
+      padding: 14px 21px;
       display: block;
       border-radius: 100px;
       text-transform: uppercase;
+      transition: all 0.5s ease-in-out;
     }
 
     a:hover {

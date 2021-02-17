@@ -1,13 +1,13 @@
 <template>
   <div>
-    <SectionRealworld v-if="top_slider.length" :slides="top_slider"/>
-    <SectionExample v-if="examples_slider.length" :slides="examples_slider"/>
-    <SectionPhilosophy/>
-    <SectionServices :cards="services"/>
-    <SectionSubscribe/>
-    <SectionFaq :id="'faq'" :faqs="faqs"/>
-    <SectionCompatibility :logos="soft"/>
-    <SectionPartners :logos="brands"/>
+    <SectionRealworld v-if="top_slider.length" :slides="top_slider" />
+    <SectionExample v-if="examples_slider.length" :slides="examples_slider" />
+    <SectionPhilosophy />
+    <SectionServices :cards="services" />
+    <SectionSubscribe />
+    <SectionFaq :id="'faq'" :faqs="faqs" />
+    <SectionCompatibility :logos="soft" />
+    <SectionPartners :logos="brands" />
     <SectionOffer
       :subtitle="offer.subtitle"
       :title="offer.title"
@@ -17,17 +17,17 @@
 </template>
 
 <script>
-import SectionRealworld from "@/components/Sections/SectionRealworld";
-import SectionExample from "@/components/Sections/SectionExample";
-import SectionPhilosophy from "@/components/Sections/SectionPhilosophy";
-import SectionServices from "@/components/Sections/SectionServices";
-import SectionSubscribe from "@/components/Sections/SectionSubscribe";
-import SectionFaq from "@/components/Sections/SectionFaq";
-import SectionCompatibility from "@/components/Sections/SectionCompatibility";
-import SectionPartners from "@/components/Sections/SectionPartners";
-import SectionOffer from "@/components/Sections/SectionOffer";
-import main from "@/collectors/main";
-import catalog from "@/collectors/catalog";
+import SectionRealworld from '@/components/Sections/SectionRealworld';
+import SectionExample from '@/components/Sections/SectionExample';
+import SectionPhilosophy from '@/components/Sections/SectionPhilosophy';
+import SectionServices from '@/components/Sections/SectionServices';
+import SectionSubscribe from '@/components/Sections/SectionSubscribe';
+import SectionFaq from '@/components/Sections/SectionFaq';
+import SectionCompatibility from '@/components/Sections/SectionCompatibility';
+import SectionPartners from '@/components/Sections/SectionPartners';
+import SectionOffer from '@/components/Sections/SectionOffer';
+import main from '@/collectors/main';
+import catalog from '@/collectors/catalog';
 
 export default {
   components: {
@@ -39,9 +39,9 @@ export default {
     SectionFaq,
     SectionCompatibility,
     SectionPartners,
-    SectionOffer,
+    SectionOffer
   },
-  async asyncData(ctx) {
+  async asyncData (ctx) {
     let faqs = [];
     let brands = [];
     let soft = [];
@@ -55,13 +55,14 @@ export default {
       });
 
       await catalog.products("brands", "page_size=10&trusted=true").then((response) => {
+
         brands = response.data.results.map((item) => {
           return {
             link: item.absolute_url,
             image: {
               url: item.logo,
-              alt: item.name,
-            },
+              alt: item.name
+            }
           };
         });
       });
@@ -71,8 +72,8 @@ export default {
           return {
             image: {
               url: item.logo,
-              alt: item.name,
-            },
+              alt: item.name
+            }
           };
         });
       });
@@ -82,19 +83,19 @@ export default {
           return {
             image: {
               url: item.cover,
-              alt: item.name,
+              alt: item.name
             },
             title: item.name,
             subtitle: item.sub_title,
 
             text: item.content,
-            link: "#",
+            link: '#',
             sidebar: {
               isOpened: false,
-              videoCover: "",
-              text: item.content,
+              videoCover: '',
+              text: item.content
             },
-            video: item.video,
+            video: item.video
           };
         });
       });
@@ -103,38 +104,36 @@ export default {
         top_slider = response.data.top_slider;
         examples_slider = response.data.examples_slider;
       });
-
     } catch (e) {
       console.log(e);
     }
 
-
     return {
-      faqs: faqs,
-      brands: brands,
-      soft: soft,
-      services: services,
-      examples_slider: examples_slider,
-      top_slider: top_slider,
+      faqs,
+      brands,
+      soft,
+      services,
+      examples_slider,
+      top_slider
     };
   },
-  data() {
+  data () {
     return {
       offer: {
-        subtitle: "Try Real world textures and",
-        title: "Use free materials in your project",
+        subtitle: 'Sign in to Real-world Textures and',
+        title: 'Try our free assets',
         button: {
-          text: "Login to get free textures",
-          link: "/login",
-        },
+          text: 'Sign in to get free assets',
+          link: '/login'
+        }
       },
       faqs: [],
       brands: [],
       soft: [],
       services: [],
       examples_slider: [],
-      top_slider: [],
+      top_slider: []
     };
-  },
+  }
 };
 </script>

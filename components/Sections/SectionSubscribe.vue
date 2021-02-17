@@ -3,12 +3,12 @@
     <div class="container container--content">
       <div class="subscribe-outer">
         <div class="subscribe-inner">
-          <SectionTitle :title="title" :is-centered="false" :is-inverted="true" />
+          <SectionTitle :title="title" :is-centered="false" :is-inverted="true"/>
           <div class="toggle-button-wrap">
-            <ToggleSwitch @setDuration="childMessageReceived" />
+            <ToggleSwitch @setDuration="childMessageReceived"/>
           </div>
           <div class="price-table">
-            <PriceCardGrid :cards="cards" :duration="duration" />
+            <PriceCardGrid :cards="cards" :duration="duration"/>
           </div>
         </div>
       </div>
@@ -35,14 +35,14 @@ export default {
       required: false
     }
   },
-  data () {
+  data() {
     return {
       title: 'Subscribe',
       duration: ''
     };
   },
   computed: {
-    cards () {
+    cards() {
       const prices = this.$store.getters.prices;
       if (!prices.length) {
         return [];
@@ -66,28 +66,23 @@ export default {
         };
 
         const free = {
-            title: 'Free',
-            descr_title_month: `200+ freebies`,
-            descr_title_year: `400+ freebies`,
-            descr_subtitle: '',
-            descr_text1: 'Try it and enjoy our freebies',
-            descr_text2: 'Lorem ipsum',
-            descr_text3: 'Dolor sit amet',
-            currency: '$',
-            price_month: '0',
-            price_year: '0',
-            buttontext: 'Try for free',
-            buttonlink: '/'
-          };
+          title: 'Free',
+          descr_title_month: 'Free content',
+          descr_title_year: 'Free content',
+          descr_text1: 'Sign up for free and enjoy our free content',
+          buttontext: 'Get freelance',
+          buttonlink: '/'
+        };
         const products_plans = [
+       
           {
-            title: 'Freelance',
+            title: 'Basic',
             descr_title_month: `${price_month.freelancer.credits} credits`,
-            descr_title_year: `${price_year.freelancer.credits} credits`,
-            descr_subtitle: 'every month',
+            descr_title_year: `${price_month.freelancer.credits} credits`,
+            descr_subtitle: '1 month',
             descr_text1: 'For one individual with revenue  under $100K',
             descr_text2: 'Months of Credit Rollover With Active Subscription',
-            descr_text3: 'For 200 credits you get aprox. 45 Surfaces, or 22 3D Models, or 90 other asset types',
+            descr_text3: 'For 200 credits you get aprox. 30 textures, or 10 models, or 30 hdri',
             currency: '$',
             price_month: `${price_month.freelancer.amount}`,
             price_year: `${parseInt(price_year.freelancer.amount) / 12}`,
@@ -97,11 +92,11 @@ export default {
           {
             title: 'Professional',
             descr_title_month: `${price_month.pro.credits} credits`,
-            descr_title_year: `${price_year.pro.credits} credits`,
-            descr_subtitle: 'every month',
+            descr_title_year: `${price_month.pro.credits} credits`,
+            descr_subtitle: '3 month',
             descr_text1: 'For one seat with company revenue above $100K',
             descr_text2: 'Months of Credit Rollover With Active Subscription',
-            descr_text3: 'For 700 credits you get aprox. 100 Surfaces, or 50 3D Models, or 150 other asset types',
+            descr_text3: 'For 700 credits you get aprox. 80 textures, or 30 models,  30 hdri other asset types',
             currency: '$',
             price_month: `${price_month.pro.amount}`,
             price_year: `${parseInt(price_year.pro.amount) / 12}`,
@@ -109,7 +104,7 @@ export default {
             buttonlink: '/'
           }
         ];
-        if(!this.$auth.user){
+        if (!this.$auth.user) {
           products_plans.unshift(free);
         }
         return products_plans;
@@ -118,7 +113,8 @@ export default {
     }
   },
   methods: {
-    childMessageReceived (duration) {
+    childMessageReceived(duration) {
+      console.log(duration);
       if (duration === 'month') {
         this.duration = duration;
       }
@@ -126,7 +122,7 @@ export default {
         this.duration = duration;
       }
     },
-    getLink () {
+    getLink() {
     }
   }
 };

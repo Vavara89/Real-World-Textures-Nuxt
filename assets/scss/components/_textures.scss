@@ -148,9 +148,8 @@
   }
 
   &__name {
-    margin-bottom: .4rem;
     text-transform: uppercase;
-    font-size: 1.1vw;
+    font-size: 1.4rem;
 
     @media (max-width: 697px) {
       font-size: 1.5vw;
@@ -158,21 +157,22 @@
   }
 
   &__structure {
-    margin-bottom: 1rem;
-    font-size: 1.1vw;
+    font-size: 1.4rem;
 
     @media (max-width: 697px) {
       font-size: 1.5vw;
-      margin-bottom: 0.5rem;
-
     }
   }
 
   &__usage {
-    font-size: 1.1vw;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-top: 2rem;
 
     @media (max-width: 697px) {
       font-size: 1.5vw;
+      margin-bottom: 1.5rem;
+
     }
   }
 
@@ -207,18 +207,38 @@
       }
 
       &:after {
+        //position: absolute;
+        //right: 0;
+        //bottom: 0;
+        //left: 50%;
+        //display: block;
+        //width: 180px;
+        //height: 2.32rem;
+        //content: "";
+        //border-radius: 50%;
+        //background-color: rgba($color-primary-900, 0.08);
+        //transform: translateX(-50%);
+        //filter: blur(.9rem);
+
+        width: 16rem;
         position: absolute;
+        content: "";
+        left: 0;
         right: 0;
         bottom: 0;
-        left: 50%;
+        margin: 0 auto;
         display: block;
-        width: 180px;
-        height: 2.32rem;
-        content: "";
+        height: 0.3rem;
+        background: rgba(0, 0, 0, 0.3);
         border-radius: 50%;
-        background-color: rgba($color-primary-900, 0.08);
-        transform: translateX(-50%);
-        filter: blur(.9rem);
+        -webkit-filter: blur(0.3rem);
+        filter: blur(0.3rem);
+        -webkit-transition: 300ms;
+        -o-transition: 300ms;
+        transition: 300ms;
+        -webkit-transition-timing-function: ease-in-out;
+        -o-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out;
 
         @include transition-base;
 
