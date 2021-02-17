@@ -54,7 +54,7 @@ export default {
       subquestion: 'You ask – we answer',
       question: 'Frequently asked questions',
       tagline:
-        'We make community.</br> We create creative environment. </br> We search for the best answerures.',
+        'We build community.</br> We develop a creative environment. </br> We search for and offer the best textures.',
       opened_feedback: false
     };
   },
