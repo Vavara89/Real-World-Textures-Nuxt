@@ -74,7 +74,7 @@ export default {
           buttonlink: '/'
         };
         const products_plans = [
-       
+
           {
             title: 'Basic',
             descr_title_month: `${price_month.freelancer.credits} credits`,
