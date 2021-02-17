@@ -13,7 +13,7 @@
     >
       <div
         class="selected"
-        :class="{open: open}"
+        :class="{open: open,'custom-select-class': index % 2 !== 0}"
         @click="open = !open"
       >
         <span v-if="!checkselect">{{ selected.value }} <span v-if="selected.count" class="count">({{ selected.count }})</span></span>
@@ -33,7 +33,7 @@
           class="item"
           @click="click(item)"
         >
-          <div v-if="item.value !== 'Choose resolution' && checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck"></div>
+          <div v-if="item.value !== 'Choose resolution' && checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck" />
           <span v-if="item.value !== 'Choose resolution'">{{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span></span>
         </div>
       </div>
@@ -69,14 +69,10 @@ export default {
     checkselect: {
       type: Boolean,
       default: false
-    }
-  },
-  watch: {
-    'selected.short' (data) {
-      if (data && data !== 'brands') {
-        const path = '/' + data;
-        this.$store.commit('setRedirectUrl', path);
-      }
+    },
+    index: {
+      type: Number,
+      required: false
     }
   },
   data () {
@@ -87,6 +83,14 @@ export default {
       isselected: []
     };
   },
+  watch: {
+    'selected.short' (data) {
+      if (data && data !== 'brands') {
+        const path = '/' + data;
+        this.$store.commit('setRedirectUrl', path);
+      }
+    }
+  },
   methods: {
 
     clickCheck (sel) {
@@ -96,14 +100,14 @@ export default {
         this.isselected.push(sel);
       }
     },
-    click(item){
+    click (item) {
       this.open = this.checkselect;
-      this.selected=item;
-      if(this.checkselect){
-        this.clickCheck(this.selected.value, item.value)
+      this.selected = item;
+      if (this.checkselect) {
+        this.clickCheck(this.selected.value, item.value);
       }
       const data = this.checkselect ? this.isselected : item;
-      this.$emit('input', data)
+      this.$emit('input', data);
     }
   }
 };

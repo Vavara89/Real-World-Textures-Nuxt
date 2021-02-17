@@ -2,7 +2,7 @@
   <div>
     <section class="services inprofile">
       <div class="container container--content">
-        <CardGrid :cards="boxes" :is-profile="true"/>
+        <CardGrid :cards="boxes" :is-profile="true" />
         <CardSidebar
           v-for="(card, index) in boxes"
           :key="index"
@@ -69,15 +69,16 @@
           <section class="services view-bottom view-tut">
             <div class="container container--box">
               <!-- <SectionTitle :title="title" :perex="perex" :button="button" :isCentered="true" /> -->
-              <CardGrid :cards="tutorials" :is-more="true" :is-tutorial="true"/>
+              <CardGrid :cards="tutorials" :is-more="true" :is-tutorial="true" />
             </div>
           </section>
         </div>
       </div>
     </section>
+
     <section v-if="countWindow == 3">
       <div v-if="textures.length" class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -100,7 +101,7 @@
       </div>
 
       <div v-if="models.length" class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel v-if="models.length" ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -120,12 +121,12 @@
             <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
-        <div class="circle-big"/>
-        <div class="circle-small"/>
+        <div class="circle-big" />
+        <div class="circle-small" />
       </div>
 
       <div v-if="hdr.length" class="imageDetails-footer last">
-        <SectionTitle v-if="hdr.length" :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
+        <SectionTitle v-if="hdr.length" :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -142,15 +143,16 @@
             </div>
           </template>
           <div v-for="item in hdr" class="imageItem">
-              <img :src="item.cover" :alt="item.name">
+            <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
       </div>
     </section>
+
     <section v-if="countWindow == 5">
       <div v-if="textures.length" class="imageDetails-footer imageDetails--profile">
-        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
-        <VueSlickCarousel  ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -158,7 +160,7 @@
               </span>
             </div>
           </template>
-          
+
           <template #nextArrow="arrowOption">
             <div class="next-slick">
               <span class="button superb">
@@ -169,14 +171,13 @@
 
           <div v-for="item in textures" class="imageItem">
             <img :src="item.cover" :alt="item.name">
-            <CardSliderDetail :texture="item" :id="item.id" :hovered="true"/>
+            <CardSliderDetail :id="item.id" :texture="item" :hovered="true" />
           </div>
-          
         </VueSlickCarousel>
       </div>
       <div v-if="models.length" class="imageDetails-footer">
-        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
-        <VueSlickCarousel  ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -195,12 +196,12 @@
             <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
-        <div class="circle-big"/>
-        <div class="circle-small"/>
+        <div class="circle-big" />
+        <div class="circle-small" />
       </div>
       <div v-if="hdr.length" class="imageDetails-footer last2">
-        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
-        <VueSlickCarousel  ref="sliderNav2" class="default" v-bind="navCarousel2">
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
+        <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
               <span class="button superb">
@@ -222,10 +223,9 @@
       </div>
     </section>
 
-
     <section v-if="countWindow == 1">
       <div class="imageDetails-footer special">
-        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true"/>
+        <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel v-if="textures.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -248,7 +248,7 @@
       </div>
 
       <div class="imageDetails-footer special">
-        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true"/>
+        <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel v-if="models.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -268,12 +268,12 @@
             <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
-        <div class="circle-big"/>
-        <div class="circle-small"/>
+        <div class="circle-big" />
+        <div class="circle-small" />
       </div>
 
       <div v-if="hdr.length" class="imageDetails-footer last2">
-        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true"/>
+        <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel v-if="hdr.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
             <div class="prev-slick">
@@ -296,9 +296,8 @@
       </div>
     </section>
 
-
-    <SectionSubscribe :is-profile="true"/>
-    <div class="bluewrapper"/>
+    <SectionSubscribe :is-profile="true" />
+    <div class="bluewrapper" />
   </div>
 </template>
 
@@ -329,7 +328,7 @@ export default {
     VueSlickCarousel,
     CardSidebar,
     TooltipItem,
-    CardSliderDetail,
+    CardSliderDetail
   },
   async asyncData (ctx) {
     let partners = [];
@@ -337,19 +336,19 @@ export default {
     let models = [];
     let hdr = [];
     let tutorials = [];
-    await catalog.products('brands', 'page_size=10').then(response => {
+    await catalog.products('brands', 'page_size=10').then((response) => {
       partners = response.data.results.map((item) => {
         return {
           link: item.absolute_url,
           image: {
             url: item.logo,
-            alt: item.name,
+            alt: item.name
           }
         };
       });
     });
-    await main.tutorials(4).then(response => {
-      tutorials = response.data.results.map(item => {
+    await main.tutorials(4).then((response) => {
+      tutorials = response.data.results.map((item) => {
         return {
           image: {
             url: item.cover,
@@ -359,28 +358,28 @@ export default {
           subtitle:
             'Looking for nice floor or material for facade? No problem!',
           text: item.description,
-          link: item.video_url,
+          link: item.video_url
         };
       });
     });
 
-    await catalog.products('textures', 'page_size=10').then(response => {
+    await catalog.products('textures', 'page_size=10').then((response) => {
       textures = response.data.results;
     });
 
-    await catalog.products('hdr', 'page_size=10').then(response => {
+    await catalog.products('hdr', 'page_size=10').then((response) => {
       hdr = response.data.results;
     });
-    await catalog.products('models', 'page_size=10').then(response => {
+    await catalog.products('models', 'page_size=10').then((response) => {
       models = response.data.results;
     });
 
     return {
-      partners: partners,
-      tutorials: tutorials,
-      models: models,
-      hdr: hdr,
-      textures: textures
+      partners,
+      tutorials,
+      models,
+      hdr,
+      textures
     };
   },
   data () {
@@ -473,7 +472,7 @@ export default {
         dots: false,
         infinite: false,
         centerMode: false,
-        centerPadding: '1px',
+        centerPadding: '20px',
         variableWidth: false,
         slidesToScroll: 1,
         slidesToShow: 5,
@@ -545,7 +544,7 @@ export default {
         this.countWindow = 5;
       }
     },
-     showDetail (selectedTexture) {
+    showDetail (selectedTexture) {
       this.selectedTexture = selectedTexture;
       this.modalOpen = true;
     }
