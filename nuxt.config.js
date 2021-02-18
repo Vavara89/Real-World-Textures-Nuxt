@@ -75,7 +75,7 @@ const production = {
       facebook_link: 'http://facebook.com',
       instagram_link: 'http://instagram.com',
       linkedin_link: 'https://www.linkedin.com/',
-      email: 'info@rwt.ru'
+      email: 'team@reawote.com'
     }
   },
   axios: {

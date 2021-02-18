@@ -1,7 +1,7 @@
 <template>
   <div v-show="value" class="modal" :class="[option]">
     <div class="modal-container">
-      <div class="modal-header"  :class="{'heights': !canSearch}">
+      <div class="modal-header" :class="{'heights': !canSearch}">
         <div class="modal-close">
           <a href="#" class="button" @click.prevent="close">
             <img src="@/assets/img/icon-cross.svg" style="margin:10px;" width="12">
@@ -17,13 +17,13 @@
         </div>
         <div v-if="canSearch" class="search">
           <input v-model="term" type="text" placeholder="E.g. Ton">
-          <button @click="setFilter" class="toggleOption">
+          <button class="toggleOption" :class="{'selected-manufacture':selected_options.length}" @click="setFilter">
             Confirm
           </button>
         </div>
       </div>
       <div class="modal-body">
-        <ManufactorList @change="change" :list="search()" :set="set" />
+        <ManufactorList :list="search()" :set="set" @change="change" />
       </div>
       <div class="modal-footer" />
     </div>
@@ -57,7 +57,7 @@ export default {
       type: Boolean,
       default: true
     },
-    brand:{
+    brand: {
       type: Object,
       required: false
     }
@@ -73,35 +73,38 @@ export default {
     close () {
       this.$emit('input', !this.value);
     },
-    search(){
-      return this.list.filter((item)=>{
-          return this.term ? item.name.indexOf(this.term) > -1 : true;
+    search () {
+      return this.list.filter((item) => {
+        return this.term ? item.name.includes(this.term) : true;
       });
     },
-    change(brands){
-      this.selected_options = brands
+    change (brands) {
+      this.selected_options = brands;
     },
-    setFilter(){
-      this.$emit('change', this.selected_options)
+    setFilter () {
+      this.$emit('change', this.selected_options);
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-    @import "@/assets/scss/components/_modal.scss";
+@import "@/assets/scss/components/_modal.scss";
 
-                    .toggleOption {
-                    margin: 0 -1.7rem;
-                    padding: 1rem 5.3rem;
-                    border: none;
-                    font-weight: bold;
-                    border-radius: 5rem;
-                    background-color: #DDE0ED;
-                    color: $color-white;
-                    text-transform: uppercase;
+.toggleOption {
+  margin: 0 -1.7rem;
+  padding: 1rem 5.3rem;
+  border: none;
+  font-weight: bold;
+  border-radius: 5rem;
+  background-color: #DDE0ED;
+  color: $color-white;
+  text-transform: uppercase;
 
-                    &:hover {
-                      background-color: #4CBC81;
-                    }
-                }
+  &:hover {
+    background-color: #4CBC81;
+  }
+}
+.selected-manufacture{
+  background-color: #4CBC81;
+}
 </style>
