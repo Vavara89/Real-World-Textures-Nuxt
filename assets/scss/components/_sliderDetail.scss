@@ -3,12 +3,10 @@
   // height: 51rem;
   position: absolute;
   top: 0;
-  background-color: #fff;
-  z-index: 99999999;
-  -webkit-box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
-  -moz-box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
-  box-shadow: 0px 9px 24px -4px rgba(0,0,0,0.28);
-  
+  background-color: #FBFBFF;
+  box-shadow: 0 36px 40px 6px rgba(70,91,146,0.3 );
+  z-index: 1000;
+
 }
 
 .imageItem .sliderDetail {
@@ -24,7 +22,7 @@
   height: 51rem;
   width: 51rem;
   opacity: 1;
-  transition-delay: .1s;
+  //transition-delay: .1s;
   transition: all .3s ease-in-out;
   @include mq(xl, max) {
     height: 44rem;
@@ -35,7 +33,7 @@
     height: 36rem;
     width: 36rem;
   }
-  
+
   .sliderDetailContent {
     animation: 0.5s delay-overflow;
     transform: translate(0, 0);

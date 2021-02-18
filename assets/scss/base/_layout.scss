@@ -43,7 +43,7 @@
 .imageDetails--profile {
 
   .sliderDetail {
-   left: -100px;
+   left: 0;
 
    @include mq(xxl, max) {
     left: -150px;
@@ -52,7 +52,7 @@
     left: -120px;
    }
   }
-  
+
   .slick-prev, .slick-next {
     z-index: 99;
   }

@@ -62,7 +62,8 @@ export default {
           sub_menus: [
             {
               url: '/tutorials',
-              name: 'Tutorials'
+              name: 'Tutorials',
+              external: true
             },
             {
               url: '/',

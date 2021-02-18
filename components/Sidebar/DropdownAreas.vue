@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="header-search noright ar dropdown full size">
-      <div class="arr" :class="{'view-arr': open_suggestions}" @click="openCountries"></div>
+      <div class="arr" :class="{'view-arr': open_suggestions}" @click="openCountries" />
       <input
         v-model="search"
         type="text"
@@ -86,7 +86,7 @@ export default {
     },
     selected_option: null
   },
-  data() {
+  data () {
     return {
       search: this.$route.query.search_country ? this.$route.query.search_country : '',
       area_id: this.$route.query.area_id ? this.$route.query.area_id : '',
@@ -96,21 +96,31 @@ export default {
       keyUpTimeOut: undefined
     };
   },
+  watch: {
+    $route (to, from) {
+      if (!this.$route.query.search_country) {
+        this.search = '';
+      }
+      if (!this.$route.query.continent) {
+        this.continent = '';
+      }
+    }
+  },
   methods: {
-    openCountries (){
-      this.open_suggestions = !this.open_suggestions
+    openCountries () {
+      this.open_suggestions = !this.open_suggestions;
     },
-    getContinents() {
+    getContinents () {
       let continents = null;
       if (this.areas) {
         continents = this.areas.map(item => item[1]).filter((v, i, a) => a.indexOf(v) === i);
       }
       return continents;
     },
-    getCountries() {
+    getCountries () {
       const countries = [];
       const mapAreas = (item) => {
-        return {name: item[0], id: item[2]};
+        return { name: item[0], id: item[2] };
       };
       if (this.areas) {
         let countries = this.areas.map(mapAreas);
@@ -129,7 +139,7 @@ export default {
       }
       return countries;
     },
-    onKeyUpSearch() {
+    onKeyUpSearch () {
       if (this.keyUpTimeOut) {
         clearTimeout(this.keyUpTimeOut);
       }
@@ -138,50 +148,39 @@ export default {
         if (!this.open_suggestions) {
           this.cleanQuery('area_id');
           this.cleanQuery('search_country');
-        }else{
+        } else {
           this.pushToQuery('search_country', this.search);
         }
       }, 200);
     },
-    closeSuggestions() {
+    closeSuggestions () {
       setTimeout(() => {
         this.open_suggestions = false;
       }, 300);
     },
-    selectCountry(item) {
+    selectCountry (item) {
       this.search = item.name;
       this.pushToQuery('continent', this.continent);
       this.pushToQuery('search_country', this.search);
       this.pushToQuery('area_id', item.id);
     },
-    selectContinent(item) {
-      console.log(item,'1111')
+    selectContinent (item) {
       this.continent = item;
       this.pushToQuery('continent', item);
     },
-    pushToQuery(key, value) {
+    pushToQuery (key, value) {
       const query = {};
       Object.assign(query, this.$route.query);
       query[key] = value;
-      this.$router.push({path: this.$route.path, query});
+      this.$router.push({ path: this.$route.path, query });
     },
-    cleanQuery(key) {
+    cleanQuery (key) {
       const query = {};
       Object.assign(query, this.$route.query);
       query[key] ? delete query[key] : null;
-      this.$router.push({path: this.$route.path, query});
+      this.$router.push({ path: this.$route.path, query });
     }
-  },
-  watch: {
-    $route(to, from) {
-      if (!this.$route.query['search_country']) {
-        this.search = '';
-      }
-      if(!this.$route.query['continent']){
-        this.continent = '';
-      }
-    }
-  },
+  }
 
 };
 </script>

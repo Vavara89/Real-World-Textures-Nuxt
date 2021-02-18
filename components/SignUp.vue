@@ -44,18 +44,8 @@
           </div>
           <div>
             <label class="signup__checkbox h4-lowercase newsletters-check" :class="{'signup__checkbox--checked': input.newsletters}">
-              <input v-model="input.newsletters" type="checkbox">Newsletters
+              <input v-model="input.newsletters" type="checkbox">I want to receive newsletters and promotional offers.
             </label>
-          </div>
-          <div class="signup__recaptcha">
-            <vue-recaptcha
-              ref="recaptcha"
-              :load-recaptcha-script="true"
-              sitekey="6Le9u-8ZAAAAAKFsoiakKmu8zRx8H_T3DCW-xzPR"
-              @expired="onCaptchaExpired"
-              @verify="setCaptchaToken"
-            />
-            <form-input-errors v-if="hasErrors('recaptcha')" :errors="getErrors('recaptcha')" />
           </div>
           <label class="signup__checkbox h4-lowercase" :class="{'signup__checkbox--checked': input.agree}">
             <input v-model="input.agree" type="checkbox" @change="validateAgree">Creating an account means you’re okay
@@ -66,6 +56,16 @@
           </label>
           <div :class="['signup__input', isFilled(input.agree), hasErrors('agree') ? 'input-agree' : '']">
             <form-input-errors v-if="hasErrors('agree')" :errors="getErrors('agree')" />
+          </div>
+          <div class="signup__recaptcha">
+            <vue-recaptcha
+              ref="recaptcha"
+              :load-recaptcha-script="true"
+              sitekey="6Le9u-8ZAAAAAKFsoiakKmu8zRx8H_T3DCW-xzPR"
+              @expired="onCaptchaExpired"
+              @verify="setCaptchaToken"
+            />
+            <form-input-errors v-if="hasErrors('recaptcha')" :errors="getErrors('recaptcha')" />
           </div>
           <div class="signup__submit">
             <button
@@ -113,7 +113,7 @@ export default {
         email: '',
         password: '',
         proffesional: 'What is your work profile?',
-        newsletters: false,
+        newsletters: true,
         agree: false,
         recaptcha: false
       },

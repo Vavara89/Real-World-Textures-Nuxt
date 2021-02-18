@@ -44,7 +44,7 @@ export default {
           link: '/profile/dashboard'
         },
         {
-          title: 'Tutorials and Downloads',
+          title: 'Tutorials',
           link: '/tutorials'
         },
         {

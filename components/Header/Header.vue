@@ -93,7 +93,7 @@
                     </div>
                     <ul>
                       <li v-for="item in profileMenu" class="menu-item">
-                        <nuxt-link :to="item.link">
+                        <nuxt-link :to="item.link !== '/tutorials' ? item.link : '#'" @click.native="setRedirectUrl(item.link)">
                           {{ item.title }}
                         </nuxt-link>
                       </li>
@@ -141,9 +141,9 @@ export default {
   computed: {},
   methods: {
     setRedirectUrl (url) {
-      console.log(url, '0000');
-
-      if (url && url === '/services') {
+      if (url && url === '/tutorials') {
+        window.open(window.location.origin + url);
+      } else if (url && url === '/services') {
         window.location.href = 'https://www.realworldtextures.com/';
       } else if (url && url !== '/brands') {
         this.$store.commit('setRedirectUrl', url);
