@@ -488,7 +488,6 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error, '11111');
           this.downloadErrors = error.response.data.errors;
           this.processing = false;
           // clearTimeout(timeout);

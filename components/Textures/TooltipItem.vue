@@ -40,8 +40,15 @@
             {{ texture.credits }} credits
           </h4>
         </div>
-        <div v-if="texture.isBookmarked" class="bookmark">
-          <img src="@/assets/img/icon-bookmark-3.svg">
+        <div class="bookmark">
+          <a href="javascript:void(0)" @click="addBook">
+            <img
+              v-if="!texture.isBookmarked"
+              src="@/assets/img/icon-bookmark-1.svg"
+              class="image"
+            >
+            <img v-else src="@/assets/img/icon-bookmark-3.svg">
+          </a>
         </div>
       </div>
     </div>
@@ -51,6 +58,7 @@
 import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+import profile from '~/collectors/profile';
 
 export default {
   name: 'TooltipItem',
@@ -85,6 +93,17 @@ export default {
     }
   },
   methods: {
+    addBook () {
+      if (!this.$auth.loggedIn) {
+        return this.toLogin();
+      }
+      profile
+        .toggleBookMark(this.$route.name, this.texture.id)
+        .then((response) => {
+          this.texture.isBookmarked = !response.data.deleted;
+          this.$store.commit('setBookmarks', response.data.totals);
+        });
+    },
     onHover () {
       const elementRight = this.$refs.tooltip.getBoundingClientRect().right;
       const windowWidth = window.innerWidth;

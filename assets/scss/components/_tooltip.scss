@@ -69,6 +69,12 @@
     .credits-bookmark {
       display: flex;
       justify-content: space-between;
+
+      .bookmark{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
     }
   }
 }
