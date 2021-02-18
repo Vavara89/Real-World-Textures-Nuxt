@@ -8,7 +8,7 @@
             Apply Your Discount Code
           </h2>
           <h3>
-            and get 1 month subscription for 1$
+            Keep in mind that next month will be charged for the regular price of the basic subscription plan - you can cancel your subscription before subscription renewal (within 30 days)
           </h3>
 
           <div class="input__discount" :class="{'input__discount--filled': checkInputDiscount}">
@@ -30,7 +30,7 @@ import Button from '@/components/Button';
 import ProfileSidebar from '@/components/Sidebar/ProfileSidebar';
 
 export default {
-  layout: "withoutLogo",
+  layout: 'withoutLogo',
   name: 'Discount',
   middleware: 'auth',
   components: {

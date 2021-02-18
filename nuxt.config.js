@@ -1,4 +1,4 @@
-let production = {
+const production = {
   mode: 'universal',
   /*
   ** Headers of the page
@@ -13,7 +13,7 @@ let production = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    script: [{ type: 'module', src: 'https://js.stripe.com/v3/' }],
+    script: [{ type: 'module', src: 'https://js.stripe.com/v3/' }]
   },
   /*
   ** Customize the progress-bar color
@@ -32,7 +32,7 @@ let production = {
     { src: '@/plugins/vClickOutside', ssr: false },
     { src: '~/plugins/notifications-ssr', mode: 'server' },
     { src: '~/plugins/notifications-client', mode: 'client' },
-    { src: '~/plugins/v-mask', mode: 'client' },
+    { src: '~/plugins/v-mask', mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -48,7 +48,7 @@ let production = {
     '@nuxtjs/auth',
     '@nuxtjs/style-resources',
     '@nuxtjs/svg',
-    'cookie-universal-nuxt',
+    'cookie-universal-nuxt'
   ],
   styleResources: {
     scss: [
@@ -62,7 +62,7 @@ let production = {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend (config, ctx) {
     },
     vendor: ['vue-notifications']
   },
@@ -70,12 +70,12 @@ let production = {
     // baseUrl: 'http://192.168.0.73:8000/',
     baseUrl: 'https://rwt.bypixelfield.com/',
 
-
     contacts: {
       youtube_link: 'http://youtube.com',
       facebook_link: 'http://facebook.com',
       instagram_link: 'http://instagram.com',
-      email: 'info@rwt.ru',
+      linkedin_link: 'https://www.linkedin.com/',
+      email: 'info@rwt.ru'
     }
   },
   axios: {
@@ -83,7 +83,7 @@ let production = {
   },
   auth: {
     plugins: [
-      '~/plugins/auth.js',
+      '~/plugins/auth.js'
     ],
     redirect: {
       login: '/login',
@@ -114,9 +114,9 @@ let production = {
       options: {
         path: '/'
       },
-      expires: 1,
+      expires: 1
     }
-  },
+  }
 
 };
 

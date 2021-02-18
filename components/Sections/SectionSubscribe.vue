@@ -3,12 +3,12 @@
     <div class="container container--content">
       <div class="subscribe-outer">
         <div class="subscribe-inner">
-          <SectionTitle :title="title" :is-centered="false" :is-inverted="true"/>
+          <SectionTitle :title="title" :is-centered="false" :is-inverted="true" />
           <div class="toggle-button-wrap">
-            <ToggleSwitch @setDuration="childMessageReceived"/>
+            <ToggleSwitch @setDuration="childMessageReceived" />
           </div>
           <div class="price-table">
-            <PriceCardGrid :cards="cards" :duration="duration"/>
+            <PriceCardGrid :cards="cards" :duration="duration" />
           </div>
         </div>
       </div>
@@ -35,14 +35,14 @@ export default {
       required: false
     }
   },
-  data() {
+  data () {
     return {
       title: 'Subscribe',
-      duration: ''
+      duration: 'year'
     };
   },
   computed: {
-    cards() {
+    cards () {
       const prices = this.$store.getters.prices;
       if (!prices.length) {
         return [];
@@ -113,7 +113,7 @@ export default {
     }
   },
   methods: {
-    childMessageReceived(duration) {
+    childMessageReceived (duration) {
       console.log(duration);
       if (duration === 'month') {
         this.duration = duration;
@@ -122,7 +122,7 @@ export default {
         this.duration = duration;
       }
     },
-    getLink() {
+    getLink () {
     }
   }
 };

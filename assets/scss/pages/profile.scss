@@ -375,7 +375,8 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #9093B9;
-      margin-bottom: 80px;
+      margin: 0 auto 80px auto;
+      max-width: 600px;
     }
 
     .input__discount {

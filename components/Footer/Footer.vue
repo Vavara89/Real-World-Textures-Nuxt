@@ -48,10 +48,6 @@ export default {
           title: 'Company',
           sub_menus: [
             {
-              url: '/content/about',
-              name: 'About'
-            },
-            {
               url: '/brands',
               name: 'Partners'
             }
@@ -93,6 +89,10 @@ export default {
             {
               url: process.env.contacts.youtube_link,
               name: 'Youtube',
+              external: true
+            }, {
+              url: process.env.contacts.linkedin_link,
+              name: 'Linkedin',
               external: true
             }
           ]
