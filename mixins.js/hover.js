@@ -1,7 +1,6 @@
 export default {
   methods: {
     handlePointerEvent(enable, index) {
-      console.log('handlePointerEvent', enable, index);
       const items = isNaN(index)
         ? document.querySelectorAll(`.texture`)
         : document.querySelectorAll(`.texture:not([data-index="${index}"]`);
