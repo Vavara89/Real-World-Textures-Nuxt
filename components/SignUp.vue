@@ -44,7 +44,7 @@
           </div>
           <div>
             <label class="signup__checkbox h4-lowercase newsletters-check" :class="{'signup__checkbox--checked': input.newsletters}">
-              <input v-model="input.newsletters" type="checkbox">I want to receive newsletters and promotional offers.
+              <input v-model="input.newsletters" type="checkbox">I do not want to receive any newsletters and promotional offers.
             </label>
           </div>
           <label class="signup__checkbox h4-lowercase" :class="{'signup__checkbox--checked': input.agree}">
@@ -259,7 +259,7 @@ export default {
         password: this.input.password,
         recaptcha: this.input.recaptcha,
         proffesional: this.input.proffesional,
-        newsletters: this.input.newsletters,
+        newsletters: !this.input.newsletters,
         first_name: this.input.firstName
       }).catch((errors) => {
         if (errors.response) {
