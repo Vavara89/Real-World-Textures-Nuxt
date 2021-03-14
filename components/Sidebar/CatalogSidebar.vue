@@ -223,7 +223,8 @@ export default {
       return false;
     },
     clearFilter() {
-      this.$router.push({ path: this.$route.path });
+      const parts = this.$route.path.split('/')
+      this.$router.push({ path: `/${parts[1] ?? ''}` });
     },
     changeCatalogType(value) {
       this.$router.replace({
