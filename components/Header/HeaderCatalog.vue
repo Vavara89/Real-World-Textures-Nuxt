@@ -82,7 +82,6 @@
                   v-click-outside="externalClick"
                   class="missing"
                   @mouseover="trigger('on');handlePointerEvent(false)"
-
                   @mouseleave="hover = false;handlePointerEvent(true)"
                 >
                   <div class="logmenu">
