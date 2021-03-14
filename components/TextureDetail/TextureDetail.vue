@@ -72,7 +72,7 @@
                 </a>
               </div>
             </template>
-            <div v-for="item_image in texture.gallery" class="imageItem">
+            <div v-for="(item_image, index) in texture.gallery" :key="index" class="imageItem">
               <img :src="item_image.image" :alt="texture.name">
             </div>
           </VueSlickCarousel>
@@ -274,7 +274,7 @@ export default {
     return {
       sliderMain: {
         dots: false,
-        infinite: false,
+        infinite: true,
         centerMode: false,
         variableWidth: false,
         slidesToScroll: 1,
@@ -282,7 +282,7 @@ export default {
       },
       navCarousel: {
         dots: false,
-        infinite: false,
+        infinite: true,
         slidesToScroll: 1,
         slidesToShow:
           this.texture.gallery && this.texture.gallery.length >= 5
@@ -332,10 +332,9 @@ export default {
   },
 
   mounted () {
-    console.log('mounted');
     document.body.style.overflow = 'hidden';
     this.navCarousel.asNavFor = this.$refs.sliderMain;
-    this.sliderRelated.asNavFor = this.$refs.sliderMain;
+    this.sliderMain.asNavFor = this.$refs.sliderNav;
     const downloads = this.$store.getters.checkDownload;
     if (downloads.length) {
       this.setProcess(downloads);
