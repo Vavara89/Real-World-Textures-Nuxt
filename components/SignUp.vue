@@ -151,7 +151,7 @@ export default {
           invalid: 'This field is required'
         },
         password: {
-          invalid: 'Password is as least 7 characters long and has  at least 1 uppercase letter, 1 lowercase letter and 1 number'
+          invalid: 'The password must be at least 7 characters long and have at least 1 uppercase letter, 1 lowercase letter, and 1 number'
         },
         email: {
           invalid: 'Email is invalid'
