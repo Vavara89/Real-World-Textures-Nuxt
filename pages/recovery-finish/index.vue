@@ -92,7 +92,7 @@ export default {
       this.isSubmitted = true;
       this.cleanErrors();
       if (!this.isPasswordValid()) {
-        this.addFormValidationError('password', 'Password is as least 7 characters long and has at least 1 digit and 1 letter');
+        this.addFormValidationError('password', 'The password must be at least 7 characters long and have at least 1 uppercase letter, 1 lowercase letter, and 1 number');
       }
       if (!this.input.token.length) {
         this.addFormValidationError('token', 'Token should be filled');
