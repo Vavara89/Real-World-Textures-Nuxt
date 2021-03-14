@@ -45,7 +45,7 @@ export default {
   margin-left: 5rem;
 }
 
-.texture__block .texture__image{
+.texture__block .texture__image:not(.brands) {
   width: 250px;
   height: 250px;
 }
