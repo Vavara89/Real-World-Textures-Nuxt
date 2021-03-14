@@ -72,6 +72,9 @@ export default {
     },
     showDetail: {
       type: Function
+    },
+    index: {
+      type: Number
     }
   },
   data () {
@@ -104,7 +107,15 @@ export default {
           this.$store.commit('setBookmarks', response.data.totals);
         });
     },
+    handlePointerEvent(enable) {
+      const items = document.querySelectorAll(`.texture:not([data-index="${this.index}"]`);
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        item.style.pointerEvents = enable ? 'auto' : 'none';
+      }
+    },
     onHover () {
+      this.handlePointerEvent(false);
       const elementRight = this.$refs.tooltip.getBoundingClientRect().right;
       const windowWidth = window.innerWidth;
 
@@ -113,6 +124,7 @@ export default {
       }
     },
     onHoverOut () {
+      this.handlePointerEvent(true);
       return this.toolChange = false;
     },
     showDetails () {

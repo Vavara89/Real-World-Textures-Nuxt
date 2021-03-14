@@ -5,6 +5,7 @@
         v-for="(texture, index) in textures"
         :key="'texture-' + index"
         class="texture"
+        :data-index="index"
         :class="{ brands: isBrand }"
       >
         <TextureItem
@@ -19,6 +20,7 @@
           :texture="texture"
           :show-detail="showDetail"
           :isBrand="isBrand"
+          :index="index"
         />
         <div v-if="texture.isBookmarked" class="book">
           <img src="@/assets/img/icon-bookmark-3.svg" alt />
