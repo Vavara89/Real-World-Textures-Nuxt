@@ -59,12 +59,14 @@ import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import profile from '~/collectors/profile';
+import hover from '@/mixins.js/hover';
 
 export default {
   name: 'TooltipItem',
   components: {
     VueSlickCarousel
   },
+  mixins: [hover],
   props: {
     texture: {
       type: Object,
@@ -107,15 +109,8 @@ export default {
           this.$store.commit('setBookmarks', response.data.totals);
         });
     },
-    handlePointerEvent(enable) {
-      const items = document.querySelectorAll(`.texture:not([data-index="${this.index}"]`);
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        item.style.pointerEvents = enable ? 'auto' : 'none';
-      }
-    },
     onHover () {
-      this.handlePointerEvent(false);
+      this.handlePointerEvent(false, this.index);
       const elementRight = this.$refs.tooltip.getBoundingClientRect().right;
       const windowWidth = window.innerWidth;
 
@@ -124,7 +119,7 @@ export default {
       }
     },
     onHoverOut () {
-      this.handlePointerEvent(true);
+      this.handlePointerEvent(true, this.index);
       return this.toolChange = false;
     },
     showDetails () {

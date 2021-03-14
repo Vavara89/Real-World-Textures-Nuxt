@@ -74,15 +74,16 @@
                   @click="showAccount('again')"
                   @mouseover="hover = true"
                   @tap="hover = true"
-                  @mouseleave="trigger()"
+                  @mouseleave="trigger();handlePointerEvent(true)"
                 >Account</a>
                 <div
                   v-if="account || hover"
                   id="profile-menu"
                   v-click-outside="externalClick"
                   class="missing"
-                  @mouseover="trigger('on')"
-                  @mouseleave="hover = false"
+                  @mouseover="trigger('on');handlePointerEvent(false)"
+
+                  @mouseleave="hover = false;handlePointerEvent(true)"
                 >
                   <div class="logmenu">
                     <div class="logmenu-top">
@@ -93,7 +94,7 @@
                       <p>{{ profile }}</p>
                     </div>
                     <ul>
-                      <li v-for="item in profileMenu" class="menu-item">
+                      <li v-for="(item, index) in profileMenu" :key="index" class="menu-item">
                         <nuxt-link :to="item.link !== '/tutorials' ? item.link : '#'" @click.native="setRedirectUrl(item.link)">
                           {{ item.title }}
                         </nuxt-link>
@@ -128,6 +129,7 @@ import global from '~/mixins.js/global.js';
 import SvgIconLogo from '~/assets/img/logo.svg?inline';
 import HeaderSearch from '~/components/Header/HeaderSearch';
 import header from '@/mixins.js/header';
+import hover from '@/mixins.js/hover';
 
 export default {
   name: 'HeaderCatalog',
@@ -138,7 +140,7 @@ export default {
   directives: {
     clickOutside: vClickOutside.directive
   },
-  mixins: [global, header],
+  mixins: [global, header, hover],
   data () {
     return {};
   },
