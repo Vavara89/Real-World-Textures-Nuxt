@@ -8,12 +8,15 @@
             Apply Your Discount Code
           </h2>
           <h3>
-            Keep in mind that next month will be charged for the regular price of the basic subscription plan - you can cancel your subscription before subscription renewal (within 30 days)
+            And get 1 month of Basic subscription plan for free
           </h3>
 
           <div class="input__discount" :class="{'input__discount--filled': checkInputDiscount}">
             <input v-model="input.discount" type="text" class="chrome">
             <label for>Your Discount Code</label>
+          </div>
+          <div class="notice">
+            Keep in mind that next month will be charged for the regular price of the basic subscription plan - you can cancel your subscription before subscription renewal (within 30 days)
           </div>
           <div style="display: block">
             <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
