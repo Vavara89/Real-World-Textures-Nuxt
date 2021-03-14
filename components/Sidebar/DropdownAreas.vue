@@ -46,6 +46,7 @@
     <div class="header-search noright ar dropdown full size">
       <div class="arr" :class="{'view-arr': open_suggestions}" @click="openCountries" />
       <input
+        ref="search"
         v-model="search"
         type="text"
         name="s"
@@ -109,6 +110,10 @@ export default {
   methods: {
     openCountries () {
       this.open_suggestions = !this.open_suggestions;
+      if (this.open_suggestions) {
+        console.log('open focus');
+        this.$refs.search.focus();
+      }
     },
     getContinents () {
       let continents = null;
@@ -154,6 +159,7 @@ export default {
       }, 200);
     },
     closeSuggestions () {
+      console.log('closeSuggestions');
       setTimeout(() => {
         this.open_suggestions = false;
       }, 300);
