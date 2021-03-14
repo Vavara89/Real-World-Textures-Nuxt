@@ -49,4 +49,8 @@ export default {
   width: 250px;
   height: 250px;
 }
+.hdr-gallery .texture__block .texture__image {
+  width: auto;
+  height: auto;
+}
 </style>

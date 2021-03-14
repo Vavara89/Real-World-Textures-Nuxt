@@ -127,8 +127,12 @@
 
 .hdr-gallery {
   .texture {
-    width: 21.6rem !important;
+    width: 23.6rem !important;
     height: 10.8rem !important;
+  }
+  .texture__block .texture__image {
+    width: auto;
+    height: auto;
   }
 
 }
