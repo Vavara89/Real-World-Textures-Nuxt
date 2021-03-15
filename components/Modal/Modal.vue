@@ -74,8 +74,10 @@ export default {
       this.$emit('input', !this.value);
     },
     search () {
+      const term = this.term.toLowerCase();
       return this.list.filter((item) => {
-        return this.term ? item.name.includes(this.term) : true;
+        const name = item.name.toLowerCase();
+        return this.term ? name.includes(term) : true;
       });
     },
     change (brands) {
@@ -83,6 +85,7 @@ export default {
     },
     setFilter () {
       this.$emit('change', this.selected_options);
+      this.close();
     }
   }
 };
