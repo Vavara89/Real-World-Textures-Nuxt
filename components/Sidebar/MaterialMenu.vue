@@ -14,7 +14,7 @@
 
       <ul v-if="isActive(item)" class="subItems">
         <li v-for="(child, index) in item.child" :key="'item-' + index" class="item">
-          <a v-bind:class="{'active':(isActive(child))}" @click="toCategory(child)">{{ child.name }}</a>
+          <a v-bind:class="{'active':isActive(child)}" @click="toCategory(child)">{{ child.name }}</a>
         </li>
       </ul>
     </li>
@@ -49,7 +49,7 @@ export default {
 
     isActive (item) {
       const currentUrl = this.$route.path.split('?')[0];
-      if (item.absolute_url === currentUrl) {
+      if (item.absolute_url.split('?')[0] === currentUrl) {
         return true;
       }
       if (item.child.length) {

@@ -164,7 +164,6 @@ export default {
         const itm =  types
           .filter((item) => item.short === this.filter.catalog_type)
           .pop();
-        this.reloadKey += 1;
         return itm;
       }
       return {};
@@ -238,6 +237,11 @@ export default {
       });
     },
   },
+  watch: {
+    filter (data) {
+      this.reloadKey += 1;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

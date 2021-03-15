@@ -89,9 +89,6 @@ export default {
         const path = '/' + data;
         this.$store.commit('setRedirectUrl', path);
       }
-    },
-    'selected' (data) {
-      console.log('selected', data);
     }
   },
   methods: {
