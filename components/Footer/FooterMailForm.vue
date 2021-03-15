@@ -1,12 +1,12 @@
 <template>
   <form @submit="subscribe" action class="footer-mailform">
     <input v-model="email" type="text" class="footer-mailform__input" placeholder="Enter your e-mail"/>
-    <div v-if="error" class="error">{{error}}</div>
     <input
       type="submit"
       class="footer-mailform__button button-primary button-primary--inverted"
       value="Join now!"
     />
+    <div v-if="error" class="error">{{error}}</div>
     <div v-if="success" class="error">{{success}}</div>
   </form>
 </template>
