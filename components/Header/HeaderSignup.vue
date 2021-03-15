@@ -18,7 +18,8 @@
               <ul class="menu">
                 <li
                   class="menu-item"
-                  v-for="item in catalogMenu"
+                  v-for="(item, index) in catalogMenu"
+                  :key="`x_${index}`"
                   @click="hideMenu()"
                 >
                   <nuxt-link :to="item.link" @click.native='setRedirectUrl(item.link)'> {{ item.title }}</nuxt-link>
@@ -36,18 +37,22 @@
           <ul class="menu">
             <li
               class="hide-on-md-up menu-item"
-              v-for="item in catalogMenu"
+              v-for="(item, index) in catalogMenu"
+              :key="`y_${index}`"
               @click="hideMenu()"
             >
               <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
             </li>
             <!-- <div class="line"></div> -->
             <li
-              v-for="item in mainMenu"
+              v-for="(item, index) in mainMenu"
+              :key="`z_${index}`"
               class="menu-item"
               @click="hideMenu()"
             >
-              <nuxt-link :to="item.link"> {{ item.title }}</nuxt-link>
+              <nuxt-link :to="item.link !== '/services' ? item.link : '#'" @click.native="setRedirectUrl(item.link)">
+                {{ item.title }}
+              </nuxt-link>
             </li>
 
             <template v-if="!getIsLogged()">
@@ -135,7 +140,9 @@ export default {
     setRedirectUrl(url){
       if (url && url !== '/brands') {
         this.$store.commit('setRedirectUrl', url);
-      }
+      } else if (url && url === '/services') {
+        window.location.href = 'https://www.realworldtextures.com/';
+      } 
     }
   }
 };

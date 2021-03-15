@@ -15,7 +15,8 @@
             <div class="header-nav catalog-nav hide-on-md-down">
               <ul class="menu">
                 <li
-                  v-for="item in catalogMenu"
+                  v-for="(item, index) in catalogMenu"
+                  :key="`x_${index}`"
                   class="menu-item"
                   @click="hideMenu()"
                 >
@@ -36,7 +37,8 @@
 
           <ul class="menu">
             <li
-              v-for="item in catalogMenu"
+              v-for="(item, index) in catalogMenu"
+              :key="`y_${index}`"
               class="hide-on-md-up menu-item"
               @click="hideMenu()"
             >
@@ -46,11 +48,12 @@
             </li>
             <!-- <div class="line"></div> -->
             <li
-              v-for="item in mainMenu"
+              v-for="(item, index) in mainMenu"
+              :key="`z_${index}`"
               class="menu-item"
               @click="hideMenu()"
             >
-              <nuxt-link :to="item.link">
+              <nuxt-link :to="item.link !== '/services' ? item.link : '#'" @click.native="setRedirectUrl(item.link)">
                 {{ item.title }}
               </nuxt-link>
             </li>
@@ -146,8 +149,11 @@ export default {
   computed: {},
   methods: {
     setRedirectUrl (url) {
+      console.log('url', url);
       if (url && url === '/tutorials') {
         window.open(window.location.origin + url);
+      } else if (url && url === '/services') {
+        window.location.href = 'https://www.realworldtextures.com/';
       } else if (url && url !== '/brands') {
         this.$store.commit('setRedirectUrl', url);
       }

@@ -14,7 +14,8 @@
             <div class="header-nav catalog-nav hide-on-md-down">
               <ul class="menu">
                 <li
-                  v-for="item in catalogMenu"
+                  v-for="(item, index) in catalogMenu"
+                  :key="`x_${index}`"
                   class="menu-item"
                   @click="hideMenu()"
                 >
@@ -35,7 +36,8 @@
 
           <ul class="menu">
             <li
-              v-for="item in catalogMenu"
+              v-for="(item, index) in catalogMenu"
+              :key="`y_${index}`"
               class="hide-on-md-up menu-item"
               @click="hideMenu()"
             >
@@ -45,7 +47,8 @@
             </li>
             <!-- <div class="line"></div> -->
             <li
-              v-for="item in mainMenu"
+              v-for="(item, index) in mainMenu"
+              :key="`z_${index}`"
               class="menu-item"
               @click="hideMenu()"
             >
