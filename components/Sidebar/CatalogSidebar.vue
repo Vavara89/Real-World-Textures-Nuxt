@@ -159,13 +159,11 @@ export default {
       return null;
     },
     getActiveType() {
-      console.log('getActiveType');
       const types = this.getTypes();
       if (this.filter && this.filter.catalog_type) {
         const itm =  types
           .filter((item) => item.short === this.filter.catalog_type)
           .pop();
-        console.log('itm', itm);
         this.reloadKey += 1;
         return itm;
       }
