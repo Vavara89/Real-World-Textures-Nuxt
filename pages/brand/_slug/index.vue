@@ -72,6 +72,7 @@ import CatalogSidebar from '@/components/Sidebar/CatalogSidebar';
 
 export default {
   name: 'Textures',
+  layout: 'withoutLogo',
   components: {
     SectionTitle,
     TextureGallery,
