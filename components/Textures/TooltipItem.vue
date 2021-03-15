@@ -123,7 +123,7 @@ export default {
       return this.toolChange = false;
     },
     showDetails () {
-      this.$store.commit('setRedirectUrl', this.$route.path)
+      this.$store.commit('setRedirectUrl', this.$route.fullPath)
       if (this.texture.absoluteUrl) {
         this.$router.replace({ path: this.texture.absoluteUrl });
       } else {
