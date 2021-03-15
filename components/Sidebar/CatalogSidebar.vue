@@ -28,6 +28,7 @@
 
       <Dropdown
         v-if="getTypes()"
+        :key="reloadKey"
         :options="getTypes()"
         :selected_option="getActiveType()"
         @input="changeCatalogType"
@@ -100,6 +101,7 @@ export default {
   },
   data() {
     return {
+      reloadKey: 0,
       openBurger: false,
       width: null,
       height: true
@@ -134,6 +136,7 @@ export default {
         return [
           {
             value: "Textures",
+            count: this.filter.counts.textures,
             short: "textures",
           },
           {
@@ -156,11 +159,15 @@ export default {
       return null;
     },
     getActiveType() {
+      console.log('getActiveType');
       const types = this.getTypes();
       if (this.filter && this.filter.catalog_type) {
-        return types
+        const itm =  types
           .filter((item) => item.short === this.filter.catalog_type)
           .pop();
+        console.log('itm', itm);
+        this.reloadKey += 1;
+        return itm;
       }
       return {};
     },
