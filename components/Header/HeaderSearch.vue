@@ -125,8 +125,8 @@ export default {
   },
   fetch() {
     this.route = this.$route.name;
-    this.selected_option = null;
-    this.getOrDefaultSelected();
+    // this.selected_option = null;
+    // this.getOrDefaultSelected();
   },
   computed: {
     selected: {
