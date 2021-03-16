@@ -11,7 +11,7 @@
               <td style="min-width: 280px;">
                 &nbsp;
               </td>
-              <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
+              <td v-if="!user" style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
                 Free
               </td>
               <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
@@ -118,27 +118,9 @@
                   Get Professional
                 </button>
               </td>
-              <!-- <td>
-              &nbsp;
-              </td> -->
             </tr>
-            <!--              <tr>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td style="text-align: center; padding-left: 32px;">-->
-            <!--                  <a href="#" class="button-tertiary button-tertiary&#45;&#45;green">cancle subscription</a>-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--              </tr>-->
             </tbody>
           </table>
-          <!-- DivTable.com -->
         </div>
 
         <div v-if="width < 1000" class="pricing ismobile">
@@ -310,6 +292,7 @@ export default {
   },
   computed: {
     user() {
+      console.log('this.$auth.user', this.$auth.user);
       return this.$auth.user;
     },
     payment() {
