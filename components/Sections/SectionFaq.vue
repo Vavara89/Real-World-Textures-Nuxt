@@ -1,6 +1,6 @@
 <template>
   <section class="faq" :class="{ 'view-padding': noPadding }">
-    <div class="container container--content">
+    <div id="help" class="container container--content">
       <SectionTitle
         :subquestion="subquestion"
         :title="question"

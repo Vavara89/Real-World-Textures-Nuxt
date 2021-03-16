@@ -6,7 +6,7 @@
         <img src="@/assets/img/icon-wrong.svg" alt />
         <h2>Something went wrong</h2>
         <p class="style">omg we're sorry. please, check it later.</p>
-        <a href="#" class="style green">or get help</a>
+        <a href="/#help" class="style green">or get help</a>
       </div>
     </div>
     <div class="silkscreen"></div>
