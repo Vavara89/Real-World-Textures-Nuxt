@@ -178,6 +178,24 @@
     }
   }
 
+  &:nth-child(2) {
+    padding-left: 0;
+    padding-right: 0;
+
+    .card__img {
+      margin-bottom: -4.5rem;
+
+      img {
+        width: 34rem;
+        border-radius: 0;
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="services inprofile">
+    <section class="services inprofile dart-section">
       <div class="container container--content">
         <CardGrid :cards="boxes" :is-profile="true" />
         <CardSidebar
@@ -32,7 +32,7 @@
             />
           </div>
         </div>
-        <div class="cols">
+        <div class="cols ">
           <div class="wrappers">
             <div v-for="partner in partners" class="boxes">
               <a :href="partner.link">
@@ -43,7 +43,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section class="dart-section">
       <div class="rows">
         <div class="cols">
           <div class="inner">
@@ -76,7 +76,7 @@
       </div>
     </section>
 
-    <section v-if="countWindow == 3">
+    <section class="dart-section" v-if="countWindow == 3">
       <div v-if="textures.length" class="imageDetails-footer">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel">
@@ -173,10 +173,6 @@
             <img :src="item.cover" :alt="item.name">
             <CardSliderDetail :id="item.id" :texture="item" :hovered="true" />
           </div>
-          <<<<<<< HEAD
-          =======
-
-          >>>>>>> 29fd26ce7fa0a535da6be698199c4bb4e38f182d
         </VueSlickCarousel>
       </div>
       <div v-if="models.length" class="imageDetails-footer">
@@ -200,8 +196,8 @@
             <img :src="item.cover" :alt="item.name">
           </div>
         </VueSlickCarousel>
-        <div class="circle-big" />
-        <div class="circle-small" />
+        <!-- <div class="circle-big" />
+        <div class="circle-small" /> -->
       </div>
       <div v-if="hdr.length" class="imageDetails-footer last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
@@ -227,7 +223,7 @@
       </div>
     </section>
 
-    <section v-if="countWindow == 1">
+    <section class="dart-section" v-if="countWindow == 1">
       <div class="imageDetails-footer special">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel v-if="textures.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
@@ -428,7 +424,7 @@ export default {
         },
         {
           image: {
-            url: require('@/assets/img/spheres/models.png'),
+            url: require('@/assets/img/spheres/model.png'),
             alt: ''
           },
           title: 'Models',

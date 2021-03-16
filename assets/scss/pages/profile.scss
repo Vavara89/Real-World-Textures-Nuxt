@@ -19,8 +19,12 @@
           }
 
         &.news {
-            overflow-x: auto;;
+          overflow-x: auto;
 
+          &::-webkit-scrollbar {
+            width: 0;  /* Remove scrollbar space */
+            background: transparent;  /* Optional: just make scrollbar invisible */
+          }
         }
 
         .inner {
@@ -208,7 +212,16 @@
     }
 
     &.last2 {
-        margin-bottom: 50px;
+      margin-bottom: 50px;
+      .slick-list {
+        width: 90%;
+        margin: auto;
+      }
+      .imageItem {
+        img {
+          width: 21rem;
+        }
+      }
     }
 
     .superb {
@@ -242,6 +255,8 @@
         width: 20%;
         outline: 0;
         position: relative;
+
+        
 
         img {
             // width: 12rem;
@@ -1781,5 +1796,13 @@
     position: absolute;
     top: -10px;
     left: 70px;
+  }
+}
+
+.dart-section {
+  background-color: $color-primary-300;
+
+  .rows, .services {
+    background: none;
   }
 }
