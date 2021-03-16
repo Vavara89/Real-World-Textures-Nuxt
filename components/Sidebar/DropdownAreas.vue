@@ -55,7 +55,8 @@
         class="search-area"
         autocomplete="off"
         @keyup="onKeyUpSearch"
-        @blur="closeSuggestions"
+        @focus="hasFocus = true"
+        @blur="closeSuggestions(); hasFocus = false"
       >
       <div v-if="getCountries()" class="suggestions">
         <ul v-if="open_suggestions" class="countries">
@@ -94,7 +95,8 @@ export default {
       continent: this.$route.query.continent ? this.$route.query.continent : null,
       open: false,
       open_suggestions: false,
-      keyUpTimeOut: undefined
+      keyUpTimeOut: undefined,
+      hasFocus: false
     };
   },
   watch: {
@@ -111,7 +113,6 @@ export default {
     openCountries () {
       this.open_suggestions = !this.open_suggestions;
       if (this.open_suggestions) {
-        console.log('open focus');
         this.$refs.search.focus();
       }
     },
@@ -159,9 +160,10 @@ export default {
       }, 200);
     },
     closeSuggestions () {
-      console.log('closeSuggestions');
       setTimeout(() => {
-        this.open_suggestions = false;
+        if (this.hasFocus === false) {
+          this.open_suggestions = false;
+        }
       }, 300);
     },
     selectCountry (item) {
