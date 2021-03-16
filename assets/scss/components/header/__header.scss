@@ -429,6 +429,11 @@
   }
 }
 
+@media screen and (min-width: 1700px) {
+  .left-holder {
+    margin-left: 5rem;
+  }
+}
 
 .header-logo {
   &--light {
