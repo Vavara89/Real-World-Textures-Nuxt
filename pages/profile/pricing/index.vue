@@ -12,17 +12,11 @@
                 &nbsp;
                 </td>
                 <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
-                  Free
-                </td>
-                <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
                   Freelance
                 </td>
                 <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
                   Professional
                 </td>
-                <!-- <td style="width: 200px; border-left: 1px solid #DDE0ED;">
-                &nbsp;
-                </td> -->
               </tr>
               <tr>
                 <td style="padding-left: 20px;">
@@ -34,9 +28,6 @@
                   />
                 </td>
                 <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
-                  <span>0$</span>
-                </td>
-                <td style="text-align: center; border-left: 1px solid #DDE0ED;" class="price">
                   <span v-if="isMonth">{{ idleMonth.amount }}$</span>
                   <span v-if="!isMonth">{{ idleYears.amount / 12 }}$</span>
                 </td>
@@ -44,9 +35,6 @@
                   <span v-if="isMonth">{{ proMonth.amount }}$</span>
                   <span v-if="!isMonth">{{ proYears.amount / 12 }}$</span>
                 </td>
-                <!-- <td style="border-left: 1px solid #DDE0ED;">
-                &nbsp;
-                </td> -->
               </tr>
               <tr>
                 <td>
@@ -58,22 +46,10 @@
                 <td style="text-align: center; padding-bottom: 20px; border-left: 1px solid #DDE0ED;">
                   per month
                 </td>
-                <td style="text-align: center; padding-bottom: 20px; border-left: 1px solid #DDE0ED;">
-                  per month
-                </td>
-                <!-- <td style="border-left: 1px solid #DDE0ED;">
-                &nbsp;
-                </td> -->
               </tr>
               <tr>
                 <td style="padding: 20px 0 20px 40px; background-color: #F2F3F9;">
                   Credits Per Month
-                </td>
-                 <td
-                  style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
-                >
-                  <span v-if="isMonth">200+ freebies</span>
-                  <span v-if="!isMonth">400+ freebies</span>
                 </td>
                 <td
                   style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
@@ -87,16 +63,10 @@
                   <span v-if="isMonth">{{ proMonth.credits }}</span>
                   <span v-if="!isMonth">{{ proYears.credits / 12 }}</span>
                 </td>
-                <!-- <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
-                &nbsp;
-                </td> -->
               </tr>
               <tr>
                 <td>
                 &nbsp;
-                </td>
-                <td style="padding: 50px 0 20px 0; text-align: center;">
-
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
                   <button v-if="currentIs(false, !isMonth)" class="toggleOption gray staticwidth">
@@ -114,27 +84,9 @@
                     Get Professional
                   </button>
                 </td>
-                <!-- <td>
-                &nbsp;
-                </td> -->
               </tr>
-            <!--              <tr>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td style="text-align: center; padding-left: 32px;">-->
-            <!--                  <a href="#" class="button-tertiary button-tertiary&#45;&#45;green">cancle subscription</a>-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--                <td>-->
-            <!--&nbsp;-->
-            <!--                </td>-->
-            <!--              </tr>-->
             </tbody>
           </table>
-          <!-- DivTable.com -->
         </div>
 
         <div v-if="width < 1000" class="pricing ismobile">
