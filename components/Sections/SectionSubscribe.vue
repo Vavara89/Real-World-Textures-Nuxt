@@ -76,6 +76,20 @@ export default {
         const products_plans = [
 
           {
+            title: 'Free',
+            descr_title_month: '200+ freebies',
+            descr_title_year: '200+ freebies',
+            descr_subtitle: '1 month',
+            descr_text1: 'Try it and enjoy our freebies',
+            descr_text2: 'Lorem ipsum',
+            descr_text3: 'Dolor sit amet',
+            currency: '$',
+            price_month: '0',
+            price_year: '0',
+            buttontext: 'Try For Free',
+            buttonlink: '/'
+          },
+          {
             title: 'Basic',
             descr_title_month: `${price_month.freelancer.credits} credits`,
             descr_title_year: `${price_month.freelancer.credits} credits`,
