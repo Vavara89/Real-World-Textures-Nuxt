@@ -60,6 +60,11 @@
           Clear all Filters
         </button>
       </div>
+      <div v-if="canClear && height"  :class="{'clear-btn': height }">
+        <button style="visibility: hidden" type="reset" class="clearFilter h4" @click="clearFilter()">
+          Clear all Filters
+        </button>
+      </div>
 
     </div>
   </div>
@@ -120,7 +125,7 @@ export default {
   },
   methods: {
     scrollContent(){
-      this.height = window.pageYOffset <= 90;
+      this.height = window.pageYOffset <= 70;
     },
     onResize() {
       this.innerWidth();
