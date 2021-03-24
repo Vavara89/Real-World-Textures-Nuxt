@@ -6,233 +6,235 @@
   >
     <div class="background" @click.prevent="close" />
     <div class="detail-container">
-      <div class="imageDetails">
-        <div class="imageDetails-header">
-          <div>
-            <a class="button" @click.prevent="close">
-              <img
-                src="@/assets/img/icon-cross.svg"
-                style="margin: 10px"
-                width="16"
-              >
-            </a>
-          </div>
-          <div class="imageDetails-options">
-            <div v-if="texture.in_assets" class="download">
-              <img src="@/assets/img/icon-download.svg">
+      <div class="detail-container__wrapper">
+        <div class="imageDetails">
+          <div class="imageDetails-header">
+            <div>
+              <a class="button" @click.prevent="close">
+                <img
+                  src="@/assets/img/icon-cross.svg"
+                  style="margin: 10px"
+                  width="16"
+                >
+              </a>
             </div>
+            <div class="imageDetails-options">
+              <div v-if="texture.in_assets" class="download">
+                <img src="@/assets/img/icon-download.svg">
+              </div>
 
-            <div v-show="texture.is_free" class="freeMark">
+              <div v-show="texture.is_free" class="freeMark">
+                <a
+                  href
+                  class="badge-rounded color-bck-secondary--green h4"
+                >Free</a>
+              </div>
+            </div>
+          </div>
+          <div v-if="texture.gallery.length" class="imageDetails-content">
+            <VueSlickCarousel
+              v-if="texture.gallery.length"
+              ref="sliderMain"
+              v-bind="sliderMain"
+              class="default"
+            >
+              <div v-for="item_image in texture.gallery" class="previewImg">
+                <img :src="item_image.image">
+              </div>
+            </VueSlickCarousel>
+
+            <div
+              v-if="texture.tutorialUrl && type_code !== 'models'"
+              class="tutorial"
+            >
               <a
-                href
-                class="badge-rounded color-bck-secondary--green h4"
-              >Free</a>
+                :href="texture.tutorialUrl"
+                target="_blank"
+              ><label class="badge-play h4">Tutorial</label></a>
             </div>
           </div>
-        </div>
-        <div v-if="texture.gallery.length" class="imageDetails-content">
-          <VueSlickCarousel
-            v-if="texture.gallery.length"
-            ref="sliderMain"
-            v-bind="sliderMain"
-            class="default"
-          >
-            <div v-for="item_image in texture.gallery" class="previewImg">
-              <img :src="item_image.image">
-            </div>
-          </VueSlickCarousel>
-
-          <div
-            v-if="texture.tutorialUrl && type_code !== 'models'"
-            class="tutorial"
-          >
-            <a
-              :href="texture.tutorialUrl"
-              target="_blank"
-            ><label class="badge-play h4">Tutorial</label></a>
-          </div>
-        </div>
-        <div v-if="texture.gallery.length" class="imageDetails-footer">
-          <VueSlickCarousel
-            v-if="texture.gallery.length"
-            ref="sliderNav"
-            v-bind="navCarousel"
-          >
-            <template #prevArrow="arrowOption">
-              <div class="prev-slick">
-                <a href="#" class="button">
-                  <img src="@/assets/img/icon-arrow_left.svg">
-                </a>
-              </div>
-            </template>
-            <template #nextArrow="arrowOption">
-              <div class="next-slick">
-                <a href="#" class="button">
-                  <img src="@/assets/img/icon-arrow_left.svg">
-                </a>
-              </div>
-            </template>
-            <div v-for="(item_image, index) in texture.gallery" :key="index" class="imageItem">
-              <img :src="item_image.image" :alt="texture.name">
-            </div>
-          </VueSlickCarousel>
-        </div>
-
-        <div v-if="type_code === 'models' && relatedTextures" class="visuallyshow">
-          <div class="relatedtextures">
-            <h3>Related<br>textures:</h3>
-            <a href="#" class="button-secondary">See all</a>
-          </div>
-          <div class="relatedslider">
-            <!-- Carousel Models start -->
-            <div class="imageDetails-footer">
-              <VueSlickCarousel
-                ref="sliderRelated"
-                v-bind="sliderRelated"
-                class="default"
-              >
-                <template #prevArrow="arrowOption">
-                  <div class="prev-slick">
-                    <a href="#" class="button">
-                      <img src="@/assets/img/icon-arrow_left.svg">
-                    </a>
-                  </div>
-                </template>
-                <template #nextArrow="arrowOption">
-                  <div class="next-slick">
-                    <a href="#" class="button">
-                      <img src="@/assets/img/icon-arrow_left.svg">
-                    </a>
-                  </div>
-                </template>
-                <div v-for="item_image in texture.gallery" class="imageItem">
-                  <img :src="item_image.image" :alt="texture.name" class>
+          <div v-if="texture.gallery.length" class="imageDetails-footer">
+            <VueSlickCarousel
+              v-if="texture.gallery.length"
+              ref="sliderNav"
+              v-bind="navCarousel"
+            >
+              <template #prevArrow="arrowOption">
+                <div class="prev-slick">
+                  <a href="#" class="button">
+                    <img src="@/assets/img/icon-arrow_left.svg">
+                  </a>
                 </div>
-              </VueSlickCarousel>
+              </template>
+              <template #nextArrow="arrowOption">
+                <div class="next-slick">
+                  <a href="#" class="button">
+                    <img src="@/assets/img/icon-arrow_left.svg">
+                  </a>
+                </div>
+              </template>
+              <div v-for="(item_image, index) in texture.gallery" :key="index" class="imageItem">
+                <img :src="item_image.image" :alt="texture.name">
+              </div>
+            </VueSlickCarousel>
+          </div>
+        </div>
+        <div class="details">
+          <div class="title">
+            <h4 class="name">
+              {{ texture.name }}
+            </h4>
+          </div>
+          <div class="credits-bookmark">
+            <div v-if="texture.credits" class="credits h3">
+              <label>{{ texture.credits }}</label>
+              credits
             </div>
-            <!-- Carousel Models end -->
+            <div class="bookmark changed">
+              <a href="javascript:void(0)" @click="toggleBookMark">
+                <img
+                  v-if="!texture.isBookmarked"
+                  src="@/assets/img/icon-bookmark-1.svg"
+                  class="image"
+                >
+                <img
+                  v-if="!texture.isBookmarked"
+                  src="@/assets/img/icon-bookmark-2.svg"
+                  class="hover"
+                >
+                <img
+                  v-if="texture.isBookmarked"
+                  src="@/assets/img/icon-bookmark-2.svg"
+                >
+              </a>
+            </div>
+          </div>
+          <div class="options">
+            <div
+              class="option-item resolution"
+              :class="{ error: resolution_error }"
+            >
+              <div class="label">
+                <label v-if="type_code == 'models'" class="h3">Format:</label>
+                <label v-else class="h3">Resolution:</label>
+              </div>
+              <div class="option">
+                <Dropdown
+                  v-model="resolution"
+                  :options="options"
+                  :checkselect="true"
+                />
+              </div>
+            </div>
+            <div v-if="!type_code === 'hdr' && !type_code === 'models'" class="option-item dimension">
+              <div class="label">
+                <label class="h3">{{ type_title }}<br>Dimensions:</label>
+              </div>
+              <div class="option pad">
+                <label class="text">{{ texture.dimension }}</label>
+              </div>
+            </div>
+            <div v-if="!type_code === 'hdr' && !type_code === 'models'" class="option-item last">
+              <div class="label">
+                <label class="h3">Consisting of:</label>
+              </div>
+              <div class="option scroll">
+                <ul class="consisting-list">
+                  <li
+                    v-for="(item, index) in texture.maps"
+                    :key="'consist-' + index"
+                    class="text"
+                  >
+                    {{ get_map_name(item) }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="description">
+            <label class="h3">Description:</label>
+            <p class="text">
+              {{ texture.description }}
+            </p>
+          </div>
+          <div v-if="texture.brand" class="brand">
+            <div class="label">
+              <label class="h3">Brand:</label>
+            </div>
+            <div v-if="texture.brand" class="option scroll">
+              <label class="brand">{{ texture.brand.name }}</label>
+              <a
+                target="_blank"
+                class="brand-link"
+                :href="formatWebsite(texture.brand.webSite)"
+              >{{ texture.brand.webSite }}</a>
+            </div>
+          </div>
+          <div
+            v-if="texture.longitude && texture.latitude"
+            class="description locator"
+          >
+            <label class="h3">Location:</label>
+            <div class="text">
+              <p>
+                {{ formatCoords() }}
+              </p>
+              <p>
+                <a target="_blank" :href="getGoogleLink()">show on Google Maps</a>
+              </p>
+            </div>
+          </div>
+          <div class="download">
+            <div v-if="downloadErrors" style="color: red" class="downloadErrors">
+              <h3>{{ downloadErrors }}</h3>
+            </div>
+            <button
+              v-if="!processing"
+              class="button-primary nohover"
+              @click="downLoad"
+            >
+              Download for {{ texture.credits }} credits
+            </button>
+            <button v-if="processing" class="button-primary button-primary--blue">
+              <img class="rotate" src="@/assets/img/icon-processing-button.svg">
+              Processing...
+            </button>
           </div>
         </div>
       </div>
-      <div class="details">
-        <div class="title">
-          <h4 class="name">
-            {{ texture.name }}
-          </h4>
+      <div v-if="type_code === 'models' && relatedTextures" class="visuallyshow">
+        <div class="relatedtextures">
+          <h3>Related<br>textures:</h3>
+          <a href="#" class="button-secondary">See all</a>
         </div>
-        <div class="credits-bookmark">
-          <div v-if="texture.credits" class="credits h3">
-            <label>{{ texture.credits }}</label>
-            credits
+        <div class="relatedslider">
+          <!-- Carousel Models start -->
+          <div class="imageDetails-footer">
+            <VueSlickCarousel
+              ref="sliderRelated"
+              v-bind="sliderRelated"
+              class="default"
+            >
+              <template #prevArrow="arrowOption">
+                <div class="prev-slick">
+                  <button class="button">
+                    <img src="@/assets/img/icon-arrow_left.svg">
+                  </button>
+                </div>
+              </template>
+              <template #nextArrow="arrowOption">
+                <div class="next-slick">
+                  <button class="button">
+                    <img src="@/assets/img/icon-arrow_left.svg">
+                  </button>
+                </div>
+              </template>
+              <a v-for="relatedItem in relatedTextures" :key="relatedItem.id" href="#" class="imageItem">
+                <img :src="relatedItem.gallery[0].image" :alt="relatedItem.name">
+              </a>
+            </VueSlickCarousel>
           </div>
-          <div class="bookmark changed">
-            <a href="javascript:void(0)" @click="toggleBookMark">
-              <img
-                v-if="!texture.isBookmarked"
-                src="@/assets/img/icon-bookmark-1.svg"
-                class="image"
-              >
-              <img
-                v-if="!texture.isBookmarked"
-                src="@/assets/img/icon-bookmark-2.svg"
-                class="hover"
-              >
-              <img
-                v-if="texture.isBookmarked"
-                src="@/assets/img/icon-bookmark-2.svg"
-              >
-            </a>
-          </div>
-        </div>
-        <div class="options">
-          <div
-            class="option-item resolution"
-            :class="{ error: resolution_error }"
-          >
-            <div class="label">
-              <label class="h3">Resolution:</label>
-            </div>
-            <div class="option">
-              <Dropdown
-                v-model="resolution"
-                :options="options"
-                :checkselect="true"
-              />
-            </div>
-          </div>
-          <div class="option-item dimension">
-            <div class="label">
-              <label class="h3">{{ type_title }}<br>Dimensions:</label>
-            </div>
-            <div class="option pad">
-              <label class="text">{{ texture.dimension }}</label>
-            </div>
-          </div>
-          <div class="option-item last">
-            <div class="label">
-              <label class="h3">Consisting of:</label>
-            </div>
-            <div class="option scroll">
-              <ul class="consisting-list">
-                <li
-                  v-for="(item, index) in texture.maps"
-                  :key="'consist-' + index"
-                  class="text"
-                >
-                  {{ get_map_name(item) }}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="description">
-          <label class="h3">Description:</label>
-          <p class="text">
-            {{ texture.description }}
-          </p>
-        </div>
-        <div v-if="texture.brand" class="brand">
-          <div class="label">
-            <label class="h3">Brand:</label>
-          </div>
-          <div v-if="texture.brand" class="option scroll">
-            <label class="brand">{{ texture.brand.name }}</label>
-            <a
-              target="_blank"
-              class="brand-link"
-              :href="formatWebsite(texture.brand.webSite)"
-            >{{ texture.brand.webSite }}</a>
-          </div>
-        </div>
-        <div
-          v-if="texture.longitude && texture.latitude"
-          class="description locator"
-        >
-          <label class="h3">Location:</label>
-          <div class="text">
-            <p>
-              {{ formatCoords() }}
-            </p>
-            <p>
-              <a target="_blank" :href="getGoogleLink()">show on Google Maps</a>
-            </p>
-          </div>
-        </div>
-        <div class="download">
-          <div v-if="downloadErrors" style="color: red" class="downloadErrors">
-            <h3>{{ downloadErrors }}</h3>
-          </div>
-          <button
-            v-if="!processing"
-            class="button-primary nohover"
-            @click="downLoad"
-          >
-            Download for {{ texture.credits }} credits
-          </button>
-          <button v-if="processing" class="button-primary button-primary--blue">
-            <img class="rotate" src="@/assets/img/icon-processing-button.svg">
-            Processing...
-          </button>
+          <!-- Carousel Models end -->
         </div>
       </div>
     </div>
@@ -296,10 +298,9 @@ export default {
         infinite: false,
         slidesToScroll: 1,
         slidesToShow:
-          this.texture.gallery && this.texture.gallery.length >= 5
+          this.texture.relatedTextures && this.relatedTextures?.length >= 5
             ? 5
-            : this.texture.gallery.length,
-        asNavFor: {},
+            : this.texture.relatedTextures.length,
         focusOnSelect: true
       },
       options: [],
@@ -327,11 +328,12 @@ export default {
   },
   computed: {
     relatedTextures () {
-      return 'relatedTextures' in Object.keys(this.texture) ? this.texture.relatedTextures : [];
+      return Object.keys(this.texture).includes('relatedTextures') ? this.texture.relatedTextures : [];
     }
   },
 
   mounted () {
+    console.log('url',this.texture.url);
     document.body.style.overflow = 'hidden';
     this.navCarousel.asNavFor = this.$refs.sliderMain;
     this.sliderMain.asNavFor = this.$refs.sliderNav;
@@ -358,15 +360,13 @@ export default {
   },
 
   created () {
-    console.log(this.texture);
     this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'setForDownload') {
         this.setProcess(state.forDownload);
       }
     });
-
     this.options.push({
-      value: 'Choose resolution'
+      value: this.type_code === 'models' ? 'Choose format' : 'Choose resolution'
     });
     if (this.texture.resolutions) {
       this.texture.resolutions.map((item) => {
