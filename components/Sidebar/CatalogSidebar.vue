@@ -305,7 +305,9 @@ export default {
   top: calc(100% - 60px);
   z-index: 10;
   width: auto !important;
-  min-width: 247px;
+  min-width: 260px;
+  background: #fff;
+  padding: 16px 0;
 }
 
 .fil {
