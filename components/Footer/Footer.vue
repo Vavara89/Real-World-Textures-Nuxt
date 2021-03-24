@@ -11,7 +11,7 @@
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
         <h3 class="footer__title">
-          Tutorials and downloads join our community
+          Join our community
         </h3>
         <FooterMailForm />
       </div>
