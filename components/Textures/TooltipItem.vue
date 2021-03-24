@@ -41,7 +41,7 @@
           </h4>
         </div>
         <div class="bookmark">
-          <a href="javascript:void(0)" @click="addBook">
+          <a href="javascript:void(0)" @click.stop="addBook">
             <img
               v-if="!texture.isBookmarked"
               src="@/assets/img/icon-bookmark-1.svg"
