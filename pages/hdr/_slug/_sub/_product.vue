@@ -1,14 +1,14 @@
 <template>
   <div>
-    <TextureDetail v-if="product" :type_title="'Texture'" :type_code="'hdr'" :texture="product"></TextureDetail>
+    <HdrDetail v-if="product" :type_title="'Texture'" :type_code="'hdr'" :texture="product"></HdrDetail>
   </div>
 </template>
 <script>
-import TextureDetail from "@/components/TextureDetail/TextureDetail";
+import HdrDetail from "@/components/TextureDetail/HdrDetail";
 
 export default {
   components: {
-    TextureDetail,
+    HdrDetail,
   },
   props: {
     product: false

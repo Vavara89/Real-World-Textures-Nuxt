@@ -45,7 +45,7 @@
 
   .slick-slide {
     .previewImg {
-      transform: scale(0.8);
+      padding: 0 24px;
       transition: all .3s ease-in-out;
 
       img {
@@ -76,7 +76,7 @@
     .imageDetails {
       padding-top: 50px;
       padding-left: 30px;
-      width: 60%;
+      width: 65%;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -119,9 +119,6 @@
       .imageDetails-content {
         .previewImg {
           img {
-            @include mq(xxl, min) {
-              max-width: 80%;
-             }
             max-width: 100%;
 
             // @include mq(md, max) {
@@ -159,16 +156,22 @@
         // bottom: 60px;
         // left: 50%;
         // transform: translateX(-50%);
-        padding-bottom: 80px;
+        padding-bottom: 50px;
+        margin-top: 60px;
 
         @include mq(md, max) {
           position: relative;
-          margin-top: 60px;
+          margin-top: 16px;
+          padding-bottom: 32px;
          }
 
         .imageItem {
           margin: 0 0.8rem;
           max-width: 9.6rem !important;
+
+          &:hover {
+            cursor: pointer;
+          }
 
           img {
             max-width: 8rem;
@@ -176,7 +179,6 @@
         }
 
         .slick-slider {
-          height: 8rem;
           max-width: 48rem;
           margin: 0 auto;
           position: relative;
@@ -241,11 +243,11 @@
       border-bottom-left-radius: 0.8rem;
       border-bottom-right-radius: 0.8rem;
       text-align: left;
-      max-width: 40%;
-      padding: 50px 40px 80px 40px;
+      width: 35%;
+      padding: 50px 40px;
 
       @include mq(md, max) {
-        max-width: 100%;
+        width: 100%;
        }
 
 
@@ -290,14 +292,14 @@
 
           &.resolution {
             flex-wrap: wrap;
-            height: 68px;
+            max-height: 68px;
 
             @include mq(lg, max) {
-              height: 100px;
+              max-height: 100px;
              }
 
              @media only screen and (max-width: 1350px) {
-              height: 100px;
+              max-height: 100px;
             }
 
 
@@ -317,7 +319,7 @@
           }
 
           &.last {
-            height: 100px;
+            max-height: 100px;
             overflow-y: scroll;
 
             &::-webkit-scrollbar {
@@ -332,7 +334,7 @@
             }
 
             @include mq(lg, max) {
-              height: 100px;
+              max-height: 100px;
               overflow-y: scroll;
              }
           }
@@ -349,7 +351,7 @@
         margin-top: 30px;
         margin-bottom: 3rem;
         .text {
-          height: 100px;
+          max-height: 100px;
           margin-top: 13px;
           overflow-y: scroll;
           -webkit-overflow-scrolling: touch;
@@ -368,7 +370,7 @@
       }
 
       .locator {
-        margin-bottom: 6rem;
+        margin-bottom: 3rem;
       }
 
       .brand {
