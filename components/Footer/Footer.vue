@@ -11,7 +11,7 @@
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
         <h3 class="footer__title">
-          Join our community
+          By providing your e-mail you agree to receive newsletters from us
         </h3>
         <FooterMailForm />
       </div>
