@@ -31,9 +31,6 @@
           <p class="pricecard__text">
             {{ card.descr_text2 }}
           </p>
-          <p class="pricecard__text">
-            {{ card.descr_text3 }}
-          </p>
         </div>
       </div>
       <Button :link="'javascript:void(0);'" :text="card.buttontext" type="primary" width="wide" @click="subscribe" />
