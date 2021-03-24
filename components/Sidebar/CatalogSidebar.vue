@@ -265,7 +265,7 @@ export default {
 .clear-btn button{
   margin-top: 24px !important;
   padding: 1rem 1rem !important;
-  width: 86% !important;
+  width: 260px !important;
 }
 .sidebar-wrapper::-webkit-scrollbar {
   width: 3px;
