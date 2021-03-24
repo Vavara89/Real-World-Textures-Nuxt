@@ -141,7 +141,7 @@ export default {
               return stat === 0 ? stat : stat > 0 ? 1 : -1;
             });
         }
-        return countries;
+        return [...countries].sort((a, b) => (a.name > b.name) ? 1 : -1);
       }
       return countries;
     },
