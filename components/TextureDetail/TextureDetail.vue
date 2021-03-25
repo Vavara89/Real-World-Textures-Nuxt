@@ -300,7 +300,7 @@ export default {
         slidesToShow:
           this.texture.relatedTextures && this.relatedTextures?.length >= 5
             ? 5
-            : this.texture.relatedTextures.length,
+            : this.texture.relatedTextures?.length,
         focusOnSelect: true
       },
       options: [],
@@ -335,8 +335,12 @@ export default {
   mounted () {
     console.log('url',this.texture.url);
     document.body.style.overflow = 'hidden';
-    this.navCarousel.asNavFor = this.$refs.sliderMain;
-    this.sliderMain.asNavFor = this.$refs.sliderNav;
+    if (this.navCarousel) {
+      this.navCarousel.asNavFor = this.$refs.sliderMain;
+    }
+    if (this.sliderMain) {
+      this.sliderMain.asNavFor = this.$refs.sliderNav;
+    }
     const downloads = this.$store.getters.checkDownload;
     if (downloads.length) {
       this.setProcess(downloads);

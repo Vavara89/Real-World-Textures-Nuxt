@@ -20,8 +20,8 @@
         <span
           v-for="(item, index) in isselected.slice(0, 5)"
           :key="index"
-          v-if="checkselect"
-        >{{ item.match(/\(([^)]+)\)/)[1] }}<span v-if="isselected.length > 1 && isselected.length !== index + 1">, </span></span>
+          v-if="checkselect && isselected"
+        >{{ getSelectedName(item) }}<span v-if="isselected.length > 1 && isselected.length !== index + 1">, </span></span>
         <span v-if="checkselect && isselected.length === 0">{{ options[0].value }}</span>
       </div>
       <div
@@ -94,7 +94,13 @@ export default {
     }
   },
   methods: {
-
+    getSelectedName(item) {
+      const items = item.match(/\(([^)]+)\)/);
+      if (items && items.length > 1) {
+        return items[1];
+      }
+      return item;
+    },
     clickCheck (sel) {
       if (this.isselected.includes(sel)) {
         this.isselected.splice(this.isselected.indexOf(sel), 1);
