@@ -69,7 +69,9 @@ export default {
   created () {
     if (this.item.resolutions) {
       this.item.resolutions.map((data) => {
-        const label = `${data.resolution}x${data.resolution}px (${data.name})`;
+        const label = isNaN(data.resolution)
+          ? data.name
+          : `${data.resolution}x${data.resolution}px (${data.name})`;
         this.options.push({ value: label });
         data.label = label;
       });
