@@ -9,7 +9,7 @@
   >
     <div class="tooltip-header" />
     <div class="tooltip-content">
-      <VueSlickCarousel v-if="texture.gallery.length" class="default" v-bind="slickSlider">
+      <VueSlickCarousel v-if="texture.gallery.length" class="default" v-bind="slickSlider" ref="carousel">
         <template #prevArrow="arrowOption">
           <div class="prev-slick">
             {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
@@ -89,7 +89,8 @@ export default {
         slidesToShow: 1
       },
       hover: true,
-      toolChange: false
+      toolChange: false,
+      timeout: null,
     };
   },
   computed: {
@@ -110,6 +111,7 @@ export default {
         });
     },
     onHover () {
+      clearTimeout(this.timeout);
       this.handlePointerEvent(false, this.index);
       const elementRight = this.$refs.tooltip.getBoundingClientRect().right;
       const windowWidth = window.innerWidth;
@@ -119,6 +121,7 @@ export default {
       }
     },
     onHoverOut () {
+      this.timeout = setTimeout(() => this.$refs.carousel.goTo(0, true), 250);
       this.handlePointerEvent(true, this.index);
       return this.toolChange = false;
     },
