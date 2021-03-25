@@ -119,7 +119,7 @@ export default {
         dots: false,
         slidesToScroll: 1,
         slidesToShow: 1,
-        initialSlide: 1,
+        initialSlide: 0,
         vertical: true,
         arrows: false,
         speed: 0,
@@ -131,7 +131,7 @@ export default {
         dots: false,
         slidesToScroll: 1,
         slidesToShow: 1,
-        initialSlide: 1,
+        initialSlide: 0,
         vertical: true,
         arrows: false,
         speed: 0,
@@ -147,7 +147,7 @@ export default {
       texture_current: require('~/assets/img/spheres/sphere-4-1.png'),
       texture_prev: require('~/assets/img/spheres/sphere-5.png'),
       texture_next: require('~/assets/img/spheres/sphere-6.png'),
-      slickCurrentIndex: 1,
+      slickCurrentIndex: 0,
       direction: null,
       slidesInits: false
     };
@@ -167,8 +167,8 @@ export default {
     next () {
       this.direction = 'down';
       if (this.slickCurrentIndex + 1 === this.slides.length) {
-        this.$refs.sliderMain.goTo(1, true);
-        this.$refs.sliderNav.goTo(1, true);
+        this.$refs.sliderMain.goTo(0, true);
+        this.$refs.sliderNav.goTo(0, true);
       } else {
         this.$refs.sliderMain.next(true);
         this.$refs.sliderNav.next(true);
@@ -177,8 +177,8 @@ export default {
     prev () {
       this.direction = 'up';
       if (this.slickCurrentIndex === 0) {
-        this.$refs.sliderMain.goTo(1);
-        this.$refs.sliderNav.goTo(1, true);
+        this.$refs.sliderMain.goTo(this.slides.length - 1);
+        this.$refs.sliderNav.goTo(this.slides.length - 1, true);
       } else {
         this.$refs.sliderMain.prev(true);
         this.$refs.sliderNav.prev(true);
@@ -226,7 +226,7 @@ export default {
       // if (before_me) {
       //   before_me.classList.add('opacity_in');
       // }
-      // this.slickCurrentIndex = next;
+      this.slickCurrentIndex = next;
     }
   }
 };
