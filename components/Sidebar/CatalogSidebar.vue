@@ -265,7 +265,7 @@ export default {
 .clear-btn button{
   margin-top: 24px !important;
   padding: 1rem 1rem !important;
-  width: 86% !important;
+  width: 260px !important;
 }
 .sidebar-wrapper::-webkit-scrollbar {
   width: 3px;
@@ -305,7 +305,9 @@ export default {
   top: calc(100% - 60px);
   z-index: 10;
   width: auto !important;
-  min-width: 247px;
+  min-width: 260px;
+  background: #fff;
+  padding: 16px 0;
 }
 
 .fil {

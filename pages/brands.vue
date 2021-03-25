@@ -3,7 +3,7 @@
     <CatalogSidebar
       :filter="filter"
       :active-category="activeCategory"
-      :can-clear="false"
+      :can-clear="true"
     />
     <div class="page-content">
       <div class="catalog-header">

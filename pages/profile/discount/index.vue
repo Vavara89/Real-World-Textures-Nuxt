@@ -15,11 +15,11 @@
             <input v-model="input.discount" type="text" class="chrome">
             <label for>Your Discount Code</label>
           </div>
-          <div class="notice">
+          <div v-if="isDiscountApplied" class="notice">
             Keep in mind that next month will be charged for the regular price of the basic subscription plan - you can cancel your subscription before subscription renewal (within 30 days)
           </div>
           <div style="display: block">
-            <Button link="" text="apply your discount" type="primary" color="green" width="discount" />
+            <Button @click="applyDiscount" text="apply your discount" type="primary" color="green" width="discount" />
           </div>
         </div>
       </section>
@@ -51,6 +51,7 @@ export default {
       input: {
         discount: ''
       },
+      isDiscountApplied: false,
       width: null
     };
   },
@@ -84,6 +85,9 @@ export default {
     },
     innerWidth () {
       this.width = window.innerWidth;
+    },
+    applyDiscount () {
+      this.isDiscountApplied = true;
     }
   }
 };

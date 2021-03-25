@@ -15,7 +15,7 @@
                 Free
               </td>
               <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
-                Freelance
+                Basic
               </td>
               <td style="width: 300px; text-align: center; border-left: 1px solid #DDE0ED;" class="head padd-20">
                 Professional
@@ -87,6 +87,30 @@
               >
                 <span v-if="isMonth">{{ proMonth.credits }}</span>
                 <span v-if="!isMonth">{{ proYears.credits / 12 }}</span>
+              </td>
+              <!-- <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
+              &nbsp;
+              </td> -->
+            </tr>
+            <tr>
+              <td style="padding: 20px 0 20px 40px; background-color: #F2F3F9;">
+                
+              </td>
+              <td
+                v-if="!user"
+                style="text-align: center; padding: 20px 16px; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
+              >
+                <span>Sign up for free and enjoy our free content</span>
+              </td>
+              <td
+                style="text-align: center; padding: 20px 16px; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
+              >
+                <span>One month of Credit Rollover With Active Subscription</span>
+              </td>
+              <td
+                style="text-align: center; padding: 20px 16px; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
+              >
+                <span>Three months of Credit Rollover With Active Subscription</span>
               </td>
               <!-- <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
               &nbsp;

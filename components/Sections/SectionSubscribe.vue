@@ -70,37 +70,22 @@ export default {
           descr_title_month: 'Free content',
           descr_title_year: 'Free content',
           descr_text1: 'Sign up for free and enjoy our free content',
-          buttontext: 'Get freelance',
+          buttontext: 'GET FREE',
           buttonlink: '/'
         };
         const products_plans = [
-
-          {
-            title: 'Free',
-            descr_title_month: '200+ freebies',
-            descr_title_year: '200+ freebies',
-            descr_subtitle: '1 month',
-            descr_text1: 'Try it and enjoy our freebies',
-            descr_text2: 'Lorem ipsum',
-            descr_text3: 'Dolor sit amet',
-            currency: '$',
-            price_month: '0',
-            price_year: '0',
-            buttontext: 'Try For Free',
-            buttonlink: '/'
-          },
           {
             title: 'Basic',
             descr_title_month: `${price_month.freelancer.credits} credits`,
             descr_title_year: `${price_month.freelancer.credits} credits`,
             descr_subtitle: '1 month',
-            descr_text1: 'For one individual with revenue  under $100K',
-            descr_text2: 'Months of Credit Rollover With Active Subscription',
-            descr_text3: 'For 200 credits you get aprox. 30 textures, or 10 models, or 30 hdri',
+            descr_text1: 'One month of Credit Rollover With Active Subscription',
+            descr_text2: 'For 200 credits you get aprox. 30 textures, or 10 models, or 30 hdri',
+            descr_text3: '',
             currency: '$',
             price_month: `${price_month.freelancer.amount}`,
             price_year: `${parseInt(price_year.freelancer.amount) / 12}`,
-            buttontext: 'Get freelance',
+            buttontext: 'GET BASIC',
             buttonlink: '/'
           },
           {
@@ -108,13 +93,13 @@ export default {
             descr_title_month: `${price_month.pro.credits} credits`,
             descr_title_year: `${price_month.pro.credits} credits`,
             descr_subtitle: '3 month',
-            descr_text1: 'For one seat with company revenue above $100K',
-            descr_text2: 'Months of Credit Rollover With Active Subscription',
-            descr_text3: 'For 700 credits you get aprox. 80 textures, or 30 models,  30 hdri other asset types',
+            descr_text1: 'Three months of Credit Rollover With Active Subscription',
+            descr_text2: 'For 700 credits you get aprox. 80 textures, or 30 models,  30 hdri other asset types',
+            descr_text3: '',
             currency: '$',
             price_month: `${price_month.pro.amount}`,
             price_year: `${parseInt(price_year.pro.amount) / 12}`,
-            buttontext: 'Get professional',
+            buttontext: 'GET PROFESSIONAL',
             buttonlink: '/'
           }
         ];
