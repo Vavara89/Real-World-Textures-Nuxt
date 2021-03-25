@@ -19,6 +19,7 @@
         <span v-if="!checkselect">{{ selected.value }} <span v-if="selected.count" class="count">({{ selected.count }})</span></span>
         <span
           v-for="(item, index) in isselected.slice(0, 5)"
+          :key="index"
           v-if="checkselect"
         >{{ item.match(/\(([^)]+)\)/)[1] }}<span v-if="isselected.length > 1 && isselected.length !== index + 1">, </span></span>
         <span v-if="checkselect && isselected.length === 0">{{ options[0].value }}</span>
@@ -31,10 +32,11 @@
           v-for="(item, index) in options"
           :key="'item-' + index"
           class="item"
+          :data-val="'x'"
           @click="click(item)"
         >
           <div v-if="item.value !== options[0].value && checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck" />
-          <span v-if="item.value !== options[0].value">{{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span></span>
+          <span v-if="true">{{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span></span>
         </div>
       </div>
     </div>

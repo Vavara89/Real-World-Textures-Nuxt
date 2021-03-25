@@ -34,7 +34,7 @@ export default {
         },
       ],
       sorts: [
-        ["Latest", '-created_at'],
+        ["Latest", '-created'],
         ["Name A-Z", 'name'],
         ["Name Z-A", '-name'],
       ]
