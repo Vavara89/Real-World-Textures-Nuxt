@@ -126,33 +126,22 @@
 	}
 
 	.prev-slick {
-    left: calc(10vw - 2rem);
-    transform: scale(1.5);
-
-    @include mq(xxl, max) {
-      transform: scale(1);
-    }
+    left: calc(10vw - 2.4rem);
 
     @include mq(sm, max) {
       top: 40%;
-      transform: scale(.9);
-      left: 11vw;
+      left: 10vw;
     }
   }
 
 	.next-slick {
 		top: 50%;
-    right: calc(10vw - 2rem);
-    transform: scale(1.5) rotate(-180deg);
-
-    @include mq(xxl, max) {
-      transform: scale(1) rotate(-180deg);
-    }
+    right: calc(10vw - 2.4rem);
+    transform: rotate(-180deg);
 
     @include mq(sm, max) {
       top: 40%;
-      transform: scale(.9) rotate(-180deg);
-      right: 11vw;
+      right: 10vw;
     }
 	}
 }
