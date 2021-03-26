@@ -58,11 +58,11 @@
               amet nibh. Aenean ac malesuada quam, et tempor magna.
             </p>
             <Button
-              link="https://facebook.com"
               text="Join our community on FB"
               type="secondary"
               color=""
             />
+            <FooterSocial />
           </div>
         </div>
         <div class="cols news">
@@ -309,6 +309,7 @@ import SectionSubscribe from '@/components/Sections/SectionSubscribe';
 import Button from '@/components/Button';
 import TooltipItem from '@/components/Textures/TooltipItem';
 import CardSliderDetail from '@/components/CardSliderDetail/CardSliderDetail';
+import FooterSocial from '@/components/Footer/FooterSocial';
 
 import CardSidebar from '@/components/Cards/CardSidebar';
 
@@ -328,7 +329,8 @@ export default {
     VueSlickCarousel,
     CardSidebar,
     TooltipItem,
-    CardSliderDetail
+    CardSliderDetail,
+    FooterSocial
   },
   async asyncData (ctx) {
     let partners = [];
