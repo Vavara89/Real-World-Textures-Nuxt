@@ -93,17 +93,17 @@
             <div class="bookmark changed">
               <a href="javascript:void(0)" @click="toggleBookMark">
                 <img
-                  v-if="!texture.isBookmarked"
+                  v-if="!isBookmarked"
                   src="@/assets/img/icon-bookmark-1.svg"
                   class="image"
                 >
                 <img
-                  v-if="!texture.isBookmarked"
+                  v-if="!isBookmarked"
                   src="@/assets/img/icon-bookmark-2.svg"
                   class="hover"
                 >
                 <img
-                  v-if="texture.isBookmarked"
+                  v-if="isBookmarked"
                   src="@/assets/img/icon-bookmark-2.svg"
                 >
               </a>
@@ -303,6 +303,7 @@ export default {
             : this.texture.relatedTextures?.length,
         focusOnSelect: true
       },
+      isBookmarked: false,
       options: [],
       resolution: [],
       resolution_error: false,
@@ -333,7 +334,7 @@ export default {
   },
 
   mounted () {
-    console.log('url',this.texture.url);
+    this.isBookmarked = this.texture.isBookmarked;
     document.body.style.overflow = 'hidden';
     if (this.navCarousel) {
       this.navCarousel.asNavFor = this.$refs.sliderMain;
@@ -354,7 +355,6 @@ export default {
         if (response.data.length) {
           this.setProcess(response.data);
           const resolutions = this.downloadingResolutions(response.data);
-          console.log(resolutions);
           if (resolutions.length) {
             this.recursiveDownload(resolutions);
           }
@@ -505,6 +505,7 @@ export default {
         .toggleBookMark(this.type_code, this.texture.id)
         .then((response) => {
           this.texture.isBookmarked = !response.data.deleted;
+          this.isBookmarked = this.texture.isBookmarked;
           this.$store.commit('setBookmarks', response.data.totals);
         });
     },
