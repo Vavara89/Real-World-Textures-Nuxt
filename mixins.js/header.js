@@ -93,10 +93,13 @@ export default {
 
     counts: {
       get () {
-        if (this.bookmarked === null) {
+        if (this.$store.getters.bookmarks === null) {
+          this.$store.commit('setBookmarks', this.user.profile.total_bookmarked);
           this.bookmarked = this.user.profile.total_bookmarked;
+          return this.bookmarked;
+        } else {
+          return this.$store.getters.bookmarks
         }
-        return this.bookmarked;
       },
 
       set (value) {
