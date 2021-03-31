@@ -9,7 +9,7 @@
       <div class="detail-container__wrapper">
         <div class="imageDetails">
           <div class="imageDetails-header">
-            <div>
+            <div class="close">
               <a class="button" @click.prevent="close">
                 <img
                   src="@/assets/img/icon-cross.svg"
@@ -126,7 +126,7 @@
                 />
               </div>
             </div>
-            <div v-if="!type_code === 'hdr' && !type_code === 'models'" class="option-item dimension">
+            <div v-if="(!type_code === 'hdr' && !type_code === 'models') || type_code === 'textures'" class="option-item dimension">
               <div class="label">
                 <label class="h3">{{ type_title }}<br>Dimensions:</label>
               </div>
@@ -134,7 +134,7 @@
                 <label class="text">{{ texture.dimension }}</label>
               </div>
             </div>
-            <div v-if="!type_code === 'hdr' && !type_code === 'models'" class="option-item last">
+            <div v-if="(!type_code === 'hdr' && !type_code === 'models') || type_code === 'textures'" class="option-item last">
               <div class="label">
                 <label class="h3">Consisting of:</label>
               </div>
@@ -197,7 +197,7 @@
             </button>
             <button v-if="processing" class="button-primary button-primary--blue">
               <img class="rotate" src="@/assets/img/icon-processing-button.svg">
-              Processing...
+              Processing… Continue browsing
             </button>
           </div>
         </div>
@@ -374,7 +374,7 @@ export default {
     });
     if (this.texture.resolutions) {
       this.texture.resolutions.map((item) => {
-        const model = !!item['notResolution'];
+        const model = !!item.notResolution;
         const label = model ? item.name : `${item.resolution}x${item.resolution}px (${item.name})`;
         this.options.push({ value: label });
         item.label = label;
