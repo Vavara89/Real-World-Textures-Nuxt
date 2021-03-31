@@ -57,12 +57,14 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed tortor a felis rhoncus pretium ac sit
               amet nibh. Aenean ac malesuada quam, et tempor magna.
             </p>
+            <FooterSocial />
             <Button
-              text="Join our community on FB"
+              link="javascript:;"
+              text="Join our community"
               type="secondary"
               color=""
+              :style="{ marginTop: '16px' }"
             />
-            <FooterSocial />
           </div>
         </div>
         <div class="cols news">
