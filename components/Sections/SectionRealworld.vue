@@ -196,19 +196,19 @@ export default {
       toIn.classList.add('zoom-in');
     },
     beforeChangeSlick (current, next) {
-      const prevBtn = document.getElementsByClassName('explore-control-prev');
-      const nextBtn = document.getElementsByClassName('explore-control-next');
-      if (next === this.slides.length - 1) {
-        prevBtn[0].classList.add('disable-btn');
-      } else {
-        prevBtn[0].classList.remove('disable-btn');
-      }
+      // const prevBtn = document.getElementsByClassName('explore-control-prev');
+      // const nextBtn = document.getElementsByClassName('explore-control-next');
+      // if (next === this.slides.length - 1) {
+      //   prevBtn[0].classList.add('disable-btn');
+      // } else {
+      //   prevBtn[0].classList.remove('disable-btn');
+      // }
 
-      if (next === 0) {
-        nextBtn[0].classList.add('disable-btn');
-      } else {
-        nextBtn[0].classList.remove('disable-btn');
-      }
+      // if (next === 0) {
+      //   nextBtn[0].classList.add('disable-btn');
+      // } else {
+      //   nextBtn[0].classList.remove('disable-btn');
+      // }
       // const after_me = document.querySelector(
       //   `.slick-slide[data-index='${next + 1}'] .slide-wrapper`
       // );
