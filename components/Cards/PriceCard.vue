@@ -73,9 +73,9 @@ export default {
   methods: {
     subscribe (e) {
       if (!this.user) {
-        this.$router.replace('/login');
+        this.$router.replace('/signup');
       } else {
-        this.$router.replace('/profile/dashboard?payment=true');
+        this.$router.replace('/profile/pricing');
       }
     }
   }
