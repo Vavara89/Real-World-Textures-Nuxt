@@ -1,9 +1,9 @@
 <template>
   <ul class="menuLeft">
     <li class="item">
-      <a v-bind:class="{'active':allActive}" class="all-item" :href='allLink'>
+      <nuxt-link v-bind:class="{'active':allActive}" class="all-item" :to="allLink">
         All
-      </a>
+      </nuxt-link>
     </li>
     <li v-for="(item, index) in list" :key="'item-'+ index + '-'+ item.id" class="text item">
 
@@ -36,6 +36,18 @@ export default {
   },
   computed: {
     allLink () {
+      let items = ['brand'];
+      for (let i = 0; i < items.length; i++) {
+        if (this.$route.matched[0].path.includes(`/${items[i]}`)) {
+          return `/${items[i]}s`;
+        }
+      }
+      items = ['models', 'hdr', 'textures'];
+      for (let i = 0; i < items.length; i++) {
+        if (this.$route.matched[0].path.includes(`/${items[i]}`)) {
+          return `/${items[i]}`;
+        }
+      }
       return this.$route.matched[0].path;
     },
     allActive () {
