@@ -110,6 +110,9 @@ export default {
           this.$store.commit('setBookmarks', response.data.totals);
         });
     },
+    toLogin () {
+      this.$router.push({ path: '/login' });
+    },
     onHover () {
       clearTimeout(this.timeout);
       this.handlePointerEvent(false, this.index);
