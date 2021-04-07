@@ -123,6 +123,7 @@
                   v-model="resolution"
                   :options="options"
                   :checkselect="true"
+                  @input="onSelect"
                 />
               </div>
             </div>
@@ -187,6 +188,9 @@
           <div class="download">
             <div v-if="downloadErrors" style="color: red" class="downloadErrors">
               <h3>{{ downloadErrors }}</h3>
+            </div>
+            <div v-if="resolution_error" style="color: red" class="downloadErrors">
+              <h3>Please select resolution first.</h3>
             </div>
             <button
               v-if="!processing"
@@ -382,6 +386,11 @@ export default {
     }
   },
   methods: {
+    onSelect () {
+      if (this.resolution.length) {
+        this.resolution_error = false;
+      }
+    },
     downloadingResolutions (data) {
       let resolutions = [];
       data.map((item) => {
