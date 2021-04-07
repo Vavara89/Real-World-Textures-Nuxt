@@ -30,7 +30,7 @@
         :class="{selectHide: !open}"
       >
         <div
-          v-for="(item, index) in options"
+          v-for="(item, index) in opts"
           :key="'item-' + index"
           class="item"
           :data-val="'x'"
@@ -103,6 +103,9 @@ export default {
       if (this.customKey) {
         return this.customKey;
       }
+    },
+    opts () {
+      return this.options.slice(1);
     }
   },
   methods: {
