@@ -93,28 +93,19 @@
               </td> -->
             </tr>
             <tr>
-              <td style="padding: 20px 0 20px 40px; background-color: #F2F3F9;">
-                
-              </td>
-              <td
-                v-if="!user"
-                style="text-align: center; padding: 20px 16px; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
-              >
-                <span>Sign up for free and enjoy our free content</span>
-              </td>
-              <td
-                style="text-align: center; padding: 20px 16px; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
-              >
-                <span>One month of Credit Rollover With Active Subscription</span>
-              </td>
-              <td
-                style="text-align: center; padding: 20px 16px; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
-              >
-                <span>Three months of Credit Rollover With Active Subscription</span>
-              </td>
-              <!-- <td style="background-color: #F2F3F9; border-left: 1px solid #DDE0ED;">
-              &nbsp;
-              </td> -->
+              <td style="padding: 20px 40px 20px 40px;">
+                  Number of months for credit rollover
+                </td>
+                <td
+                  style="text-align: center; padding: 20px 16px; border-left: 1px solid #DDE0ED;"
+                >
+                  <span>1</span>
+                </td>
+                <td
+                  style="text-align: center; padding: 20px 16px; border-left: 1px solid #DDE0ED;"
+                >
+                  <span>3</span>
+                </td>
             </tr>
             <tr>
               <td>
