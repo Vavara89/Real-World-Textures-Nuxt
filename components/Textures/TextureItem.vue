@@ -9,6 +9,9 @@
         :alt="texture.name"
       >
       <img v-if="!isBrand" :src="getCover()" :alt="texture.name">
+      <div v-if="texture.inAssets" class="download-mark">
+        <img src="@/assets/img/icon-download.svg">
+      </div>
     </div>
     <template v-if="!isBrand && showContent">
       <div

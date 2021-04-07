@@ -10,7 +10,7 @@ export default class ProductClass {
   credits: number | null = null;
   gallery: Array<Object> | null = [];
   slug: string | null = null;
-  in_assets: boolean | null = null;
+  inAssets: boolean | null = null;
 
   constructor (data: any) {
     if (data) {

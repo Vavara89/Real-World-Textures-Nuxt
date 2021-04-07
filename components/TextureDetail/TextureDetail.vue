@@ -19,7 +19,7 @@
               </a>
             </div>
             <div class="imageDetails-options">
-              <div v-if="texture.in_assets" class="download">
+              <div v-if="texture.inAssets" class="download">
                 <img src="@/assets/img/icon-download.svg">
               </div>
 

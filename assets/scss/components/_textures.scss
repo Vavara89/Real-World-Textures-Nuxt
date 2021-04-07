@@ -72,6 +72,17 @@
   }
 }
 
+.download-mark {
+  position: absolute;
+  padding: 5px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: $color-secondary-purple;
+  bottom: 20px;
+  left: 20px;
+}
+
 .texture {
   margin-top: 27px;
   margin-bottom: 0;
