@@ -17,10 +17,6 @@
     flex-direction: row;
   }
 
-  &:nth-child(2n) {
-    background: $color-primary-300;
-  }
-
   &__select {
     display: block;
     width: 16px;
