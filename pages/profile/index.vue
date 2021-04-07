@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="{ background: '#fbfbff' }">
     <section class="services inprofile dart-section">
       <div class="container container--content">
         <CardGrid :cards="boxes" :is-profile="true" />
@@ -79,7 +79,7 @@
     </section>
 
     <section class="dart-section" v-if="countWindow == 3">
-      <div v-if="textures.length" class="imageDetails-footer">
+      <div v-if="textures.length" class="imageDetails-footer imageDetails--gray-bg">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel v-if="textures.length" ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
@@ -102,7 +102,7 @@
         </VueSlickCarousel>
       </div>
 
-      <div v-if="models.length" class="imageDetails-footer">
+      <div v-if="models.length" class="imageDetails-footer imageDetails--gray-bg">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel v-if="models.length" ref="sliderNav2" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
@@ -127,7 +127,7 @@
         <div class="circle-small" />
       </div>
 
-      <div v-if="hdr.length" class="imageDetails-footer last">
+      <div v-if="hdr.length" class="imageDetails-footer imageDetails--gray-bg last">
         <SectionTitle v-if="hdr.length" :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav" class="default" v-bind="navCarousel">
           <template #prevArrow="arrowOption">
@@ -152,7 +152,7 @@
     </section>
 
     <section v-if="countWindow == 5">
-      <div v-if="textures.length" class="imageDetails-footer imageDetails--profile">
+      <div v-if="textures.length" class="imageDetails-footer  imageDetails--gray-bg imageDetails--profile">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -177,7 +177,7 @@
           </div>
         </VueSlickCarousel>
       </div>
-      <div v-if="models.length" class="imageDetails-footer">
+      <div v-if="models.length" class="imageDetails-footer imageDetails--gray-bg">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -201,7 +201,7 @@
         <!-- <div class="circle-big" />
         <div class="circle-small" /> -->
       </div>
-      <div v-if="hdr.length" class="imageDetails-footer last2">
+      <div v-if="hdr.length" class="imageDetails-footer imageDetails--gray-bg last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -226,7 +226,7 @@
     </section>
 
     <section class="dart-section" v-if="countWindow == 1">
-      <div class="imageDetails-footer special">
+      <div class="imageDetails-footer imageDetails--gray-bg special">
         <SectionTitle :subtitle="subtitle_textures" :title="title_textures" :is-centered="true" />
         <VueSlickCarousel v-if="textures.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
@@ -249,7 +249,7 @@
         </VueSlickCarousel>
       </div>
 
-      <div class="imageDetails-footer special">
+      <div class="imageDetails-footer imageDetails--gray-bg special">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel v-if="models.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">
@@ -274,7 +274,7 @@
         <div class="circle-small" />
       </div>
 
-      <div v-if="hdr.length" class="imageDetails-footer last2">
+      <div v-if="hdr.length" class="imageDetails-footer  imageDetails--gray-bg last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel v-if="hdr.length" ref="sliderNav3" class="default" v-bind="navCarousel3">
           <template #prevArrow="arrowOption">

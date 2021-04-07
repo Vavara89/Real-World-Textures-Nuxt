@@ -270,13 +270,14 @@
         &:after {
             position: absolute;
             right: 0;
-            bottom: -34px;
+            bottom: -62px;
             left: 0;
             display: block;
-            width: 80%;
+            width: 60%;
             height: 2rem;
             margin: 0 auto;
             content: "";
+            opacity: 0.5;
             border-radius: 50%;
             background-color: rgba(10, 13, 39, 0.1);
             -webkit-filter: blur(0.9rem);
