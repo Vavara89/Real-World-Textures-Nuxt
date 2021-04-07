@@ -88,7 +88,7 @@
                     {{ status() }}
                   </button>
                   <button v-if="!currentIs(false, !isMonth) && !currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
-                    Get Freelance
+                    Get Basic
                   </button>
                 </td>
                 <td style="padding: 50px 0 20px 0; text-align: center;">
@@ -147,8 +147,8 @@
                 <td
                   style="text-align: center; padding: 20px 0; background-color: #F2F3F9;"
                 >
-                  <span v-if="isMonth">200+ freebies</span>
-                  <span v-if="!isMonth">400+ freebies</span>
+                  <span v-if="isMonth">Unlimited for free content</span>
+                  <span v-if="!isMonth">Unlimited for free content</span>
                 </td>
               </tr>
               <tr>
@@ -165,7 +165,7 @@
 
               <tr>
                 <td style="text-align: center;" class="head padd-20">
-                  Freelance
+                  Basic
                 </td>
               </tr>
               <tr>
@@ -193,7 +193,7 @@
                     {{ status() }}
                   </button>
                   <button v-if="!currentIs(false, !isMonth) && !currentIs(true, !isMonth)" class="toggleOption green staticwidth" @click="confirm(false)">
-                    Get Freelance
+                    Get Basic
                   </button>
                 </td>
               </tr>

@@ -73,8 +73,8 @@
                 v-if="!user"
                 style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
               >
-                <span v-if="isMonth">200+ freebies</span>
-                <span v-if="!isMonth">400+ freebies</span>
+                <span v-if="isMonth">Unlimited for free content</span>
+                <span v-if="!isMonth">Unlimited for free content</span>
               </td>
               <td
                 style="text-align: center; padding: 20px 0; background-color: #F2F3F9; border-left: 1px solid #DDE0ED;"
@@ -121,7 +121,7 @@
                 &nbsp;
               </td>
               <td v-if="!user" style="padding: 50px 0 20px 0; text-align: center;">
-                <button class="toggleOption green staticwidth" @click="toLoging()">
+                <button class="toggleOption green staticwidth" @click="()=>this.$router.replace('/signup')">
                   Get Free
                 </button>
               </td>
@@ -131,7 +131,7 @@
                 </button>
                 <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth"
                         @click="confirm(false)">
-                  Get Freelance
+                  Get Basic
                 </button>
               </td>
               <td style="padding: 50px 0 20px 0; text-align: center;">
@@ -190,8 +190,8 @@
               <td
                 style="text-align: center; padding: 20px 0; background-color: #F2F3F9;"
               >
-                <span v-if="isMonth">200+ freebies</span>
-                <span v-if="!isMonth">400+ freebies</span>
+                <span v-if="isMonth">Unlimited for free content</span>
+                <span v-if="!isMonth">Unlimited for free content</span>
               </td>
             </tr>
             <tr>
@@ -209,7 +209,7 @@
 
             <tr>
               <td style="text-align: center;" class="head padd-20">
-                Freelance
+                Basic
               </td>
             </tr>
             <tr>
@@ -238,7 +238,7 @@
                 </button>
                 <button v-if="!currentIs(false, !isMonth)" class="toggleOption green staticwidth"
                         @click="confirm(false)">
-                  Get Freelance
+                  Get Basic
                 </button>
               </td>
             </tr>
@@ -394,10 +394,6 @@ export default {
       const prices = this.$store.getters.prices;
       this.selectedPrice = prices.filter(item => item.stripe_product.is_pro === isPro && item.is_year === !this.isMonth).pop();
       this.$refs.confirm_subscribe.scrollSwitcher();
-    },
-
-    toLoging() {
-      return this.$router.replace('/login')
     },
 
     subscribe() {

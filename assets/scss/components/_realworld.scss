@@ -262,7 +262,7 @@
     z-index: 3;
 
     .zoom-slider {
-      width: 242px;
+      width: 372px;
       top: 50%;
       transform: translateY(-50%);
       margin: auto;
@@ -279,8 +279,8 @@
         .slide-wrapper {
           transition: all 800ms cubic-bezier(0.000, 0, 0.000, 0.7);
           transform: scale(0.4) translateY(-50%);
-          width: 240px;
-          height: 240px;
+          width: 372px;
+          height: 372px;
           display: flex;
           opacity: 0;
 
@@ -306,7 +306,7 @@
 
           & + .slick-slide {
             .slide-wrapper {
-              transform: scale(0.3) translateY(100%);
+              transform: scale(0.4) translateY(-40%);
               opacity: 1;
             }
           }

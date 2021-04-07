@@ -15,11 +15,13 @@
 
   .tooltip-content {
     overflow: hidden;
+    padding-bottom: 20px;
 
     .slick-prev {
       background: url(~@/assets/img/icon-arrow_left.svg) no-repeat center;
-      top: 96%;
+      top: 100%;
       z-index: 100;
+      transform: translate(0);
 
       &::before {
         color: transparent;
@@ -28,8 +30,8 @@
 
     .slick-next {
       background: url(~@/assets/img/icon-arrow_left.svg) no-repeat center;
-      transform: scaleX(-1);
-      top: 93.3%;
+      transform: translate(0) scaleX(-1);
+      top: 100%;
       left: 0;
 
       &::before {
@@ -55,7 +57,6 @@
 
     .imageItem {
       transition: all .3s ease-in-out;
-      transform: translate(-35px, 0);
       width: 20rem;
       height: 20rem;
 
@@ -113,14 +114,12 @@
 
   .imageItem {
     animation: 1s delay-overflow;
-    // transform: translate(-50px, -40px);
-    transform: translate(0, -40px);
-    width: 50rem !important;
-    height: 50rem;
+    width: 100%;
+    height: 40rem;
 
     img {
-      width: 50rem;
-      height: 50rem;
+      width: 40rem;
+      height: 40rem;
     }
 
   }

@@ -110,6 +110,9 @@ export default {
           this.$store.commit('setBookmarks', response.data.totals);
         });
     },
+    toLogin () {
+      this.$router.push({ path: '/login' });
+    },
     onHover () {
       clearTimeout(this.timeout);
       this.handlePointerEvent(false, this.index);
@@ -144,6 +147,9 @@ export default {
 <style>
 .tooltip-content .slick-slide{
   transform: none !important;
-  width: auto !important;
+  width: 50rem !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 </style>
