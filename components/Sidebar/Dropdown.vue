@@ -9,6 +9,7 @@
     <div
       class="custom-select"
       :tabindex="tabindex"
+      :key="key"
       @blur="open = false"
     >
       <div
@@ -75,6 +76,10 @@ export default {
     index: {
       type: Number,
       required: false
+    },
+    customKey: {
+      type: String,
+      required: false,
     }
   },
   data () {
@@ -90,6 +95,13 @@ export default {
       if (data && data !== 'brands') {
         const path = '/' + data;
         this.$store.commit('setRedirectUrl', path);
+      }
+    }
+  },
+  computed: {
+    key () {
+      if (this.customKey) {
+        return this.customKey;
       }
     }
   },

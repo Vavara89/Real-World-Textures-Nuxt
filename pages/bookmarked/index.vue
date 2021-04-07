@@ -22,7 +22,7 @@
         <div v-if="bookmarks.length > 0" class="bookmarks__list">
           <Bookmark
             v-for="(item, index) in bookmarks"
-            :key="index"
+            :key="`${index}_${componentKey}`"
             :item="item"
             :index="index"
             @deleteBookmark="deleteBookmark"
@@ -131,7 +131,8 @@ export default {
       selectError: false,
       starting_download: false,
       server_downloading: [],
-      processOfDeleting: false
+      processOfDeleting: false,
+      componentKey: 0
     };
   },
   computed: {
@@ -202,6 +203,7 @@ export default {
         );
         this.$nuxt.$loading.finish();
         this.$store.commit('setBookmarks', response.data.totals);
+        this.componentKey += 1;
       });
     },
 
