@@ -80,7 +80,7 @@
 
     .imageDetails {
       padding-top: 50px;
-      padding-left: 30px;
+      // padding-left: 30px;
       width: 65%;
       position: relative;
       display: flex;
@@ -137,6 +137,10 @@
         .previewImg {
           img {
             max-width: 100%;
+            position: relative;
+            // top: -10vh;
+            max-height: 60vh;
+            width: auto;
 
             // @include mq(md, max) {
             //   max-width: 50%;

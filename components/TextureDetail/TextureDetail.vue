@@ -315,8 +315,8 @@ export default {
       processing: false,
       map_titles: {
         AO: 'Ambient occlusion',
-        NRM: 'Normal map',
-        DISP: 'Displacement',
+        NRM: 'Normal map 16bit',
+        DISP: 'Displacement 16bit',
         DIFF: 'Diffuse',
         COL: 'Color',
         REFL: 'Reflection',
