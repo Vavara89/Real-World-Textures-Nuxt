@@ -51,7 +51,7 @@
                 background-color: #ffffff;
 
                 img {
-                   max-width: 50%;
+                   max-width: unquote("min(50%, 120px)");
                    filter: grayscale(100%);
                 }
 
