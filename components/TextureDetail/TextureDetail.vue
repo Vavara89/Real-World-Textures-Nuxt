@@ -379,7 +379,7 @@ export default {
     if (this.texture.resolutions) {
       this.texture.resolutions.map((item) => {
         const model = !!item.notResolution;
-        const label = model ? item.name : `${item.resolution}x${item.resolution}px (${item.name})`;
+        const label = model ? item.name : `${item.resolution}x${item.resolutionSide}px (${item.name})`;
         this.options.push({ value: label });
         item.label = label;
       });
