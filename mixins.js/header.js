@@ -79,6 +79,7 @@ export default {
     },
 
     profile () {
+      console.log('this.user', this.user);
       if (this.user.subscribe) {
         return this.user.subscribe.name;
       }
@@ -88,7 +89,7 @@ export default {
     },
 
     credits () {
-      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
+      return this.user.subscription ? this.user.credits : 0;
     },
 
     counts: {

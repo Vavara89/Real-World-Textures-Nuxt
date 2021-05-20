@@ -67,7 +67,7 @@ const production = {
     vendor: ['vue-notifications']
   },
   env: {
-    // baseUrl: 'http://192.168.0.73:8000/',
+    // baseUrl: 'http://localhost:8000/',
     baseUrl: 'https://rwt.bypixelfield.com/',
 
     contacts: {

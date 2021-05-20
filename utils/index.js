@@ -47,6 +47,10 @@ export const subscribeCurrentIs = (pro, year, subscription = null) => {
   if (!product) {
     return false;
   }
+  if (!product.stripe_product) {
+    return false;
+  }
+  console.log('product.stripe_product', product.stripe_product, product);
   return product.stripe_product.is_pro === pro && product.is_year === year;
 };
 export const subscribeStatus = (subscription = null) => {

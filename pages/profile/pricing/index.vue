@@ -264,7 +264,7 @@ export default {
       subtitle: 'Services',
       title: 'Textures',
       button: 'Join our community on FB',
-      isMonth: true,
+      isMonth: false,
       selectedPrice: {},
       subscribed: null,
       width: null

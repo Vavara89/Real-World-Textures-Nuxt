@@ -350,7 +350,7 @@ export default {
     if (downloads.length) {
       this.setProcess(downloads);
       const resolutions = this.downloadingResolutions(downloads);
-      if (resolutions.length) {
+      if (resolutions && resolutions.length) {
         this.recursiveDownload(resolutions);
       }
     } else if (this.$auth.user && this.$auth.user.user) {
@@ -484,7 +484,9 @@ export default {
         this.$store.commit('setForDownload', forDownload);
       }
       catalog
-        .download('textures', this.texture.id, { resolutions })
+        // .download('textures', this.texture.id, { resolutions })
+        // .download('models', this.texture.id, { resolutions })
+        .download(this.type_code, this.texture.id, { resolutions })
         .then((response) => {
           const data = response.data;
           if (data.download_link) {

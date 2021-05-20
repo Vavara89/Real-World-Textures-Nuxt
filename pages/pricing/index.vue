@@ -97,6 +97,12 @@
                   Number of months for credit rollover
                 </td>
                 <td
+                  v-if="!user"
+                  style="text-align: center; padding: 20px 16px; border-left: 1px solid #DDE0ED;"
+                >
+                  <span></span>
+                </td>
+                <td
                   style="text-align: center; padding: 20px 16px; border-left: 1px solid #DDE0ED;"
                 >
                   <span>1</span>
@@ -299,7 +305,7 @@ export default {
       subtitle: 'Services',
       title: 'Textures',
       button: 'Join our community on FB',
-      isMonth: true,
+      isMonth: false,
       selectedPrice: {},
       subscribed: null,
       width: null
@@ -371,10 +377,12 @@ export default {
     },
     getPro() {
       const prices = this.$store.getters.prices;
+      console.log('prices', prices);
       return prices ? prices.filter(item => item.stripe_product.is_pro === true) : [];
     },
     getIdle() {
       const prices = this.$store.getters.prices;
+      console.log('prices', prices);
       return prices ? prices.filter(item => item.stripe_product.is_pro === false) : [];
     },
 

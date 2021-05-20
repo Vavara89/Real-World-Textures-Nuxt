@@ -49,12 +49,12 @@
               <div class="right">
                 <div class="clearfix">
                   <div class="c100 p75 big scaled">
-                    <div v-if="profile.subscribe" class="points">
-                      + 200
+                    <div v-if="user.subscription" class="points">
+                      + {{ user.subscription.product.credits }}
                     </div>
                     <span class="isscaled">
                       {{ credits }}</span>
-                    <div v-if="profile.subscribe" class="slice">
+                    <div v-if="user.subscription" class="slice">
                       <div class="bar"/>
                       <div class="fill"/>
                     </div>
@@ -64,9 +64,9 @@
                     <a href="javascript:void(0)" @click="openPaymentMore()">buy more credits</a>
                   </button>
                 </div>
-                <div v-if="profile.subscribe" class="credit">
-                  <p>{{ profile.subscribe.name }}</p>
-                  <p>Credits renew on 20/09/2020</p>
+                <div v-if="user.subscription" class="credit">
+                  <p>{{ user.subscription.name }}</p>
+                  <p>Credits renew on {{ until(user.subscription.stripe_data.current_period_end) }}</p>
                   <div class="logout">
                     <a @click="openUnsubscribe()">
                       Cancel Subscription
@@ -118,6 +118,7 @@ export default {
   },
   computed: {
     user() {
+      console.log('user', this.$auth.user.user);
       return this.$auth.user.user;
     },
     profile() {
@@ -127,7 +128,7 @@ export default {
       return [this.user.profile.first_name, this.user.profile.last_name].join(' ');
     },
     credits() {
-      return this.profile.subscribe ? this.profile.subscribe.credits : 0;
+      return this.user.subscription ? this.user.credits : 0;
     }
   },
   mounted() {
@@ -143,6 +144,10 @@ export default {
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
+    until(date) {
+      const dt = new Date(date * 1000);
+      return `${dt.getDate()}/${dt.getMonth() + 1}/${dt.getFullYear()}`;
+    },
     onResize() {
       this.innerWidth();
     },

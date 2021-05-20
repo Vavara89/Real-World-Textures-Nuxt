@@ -8,13 +8,13 @@
           Please enter credits count
         </h3>
         <input
-          min="100"
+          min="10"
           v-model="quantity"
-          type="text"
+          type="number"
           class="input"
           placeholder=""
         >
-
+        <p>0,4 EUR/1 CREDIT, MINIMUM 10 CREDITS = 4 EUR</p>
       </div>
       <div class="inner">
         <button @click="payment" type="submit" class="email special">
@@ -43,7 +43,6 @@ export default {
       send: false,
       number: null,
       quantity: 100
-
     };
   },
   methods: {
@@ -61,12 +60,14 @@ export default {
       this.scrollSwitcher(close);
     },
     async payment() {
-      const session = await commercial.initPay({
-        quantity:this.quantity
-      });
-      console.log(session);
-      const stripe = Stripe("pk_test_51H6sy0JPF3NHrntPzr6I0sc9Un4TtbyQsrbiLmBpLOZMHoDu9Fj07Xrq4Jana1ZC9cFk8yijeUctn4str7OPRVt000C6AS116F");
-      await stripe.redirectToCheckout({ sessionId: session.data.id });
+      if (this.quantity >= 10) {
+        const session = await commercial.initPay({
+          quantity:this.quantity
+        });
+        console.log(session);
+        const stripe = Stripe("pk_test_51H6sy0JPF3NHrntPzr6I0sc9Un4TtbyQsrbiLmBpLOZMHoDu9Fj07Xrq4Jana1ZC9cFk8yijeUctn4str7OPRVt000C6AS116F");
+        await stripe.redirectToCheckout({ sessionId: session.data.id });
+      }
     }
   }
 };

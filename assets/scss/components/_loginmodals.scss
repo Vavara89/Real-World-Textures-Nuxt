@@ -339,7 +339,7 @@
       padding-right: 15px;
     }
 
-    input.email, input.input, textarea.input {
+    select.input, input.email, input.input, textarea.input {
       color: #394174;
       font-weight: 300;
       line-height: normal;
@@ -368,7 +368,7 @@
       }
     }
 
-    input.input, textarea.input {
+    select.input, input.input, textarea.input {
       color: #394174;
       font-weight: 400;
       font-size: 13px;
@@ -378,6 +378,10 @@
         font-weight: 400;
         font-size: 13px;
       }
+    }
+
+    select.input {
+      max-width: 320px;
     }
 
     textarea.input{

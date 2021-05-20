@@ -44,6 +44,7 @@ export default {
   computed: {
     cards () {
       const prices = this.$store.getters.prices;
+      console.log('prices', this.$store.getters.prices);
       if (!prices.length) {
         return [];
       }

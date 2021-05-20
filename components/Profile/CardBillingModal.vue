@@ -96,14 +96,14 @@
             <tr>
               <td>State/Territory</td>
               <td>
-                <input
-                    :class="{'email--error': formErrors.length && !saved}"
-                    type="text"
-                    placeholder=""
-                    class="input"
-                    name="country"
-                    v-model="data.state"
-                >
+                <select v-model="data.state" class="input">
+                  <option
+                    v-for="(country, code) in $store.getters.getCountries"
+                    :key="code"
+                    :value="code">
+                    {{ country }}
+                  </option>
+                </select>
                 <div class="errors" :class="{'success': send}">
                   <span v-if="formErrors['state'].length">{{ formErrors['state'][0] }}</span>
                 </div>
@@ -184,9 +184,11 @@ export default {
     };
   },
   async mounted () {
-    users.countries().then((response) => {
-      this.remoteCountries = response.data;
-    });
+    const keys = Object.keys(this.$store.getters.getCountries);
+    console.log('keys');
+    if (!keys.includes(this.data.state)) {
+      this.data.state = keys[0];
+    }
   },
   methods: {
     save (e) {
