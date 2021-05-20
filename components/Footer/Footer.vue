@@ -10,9 +10,9 @@
       </div>
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
-        <h3 class="footer__title">
-          By providing your e-mail you agree to receive newsletters from us
-        </h3>
+        <vue-typed-js :strings="['By providing your e-mail you agree to receive newsletters from us', 'By providing your e-mail you agree to receive newsletters from us']" :loop="true">
+          <h1 class="typing footer__title"></h1>
+        </vue-typed-js>
         <FooterMailForm />
       </div>
       <div class="footer__policy">

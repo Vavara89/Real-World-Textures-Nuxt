@@ -22,7 +22,7 @@
   }
 
   &__title {
-    margin-bottom: 2.4rem;
+    margin-bottom: 2rem;
 
     @include font-title-footer;
   }
@@ -47,4 +47,8 @@
     line-height: 2.4rem;
     margin-top: 4.2rem;
   }
+}
+
+.typed-element .typed-cursor {
+  opacity: 0 !important;
 }
