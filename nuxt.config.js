@@ -32,7 +32,8 @@ const production = {
     { src: '@/plugins/vClickOutside', ssr: false },
     { src: '~/plugins/notifications-ssr', mode: 'server' },
     { src: '~/plugins/notifications-client', mode: 'client' },
-    { src: '~/plugins/v-mask', mode: 'client' }
+    { src: '~/plugins/v-mask', mode: 'client' },
+    {src: '~/plugins/vueTypedJs', mode: 'client'}
   ],
   /*
   ** Nuxt.js dev-modules

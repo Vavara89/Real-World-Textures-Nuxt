@@ -1,6 +1,6 @@
 <template>
   <form @submit="subscribe" action class="footer-mailform">
-    <input v-model="email" type="text" class="footer-mailform__input" placeholder="Enter your e-mail"/>
+    <input v-model="email" type="text" class="footer-mailform__input" placeholder="Enter your e-mail" @click="fieldActive" />
     <input
       type="submit"
       class="footer-mailform__button button-primary button-primary--inverted"
@@ -42,6 +42,9 @@ export default {
           this.error = data.response.data.email[0].capitalize();
       });
       return false;
+    },
+    fieldActive() {
+      this.$emit('onActive');
     }
   }
 
