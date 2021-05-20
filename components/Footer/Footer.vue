@@ -10,10 +10,12 @@
       </div>
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
-        <vue-typed-js :strings="['By providing your e-mail you agree to receive newsletters from us', 'By providing your e-mail you agree to receive newsletters from us']" :loop="true">
+        <vue-typed-js v-if="emailActive" :strings="['By providing your e-mail you agree to receive newsletters from us', 'By providing your e-mail you agree to receive newsletters from us']" :loop="true">
           <h1 class="typing footer__title"></h1>
         </vue-typed-js>
-        <FooterMailForm />
+        <FooterMailForm 
+          @onActive="onActive"
+        />
       </div>
       <div class="footer__policy">
         <FooterLinks />
@@ -97,13 +99,19 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      emailActive: 0
     };
   },
   created () {
     this.textBlock = this.$store.getters.textBlocks
       .filter(item => item.key === 'footer')
       .pop();
+  },
+  methods: {
+    onActive() {
+      this.emailActive = 1;
+    }
   }
 };
 </script>
