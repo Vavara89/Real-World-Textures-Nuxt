@@ -10,9 +10,11 @@
       </div>
       <FooterNav :footernavs="footernavs" />
       <div class="footer__community">
-        <vue-typed-js v-if="emailActive" :strings="['By providing your e-mail you agree to receive newsletters from us', 'By providing your e-mail you agree to receive newsletters from us']" :loop="true">
-          <h1 class="typing footer__title"></h1>
-        </vue-typed-js>
+        <div class="footer__title-wrap">
+          <vue-typed-js v-if="emailActive" :strings="['By providing your e-mail you agree to receive newsletters from us', 'By providing your e-mail you agree to receive newsletters from us']" :loop="true">
+            <h1 class="typing footer__title"></h1>
+          </vue-typed-js>
+        </div>        
         <FooterMailForm 
           @onActive="onActive"
         />
