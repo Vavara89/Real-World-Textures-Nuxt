@@ -1,5 +1,8 @@
 .page-content {
   background-color: $color-bck-light;
+  overflow-y: scroll;
+  height: calc(100vh - 120px);
+  overflow-x: hidden;
 
   &.page-content-branddetail {
     padding-bottom: 10rem;

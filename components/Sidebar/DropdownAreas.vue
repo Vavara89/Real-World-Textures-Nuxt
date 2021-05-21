@@ -60,7 +60,7 @@
       >
       <div v-if="getCountries()" class="suggestions">
         <ul v-if="open_suggestions" class="countries">
-          <li v-for="(item, index) in getCountries()">
+          <li v-for="(item, index) in getCountries()" :key='index'>
             <span :key="'country-'+index" @click="selectCountry(item)">
               {{ item.name }}
             </span>

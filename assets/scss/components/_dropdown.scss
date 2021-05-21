@@ -247,9 +247,10 @@
     left: 3px;
     background-color: #FBFBFF;
     width: 285px;
-    max-height: 300px;
+    max-height: 220px;
     overflow: hidden scroll;
     border-radius: 0px 0px 6px 6px;
+    z-index: 11;
 
     /* width */
     &::-webkit-scrollbar {

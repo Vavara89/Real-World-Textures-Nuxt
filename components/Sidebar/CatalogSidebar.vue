@@ -256,7 +256,7 @@ export default {
   overflow-y: scroll;
   height: calc(100vh - 120px);
   overflow-x: hidden;
-  margin-top: 65px;
+  margin-top: 0;
 
   @media (min-width: 991px) {
     min-width: 32rem;
@@ -302,7 +302,7 @@ export default {
 
 .fixedButton{
   position: fixed;
-  top: calc(100% - 60px);
+  bottom: 0;
   z-index: 10;
   width: auto !important;
   min-width: 260px;
