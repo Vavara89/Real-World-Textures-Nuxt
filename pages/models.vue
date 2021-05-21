@@ -120,4 +120,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/pages/textures.scss";
+
+.page-content::-webkit-scrollbar {
+  width: 3px;
+}
+.page-content::-webkit-scrollbar-thumb {
+  background: #d0d5e7;
+  border-radius: 15px;
+}
+.page-content::-webkit-scrollbar-track {
+  background: transparent;
+}
 </style>

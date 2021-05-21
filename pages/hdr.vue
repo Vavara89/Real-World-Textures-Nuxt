@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="page-container hdr-wrap">
     <nuxt-child :product="product"></nuxt-child>
     <CatalogSidebar :filter="filter" :active-category="activeCategory" />
     <div class="page-content">
@@ -118,4 +118,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/pages/textures.scss";
+
+.page-content::-webkit-scrollbar {
+  width: 3px;
+}
+.page-content::-webkit-scrollbar-thumb {
+  background: #d0d5e7;
+  border-radius: 15px;
+}
+.page-content::-webkit-scrollbar-track {
+  background: transparent;
+}
 </style>

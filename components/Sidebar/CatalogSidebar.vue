@@ -467,4 +467,20 @@ export default {
   width: 0%;
   left: 50%;
 }
+
+.brands-wrap .leftsidebar{
+    height: calc(100vh - 145px);
+}
+.brands-wrap .clear-btn{
+    position: absolute;
+    bottom: 0;
+}
+
+.hdr-wrap .leftsidebar{
+    height: calc(100vh - 145px);
+}
+.hdr-wrap .clear-btn{
+    position: absolute;
+    bottom: 0;
+}
 </style>

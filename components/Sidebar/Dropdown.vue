@@ -105,7 +105,8 @@ export default {
       }
     },
     opts () {
-      return this.options.slice(1);
+      console.log(this.options)
+      return this.options;
     }
   },
   methods: {
