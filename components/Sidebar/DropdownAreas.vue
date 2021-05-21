@@ -58,14 +58,14 @@
         @focus="hasFocus = true"
         @blur="closeSuggestions(); hasFocus = false"
       >
-      <div v-if="getCountries()" class="suggestions">
+      <div v-if="countries" class="suggestions">
         <ul v-if="open_suggestions" class="countries">
-          <li v-for="(item, index) in getCountries()" :key='index'>
+          <li v-for="(item, index) in countries" :key='index'>
             <span :key="'country-'+index" @click="selectCountry(item)">
               {{ item.name }}
             </span>
           </li>
-          <li v-if="!getCountries().length">
+          <li v-if="!countries.length">
             <span>Empty result search</span>
           </li>
         </ul>
@@ -96,7 +96,9 @@ export default {
       open: false,
       open_suggestions: false,
       keyUpTimeOut: undefined,
-      hasFocus: false
+      hasFocus: false,
+      countries: [],
+      original_countries: []
     };
   },
   watch: {
@@ -104,10 +106,21 @@ export default {
       if (!this.$route.query.search_country) {
         this.search = '';
       }
+      if (this.$route.query.area_id) {
+        for (let country of this.original_countries) {
+          if (country.id == this.$route.query.area_id) {
+            this.search = country.name;
+            break;
+          }
+        }
+      }
       if (!this.$route.query.continent) {
         this.continent = '';
       }
     }
+  },
+  mounted() {
+    this.countries = this.original_countries = this.getCountries();
   },
   methods: {
     openCountries () {
@@ -146,18 +159,30 @@ export default {
       return countries;
     },
     onKeyUpSearch () {
-      if (this.keyUpTimeOut) {
-        clearTimeout(this.keyUpTimeOut);
-      }
-      this.keyUpTimeOut = setTimeout(() => {
-        this.open_suggestions = this.search.length > 0;
-        if (!this.open_suggestions) {
-          this.cleanQuery('area_id');
-          this.cleanQuery('search_country');
-        } else {
-          this.pushToQuery('search_country', this.search);
+      let filter_countries = [];
+
+      if (this.search == '') this.countries = this.original_countries;
+      else {
+        this.open_suggestions = 1;
+        for (let country of this.original_countries) {
+          if (country.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1) filter_countries.push(country);
         }
-      }, 200);
+
+        this.countries = filter_countries;
+      }
+      
+      // if (this.keyUpTimeOut) {
+      //   clearTimeout(this.keyUpTimeOut);
+      // }
+      // this.keyUpTimeOut = setTimeout(() => {
+      //   this.open_suggestions = this.search.length > 0;
+      //   if (!this.open_suggestions) {
+      //     this.cleanQuery('area_id');
+      //     this.cleanQuery('search_country');
+      //   } else {
+      //     this.pushToQuery('search_country', this.search);
+      //   }
+      // }, 200);
     },
     closeSuggestions () {
       setTimeout(() => {

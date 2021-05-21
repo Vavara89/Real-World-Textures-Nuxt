@@ -91,7 +91,6 @@ export default {
             this.pager = data[1].pager;
             this.activeCategory = data[2];
             this.product = data[3];
-            console.log(data);
           })
           .catch((error) => {
             console.log("Errors");

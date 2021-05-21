@@ -105,7 +105,6 @@ export default {
       }
     },
     opts () {
-      console.log(this.options)
       return this.options;
     }
   },
