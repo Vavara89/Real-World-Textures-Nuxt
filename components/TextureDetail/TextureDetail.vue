@@ -38,7 +38,7 @@
               v-bind="sliderMain"
               class="default"
             >
-              <div v-for="item_image in texture.gallery" class="previewImg">
+              <div v-for="(item_image, index) in texture.gallery" :key="index" class="previewImg">
                 <img :src="item_image.image">
               </div>
             </VueSlickCarousel>
@@ -373,10 +373,12 @@ export default {
         this.setProcess(state.forDownload);
       }
     });
-    this.options.push({
-      value: this.type_code === 'models' ? 'Choose format' : 'Choose resolution'
-    });
+    // this.options.push({
+    //   value: this.type_code === 'models' ? 'Choose format' : 'Choose resolution'
+    // });
     if (this.texture.resolutions) {
+      console.log('resolutions')
+      console.log(this.texture.resolutions)
       this.texture.resolutions.map((item) => {
         const model = !!item.notResolution;
         const label = model ? item.name : `${item.resolution}x${item.resolutionSide}px (${item.name})`;

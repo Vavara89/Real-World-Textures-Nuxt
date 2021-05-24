@@ -72,7 +72,8 @@ export default {
           return {
             image: {
               url: item.logo,
-              alt: item.name
+              alt: item.name,
+              link: item.website
             }
           };
         });

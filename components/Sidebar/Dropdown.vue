@@ -23,7 +23,7 @@
           :key="index"
           v-if="checkselect && isselected"
         >{{ getSelectedName(item) }}<span v-if="isselected.length > 1 && isselected.length !== index + 1">, </span></span>
-        <span v-if="checkselect && isselected.length === 0">{{ options[0].value }}</span>
+        <span v-if="checkselect && isselected.length === 0">{{ options[0].value == '1024x512px (1K)' ? 'Choose resolution' : options[0].value }}</span>
       </div>
       <div
         class="items"
@@ -36,7 +36,7 @@
           :data-val="'x'"
           @click="click(item)"
         >
-          <div v-if="item.value !== options[0].value && checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck" />
+          <div v-if="checkselect" :class="{'ischecked': isselected.includes(item.value)}" class="ischeck" />
           <span v-if="true">{{ item.value }} <span v-if="item.count" class="count">({{ item.count }})</span></span>
         </div>
       </div>
