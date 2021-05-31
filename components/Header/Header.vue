@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="$route.name + '_header'">
     <div class="header-inner">
       <div class="header__flex">
         <div class="left-holder">

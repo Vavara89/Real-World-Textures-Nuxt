@@ -2,10 +2,16 @@
   .slick-slide {
     transition: all .3s ease-in-out;
     transform: scale(0.8);
-    width: 80vw !important;
+    width: 80vw;
     // max-width: 153.6rem;
     outline: none !important;
+
+    @media only screen and (min-width: 4000px) {
+      width: 65vw;
+    }
   }
+
+  
 }
 
 .slick-slide {
@@ -132,12 +138,20 @@
       top: 40%;
       left: 10vw;
     }
+
+    @media only screen and (min-width: 4000px) {
+      left: 0.5vw;
+    }
   }
 
 	.next-slick {
 		top: 50%;
     right: calc(10vw - 2.4rem);
     transform: rotate(-180deg);
+
+    @media only screen and (min-width: 4000px) {
+      right: 0.5vw;
+    }
 
     @include mq(sm, max) {
       top: 40%;
