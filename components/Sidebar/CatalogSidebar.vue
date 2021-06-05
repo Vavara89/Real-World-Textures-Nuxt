@@ -236,9 +236,11 @@ export default {
       this.$router.push({ path: `/${parts[1] ?? ''}` });
     },
     changeCatalogType(value) {
+      const query = this.$route.query;
+      delete query['related'];
       this.$router.replace({
         path: "/" + value.short,
-        query: this.$route.query,
+        query: query,
       });
     },
   },

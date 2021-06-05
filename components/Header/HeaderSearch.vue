@@ -77,6 +77,7 @@ export default {
         const current_query = {};
         Object.assign(current_query, this.$route.query);
         current_query["search"] = this.search;
+        console.log('current_query', current_query);
         this.$router.push({ path: this.selected.url, query: current_query });
       }, 1000);
     },

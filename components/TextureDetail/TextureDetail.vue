@@ -209,7 +209,7 @@
       <div v-if="type_code === 'models' && relatedTextures" class="visuallyshow">
         <div class="relatedtextures">
           <h3>Related<br>textures:</h3>
-          <a href="#" class="button-secondary">See all</a>
+          <nuxt-link :to="`/textures?related=${texture.slug}`" class="button-secondary">See all</nuxt-link>
         </div>
         <div class="relatedslider">
           <!-- Carousel Models start -->
@@ -301,10 +301,10 @@ export default {
         dots: false,
         infinite: false,
         slidesToScroll: 1,
-        slidesToShow:
-          this.texture.relatedTextures && this.relatedTextures?.length >= 5
-            ? 5
-            : this.texture.relatedTextures?.length,
+        slidesToShow: 2,
+          // this.texture.relatedTextures && this.relatedTextures?.length >= 5
+          //   ? 5
+          //   : this.texture.relatedTextures?.length,
         focusOnSelect: true
       },
       isBookmarked: false,
@@ -334,6 +334,14 @@ export default {
   computed: {
     relatedTextures () {
       return Object.keys(this.texture).includes('relatedTextures') ? this.texture.relatedTextures : [];
+    },
+    resolutionName() {
+      return (item) => {
+        if (item.resolutionSide) {
+          return `${item.resolution}x${item.resolutionSide}px (${item.name})`;
+        }
+        return `${item.resolution}px (${item.name})`
+      }
     }
   },
 
@@ -381,7 +389,7 @@ export default {
       console.log(this.texture.resolutions)
       this.texture.resolutions.map((item) => {
         const model = !!item.notResolution;
-        const label = model ? item.name : `${item.resolution}x${item.resolutionSide}px (${item.name})`;
+        const label = model ? item.name : this.resolutionName(item);
         this.options.push({ value: label });
         item.label = label;
       });
