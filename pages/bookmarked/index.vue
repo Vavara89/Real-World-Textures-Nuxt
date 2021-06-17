@@ -26,6 +26,7 @@
             :item="item"
             :index="index"
             @deleteBookmark="deleteBookmark"
+            @change="(val) => updateItem(item, val)"
           />
         </div>
         <div v-if="bookmarks.length > 0" class="bookmarks__credits">
@@ -115,6 +116,7 @@ export default {
         });
       this.bookmarks.map((item) => {
         item.selected = book_marks.includes(item.id);
+        item.selectedResolutions = [];
       });
       this.downloading =
         this.bookmarks.filter(bookmark => bookmark.selected === true).length >
@@ -195,6 +197,10 @@ export default {
   },
 
   methods: {
+    updateItem (item, val) {
+      console.log('updateItem', item, val);
+      item.selectedResolutions = val;
+    },
     deleteBookmark (item) {
       this.$nuxt.$loading.start();
       profile.toggleBookMark(item.type, item.id).then((response) => {
@@ -245,13 +251,23 @@ export default {
       const forDownload = this.$store.getters.forDownload;
       if (!forDownload.includes(item)) {
         forDownload.push(item);
-        item.resolutions = [0];
+        // item.resolutions = [0];
+        // item.resolutions = 
         this.$store.commit('setForDownload', forDownload);
       }
 
       let interval;
+      console.log('item', item);
+      const resolutions = item.resolutions
+        .filter((ritem) => {
+          return item.selectedResolutions.includes(ritem.label);
+        })
+        .map((ritem) => {
+          return ritem.resolution;
+        });
+      console.log('resolutions', resolutions);
       catalog
-        .download(item.type, item.id, { resolutions: item.resolutions })
+        .download(item.type, item.id, { resolutions })
         .then((response) => {
           const data = response.data;
           if (data.download_link) {

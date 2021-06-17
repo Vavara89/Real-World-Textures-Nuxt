@@ -21,6 +21,7 @@
         :options="options"
         :checkselect="true"
         :index="index"
+        @input="onChange"
       />
     </div>
     <div class="bookmark__part">
@@ -78,8 +79,12 @@ export default {
     }
   },
   methods: {
+    onChange (val) {
+      this.$emit('change', val);
+    },
     toggleSelected () {
       this.item.selected = !this.item.selected;
+      // this.$emit('change', this.item)
     },
     deleteBookmark (item) {
       this.$emit('deleteBookmark', item);

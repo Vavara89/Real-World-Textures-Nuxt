@@ -234,7 +234,9 @@
                 </div>
               </template>
               <a v-for="relatedItem in relatedTextures" :key="relatedItem.id" href="#" class="imageItem">
-                <img :src="relatedItem.gallery[0].image" :alt="relatedItem.name">
+                <nuxt-link :to="relatedTextureLink(relatedItem)">
+                  <img :src="relatedItem.gallery[0].image" :alt="relatedItem.name">
+                </nuxt-link>
               </a>
             </VueSlickCarousel>
           </div>
@@ -332,6 +334,18 @@ export default {
     };
   },
   computed: {
+    relatedTextureLink () {
+      return (item) => {
+        console.log('item', item, 'ctg', item.category);
+        if (item.category) {
+          return `${item.category.url}/product-${item.slug}`;
+          // return `/textures/${item.slug}`;
+          // http://localhost:3000/textures/natural/wildspitze-margeritta-on-flax-backing
+          // http://localhost:3000/textures/natural/product-wildspitze-light-on-flax-backing
+        }
+        return '';
+      };
+    },
     relatedTextures () {
       return Object.keys(this.texture).includes('relatedTextures') ? this.texture.relatedTextures : [];
     },
