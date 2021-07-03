@@ -100,6 +100,14 @@
 		appearance: none !important;
 		border: 1px solid transparent;
 
+    &:hover {
+      background: url(~@/assets/img/icon-arrow_left__white.svg) no-repeat center/contain;
+      background-color: #394173;
+      background-position-x: 9px;
+      background-position-y: 9px;
+      background-size: 12px;
+    }
+
 		&:after {
 			content: '';
 			position: absolute;
