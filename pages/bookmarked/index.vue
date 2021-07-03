@@ -35,7 +35,7 @@
               Your Credits Left:
             </div>
             <div class="bookmarks__credits__subscription">
-              {{ profile.credits }} Subscription
+              {{ userCredits }} Subscription
             </div>
             <Button
               :link="subscriptionLink"
@@ -53,6 +53,7 @@
             <button
               class="button-primary button-primary--large"
               :class="{ 'button-primary--blue': downloading }"
+              :disabled="!hasEnoughCredits"
               @click="downloads"
             >
               <img
@@ -60,8 +61,9 @@
                 class="rotate"
                 src="@/assets/img/icon-processing-button.svg"
               >
-              <span v-if="downloading">Processing...</span>
-              <span v-if="!downloading">Download Selected</span>
+              <span v-if="!hasEnoughCredits">Not enough credits</span>
+              <span v-if="hasEnoughCredits && downloading">Processing...</span>
+              <span v-if="hasEnoughCredits && !downloading">Download Selected</span>
             </button>
           </div>
         </div>
@@ -158,6 +160,17 @@ export default {
       return sum;
     },
 
+    userCredits () {
+      if (this.$auth.loggedIn) {
+        return this.$auth.user.user.credits;
+      }
+      return 0;
+    },
+
+    hasEnoughCredits () {
+      return this.userCredits >= this.totalCredits;
+    },
+
     appendText () {
       if (this.totalCredits < 1 || this.totalCredits > 1) {
         return 'Credits';
@@ -175,6 +188,7 @@ export default {
         });
         this.bookmarks.forEach((item) => {
           item.selected = pks.includes(item.id);
+          item.downloading = pks.includes(item.id);
         });
         if (!pks) {
           this.bookmarks.forEach((item) => {
@@ -198,7 +212,6 @@ export default {
 
   methods: {
     updateItem (item, val) {
-      console.log('updateItem', item, val);
       item.selectedResolutions = val;
     },
     deleteBookmark (item) {
@@ -227,37 +240,38 @@ export default {
 
     selectAllBookmark () {
       this.$nuxt.$loading.start();
+      const actual = this.bookmarks.every(item => item.selected);
       this.bookmarks.forEach(function (item) {
-        item.selected = !item.selected;
+        item.selected = !actual;
       });
       this.$nuxt.$loading.finish();
     },
 
     downloads () {
-      const forDownload = this.bookmarks.filter(
-        bookmark => bookmark.selected === true
-      );
-      this.selectError = !forDownload.length;
-      if (this.selectError) {
-        return false;
+      if (this.hasEnoughCredits) {
+        const forDownload = this.bookmarks.filter(
+          bookmark => bookmark.selected === true
+        );
+        this.selectError = !forDownload.length;
+        if (this.selectError) {
+          return false;
+        }
+        this.starting_download = true;
+        forDownload.forEach((item) => {
+          this.runDownload(item);
+        });
       }
-      this.starting_download = true;
-      forDownload.forEach((item) => {
-        this.runDownload(item);
-      });
     },
 
     runDownload (item) {
       const forDownload = this.$store.getters.forDownload;
+      console.log('forDownload', forDownload);
       if (!forDownload.includes(item)) {
         forDownload.push(item);
-        // item.resolutions = [0];
-        // item.resolutions = 
         this.$store.commit('setForDownload', forDownload);
       }
 
       let interval;
-      console.log('item', item);
       const resolutions = item.resolutions
         .filter((ritem) => {
           return item.selectedResolutions.includes(ritem.label);
@@ -265,7 +279,6 @@ export default {
         .map((ritem) => {
           return ritem.resolution;
         });
-      console.log('resolutions', resolutions);
       catalog
         .download(item.type, item.id, { resolutions })
         .then((response) => {
@@ -288,6 +301,7 @@ export default {
           this.downloadErrors = error.response.data.errors;
         });
     }
+
   }
 };
 </script>

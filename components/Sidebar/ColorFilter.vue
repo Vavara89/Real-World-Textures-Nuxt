@@ -4,9 +4,9 @@
       {{ options.title }}
     </h3>
     <ul class="colorOptions">
-      <li v-for="(item, index) in options.items" :key="'item-' + index" class="text item">
+      <li v-for="(item, index) in options.items" :key="'item-' + index" class="text item" :data-color="item">
         <a @click="setColor(item)" :class="{'active':(isActive(item))}">
-          <div class="colorItem" v-bind="{'style':{'background-color': `#${item}`}}"/>
+          <div class="colorItem" v-bind="{'style':{'background-color': `#${item.replace('#', '')}`}}"/>
         </a>
       </li>
     </ul>

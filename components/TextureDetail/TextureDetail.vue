@@ -118,11 +118,21 @@
                 <label v-if="type_code == 'models'" class="h3">Format:</label>
                 <label v-else class="h3">Resolution:</label>
               </div>
-              <div class="option">
-                <Dropdown
+              <div v-if="type_code == 'models'" class="option">
+                <DropdownWithTitle
                   v-model="resolution"
                   :options="options"
                   :checkselect="true"
+                  :title="'Choose format'"
+                  @input="onSelect"
+                />
+              </div>
+              <div v-else class="option">
+                <DropdownWithTitle
+                  v-model="resolution"
+                  :options="options"
+                  :checkselect="true"
+                  :title="'Choose resolution'"
                   @input="onSelect"
                 />
               </div>
@@ -251,7 +261,7 @@ import VueSlickCarousel from 'vue-slick-carousel';
 import 'vue-slick-carousel/dist/vue-slick-carousel.css';
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 import formatcoords from 'formatcoords';
-import Dropdown from '@/components/Sidebar/Dropdown';
+import DropdownWithTitle from '@/components/Sidebar/DropdownWithTitle';
 import profile from '@/collectors/profile';
 import catalog from '@/collectors/catalog';
 import users from '@/collectors/users';
@@ -260,7 +270,7 @@ export default {
   name: 'TextureDetail',
   components: {
     VueSlickCarousel,
-    Dropdown
+    DropdownWithTitle,
   },
 
   props: {
@@ -351,11 +361,14 @@ export default {
     },
     resolutionName() {
       return (item) => {
+        if (this.type_code === 'hdr') {
+          return item.name;
+        }
         if (item.resolutionSide) {
           return `${item.resolution}x${item.resolutionSide}px (${item.name})`;
         }
-        return `${item.resolution}px (${item.name})`
-      }
+        return `${item.resolution}px (${item.name})`;
+      };
     }
   },
 
@@ -399,8 +412,8 @@ export default {
     //   value: this.type_code === 'models' ? 'Choose format' : 'Choose resolution'
     // });
     if (this.texture.resolutions) {
-      console.log('resolutions')
-      console.log(this.texture.resolutions)
+      console.log('resolutions');
+      console.log(this.texture.resolutions);
       this.texture.resolutions.map((item) => {
         const model = !!item.notResolution;
         const label = model ? item.name : this.resolutionName(item);

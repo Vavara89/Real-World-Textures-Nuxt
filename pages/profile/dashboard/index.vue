@@ -50,7 +50,7 @@
                 <div class="clearfix">
                   <div class="c100 p75 big scaled">
                     <div v-if="user.subscription" class="points">
-                      + {{ user.subscription.product.credits }}
+                      + {{ userCredits }}
                     </div>
                     <span class="isscaled">
                       {{ credits }}</span>
@@ -66,8 +66,8 @@
                 </div>
                 <div v-if="user.subscription" class="credit">
                   <p>{{ user.subscription.name }}</p>
-                  <p>Credits renew on {{ until(user.subscription.stripe_data.current_period_end) }}</p>
-                  <div class="logout">
+                  <p v-if="user.subscription.stripe_data">Credits renew on {{ until(user.subscription.stripe_data.current_period_end) }}</p>
+                  <div v-if="user.subscription.stripe_data" class="logout">
                     <a @click="openUnsubscribe()">
                       Cancel Subscription
                     </a>
@@ -129,6 +129,9 @@ export default {
     },
     credits() {
       return this.user.subscription ? this.user.credits : 0;
+    },
+    userCredits() {
+      return (this.user.subscription && this.user.subscription.product) ? this.user.subscription.product.credits : 0;
     }
   },
   mounted() {
