@@ -3,7 +3,7 @@
   background-color: $color-bck-light;
 
   &.inprofile {
-    padding: 20.8rem 0 20.8rem !important;
+    padding: 100px 0 200px 0 !important;
 
     @include mq(md, max) {
       padding: 1rem 0 2.8rem !important;

@@ -146,7 +146,6 @@
 
   &__img {
     position: relative;
-    margin-top: -50%;
     margin-bottom: 6rem;
 
     img {
@@ -154,7 +153,7 @@
       position: relative;
       object-fit: contain;
       vertical-align: middle;
-      width: calc((16.8 / 26) * 100%);
+      width: 250px;
       margin-left: auto;
       margin-right: auto;
       border-radius: 50%;
@@ -169,7 +168,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      width: calc((16.8 / 26) * 99%);
+      width: 250px;
       height: 99%;
       margin: auto;
       box-shadow: 0 3rem 4.5rem rgba($color-primary-900, .4);
@@ -187,7 +186,7 @@
         margin-bottom: -4.5rem;
   
         img {
-          width: 34rem;
+          width: 354px;
           border-radius: 0;
         }
   
