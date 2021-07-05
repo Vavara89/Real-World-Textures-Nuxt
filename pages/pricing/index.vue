@@ -100,7 +100,7 @@
                   v-if="!user"
                   style="text-align: center; padding: 20px 16px; border-left: 1px solid #DDE0ED;"
                 >
-                  <span></span>
+                  <span>-</span>
                 </td>
                 <td
                   style="text-align: center; padding: 20px 16px; border-left: 1px solid #DDE0ED;"
