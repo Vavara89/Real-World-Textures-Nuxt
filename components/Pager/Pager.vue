@@ -16,7 +16,8 @@
         <div class="coles">
           <ul class="list">
             <li v-for="(pageNum, index) in getPages" :key="'page-pager-' + index">
-              <a href="#" @click="paginate(pageNum)" :class="{'active': isActive(pageNum)}">{{ pageNum }}</a>
+              <a v-if="pageNum > 0" href="#" @click="paginate(pageNum)" :class="{'active': isActive(pageNum)}">{{ pageNum }}</a>
+              <span v-else>● ● ●</span>
             </li>
           </ul>
         </div>
@@ -92,8 +93,23 @@ export default {
       return this.pager.current;
     },
     getPages(){
-      return [...Array(this.pager.pages_count).keys()].map(i => i + 1);
+      let pages = [];
+      const currentPage = this.pager.current;
+      const allPages = this.pager.pages_count;
+      if (currentPage + 10 > allPages) {
+        for (let i = 0; i < 10; i++) {
+          pages.push(allPages - 9 + i);
+        }
+      }
+      else {
+        for (let i = 0; i < 10; i++) {
+          pages.push(currentPage + i);
+        }
+        if (currentPage + 10 < allPages) pages.push(0);
+        pages.push(allPages);
+      }
+      return pages;
     },
-  }
+  },
 };
 </script>
