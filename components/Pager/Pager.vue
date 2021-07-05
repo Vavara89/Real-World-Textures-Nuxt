@@ -44,6 +44,11 @@ export default {
       type: Object,
       required: true
     },
+    isLastPage: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
   },
   methods:{
     isActive(page){
@@ -78,7 +83,7 @@ export default {
       return !!this.pager.previous;
     },
     haveNext(){
-      return !!this.pager.next;
+      return !this.isLastPage;
     },
     canPaginate(){
       return this.pager.count > this.pager.page_size;

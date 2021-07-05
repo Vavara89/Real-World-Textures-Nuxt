@@ -24,7 +24,7 @@
           </h2>
         </div>
       </section>
-      <Pager :pager="pager" />
+      <Pager :pager="pager" :isLastPage="pager.current === pager.pages_count" />
     </div>
   </div>
 </template>
