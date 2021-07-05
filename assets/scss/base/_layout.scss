@@ -119,8 +119,9 @@
     background-image: url(~@/assets/img/icon-arrow_left.svg);
     background-position: 7px 6px;
     background-repeat: no-repeat;
-    top: 187px;
-    left: 20px;
+    top: auto;
+    left: 30px;
+    bottom: -47px;
 
     @include mq(lg, max) {
       top: 130px;
@@ -148,8 +149,9 @@
     background-position: 7px 6px;
     background-repeat: no-repeat;
     transform: scaleX(-1);
-    top: 175px;
-    right: 25px;
+    top: auto;
+    left: 55px;
+    bottom: -35px;
 
     @include mq(lg, max) {
       top: 118px;
@@ -175,6 +177,7 @@
   &-footer {
     text-align: left;
     padding: 3.2rem;
+    padding-top: 50px;
 
     .credits-bookmark {
       display: flex;

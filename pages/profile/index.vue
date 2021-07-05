@@ -177,7 +177,7 @@
           </div>
         </VueSlickCarousel>
       </div>
-      <div v-if="models.length" class="imageDetails-footer imageDetails--gray-bg">
+      <div v-if="models.length" class="imageDetails-footer models-wrap imageDetails--gray-bg">
         <SectionTitle :subtitle="subtitle_textures2" :title="title_textures2" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -196,12 +196,13 @@
           </template>
           <div v-for="item in models" class="imageItem">
             <img :src="item.cover" :alt="item.name">
+             <CardSliderDetail :id="item.id" :texture="item" :hovered="true" />
           </div>
         </VueSlickCarousel>
         <!-- <div class="circle-big" />
         <div class="circle-small" /> -->
       </div>
-      <div v-if="hdr.length" class="imageDetails-footer imageDetails--gray-bg last2">
+      <div v-if="hdr.length" class="imageDetails-footer hdr-wrap imageDetails--gray-bg last2">
         <SectionTitle :subtitle="subtitle_textures3" :title="title_textures3" :is-centered="true" />
         <VueSlickCarousel ref="sliderNav2" class="default" v-bind="navCarousel2">
           <template #prevArrow="arrowOption">
@@ -220,6 +221,7 @@
           </template>
           <div v-for="item in hdr" class="imageItem">
             <img :src="item.cover" :alt="item.name">
+            <CardSliderDetail :id="item.id" :texture="item" :hovered="true" />
           </div>
         </VueSlickCarousel>
       </div>
