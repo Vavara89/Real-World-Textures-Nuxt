@@ -104,7 +104,7 @@ export default {
         return this.toLogin();
       }
       profile
-        .toggleBookMark(this.$route.name, this.texture.id)
+        .toggleBookMark(this.$route.path, this.texture.id)
         .then((response) => {
           this.texture.isBookmarked = !response.data.deleted;
           this.$store.commit('setBookmarks', response.data.totals);

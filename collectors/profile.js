@@ -1,16 +1,16 @@
-import collectorWithUserAuth from "@/collectors/base_auth";
+import collectorWithUserAuth from '@/collectors/base_auth';
 
 const resource = 'users/profile/';
 
 export default {
   token: null,
-  setToken(token) {
+  setToken (token) {
     this.token = token;
   },
-  getCollector(){
+  getCollector () {
     const collector = {};
     const token = this.token;
-    Object.assign(collector,collectorWithUserAuth);
+    Object.assign(collector, collectorWithUserAuth);
     collector.interceptors.request.use(
       (config) => {
         if (token) {
@@ -22,15 +22,16 @@ export default {
     return collector;
   },
 
-  async toggleBookMark(type, pk){
+  async toggleBookMark (type, pk) {
+    const route = type.split('/').filter(item => !!item)[0];
     return await this.getCollector()
-      .post(`${resource}bookmarks/${type}/${pk}`);
+      .post(`${resource}bookmarks/${route}/${pk}`);
   },
-  async getBookmarks(){
+  async getBookmarks () {
     return await this.getCollector()
       .get(`${resource}bookmarks`);
   },
-  async getInvoices(){
+  async getInvoices () {
     return await this.getCollector()
       .get(`${resource}invoices`);
   }
