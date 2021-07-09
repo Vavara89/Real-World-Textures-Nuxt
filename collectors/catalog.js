@@ -1,9 +1,9 @@
-import collectorWithUserAuth from "@/collectors/base_auth";
-import CategoryClass from "@/classes/category.class.ts";
-import FilterClass from "@/classes/filter.class.ts";
-import PagerClass from "@/classes/pager.class.ts";
-import TexturesClass from "@/classes/textures.class.ts";
-import ProductClass from "@/classes/product.class.ts";
+import collectorWithUserAuth from '@/collectors/base_auth';
+import CategoryClass from '@/classes/category.class.ts';
+import FilterClass from '@/classes/filter.class.ts';
+import PagerClass from '@/classes/pager.class.ts';
+import TexturesClass from '@/classes/textures.class.ts';
+import ProductClass from '@/classes/product.class.ts';
 import BrandClass from '@/classes/brand.class';
 import DistributorClass from '@/classes/distributor.class';
 
@@ -11,13 +11,13 @@ const resource = 'catalog';
 
 export default {
   token: null,
-  setToken(token) {
+  setToken (token) {
     this.token = token;
   },
-  getCollector(){
+  getCollector () {
     const collector = {};
     const token = this.token;
-    Object.assign(collector,collectorWithUserAuth);
+    Object.assign(collector, collectorWithUserAuth);
     collector.interceptors.request.use(
       (config) => {
         if (token) {
@@ -28,34 +28,34 @@ export default {
     );
     return collector;
   },
-  async filter (type, qs){
+  async filter (type, qs) {
     return await this.getCollector()
-      .get(`${resource}/${type}/filter?${qs}`, {search: 'example'});
+      .get(`${resource}/${type}/filter?${qs}`, { search: 'example' });
   },
-  async products (type, qs){
+  async products (type, qs) {
     return await this.getCollector()
       .get(`${resource}/${type}?${qs}`);
   },
 
-  async category (type, slug, qs){
+  async category (type, slug, qs) {
     return await this.getCollector()
       .get(`${resource}/${type}/category?slug=${slug}&${qs}`);
   },
 
-  async product (type, slug){
+  async product (type, slug) {
     return await this.getCollector()
       .get(`${resource}/${type}/${slug}`);
   },
 
-  async download(type, id, data){
+  async download (type, id, data) {
     return await this.getCollector()
       .post(`${resource}/${type}/download/${id}`, data);
   },
-  async distributors(slug){
+  async distributors (slug) {
     return await this.getCollector()
       .get(`${resource}/brands/distributors/${slug}`);
   },
-  async loadCatalog(route, catalogType, context){
+  async loadCatalog (route, catalogType, context) {
     let qs = Object.keys(route.query)
       .map(key => `${key}=${route.query[key]}`)
       .join('&');
@@ -64,19 +64,19 @@ export default {
     let categoryPromise = null;
     let productPromise = null;
     let product = null;
-    let categorySlug = route.params.sub ? route.params.slug + "/" + route.params.sub : route.params.slug;
+    let categorySlug = route.params.sub ? route.params.slug + '/' + route.params.sub : route.params.slug;
     let productSlug = route.params.product ? route.params.product.replace('product-', '') : false;
-    if(context && context.$auth.loggedIn){
+    if (context && context.$auth.loggedIn) {
       this.setToken(context.$auth.user.user.token);
     }
 
-    if(route.params.sub && route.params.sub.startsWith('product-')){
+    if (route.params.sub && route.params.sub.startsWith('product-')) {
       categorySlug = route.params.slug;
       productSlug = route.params.sub.replace('product-', '');
     }
 
     if (categorySlug) {
-      categoryPromise = await this.category(catalogType, categorySlug, qs).then(response => {
+      categoryPromise = await this.category(catalogType, categorySlug, qs).then((response) => {
         activeCategory = new CategoryClass(response.data);
         return activeCategory;
       });
@@ -84,44 +84,44 @@ export default {
         qs += `&categories=${activeCategory.id}`;
       }
     }
-    if(productSlug){
-      productPromise = await this.product(catalogType, productSlug).then(response => {
+    if (productSlug) {
+      productPromise = await this.product(catalogType, productSlug).then((response) => {
         product = new ProductClass(response.data);
         return product;
       });
     }
-    const filterPromise = await this.filter(catalogType, qs).then(response => {
+    const filterPromise = await this.filter(catalogType, qs).then((response) => {
       return new FilterClass(response.data);
     });
-    const productsPromise = await this.products(catalogType, qs).then(response => {
+    const productsPromise = await this.products(catalogType, qs).then((response) => {
       const textures = response.data.results.map(item => new ProductClass(item));
-      return {textures: textures, pager: new PagerClass(response.data)}
+      return { textures, pager: new PagerClass(response.data) };
     });
     return await Promise.all([filterPromise, productsPromise, categoryPromise, productPromise]);
   },
-  async loadBrand(route, catalogType, brandSlug){
-    let qs = Object.keys(route.query)
+  async loadBrand (route, catalogType, brandSlug) {
+    const qs = Object.keys(route.query)
       .map(key => `${key}=${route.query[key]}`)
       .join('&');
 
-    const filterPromise = await this.filter(catalogType, qs).then(response => {
+    const filterPromise = await this.filter(catalogType, qs).then((response) => {
       return new FilterClass(response.data);
     });
 
-    const brandPromise = await this.product(catalogType, brandSlug).then(response => {
+    const brandPromise = await this.product(catalogType, brandSlug).then((response) => {
       return new BrandClass(response.data);
     });
 
-    const productsPromise = await this.products(`brands-products/${brandSlug}`, qs).then(response => {
+    const productsPromise = await this.products(`brands-products/${brandSlug}`, qs).then((response) => {
       return {
         textures: response.data.textures,
         models: response.data.models
       };
     });
-    const distributors = await this.distributors(brandSlug).then(response => {
-      return response.data.map((item)=>new DistributorClass(item));
+    const distributors = await this.distributors(brandSlug).then((response) => {
+      return response.data.map(item => new DistributorClass(item));
     });
 
-    return await  Promise.all([filterPromise, brandPromise, productsPromise, distributors])
+    return await Promise.all([filterPromise, brandPromise, productsPromise, distributors]);
   }
 };
