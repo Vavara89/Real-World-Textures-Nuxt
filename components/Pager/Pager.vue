@@ -17,7 +17,7 @@
           <ul class="list">
             <li v-for="(pageNum, index) in getPages" :key="'page-pager-' + index">
               <a v-if="pageNum > 0" href="#" @click="paginate(pageNum)" :class="{'active': isActive(pageNum)}">{{ pageNum }}</a>
-              <span v-else>● ● ●</span>
+              <span v-else style="font-size: 18px;">&#183; &#183; &#183;</span>
             </li>
           </ul>
         </div>
