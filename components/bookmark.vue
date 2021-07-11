@@ -72,6 +72,17 @@ export default {
       } else {
         return 'credit';
       }
+    },
+    resolutionName () {
+      return (item) => {
+        if (this.type_code === 'hdr') {
+          return item.name;
+        }
+        if (item.resolutionSide) {
+          return `${item.resolution}x${item.resolutionSide}px (${item.name})`;
+        }
+        return `${item.resolution}px (${item.name})`;
+      };
     }
   },
   created () {
@@ -83,7 +94,7 @@ export default {
         } else {
           const label = isNaN(data.resolution)
             ? data.name
-            : `${data.resolution}x${data.resolution}px (${data.name})`;
+            : this.resolutionName(data);
           this.options.push({ value: label });
           data.label = label;
         }

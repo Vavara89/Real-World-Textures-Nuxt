@@ -496,9 +496,13 @@ export default {
       this.downloadErrors = false;
       const resolutions = this.texture.resolutions
         .filter((item) => {
+
           return this.resolution.includes(item.label);
         })
         .map((item) => {
+          if (!!item.resolutionSide && item.resolutionSide > item.resolution) {
+            return item.resolutionSide;
+          }
           return item.resolution;
         });
       this.processing = true;
