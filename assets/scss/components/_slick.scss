@@ -90,7 +90,7 @@
 		height: 3.2rem;
 		top: 50%;
 		background: url(~@/assets/img/icon-arrow_left__white.svg) no-repeat center/contain;
-		background-size: 1.2rem;
+		background-size: 1.8rem;
 		background-color: $color-primary-700;
 		color: #F2F3F9;
 		font-weight: bold;
@@ -103,9 +103,9 @@
     &:hover {
       background: url(~@/assets/img/icon-arrow_left__white.svg) no-repeat center/contain;
       background-color: #394173;
-      background-position-x: 9px;
-      background-position-y: 9px;
-      background-size: 12px;
+      background-position-x: 7px;
+      background-position-y: 6px;
+      background-size: 18px;
     }
 
 		&:after {
