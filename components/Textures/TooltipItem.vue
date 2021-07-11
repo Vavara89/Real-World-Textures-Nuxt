@@ -147,9 +147,11 @@ export default {
 <style>
 .tooltip-content .slick-slide{
   transform: none !important;
-  width: 50rem !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
+}
+.texture .tooltip .slick-list {
+  top: 0;
 }
 </style>
