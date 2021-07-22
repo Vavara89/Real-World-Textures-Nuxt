@@ -23,6 +23,7 @@
           :key="index"
           v-if="checkselect && isselected"
         >{{ getSelectedName(item) }}<span v-if="isselected.length > 1 && isselected.length !== index + 1">, </span></span>
+        <span v-if="isselected.length > 5">...</span>
         <span v-if="checkselect && isselected.length === 0">{{ title }}</span>
       </div>
       <div

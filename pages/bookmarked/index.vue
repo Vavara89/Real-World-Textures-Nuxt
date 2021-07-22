@@ -222,7 +222,7 @@ export default {
         );
         this.$nuxt.$loading.finish();
         this.$store.commit('setBookmarks', response.data.totals);
-        this.componentKey += 1;
+        // this.componentKey += 1;
       });
     },
 
